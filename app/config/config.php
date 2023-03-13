@@ -1,8 +1,6 @@
 <?php 
-
-// BASE URL
-define('BASEURL', 'http://localhost/belajarMVC/10searching/public/');
-
+// BASEURL
+define('BASEURL', 'http://localhost/SIMAS/public/');
 
 // DB
 define('DB_HOST', 'localhost');

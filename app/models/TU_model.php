@@ -1,6 +1,6 @@
 <?php
 
-class Siswa_model
+class TU_model
 {
 
     private $table = 'siswa', $db;
@@ -10,20 +10,20 @@ class Siswa_model
         $this->db = new Database;
     }
 
-    public function getAllSiswa()
+    public function getAllData()
     {
         $this->db->query("SELECT * FROM {$this->table}");
         return $this->db->resultSet();
     }
 
-    public function getSiswaById($id)
+    public function getDataById($id)
     {
         $this->db->query("SELECT * FROM {$this->table} WHERE id=:id"); // : = menghindari sql injection
         $this->db->bind("id", $id);
         return $this->db->single();
     }
 
-    public function tambahDataSiswa($data)
+    public function tambahData($data)
     {
         $query = "INSERT INTO {$this->table}
                     VALUES 
@@ -38,7 +38,7 @@ class Siswa_model
         return $this->db->rowCount();
     }
 
-    public function hapusDataSiswa($id)
+    public function hapusData($id)
     {
         $query = "DELETE FROM {$this->table} WHERE id = :id";
         $this->db->query($query);
@@ -48,7 +48,7 @@ class Siswa_model
         return $this->db->rowCount();
     }
 
-    public function ubahDataSiswa($data)
+    public function ubahData($data)
     {
         $query = "UPDATE {$this->table}
                     SET 
@@ -67,7 +67,7 @@ class Siswa_model
         return $this->db->rowCount();
     }
 
-    public function cariDataSiswa()
+    public function cariData()
     {
         $keyword = $_POST['keyword'];
         $query = "SELECT * FROM {$this->table} WHERE nama LIKE :keyword";
