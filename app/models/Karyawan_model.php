@@ -1,9 +1,9 @@
 <?php
 
-class TU_model
+class Karyawan_model
 {
 
-    private $table = 'siswa', $db;
+    private $table = 'karyawan', $db;
 
     public function __construct()
     {
@@ -18,7 +18,7 @@ class TU_model
 
     public function getDataById($id)
     {
-        $this->db->query("SELECT * FROM {$this->table} WHERE id=:id"); // : = menghindari sql injection
+        $this->db->query("SELECT * FROM {$this->table} WHERE id = :id"); // : = menghindari sql injection
         $this->db->bind("id", $id);
         return $this->db->single();
     }
@@ -27,12 +27,14 @@ class TU_model
     {
         $query = "INSERT INTO {$this->table}
                     VALUES 
-                    (null, :nama, :email, :jurusan)";
-
+                    (null, :nip, :nama, :telepon, :jenisKelamin, :alamat, :jabatan)";
         $this->db->query($query);
+        $this->db->bind('nip', $data['nip']);
         $this->db->bind('nama', $data['nama']);
-        $this->db->bind('email', $data['email']);
-        $this->db->bind('jurusan', $data['jurusan']);
+        $this->db->bind('telepon', $data['telepon']);
+        $this->db->bind('jenisKelamin', $data['jenisKelamin']);
+        $this->db->bind('alamat', $data['alamat']);
+        $this->db->bind('jabatan', $data['jabatan']);
 
         $this->db->execute();
         return $this->db->rowCount();
@@ -52,15 +54,21 @@ class TU_model
     {
         $query = "UPDATE {$this->table}
                     SET 
+                    nip = :nip,
                     nama = :nama,
-                    email = :email,
-                    jurusan = :jurusan
+                    telepon = :telepon,
+                    jenisKelamin = :jenisKelamin,
+                    alamat = :alamat,
+                    jabatan = :jabatan
                     WHERE id = :id";
 
         $this->db->query($query);
+        $this->db->bind('nip', $data['nip']);
         $this->db->bind('nama', $data['nama']);
-        $this->db->bind('email', $data['email']);
-        $this->db->bind('jurusan', $data['jurusan']);
+        $this->db->bind('telepon', $data['telepon']);
+        $this->db->bind('jenisKelamin', $data['jenisKelamin']);
+        $this->db->bind('alamat', $data['alamat']);
+        $this->db->bind('jabatan', $data['jabatan']);
         $this->db->bind('id', $data['id']);
 
         $this->db->execute();
@@ -71,7 +79,7 @@ class TU_model
     {
         $keyword = $_POST['keyword'];
         $query = "SELECT * FROM {$this->table} WHERE nama LIKE :keyword";
-        
+
         $this->db->query($query);
         $this->db->bind("keyword", "%$keyword%");
         return $this->db->resultSet();
