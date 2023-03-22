@@ -13,23 +13,24 @@ class Siswa_model
     public function getAllData()
     {
         $this->db->query("SELECT * FROM {$this->table}");
-        return $this->db->resultSet();
+        return $this->db->fetchAll();
     }
 
     public function getDataById($nisn)
     {
-        $this->db->query("SELECT * FROM {$this->table} WHERE nisn=:nisn"); // : = menghindari sql injection
+        $this->db->query("SELECT * FROM {$this->table} WHERE nisn=:nisn");
         $this->db->bind("nisn", $nisn);
-        return $this->db->single();
+        return $this->db->fetch();
     }
 
     public function tambahData($data)
     {
-        $query = "INSERT INTO {$this->table}
-                    VALUES 
-                    (:nisn, :nama, :kelamin, :alamat, :ibu, :ayah, :jurusan, :kelas)";
+        $this->db->query(
+            "INSERT INTO {$this->table}
+                VALUES 
+            (:nisn, :nama, :kelamin, :alamat, :ibu, :ayah, :jurusan, :kelas)"
+        );
 
-        $this->db->query($query);
         $this->db->bind('nisn', $data['nisn']);
         $this->db->bind('nama', $data['nama']);
         $this->db->bind('kelamin', $data['kelamin']);
@@ -45,8 +46,7 @@ class Siswa_model
 
     public function hapusData($nisn)
     {
-        $query = "DELETE FROM {$this->table} WHERE nisn = :nisn";
-        $this->db->query($query);
+        $this->db->query("DELETE FROM {$this->table} WHERE nisn = :nisn");
         $this->db->bind("nisn", $nisn);
 
         $this->db->execute();
@@ -55,19 +55,20 @@ class Siswa_model
 
     public function ubahData($data)
     {
-        $query = "UPDATE {$this->table}
-                    SET 
-                    nisn = :nisn,
-                    nama = :nama, 
-                    kelamin = :kelamin, 
-                    alamat = :alamat, 
-                    ibu = :ibu, 
-                    ayah = :ayah, 
-                    jurusan = :jurusan, 
-                    kelas = :kelas
-                    WHERE nisn = :nisn";
+        $this->db->query(
+            "UPDATE {$this->table}
+                SET 
+                nisn = :nisn,
+                nama = :nama, 
+                kelamin = :kelamin, 
+                alamat = :alamat, 
+                ibu = :ibu, 
+                ayah = :ayah, 
+                jurusan = :jurusan, 
+                kelas = :kelas
+            WHERE nisn = :nisn"
+        );
 
-        $this->db->query($query);
         $this->db->bind('nisn', $data['nisn']);
         $this->db->bind('nama', $data['nama']);
         $this->db->bind('kelamin', $data['kelamin']);
@@ -84,10 +85,9 @@ class Siswa_model
     public function cariData()
     {
         $keyword = $_POST['keyword'];
-        $query = "SELECT * FROM {$this->table} WHERE nama LIKE :keyword";
 
-        $this->db->query($query);
+        $this->db->query("SELECT * FROM {$this->table} WHERE nama LIKE :keyword");
         $this->db->bind("keyword", "%$keyword%");
-        return $this->db->resultSet();
+        return $this->db->fetchAll();
     }
 }
