@@ -13,23 +13,24 @@ class Guru_model
     public function getAllData()
     {
         $this->db->query("SELECT * FROM {$this->table}");
-        return $this->db->resultSet();
+        return $this->db->fetchAll();
     }
 
     public function getDataById($nip)
     {
         $this->db->query("SELECT * FROM {$this->table} WHERE nip = :nip"); // : = menghindari sql injection
         $this->db->bind("nip", $nip);
-        return $this->db->single();
+        return $this->db->fetch();
     }
 
     public function tambahData($data)
     {
-        $query = "INSERT INTO {$this->table}
-                    VALUES 
-                    (:nip, :nama, :kelamin, :alamat, :mapel)";
+        $this->db->query(
+            "INSERT INTO {$this->table}
+                VALUES 
+            (:nip, :nama, :kelamin, :alamat, :mapel)"
+        );
 
-        $this->db->query($query);
         $this->db->bind('nip', $data['nip']);
         $this->db->bind('nama', $data['nama']);
         $this->db->bind('kelamin', $data['kelamin']);
@@ -42,8 +43,7 @@ class Guru_model
 
     public function hapusData($nip)
     {
-        $query = "DELETE FROM {$this->table} WHERE nip = :nip";
-        $this->db->query($query);
+        $this->db->query("DELETE FROM {$this->table} WHERE nip = :nip");
         $this->db->bind("nip", $nip);
 
         $this->db->execute();
@@ -52,16 +52,17 @@ class Guru_model
 
     public function ubahData($data)
     {
-        $query = "UPDATE {$this->table}
-                    SET 
-                    nip = :nip,
-                    nama = :nama,
-                    kelamin = :kelamin,
-                    alamat = :alamat,
-                    mapel = :mapel
-                    WHERE nip = :nip";
+        $this->db->query(
+            "UPDATE {$this->table}
+                SET 
+                nip = :nip,
+                nama = :nama,
+                kelamin = :kelamin,
+                alamat = :alamat,
+                mapel = :mapel
+            WHERE nip = :nip"
+        );
 
-        $this->db->query($query);
         $this->db->bind('nip', $data['nip']);
         $this->db->bind('nama', $data['nama']);
         $this->db->bind('kelamin', $data['kelamin']);
@@ -75,10 +76,9 @@ class Guru_model
     public function cariData()
     {
         $keyword = $_POST['keyword'];
-        $query = "SELECT * FROM {$this->table} WHERE nama LIKE :keyword";
 
-        $this->db->query($query);
+        $this->db->query("SELECT * FROM {$this->table} WHERE nama LIKE :keyword");
         $this->db->bind("keyword", "%$keyword%");
-        return $this->db->resultSet();
+        return $this->db->fetchAll();
     }
 }

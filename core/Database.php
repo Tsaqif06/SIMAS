@@ -11,9 +11,8 @@ class Database
 
     public function __construct()
     {
-        // PDO = PHP Data Object
-        // data source name / identitas server
-        $dsn = "mysql:host={$this->host};dbname={$this->db_name}";
+        $dsn = "mysql:host={$this->host};dbname={$this->db_name}"; // data source name
+
         $option = [
             PDO::ATTR_PERSISTENT => true,
             PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION
@@ -31,7 +30,7 @@ class Database
         $this->stmt = $this->dbh->prepare($query);
     }
 
-    public function bind($params, $value, $type = null) // binding data // terhindar dari sqlinjection
+    public function bind($params, $value, $type = null) // binding data agar terhindar dari sql injection
     {
         if (is_null($type)) {
             switch(true) {
@@ -48,24 +47,29 @@ class Database
                     $type = PDO::PARAM_STR;
             }
         }
+
         $this->stmt->bindValue($params, $value, $type);
     }
 
     public function execute() // eksekusi query
     {
-        $this->stmt->execute();
+        try {
+            $this->stmt->execute();
+        } catch (Exception $e) {
+            return $e;
+        }
     }
 
-    public function resultSet() // mengambil banyak data/result
-    {
-        $this->execute();
-        return $this->stmt->fetchAll(PDO::FETCH_ASSOC);
-    }
-
-    public function single() // mengambil satu data/result
+    public function fetch() // mengambil satu data
     {
         $this->execute();
         return $this->stmt->fetch(PDO::FETCH_ASSOC);
+    }
+
+    public function fetchAll() // mengambil banyak data
+    {
+        $this->execute();
+        return $this->stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 
     public function rowCount()

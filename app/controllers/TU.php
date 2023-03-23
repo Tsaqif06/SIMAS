@@ -12,7 +12,9 @@ class TU extends Controller
     public function siswa()
     {
         $data['judul'] = 'SIMAS - Siswa';
+
         $data['siswa'] = $this->model('Siswa_model')->getAllData();
+        
         $this->view('templates/header2', $data);
         $this->view('tu/siswa', $data);
         $this->view('templates/footer2');
@@ -21,7 +23,9 @@ class TU extends Controller
     public function guru()
     {
         $data['judul'] = 'SIMAS - Guru';
+
         $data['guru'] = $this->model('Guru_model')->getAllData();
+        
         $this->view('templates/header2', $data);
         $this->view('tu/guru', $data);
         $this->view('templates/footer2');
@@ -30,7 +34,9 @@ class TU extends Controller
     public function karyawan()
     {
         $data['judul'] = 'SIMAS - Karyawan';
+
         $data['karyawan'] = $this->model('Karyawan_model')->getAllData();
+
         $this->view('templates/header2', $data);
         $this->view('tu/karyawan', $data);
         $this->view('templates/footer2');
@@ -42,40 +48,33 @@ class TU extends Controller
     {
         if ($this->model('Guru_model')->tambahData($_POST) > 0) {
             Flasher::setFlash('BERHASIL', 'Ditambahkan', 'success');
-            header('Location: ' . BASEURL . 'tu/guru');
-
-            exit;
         } else {
             Flasher::setFlash('GAGAL', 'Ditambahkan', 'danger');
-            header('Location: ' . BASEURL . 'tu/guru');
-            exit;
         }
+        header('Location: ' . BASEURL . 'tu/guru');
+        exit;
     }
 
     public function tambahDataSiswa()
     {
         if ($this->model('Siswa_model')->tambahData($_POST) > 0) {
             Flasher::setFlash('BERHASIL', 'Ditambahkan', 'success');
-            header('Location: ' . BASEURL . 'tu/siswa');
-            exit;
         } else {
             Flasher::setFlash('GAGAL', 'Ditambahkan', 'danger');
-            header('Location: ' . BASEURL . 'tu/siswa');
-            exit;
         }
+        header('Location: ' . BASEURL . 'tu/siswa');
+        exit;
     }
 
     public function tambahDataKaryawan()
     {
         if ($this->model('Karyawan_model')->tambahData($_POST) > 0) {
             Flasher::setFlash('BERHASIL', 'Ditambahkan', 'success');
-            header('Location: ' . BASEURL . 'tu/karyawan');
-            exit;
         } else {
-            Flasher::setFlash('GAGAL', 'Ditambahkan', 'danger');
-            header('Location: ' . BASEURL . 'tu/karyawan');
-            exit;
+            Flasher::setFlash('GAGAL', 'Ditambahkan', 'danger');            
         }
+        header('Location: ' . BASEURL . 'tu/karyawan');
+        exit;
     }
 
     // hapus data
@@ -84,39 +83,33 @@ class TU extends Controller
     {
         if ($this->model('Guru_model')->hapusData($nip) > 0) {
             Flasher::setFlash('BERHASIL', 'Dihapus', 'success');
-            header('Location: ' . BASEURL . 'tu/guru');
-            exit;
         } else {
             Flasher::setFlash('GAGAL', 'Dihapus', 'danger');
-            header('Location: ' . BASEURL . 'tu/guru');
-            exit;
         }
+        header('Location: ' . BASEURL . 'tu/guru');
+        exit;
     }
 
     public function hapusDataSiswa($nisn)
     {
         if ($this->model('Siswa_model')->hapusData($nisn) > 0) {
             Flasher::setFlash('BERHASIL', 'Dihapus', 'success');
-            header('Location: ' . BASEURL . 'tu/siswa');
-            exit;
         } else {
             Flasher::setFlash('GAGAL', 'Dihapus', 'danger');
-            header('Location: ' . BASEURL . 'tu/siswa');
-            exit;
         }
+        header('Location: ' . BASEURL . 'tu/siswa');
+        exit;
     }
 
     public function hapusDataKaryawan($nip)
     {
         if ($this->model('Karyawan_model')->hapusData($nip) > 0) {
             Flasher::setFlash('BERHASIL', 'Dihapus', 'success');
-            header('Location: ' . BASEURL . 'tu/karyawan');
-            exit;
         } else {
             Flasher::setFlash('GAGAL', 'Dihapus', 'danger');
-            header('Location: ' . BASEURL . 'tu/karyawan');
-            exit;
         }
+        header('Location: ' . BASEURL . 'tu/karyawan');
+        exit;
     }
 
     // edit data
@@ -129,13 +122,11 @@ class TU extends Controller
     {
         if ($this->model('Guru_model')->ubahData($_POST) > 0) {
             Flasher::setFlash('BERHASIL', 'Diubah', 'success');
-            header('Location: ' . BASEURL . 'tu/guru');
-            exit;
         } else {
             Flasher::setFlash('GAGAL', 'Diubah', 'danger');
-            header('Location: ' . BASEURL . 'tu/guru');
-            exit;
         }
+        header('Location: ' . BASEURL . 'tu/guru');
+        exit;
     }
 
     public function getUbahDataSiswa()
@@ -147,13 +138,11 @@ class TU extends Controller
     {
         if ($this->model('Siswa_model')->ubahData($_POST) > 0) {
             Flasher::setFlash('BERHASIL', 'Diubah', 'success');
-            header('Location: ' . BASEURL . 'tu/siswa');
-            exit;
         } else {
             Flasher::setFlash('GAGAL', 'Diubah', 'danger');
-            header('Location: ' . BASEURL . 'tu/siswa');
-            exit;
         }
+        header('Location: ' . BASEURL . 'tu/siswa');
+        exit;
     }
 
     public function getUbahDataKaryawan()
@@ -165,12 +154,10 @@ class TU extends Controller
     {
         if ($this->model('Karyawan_model')->ubahData($_POST) > 0) {
             Flasher::setFlash('BERHASIL', 'Diubah', 'success');
-            header('Location: ' . BASEURL . 'tu/karyawan');
-            exit;
         } else {
             Flasher::setFlash('GAGAL', 'Diubah', 'danger');
-            header('Location: ' . BASEURL . 'tu/karyawan');
-            exit;
         }
+        header('Location: ' . BASEURL . 'tu/karyawan');
+        exit;
     }
 }
