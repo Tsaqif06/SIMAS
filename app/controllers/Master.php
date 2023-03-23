@@ -42,6 +42,16 @@ class Master extends Controller
         $this->view('templates/footer2');
     }
 
+    public function suratmasuk()
+    {
+        $data['judul'] = 'SIMAS - Surat Masuk';
+        $data['karyawan'] = $this->model('Karyawan_model')->getAllData();
+        $this->view('templates/header2', $data);
+        $this->view('tu/suratmasuk', $data);
+        $this->view('templates/footer2');
+    }
+
+
     // tambah data
 
     public function tambahDataGuru()
