@@ -34,7 +34,7 @@
 
         <div class="row">
             <div class="col-lg-6">
-                <button type="button" class="btn btn-primary my-3 tampilModalTambah" data-bs-toggle="modal" data-bs-target="#modal">
+                <button type="button" class="btn btn-primary my-3 tampilModalTambah karyawan" data-bs-toggle="modal" data-bs-target="#modal">
                     Tambah Data Karyawan
                 </button>
             </div>
@@ -61,10 +61,10 @@
                                     <?php foreach ($data['karyawan'] as $row) : ?>
                                         <tr>
                                             <td class="font-weight-medium">
-                                                <a href="<?= BASEURL ?>tu/ubahDataKaryawan" class="badge text-bg-success tampilModalUbahKaryawan" style="cursor: pointer;" data-bs-toggle="modal" data-bs-target="#modal" data-id="<?= $row['id'] ?>">
+                                                <a href="<?= BASEURL ?>master/ubahDataKaryawan" class="badge text-bg-success tampilModalUbahKaryawan" style="cursor: pointer;" data-bs-toggle="modal" data-bs-target="#modal" data-id="<?= $row['id'] ?>">
                                                     Edit
                                                 </a>
-                                                <a href="<?= BASEURL ?>tu/hapusDataKaryawan/<?= $row['id'] ?>"">
+                                                <a href="<?= BASEURL ?>master/hapusDataKaryawan/<?= $row['id'] ?>"">
                                                     <div class=" font-weight-medium pt-2">
                                                     <div class="badge badge-danger delete" onclick="return confirm('Yakin Ingin Hapus Data?')">Delete</div>
                                                 </a>
@@ -98,7 +98,7 @@
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
-                        <form action="<?= BASEURL ?>tu/tambahDataKaryawan" method="post">
+                        <form action="<?= BASEURL ?>master/tambahData/Karyawan" method="post">
                             <input type="text" name="id" id="id" value="<?= $row['id'] ?>" style="display: none;">
                             <div class="mb-3">
                                 <label for="nip" class="form-label">NIP</label>

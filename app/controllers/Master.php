@@ -54,37 +54,21 @@ class Master extends Controller
 
     // tambah data
 
-    public function tambahDataGuru()
+    public function tambahData($model)
     {
-        if ($this->model('Guru_model')->tambahData($_POST) > 0) {
+        $model = ucfirst($model);
+        echo "{$model}_model";
+        echo "<br><pre>";
+        var_dump($_POST);
+        echo "</pre>";
+
+        if ($this->model("{$model}_model")->tambahData($_POST) > 0) {
             Flasher::setFlash('BERHASIL', 'Ditambahkan', 'success');
         } else {
             Flasher::setFlash('GAGAL', 'Ditambahkan', 'danger');
         }
-        header('Location: ' . BASEURL . 'tu/guru');
-        exit;
-    }
-
-    public function tambahDataSiswa()
-    {
-        if ($this->model('Siswa_model')->tambahData($_POST) > 0) {
-            Flasher::setFlash('BERHASIL', 'Ditambahkan', 'success');
-        } else {
-            Flasher::setFlash('GAGAL', 'Ditambahkan', 'danger');
-        }
-        header('Location: ' . BASEURL . 'tu/siswa');
-        exit;
-    }
-
-    public function tambahDataKaryawan()
-    {
-        if ($this->model('Karyawan_model')->tambahData($_POST) > 0) {
-            Flasher::setFlash('BERHASIL', 'Ditambahkan', 'success');
-        } else {
-            Flasher::setFlash('GAGAL', 'Ditambahkan', 'danger');            
-        }
-        header('Location: ' . BASEURL . 'tu/karyawan');
-        exit;
+        // header('Location: ' . BASEURL . 'master/guru');
+        // exit;
     }
 
     // hapus data
@@ -96,7 +80,7 @@ class Master extends Controller
         } else {
             Flasher::setFlash('GAGAL', 'Dihapus', 'danger');
         }
-        header('Location: ' . BASEURL . 'tu/guru');
+        header('Location: ' . BASEURL . 'master/guru');
         exit;
     }
 
@@ -107,7 +91,7 @@ class Master extends Controller
         } else {
             Flasher::setFlash('GAGAL', 'Dihapus', 'danger');
         }
-        header('Location: ' . BASEURL . 'tu/siswa');
+        header('Location: ' . BASEURL . 'master/siswa');
         exit;
     }
 
@@ -118,7 +102,7 @@ class Master extends Controller
         } else {
             Flasher::setFlash('GAGAL', 'Dihapus', 'danger');
         }
-        header('Location: ' . BASEURL . 'tu/karyawan');
+        header('Location: ' . BASEURL . 'master/karyawan');
         exit;
     }
 
@@ -135,7 +119,7 @@ class Master extends Controller
         } else {
             Flasher::setFlash('GAGAL', 'Diubah', 'danger');
         }
-        header('Location: ' . BASEURL . 'tu/guru');
+        header('Location: ' . BASEURL . 'master/guru');
         exit;
     }
 

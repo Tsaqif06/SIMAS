@@ -53,11 +53,7 @@ class Database
 
     public function execute() // eksekusi query
     {
-        try {
-            $this->stmt->execute();
-        } catch (Exception $e) {
-            return $e;
-        }
+        $this->stmt->execute();
     }
 
     public function fetch() // mengambil satu data

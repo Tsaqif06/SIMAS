@@ -34,7 +34,7 @@
 
         <div class="row">
             <div class="col-lg-6">
-                <button type="button" class="btn btn-primary my-3 tampilModalTambah" data-bs-toggle="modal" data-bs-target="#modal">
+                <button type="button" class="btn btn-primary my-3 tampilModalTambah guru" data-bs-toggle="modal" data-bs-target="#modal">
                     Tambah Data Guru
                 </button>
             </div>
@@ -60,10 +60,10 @@
                                     <?php foreach ($data['guru'] as $row) : ?>
                                         <tr>
                                             <td class="font-weight-medium">
-                                                <a href="<?= BASEURL ?>tu/ubahDataGuru" class="badge text-bg-success tampilModalUbahGuru" style="cursor: pointer;" data-bs-toggle="modal" data-bs-target="#modal" data-nip="<?= $row['nip'] ?>">
+                                                <a href="<?= BASEURL ?>master/ubahDataGuru" class="badge text-bg-success tampilModalUbahGuru" style="cursor: pointer;" data-bs-toggle="modal" data-bs-target="#modal" data-nip="<?= $row['nip'] ?>">
                                                     Edit
                                                 </a>
-                                                <a href="<?= BASEURL ?>tu/hapusDataGuru/<?= $row['nip'] ?>"">
+                                                <a href="<?= BASEURL ?>master/hapusDataGuru/<?= $row['nip'] ?>"">
                                                     <div class=" font-weight-medium pt-2">
                                                     <div class="badge badge-danger delete" onclick="return confirm('Yakin Ingin Hapus Data?')">Delete</div>
                                                 </a>
@@ -96,7 +96,7 @@
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
-                        <form action="<?= BASEURL ?>tu/tambahDataGuru" method="post">
+                        <form action="<?= BASEURL ?>master/tambahData/Guru" method="post">
                             <div class="mb-3">
                                 <label for="nip" class="form-label">NIP</label>
                                 <input type="text" class="form-control" name="nip" id="nip" required>
