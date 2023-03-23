@@ -315,9 +315,9 @@
             </a>
             <div class="collapse" id="ui-basic">
               <ul class="nav flex-column sub-menu">
-                <li class="nav-item"> <a class="nav-link" href="<?= BASEURL ?>tu/siswa">Siswa</a></li>
-                <li class="nav-item"> <a class="nav-link" href="<?= BASEURL ?>tu/guru">Guru</a></li>
-                <li class="nav-item"> <a class="nav-link" href="<?= BASEURL ?>tu/karyawan">Karyawan</a></li>
+                <li class="nav-item"> <a class="nav-link" href="<?= BASEURL ?>master/siswa">Siswa</a></li>
+                <li class="nav-item"> <a class="nav-link" href="<?= BASEURL ?>master/guru">Guru</a></li>
+                <li class="nav-item"> <a class="nav-link" href="<?= BASEURL ?>master/karyawan">Karyawan</a></li>
               </ul>
             </div>
           </li>
