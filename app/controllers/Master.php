@@ -1,6 +1,6 @@
 <?php
 
-class TU extends Controller
+class Master extends Controller
 {
 
     // routing
