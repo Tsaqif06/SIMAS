@@ -302,27 +302,33 @@
       <nav class="sidebar sidebar-offcanvas" id="sidebar">
         <ul class="nav">
           <li class="nav-item">
-            <a class="nav-link" data-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
+            <a class="nav-link" data-toggle="collapse" href="#masterdata" aria-expanded="false" aria-controls="masterdata">
               <i class="icon-folder menu-icon"></i>
               <span class="menu-title">Master Data</span>
               <i class="menu-arrow"></i>
             </a>
-            <div class="collapse" id="ui-basic">
+            <div class="collapse" id="masterdata">
               <ul class="nav flex-column sub-menu">
-                <li class="nav-item"> <a class="nav-link" href="<?= BASEURL ?>master/siswa">Siswa</a></li>
                 <li class="nav-item"> <a class="nav-link" href="<?= BASEURL ?>master/guru">Guru</a></li>
                 <li class="nav-item"> <a class="nav-link" href="<?= BASEURL ?>master/karyawan">Karyawan</a></li>
+                <li class="nav-item"> <a class="nav-link" href="<?= BASEURL ?>master/siswa">Siswa</a></li>
+                <li class="nav-item"> <a class="nav-link" href="<?= BASEURL ?>master/kelas">Kelas</a></li>
+                <li class="nav-item"> <a class="nav-link" href="<?= BASEURL ?>master/walikelas">Wali Kelas</a></li>
+                <li class="nav-item"> <a class="nav-link" href="<?= BASEURL ?>master/mapel">Mapel</a></li>
+                <li class="nav-item"> <a class="nav-link" href="<?= BASEURL ?>master/jabatan">Jabatan</a></li>
+                <li class="nav-item"> <a class="nav-link" href="<?= BASEURL ?>master/kompetensikeahlian">Kompetensi Keahlian</a></li>
+                <li class="nav-item"> <a class="nav-link" href="<?= BASEURL ?>master/programkeahlian">Program Keahlian</a></li>
               </ul>
             </div>
           </li>
 
           <li class="nav-item">
-          <a class="nav-link" data-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
+            <a class="nav-link" data-toggle="collapse" href="#tu" aria-expanded="false" aria-controls="tu">
               <i class="icon-folder menu-icon"></i>
               <span class="menu-title">Tata Usaha</span>
               <i class="menu-arrow"></i>
             </a>
-            <div class="collapse" id="ui-basic">
+            <div class="collapse" id="tu">
               <ul class="nav flex-column sub-menu">
                 <li class="nav-item"> <a class="nav-link" href="<?= BASEURL ?>tu/suratmasuk">Surat Masuk</a></li>
                 <li class="nav-item"> <a class="nav-link" href="<?= BASEURL ?>tu/suratkeluar">Surat Keluar</a></li>
@@ -332,12 +338,12 @@
           </li>
 
           <li class="nav-item">
-            <a class="nav-link" data-toggle="collapse" href="#form-elements" aria-expanded="false" aria-controls="form-elements">
+            <a class="nav-link" data-toggle="collapse" href="#humas" aria-expanded="false" aria-controls="humas">
               <i class="icon-columns menu-icon"></i>
               <span class="menu-title">Humas</span>
               <i class="menu-arrow"></i>
             </a>
-            <div class="collapse" id="form-elements">
+            <div class="collapse" id="humas">
               <ul class="nav flex-column sub-menu">
                 <li class="nav-item"><a class="nav-link" href="isihumas.html">kosong</a></li>
               </ul>
@@ -368,24 +374,24 @@
             </div>
           </li>
           <li class="nav-item">
-            <a class="nav-link" data-toggle="collapse" href="#charts" aria-expanded="false" aria-controls="charts">
+            <a class="nav-link" data-toggle="collapse" href="#sdm" aria-expanded="false" aria-controls="sdm">
               <i class="icon-bar-graph menu-icon"></i>
               <span class="menu-title">SDM</span>
               <i class="menu-arrow"></i>
             </a>
-            <div class="collapse" id="charts">
+            <div class="collapse" id="sdm">
               <ul class="nav flex-column sub-menu">
                 <li class="nav-item"> <a class="nav-link" href="isisdm.html">kosong</a></li>
               </ul>
             </div>
           </li>
           <li class="nav-item">
-            <a class="nav-link" data-toggle="collapse" href="#tables" aria-expanded="false" aria-controls="tables">
+            <a class="nav-link" data-toggle="collapse" href="#sarpras" aria-expanded="false" aria-controls="sarpras">
               <i class="icon-grid-2 menu-icon"></i>
               <span class="menu-title">SARPRAS</span>
               <i class="menu-arrow"></i>
             </a>
-            <div class="collapse" id="tables">
+            <div class="collapse" id="sarpras">
               <ul class="nav flex-column sub-menu">
                 <li class="nav-item"> <a class="nav-link" href="isisarpras.html">kosong</a></li>
               </ul>
