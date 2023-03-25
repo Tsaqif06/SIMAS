@@ -2,7 +2,7 @@
 
 class Karyawan_model
 {
-    private $table = 'karyawan';
+    private $table = 'masterkaryawan';
     private $db;
 
     public function __construct()
@@ -18,7 +18,7 @@ class Karyawan_model
 
     public function getDataById($id)
     {
-        $this->db->query("SELECT * FROM {$this->table} WHERE id = :id");
+        $this->db->query("SELECT * FROM {$this->table} WHERE id_karyawan = :id");
         $this->db->bind("id", $id);
         return $this->db->fetch();
     }
@@ -28,15 +28,21 @@ class Karyawan_model
         $this->db->query(
             "INSERT INTO {$this->table}
                 VALUES 
-            (null, :nip, :nama, :telepon, :jenisKelamin, :alamat, :jabatan)"
+            (null, :nama_lengkap, :jenis_kelamin, :tempat_lahir, :tanggal_lahir, :alamat_lengkap, :pendidikan_terakhir, :jurusan_pendidikan_terakhir,
+            :nomor_hp, :kategori, :status_pernikahan, :foto)"
         );
 
-        $this->db->bind('nip', $data['nip']);
-        $this->db->bind('nama', $data['nama']);
-        $this->db->bind('telepon', $data['telepon']);
-        $this->db->bind('jenisKelamin', $data['jenisKelamin']);
-        $this->db->bind('alamat', $data['alamat']);
-        $this->db->bind('jabatan', $data['jabatan']);
+        $this->db->bind('nama_lengkap', $data['nama_lengkap']);
+        $this->db->bind('jenis_kelamin', $data['jenis_kelamin']);
+        $this->db->bind('tempat_lahir', $data['tempat_lahir']);
+        $this->db->bind('tanggal_lahir', $data['tanggal_lahir']);
+        $this->db->bind('alamat_lengkap', $data['alamat_lengkap']);
+        $this->db->bind('pendidikan_terakhir', $data['pendidikan_terakhir']);
+        $this->db->bind('jurusan_pendidikan_terakhir', $data['jurusan_pendidikan_terakhir']);
+        $this->db->bind('nomor_hp', $data['nomor_hp']);
+        $this->db->bind('kategori', $data['kategori']);
+        $this->db->bind('status_pernikahan', $data['status_pernikahan']);
+        $this->db->bind('foto', $data['foto']);
 
         $this->db->execute();
         return $this->db->rowCount();
@@ -44,7 +50,7 @@ class Karyawan_model
 
     public function hapusData($id)
     {
-        $this->db->query("DELETE FROM {$this->table} WHERE id = :id");
+        $this->db->query("DELETE FROM {$this->table} WHERE id_karyawan = :id");
         $this->db->bind("id", $id);
 
         $this->db->execute();
@@ -56,22 +62,32 @@ class Karyawan_model
         $this->db->query(
             "UPDATE {$this->table}
                 SET 
-                nip = :nip,
-                nama = :nama,
-                telepon = :telepon,
-                jenisKelamin = :jenisKelamin,
-                alamat = :alamat,
-                jabatan = :jabatan
-            WHERE id = :id"
+                nama_lengkap = :nama_lengkap,
+                jenis_kelamin = :jenis_kelamin,
+                tempat_lahir = :tempat_lahir,
+                tanggal_lahir = :tanggal_lahir,
+                alamat_lengkap = :alamat_lengkap,
+                pendidikan_terakhir = :pendidikan_terakhir,
+                jurusan_pendidikan_terakhir = :jurusan_pendidikan_terakhir,
+                nomor_hp = :nomor_hp, 
+                kategori = :kategori,
+                status_pernikahan = :status_pernikahan,
+                foto = :foto
+                WHERE id_karyawan = :id"
         );
 
-        $this->db->bind('nip', $data['nip']);
-        $this->db->bind('nama', $data['nama']);
-        $this->db->bind('telepon', $data['telepon']);
-        $this->db->bind('jenisKelamin', $data['jenisKelamin']);
-        $this->db->bind('alamat', $data['alamat']);
-        $this->db->bind('jabatan', $data['jabatan']);
-        $this->db->bind('id', $data['id']);
+        $this->db->bind('nama_lengkap', $data['nama_lengkap']);
+        $this->db->bind('jenis_kelamin', $data['jenis_kelamin']);
+        $this->db->bind('tempat_lahir', $data['tempat_lahir']);
+        $this->db->bind('tanggal_lahir', $data['tanggal_lahir']);
+        $this->db->bind('alamat_lengkap', $data['alamat_lengkap']);
+        $this->db->bind('pendidikan_terakhir', $data['pendidikan_terakhir']);
+        $this->db->bind('jurusan_pendidikan_terakhir', $data['jurusan_pendidikan_terakhir']);
+        $this->db->bind('nomor_hp', $data['nomor_hp']);
+        $this->db->bind('kategori', $data['kategori']);
+        $this->db->bind('status_pernikahan', $data['status_pernikahan']);
+        $this->db->bind('foto', $data['foto']);
+        $this->db->bind('id', $data['id_karyawan']);
 
         $this->db->execute();
         return $this->db->rowCount();
