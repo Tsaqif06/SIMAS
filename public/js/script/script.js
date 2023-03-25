@@ -27,13 +27,6 @@ $(document).ready(function () {
 		$("#jabatan").val('');
 	});
 
-	$(".tampilModalTambah.siswa").click(function () {
-		$(".modal-body form").attr(
-			"action",
-			"http://localhost/SIMAS/public/master/tambahData/Siswa"
-		);
-	});
-
 	$(".tampilModalTambah.guru").click(function () {
 		$(".modal-body form").attr(
 			"action",
@@ -72,32 +65,6 @@ $(document).ready(function () {
 		});
 	});
 
-	$(".tampilModalUbahSiswa").click(function () {
-		$("#modalLabel").html("Edit Data Siswa");
-		$(".modal-footer button[type=submit]").html("Ubah Data");
-		$(".modal-body form").attr(
-			"action",
-			"http://localhost/SIMAS/public/master/ubahDataSiswa"
-		);
-
-		const nisn = $(this).data("nisn");
-		$.ajax({
-			url: "http://localhost/SIMAS/public/master/getUbahDataSiswa",
-			data: { nisn: nisn },
-			method: "post",
-			dataType: "json",
-			success: function (data) {
-				$("#nisn").val(data.nisn);
-				$("#nama").val(data.nama);
-				$("#kelamin").val(data.kelamin);
-				$("#alamat").val(data.alamat);
-				$("#ibu").val(data.ibu);
-				$("#ayah").val(data.ayah);
-				$("#jurusan").val(data.jurusan);
-				$("#kelas").val(data.kelas);
-			},
-		});
-	});
 
 	$(".tampilModalUbahKaryawan").click(function () {
 

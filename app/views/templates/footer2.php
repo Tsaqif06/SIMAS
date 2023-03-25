@@ -14,7 +14,6 @@
 <!-- container-scroller -->
 
 <!-- plugins:js -->
-<script src="../js/jquery.min.js"></script>
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 <script src="../js/sweetalert.js"></script>
 <script src=" ../../vendors/js/vendor.bundle.base.js"></script>
@@ -27,7 +26,6 @@
 
 <!-- End plugin js for this page -->
 <!-- inject:js -->
-<script src="../js/script.js"></script>
 <script src="../js/off-canvas.js"></script>
 <script src="../js/hoverable-collapse.js"></script>
 <script src="../js/template.js"></script>
