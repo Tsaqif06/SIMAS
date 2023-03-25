@@ -24,7 +24,6 @@
 
 <!-- End plugin js for this page -->
 <!-- inject:js -->
-<script src="../js/script.js"></script>
 <script src="../js/off-canvas.js"></script>
 <script src="../js/hoverable-collapse.js"></script>
 <script src="../js/template.js"></script>

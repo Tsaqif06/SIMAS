@@ -91,7 +91,6 @@ class Siswa_model
             WHERE id_siswa = :id"
         );
 
-        $this->db->bind('id_siswa', $data['id_siswa']);
         $this->db->bind('nisn', $data['nisn']);
         $this->db->bind('nama_siswa', $data['nama_siswa']);
         $this->db->bind('jalur', $data['jalur']);
@@ -110,6 +109,7 @@ class Siswa_model
         $this->db->bind('kelas', $data['kelas']);
         $this->db->bind('tanggal_lahir', $data['tanggal_lahir']);
         $this->db->bind('usia_sekarang', $data['usia_sekarang']);
+        $this->db->bind('id', $data['id_siswa']);
 
         $this->db->execute();
         return $this->db->rowCount();

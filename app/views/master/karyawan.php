@@ -171,4 +171,4 @@
     </div>
 </div>
 
-<script src="../js/modal-alerts-pages/karyawan.js"></script>
+<script src="../js/script/karyawan.js"></script>
