@@ -14,8 +14,6 @@
 <!-- container-scroller -->
 
 <!-- plugins:js -->
-<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-<script src="../js/sweetalert.js"></script>
 <script src=" ../../vendors/js/vendor.bundle.base.js"></script>
 <!-- endinject -->
 <!-- Plugin js for this page -->
