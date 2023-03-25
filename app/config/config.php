@@ -2,10 +2,13 @@
 // BASEURL
 define('BASEURL', 'http://localhost/SIMAS/public/');
 
-// DB TU
+// DB CONFIG
 define('DB_HOST', 'localhost');
 define('DB_USER', 'root');
 define('DB_PASS', '');
-define('DB_NAME', 'simas');
 
 // DB MASTER DATA
+define('DB_MASTER', 'masterdata');
+
+// DB TU
+// define('DB_TU', 'tu');

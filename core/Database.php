@@ -5,7 +5,7 @@ class Database
     private $host = DB_HOST;
     private $user = DB_USER;
     private $pass = DB_PASS;
-    private $db_name = DB_NAME;
+    private $db_name = DB_MASTER;
 
     private $dbh, $stmt; // dbh = database handler, stmt = statement/buat nympan query
 
