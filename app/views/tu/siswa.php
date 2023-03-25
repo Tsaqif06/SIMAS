@@ -34,7 +34,7 @@
 
         <div class="row">
             <div class="col-lg-6">
-                <button type="button" class="btn btn-primary my-3 tampilModalTambah" data-bs-toggle="modal" data-bs-target="#modal">
+                <button type="button" class="btn btn-primary my-3 tampilModalTambah siswa" data-bs-toggle="modal" data-bs-target="#modal">
                     Tambah Data Siswa
                 </button>
             </div>
@@ -63,10 +63,10 @@
                                     <?php foreach ($data['siswa'] as $row) : ?>
                                         <tr>
                                             <td class="font-weight-medium">
-                                                <a href="<?= BASEURL ?>tu/ubahDataSiswa" class="badge text-bg-success tampilModalUbahSiswa" style="cursor: pointer;" data-bs-toggle="modal" data-bs-target="#modal" data-nisn="<?= $row['nisn'] ?>">
+                                                <a href="<?= BASEURL ?>master/ubahDataSiswa" class="badge text-bg-success tampilModalUbahSiswa" style="cursor: pointer;" data-bs-toggle="modal" data-bs-target="#modal" data-nisn="<?= $row['nisn'] ?>">
                                                     Edit
                                                 </a>
-                                                <a href="<?= BASEURL ?>tu/hapusDataSiswa/<?= $row['nisn'] ?>"">
+                                                <a href="<?= BASEURL ?>master/hapusDataSiswa/<?= $row['nisn'] ?>"">
                                                     <div class=" font-weight-medium pt-2">
                                                     <div class="badge badge-danger delete" onclick="return confirm('Yakin Ingin Hapus Data?')">Delete</div>
                                                 </a>
@@ -102,7 +102,7 @@
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
-                        <form action="<?= BASEURL ?>tu/tambahDataSiswa" method="post">
+                        <form action="<?= BASEURL ?>master/tambahData/Siswa" method="post">
                             <div class="mb-3">
                                 <label for="nisn" class="form-label">NISN</label>
                                 <input type="text" class="form-control" name="nisn" id="nisn" required>

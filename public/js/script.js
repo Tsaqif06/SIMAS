@@ -2,6 +2,50 @@ $(document).ready(function () {
 	$(".tampilModalTambah").click(function () {
 		$("#modalLabel").html("Tambah Data");
 		$("button[type=submit]").html("Tambah Data");
+
+		$("#nip").val('');
+		$("#nama").val('');
+		$("#kelamin").val('');
+		$("#alamat").val('');
+		$("#mapel").val('');
+
+		$("#nisn").val('');
+		$("#nama").val('');
+		$("#kelamin").val('');
+		$("#alamat").val('');
+		$("#ibu").val('');
+		$("#ayah").val('');
+		$("#jurusan").val('');
+		$("#kelas").val('');
+
+		$("#id").val('');
+		$("#nip").val('');
+		$("#nama").val('');
+		$("#telepon").val('');
+		$("#jenisKelamin").val('');
+		$("#alamat").val('');
+		$("#jabatan").val('');
+	});
+
+	$(".tampilModalTambah.siswa").click(function () {
+		$(".modal-body form").attr(
+			"action",
+			"http://localhost/SIMAS/public/master/tambahData/Siswa"
+		);
+	});
+
+	$(".tampilModalTambah.guru").click(function () {
+		$(".modal-body form").attr(
+			"action",
+			"http://localhost/SIMAS/public/master/tambahData/Guru"
+		);
+	});
+
+	$(".tampilModalTambah.karyawan").click(function () {
+		$(".modal-body form").attr(
+			"action",
+			"http://localhost/SIMAS/public/master/tambahData/Karyawan"
+		);
 	});
 
 	$(".tampilModalUbahGuru").click(function () {
@@ -9,12 +53,12 @@ $(document).ready(function () {
 		$(".modal-footer button[type=submit]").html("Ubah Data");
 		$(".modal-body form").attr(
 			"action",
-			"http://localhost/SIMAS/public/tu/ubahDataGuru"
+			"http://localhost/SIMAS/public/master/ubahDataGuru"
 		);
 
 		const nip = $(this).data("nip");
 		$.ajax({
-			url: "http://localhost/SIMAS/public/tu/getUbahDataGuru",
+			url: "http://localhost/SIMAS/public/master/getUbahDataGuru",
 			data: { nip: nip },
 			method: "post",
 			dataType: "json",
@@ -33,12 +77,12 @@ $(document).ready(function () {
 		$(".modal-footer button[type=submit]").html("Ubah Data");
 		$(".modal-body form").attr(
 			"action",
-			"http://localhost/SIMAS/public/tu/ubahDataSiswa"
+			"http://localhost/SIMAS/public/master/ubahDataSiswa"
 		);
 
 		const nisn = $(this).data("nisn");
 		$.ajax({
-			url: "http://localhost/SIMAS/public/tu/getUbahDataSiswa",
+			url: "http://localhost/SIMAS/public/master/getUbahDataSiswa",
 			data: { nisn: nisn },
 			method: "post",
 			dataType: "json",
@@ -56,9 +100,11 @@ $(document).ready(function () {
 	});
 
 	$(".tampilModalUbahKaryawan").click(function () {
+
 		const id = $(this).data("id");
+
 		$.ajax({
-			url: "http://localhost/SIMAS/public/tu/getUbahDataKaryawan",
+			url: "http://localhost/SIMAS/public/master/getUbahDataKaryawan",
 			data: { id: id },
 			method: "post",
 			dataType: "json",
@@ -76,7 +122,7 @@ $(document).ready(function () {
 		$(".modal-footer button[type=submit]").html("Ubah Data");
 		$(".modal-body form").attr(
 			"action",
-			"http://localhost/SIMAS/public/tu/ubahDataKaryawan"
+			"http://localhost/SIMAS/public/master/ubahDataKaryawan"
 		);
 	});
 });

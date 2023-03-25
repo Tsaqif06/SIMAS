@@ -5,7 +5,7 @@ class Database
     private $host = DB_HOST;
     private $user = DB_USER;
     private $pass = DB_PASS;
-    private $db_name = DB_NAME;
+    private $db_name = DB_MASTER;
 
     private $dbh, $stmt; // dbh = database handler, stmt = statement/buat nympan query
 
@@ -53,11 +53,7 @@ class Database
 
     public function execute() // eksekusi query
     {
-        try {
-            $this->stmt->execute();
-        } catch (Exception $e) {
-            return $e;
-        }
+        $this->stmt->execute();
     }
 
     public function fetch() // mengambil satu data
