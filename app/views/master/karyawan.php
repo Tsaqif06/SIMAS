@@ -128,7 +128,7 @@
                             </div>
                             <div class="mb-3">
                                 <label for="tanggal_lahir" class="form-label">Tanggal Lahir</label>
-                                <input type="date" class="form-control" name="tanggal_lahir" id="tanggal_lahir" required>
+                                <input type="text" class="form-control" name="tanggal_lahir" id="tanggal_lahir" required>
                             </div>
                             <div class="mb-3">
                                 <label for="alamat_lengkap" class="form-label">Alamat Lengkap</label>
