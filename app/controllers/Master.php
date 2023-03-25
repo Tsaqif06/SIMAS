@@ -2,8 +2,8 @@
 
 class Master extends Controller
 {
+    // main routing
 
-    // routing
     public function index()
     {
         header('Location:' . BASEURL . 'master/guru');
@@ -71,6 +71,7 @@ class Master extends Controller
     }
 
     // edit data
+
     public function getUbahData($model)
     {
         $model = ucfirst($model);
@@ -80,6 +81,7 @@ class Master extends Controller
 
     public function ubahData($model)
     {
+        $model = ucfirst($model);
         if ($this->model("{$model}_model")->ubahData($_POST) > 0) {
             Flasher::setFlash('BERHASIL', 'Diubah', 'success');
         } else {

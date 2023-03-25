@@ -67,13 +67,13 @@
                                     <?php $i = 1 ?>
                                     <?php foreach ($data['karyawan'] as $row) : ?>
                                         <tr>
-                                            <td><?= $i ?></td>
+                                            <td><?= $i++ ?></td>
                                             <td class="font-weight-medium">
-                                                <a href="<?= BASEURL ?>master/ubahData/Karyawan" class="badge text-bg-success tampilModalUbahKaryawan" style="cursor: pointer;" data-bs-toggle="modal" data-bs-target="#modal" data-id="<?= $row['id_karyawan'] ?>">
+                                                <a href="" class="badge text-bg-success tampilModalUbahKaryawan" style="cursor: pointer;" data-bs-toggle="modal" data-bs-target="#modal" data-id="<?= $row['id_karyawan'] ?>">
                                                     Edit
                                                 </a>
                                                 <a href="<?= BASEURL ?>master/hapusData/Karyawan/<?= $row['id_karyawan'] ?>"">
-                                                    <div class=" font-weight-medium pt-2">
+                                                    <div class="font-weight-medium pt-2">
                                                     <div class="badge badge-danger delete" onclick="return confirm('Apakah Anda Yakin Mau Menghapus Data?')">Delete</div>
                                                 </a>
                                             </td>
@@ -89,7 +89,6 @@
                                             <td><?= $row["status_pernikahan"]; ?></td>
                                             <td><?= $row["foto"]; ?></td>
                                         </tr>
-                                        <?php $i++ ?>
                                     <?php endforeach; ?>
                                 </tbody>
                             </table>
