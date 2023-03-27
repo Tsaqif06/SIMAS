@@ -34,7 +34,7 @@
 
         <div class="row">
             <div class="col-lg-6">
-                <button type="button" class="btn btn-primary my-3 tampilModalTambah siswa" data-bs-toggle="modal" data-bs-target="#modal">
+                <button type="button" class="btn btn-primary my-3 tampilModalTambah" data-bs-toggle="modal" data-bs-target="#modal">
                     Tambah Data Siswa
                 </button>
             </div>
@@ -48,37 +48,60 @@
                             <table class="table table-striped table-main">
                                 <thead>
                                     <tr>
+                                        <th>No.</th>
                                         <th>Aksi</th>
                                         <th>NISN</th>
-                                        <th>Nama</th>
-                                        <th>Kelamin</th>
-                                        <th>Alamat</th>
-                                        <th>Ibu</th>
-                                        <th>Ayah</th>
+                                        <th>Nama Siswa</th>
+                                        <th>Jalur</th>
                                         <th>Jurusan</th>
+                                        <th>Alamat</th>
+                                        <th>No. HP Siswa</th>
+                                        <th>Ayah</th>
+                                        <th>Ibu</th>
+                                        <th>No. HP Orangtua</th>
+                                        <th>Wali</th>
+                                        <th>No. HP Wali</th>
+                                        <th>Tahun Diterima</th>
+                                        <th>Agama</th>
+                                        <th>Jenis Kelamin</th>
+                                        <th>Tempat Lahir</th>
                                         <th>Kelas</th>
+                                        <th>Tanggal Lahir</th>
+                                        <th>Usia Sekarang</th>
                                     </tr>
                                 </thead>
                                 <tbody>
+                                    <?php $i = 1 ?>
                                     <?php foreach ($data['siswa'] as $row) : ?>
                                         <tr>
+                                            <td><?= $i++ ?></td>
                                             <td class="font-weight-medium">
-                                                <a href="<?= BASEURL ?>master/ubahDataSiswa" class="badge text-bg-success tampilModalUbahSiswa" style="cursor: pointer;" data-bs-toggle="modal" data-bs-target="#modal" data-nisn="<?= $row['nisn'] ?>">
+                                                <a href="" class="badge text-bg-success tampilModalUbahSiswa" style="cursor: pointer;" data-bs-toggle="modal" data-bs-target="#modal" data-id="<?= $row['id_siswa'] ?>">
                                                     Edit
                                                 </a>
-                                                <a href="<?= BASEURL ?>master/hapusDataSiswa/<?= $row['nisn'] ?>"">
-                                                    <div class=" font-weight-medium pt-2">
+                                                <a href="<?= BASEURL ?>master/hapusData/Siswa/<?= $row['id_siswa'] ?>"">
+                                                    <div class="font-weight-medium pt-2">
                                                     <div class="badge badge-danger delete" onclick="return confirm('Yakin Ingin Hapus Data?')">Delete</div>
                                                 </a>
                                             </td>
                                             <td><?= $row["nisn"] ?></td>
-                                            <td><?= $row["nama"]; ?></td>
-                                            <td><?= $row["kelamin"]; ?></td>
-                                            <td><?= $row["alamat"]; ?></td>
-                                            <td><?= $row["ibu"]; ?></td>
-                                            <td><?= $row["ayah"]; ?></td>
-                                            <td><?= $row["jurusan"]; ?></td>
-                                            <td><?= $row["kelas"]; ?></td>
+                                            <td><?= $row["nama_siswa"] ?></td>
+                                            <td><?= $row["jalur"] ?></td>
+                                            <td><?= $row["jurusan"] ?></td>
+                                            <td><?= $row["alamat"] ?></td>
+                                            <td><?= $row["nomor_hp_siswa"] ?></td>
+                                            <td><?= $row["ayah"] ?></td>
+                                            <td><?= $row["ibu"] ?></td>
+                                            <td><?= $row["nomor_hp_orangtua"] ?></td>
+                                            <td><?= $row["wali"] ?></td>
+                                            <td><?= $row["nomor_hp_wali"] ?></td>
+                                            <td><?= $row["tahun_diterima"] ?></td>
+                                            <td><?= $row["agama"] ?></td>
+                                            <td><?= $row["jenis_kelamin"] ?></td>
+                                            <td><?= $row["tempat_lahir"] ?></td>
+                                            <td><?= $row["kelas"] ?></td>
+                                            <td><?= $row["tanggal_lahir"] ?></td>
+                                            <td><?= $row["usia_sekarang"] ?></td>
                                         </tr>
                                     <?php endforeach; ?>
                                 </tbody>
@@ -103,38 +126,80 @@
                     </div>
                     <div class="modal-body">
                         <form action="<?= BASEURL ?>master/tambahData/Siswa" method="post">
+                            <input type="hidden" name="id_siswa" id="id_siswa">
                             <div class="mb-3">
                                 <label for="nisn" class="form-label">NISN</label>
                                 <input type="text" class="form-control" name="nisn" id="nisn" required>
                             </div>
                             <div class="mb-3">
-                                <label for="nama" class="form-label">Nama</label>
-                                <input type="text" class="form-control" name="nama" id="nama" required>
+                                <label for="nama_siswa" class="form-label">Nama Siswa</label>
+                                <input type="text" class="form-control" name="nama_siswa" id="nama_siswa" required>
                             </div>
                             <div class="mb-3">
-                                <label for="kelamin" class="form-label">Kelamin</label>
-                                <input type="text" class="form-control" name="kelamin" id="kelamin" required>
-                            </div>
-                            <div class="mb-3">
-                                <label for="alamat" class="form-label">Alamat</label>
-                                <input type="text" class="form-control" name="alamat" id="alamat" required>
-                            </div>
-                            <div class="mb-3">
-                                <label for="ibu" class="form-label">Ibu</label>
-                                <input type="text" class="form-control" name="ibu" id="ibu" required>
-                            </div>
-                            <div class="mb-3">
-                                <label for="ayah" class="form-label">Ayah</label>
-                                <input type="text" class="form-control" name="ayah" id="ayah" required>
+                                <label for="jalur" class="form-label">Jalur</label>
+                                <input type="text" class="form-control" name="jalur" id="jalur" required>
                             </div>
                             <div class="mb-3">
                                 <label for="jurusan" class="form-label">Jurusan</label>
                                 <input type="text" class="form-control" name="jurusan" id="jurusan" required>
                             </div>
                             <div class="mb-3">
+                                <label for="alamat" class="form-label">Alamat</label>
+                                <input type="text" class="form-control" name="alamat" id="alamat" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="nomor_hp_siswa" class="form-label">No. HP Siswa</label>
+                                <input type="text" class="form-control" name="nomor_hp_siswa" id="nomor_hp_siswa" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="ayah" class="form-label">Ayah</label>
+                                <input type="text" class="form-control" name="ayah" id="ayah" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="ibu" class="form-label">Ibu</label>
+                                <input type="text" class="form-control" name="ibu" id="ibu" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="nomor_hp_orangtua" class="form-label">No. HP Orangtua</label>
+                                <input type="text" class="form-control" name="nomor_hp_orangtua" id="nomor_hp_orangtua" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="wali" class="form-label">Wali</label>
+                                <input type="text" class="form-control" name="wali" id="wali" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="nomor_hp_wali" class="form-label">No. HP Wali</label>
+                                <input type="text" class="form-control" name="nomor_hp_wali" id="nomor_hp_wali" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="tahun_diterima" class="form-label">Tahun Diterima</label>
+                                <input type="text" class="form-control" name="tahun_diterima" id="tahun_diterima" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="agama" class="form-label">Agama</label>
+                                <input type="text" class="form-control" name="agama" id="agama" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="jenis_kelamin" class="form-label">Jenis Kelamin</label>
+                                <input type="text" class="form-control" name="jenis_kelamin" id="jenis_kelamin" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="tempat_lahir" class="form-label">Tempat Lahir</label>
+                                <input type="text" class="form-control" name="tempat_lahir" id="tempat_lahir" required>
+                            </div>
+                            <div class="mb-3">
                                 <label for="kelas" class="form-label">Kelas</label>
                                 <input type="text" class="form-control" name="kelas" id="kelas" required>
                             </div>
+                            <div class="mb-3">
+                                <label for="tanggal_lahir" class="form-label">Tanggal Lahir</label>
+                                <input type="text" class="form-control" name="tanggal_lahir" id="tanggal_lahir" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="usia_sekarang" class="form-label">Usia Sekarang</label>
+                                <input type="text" class="form-control" name="usia_sekarang" id="usia_sekarang" required>
+                            </div>
+                            
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
@@ -147,3 +212,5 @@
 
     </div>
 </div>
+
+<script src="../js/script/siswa.js"></script>

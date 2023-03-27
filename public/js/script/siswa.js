@@ -1,6 +1,6 @@
 $(document).ready(function () {
 
-  $(".tampilModalTambah.siswa").click(function () {
+  $(".tampilModalTambah").click(function () {
     $("#modalLabel").html("Tambah Data");
     $("button[type=submit]").html("Tambah Data");
     $(".modal-body form").attr(
@@ -8,6 +8,7 @@ $(document).ready(function () {
       "http://localhost/SIMAS/public/master/tambahData/Siswa"
     );
 
+    $("#id_siswa").val('');
     $("#nisn").val('');
     $("#nama_siswa").val('');
     $("#jalur").val('');
@@ -34,10 +35,10 @@ $(document).ready(function () {
     $(".modal-footer button[type=submit]").html("Ubah Data");
     $(".modal-body form").attr(
       "action",
-      "http://localhost/SIMAS/public/master/ubahDataSiswa"
+      "http://localhost/SIMAS/public/master/ubahData/Siswa"
     );
 
-    const id = $(this).data("id_siswa");
+    const id = $(this).data("id");
 
     $.ajax({
       url: "http://localhost/SIMAS/public/master/getUbahData/Siswa",
@@ -45,6 +46,7 @@ $(document).ready(function () {
       method: "post",
       dataType: "json",
       success: function (data) {
+        $("#id_siswa").val(data.id_siswa);
         $("#nisn").val(data.nisn);
         $("#nama_siswa").val(data.nama_siswa);
         $("#jalur").val(data.jalur);
