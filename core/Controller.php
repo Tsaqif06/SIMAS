@@ -6,9 +6,9 @@ class Controller
         require_once "../app/views/{$view}.php";
     }
 
-    public function model($model)
+    public function model($file, $model)
     {
-        require_once "../app/models/{$model}.php";
+        require_once "../app/models/{$file}/{$model}.php";
         return new $model;
     }
 }
