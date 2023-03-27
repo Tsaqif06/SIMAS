@@ -97,7 +97,7 @@ class Karyawan_model
     {
         $keyword = $_POST['keyword'];
 
-        $this->db->query("SELECT * FROM {$this->table} WHERE nama LIKE :keyword");
+        $this->db->query("SELECT * FROM {$this->table} WHERE nama_lengkap LIKE :keyword");
         $this->db->bind("keyword", "%$keyword%");
         return $this->db->fetchAll();
     }

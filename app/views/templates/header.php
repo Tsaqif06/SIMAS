@@ -323,8 +323,8 @@
                 <li class="nav-item"> <a class="nav-link" href="<?= BASEURL ?>master/walikelas">Wali Kelas</a></li>
                 <li class="nav-item"> <a class="nav-link" href="<?= BASEURL ?>master/mapel">Mapel</a></li>
                 <li class="nav-item"> <a class="nav-link" href="<?= BASEURL ?>master/jabatan">Jabatan</a></li>
-                <li class="nav-item"> <a class="nav-link" href="<?= BASEURL ?>master/kompetensikeahlian">Kompetensi Keahlian</a></li>
-                <li class="nav-item"> <a class="nav-link" href="<?= BASEURL ?>master/programkeahlian">Program Keahlian</a></li>
+                <li class="nav-item"> <a class="nav-link" href="<?= BASEURL ?>master/kompkeahlian">Kompetensi Keahlian</a></li>
+                <li class="nav-item"> <a class="nav-link" href="<?= BASEURL ?>master/progkeahlian">Program Keahlian</a></li>
               </ul>
             </div>
           </li>

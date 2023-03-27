@@ -44,6 +44,17 @@ class Master extends Controller
         $this->view('templates/footer2');
     }
 
+    public function kompkeahlian()
+    {
+        $data['judul'] = 'SIMAS - Kompetensi Keahlian';
+
+        $data['kompkeahlian'] = $this->model("$this->model_name", 'Kompkeahlian_model')->getAllData();
+
+        $this->view('templates/header2', $data);
+        $this->view('master/kompkeahlian', $data);
+        $this->view('templates/footer2');
+    }
+
     // tambah data
 
     public function tambahData($model)
