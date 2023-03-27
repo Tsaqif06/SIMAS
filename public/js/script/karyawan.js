@@ -2,6 +2,10 @@ $(document).ready(function () {
 	$(".tampilModalTambah").click(function () {
 		$("#modalLabel").html("Tambah Data");
 		$("button[type=submit]").html("Tambah Data");
+		$(".modal-body form").attr(
+			"action",
+			"http://localhost/SIMAS/public/master/tambahData/Karyawan"
+		);
 
 		$("#id_karyawan").val("");
 		$("#nama_lengkap").val("");
@@ -17,29 +21,22 @@ $(document).ready(function () {
 		$("#foto").val("");
 	});
 
-	$(".tampilModalTambah .karyawan").click(function () {
-		$(".modal-body form").attr(
-			"action",
-			"http://localhost/SIMAS/public/master/tambahData/Karyawan"
-		);
-	});
-
-	$(".tampilModalUbahKaryawan").click(function () {
-		const id_karyawan = $(this).data("id");
-
+	$(".tampilModalUbah").click(function () {
 		$("#modalLabel").html("Edit Data Karyawan");
 		$(".modal-footer button[type=submit]").html("Ubah Data");
 		$(".modal-body form").attr(
 			"action",
 			"http://localhost/SIMAS/public/master/ubahData/karyawan"
 		);
+
+		const id = $(this).data("id");
+
 		$.ajax({
 			url: "http://localhost/SIMAS/public/master/getUbahData/karyawan",
-			data: { id_karyawan: id_karyawan },
+			data: { id_karyawan: id },
 			method: "post",
 			dataType: "json",
 			success: function (data) {
-				console.log(data);
 				$("#id_karyawan").val(data.id_karyawan);
 				$("#nama_lengkap").val(data.nama_lengkap);
 				$("#jenis_kelamin").val(data.jenis_kelamin);

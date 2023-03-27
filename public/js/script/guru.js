@@ -2,6 +2,10 @@ $(document).ready(function () {
 	$(".tampilModalTambah").click(function () {
 		$("#modalLabel").html("Tambah Data");
 		$("button[type=submit]").html("Tambah Data");
+		$(".modal-body form").attr(
+			"action",
+			"http://localhost/SIMAS/public/master/tambahData/guru"
+		);
 
 		$("#id_guru").val("");
 		$("#nama_lengkap").val("");
@@ -22,25 +26,19 @@ $(document).ready(function () {
 		$("#foto").val("");
 	});
 
-	$(".tampilModalTambah .guru").click(function () {
-		$(".modal-body form").attr(
-			"action",
-			"http://localhost/SIMAS/public/master/tambahData/guru"
-		);
-	});
-
-	$(".tampilModalUbahguru").click(function () {
-		const id_guru = $(this).data("id");
-
+	$(".tampilModalUbah").click(function () {
 		$("#modalLabel").html("Edit Data guru");
 		$(".modal-footer button[type=submit]").html("Ubah Data");
 		$(".modal-body form").attr(
 			"action",
 			"http://localhost/SIMAS/public/master/ubahData/guru"
 		);
+
+		const id = $(this).data("id");
+
 		$.ajax({
 			url: "http://localhost/SIMAS/public/master/getUbahData/guru",
-			data: { id_guru: id_guru },
+			data: { id_guru: id },
 			method: "post",
 			dataType: "json",
 			success: function (data) {

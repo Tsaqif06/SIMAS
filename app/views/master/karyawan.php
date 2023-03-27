@@ -69,10 +69,10 @@
                                         <tr>
                                             <td><?= $i++ ?></td>
                                             <td class="font-weight-medium">
-                                                <a href="" class="badge text-bg-success tampilModalUbahKaryawan" style="cursor: pointer;" data-bs-toggle="modal" data-bs-target="#modal" data-id="<?= $row['id_karyawan'] ?>">
+                                                <a href="" class="badge text-bg-success tampilModalUbah" style="cursor: pointer;" data-bs-toggle="modal" data-bs-target="#modal" data-id="<?= $row['id_karyawan'] ?>">
                                                     Edit
                                                 </a>
-                                                <a href="<?= BASEURL ?>master/hapusData/Karyawan/<?= $row['id_karyawan'] ?>"">
+                                                <a href="<?= BASEURL ?>master/hapusData/Karyawan/<?= $row['id_karyawan'] ?>">
                                                     <div class="font-weight-medium pt-2">
                                                     <div class="badge badge-danger delete" onclick="return confirm('Apakah Anda Yakin Mau Menghapus Data?')">Delete</div>
                                                 </a>
@@ -112,7 +112,7 @@
                     </div>
                     <div class="modal-body">
                         <form action="<?= BASEURL ?>master/tambahData/Karyawan" method="post">
-                            <input type="text" name="id_karyawan" id="id_karyawan" value="<?= $row['id_karyawan'] ?>" style="display: none;">
+                            <input type="hidden" name="id_karyawan" id="id_karyawan">
                             <div class="mb-3">
                                 <label for="nama_lengkap" class="form-label">Nama Lengkap</label>
                                 <input type="text" class="form-control" name="nama_lengkap" id="nama_lengkap" required>

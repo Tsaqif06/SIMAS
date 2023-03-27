@@ -54,7 +54,7 @@ class Kompkeahlian_model
                 SET 
                 kode_kompkeahlian = :kode_kompkeahlian,
                 nama_kompkeahlian = :nama_kompkeahlian
-                WHERE id_kompkeahlian = :id"
+            WHERE id_kompkeahlian = :id"
         );
 
         $this->db->bind('kode_kompkeahlian', $data['kode_kompkeahlian']);

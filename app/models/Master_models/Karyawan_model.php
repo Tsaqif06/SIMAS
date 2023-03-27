@@ -73,7 +73,7 @@ class Karyawan_model
                 kategori = :kategori,
                 status_pernikahan = :status_pernikahan,
                 foto = :foto
-                WHERE id_karyawan = :id"
+            WHERE id_karyawan = :id"
         );
 
         $this->db->bind('nama_lengkap', $data['nama_lengkap']);

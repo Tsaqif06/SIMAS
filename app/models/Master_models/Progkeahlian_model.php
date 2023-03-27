@@ -1,8 +1,8 @@
 <?php
 
-class Jabatan_model
+class Progkeahlian_model
 {
-    private $table = 'masterjabatan';
+    private $table = 'masterprogramkeahlian';
     private $db;
 
     public function __construct()
@@ -18,7 +18,7 @@ class Jabatan_model
 
     public function getDataById($id)
     {
-        $this->db->query("SELECT * FROM {$this->table} WHERE id_jabatan = :id");
+        $this->db->query("SELECT * FROM {$this->table} WHERE id_programkeahlian = :id");
         $this->db->bind("id", $id);
         return $this->db->fetch();
     }
@@ -28,11 +28,11 @@ class Jabatan_model
         $this->db->query(
             "INSERT INTO {$this->table}
                 VALUES 
-            (null, :jabatan, :nama_yang_menjabat)"
+            (null, :nama_jurusan, :program_keahlian)"
         );
 
-        $this->db->bind('jabatan', $data['jabatan']);
-        $this->db->bind('nama_yang_menjabat', $data['nama_yang_menjabat']);
+        $this->db->bind('nama_jurusan', $data['nama_jurusan']);
+        $this->db->bind('program_keahlian', $data['program_keahlian']);
 
         $this->db->execute();
         return $this->db->rowCount();
@@ -40,7 +40,7 @@ class Jabatan_model
 
     public function hapusData($id)
     {
-        $this->db->query("DELETE FROM {$this->table} WHERE id_jabatan = :id");
+        $this->db->query("DELETE FROM {$this->table} WHERE id_programkeahlian = :id");
         $this->db->bind("id", $id);
 
         $this->db->execute();
@@ -52,14 +52,14 @@ class Jabatan_model
         $this->db->query(
             "UPDATE {$this->table}
                 SET 
-                jabatan = :jabatan,
-                nama_yang_menjabat = :nama_yang_menjabat
-            WHERE id_jabatan = :id"
+                nama_jurusan = :nama_jurusan,
+                program_keahlian = :program_keahlian
+              WHERE id_programkeahlian = :id"
         );
 
-        $this->db->bind('jabatan', $data['jabatan']);
-        $this->db->bind('nama_yang_menjabat', $data['nama_yang_menjabat']);
-        $this->db->bind('id', $data['id_jabatan']);
+        $this->db->bind('nama_jurusan', $data['nama_jurusan']);
+        $this->db->bind('program_keahlian', $data['program_keahlian']);
+        $this->db->bind('id', $data['id_programkeahlian']);
 
         $this->db->execute();
         return $this->db->rowCount();
@@ -69,7 +69,7 @@ class Jabatan_model
     {
         $keyword = $_POST['keyword'];
 
-        $this->db->query("SELECT * FROM {$this->table} WHERE jabatan LIKE :keyword");
+        $this->db->query("SELECT * FROM {$this->table} WHERE nama_jurusan LIKE :keyword");
         $this->db->bind("keyword", "%$keyword%");
         return $this->db->fetchAll();
     }

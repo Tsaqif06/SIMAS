@@ -2,8 +2,8 @@
 
 class Guru_model
 {
-
-    private $table = 'masterguru', $db;
+    private $table = 'masterguru';
+    private $db;
 
     public function __construct()
     {
