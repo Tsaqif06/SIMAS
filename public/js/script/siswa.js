@@ -1,5 +1,4 @@
 $(document).ready(function () {
-
   $(".tampilModalTambah").click(function () {
     $("#modalLabel").html("Tambah Data");
     $("button[type=submit]").html("Tambah Data");
@@ -29,8 +28,7 @@ $(document).ready(function () {
     $("#usia_sekarang").val('');
   });
 
-
-  $(".tampilModalUbahSiswa").click(function () {
+  $(".tampilModalUbah").click(function () {
     $("#modalLabel").html("Edit Data Siswa");
     $(".modal-footer button[type=submit]").html("Ubah Data");
     $(".modal-body form").attr(

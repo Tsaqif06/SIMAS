@@ -4,7 +4,7 @@ class Master extends Controller
 {
     public $model_name = "Master_models";
 
-    // main routing
+    // Main Routing //
 
     public function index()
     {
@@ -66,7 +66,18 @@ class Master extends Controller
         $this->view('templates/footer2');
     }
 
-    // tambah data
+    public function progkeahlian()
+    {
+        $data['judul'] = 'SIMAS - Program Keahlian';
+
+        $data['progkeahlian'] = $this->model("$this->model_name", 'Progkeahlian_model')->getAllData();
+
+        $this->view('templates/header2', $data);
+        $this->view('master/progkeahlian', $data);
+        $this->view('templates/footer2');
+    }
+
+    // Tambah Data //
 
     public function tambahData($model)
     {
@@ -80,7 +91,7 @@ class Master extends Controller
         exit;
     }
 
-    // hapus data
+    // Hapus Data //
 
     public function hapusData($model, $id)
     {
@@ -94,7 +105,7 @@ class Master extends Controller
         exit;
     }
 
-    // edit data
+    // Edit Data //
 
     public function getUbahData($model)
     {

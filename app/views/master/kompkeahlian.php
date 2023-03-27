@@ -50,8 +50,8 @@
                                     <tr>
                                         <th>No.</th>
                                         <th>Aksi</th>
-                                        <th>Kode Kompetensi Keahlian</th>
-                                        <th>Nama Kompetensi Keahlian</th>
+                                        <th>Nama Jurusan</th>
+                                        <th>Program Keahlian</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -60,10 +60,10 @@
                                         <tr>
                                             <td><?= $i++ ?></td>
                                             <td class="font-weight-medium">
-                                                <a href="" class="badge text-bg-success tampilModalUbahKompkeahlian" style="cursor: pointer;" data-bs-toggle="modal" data-bs-target="#modal" data-id="<?= $row['id_kompkeahlian'] ?>">
+                                                <a href="" class="badge text-bg-success tampilModalUbah" style="cursor: pointer;" data-bs-toggle="modal" data-bs-target="#modal" data-id="<?= $row['id_kompkeahlian'] ?>">
                                                     Edit
                                                 </a>
-                                                <a href="<?= BASEURL ?>master/hapusData/kompkeahlian/<?= $row['id_kompkeahlian'] ?>"">
+                                                <a href="<?= BASEURL ?>master/hapusData/kompkeahlian/<?= $row['id_kompkeahlian'] ?>">
                                                     <div class=" font-weight-medium pt-2">
                                                     <div class="badge badge-danger delete" onclick="return confirm('Apakah Anda Yakin Mau Menghapus Data?')">Delete</div>
                                                 </a>
@@ -94,7 +94,7 @@
                     </div>
                     <div class="modal-body">
                         <form action="<?= BASEURL ?>master/tambahData/Kompkeahlian" method="post">
-                            <input type="text" name="id_kompkeahlian" id="id_kompkeahlian" value="<?= $row['id_kompkeahlian'] ?>" style="display: none;">
+                            <input type="hidden" name="id_kompkeahlian" id="id_kompkeahlian">
                             <div class="mb-3">
                                 <label for="kode_kompkeahlian" class="form-label">Kode Kompetensi Keahlian</label>
                                 <input type="text" class="form-control" name="kode_kompkeahlian" id="kode_kompkeahlian" required>

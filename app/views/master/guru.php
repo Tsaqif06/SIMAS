@@ -34,7 +34,7 @@
 
         <div class="row">
             <div class="col-lg-6">
-                <button type="button" class="btn btn-primary my-3 tampilModalTambah guru" data-bs-toggle="modal" data-bs-target="#modal">
+                <button type="button" class="btn btn-primary my-3 tampilModalTambah" data-bs-toggle="modal" data-bs-target="#modal">
                     Tambah Data Guru
                 </button>
             </div>
@@ -48,6 +48,7 @@
                             <table class="table table-striped table-main">
                                 <thead>
                                     <tr>
+                                        <th>No.</th>
                                         <th>Aksi</th>
                                         <th>Nama Lengkap</th>
                                         <th>Jenis Kelamin</th>
@@ -68,10 +69,12 @@
                                     </tr>
                                 </thead>
                                 <tbody>
+                                    <?php $i = 1 ?>
                                     <?php foreach ($data['guru'] as $row) : ?>
                                         <tr>
+                                            <td><?= $i++ ?></td>
                                             <td class="font-weight-medium">
-                                                <a href="<?= BASEURL ?>master/ubahData/Guru" class="badge text-bg-success tampilModalUbahguru" style="cursor: pointer;" data-bs-toggle="modal" data-bs-target="#modal" data-id="<?= $row['id_guru'] ?>">
+                                                <a href="" class="badge text-bg-success tampilModalUbah" style="cursor: pointer;" data-bs-toggle="modal" data-bs-target="#modal" data-id="<?= $row['id_guru'] ?>">
                                                     Edit
                                                 </a>
                                                 <a href="<?= BASEURL ?>master/hapusData/Guru/<?= $row['id_guru'] ?>">
@@ -119,7 +122,7 @@
                     </div>
                     <div class="modal-body">
                         <form action="<?= BASEURL ?>master/tambahData/Guru" method="post">
-                        <input type="text" name="id_guru" id="id_guru" value="<?= $row['id_guru'] ?>" style="display: none;">
+                            <input type="hidden" name="id_guru" id="id_guru">
                             <div class="mb-3">
                                 <label for="nama_lengkap" class="form-label">Nama Lengkap</label>
                                 <input type="text" class="form-control" name="nama_lengkap" id="nama_lengkap" required>

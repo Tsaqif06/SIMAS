@@ -2,8 +2,8 @@
 
 class Siswa_model
 {
-
-    private $table = 'mastersiswa', $db;
+    private $table = 'mastersiswa';
+    private $db;
 
     public function __construct()
     {

@@ -2,31 +2,29 @@ $(document).ready(function () {
 	$(".tampilModalTambah").click(function () {
 		$("#modalLabel").html("Tambah Data");
 		$("button[type=submit]").html("Tambah Data");
+		$(".modal-body form").attr(
+			"action",
+			"http://localhost/SIMAS/public/master/tambahData/Kompkeahlian"
+		);
 
 		$("#id_kompkeahlian").val("");
 		$("#kode_kompkeahlian").val("");
 		$("#nama_kompkeahlian").val("");
 	});
 
-	$(".tampilModalTambah").click(function () {
-		$(".modal-body form").attr(
-			"action",
-			"http://localhost/SIMAS/public/master/tambahData/Kompkeahlian"
-		);
-	});
-
-	$(".tampilModalUbahKompkeahlian").click(function () {
-		const id_kompkeahlian = $(this).data("id");
-
+	$(".tampilModalUbah").click(function () {
 		$("#modalLabel").html("Edit Data Kompetensi Keahlian");
 		$(".modal-footer button[type=submit]").html("Ubah Data");
 		$(".modal-body form").attr(
 			"action",
 			"http://localhost/SIMAS/public/master/ubahData/Kompkeahlian"
 		);
+
+		const id = $(this).data("id");
+
 		$.ajax({
 			url: "http://localhost/SIMAS/public/master/getUbahData/Kompkeahlian",
-			data: { id_kompkeahlian: id_kompkeahlian },
+			data: { id_kompkeahlian: id },
 			method: "post",
 			dataType: "json",
 			success: function (data) {
