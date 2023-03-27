@@ -30,7 +30,6 @@ $(document).ready(function () {
 			method: "post",
 			dataType: "json",
 			success: function (data) {
-				console.log(data);
 				$("#id_kompkeahlian").val(data.id_kompkeahlian);
 				$("#kode_kompkeahlian").val(data.kode_kompkeahlian);
 				$("#nama_kompkeahlian").val(data.nama_kompkeahlian);
