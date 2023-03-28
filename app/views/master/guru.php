@@ -199,4 +199,4 @@
 
     </div>
 </div>
-<script src="../js/script/guru.js"></script>
+<script src="../js/script/master/guru.js"></script>

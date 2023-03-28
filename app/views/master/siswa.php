@@ -81,7 +81,7 @@
                                                 </a>
                                                 <a href="<?= BASEURL ?>master/hapusData/Siswa/<?= $row['id_siswa'] ?>">
                                                     <div class="font-weight-medium pt-2">
-                                                    <div class="badge badge-danger delete" onclick="return confirm('Yakin Ingin Hapus Data?')">Delete</div>
+                                                        <div class="badge badge-danger delete" onclick="return confirm('Yakin Ingin Hapus Data?')">Delete</div>
                                                 </a>
                                             </td>
                                             <td><?= $row["nisn"] ?></td>
@@ -199,7 +199,7 @@
                                 <label for="usia_sekarang" class="form-label">Usia Sekarang</label>
                                 <input type="text" class="form-control" name="usia_sekarang" id="usia_sekarang" required>
                             </div>
-                            
+
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
@@ -213,4 +213,4 @@
     </div>
 </div>
 
-<script src="../js/script/siswa.js"></script>
+<script src="../js/script/master/siswa.js"></script>

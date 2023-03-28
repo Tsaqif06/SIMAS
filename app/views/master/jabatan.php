@@ -116,4 +116,4 @@
     </div>
 </div>
 
-<script src="../js/script/jabatan.js"></script>
+<script src="../js/script/master/jabatan.js"></script>

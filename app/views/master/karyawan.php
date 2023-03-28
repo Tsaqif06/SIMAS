@@ -170,4 +170,4 @@
     </div>
 </div>
 
-<script src="../js/script/karyawan.js"></script>
+<script src="../js/script/master/karyawan.js"></script>
