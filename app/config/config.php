@@ -7,8 +7,6 @@ define('DB_HOST', 'localhost');
 define('DB_USER', 'root');
 define('DB_PASS', '');
 
-// DB MASTER DATA
+// DB NAMES
 define('DB_MASTER', 'masterdata');
-
-// DB TU
 define('DB_TU', 'tu');
