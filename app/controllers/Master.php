@@ -76,6 +76,16 @@ class Master extends Controller
         $this->view('master/progkeahlian', $data);
         $this->view('templates/footer2');
     }
+    public function mapel()
+    {
+        $data['judul'] = 'SIMAS - Mapel';
+
+        $data['mapel'] = $this->model("$this->model_name", 'mapel_model')->getAllData();
+
+        $this->view('templates/header2', $data);
+        $this->view('master/mapel', $data);
+        $this->view('templates/footer2');
+    }
 
     // Tambah Data //
 
