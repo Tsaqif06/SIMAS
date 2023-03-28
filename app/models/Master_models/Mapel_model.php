@@ -7,7 +7,7 @@ class Mapel_model
 
     public function __construct()
     {
-        $this->db = new Database;
+        $this->db = new Database(DB_MASTER);
     }
 
     public function getAllData()
@@ -56,7 +56,7 @@ class Mapel_model
                 kode_mapel = :kode_mapel,
                 nama_mapel = :nama_mapel,
                 kurikulum = :kurikulum
-              WHERE id_mapel = :id"
+                WHERE id_mapel = :id"
         );
 
         $this->db->bind('kode_mapel', $data['kode_mapel']);

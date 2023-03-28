@@ -66,7 +66,7 @@
                                                 </a>
                                                 <a href="<?= BASEURL ?>master/hapusData/mapel/<?= $row['id_mapel'] ?>">
                                                     <div class=" font-weight-medium pt-2">
-                                                    <div class="badge badge-danger delete" onclick="return confirm('Apakah Anda Yakin Mau Menghapus Data?')">Delete</div>
+                                                        <div class="badge badge-danger delete" onclick="return confirm('Apakah Anda Yakin Mau Menghapus Data?')">Delete</div>
                                                 </a>
                                             </td>
                                             <td><?= $row["kode_mapel"]; ?></td>
@@ -96,7 +96,7 @@
                     </div>
                     <div class="modal-body">
                         <form action="<?= BASEURL ?>master/tambahData/mapel" method="post">
-                            <input type="hidden" name="id_mapel" id="id_mapel">
+                            <input type="text" name="id_mapel" id="id_mapel">
                             <div class="mb-3">
                                 <label for="kode_mapel" class="form-label">Kode Mapel</label>
                                 <input type="text" class="form-control" name="kode_mapel" id="kode_mapel" required>
@@ -122,4 +122,4 @@
     </div>
 </div>
 
-<script src="../js/script/mapel.js"></script>
+<script src="../js/script/master/mapel.js"></script>
