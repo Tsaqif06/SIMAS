@@ -4,7 +4,7 @@
             <div class="col-md-12 grid-margin">
                 <div class="row">
                     <div class="col-12 col-xl-8 mb-4 mb-xl-0">
-                        <h3 class="font-weight-bold">DATA GURU</h3>
+                        <h3 class="font-weight-bold">SURAT MASUK</h3>
                         <h6 class="font-weight-normal mb-0">WEB DEV | SIMAS</h6>
                     </div>
                     <div class="col-12 col-xl-4">
@@ -34,8 +34,8 @@
 
         <div class="row">
             <div class="col-lg-6">
-                <button type="button" class="btn btn-primary my-3 tampilModalTambah guru" data-bs-toggle="modal" data-bs-target="#modal">
-                    Tambah Data Guru
+                <button type="button" class="btn btn-primary my-3 tampilModalTambah" data-bs-toggle="modal" data-bs-target="#modal">
+                    Tambah Data Surat Masuk
                 </button>
             </div>
         </div>
@@ -48,31 +48,38 @@
                             <table class="table table-striped table-main">
                                 <thead>
                                     <tr>
+                                        <th>No.</th>
                                         <th>Aksi</th>
-                                        <th>NIP</th>
-                                        <th>Nama</th>
-                                        <th>Kelamin</th>
-                                        <th>Alamat</th>
-                                        <th>Mapel</th>
+                                        <th>Nomor Berkas</th>
+                                        <th>Alamat Pengirim</th>
+                                        <th>Tanggal</th>
+                                        <th>Tanggal Surat</th>
+                                        <th>Nomor Surat</th>
+                                        <th>Perihal</th>
+                                        <th>Nomor Petunjuk</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <?php foreach ($data['guru'] as $row) : ?>
+                                    <?php $i = 1 ?>
+                                    <?php foreach ($data['suratmasuk'] as $row) : ?>
                                         <tr>
+                                            <td><?= $i++ ?></td>
                                             <td class="font-weight-medium">
-                                                <a href="<?= BASEURL ?>master/ubahDataGuru" class="badge text-bg-success tampilModalUbahGuru" style="cursor: pointer;" data-bs-toggle="modal" data-bs-target="#modal" data-nip="<?= $row['nip'] ?>">
+                                                <a href="" class="badge text-bg-success tampilModalUbah" style="cursor: pointer;" data-bs-toggle="modal" data-bs-target="#modal" data-id="<?= $row['id'] ?>">
                                                     Edit
                                                 </a>
-                                                <a href="<?= BASEURL ?>master/hapusDataGuru/<?= $row['nip'] ?>"">
-                                                    <div class=" font-weight-medium pt-2">
-                                                    <div class="badge badge-danger delete" onclick="return confirm('Yakin Ingin Hapus Data?')">Delete</div>
+                                                <a href="<?= BASEURL ?>master/hapusData/suratmasuk/<?= $row['id'] ?>">
+                                                    <div class="font-weight-medium pt-2">
+                                                        <div class="badge badge-danger delete" onclick="return confirm('Apakah Anda Yakin Mau Menghapus Data?')">Delete</div>
                                                 </a>
                                             </td>
-                                            <td><?= $row["nip"] ?></td>
-                                            <td><?= $row["nama"]; ?></td>
-                                            <td><?= $row["kelamin"]; ?></td>
-                                            <td><?= $row["alamat"]; ?></td>
-                                            <td><?= $row["mapel"]; ?></td>
+                                            <td><?= $row["nomor_berkas"] ?></td>
+                                            <td><?= $row["alamat_pengirim"]; ?></td>
+                                            <td><?= $row["tanggal"]; ?></td>
+                                            <td><?= $row["tanggal_surat"]; ?></td>
+                                            <td><?= $row["nomor_surat"]; ?></td>
+                                            <td><?= $row["perihal"]; ?></td>
+                                            <td><?= $row["nomor_petunjuk"]; ?></td>
                                         </tr>
                                     <?php endforeach; ?>
                                 </tbody>
@@ -92,30 +99,39 @@
             <div class="modal-dialog modal-dialog-centered">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h1 class="modal-title fs-5" id="modalLabel">Tambah Data Guru</h1>
+                        <h1 class="modal-title fs-5" id="modalLabel">Tambah Data Surat Masuk</h1>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
-                        <form action="<?= BASEURL ?>master/tambahData/Guru" method="post">
+                        <form action="<?= BASEURL ?>master/tambahData/suratmasuk" method="post">
+                            <input type="hidden" name="id" id="id">
                             <div class="mb-3">
-                                <label for="nip" class="form-label">NIP</label>
-                                <input type="text" class="form-control" name="nip" id="nip" required>
+                                <label for="nomor_berkas" class="form-label">Nomor Berkas</label>
+                                <input type="text" class="form-control" name="nomor_berkas" id="nomor_berkas" required>
                             </div>
                             <div class="mb-3">
-                                <label for="nama" class="form-label">Nama</label>
-                                <input type="text" class="form-control" name="nama" id="nama" required>
+                                <label for="alamat_pengirim" class="form-label">Alamat Pengirim</label>
+                                <input type="text" class="form-control" name="alamat_pengirim" id="alamat_pengirim" required>
                             </div>
                             <div class="mb-3">
-                                <label for="kelamin" class="form-label">Kelamin</label>
-                                <input type="text" class="form-control" name="kelamin" id="kelamin" required>
+                                <label for="tanggal" class="form-label">Tanggal</label>
+                                <input type="text" class="form-control" name="tanggal" id="tanggal" required>
                             </div>
                             <div class="mb-3">
-                                <label for="alamat" class="form-label">Alamat</label>
-                                <input type="text" class="form-control" name="alamat" id="alamat" required>
+                                <label for="tanggal_surat" class="form-label">Tanggal Surat</label>
+                                <input type="text" class="form-control" name="tanggal_surat" id="tanggal_surat" required>
                             </div>
                             <div class="mb-3">
-                                <label for="mapel" class="form-label">Mapel</label>
-                                <input type="text" class="form-control" name="mapel" id="mapel" required>
+                                <label for="nomor_surat" class="form-label">Nomor Surat</label>
+                                <input type="text" class="form-control" name="nomor_surat" id="nomor_surat" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="perihal" class="form-label">Perihal</label>
+                                <input type="text" class="form-control" name="perihal" id="perihal" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="nomor_petunjuk" class="form-label">Nomor Petunjuk</label>
+                                <input type="text" class="form-control" name="nomor_petunjuk" id="nomor_petunjuk" required>
                             </div>
                     </div>
                     <div class="modal-footer">
@@ -129,3 +145,5 @@
 
     </div>
 </div>
+
+<script src="../js/script/master/suratmasuk.js"></script>

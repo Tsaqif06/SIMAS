@@ -11,4 +11,4 @@ define('DB_PASS', '');
 define('DB_MASTER', 'masterdata');
 
 // DB TU
-// define('DB_TU', 'tu');
+define('DB_TU', 'tu');

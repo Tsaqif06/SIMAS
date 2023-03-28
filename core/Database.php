@@ -5,13 +5,12 @@ class Database
     private $host = DB_HOST;
     private $user = DB_USER;
     private $pass = DB_PASS;
-    private $db_name = DB_MASTER;
 
     private $dbh, $stmt; // dbh = database handler, stmt = statement/buat nympan query
 
-    public function __construct()
+    public function __construct($db_name)
     {
-        $dsn = "mysql:host={$this->host};dbname={$this->db_name}"; // data source name
+        $dsn = "mysql:host={$this->host};dbname={$db_name}"; // data source name
 
         $option = [
             PDO::ATTR_PERSISTENT => true,

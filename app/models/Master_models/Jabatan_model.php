@@ -7,7 +7,7 @@ class Jabatan_model
 
     public function __construct()
     {
-        $this->db = new Database;
+        $this->db = new Database(DB_MASTER);
     }
 
     public function getAllData()

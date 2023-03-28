@@ -116,4 +116,4 @@
     </div>
 </div>
 
-<script src="../js/script/kompkeahlian.js"></script>
+<script src="../js/script/master/kompkeahlian.js"></script>

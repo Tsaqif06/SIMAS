@@ -116,4 +116,4 @@
     </div>
 </div>
 
-<script src="../js/script/progkeahlian.js"></script>
+<script src="../js/script/master/progkeahlian.js"></script>
