@@ -91,4 +91,15 @@ class TU extends Controller
         header("Location: " . BASEURL . "tu/{$model}");
         exit;
     }
+
+    public function ajukanSurat()
+    {
+        if ($this->model("$this->model_name", "Suratpengajuan_model")->tambahData($_POST) > 0) {
+            Flasher::setFlash('BERHASIL', 'Diajukan, tunggu hingga diterima oleh Admin', 'success');
+        } else {
+            Flasher::setFlash('GAGAL', 'Diajukan, tunggu hingga diterima oleh Admin', 'danger');
+        }
+        header("Location: " . BASEURL . "tu/suratpengajuan");
+        exit;
+    }
 }
