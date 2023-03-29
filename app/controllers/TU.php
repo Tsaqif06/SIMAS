@@ -77,8 +77,7 @@ class TU extends Controller
     public function getUbahData($model)
     {
         $model = ucfirst($model);
-        $id = strtolower($model);
-        echo json_encode($this->model("$this->model_name", "{$model}_model")->getDataById($_POST["id_{$id}"]));
+        echo json_encode($this->model("$this->model_name", "{$model}_model")->getDataById($_POST["id"]));
     }
 
     public function ubahData($model)
