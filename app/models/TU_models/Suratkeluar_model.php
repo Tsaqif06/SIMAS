@@ -29,14 +29,14 @@ class Suratkeluar_model
             "INSERT INTO {$this->table}
                 VALUES 
             (null, :nomor_berkas, :alamat_penerima, 
-            :tanggal, :perihal, :nomor_petunjuk)"
+            :tanggal, :perihal, :no_petunjuk)"
         );
 
         $this->db->bind('nomor_berkas', $data['nomor_berkas']);
         $this->db->bind('alamat_penerima', $data['alamat_penerima']);
         $this->db->bind('tanggal', $data['tanggal']);
         $this->db->bind('perihal', $data['perihal']);
-        $this->db->bind('nomor_petunjuk', $data['nomor_petunjuk']);
+        $this->db->bind('no_petunjuk', $data['no_petunjuk']);
 
         $this->db->execute();
         return $this->db->rowCount();
@@ -60,7 +60,7 @@ class Suratkeluar_model
                 alamat_penerima = :alamat_penerima,
                 tanggal = :tanggal,
                 perihal = :perihal,
-                nomor_petunjuk = :nomor_petunjuk
+                no_petunjuk = :no_petunjuk
             WHERE id = :id"
         );
 
@@ -68,7 +68,7 @@ class Suratkeluar_model
         $this->db->bind('alamat_penerima', $data['alamat_penerima']);
         $this->db->bind('tanggal', $data['tanggal']);
         $this->db->bind('perihal', $data['perihal']);
-        $this->db->bind('nomor_petunjuk', $data['nomor_petunjuk']);
+        $this->db->bind('no_petunjuk', $data['no_petunjuk']);
         $this->db->bind('id', $data['id']);
 
         $this->db->execute();

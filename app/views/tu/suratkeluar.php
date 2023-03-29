@@ -75,7 +75,7 @@
                                             <td><?= $row["alamat_penerima"]; ?></td>
                                             <td><?= $row["tanggal"]; ?></td>
                                             <td><?= $row["perihal"]; ?></td>
-                                            <td><?= $row["nomor_petunjuk"]; ?></td>
+                                            <td><?= $row["no_petunjuk"]; ?></td>
                                         </tr>
                                     <?php endforeach; ?>
                                 </tbody>
@@ -126,8 +126,8 @@
                                 <input type="text" class="form-control" name="perihal" id="perihal" required>
                             </div>
                             <div class="mb-3">
-                                <label for="nomor_petunjuk" class="form-label">Nomor Petunjuk</label>
-                                <input type="text" class="form-control" name="nomor_petunjuk" id="nomor_petunjuk" required>
+                                <label for="no_petunjuk" class="form-label">Nomor Petunjuk</label>
+                                <input type="text" class="form-control" name="no_petunjuk" id="no_petunjuk" required>
                             </div>
                     </div>
                     <div class="modal-footer">
