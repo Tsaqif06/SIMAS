@@ -29,7 +29,7 @@ class Suratpengajuan_model
             "INSERT INTO {$this->table}
                 VALUES 
             (null, :no_surat, :alamat_pengirim, :tanggal, :tanggal_surat, 
-            :perihal, :nomor_petunjuk)"
+            :perihal, :nomor_petunjuk, 0)"
         );
 
         $this->db->bind('no_surat', $data['no_surat']);
@@ -62,7 +62,7 @@ class Suratpengajuan_model
                 tanggal = :tanggal,
                 tanggal_surat = :tanggal_surat,
                 perihal = :perihal,
-                nomor_petunjuk = :nomor_petunjuk
+                nomor_petunjuk = :nomor_petunjuk,
             WHERE id_pengajuan = :id"
         );
 

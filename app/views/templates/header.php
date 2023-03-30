@@ -18,6 +18,7 @@
   <link rel="stylesheet" type="text/css" href="js/select.dataTables.min.css">
   <!-- End plugin css for this page -->
   <!-- inject:css -->
+  <link rel="stylesheet" href="css/style.css">
   <link rel="stylesheet" href="css/vertical-layout-light/style.css">
   <!-- endinject -->
   <link rel="shortcut icon" href="images/favicon.png" />
@@ -28,8 +29,8 @@
     <!-- partial:partials/_navbar.html -->
     <nav class="navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
       <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-center">
-        <a class="navbar-brand brand-logo mr-5" href="index.html"><img src="./images/logosimas.png" class="mr-2" alt="SIMAS" /></a>
-        <a class="navbar-brand brand-logo-mini" href="index.html"><img src="./images/logosaja.png" alt="SIMAS" /></a>
+        <a class="navbar-brand brand-logo mr-5" href="index.html"><img src="images/logosimas.png" class="mr-2" alt="SIMAS" /></a>
+        <a class="navbar-brand brand-logo-mini" href="index.html"><img src="images/logosaja.png" alt="SIMAS" /></a>
       </div>
       <div class="navbar-menu-wrapper d-flex align-items-center justify-content-end">
         <button class="navbar-toggler navbar-toggler align-self-center" type="button" data-toggle="minimize">
@@ -57,40 +58,14 @@
               <p class="mb-0 font-weight-normal float-left dropdown-header">Notifications</p>
               <a class="dropdown-item preview-item">
                 <div class="preview-thumbnail">
-                  <div class="preview-icon bg-success">
-                    <i class="ti-info-alt mx-0"></i>
-                  </div>
-                </div>
-                <div class="preview-item-content">
-                  <h6 class="preview-subject font-weight-normal">Application Error</h6>
-                  <p class="font-weight-light small-text mb-0 text-muted">
-                    Just now
-                  </p>
-                </div>
-              </a>
-              <a class="dropdown-item preview-item">
-                <div class="preview-thumbnail">
-                  <div class="preview-icon bg-warning">
-                    <i class="ti-settings mx-0"></i>
-                  </div>
-                </div>
-                <div class="preview-item-content">
-                  <h6 class="preview-subject font-weight-normal">Settings</h6>
-                  <p class="font-weight-light small-text mb-0 text-muted">
-                    Private message
-                  </p>
-                </div>
-              </a>
-              <a class="dropdown-item preview-item">
-                <div class="preview-thumbnail">
                   <div class="preview-icon bg-info">
-                    <i class="ti-user mx-0"></i>
+                    <i class="ti-email mx-0"></i>
                   </div>
                 </div>
                 <div class="preview-item-content">
-                  <h6 class="preview-subject font-weight-normal">New user registration</h6>
+                  <h6 class="preview-subject font-weight-normal">Pengajuan Baru</h6>
                   <p class="font-weight-light small-text mb-0 text-muted">
-                    2 days ago
+                    1 Pengajuan Surat Telah Diajukan
                   </p>
                 </div>
               </a>

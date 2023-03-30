@@ -10167,6 +10167,14 @@ pre code {
   border: 1px solid #CED4DA;
 }
 
+.table-main{
+  overflow-x: auto;
+  overflow-y: auto;
+  height: auto;
+  width: 100%;
+  display: block;
+}
+
 .table-bordered thead th,
 .table-bordered thead td {
   border-bottom-width: 2px;

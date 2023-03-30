@@ -22,6 +22,8 @@
 <script src="../../vendors/datatables.net/jquery.dataTables.js"></script>
 <script src="../../vendors/datatables.net-bs4/dataTables.bootstrap4.js"></script>
 <script src="../js/dataTables.select.min.js"></script>
+<script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.js"></script>
+
 
 <!-- End plugin js for this page -->
 <!-- inject:js -->
@@ -30,6 +32,7 @@
 <script src="../js/template.js"></script>
 <script src="../js/settings.js"></script>
 <script src="../js/todolist.js"></script>
+<script src="../js/tables.js"></script>
 <script src="../js/bootstrap.js"></script>
 <!-- endinject -->
 <!-- Custom js for this page-->

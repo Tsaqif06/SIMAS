@@ -1,4 +1,5 @@
 $(document).ready(function () {
+	$("#table").DataTable();
 	$(".tampilModalTambah").click(function () {
 		$("#modalLabel").html("Tambah Data");
 		$("button[type=submit]").html("Tambah Data");
@@ -60,7 +61,7 @@ $(document).ready(function () {
 				$("#keahlian_ganda").val(data.keahlian_ganda);
 				$("#status_pernikahan").val(data.status_pernikahan);
 				$("#foto").val(data.foto);
-			}
+			},
 		});
 	});
 });

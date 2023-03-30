@@ -2,7 +2,7 @@
   "data": [
     {
       "id": "1",
-      "Quote": "Incs234",
+      "Quote": "Inces234",
       "Product": "Car insurance",
       "Business": "Business type 1",
       "Policy": "Jesse Thomas",

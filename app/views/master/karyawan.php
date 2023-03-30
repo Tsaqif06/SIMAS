@@ -45,7 +45,7 @@
                 <div class="card">
                     <div class="card-body">
                         <div class="table-responsive">
-                            <table class="table table-striped table-main">
+                            <table id="table" class="table table-striped table-main">
                                 <thead>
                                     <tr>
                                         <th>No.</th>
@@ -74,7 +74,7 @@
                                                 </a>
                                                 <a href="<?= BASEURL ?>master/hapusData/Karyawan/<?= $row['id_karyawan'] ?>">
                                                     <div class="font-weight-medium pt-2">
-                                                    <div class="badge badge-danger delete" onclick="return confirm('Apakah Anda Yakin Mau Menghapus Data?')">Delete</div>
+                                                        <div class="badge badge-danger delete" onclick="return confirm('Apakah Anda Yakin Mau Menghapus Data?')">Delete</div>
                                                 </a>
                                             </td>
                                             <td><?= $row["nama_lengkap"] ?></td>

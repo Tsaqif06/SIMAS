@@ -17,13 +17,13 @@
   <link rel="stylesheet" href="../../vendors/datatables.net-bs4/dataTables.bootstrap4.css">
   <link rel="stylesheet" href="../../vendors/ti-icons/css/themify-icons.css">
   <link rel="stylesheet" type="text/css" href="../js/select.dataTables.min.css">
+  <link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/jquery.dataTables.css" />
+
   <!-- End plugin css for this page -->
   <!-- inject:css -->
+  <link rel="stylesheet" href="../css/style.css">
   <link rel="stylesheet" href="../css/vertical-layout-light/style.css">
-  <!-- endinject -->
   <link rel="shortcut icon" href="../images/favicon.png" />
-  <!-- jquery -->
-  <script src="../js/jquery.min.js"></script>
 </head>
 
 <body>
@@ -31,7 +31,7 @@
     <!-- partial:partials/_navbar.html -->
     <nav class="navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
       <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-center">
-        <a class="navbar-brand brand-logo mr-5" href="index.html"><img src="../images/logosaja.png" class="mr-2" alt="SIMAS" /></a>
+        <a class="navbar-brand brand-logo mr-5" href="index.html"><img src="../images/logosimas.png" class="mr-2" alt="SIMAS" /></a>
         <a class="navbar-brand brand-logo-mini" href="index.html"><img src="../images/logosaja.png" alt="SIMAS" /></a>
       </div>
       <div class="navbar-menu-wrapper d-flex align-items-center justify-content-end">

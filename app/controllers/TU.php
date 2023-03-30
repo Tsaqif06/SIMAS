@@ -2,7 +2,7 @@
 
 class TU extends Controller
 {
-    public $model_name = "TU_models";
+    private $model_name = "TU_models";
 
     // Main Routing //
 

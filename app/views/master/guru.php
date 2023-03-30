@@ -39,27 +39,26 @@
                 </button>
             </div>
         </div>
-
         <div class="row">
             <div class="col-md-12 grid-margin stretch-card">
                 <div class="card">
                     <div class="card-body">
                         <div class="table-responsive">
-                            <table class="table table-striped table-main">
+                            <table id="table" class="table table-striped table-main">
                                 <thead>
                                     <tr>
                                         <th>No.</th>
                                         <th>Aksi</th>
-                                        <th>Nama Lengkap</th>
+                                        <th>Nama</th>
                                         <th>Jenis Kelamin</th>
                                         <th>Tempat Lahir</th>
                                         <th>Tanggal Lahir</th>
                                         <th>Alamat Lengkap</th>
                                         <th>Pendidikan Terakhir</th>
                                         <th>Jurusan Pendidikan Terakhir</th>
-                                        <th>Nomor HP</th>
+                                        <th>No. HP</th>
                                         <th>Kategori</th>
-                                        <th>Mapel Yang Diampu</th>
+                                        <th>Mapel yang diampu</th>
                                         <th>Kategori Mapel</th>
                                         <th>NIP</th>
                                         <th>Status Sertifikasi</th>
@@ -79,7 +78,7 @@
                                                 </a>
                                                 <a href="<?= BASEURL ?>master/hapusData/Guru/<?= $row['id_guru'] ?>">
                                                     <div class=" font-weight-medium pt-2">
-                                                    <div class="badge badge-danger delete" onclick="return confirm('Yakin Ingin Hapus Data?')">Delete</div>
+                                                        <div class="badge badge-danger delete" onclick="return confirm('Yakin Ingin Hapus Data?')">Delete</div>
                                                 </a>
                                             </td>
                                             <td><?= $row["nama_lengkap"] ?></td>
@@ -106,97 +105,93 @@
                     </div>
                 </div>
             </div>
-        </div>
 
 
-
-
-
-        <!-- Modal -->
-        <div class="modal fade" id="modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h1 class="modal-title fs-5" id="modalLabel">Tambah Data Guru</h1>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            <!-- Modal -->
+            <div class="modal fade" id="modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h1 class="modal-title fs-5" id="modalLabel">Tambah Data Guru</h1>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <form action="<?= BASEURL ?>master/tambahData/Guru" method="post">
+                                <input type="hidden" name="id_guru" id="id_guru">
+                                <div class="mb-3">
+                                    <label for="nama_lengkap" class="form-label">Nama Lengkap</label>
+                                    <input type="text" class="form-control" name="nama_lengkap" id="nama_lengkap" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="jenis_kelamin" class="form-label">Jenis Kelamin</label>
+                                    <input type="text" class="form-control" name="jenis_kelamin" id="jenis_kelamin" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="tempat_lahir" class="form-label">Tempat Lahir</label>
+                                    <input type="text" class="form-control" name="tempat_lahir" id="tempat_lahir" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="tanggal_lahir" class="form-label">Tanggal Lahir</label>
+                                    <input type="text" class="form-control" name="tanggal_lahir" id="tanggal_lahir" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="alamat_lengkap" class="form-label">Alamat Lengkap</label>
+                                    <input type="text" class="form-control" name="alamat_lengkap" id="alamat_lengkap" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="pendidikan_terakhir" class="form-label">Pendidikan Terakhir</label>
+                                    <input type="text" class="form-control" name="pendidikan_terakhir" id="pendidikan_terakhir" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="jurusan_pendidikan_terakhir" class="form-label">Jurusan Pendidikan Terakhir</label>
+                                    <input type="text" class="form-control" name="jurusan_pendidikan_terakhir" id="jurusan_pendidikan_terakhir" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="nomor_hp" class="form-label">Nomor HP</label>
+                                    <input type="text" class="form-control" name="nomor_hp" id="nomor_hp" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="kategori" class="form-label">Kategori</label>
+                                    <input type="text" class="form-control" name="kategori" id="kategori" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="mapel_yg_diampu" class="form-label">Mapel Yang Diampu</label>
+                                    <input type="text" class="form-control" name="mapel_yg_diampu" id="mapel_yg_diampu" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="kategori_mapel" class="form-label">Kategori Mapel</label>
+                                    <input type="text" class="form-control" name="kategori_mapel" id="kategori_mapel" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="nip" class="form-label">NIP</label>
+                                    <input type="text" class="form-control" name="nip" id="nip" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="status_sertifikasi" class="form-label">Status Sertifikasi</label>
+                                    <input type="text" class="form-control" name="status_sertifikasi" id="status_sertifikasi" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="keahlian_ganda" class="form-label">Keahlian Ganda</label>
+                                    <input type="text" class="form-control" name="keahlian_ganda" id="keahlian_ganda" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="status_pernikahan" class="form-label">Status Pernikahan</label>
+                                    <input type="text" class="form-control" name="status_pernikahan" id="status_pernikahan" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="foto" class="form-label">Foto</label>
+                                    <input type="text" class="form-control" name="foto" id="foto" required>
+                                </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
+                            <button type="submit" class="btn btn-primary">Tambah Data</button>
+                        </div>
+                        </form>
                     </div>
-                    <div class="modal-body">
-                        <form action="<?= BASEURL ?>master/tambahData/Guru" method="post">
-                            <input type="hidden" name="id_guru" id="id_guru">
-                            <div class="mb-3">
-                                <label for="nama_lengkap" class="form-label">Nama Lengkap</label>
-                                <input type="text" class="form-control" name="nama_lengkap" id="nama_lengkap" required>
-                            </div>
-                            <div class="mb-3">
-                                <label for="jenis_kelamin" class="form-label">Jenis Kelamin</label>
-                                <input type="text" class="form-control" name="jenis_kelamin" id="jenis_kelamin" required>
-                            </div>
-                            <div class="mb-3">
-                                <label for="tempat_lahir" class="form-label">Tempat Lahir</label>
-                                <input type="text" class="form-control" name="tempat_lahir" id="tempat_lahir" required>
-                            </div>
-                            <div class="mb-3">
-                                <label for="tanggal_lahir" class="form-label">Tanggal Lahir</label>
-                                <input type="text" class="form-control" name="tanggal_lahir" id="tanggal_lahir" required>
-                            </div>
-                            <div class="mb-3">
-                                <label for="alamat_lengkap" class="form-label">Alamat Lengkap</label>
-                                <input type="text" class="form-control" name="alamat_lengkap" id="alamat_lengkap" required>
-                            </div>
-                            <div class="mb-3">
-                                <label for="pendidikan_terakhir" class="form-label">Pendidikan Terakhir</label>
-                                <input type="text" class="form-control" name="pendidikan_terakhir" id="pendidikan_terakhir" required>
-                            </div>
-                            <div class="mb-3">
-                                <label for="jurusan_pendidikan_terakhir" class="form-label">Jurusan Pendidikan Terakhir</label>
-                                <input type="text" class="form-control" name="jurusan_pendidikan_terakhir" id="jurusan_pendidikan_terakhir" required>
-                            </div>
-                            <div class="mb-3">
-                                <label for="nomor_hp" class="form-label">Nomor HP</label>
-                                <input type="text" class="form-control" name="nomor_hp" id="nomor_hp" required>
-                            </div>
-                            <div class="mb-3">
-                                <label for="kategori" class="form-label">Kategori</label>
-                                <input type="text" class="form-control" name="kategori" id="kategori" required>
-                            </div>
-                            <div class="mb-3">
-                                <label for="mapel_yg_diampu" class="form-label">Mapel Yang Diampu</label>
-                                <input type="text" class="form-control" name="mapel_yg_diampu" id="mapel_yg_diampu" required>
-                            </div>
-                            <div class="mb-3">
-                                <label for="kategori_mapel" class="form-label">Kategori Mapel</label>
-                                <input type="text" class="form-control" name="kategori_mapel" id="kategori_mapel" required>
-                            </div>
-                            <div class="mb-3">
-                                <label for="nip" class="form-label">NIP</label>
-                                <input type="text" class="form-control" name="nip" id="nip" required>
-                            </div>
-                            <div class="mb-3">
-                                <label for="status_sertifikasi" class="form-label">Status Sertifikasi</label>
-                                <input type="text" class="form-control" name="status_sertifikasi" id="status_sertifikasi" required>
-                            </div>
-                            <div class="mb-3">
-                                <label for="keahlian_ganda" class="form-label">Keahlian Ganda</label>
-                                <input type="text" class="form-control" name="keahlian_ganda" id="keahlian_ganda" required>
-                            </div>
-                            <div class="mb-3">
-                                <label for="status_pernikahan" class="form-label">Status Pernikahan</label>
-                                <input type="text" class="form-control" name="status_pernikahan" id="status_pernikahan" required>
-                            </div>
-                            <div class="mb-3">
-                                <label for="foto" class="form-label">Foto</label>
-                                <input type="text" class="form-control" name="foto" id="foto" required>
-                            </div>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
-                        <button type="submit" class="btn btn-primary">Tambah Data</button>
-                    </div>
-                    </form>
                 </div>
             </div>
-        </div>
 
+        </div>
     </div>
-</div>
-<script src="../js/script/master/guru.js"></script>
+    <script src="../js/script/master/guru.js"></script>
