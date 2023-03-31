@@ -4,7 +4,7 @@ $(document).ready(function () {
 		$("button[type=submit]").html("Tambah Data");
 		$(".modal-body form").attr(
 			"action",
-			"http://localhost/SIMAS/public/tu/tambahData/suratmasuk"
+			"http://localhost/SIMAS/public/tu/tambahData/suratkeluar"
 		);
 		$("#id").val("");
 		$("#nomor_berkas").val("");
