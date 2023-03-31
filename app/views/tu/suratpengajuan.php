@@ -23,6 +23,11 @@
                         </div>
                     </div>
                 </div>
+                <div class="row mt-5">
+                    <div class="col-12 col-xl-8 mb-4 mb-xl-0">
+                        <a href="../assets/LAMPIRAN_Permendagri_NO_78_Th_2012.pdf"><button class="btn btn-primary font-weight-bold">Bantuan Kode Nomor Petunjuk</button></a>
+                    </div>
+                </div>
             </div>
         </div>
 
