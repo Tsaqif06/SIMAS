@@ -114,14 +114,6 @@
                                 <input type="text" class="form-control" name="tanggal" id="tanggal" required>
                             </div>
                             <div class="mb-3">
-                                <label for="tanggal_surat" class="form-label">Tanggal Surat</label>
-                                <input type="text" class="form-control" name="tanggal_surat" id="tanggal_surat" required>
-                            </div>
-                            <div class="mb-3">
-                                <label for="nomor_surat" class="form-label">Nomor Surat</label>
-                                <input type="text" class="form-control" name="nomor_surat" id="nomor_surat" required>
-                            </div>
-                            <div class="mb-3">
                                 <label for="perihal" class="form-label">Perihal</label>
                                 <input type="text" class="form-control" name="perihal" id="perihal" required>
                             </div>
@@ -142,4 +134,4 @@
     </div>
 </div>
 
-<script src="../js/script/master/suratmasuk.js"></script>
+<script src="../js/script/tu/suratkeluar.js"></script>
