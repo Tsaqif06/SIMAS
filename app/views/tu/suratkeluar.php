@@ -66,7 +66,7 @@
                                                 <a href="" class="badge text-bg-success tampilModalUbah" style="cursor: pointer;" data-bs-toggle="modal" data-bs-target="#modal" data-id="<?= $row['id'] ?>">
                                                     Edit
                                                 </a>
-                                                <a href="<?= BASEURL ?>master/hapusData/suratmasuk/<?= $row['id'] ?>">
+                                                <a href="<?= BASEURL ?>tu/hapusData/suratkeluar/<?= $row['id'] ?>">
                                                     <div class="font-weight-medium pt-2">
                                                         <div class="badge badge-danger delete" onclick="return confirm('Apakah Anda Yakin Mau Menghapus Data?')">Delete</div>
                                                 </a>
@@ -99,7 +99,7 @@
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
-                        <form action="<?= BASEURL ?>master/tambahData/suratmasuk" method="post">
+                        <form action="<?= BASEURL ?>tu/tambahData/suratkeluar" method="post">
                             <input type="hidden" name="id" id="id">
                             <div class="mb-3">
                                 <label for="nomor_berkas" class="form-label">Nomor Berkas</label>
@@ -112,14 +112,6 @@
                             <div class="mb-3">
                                 <label for="tanggal" class="form-label">Tanggal</label>
                                 <input type="text" class="form-control" name="tanggal" id="tanggal" required>
-                            </div>
-                            <div class="mb-3">
-                                <label for="tanggal_surat" class="form-label">Tanggal Surat</label>
-                                <input type="text" class="form-control" name="tanggal_surat" id="tanggal_surat" required>
-                            </div>
-                            <div class="mb-3">
-                                <label for="nomor_surat" class="form-label">Nomor Surat</label>
-                                <input type="text" class="form-control" name="nomor_surat" id="nomor_surat" required>
                             </div>
                             <div class="mb-3">
                                 <label for="perihal" class="form-label">Perihal</label>
@@ -142,4 +134,4 @@
     </div>
 </div>
 
-<script src="../js/script/master/suratmasuk.js"></script>
+<script src="../js/script/tu/suratkeluar.js"></script>
