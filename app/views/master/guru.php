@@ -124,7 +124,11 @@
                                 </div>
                                 <div class="mb-3">
                                     <label for="jenis_kelamin" class="form-label">Jenis Kelamin</label>
-                                    <input type="text" class="form-control" name="jenis_kelamin" id="jenis_kelamin" required>
+                                    <select class="form-select" name="jenis_kelamin" id="jenis_kelamin" required>
+                                        <option selected>Open this select menu</option>
+                                        <option value="P">P</option>
+                                        <option value="L">L</option>
+                                    </select>
                                 </div>
                                 <div class="mb-3">
                                     <label for="tempat_lahir" class="form-label">Tempat Lahir</label>
@@ -152,15 +156,47 @@
                                 </div>
                                 <div class="mb-3">
                                     <label for="kategori" class="form-label">Kategori</label>
-                                    <input type="text" class="form-control" name="kategori" id="kategori" required>
+                                    <select class="form-select" name="kategori" id="kategori" required>
+                                        <option selected>Open this select menu</option>
+                                        <option value="ASN">ASN</option>
+                                        <option value="GTT">GTT</option>
+                                        <option value="PPPK">PPPK</option>
+                                    </select>
                                 </div>
                                 <div class="mb-3">
                                     <label for="mapel_yg_diampu" class="form-label">Mapel Yang Diampu</label>
-                                    <input type="text" class="form-control" name="mapel_yg_diampu" id="mapel_yg_diampu" required>
+                                    <select class="form-select" name="mapel_yg_diampu" id="mapel_yg_diampu" required>
+                                        <option selected>Open this select menu</option>
+                                        <option value="Matematika">Matematika</option>
+                                        <option value="Bahasa Indonesia">Bahasa Indonesia</option>
+                                        <option value="Bahasa Inggris">Bahasa Inggris</option>
+                                        <option value="Bahasa Daerah">Bahasa Daerah</option>
+                                        <option value="IPAS">IPAS</option>
+                                        <option value="PJOK">PJOK</option>
+                                        <option value="Sejarah">Sejarah</option>
+                                        <option value="PP">PP</option>
+                                        <option value="Inka">Inka</option>
+                                        <option value="Seni Budaya">Seni Budaya</option>
+                                        <option value="BK">BK</option>
+                                        <option value="PAI">PAI</option>
+                                        <option value="TG">TG</option>
+                                        <option value="RPL">RPL</option>
+                                        <option value="Perhotelan">Perhotelan</option>
+                                        <option value="Multimedia">Multimedia</option>
+                                        <option value="Animasi">Animasi</option>
+                                        <option value="TL">TL</option>
+                                        <option value="TM">TM</option>
+                                        <option value="TKJ">TKJ</option>
+                                    </select>
                                 </div>
                                 <div class="mb-3">
                                     <label for="kategori_mapel" class="form-label">Kategori Mapel</label>
-                                    <input type="text" class="form-control" name="kategori_mapel" id="kategori_mapel" required>
+                                    <select class="form-select" name="kategori_mapel" id="kategori_mapel">
+                                        <option selected>Open this select menu</option>
+                                        <option value="Umum">Umum</option>
+                                        <option value="BK">BK</option>
+                                        <option value="Kejuruan">Kejuruan</option>
+                                    </select>
                                 </div>
                                 <div class="mb-3">
                                     <label for="nip" class="form-label">NIP</label>
@@ -168,7 +204,11 @@
                                 </div>
                                 <div class="mb-3">
                                     <label for="status_sertifikasi" class="form-label">Status Sertifikasi</label>
-                                    <input type="text" class="form-control" name="status_sertifikasi" id="status_sertifikasi" required>
+                                    <select class="form-select" name="status_sertifikasi" id="status_sertifikasi" required>
+                                        <option selected>Open this select menu</option>
+                                        <option value="Sudah">Sudah</option>
+                                        <option value="Belum">Belum</option>
+                                    </select>   
                                 </div>
                                 <div class="mb-3">
                                     <label for="keahlian_ganda" class="form-label">Keahlian Ganda</label>
@@ -176,11 +216,15 @@
                                 </div>
                                 <div class="mb-3">
                                     <label for="status_pernikahan" class="form-label">Status Pernikahan</label>
-                                    <input type="text" class="form-control" name="status_pernikahan" id="status_pernikahan" required>
+                                    <select class="form-select" name="status_pernikahan" id="status_pernikahan" required>
+                                        <option selected>Open this select menu</option>
+                                        <option value="Menikah">Menikah</option>
+                                        <option value="Belum">Belum</option>
+                                    </select>
                                 </div>
                                 <div class="mb-3">
                                     <label for="foto" class="form-label">Foto</label>
-                                    <input type="text" class="form-control" name="foto" id="foto" required>
+                                    <input type="upload" class="form-control" name="foto" id="foto" required>
                                 </div>
                         </div>
                         <div class="modal-footer">
