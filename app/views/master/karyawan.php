@@ -34,7 +34,7 @@
 
         <div class="row">
             <div class="col-lg-6">
-                <button type="button" class="btn btn-primary my-3 tampilModalTambah karyawan" data-bs-toggle="modal" data-bs-target="#modal">
+                <button type="button" class="btn btn-primary my-3 btn-add" data-url="<?= BASEURL ?>master/tambahData/Karyawan" data-bs-toggle="modal" data-bs-target="#modal">
                     Tambah Data Karyawan
                 </button>
             </div>
@@ -111,7 +111,7 @@
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
-                        <form action="<?= BASEURL ?>master/tambahData/Karyawan" method="post">
+                        <form action="<?= BASEURL ?>master/tambahData/Karyawan" method="post" enctype="multipart/form-data">
                             <input type="hidden" name="id_karyawan" id="id_karyawan">
                             <div class="mb-3">
                                 <label for="nama_lengkap" class="form-label">Nama Lengkap</label>
@@ -119,7 +119,11 @@
                             </div>
                             <div class="mb-3">
                                 <label for="jenis_kelamin" class="form-label">Jenis Kelamin</label>
-                                <input type="text" class="form-control" name="jenis_kelamin" id="jenis_kelamin" required>
+                                <select class="form-select" name="jenis_kelamin" id="jenis_kelamin" required>
+                                    <option selected disabled>Open this select menu</option>
+                                    <option value="L">L</option>
+                                    <option value="P">P</option>
+                                </select>
                             </div>
                             <div class="mb-3">
                                 <label for="tempat_lahir" class="form-label">Tempat Lahir</label>
@@ -147,19 +151,28 @@
                             </div>
                             <div class="mb-3">
                                 <label for="kategori" class="form-label">Kategori</label>
-                                <input type="text" class="form-control" name="kategori" id="kategori" required>
+                                <select class="form-select" name="kategori" id="kategori" required>
+                                    <option selected disabled>Open this select menu</option>
+                                    <option value="GTT">GTT</option>
+                                    <option value="CS">CS</option>
+                                    <option value="Satpam">Satpam</option>
+                                </select>
                             </div>
                             <div class="mb-3">
                                 <label for="status_pernikahan" class="form-label">Status Pernikahan</label>
-                                <input type="text" class="form-control" name="status_pernikahan" id="status_pernikahan" required>
+                                <select class="form-select" name="status_pernikahan" id="status_pernikahan" required>
+                                    <option selected disabled>Open this select menu</option>
+                                    <option value="Menikah">Menikah</option>
+                                    <option value="Belum">Belum</option>
+                                </select>
                             </div>
                             <div class="mb-3">
                                 <label for="foto" class="form-label">Foto</label>
-                                <input type="text" class="form-control" name="foto" id="foto" required>
+                                <input type="file" class="form-control" name="foto" id="foto" accept="image/*" required>
                             </div>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" onclick="form.reset()">Batal</button>
                         <button type="submit" class="btn btn-primary">Tambah Data</button>
                     </div>
                     </form>

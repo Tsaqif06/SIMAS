@@ -7,18 +7,6 @@ $(document).ready(function () {
 			"http://localhost/SIMAS/public/master/tambahData/Karyawan"
 		);
 
-		$("#id_karyawan").val("");
-		$("#nama_lengkap").val("");
-		$("#jenis_kelamin").val("");
-		$("#tempat_lahir").val("");
-		$("#tanggal_lahir").val("");
-		$("#alamat_lengkap").val("");
-		$("#pendidikan_terakhir").val("");
-		$("#jurusan_pendidikan_terakhir").val("");
-		$("#nomor_hp").val("");
-		$("#kategori").val("");
-		$("#status_pernikahan").val("");
-		$("#foto").val("");
 	});
 
 	$(".tampilModalUbah").click(function () {

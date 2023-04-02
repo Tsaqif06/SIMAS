@@ -137,11 +137,22 @@
                             </div>
                             <div class="mb-3">
                                 <label for="jalur" class="form-label">Jalur</label>
-                                <input type="text" class="form-control" name="jalur" id="jalur" required>
+                                <select class="form-select" required>
+                                    <option selected disabled>Open this select menu</option>
+                                    <option value="Prestasi Akademik">Prestasi Akademik</option>
+                                    <option value="Prestasi Non-Akademik">Prestasi Non-Akademik</option>
+                                    <option value="Afirmasi">Afirmasi</option>
+                                    <option value="Perpindahan Orang Tua">Perpindahan Orang Tua</option>
+                                </select>
                             </div>
                             <div class="mb-3">
                                 <label for="jurusan" class="form-label">Jurusan</label>
-                                <input type="text" class="form-control" name="jurusan" id="jurusan" required>
+                                <select class="form-select" name="jurusan" id="jurusan" required>
+                                    <option selected disabled>Open this select menu</option>
+                                    <?php foreach ($data['kompkeahlian'] as $row) : ?>
+                                        <option value="<?= $row['kode_kompkeahlian'] ?>"><?= $row['kode_kompkeahlian'] ?></option>
+                                    <?php endforeach ?>
+                                </select>
                             </div>
                             <div class="mb-3">
                                 <label for="alamat" class="form-label">Alamat</label>
@@ -177,11 +188,23 @@
                             </div>
                             <div class="mb-3">
                                 <label for="agama" class="form-label">Agama</label>
-                                <input type="text" class="form-control" name="agama" id="agama" required>
+                                <select class="form-select" name="agama" id="agama" required>
+                                    <option selected disabled>Open this select menu</option>
+                                    <option value="Islam">Islam</option>
+                                    <option value="Kristen">Kristen</option>
+                                    <option value="Katolik">Katolik</option>
+                                    <option value="Hindu">Hindu</option>
+                                    <option value="Buddha">Buddha</option>
+                                    <option value="Konghucu">Konghucu</option>
+                                </select>
                             </div>
                             <div class="mb-3">
                                 <label for="jenis_kelamin" class="form-label">Jenis Kelamin</label>
-                                <input type="text" class="form-control" name="jenis_kelamin" id="jenis_kelamin" required>
+                                <select class="form-select" required>
+                                    <option selected disabled>Open this select menu</option>
+                                    <option value="L">L</option>
+                                    <option value="P">P</option>
+                                </select>
                             </div>
                             <div class="mb-3">
                                 <label for="tempat_lahir" class="form-label">Tempat Lahir</label>
