@@ -22,6 +22,7 @@
 <script src="../../vendors/datatables.net/jquery.dataTables.js"></script>
 <script src="../../vendors/datatables.net-bs4/dataTables.bootstrap4.js"></script>
 <script src="../js/dataTables.select.min.js"></script>
+<script src="../js/script/form.js"></script>
 <script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.js"></script>
 
 

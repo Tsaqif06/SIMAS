@@ -34,7 +34,7 @@
 
         <div class="row">
             <div class="col-lg-6">
-                <button type="button" class="btn btn-primary my-3 tampilModalTambah" data-bs-toggle="modal" data-bs-target="#modal">
+                <button type="button" class="btn btn-primary my-3 tampilModalTambah" data-url="<?= BASEURL ?>master/tambahData/Guru" data-bs-toggle=" modal" data-bs-target="#modal">
                     Tambah Data Guru
                 </button>
             </div>
@@ -73,7 +73,7 @@
                                         <tr>
                                             <td><?= $i++ ?></td>
                                             <td class="font-weight-medium">
-                                                <a href="" class="badge text-bg-success tampilModalUbah" style="cursor: pointer;" data-bs-toggle="modal" data-bs-target="#modal" data-id="<?= $row['id_guru'] ?>">
+                                                <a href="" class="badge text-bg-success tampilModalUbah" style="cursor: pointer;" data-url="<?= BASEURL ?>master/ubahData/Guru" data-bs-toggle="modal" data-bs-target="#modal" data-id="<?= $row['id_guru'] ?>">
                                                     Edit
                                                 </a>
                                                 <a href="<?= BASEURL ?>master/hapusData/Guru/<?= $row['id_guru'] ?>">
@@ -208,7 +208,7 @@
                                         <option selected>Open this select menu</option>
                                         <option value="Sudah">Sudah</option>
                                         <option value="Belum">Belum</option>
-                                    </select>   
+                                    </select>
                                 </div>
                                 <div class="mb-3">
                                     <label for="keahlian_ganda" class="form-label">Keahlian Ganda</label>

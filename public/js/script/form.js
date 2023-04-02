@@ -1,21 +1,25 @@
 $(document).ready(function () {
-	$(".btn-add").click(function () {
+	$(".tampilModalTambah").click(function () {
+		const url = $(this).data("url");
+
+		alert(url);
+
+		if ($("#modal").hasClass("edit")) {
+			$("#modal").removeClass("edit");
+			document.querySelector("#modal form").reset();
+		}
 		$("#modalLabel").html("Tambah Data");
 		$("button[type=submit]").html("Tambah Data");
-		$(".modal-body form").attr(
-			"action",
-			"http://localhost/SIMAS/public/master/tambahData/Karyawan"
-		);
-
+		$(".modal-body form").attr("action", `${url}`);
+		console.log(url);
 	});
 
 	$(".tampilModalUbah").click(function () {
+		const url = $(this).data("url");
+		$("#modal").addClass("edit");
 		$("#modalLabel").html("Edit Data Karyawan");
 		$(".modal-footer button[type=submit]").html("Ubah Data");
-		$(".modal-body form").attr(
-			"action",
-			"http://localhost/SIMAS/public/master/ubahData/karyawan"
-		);
+		$(".modal-body form").attr("action", `${url}`);
 
 		const id = $(this).data("id");
 
@@ -37,7 +41,11 @@ $(document).ready(function () {
 				$("#kategori").val(data.kategori);
 				$("#status_pernikahan").val(data.status_pernikahan);
 				$("#foto").val(data.foto);
-			}
+			},
 		});
+	});
+
+	$(".batal").click(function () {
+		document.querySelector("#modal form").reset();
 	});
 });

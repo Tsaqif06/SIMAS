@@ -92,6 +92,7 @@ class Master extends Controller
 
     public function tambahData($model)
     {
+        
         $model = ucfirst($model);
         if ($this->model("$this->model_name", "{$model}_model")->tambahData($_POST) > 0) {
             Flasher::setFlash('BERHASIL', 'Ditambahkan', 'success');

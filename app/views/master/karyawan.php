@@ -34,67 +34,9 @@
 
         <div class="row">
             <div class="col-lg-6">
-                <button type="button" class="btn btn-primary my-3 btn-add" data-url="<?= BASEURL ?>master/tambahData/Karyawan" data-bs-toggle="modal" data-bs-target="#modal">
+                <button type="button" class="btn btn-primary my-3 tampilModalTambah" data-url="<?= BASEURL ?>master/Karyawan/add" data-bs-toggle="modal" data-bs-target="#modal">
                     Tambah Data Karyawan
                 </button>
-            </div>
-        </div>
-
-        <div class="row">
-            <div class="col-md-12 grid-margin stretch-card">
-                <div class="card">
-                    <div class="card-body">
-                        <div class="table-responsive">
-                            <table id="table" class="table table-striped table-main">
-                                <thead>
-                                    <tr>
-                                        <th>No.</th>
-                                        <th>Aksi</th>
-                                        <th>Nama Lengkap</th>
-                                        <th>Jenis Kelamin</th>
-                                        <th>Tempat Lahir</th>
-                                        <th>Tanggal Lahir</th>
-                                        <th>Alamat Lengkap</th>
-                                        <th>Pendidikan Terakhir</th>
-                                        <th>Jurusan Pendidikan Terakhir</th>
-                                        <th>Nomor HP</th>
-                                        <th>Kategori</th>
-                                        <th>Status Pernikahan</th>
-                                        <th>Foto</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <?php $i = 1 ?>
-                                    <?php foreach ($data['karyawan'] as $row) : ?>
-                                        <tr>
-                                            <td><?= $i++ ?></td>
-                                            <td class="font-weight-medium">
-                                                <a href="" class="badge text-bg-success tampilModalUbah" style="cursor: pointer;" data-bs-toggle="modal" data-bs-target="#modal" data-id="<?= $row['id_karyawan'] ?>">
-                                                    Edit
-                                                </a>
-                                                <a href="<?= BASEURL ?>master/hapusData/Karyawan/<?= $row['id_karyawan'] ?>">
-                                                    <div class="font-weight-medium pt-2">
-                                                        <div class="badge badge-danger delete" onclick="return confirm('Apakah Anda Yakin Mau Menghapus Data?')">Delete</div>
-                                                </a>
-                                            </td>
-                                            <td><?= $row["nama_lengkap"] ?></td>
-                                            <td><?= $row["jenis_kelamin"]; ?></td>
-                                            <td><?= $row["tempat_lahir"]; ?></td>
-                                            <td><?= $row["tanggal_lahir"]; ?></td>
-                                            <td><?= $row["alamat_lengkap"]; ?></td>
-                                            <td><?= $row["pendidikan_terakhir"]; ?></td>
-                                            <td><?= $row["jurusan_pendidikan_terakhir"]; ?></td>
-                                            <td><?= $row["nomor_hp"]; ?></td>
-                                            <td><?= $row["kategori"]; ?></td>
-                                            <td><?= $row["status_pernikahan"]; ?></td>
-                                            <td><?= $row["foto"]; ?></td>
-                                        </tr>
-                                    <?php endforeach; ?>
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                </div>
             </div>
         </div>
 
@@ -111,68 +53,10 @@
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
-                        <form action="<?= BASEURL ?>master/tambahData/Karyawan" method="post" enctype="multipart/form-data">
-                            <input type="hidden" name="id_karyawan" id="id_karyawan">
-                            <div class="mb-3">
-                                <label for="nama_lengkap" class="form-label">Nama Lengkap</label>
-                                <input type="text" class="form-control" name="nama_lengkap" id="nama_lengkap" required>
-                            </div>
-                            <div class="mb-3">
-                                <label for="jenis_kelamin" class="form-label">Jenis Kelamin</label>
-                                <select class="form-select" name="jenis_kelamin" id="jenis_kelamin" required>
-                                    <option selected disabled>Open this select menu</option>
-                                    <option value="L">L</option>
-                                    <option value="P">P</option>
-                                </select>
-                            </div>
-                            <div class="mb-3">
-                                <label for="tempat_lahir" class="form-label">Tempat Lahir</label>
-                                <input type="text" class="form-control" name="tempat_lahir" id="tempat_lahir" required>
-                            </div>
-                            <div class="mb-3">
-                                <label for="tanggal_lahir" class="form-label">Tanggal Lahir</label>
-                                <input type="text" class="form-control" name="tanggal_lahir" id="tanggal_lahir" required>
-                            </div>
-                            <div class="mb-3">
-                                <label for="alamat_lengkap" class="form-label">Alamat Lengkap</label>
-                                <input type="text" class="form-control" name="alamat_lengkap" id="alamat_lengkap" required>
-                            </div>
-                            <div class="mb-3">
-                                <label for="pendidikan_terakhir" class="form-label">Pendidikan Terakhir</label>
-                                <input type="text" class="form-control" name="pendidikan_terakhir" id="pendidikan_terakhir" required>
-                            </div>
-                            <div class="mb-3">
-                                <label for="jurusan_pendidikan_terakhir" class="form-label">Jurusan Pendidikan Terakhir</label>
-                                <input type="text" class="form-control" name="jurusan_pendidikan_terakhir" id="jurusan_pendidikan_terakhir" required>
-                            </div>
-                            <div class="mb-3">
-                                <label for="nomor_hp" class="form-label">Nomor HP</label>
-                                <input type="text" class="form-control" name="nomor_hp" id="nomor_hp" required>
-                            </div>
-                            <div class="mb-3">
-                                <label for="kategori" class="form-label">Kategori</label>
-                                <select class="form-select" name="kategori" id="kategori" required>
-                                    <option selected disabled>Open this select menu</option>
-                                    <option value="GTT">GTT</option>
-                                    <option value="CS">CS</option>
-                                    <option value="Satpam">Satpam</option>
-                                </select>
-                            </div>
-                            <div class="mb-3">
-                                <label for="status_pernikahan" class="form-label">Status Pernikahan</label>
-                                <select class="form-select" name="status_pernikahan" id="status_pernikahan" required>
-                                    <option selected disabled>Open this select menu</option>
-                                    <option value="Menikah">Menikah</option>
-                                    <option value="Belum">Belum</option>
-                                </select>
-                            </div>
-                            <div class="mb-3">
-                                <label for="foto" class="form-label">Foto</label>
-                                <input type="file" class="form-control" name="foto" id="foto" accept="image/*" required>
-                            </div>
+                        <div id="show_body"></div>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" onclick="form.reset()">Batal</button>
+                        <button type="button" class="btn btn-secondary batal" data-bs-dismiss="modal">Batal</button>
                         <button type="submit" class="btn btn-primary">Tambah Data</button>
                     </div>
                     </form>
@@ -182,5 +66,3 @@
 
     </div>
 </div>
-
-<script src="../js/script/master/karyawan.js"></script>

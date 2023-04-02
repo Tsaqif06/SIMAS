@@ -34,7 +34,7 @@
 
         <div class="row">
             <div class="col-lg-6">
-                <button type="button" class="btn btn-primary my-3 tampilModalTambah" data-bs-toggle="modal" data-bs-target="#modal">
+                <button type="button" class="btn btn-primary my-3 tampilModalTambah" data-url="<?= BASEURL ?>master/tambahData/jabatan" data-bs-toggle="modal" data-bs-target="#modal">
                     Tambah Data Jabatan
                 </button>
             </div>
@@ -60,12 +60,12 @@
                                         <tr>
                                             <td><?= $i++ ?></td>
                                             <td class="font-weight-medium">
-                                                <a href="" class="badge text-bg-success tampilModalUbah" style="cursor: pointer;" data-bs-toggle="modal" data-bs-target="#modal" data-id="<?= $row['id_jabatan'] ?>">
+                                                <a href="" class="badge text-bg-success tampilModalUbah" style="cursor: pointer;" data-url="<?= BASEURL ?>master/ubahData/Jabatan" data-bs-toggle="modal" data-bs-target="#modal" data-id="<?= $row['id_jabatan'] ?>">
                                                     Edit
                                                 </a>
                                                 <a href="<?= BASEURL ?>master/hapusData/jabatan/<?= $row['id_jabatan'] ?>">
                                                     <div class=" font-weight-medium pt-2">
-                                                    <div class="badge badge-danger delete" onclick="return confirm('Apakah Anda Yakin Mau Menghapus Data?')">Delete</div>
+                                                        <div class="badge badge-danger delete" onclick="return confirm('Apakah Anda Yakin Mau Menghapus Data?')">Delete</div>
                                                 </a>
                                             </td>
                                             <td><?= $row["jabatan"]; ?></td>
