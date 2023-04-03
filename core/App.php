@@ -9,15 +9,25 @@ class App
     {
         // controller
         $url = $this->getParseURL();
+        $folder = "";
         if ($url == NULL) {
             $url = [$this->controller];
         }
         if (file_exists("../app/controllers/$url[0].php")) {
+            $folder = "";
+            $this->controller = $url[0];
+            unset($url[0]);
+        } else if (file_exists("../app/controllers/master/$url[0].php")) {
+            $folder = "master/";
+            $this->controller = $url[0];
+            unset($url[0]);
+        } else if (file_exists("../app/controllers/tu/$url[0].php")) {
+            $folder = "tu/";
             $this->controller = $url[0];
             unset($url[0]);
         }
 
-        require_once "../app/controllers/$this->controller.php";
+        require_once "../app/controllers/{$folder}{$this->controller}.php";
         $this->controller = new $this->controller;
 
         // method
