@@ -4,7 +4,7 @@
             <div class="col-md-12 grid-margin">
                 <div class="row">
                     <div class="col-12 col-xl-8 mb-4 mb-xl-0">
-                        <h3 class="font-weight-bold">DATA KOMPETENSI KEAHLIAN</h3>
+                        <h3 class="font-weight-bold">DATA MAPEL</h3>
                         <h6 class="font-weight-normal mb-0">WEB DEV | SIMAS</h6>
                     </div>
                     <div class="col-12 col-xl-4">
@@ -34,8 +34,8 @@
 
         <div class="row">
             <div class="col-lg-6">
-                <button type="button" class="btn btn-primary my-3 tampilModalTambah" data-url="<?= BASEURL ?>master/tambahData/kompkeahlian" data-bs-toggle="modal" data-bs-target="#modal">
-                    Tambah Data Kompetensi Keahlian
+                <button type="button" class="btn btn-primary my-3 tampilModalTambah" data-url="<?= BASEURL ?>mapel/tambahData" data-bs-toggle="modal" data-bs-target="#modal">
+                    Tambah Data Mapel
                 </button>
             </div>
         </div>
@@ -50,33 +50,35 @@
                                     <tr>
                                         <th>No.</th>
                                         <th>Aksi</th>
-                                        <th>Nama Jurusan</th>
-                                        <th>Program Keahlian</th>
+                                        <th>Kode Mapel</th>
+                                        <th>Nama Mapel</th>
+                                        <th>kurikulum</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     <?php $i = 1 ?>
-                                    <?php foreach ($data['kompkeahlian'] as $row) : ?>
+                                    <?php foreach ($data['mapel'] as $row) : ?>
                                         <tr>
                                             <td><?= $i++ ?></td>
                                             <td class="font-weight-medium">
-                                                <a href="" class="badge text-bg-success tampilModalUbah" style="cursor: pointer;" data-url="<?= BASEURL ?>master/ubahData/Kompkeahlian" data-bs-toggle="modal" data-bs-target="#modal" data-id="<?= $row['id_kompkeahlian'] ?>">
+                                                <a href="" class="badge text-bg-success tampilModalUbah" style="cursor: pointer;" data-url="<?= BASEURL ?>master/ubahData/mapel" data-bs-toggle="modal" data-bs-target="#modal" data-id="<?= $row['id_mapel'] ?>">
                                                     Edit
                                                 </a>
-                                                <a href="<?= BASEURL ?>master/hapusData/kompkeahlian/<?= $row['id_kompkeahlian'] ?>">
+                                                <a href="<?= BASEURL ?>master/hapusData/mapel/<?= $row['id_mapel'] ?>">
                                                     <div class=" font-weight-medium pt-2">
                                                         <div class="badge badge-danger delete" onclick="return confirm('Apakah Anda Yakin Mau Menghapus Data?')">Delete</div>
                                                 </a>
                                             </td>
-                                            <td><?= $row["kode_kompkeahlian"]; ?></td>
-                                            <td><?= $row["nama_kompkeahlian"] ?></td>
+                                            <td><?= $row["kode_mapel"]; ?></td>
+                                            <td><?= $row["nama_mapel"] ?></td>
+                                            <td><?= $row["kurikulum"] ?></td>
                                         </tr>
                                     <?php endforeach; ?>
                                 </tbody>
                             </table>
                         </div>
                     </div>
-                </div>
+                </div>d
             </div>
         </div>
 
@@ -89,31 +91,7 @@
             <div class="modal-dialog modal-dialog-centered">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h1 class="modal-title fs-5" id="modalLabel">Tambah Data Kompetensi Keahlian</h1>
+                        <h1 class="modal-title fs-5" id="modalLabel">Tambah Data</h1>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
-                        <form action="<?= BASEURL ?>master/tambahData/Kompkeahlian" method="post">
-                            <input type="hidden" name="id_kompkeahlian" id="id_kompkeahlian">
-                            <div class="mb-3">
-                                <label for="kode_kompkeahlian" class="form-label">Kode Kompetensi Keahlian</label>
-                                <input type="text" class="form-control" name="kode_kompkeahlian" id="kode_kompkeahlian" required>
-                            </div>
-                            <div class="mb-3">
-                                <label for="nama_kompkeahlian" class="form-label">Nama Kompetensi Keahlian</label>
-                                <input type="text" class="form-control" name="nama_kompkeahlian" id="nama_kompkeahlian" required>
-                            </div>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
-                        <button type="submit" class="btn btn-primary">Tambah Data</button>
-                    </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-
-    </div>
-</div>
-
-<script src="../js/script/master/kompkeahlian.js"></script>

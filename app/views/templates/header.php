@@ -281,15 +281,15 @@
             </a>
             <div class="collapse" id="masterdata">
               <ul class="nav flex-column sub-menu">
-                <li class="nav-item"> <a class="nav-link" href="<?= BASEURL ?>master/guru">Guru</a></li>
-                <li class="nav-item"> <a class="nav-link" href="<?= BASEURL ?>master/karyawan">Karyawan</a></li>
-                <li class="nav-item"> <a class="nav-link" href="<?= BASEURL ?>master/siswa">Siswa</a></li>
-                <li class="nav-item"> <a class="nav-link" href="<?= BASEURL ?>master/kelas">Kelas</a></li>
-                <li class="nav-item"> <a class="nav-link" href="<?= BASEURL ?>master/walikelas">Wali Kelas</a></li>
-                <li class="nav-item"> <a class="nav-link" href="<?= BASEURL ?>master/mapel">Mapel</a></li>
-                <li class="nav-item"> <a class="nav-link" href="<?= BASEURL ?>master/jabatan">Jabatan</a></li>
-                <li class="nav-item"> <a class="nav-link" href="<?= BASEURL ?>master/kompkeahlian">Kompetensi Keahlian</a></li>
-                <li class="nav-item"> <a class="nav-link" href="<?= BASEURL ?>master/progkeahlian">Program Keahlian</a></li>
+                <li class="nav-item"> <a class="nav-link" href="<?= BASEURL ?>guru">Guru</a></li>
+                <li class="nav-item"> <a class="nav-link" href="<?= BASEURL ?>karyawan">Karyawan</a></li>
+                <li class="nav-item"> <a class="nav-link" href="<?= BASEURL ?>siswa">Siswa</a></li>
+                <li class="nav-item"> <a class="nav-link" href="<?= BASEURL ?>kelas">Kelas</a></li>
+                <li class="nav-item"> <a class="nav-link" href="<?= BASEURL ?>walikelas">Wali Kelas</a></li>
+                <li class="nav-item"> <a class="nav-link" href="<?= BASEURL ?>mapel">Mapel</a></li>
+                <li class="nav-item"> <a class="nav-link" href="<?= BASEURL ?>jabatan">Jabatan</a></li>
+                <li class="nav-item"> <a class="nav-link" href="<?= BASEURL ?>kompkeahlian">Kompetensi Keahlian</a></li>
+                <li class="nav-item"> <a class="nav-link" href="<?= BASEURL ?>progkeahlian">Program Keahlian</a></li>
               </ul>
             </div>
           </li>
@@ -302,9 +302,9 @@
             </a>
             <div class="collapse" id="tu">
               <ul class="nav flex-column sub-menu">
-                <li class="nav-item"> <a class="nav-link" href="<?= BASEURL ?>tu/suratmasuk">Surat Masuk</a></li>
-                <li class="nav-item"> <a class="nav-link" href="<?= BASEURL ?>tu/suratkeluar">Surat Keluar</a></li>
-                <li class="nav-item"> <a class="nav-link" href="<?= BASEURL ?>tu/suratpengajuan">Surat Pengajuan</a></li>
+                <li class="nav-item"> <a class="nav-link" href="<?= BASEURL ?>suratmasuk">Surat Masuk</a></li>
+                <li class="nav-item"> <a class="nav-link" href="<?= BASEURL ?>suratkeluar">Surat Keluar</a></li>
+                <li class="nav-item"> <a class="nav-link" href="<?= BASEURL ?>suratpengajuan">Surat Pengajuan</a></li>
               </ul>
             </div>
           </li>

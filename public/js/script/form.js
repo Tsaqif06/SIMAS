@@ -2,8 +2,6 @@ $(document).ready(function () {
 	$(".tampilModalTambah").click(function () {
 		const url = $(this).data("url");
 
-		alert(url);
-
 		if ($("#modal").hasClass("edit")) {
 			$("#modal").removeClass("edit");
 			document.querySelector("#modal form").reset();

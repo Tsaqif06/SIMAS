@@ -1,6 +1,6 @@
 <?php
 
-class Guru extends Controller
+class Progkeahlian extends Controller
 {
     public $model_name = "Master";
 
@@ -8,14 +8,14 @@ class Guru extends Controller
 
     public function index()
     {
-        $data['judul'] = 'SIMAS - Guru';
+        $data['judul'] = 'SIMAS - Progkeahlian';
 
-        $data['guru'] = $this->model("$this->model_name", 'Guru_model')->getAllData();
+        $data['progkeahlian'] = $this->model("$this->model_name", 'Progkeahlian_model')->getAllData();
 
         $this->view('templates/header', $data);
-        $this->view('master/guru/index', $data);
-        $this->view('master/guru/tambah', $data);
-        $this->view('master/guru/edit', $data);
+        $this->view('master/progkeahlian/index', $data);
+        $this->view('master/progkeahlian/tambah', $data);
+        $this->view('master/progkeahlian/edit', $data);
         $this->view('templates/footer');
     }
 
@@ -24,12 +24,12 @@ class Guru extends Controller
     public function tambahData()
     {
 
-        if ($this->model("$this->model_name", "Guru_model")->tambahData($_POST) > 0) {
+        if ($this->model("$this->model_name", "Progkeahlian_model")->tambahData($_POST) > 0) {
             Flasher::setFlash('BERHASIL', 'Ditambahkan', 'success');
         } else {
             Flasher::setFlash('GAGAL', 'Ditambahkan', 'danger');
         }
-        header("Location: " . BASEURL . "guru");
+        header("Location: " . BASEURL . "progkeahlian");
         exit;
     }
 
@@ -37,12 +37,12 @@ class Guru extends Controller
 
     public function hapusData($id)
     {
-        if ($this->model("$this->model_name", "Guru_model")->hapusData($id) > 0) {
+        if ($this->model("$this->model_name", "Progkeahlian_model")->hapusData($id) > 0) {
             Flasher::setFlash('BERHASIL', 'Dihapus', 'success');
         } else {
             Flasher::setFlash('GAGAL', 'Dihapus', 'danger');
         }
-        header("Location: " . BASEURL . "guru");
+        header("Location: " . BASEURL . "progkeahlian");
         exit;
     }
 
@@ -50,17 +50,17 @@ class Guru extends Controller
 
     public function getUbahData($model)
     {
-        echo json_encode($this->model("$this->model_name", "Guru_model")->getDataById($_POST["id_guru"]));
+        echo json_encode($this->model("$this->model_name", "Progkeahlian_model")->getDataById($_POST["id_progkeahlian"]));
     }
 
     public function ubahData($model)
     {
-        if ($this->model("$this->model_name", "Guru_model")->ubahData($_POST) > 0) {
+        if ($this->model("$this->model_name", "Progkeahlian_model")->ubahData($_POST) > 0) {
             Flasher::setFlash('BERHASIL', 'Diubah', 'success');
         } else {
             Flasher::setFlash('GAGAL', 'Diubah', 'danger');
         }
-        header("Location: " . BASEURL . "guru");
+        header("Location: " . BASEURL . "progkeahlian");
         exit;
     }
 }

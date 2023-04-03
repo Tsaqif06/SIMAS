@@ -1,4 +1,4 @@
-<form action="<?= BASEURL ?>master/tambahData/Karyawan" method="post" enctype="multipart/form-data">
+<form action="<?= BASEURL ?>karyawan/tambahData" method="post" enctype="multipart/form-data">
     <input type="hidden" name="id_karyawan" id="id_karyawan">
     <div class="mb-3">
         <label for="nama_lengkap" class="form-label">Nama Lengkap</label>
