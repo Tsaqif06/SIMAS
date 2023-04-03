@@ -101,4 +101,20 @@ class TU extends Controller
         header("Location: " . BASEURL . "tu/suratpengajuan");
         exit;
     }
+
+    // Hitung Notifikasi //
+
+    public function notifikasi()
+    {
+        if (isset($_POST['user']) && $_POST['user'] == "admin") {
+            switch ($_POST['method']) {
+                case 'get':
+                    echo json_encode(Notif::count());
+                    break;
+                case 'read':
+                    Notif::readAll();
+                    break;
+            }
+        }
+    }
 }

@@ -49,26 +49,13 @@
           </li>
         </ul>
         <ul class="navbar-nav navbar-nav-right">
-          <li class="nav-item dropdown">
+          <li class="nav-item dropdown" id="notification">
             <a class="nav-link count-indicator dropdown-toggle" id="notificationDropdown" href="#" data-toggle="dropdown">
               <i class="icon-bell mx-0"></i>
-              <span class="count"></span>
+              <span class="count d-none"></span>
             </a>
             <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list" aria-labelledby="notificationDropdown">
               <p class="mb-0 font-weight-normal float-left dropdown-header">Notifications</p>
-              <a class="dropdown-item preview-item">
-                <div class="preview-thumbnail">
-                  <div class="preview-icon bg-info">
-                    <i class="ti-email mx-0"></i>
-                  </div>
-                </div>
-                <div class="preview-item-content">
-                  <h6 class="preview-subject font-weight-normal">Pengajuan Baru</h6>
-                  <p class="font-weight-light small-text mb-0 text-muted">
-                    1 Pengajuan Surat Telah Diajukan
-                  </p>
-                </div>
-              </a>
             </div>
           </li>
           <li class="nav-item nav-profile dropdown">
