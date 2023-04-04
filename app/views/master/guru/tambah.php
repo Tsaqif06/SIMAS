@@ -1,4 +1,4 @@
-<form action="<?= BASEURL ?>guru/tambahData" style="display: none" method="post">
+<form action="<?= BASEURL ?>guru/tambahData" method="post">
     <div class="mb-3">
         <label for="nama_lengkap" class="form-label">Nama Lengkap</label>
         <input type="text" class="form-control" name="nama_lengkap" id="nama_lengkap" required>

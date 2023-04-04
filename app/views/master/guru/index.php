@@ -34,7 +34,7 @@
 
         <div class="row">
             <div class="col-lg-6">
-                <button type="button" class="btn btn-primary my-3 tampilModalTambah" data-url="<?= BASEURL ?>guru/tambahData" data-bs-toggle=" modal" data-bs-target="#modal">
+                <button type="button" class="btn btn-primary my-3 tampilModalTambah" data-url="<?= BASEURL ?>guru/tambahData" data-bs-toggle="modal" data-bs-target="#modal">
                     Tambah Data Guru
                 </button>
             </div>
