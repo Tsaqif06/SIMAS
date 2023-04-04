@@ -66,7 +66,7 @@
                                                 <a href="" class="badge text-bg-success tampilModalUbah" style="cursor: pointer;" data-bs-toggle="modal" data-bs-target="#modal" data-id="<?= $row['id'] ?>">
                                                     Edit
                                                 </a>
-                                                <a href="<?= BASEURL ?>tu/hapusData/suratkeluar/<?= $row['id'] ?>">
+                                                <a href="<?= BASEURL ?>suratkeluar/hapusData<?= $row['id'] ?>">
                                                     <div class="font-weight-medium pt-2">
                                                         <div class="badge badge-danger delete" onclick="return confirm('Apakah Anda Yakin Mau Menghapus Data?')">Delete</div>
                                                 </a>
@@ -99,39 +99,3 @@
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
-                        <form action="<?= BASEURL ?>tu/tambahData/suratkeluar" method="post">
-                            <input type="hidden" name="id" id="id">
-                            <div class="mb-3">
-                                <label for="nomor_berkas" class="form-label">Nomor Berkas</label>
-                                <input type="text" class="form-control" name="nomor_berkas" id="nomor_berkas" required>
-                            </div>
-                            <div class="mb-3">
-                                <label for="alamat_penerima" class="form-label">Alamat Penerima</label>
-                                <input type="text" class="form-control" name="alamat_penerima" id="alamat_penerima" required>
-                            </div>
-                            <div class="mb-3">
-                                <label for="tanggal" class="form-label">Tanggal</label>
-                                <input type="text" class="form-control" name="tanggal" id="tanggal" required>
-                            </div>
-                            <div class="mb-3">
-                                <label for="perihal" class="form-label">Perihal</label>
-                                <input type="text" class="form-control" name="perihal" id="perihal" required>
-                            </div>
-                            <div class="mb-3">
-                                <label for="no_petunjuk" class="form-label">Nomor Petunjuk</label>
-                                <input type="text" class="form-control" name="no_petunjuk" id="no_petunjuk" required>
-                            </div>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
-                        <button type="submit" class="btn btn-primary">Tambah Data</button>
-                    </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-
-    </div>
-</div>
-
-<script src="../js/script/tu/suratkeluar.js"></script>
