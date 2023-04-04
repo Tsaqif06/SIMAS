@@ -14,9 +14,7 @@ class Suratpengajuan extends Controller
 
         $this->view('templates/header', $data);
         $this->view('tu/suratpengajuan/index', $data);
-        $this->view('tu/suratpengajuan/tambah', $data);
-        $this->view('tu/suratpengajuan/edit', $data);
-        $this->view('templates/footer');
+        $this->view('templates/footerwm');
     }
 
     // Tambah Data //

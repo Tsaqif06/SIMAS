@@ -18,6 +18,7 @@ $(document).ready(function () {
 
 	$(".tampilModalUbah").click(function () {
 		const url = $(this).data("url");
+		console.log(url);
 		$("#modal").addClass("edit");
 		$("#modalLabel").html("Edit Data");
 		$(".modal-footer button[type=submit]").html("Ubah Data");
@@ -35,12 +36,9 @@ $(document).ready(function () {
 			dataType: "json",
 			success: function (data) {
 				for (key of Object.keys(data)) {
-					// $(`.editForm #${key}`).val(data[key]);
-					// console.log(`$(.editForm #${key}).val(${data[key]});`);
-					// console.log(`$(.editForm #${key}).value = ${data[key]};`);
-					// document.querySelectorAll(`#${key}`).value = data[key];
-					// document.querySelector(`.editForm #${key}`).value = data[key];
-					// document.querySelectorAll(`#${key}`)[1].setAttribute("value", data[key]);
+					console.log(
+						`document.querySelectorAll(#${key})[1].value = ${data[key]};`
+					);
 					document.querySelectorAll(`#${key}`)[1].value = data[key];
 				}
 			},

@@ -60,10 +60,10 @@
                                         <tr>
                                             <td><?= $i++ ?></td>
                                             <td class="font-weight-medium">
-                                                <a href="" class="badge text-bg-success tampilModalUbah" style="cursor: pointer;" data-bs-toggle="modal" data-bs-target="#modal" data-id="<?= $row['id_kelas'] ?>">
+                                                <a href="" class="badge text-bg-success tampilModalUbah" data-url="<?= BASEURL ?>kelas/ubahData" style="cursor: pointer;" data-bs-toggle="modal" data-bs-target="#modal" data-id="<?= $row['id_kelas'] ?>">
                                                     Edit
                                                 </a>
-                                                <a href="<?= BASEURL ?>master/hapusData/kelas/<?= $row['id_kelas'] ?>">
+                                                <a href="<?= BASEURL ?>kelas/hapusData/<?= $row['id_kelas'] ?>">
                                                     <div class=" font-weight-medium pt-2">
                                                         <div class="badge badge-danger delete" onclick="return confirm('Apakah Anda Yakin Mau Menghapus Data?')">Delete</div>
                                                 </a>

@@ -32,7 +32,7 @@
         </div>
 
         <div class="row">
-            <form action="<?= BASEURL ?>suratpengajuan/ajukanSurat" method="post">
+            <form action="<?= BASEURL ?>suratpengajuan/tambahData" method="post">
                 <div class="form-content">
                     <div class="col-lg-8 col-12 form-body">
                         <div class="mb-3">
