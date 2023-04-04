@@ -50,7 +50,7 @@ class Walikelas extends Controller
 
     public function getUbahData()
     {
-        echo json_encode($this->model("$this->model_name", "Walikelas_model")->getDataById($_POST["id_walikelas"]));
+        echo json_encode($this->model("$this->model_name", "Walikelas_model")->getDataById($_POST["id"]));
     }
 
     public function ubahData()

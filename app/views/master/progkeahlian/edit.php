@@ -1,16 +1,12 @@
-<form action="<?= BASEURL ?>mapel/ubahData" method="post">
+<form action="<?= BASEURL ?>progkeahlian/ubahData" method="post">
     <div class="edit">
-        <input type="text" name="id_mapel" id="id_mapel">
+        <input type="hidden" name="id_programkeahlian" id="id_programkeahlian">
         <div class="mb-3">
-            <label for="kode_mapel" class="form-label">Kode Mapel</label>
-            <input type="text" class="form-control" name="kode_mapel" id="kode_mapel" required>
+            <label for="nama_jurusan" class="form-label">Nama Jurusan</label>
+            <input type="text" class="form-control" name="nama_jurusan" id="nama_jurusan" required>
         </div>
         <div class="mb-3">
-            <label for="nama_mapel" class="form-label">Nama Mapel</label>
-            <input type="text" class="form-control" name="nama_mapel" id="nama_mapel" required>
-        </div>
-        <div class="mb-3">
-            <label for="kurikulum" class="form-label">Kurikulum</label>
-            <input type="text" class="form-control" name="kurikulum" id="kurikulum" required>
+            <label for="program_keahlian" class="form-label">Program Keahlian</label>
+            <input type="text" class="form-control" name="program_keahlian" id="program_keahlian" required>
         </div>
     </div>

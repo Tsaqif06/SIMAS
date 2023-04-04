@@ -50,7 +50,7 @@ class Mapel extends Controller
 
     public function getUbahData()
     {
-        echo json_encode($this->model("$this->model_name", "Mapel_model")->getDataById($_POST["id_mapel"]));
+        echo json_encode($this->model("$this->model_name", "Mapel_model")->getDataById($_POST["id"]));
     }
 
     public function ubahData()

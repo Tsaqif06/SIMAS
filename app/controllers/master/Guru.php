@@ -50,7 +50,7 @@ class Guru extends Controller
 
     public function getUbahData()
     {
-        echo json_encode($this->model("$this->model_name", "Guru_model")->getDataById($_POST["id_guru"]));
+        echo json_encode($this->model("$this->model_name", "Guru_model")->getDataById($_POST["id"]));
     }
 
     public function ubahData()

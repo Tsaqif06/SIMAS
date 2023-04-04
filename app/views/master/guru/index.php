@@ -73,7 +73,7 @@
                                         <tr>
                                             <td><?= $i++ ?></td>
                                             <td class="font-weight-medium">
-                                                <a href="" class="badge text-bg-success tampilModalUbah" style="cursor: pointer;" data-url="<?= BASEURL ?>master/ubahData/Guru" data-bs-toggle="modal" data-bs-target="#modal" data-id="<?= $row['id_guru'] ?>">
+                                                <a href="" class="badge text-bg-success tampilModalUbah" style="cursor: pointer;" data-url="<?= BASEURL ?>guru/ubahData" data-bs-toggle="modal" data-bs-target="#modal" data-id="<?= $row['id_guru'] ?>">
                                                     Edit
                                                 </a>
                                                 <a href="<?= BASEURL ?>master/hapusData/Guru/<?= $row['id_guru'] ?>">

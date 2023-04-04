@@ -1,5 +1,6 @@
 <form action="<?= BASEURL ?>guru/tambahData" method="post">
     <div class="tambah">
+        <input type="hidden" name="id_guru" id="id_guru">
         <div class="mb-3">
             <label for="nama_lengkap" class="form-label">Nama Lengkap</label>
             <input type="text" class="form-control" name="nama_lengkap" id="nama_lengkap" required>

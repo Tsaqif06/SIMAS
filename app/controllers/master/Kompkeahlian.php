@@ -50,7 +50,7 @@ class Kompkeahlian extends Controller
 
     public function getUbahData()
     {
-        echo json_encode($this->model("$this->model_name", "Kompkeahlian_model")->getDataById($_POST["id_Kompkeahlian"]));
+        echo json_encode($this->model("$this->model_name", "Kompkeahlian_model")->getDataById($_POST["id"]));
     }
 
     public function ubahData()

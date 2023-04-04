@@ -50,7 +50,7 @@ class Progkeahlian extends Controller
 
     public function getUbahData()
     {
-        echo json_encode($this->model("$this->model_name", "Progkeahlian_model")->getDataById($_POST["id_progkeahlian"]));
+        echo json_encode($this->model("$this->model_name", "Progkeahlian_model")->getDataById($_POST["id"]));
     }
 
     public function ubahData()

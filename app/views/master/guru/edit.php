@@ -7,7 +7,7 @@
         </div>
         <div class="mb-3">
             <label for="jenis_kelamin" class="form-label">Jenis Kelamin</label>
-            <select class="form-select" name="jenis_kelamin" id="jenis_kelamin" required>
+            <select class="form-select" name="jenis_kelamin" id="jenis_kelamin" value="L" required>
                 <option selected>Open this select menu</option>
                 <option value="P">P</option>
                 <option value="L">L</option>
