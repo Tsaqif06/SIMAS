@@ -9,7 +9,9 @@ $(document).ready(function () {
 		$("#modalLabel").html("Tambah Data");
 		$("button[type=submit]").html("Tambah Data");
 		$(".modal-body form").attr("action", `${url}`);
-		console.log(url);
+
+		$(".modal-body .tambah").show();
+		$(".modal-body .edit").hide();
 	});
 
 	$(".tampilModalUbah").click(function () {
@@ -18,6 +20,9 @@ $(document).ready(function () {
 		$("#modalLabel").html("Edit Data Karyawan");
 		$(".modal-footer button[type=submit]").html("Ubah Data");
 		$(".modal-body form").attr("action", `${url}`);
+
+		$(".modal-body .tambah").hide();
+		$(".modal-body .edit").show();
 
 		const id = $(this).data("id");
 
