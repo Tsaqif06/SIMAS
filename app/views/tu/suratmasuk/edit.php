@@ -1,4 +1,4 @@
-<form action="<?= BASEURL ?>suratmasuk/tambahData" method="post">
+<form action="<?= BASEURL ?>suratmasuk/ubahData" method="post">
     <div class="edit">
         <input type="hidden" name="id" id="id">
         <div class="mb-3">

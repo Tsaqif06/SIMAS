@@ -1,5 +1,6 @@
 <form action="<?= BASEURL ?>siswa/tambahData" method="post">
     <div class="tambah">
+        <input type="hidden" name="id_siswa" id="id_siswa">
         <div class="mb-3">
             <label for="nisn" class="form-label">NISN</label>
             <input type="text" class="form-control" name="nisn" id="nisn" required>

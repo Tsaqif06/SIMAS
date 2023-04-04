@@ -334,12 +334,12 @@
             </div>
           </li>
           <li class="nav-item">
-            <a class="nav-link" data-toggle="collapse" href="#kurikulum" aria-expanded="false" aria-controls="kurikulum">
+            <a class="nav-link" data-toggle="collapse" href="#kurikulumpage" aria-expanded="false" aria-controls="kurikulum">
               <i class="icon-grid-2 menu-icon"></i>
               <span class="menu-title">Kurikulum</span>
               <i class="menu-arrow"></i>
             </a>
-            <div class="collapse" id="kurikulum">
+            <div class="collapse" id="kurikulumpage">
               <ul class="nav flex-column sub-menu">
                 <li class="nav-item"> <a class="nav-link" href="isikurikulum.html">kosong</a></li>
               </ul>

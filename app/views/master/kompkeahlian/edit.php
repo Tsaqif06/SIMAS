@@ -1,4 +1,4 @@
-<form action="<?= BASEURL ?>kompkeahlian/tambahData" method="post">
+<form action="<?= BASEURL ?>kompkeahlian/ubahData" method="post">
     <div class="edit">
         <input type="hidden" name="id_kompkeahlian" id="id_kompkeahlian">
         <div class="mb-3">

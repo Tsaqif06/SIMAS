@@ -6,7 +6,6 @@ class Home extends Controller
         $data['judul'] = 'SIMAS - Home';
         $this->view('templates/header', $data);
         $this->view('home/index');
-        $this->view('templates/footer');
+        $this->view('templates/footerwm');
     }
-
 }

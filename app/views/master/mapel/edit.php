@@ -1,6 +1,6 @@
 <form action="<?= BASEURL ?>mapel/ubahData" method="post">
     <div class="edit">
-        <input type="text" name="id_mapel" id="id_mapel">
+        <input type="hidden" name="id_mapel" id="id_mapel">
         <div class="mb-3">
             <label for="kode_mapel" class="form-label">Kode Mapel</label>
             <input type="text" class="form-control" name="kode_mapel" id="kode_mapel" required>

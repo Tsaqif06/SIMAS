@@ -1,5 +1,6 @@
-<form action="<?= BASEURL ?>tu/tambahData/suratmasuk" method="post">
+<form action="<?= BASEURL ?>suratmasuk/tambahData" method="post">
     <div class="tambah">
+        <input type="hidden" name="id" id="id">
         <div class="mb-3">
             <label for="nomor_berkas" class="form-label">Nomor Berkas</label>
             <input type="text" class="form-control" name="nomor_berkas" id="nomor_berkas" required>

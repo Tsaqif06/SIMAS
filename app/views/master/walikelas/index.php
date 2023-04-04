@@ -34,7 +34,7 @@
 
         <div class="row">
             <div class="col-lg-6">
-                <button type="button" class="btn btn-primary my-3 tampilModalTambah" data-bs-toggle="modal" data-bs-target="#modal">
+                <button type="button" class="btn btn-primary my-3 tampilModalTambah" data-url="<?= BASEURL ?>walikelas/tambahData" data-bs-toggle="modal" data-bs-target="#modal">
                     Tambah Data Wali Kelas
                 </button>
             </div>
@@ -60,10 +60,10 @@
                                         <tr>
                                             <td><?= $i++ ?></td>
                                             <td class="font-weight-medium">
-                                                <a href="" class="badge text-bg-success tampilModalUbah" style="cursor: pointer;" data-bs-toggle="modal" data-bs-target="#modal" data-id="<?= $row['id_walikelas'] ?>">
+                                                <a href="" class="badge text-bg-success tampilModalUbah" style="cursor: pointer;" data-url="<?= BASEURL ?>walikelas/ubahData" data-bs-toggle="modal" data-bs-target="#modal" data-id="<?= $row['id_walikelas'] ?>">
                                                     Edit
                                                 </a>
-                                                <a href="<?= BASEURL ?>master/hapusData/walikelas/<?= $row['id_walikelas'] ?>">
+                                                <a href="<?= BASEURL ?>walikelas/hapusData/<?= $row['id_walikelas'] ?>">
                                                     <div class=" font-weight-medium pt-2">
                                                         <div class="badge badge-danger delete" onclick="return confirm('Apakah Anda Yakin Mau Menghapus Data?')">Delete</div>
                                                 </a>

@@ -48,12 +48,12 @@ class Kompkeahlian extends Controller
 
     // Edit Data //
 
-    public function getUbahData($model)
+    public function getUbahData()
     {
-        echo json_encode($this->model("$this->model_name", "Kompkeahlian_model")->getDataById($_POST["id_Kompkeahlian"]));
+        echo json_encode($this->model("$this->model_name", "Kompkeahlian_model")->getDataById($_POST["id"]));
     }
 
-    public function ubahData($model)
+    public function ubahData()
     {
         if ($this->model("$this->model_name", "Kompkeahlian_model")->ubahData($_POST) > 0) {
             Flasher::setFlash('BERHASIL', 'Diubah', 'success');

@@ -50,7 +50,7 @@ class Suratkeluar extends Controller
 
     public function getUbahData($model)
     {
-        echo json_encode($this->model("$this->model_name", "Suratkeluar_model")->getDataById($_POST["id_suratkeluar"]));
+        echo json_encode($this->model("$this->model_name", "Suratkeluar_model")->getDataById($_POST["id"]));
     }
 
     public function ubahData($model)

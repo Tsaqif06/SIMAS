@@ -13,8 +13,8 @@ class Suratpengajuan extends Controller
         $data['suratpengajuan'] = $this->model("$this->model_name", 'Suratpengajuan_model')->getAllData();
 
         $this->view('templates/header', $data);
-        $this->view('suratpengajuan/index', $data);
-        $this->view('templates/footer');
+        $this->view('tu/suratpengajuan/index', $data);
+        $this->view('templates/footerwm');
     }
 
     // Tambah Data //
