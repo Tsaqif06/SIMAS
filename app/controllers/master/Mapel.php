@@ -48,12 +48,12 @@ class Mapel extends Controller
 
     // Edit Data //
 
-    public function getUbahData($model)
+    public function getUbahData()
     {
         echo json_encode($this->model("$this->model_name", "Mapel_model")->getDataById($_POST["id_mapel"]));
     }
 
-    public function ubahData($model)
+    public function ubahData()
     {
         if ($this->model("$this->model_name", "Mapel_model")->ubahData($_POST) > 0) {
             Flasher::setFlash('BERHASIL', 'Diubah', 'success');

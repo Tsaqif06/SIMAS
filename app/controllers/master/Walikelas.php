@@ -48,12 +48,12 @@ class Walikelas extends Controller
 
     // Edit Data //
 
-    public function getUbahData($model)
+    public function getUbahData()
     {
         echo json_encode($this->model("$this->model_name", "Walikelas_model")->getDataById($_POST["id_walikelas"]));
     }
 
-    public function ubahData($model)
+    public function ubahData()
     {
         if ($this->model("$this->model_name", "Walikelas_model")->ubahData($_POST) > 0) {
             Flasher::setFlash('BERHASIL', 'Diubah', 'success');
