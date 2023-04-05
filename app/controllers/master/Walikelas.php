@@ -14,8 +14,7 @@ class Walikelas extends Controller
 
         $this->view('templates/header', $data);
         $this->view('master/walikelas/index', $data);
-        $this->view('master/walikelas/tambah', $data);
-        $this->view('master/walikelas/edit', $data);
+        $this->view('master/walikelas/form', $data);
         $this->view('templates/footer');
     }
 

@@ -14,8 +14,7 @@ class Kelas extends Controller
 
         $this->view('templates/header', $data);
         $this->view('master/kelas/index', $data);
-        $this->view('master/kelas/tambah', $data);
-        $this->view('master/kelas/edit', $data);
+        $this->view('master/kelas/form', $data);
         $this->view('templates/footer');
     }
 

@@ -14,8 +14,7 @@ class Guru extends Controller
 
         $this->view('templates/header', $data);
         $this->view('master/guru/index', $data);
-        $this->view('master/guru/tambah', $data);
-        $this->view('master/guru/edit', $data);
+        $this->view('master/guru/form', $data);
         $this->view('templates/footer');
     }
 

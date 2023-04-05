@@ -14,8 +14,7 @@ class Progkeahlian extends Controller
 
         $this->view('templates/header', $data);
         $this->view('master/progkeahlian/index', $data);
-        $this->view('master/progkeahlian/tambah', $data);
-        $this->view('master/progkeahlian/edit', $data);
+        $this->view('master/progkeahlian/form', $data);
         $this->view('templates/footer');
     }
 

@@ -2,45 +2,47 @@ $(document).ready(function () {
 	const BASEURL = window.location.href;
 
 	$(".tampilModalTambah").click(function () {
-		const url = $(this).data("url");
-
 		if ($("#modal").hasClass("edit")) {
 			$("#modal").removeClass("edit");
 			document.querySelector("#modal form").reset();
 		}
 		$("#modalLabel").html("Tambah Data");
 		$("button[type=submit]").html("Tambah Data");
-		$(".modal-body form").attr("action", `${url}`);
-
-		$(".modal-body .tambah").show();
-		$(".modal-body .edit").hide();
+		$(".modal-body form").attr("action", `${BASEURL}/tambahData`);
 	});
 
-	$(".tampilModalUbah").click(function () {
-		const url = $(this).data("url");
-		console.log(url);
-		$("#modal").addClass("edit");
-		$("#modalLabel").html("Edit Data");
-		$(".modal-footer button[type=submit]").html("Ubah Data");
-		$(".modal-body form").attr("action", `${url}`);
+	function initEditEvent() {
+		$(".tampilModalUbah").click(function () {
+			$("#modal").addClass("edit");
+			$("#modalLabel").html("Edit Data");
+			$(".modal-footer button[type=submit]").html("Ubah Data");
+			$(".modal-body form").attr("action", `${BASEURL}/ubahData`);
 
-		$(".modal-body .tambah").hide();
-		$(".modal-body .edit").show();
+			const data_id = $(this).data("id");
 
-		const data_id = $(this).data("id");
-
-		$.ajax({
-			url: `${BASEURL}/getUbahData`,
-			data: { id: data_id },
-			method: "post",
-			dataType: "json",
-			success: function (data) {
-				for (key of Object.keys(data)) {
-					document.querySelectorAll(`#${key}`)[1].value = data[key];
-				}
-			},
+			$.ajax({
+				url: `${BASEURL}/getUbahData`,
+				data: { id: data_id },
+				method: "post",
+				dataType: "json",
+				success: function (data) {
+					console.table(data);
+					for (key of Object.keys(data)) {
+						$(`#${key}`).val(data[key]);
+					}
+				},
+			});
 		});
-	});
+	}
+
+	initEditEvent();
+
+	for (let btn of document.querySelectorAll(".paginate_button")) {
+		btn.addEventListener("click", () => {
+			console.log("test");
+			initEditEvent();
+		});
+	}
 
 	$(".batal").click(function () {
 		document.querySelector("#modal form").reset();

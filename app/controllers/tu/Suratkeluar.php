@@ -14,8 +14,7 @@ class Suratkeluar extends Controller
 
         $this->view('templates/header', $data);
         $this->view('tu/suratkeluar/index', $data);
-        $this->view('tu/suratkeluar/tambah', $data);
-        $this->view('tu/suratkeluar/edit', $data);
+        $this->view('tu/suratkeluar/form', $data);
         $this->view('templates/footer');
     }
 
@@ -48,12 +47,12 @@ class Suratkeluar extends Controller
 
     // Edit Data //
 
-    public function getUbahData($model)
+    public function getUbahData()
     {
         echo json_encode($this->model("$this->model_name", "Suratkeluar_model")->getDataById($_POST["id"]));
     }
 
-    public function ubahData($model)
+    public function ubahData()
     {
         if ($this->model("$this->model_name", "Suratkeluar_model")->ubahData($_POST) > 0) {
             Flasher::setFlash('BERHASIL', 'Diubah', 'success');

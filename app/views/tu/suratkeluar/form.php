@@ -1,5 +1,4 @@
-<form action="<?= BASEURL ?>suratkeluar/ubahData" method="post">
-    <div class="edit">
+    <form action="<?= BASEURL ?>suratkeluar/tambahData" method="post">
         <input type="hidden" name="id" id="id">
         <div class="mb-3">
             <label for="nomor_berkas" class="form-label">Nomor Berkas</label>
@@ -21,4 +20,3 @@
             <label for="no_petunjuk" class="form-label">Nomor Petunjuk</label>
             <input type="text" class="form-control" name="no_petunjuk" id="no_petunjuk" required>
         </div>
-    </div>

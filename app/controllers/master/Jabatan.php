@@ -14,8 +14,7 @@ class Jabatan extends Controller
 
         $this->view('templates/header', $data);
         $this->view('master/jabatan/index', $data);
-        $this->view('master/jabatan/tambah', $data);
-        $this->view('master/jabatan/edit', $data);
+        $this->view('master/jabatan/form', $data);
         $this->view('templates/footer');
     }
 

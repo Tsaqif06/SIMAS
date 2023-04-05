@@ -14,8 +14,7 @@ class Mapel extends Controller
 
         $this->view('templates/header', $data);
         $this->view('master/mapel/index', $data);
-        $this->view('master/mapel/tambah', $data);
-        $this->view('master/mapel/edit', $data);
+        $this->view('master/mapel/form', $data);
         $this->view('templates/footer');
     }
 

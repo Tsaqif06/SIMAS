@@ -14,8 +14,7 @@ class Karyawan extends Controller
 
         $this->view('templates/header', $data);
         $this->view('master/karyawan/index', $data);
-        $this->view('master/karyawan/tambah', $data);
-        $this->view('master/karyawan/edit', $data);
+        $this->view('master/karyawan/form', $data);
         $this->view('templates/footer');
     }
 

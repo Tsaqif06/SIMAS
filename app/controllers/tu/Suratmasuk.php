@@ -14,8 +14,7 @@ class Suratmasuk extends Controller
 
         $this->view('templates/header', $data);
         $this->view('tu/suratmasuk/index', $data);
-        $this->view('tu/suratmasuk/tambah', $data);
-        $this->view('tu/suratmasuk/edit', $data);
+        $this->view('tu/suratmasuk/form', $data);
         $this->view('templates/footer');
     }
 
@@ -48,12 +47,12 @@ class Suratmasuk extends Controller
 
     // Edit Data //
 
-    public function getUbahData($model)
+    public function getUbahData()
     {
         echo json_encode($this->model("$this->model_name", "Suratmasuk_model")->getDataById($_POST["id"]));
     }
 
-    public function ubahData($model)
+    public function ubahData()
     {
         if ($this->model("$this->model_name", "Suratmasuk_model")->ubahData($_POST) > 0) {
             Flasher::setFlash('BERHASIL', 'Diubah', 'success');

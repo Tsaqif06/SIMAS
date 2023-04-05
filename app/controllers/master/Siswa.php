@@ -14,8 +14,7 @@ class Siswa extends Controller
 
         $this->view('templates/header', $data);
         $this->view('master/siswa/index', $data);
-        $this->view('master/siswa/tambah', $data);
-        $this->view('master/siswa/edit', $data);
+        $this->view('master/siswa/form', $data);
         $this->view('templates/footer');
     }
 

@@ -14,8 +14,7 @@ class Kompkeahlian extends Controller
 
         $this->view('templates/header', $data);
         $this->view('master/kompkeahlian/index', $data);
-        $this->view('master/kompkeahlian/tambah', $data);
-        $this->view('master/kompkeahlian/edit', $data);
+        $this->view('master/kompkeahlian/form', $data);
         $this->view('templates/footer');
     }
 
