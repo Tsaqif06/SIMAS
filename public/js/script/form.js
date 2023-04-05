@@ -36,9 +36,6 @@ $(document).ready(function () {
 			dataType: "json",
 			success: function (data) {
 				for (key of Object.keys(data)) {
-					console.log(
-						`document.querySelectorAll(#${key})[1].value = ${data[key]};`
-					);
 					document.querySelectorAll(`#${key}`)[1].value = data[key];
 				}
 			},
