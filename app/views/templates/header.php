@@ -52,27 +52,21 @@
           </li>
         </ul>
         <ul class="navbar-nav navbar-nav-right">
-          <li class="nav-item dropdown" id="notification">
-            <a class="nav-link count-indicator dropdown-toggle" id="notificationDropdown" href="#" data-toggle="dropdown">
-              <i class="icon-bell mx-0"></i>
-              <span class="count d-none"></span>
-            </a>
-            <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list" aria-labelledby="notificationDropdown">
-              <p class="mb-0 font-weight-normal float-left dropdown-header">Notifications</p>
-            </div>
-          </li>
           <li class="nav-item nav-profile dropdown">
             <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" id="profileDropdown">
-              <img src="images/faces/face28.jpg" alt="profile" />
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" fill="currentColor" class="bi bi-person-circle" viewBox="0 0 16 16">
+                <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z" />
+                <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z" />
+              </svg>
             </a>
             <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="profileDropdown">
-              <a class="dropdown-item">
-                <i class="ti-settings text-primary"></i>
-                Settings
+              <a class="dropdown-item" data-toggle="modal" data-target="#profil">
+                <i class="ti-user text-primary"></i>
+                Profil
               </a>
-              <a class="dropdown-item">
+              <a class="dropdown-item" href="login/login.html">
                 <i class="ti-power-off text-primary"></i>
-                Logout
+                Keluar
               </a>
             </div>
           </li>
@@ -385,3 +379,43 @@
 
         </ul>
       </nav>
+
+      <!-- PROFIL KONTEN-->
+      <div id="profil" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+          <!-- Modal content-->
+          <div class="modal-content">
+            <div class="modal-header">
+              <h4 class="modal-title">PROFIL</h4>
+            </div>
+            <div class="modal-body">
+              <form>
+                <div class="info">
+                  <div class="info_data">
+                    <div class="data">
+                      <h4>Nama Pengguna</h4>
+                      <p>Shiero</p>
+                    </div>
+                    <br>
+                    <div class="data">
+                      <h4>Email</h4>
+                      <p>alex@gmail.com</p>
+                    </div>
+                    <br>
+                    <div class="data">
+                      <h4>Kata Sandi</h4>
+                      <span data-hidden-value="12345678">
+                        <span class="display">********</span><br>
+                        <a class="toggle">Lihat Sandi</a>
+                      </span>
+                    </div>
+                  </div>
+                </div>
+              </form>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-primary" data-dismiss="modal">Keluar</button>
+            </div>
+          </div>
+        </div>
+      </div>

@@ -26,10 +26,9 @@ $(document).ready(function () {
 				method: "post",
 				dataType: "json",
 				success: function (data) {
-					console.table(data);
-					for (key of Object.keys(data)) {
+					Object.keys(data).forEach((key) => {
 						$(`#${key}`).val(data[key]);
-					}
+					});
 				},
 			});
 		});
@@ -37,12 +36,11 @@ $(document).ready(function () {
 
 	initEditEvent();
 
-	for (let btn of document.querySelectorAll(".paginate_button")) {
-		btn.addEventListener("click", () => {
-			console.log("test");
+	document.querySelectorAll(".paginate_button").forEach((btn) => {
+		btn.addEventListener("click", (e) => {
 			initEditEvent();
 		});
-	}
+	});
 
 	$(".batal").click(function () {
 		document.querySelector("#modal form").reset();

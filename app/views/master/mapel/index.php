@@ -62,11 +62,11 @@
                                             <td><?= $i++ ?></td>
                                             <td class="font-weight-medium">
                                                 <a href="" class="badge text-bg-success tampilModalUbah" style="cursor: pointer;" data-url="<?= BASEURL ?>mapel/ubahData" data-bs-toggle="modal" data-bs-target="#modal" data-id="<?= $row['id_mapel'] ?>">
-                                                    Edit
+                                                    <i class="ti ti-pencil"></i>
                                                 </a>
                                                 <a href="<?= BASEURL ?>mapel/hapusData/<?= $row['id_mapel'] ?>">
                                                     <div class=" font-weight-medium pt-2">
-                                                        <div class="badge badge-danger delete" onclick="return confirm('Apakah Anda Yakin Mau Menghapus Data?')">Delete</div>
+                                                        <div class="badge badge-danger delete" onclick="return confirm('Apakah Anda Yakin Mau Menghapus Data?')"><i class="ti ti-trash"></i></div>
                                                 </a>
                                             </td>
                                             <td><?= $row["kode_mapel"]; ?></td>
