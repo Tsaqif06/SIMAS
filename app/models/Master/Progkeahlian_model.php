@@ -3,6 +3,10 @@
 class Progkeahlian_model
 {
     private $table = 'masterprogramkeahlian';
+    private $fields = [
+        'nama_jurusan',
+        'program_keahlian'
+    ];
     private $db;
 
     public function __construct()
@@ -31,8 +35,9 @@ class Progkeahlian_model
             (null, :nama_jurusan, :program_keahlian)"
         );
 
-        $this->db->bind('nama_jurusan', $data['nama_jurusan']);
-        $this->db->bind('program_keahlian', $data['program_keahlian']);
+        foreach ($this->fields as $field) {
+            $this->db->bind($field, $data[$field]);
+        }
 
         $this->db->execute();
         return $this->db->rowCount();
@@ -57,8 +62,9 @@ class Progkeahlian_model
               WHERE id_programkeahlian = :id"
         );
 
-        $this->db->bind('nama_jurusan', $data['nama_jurusan']);
-        $this->db->bind('program_keahlian', $data['program_keahlian']);
+        foreach ($this->fields as $field) {
+            $this->db->bind($field, $data[$field]);
+        }
         $this->db->bind('id', $data['id_programkeahlian']);
 
         $this->db->execute();

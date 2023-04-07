@@ -3,6 +3,13 @@
 class Suratkeluar_model
 {
     private $table = 'surat_keluar';
+    private $fields = [
+        'nomor_berkas',
+        'alamat_penerima',
+        'tanggal',
+        'perihal',
+        'no_petunjuk',
+    ];
     private $db;
 
     public function __construct()
@@ -32,11 +39,9 @@ class Suratkeluar_model
             :tanggal, :perihal, :no_petunjuk)"
         );
 
-        $this->db->bind('nomor_berkas', $data['nomor_berkas']);
-        $this->db->bind('alamat_penerima', $data['alamat_penerima']);
-        $this->db->bind('tanggal', $data['tanggal']);
-        $this->db->bind('perihal', $data['perihal']);
-        $this->db->bind('no_petunjuk', $data['no_petunjuk']);
+        foreach ($this->fields as $field) {
+            $this->db->bind($field, $data[$field]);
+        }
 
         $this->db->execute();
         return $this->db->rowCount();
@@ -64,11 +69,9 @@ class Suratkeluar_model
             WHERE id = :id"
         );
 
-        $this->db->bind('nomor_berkas', $data['nomor_berkas']);
-        $this->db->bind('alamat_penerima', $data['alamat_penerima']);
-        $this->db->bind('tanggal', $data['tanggal']);
-        $this->db->bind('perihal', $data['perihal']);
-        $this->db->bind('no_petunjuk', $data['no_petunjuk']);
+        foreach ($this->fields as $field) {
+            $this->db->bind($field, $data[$field]);
+        }
         $this->db->bind('id', $data['id']);
 
         $this->db->execute();

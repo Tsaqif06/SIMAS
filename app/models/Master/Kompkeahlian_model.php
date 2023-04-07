@@ -3,6 +3,10 @@
 class Kompkeahlian_model
 {
     private $table = 'masterkompetensikeahlian';
+    private $fields = [
+        'kode_kompkeahlian',
+        'nama_kompkeahlian'
+    ];
     private $db;
 
     public function __construct()
@@ -31,8 +35,9 @@ class Kompkeahlian_model
             (null, :kode_kompkeahlian, :nama_kompkeahlian)"
         );
 
-        $this->db->bind('kode_kompkeahlian', $data['kode_kompkeahlian']);
-        $this->db->bind('nama_kompkeahlian', $data['nama_kompkeahlian']);
+        foreach ($this->fields as $field) {
+            $this->db->bind($field, $data[$field]);
+        }
 
         $this->db->execute();
         return $this->db->rowCount();
@@ -57,8 +62,9 @@ class Kompkeahlian_model
             WHERE id_kompkeahlian = :id"
         );
 
-        $this->db->bind('kode_kompkeahlian', $data['kode_kompkeahlian']);
-        $this->db->bind('nama_kompkeahlian', $data['nama_kompkeahlian']);
+        foreach ($this->fields as $field) {
+            $this->db->bind($field, $data[$field]);
+        }
         $this->db->bind('id', $data['id_kompkeahlian']);
 
         $this->db->execute();

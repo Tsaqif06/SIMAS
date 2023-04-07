@@ -3,6 +3,26 @@
 class Siswa_model
 {
     private $table = 'mastersiswa';
+    private $fields = [
+        'nisn',
+        'nama_siswa',
+        'jalur',
+        'jurusan',
+        'alamat',
+        'nomor_hp_siswa',
+        'ayah',
+        'ibu',
+        'nomor_hp_orangtua',
+        'wali',
+        'nomor_hp_wali',
+        'tahun_diterima',
+        'agama',
+        'jenis_kelamin',
+        'tempat_lahir',
+        'kelas',
+        'tanggal_lahir',
+        'usia_sekarang'
+    ];
     private $db;
 
     public function __construct()
@@ -33,24 +53,9 @@ class Siswa_model
             :tempat_lahir, :kelas, :tanggal_lahir, :usia_sekarang)"
         );
 
-        $this->db->bind('nisn', $data['nisn']);
-        $this->db->bind('nama_siswa', $data['nama_siswa']);
-        $this->db->bind('jalur', $data['jalur']);
-        $this->db->bind('jurusan', $data['jurusan']);
-        $this->db->bind('alamat', $data['alamat']);
-        $this->db->bind('nomor_hp_siswa', $data['nomor_hp_siswa']);
-        $this->db->bind('ayah', $data['ayah']);
-        $this->db->bind('ibu', $data['ibu']);
-        $this->db->bind('nomor_hp_orangtua', $data['nomor_hp_orangtua']);
-        $this->db->bind('wali', $data['wali']);
-        $this->db->bind('nomor_hp_wali', $data['nomor_hp_wali']);
-        $this->db->bind('tahun_diterima', $data['tahun_diterima']);
-        $this->db->bind('agama', $data['agama']);
-        $this->db->bind('jenis_kelamin', $data['jenis_kelamin']);
-        $this->db->bind('tempat_lahir', $data['tempat_lahir']);
-        $this->db->bind('kelas', $data['kelas']);
-        $this->db->bind('tanggal_lahir', $data['tanggal_lahir']);
-        $this->db->bind('usia_sekarang', $data['usia_sekarang']);
+        foreach ($this->fields as $field) {
+            $this->db->bind($field, $data[$field]);
+        }
 
         $this->db->execute();
         return $this->db->rowCount();
@@ -91,24 +96,9 @@ class Siswa_model
             WHERE id_siswa = :id"
         );
 
-        $this->db->bind('nisn', $data['nisn']);
-        $this->db->bind('nama_siswa', $data['nama_siswa']);
-        $this->db->bind('jalur', $data['jalur']);
-        $this->db->bind('jurusan', $data['jurusan']);
-        $this->db->bind('alamat', $data['alamat']);
-        $this->db->bind('nomor_hp_siswa', $data['nomor_hp_siswa']);
-        $this->db->bind('ayah', $data['ayah']);
-        $this->db->bind('ibu', $data['ibu']);
-        $this->db->bind('nomor_hp_orangtua', $data['nomor_hp_orangtua']);
-        $this->db->bind('wali', $data['wali']);
-        $this->db->bind('nomor_hp_wali', $data['nomor_hp_wali']);
-        $this->db->bind('tahun_diterima', $data['tahun_diterima']);
-        $this->db->bind('agama', $data['agama']);
-        $this->db->bind('jenis_kelamin', $data['jenis_kelamin']);
-        $this->db->bind('tempat_lahir', $data['tempat_lahir']);
-        $this->db->bind('kelas', $data['kelas']);
-        $this->db->bind('tanggal_lahir', $data['tanggal_lahir']);
-        $this->db->bind('usia_sekarang', $data['usia_sekarang']);
+        foreach ($this->fields as $field) {
+            $this->db->bind($field, $data[$field]);
+        }
         $this->db->bind('id', $data['id_siswa']);
 
         $this->db->execute();

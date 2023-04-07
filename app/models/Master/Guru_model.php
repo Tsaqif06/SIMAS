@@ -3,6 +3,24 @@
 class Guru_model
 {
     private $table = 'masterguru';
+    private $fields = [
+        'foto',
+        'nama_lengkap',
+        'jenis_kelamin',
+        'tempat_lahir',
+        'tanggal_lahir',
+        'alamat_lengkap',
+        'pendidikan_terakhir',
+        'jurusan_pendidikan_terakhir',
+        'nomor_hp',
+        'kategori',
+        'mapel_yg_diampu',
+        'kategori_mapel',
+        'nip',
+        'status_sertifikasi',
+        'keahlian_ganda',
+        'status_pernikahan'
+    ];
     private $db;
 
     public function __construct()
@@ -31,22 +49,24 @@ class Guru_model
             (null, :nama_lengkap, :jenis_kelamin, :tempat_lahir, :tanggal_lahir, :alamat_lengkap, :pendidikan_terakhir, :jurusan_pendidikan_terakhir, :nomor_hp, :kategori, :mapel_yg_diampu, :kategori_mapel, :nip, :status_sertifikasi, :keahlian_ganda, :status_pernikahan, :foto)"
         );
 
-        $this->db->bind('nama_lengkap', $data['nama_lengkap']);
-        $this->db->bind('jenis_kelamin', $data['jenis_kelamin']);
-        $this->db->bind('tempat_lahir', $data['tempat_lahir']);
-        $this->db->bind('tanggal_lahir', $data['tanggal_lahir']);
-        $this->db->bind('alamat_lengkap', $data['alamat_lengkap']);
-        $this->db->bind('pendidikan_terakhir', $data['pendidikan_terakhir']);
-        $this->db->bind('jurusan_pendidikan_terakhir', $data['jurusan_pendidikan_terakhir']);
-        $this->db->bind('nomor_hp', $data['nomor_hp']);
-        $this->db->bind('kategori', $data['kategori']);
-        $this->db->bind('mapel_yg_diampu', $data['mapel_yg_diampu']);
-        $this->db->bind('kategori_mapel', $data['kategori_mapel']);
-        $this->db->bind('nip', $data['nip']);
-        $this->db->bind('status_sertifikasi', $data['status_sertifikasi']);
-        $this->db->bind('keahlian_ganda', $data['keahlian_ganda']);
-        $this->db->bind('status_pernikahan', $data['status_pernikahan']);
-        $this->db->bind('foto', $data['foto']);
+        foreach($this->fields as $field) {
+            $this->db->bind($field, $data[$field]);
+        }
+        // $this->db->bind('jenis_kelamin', $data['jenis_kelamin']);
+        // $this->db->bind('tempat_lahir', $data['tempat_lahir']);
+        // $this->db->bind('tanggal_lahir', $data['tanggal_lahir']);
+        // $this->db->bind('alamat_lengkap', $data['alamat_lengkap']);
+        // $this->db->bind('pendidikan_terakhir', $data['pendidikan_terakhir']);
+        // $this->db->bind('jurusan_pendidikan_terakhir', $data['jurusan_pendidikan_terakhir']);
+        // $this->db->bind('nomor_hp', $data['nomor_hp']);
+        // $this->db->bind('kategori', $data['kategori']);
+        // $this->db->bind('mapel_yg_diampu', $data['mapel_yg_diampu']);
+        // $this->db->bind('kategori_mapel', $data['kategori_mapel']);
+        // $this->db->bind('nip', $data['nip']);
+        // $this->db->bind('status_sertifikasi', $data['status_sertifikasi']);
+        // $this->db->bind('keahlian_ganda', $data['keahlian_ganda']);
+        // $this->db->bind('status_pernikahan', $data['status_pernikahan']);
+        // $this->db->bind('foto', $data['foto']);
 
         $this->db->execute();
         return $this->db->rowCount();

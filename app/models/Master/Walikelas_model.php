@@ -3,6 +3,10 @@
 class Walikelas_model
 {
     private $table = 'masterwalikelas';
+    private $fields = [
+        'nama_walikelas',
+        'nama_kelas'
+    ];
     private $db;
 
     public function __construct()
@@ -31,8 +35,9 @@ class Walikelas_model
             (null, :nama_walikelas, :nama_kelas)"
         );
 
-        $this->db->bind('nama_walikelas', $data['nama_walikelas']);
-        $this->db->bind('nama_kelas', $data['nama_kelas']);
+        foreach ($this->fields as $field) {
+            $this->db->bind($field, $data[$field]);
+        }
 
         $this->db->execute();
         return $this->db->rowCount();
@@ -57,8 +62,9 @@ class Walikelas_model
             WHERE id_walikelas = :id"
         );
 
-        $this->db->bind('nama_walikelas', $data['nama_walikelas']);
-        $this->db->bind('nama_kelas', $data['nama_kelas']);
+        foreach ($this->fields as $field) {
+            $this->db->bind($field, $data[$field]);
+        }
         $this->db->bind('id', $data['id_walikelas']);
 
         $this->db->execute();

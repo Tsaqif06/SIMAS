@@ -3,6 +3,10 @@
 class Kelas_model
 {
     private $table = 'masterkelas';
+    private $fields = [
+        'tingkat',
+        'kode_kelas'
+    ];
     private $db;
 
     public function __construct()
@@ -31,8 +35,9 @@ class Kelas_model
             (null, :tingkat, :kode_kelas)"
         );
 
-        $this->db->bind('tingkat', $data['tingkat']);
-        $this->db->bind('kode_kelas', $data['kode_kelas']);
+        foreach ($this->fields as $field) {
+            $this->db->bind($field, $data[$field]);
+        }
 
         $this->db->execute();
         return $this->db->rowCount();
@@ -57,8 +62,9 @@ class Kelas_model
             WHERE id_kelas = :id"
         );
 
-        $this->db->bind('tingkat', $data['tingkat']);
-        $this->db->bind('kode_kelas', $data['kode_kelas']);
+        foreach ($this->fields as $field) {
+            $this->db->bind($field, $data[$field]);
+        }
         $this->db->bind('id', $data['id_kelas']);
 
         $this->db->execute();

@@ -3,6 +3,19 @@
 class Karyawan_model
 {
     private $table = 'masterkaryawan';
+    private $fields = [
+        'foto',
+        'nama_lengkap',
+        'jenis_kelamin',
+        'tempat_lahir',
+        'tanggal_lahir',
+        'alamat_lengkap',
+        'pendidikan_terakhir',
+        'jurusan_pendidikan_terakhir',
+        'nomor_hp',
+        'kategori',
+        'status_pernikahan'
+    ];
     private $db;
 
     public function __construct()
@@ -32,17 +45,9 @@ class Karyawan_model
             :nomor_hp, :kategori, :status_pernikahan, :foto)"
         );
 
-        $this->db->bind('nama_lengkap', $data['nama_lengkap']);
-        $this->db->bind('jenis_kelamin', $data['jenis_kelamin']);
-        $this->db->bind('tempat_lahir', $data['tempat_lahir']);
-        $this->db->bind('tanggal_lahir', $data['tanggal_lahir']);
-        $this->db->bind('alamat_lengkap', $data['alamat_lengkap']);
-        $this->db->bind('pendidikan_terakhir', $data['pendidikan_terakhir']);
-        $this->db->bind('jurusan_pendidikan_terakhir', $data['jurusan_pendidikan_terakhir']);
-        $this->db->bind('nomor_hp', $data['nomor_hp']);
-        $this->db->bind('kategori', $data['kategori']);
-        $this->db->bind('status_pernikahan', $data['status_pernikahan']);
-        $this->db->bind('foto', $data['foto']);
+        foreach ($this->fields as $field) {
+            $this->db->bind($field, $data[$field]);
+        }
 
         $this->db->execute();
         return $this->db->rowCount();
@@ -76,17 +81,9 @@ class Karyawan_model
             WHERE id_karyawan = :id"
         );
 
-        $this->db->bind('nama_lengkap', $data['nama_lengkap']);
-        $this->db->bind('jenis_kelamin', $data['jenis_kelamin']);
-        $this->db->bind('tempat_lahir', $data['tempat_lahir']);
-        $this->db->bind('tanggal_lahir', $data['tanggal_lahir']);
-        $this->db->bind('alamat_lengkap', $data['alamat_lengkap']);
-        $this->db->bind('pendidikan_terakhir', $data['pendidikan_terakhir']);
-        $this->db->bind('jurusan_pendidikan_terakhir', $data['jurusan_pendidikan_terakhir']);
-        $this->db->bind('nomor_hp', $data['nomor_hp']);
-        $this->db->bind('kategori', $data['kategori']);
-        $this->db->bind('status_pernikahan', $data['status_pernikahan']);
-        $this->db->bind('foto', $data['foto']);
+        foreach ($this->fields as $field) {
+            $this->db->bind($field, $data[$field]);
+        }
         $this->db->bind('id', $data['id_karyawan']);
 
         $this->db->execute();

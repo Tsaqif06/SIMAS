@@ -3,6 +3,15 @@
 class Suratmasuk_model
 {
     private $table = 'surat_masuk';
+    private $fields = [
+        'nomor_berkas',
+        'alamat_pengirim',
+        'tanggal',
+        'tanggal_surat',
+        'nomor_surat',
+        'perihal',
+        'nomor_petunjuk',
+    ];
     private $db;
 
     public function __construct()
@@ -32,13 +41,9 @@ class Suratmasuk_model
             :nomor_surat, :perihal, :nomor_petunjuk)"
         );
 
-        $this->db->bind('nomor_berkas', $data['nomor_berkas']);
-        $this->db->bind('alamat_pengirim', $data['alamat_pengirim']);
-        $this->db->bind('tanggal', $data['tanggal']);
-        $this->db->bind('tanggal_surat', $data['tanggal_surat']);
-        $this->db->bind('nomor_surat', $data['nomor_surat']);
-        $this->db->bind('perihal', $data['perihal']);
-        $this->db->bind('nomor_petunjuk', $data['nomor_petunjuk']);
+        foreach ($this->fields as $field) {
+            $this->db->bind($field, $data[$field]);
+        }
 
         $this->db->execute();
         return $this->db->rowCount();
@@ -68,13 +73,9 @@ class Suratmasuk_model
             WHERE id = :id"
         );
 
-        $this->db->bind('nomor_berkas', $data['nomor_berkas']);
-        $this->db->bind('alamat_pengirim', $data['alamat_pengirim']);
-        $this->db->bind('tanggal', $data['tanggal']);
-        $this->db->bind('tanggal_surat', $data['tanggal_surat']);
-        $this->db->bind('nomor_surat', $data['nomor_surat']);
-        $this->db->bind('perihal', $data['perihal']);
-        $this->db->bind('nomor_petunjuk', $data['nomor_petunjuk']);
+        foreach ($this->fields as $field) {
+            $this->db->bind($field, $data[$field]);
+        }
         $this->db->bind('id', $data['id']);
 
         $this->db->execute();

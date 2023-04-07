@@ -3,6 +3,11 @@
 class Mapel_model
 {
     private $table = 'mastermapel';
+    private $fields = [
+        'kode_mapel',
+        'nama_mapel',
+        'kurikulum'
+    ];
     private $db;
 
     public function __construct()
@@ -31,9 +36,9 @@ class Mapel_model
             (null, :kode_mapel, :nama_mapel, :kurikulum)"
         );
 
-        $this->db->bind('kode_mapel', $data['kode_mapel']);
-        $this->db->bind('nama_mapel', $data['nama_mapel']);
-        $this->db->bind('kurikulum', $data['kurikulum']);
+        foreach ($this->fields as $field) {
+            $this->db->bind($field, $data[$field]);
+        }
 
         $this->db->execute();
         return $this->db->rowCount();
@@ -59,9 +64,9 @@ class Mapel_model
                 WHERE id_mapel = :id"
         );
 
-        $this->db->bind('kode_mapel', $data['kode_mapel']);
-        $this->db->bind('nama_mapel', $data['nama_mapel']);
-        $this->db->bind('kurikulum', $data['kurikulum']);
+        foreach ($this->fields as $field) {
+            $this->db->bind($field, $data[$field]);
+        }
         $this->db->bind('id', $data['id_mapel']);
 
         $this->db->execute();

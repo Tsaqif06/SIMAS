@@ -3,6 +3,10 @@
 class Jabatan_model
 {
     private $table = 'masterjabatan';
+    private $fields = [
+        'jabatan',
+        'nama_yang_menjabat'
+    ];
     private $db;
 
     public function __construct()
@@ -31,8 +35,9 @@ class Jabatan_model
             (null, :jabatan, :nama_yang_menjabat)"
         );
 
-        $this->db->bind('jabatan', $data['jabatan']);
-        $this->db->bind('nama_yang_menjabat', $data['nama_yang_menjabat']);
+        foreach ($this->fields as $field) {
+            $this->db->bind($field, $data[$field]);
+        }
 
         $this->db->execute();
         return $this->db->rowCount();
@@ -57,8 +62,9 @@ class Jabatan_model
             WHERE id_jabatan = :id"
         );
 
-        $this->db->bind('jabatan', $data['jabatan']);
-        $this->db->bind('nama_yang_menjabat', $data['nama_yang_menjabat']);
+        foreach ($this->fields as $field) {
+            $this->db->bind($field, $data[$field]);
+        }
         $this->db->bind('id', $data['id_jabatan']);
 
         $this->db->execute();
