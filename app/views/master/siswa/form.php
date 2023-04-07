@@ -10,7 +10,7 @@
     </div>
     <div class="mb-3">
         <label for="jalur" class="form-label">Jalur</label>
-        <select class="form-select" required>
+        <select class="form-select" name="jalur" id="jalur" required>
             <option selected disabled>Open this select menu</option>
             <option value="Prestasi Akademik">Prestasi Akademik</option>
             <option value="Prestasi Non-Akademik">Prestasi Non-Akademik</option>
@@ -73,7 +73,7 @@
     </div>
     <div class="mb-3">
         <label for="jenis_kelamin" class="form-label">Jenis Kelamin</label>
-        <select class="form-select" required>
+        <select class="form-select" name="jenis_kelamin" id="jenis_kelamin" required>
             <option selected disabled>Open this select menu</option>
             <option value="L">L</option>
             <option value="P">P</option>

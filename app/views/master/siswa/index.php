@@ -81,7 +81,7 @@
                                                 </a>
                                                 <a href="<?= BASEURL ?>siswa/hapusData/<?= $row['id_siswa'] ?>">
                                                     <div class="font-weight-medium pt-2">
-                                                        <div class="badge badge-danger delete" onclick="return confirm('Yakin Ingin Hapus Data?')"><i class="ti ti-pencil"></i></div>
+                                                        <div class="badge badge-danger delete" onclick="return confirm('Yakin Ingin Hapus Data?')"><i class="ti ti-trash"></i></div>
                                                 </a>
                                             </td>
                                             <td><?= $row["nisn"] ?></td>

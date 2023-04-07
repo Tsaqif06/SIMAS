@@ -11,6 +11,7 @@ class Siswa extends Controller
         $data['judul'] = 'SIMAS - Siswa';
 
         $data['siswa'] = $this->model("$this->model_name", 'Siswa_model')->getAllData();
+        $data['kompkeahlian'] = $this->model("$this->model_name", 'Kompkeahlian_model')->getAllData();
 
         $this->view('templates/header', $data);
         $this->view('master/siswa/index', $data);
