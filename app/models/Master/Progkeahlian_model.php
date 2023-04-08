@@ -7,6 +7,16 @@ class Progkeahlian_model
         'nama_jurusan',
         'program_keahlian'
     ];
+    private $logs = [
+        'created_at',
+        'created_by',
+        'modified_at',
+        'modified_by',
+        'deleted_at',
+        'deleted_by',
+        'restored_at',
+        'restored_by'
+    ];
     private $db;
 
     public function __construct()
@@ -32,9 +42,11 @@ class Progkeahlian_model
         $this->db->query(
             "INSERT INTO {$this->table}
                 VALUES 
-            (null, :nama_jurusan, :program_keahlian)"
+            (null, :uuid, :nama_jurusan, :program_keahlian, CURRENT_TIMESTAMP, '', CURRENT_TIMESTAMP, '', 
+            CURRENT_TIMESTAMP, '', CURRENT_TIMESTAMP, '', CURRENT_TIMESTAMP, '')"
         );
 
+        $this->db->bind('uuid', '49f20563-b288-4561-8b9c-64b8a825893d');
         foreach ($this->fields as $field) {
             $this->db->bind($field, $data[$field]);
         }

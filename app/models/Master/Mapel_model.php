@@ -8,6 +8,16 @@ class Mapel_model
         'nama_mapel',
         'kurikulum'
     ];
+    private $logs = [
+        'created_at',
+        'created_by',
+        'modified_at',
+        'modified_by',
+        'deleted_at',
+        'deleted_by',
+        'restored_at',
+        'restored_by'
+    ];
     private $db;
 
     public function __construct()
@@ -33,9 +43,11 @@ class Mapel_model
         $this->db->query(
             "INSERT INTO {$this->table}
                 VALUES 
-            (null, :kode_mapel, :nama_mapel, :kurikulum)"
+            (null, :uuid, :kode_mapel, :nama_mapel, :kurikulum, CURRENT_TIMESTAMP, '', CURRENT_TIMESTAMP, '', CURRENT_TIMESTAMP, '', 
+            CURRENT_TIMESTAMP, '', CURRENT_TIMESTAMP, '')"
         );
 
+        $this->db->bind('uuid', '49f20563-b288-4561-8b9c-64b8a825893d');
         foreach ($this->fields as $field) {
             $this->db->bind($field, $data[$field]);
         }

@@ -49,6 +49,7 @@
                                     <tr>
                                         <th>No.</th>
                                         <th>Aksi</th>
+                                        <th>Foto</th>
                                         <th>Nama</th>
                                         <th>Jenis Kelamin</th>
                                         <th>Tempat Lahir</th>
@@ -64,7 +65,6 @@
                                         <th>Status Sertifikasi</th>
                                         <th>Keahlian Ganda</th>
                                         <th>Status Pernikahan</th>
-                                        <th>Foto</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -83,6 +83,7 @@
                                                         </div>
                                                 </a>
                                             </td>
+                                            <td><img src="images/datafoto/<?= $row["foto"]; ?>" style="width: 65px; height: 65px;"></td>
                                             <td><?= $row["nama_lengkap"] ?></td>
                                             <td><?= $row["jenis_kelamin"] ?></td>
                                             <td><?= $row["tempat_lahir"] ?></td>
@@ -98,7 +99,6 @@
                                             <td><?= $row["status_sertifikasi"] ?></td>
                                             <td><?= $row["keahlian_ganda"] ?></td>
                                             <td><?= $row["status_pernikahan"] ?></td>
-                                            <td><?= $row["foto"] ?></td>
                                         </tr>
                                     <?php endforeach; ?>
                                 </tbody>

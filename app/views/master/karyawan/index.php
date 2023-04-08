@@ -50,6 +50,7 @@
                                     <tr>
                                         <th>No.</th>
                                         <th>Aksi</th>
+                                        <th>Foto</th>
                                         <th>Nama Lengkap</th>
                                         <th>Jenis Kelamin</th>
                                         <th>Tempat Lahir</th>
@@ -60,7 +61,6 @@
                                         <th>Nomor HP</th>
                                         <th>Kategori</th>
                                         <th>Status Pernikahan</th>
-                                        <th>Foto</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -77,6 +77,7 @@
                                                         <div class="badge badge-danger delete" onclick="return confirm('Apakah Anda Yakin Mau Menghapus Data?')"><i class="ti ti-trash"></i></div>
                                                 </a>
                                             </td>
+                                            <td><img src="images/datafoto/<?= $row["foto"]; ?>" alt="<?= $row["foto"]; ?>" width="30"></td>
                                             <td><?= $row["nama_lengkap"] ?></td>
                                             <td><?= $row["jenis_kelamin"]; ?></td>
                                             <td><?= $row["tempat_lahir"]; ?></td>
@@ -87,7 +88,6 @@
                                             <td><?= $row["nomor_hp"]; ?></td>
                                             <td><?= $row["kategori"]; ?></td>
                                             <td><?= $row["status_pernikahan"]; ?></td>
-                                            <td><?= $row["foto"]; ?></td>
                                         </tr>
                                     <?php endforeach; ?>
                                 </tbody>

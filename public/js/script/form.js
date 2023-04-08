@@ -6,40 +6,42 @@ $(document).ready(function () {
 			$("#modal").removeClass("edit");
 			document.querySelector("#modal form").reset();
 		}
+		$(".wrapFotoSekarang").hide();
 		$("#modalLabel").html("Tambah Data");
 		$("button[type=submit]").html("Tambah Data");
 		$(".modal-body form").attr("action", `${BASEURL}/tambahData`);
 	});
 
-	function initEditEvent() {
-		$(".tampilModalUbah").click(function () {
-			$("#modal").addClass("edit");
-			$("#modalLabel").html("Edit Data");
-			$(".modal-footer button[type=submit]").html("Ubah Data");
-			$(".modal-body form").attr("action", `${BASEURL}/ubahData`);
+	$("#table").DataTable({
+		drawCallback: function (settings) {
+			$(".tampilModalUbah").click(function () {
+				$("#modal").addClass("edit");
+				$("#modalLabel").html("Edit Data");
+				$(".modal-footer button[type=submit]").html("Ubah Data");
+				$(".modal-body form").attr("action", `${BASEURL}/ubahData`);
+				$(".wrapFotoSekarang").show();
+				$("label.foto").html("Update Foto");
 
-			const data_id = $(this).data("id");
+				const data_id = $(this).data("id");
 
-			$.ajax({
-				url: `${BASEURL}/getUbahData`,
-				data: { id: data_id },
-				method: "post",
-				dataType: "json",
-				success: function (data) {
-					Object.keys(data).forEach((key) => {
-						$(`#${key}`).val(data[key]);
-					});
-				},
+				$.ajax({
+					url: `${BASEURL}/getUbahData`,
+					data: { id: data_id },
+					method: "post",
+					dataType: "json",
+					success: function (data) {
+						$("#fotoSekarang").attr("src", `images/datafoto/${data.foto}`);
+						$("#fotoLama").val(data.foto);
+						for (let key of Object.keys(data)) {
+							if (key == "foto") {
+								continue;
+							}
+							$(`#${key}`).val(data[key]);
+						}
+					},
+				});
 			});
-		});
-	}
-
-	initEditEvent();
-
-	document.querySelectorAll(".paginate_button").forEach((btn) => {
-		btn.addEventListener("click", (e) => {
-			initEditEvent();
-		});
+		},
 	});
 
 	$(".batal").click(function () {

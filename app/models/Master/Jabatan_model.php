@@ -7,6 +7,16 @@ class Jabatan_model
         'jabatan',
         'nama_yang_menjabat'
     ];
+    private $logs = [
+        'created_at',
+        'created_by',
+        'modified_at',
+        'modified_by',
+        'deleted_at',
+        'deleted_by',
+        'restored_at',
+        'restored_by'
+    ];
     private $db;
 
     public function __construct()
@@ -32,9 +42,13 @@ class Jabatan_model
         $this->db->query(
             "INSERT INTO {$this->table}
                 VALUES 
-            (null, :jabatan, :nama_yang_menjabat)"
+            (null, :uuid, :jabatan, :nama_yang_menjabat,
+            CURRENT_TIMESTAMP, '', CURRENT_TIMESTAMP, '',
+            CURRENT_TIMESTAMP, '', CURRENT_TIMESTAMP, '', 
+            CURRENT_TIMESTAMP, '')"
         );
 
+        $this->db->bind('uuid', '49f20563-b288-4561-8b9c-64b8a825893d');
         foreach ($this->fields as $field) {
             $this->db->bind($field, $data[$field]);
         }

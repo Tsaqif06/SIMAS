@@ -23,6 +23,16 @@ class Siswa_model
         'tanggal_lahir',
         'usia_sekarang'
     ];
+    private $logs = [
+        'created_at',
+        'created_by',
+        'modified_at',
+        'modified_by',
+        'deleted_at',
+        'deleted_by',
+        'restored_at',
+        'restored_by'
+    ];
     private $db;
 
     public function __construct()
@@ -48,11 +58,13 @@ class Siswa_model
         $this->db->query(
             "INSERT INTO {$this->table}
                 VALUES 
-            (null, :nisn, :nama_siswa, :jalur, :jurusan, :alamat, :nomor_hp_siswa, :ayah, :ibu,
+            (null, :uuid, :nisn, :nama_siswa, :jalur, :jurusan, :alamat, :nomor_hp_siswa, :ayah, :ibu,
             :nomor_hp_orangtua, :wali, :nomor_hp_wali, :tahun_diterima, :agama, :jenis_kelamin,
-            :tempat_lahir, :kelas, :tanggal_lahir, :usia_sekarang)"
+            :tempat_lahir, :kelas, :tanggal_lahir, :usia_sekarang, CURRENT_TIMESTAMP, '', CURRENT_TIMESTAMP, 
+            '', CURRENT_TIMESTAMP, '', CURRENT_TIMESTAMP, '', CURRENT_TIMESTAMP, '')"
         );
 
+        $this->db->bind('uuid', '49f20563-b288-4561-8b9c-64b8a825893d');
         foreach ($this->fields as $field) {
             $this->db->bind($field, $data[$field]);
         }

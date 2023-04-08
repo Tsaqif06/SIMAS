@@ -1,5 +1,17 @@
-<form action="<?= BASEURL ?>guru/tambahData" method="post">
+<form action="<?= BASEURL ?>guru/tambahData" method="post" enctype="multipart/form-data">
     <input type="hidden" name="id_guru" id="id_guru">
+    <input type="hidden" name="uuid" id="uuid">
+    <input type="hidden" name="fotoLama" id="fotoLama">
+    <div class="mb-3 wrapFotoSekarang">
+        <label for="fotoSekarang" class="form-label">Foto Yang Sekarang</label>
+        <br>
+        <img src="" alt="Foto Sekarang" id="fotoSekarang" style="width: 70px; height: 70px;">
+    </div>
+    <div class="mb-3">
+        <label for="foto" class="form-label foto">Foto</label>
+        <input type="file" class="form-control" name="foto" id="foto" accept="image/*">
+        <p class="text-danger">Ukuran Gambar Tidak Boleh Lebih Dari 1MB!</p>
+    </div>
     <div class="mb-3">
         <label for="nama_lengkap" class="form-label">Nama Lengkap</label>
         <input type="text" class="form-control" name="nama_lengkap" id="nama_lengkap" required>
@@ -8,8 +20,8 @@
         <label for="jenis_kelamin" class="form-label">Jenis Kelamin</label>
         <select class="form-select" name="jenis_kelamin" id="jenis_kelamin" required>
             <option selected>Open this select menu</option>
-            <option value="P">P</option>
             <option value="L">L</option>
+            <option value="P">P</option>
         </select>
     </div>
     <div class="mb-3">
@@ -82,7 +94,7 @@
     </div>
     <div class="mb-3">
         <label for="nip" class="form-label">NIP</label>
-        <input type="text" class="form-control" name="nip" id="nip" required>
+        <input type="text" class="form-control" name="nip" id="nip">
     </div>
     <div class="mb-3">
         <label for="status_sertifikasi" class="form-label">Status Sertifikasi</label>
@@ -103,8 +115,4 @@
             <option value="Menikah">Menikah</option>
             <option value="Belum">Belum</option>
         </select>
-    </div>
-    <div class="mb-3">
-        <label for="foto" class="form-label">Foto</label>
-        <input type="upload" class="form-control" name="foto" id="foto" required>
     </div>

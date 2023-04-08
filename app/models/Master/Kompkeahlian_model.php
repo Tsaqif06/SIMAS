@@ -32,9 +32,11 @@ class Kompkeahlian_model
         $this->db->query(
             "INSERT INTO {$this->table}
                 VALUES 
-            (null, :kode_kompkeahlian, :nama_kompkeahlian)"
+            (null, :uuid, :kode_kompkeahlian, :nama_kompkeahlian, CURRENT_TIMESTAMP, '', CURRENT_TIMESTAMP, '', CURRENT_TIMESTAMP, '',
+            CURRENT_TIMESTAMP, '', CURRENT_TIMESTAMP, '')"
         );
 
+        $this->db->bind('uuid', '49f20563-b288-4561-8b9c-64b8a825893d');
         foreach ($this->fields as $field) {
             $this->db->bind($field, $data[$field]);
         }

@@ -1,10 +1,13 @@
 <?php
 
+use Symfony\Component\Filesystem\Exception\IOExceptionInterface;
+use Symfony\Component\Filesystem\Filesystem;
+use Symfony\Component\Filesystem\Path;
+
 class Guru_model
 {
     private $table = 'masterguru';
     private $fields = [
-        'foto',
         'nama_lengkap',
         'jenis_kelamin',
         'tempat_lahir',
@@ -20,6 +23,16 @@ class Guru_model
         'status_sertifikasi',
         'keahlian_ganda',
         'status_pernikahan'
+    ];
+    private $logs = [
+        'created_at',
+        'created_by',
+        'modified_at',
+        'modified_by',
+        'deleted_at',
+        'deleted_by',
+        'restored_at',
+        'restored_by'
     ];
     private $db;
 
@@ -41,32 +54,78 @@ class Guru_model
         return $this->db->fetch();
     }
 
+    public function uploadImage()
+    {
+        $targetDir = 'images/datafoto/'; // direktori tempat menyimpan file upload
+        $temp = $_FILES['foto']['name'];
+        $imageFileType = explode('.', $temp);
+        $imageFileType = strtolower(end($imageFileType));
+
+        // validasi ekstensi file
+        // $imageFileType = strtolower(pathinfo($targetFile, PATHINFO_EXTENSION));
+        if ($imageFileType != "jpg" && $imageFileType != "jpeg" && $imageFileType != "png" && $imageFileType != "gif") {
+            echo "Sorry, only JPG, JPEG, PNG & GIF files are allowed.";
+            exit;
+        }
+
+        $fileName = uniqid();
+        $fileName .= '.';
+        $fileName .= $imageFileType;
+        $targetFile = $targetDir . $fileName; // nama file upload
+
+        // cek gambar diupload atau tidak
+        if ($_FILES["foto"]["error"] === 4) {
+            echo
+            '
+            <script>
+                alert("Silahkan Upload Gambar")
+            </script>
+        ';
+            return false;
+        }
+
+        // validasi ukuran file
+        if ($_FILES["foto"]["size"] > 1000000) {
+            echo
+            '
+                <script>
+                    alert("Ukuran File Terlalu Besar")
+                </script>
+            ';
+            return false;
+        }
+
+        try {
+            // simpan file upload ke direktori
+            move_uploaded_file($_FILES['foto']['tmp_name'], $targetFile);
+        } catch (IOExceptionInterface $e) {
+            echo $e->getMessage();
+        }
+
+        return $fileName;
+    }
+
+
     public function tambahData($data)
     {
+        $data['user'] = "Tsaqif";
+
         $this->db->query(
             "INSERT INTO {$this->table}
                 VALUES 
-            (null, :nama_lengkap, :jenis_kelamin, :tempat_lahir, :tanggal_lahir, :alamat_lengkap, :pendidikan_terakhir, :jurusan_pendidikan_terakhir, :nomor_hp, :kategori, :mapel_yg_diampu, :kategori_mapel, :nip, :status_sertifikasi, :keahlian_ganda, :status_pernikahan, :foto)"
+            (null, :uuid, :foto, :nama_lengkap, :jenis_kelamin, :tempat_lahir, :tanggal_lahir, :alamat_lengkap, :pendidikan_terakhir, :jurusan_pendidikan_terakhir, :nomor_hp, :kategori, :mapel_yg_diampu, :kategori_mapel, :nip, :status_sertifikasi, :keahlian_ganda, :status_pernikahan, 
+            CURRENT_TIMESTAMP, :created_by, null, '', null, '', null, '')"
         );
-
-        foreach($this->fields as $field) {
+        $foto = $this->uploadImage();
+        if (!$foto) {
+            return false;
+        }
+        $this->db->bind('foto', $foto);
+        $this->db->bind('uuid', '49f20563-b288-4561-8b9c-64b8a825893d');
+        foreach ($this->fields as $field) {
             $this->db->bind($field, $data[$field]);
         }
-        // $this->db->bind('jenis_kelamin', $data['jenis_kelamin']);
-        // $this->db->bind('tempat_lahir', $data['tempat_lahir']);
-        // $this->db->bind('tanggal_lahir', $data['tanggal_lahir']);
-        // $this->db->bind('alamat_lengkap', $data['alamat_lengkap']);
-        // $this->db->bind('pendidikan_terakhir', $data['pendidikan_terakhir']);
-        // $this->db->bind('jurusan_pendidikan_terakhir', $data['jurusan_pendidikan_terakhir']);
-        // $this->db->bind('nomor_hp', $data['nomor_hp']);
-        // $this->db->bind('kategori', $data['kategori']);
-        // $this->db->bind('mapel_yg_diampu', $data['mapel_yg_diampu']);
-        // $this->db->bind('kategori_mapel', $data['kategori_mapel']);
-        // $this->db->bind('nip', $data['nip']);
-        // $this->db->bind('status_sertifikasi', $data['status_sertifikasi']);
-        // $this->db->bind('keahlian_ganda', $data['keahlian_ganda']);
-        // $this->db->bind('status_pernikahan', $data['status_pernikahan']);
-        // $this->db->bind('foto', $data['foto']);
+        $this->db->bind('created_by', $data['user']);
 
         $this->db->execute();
         return $this->db->rowCount();
@@ -83,9 +142,11 @@ class Guru_model
 
     public function ubahData($data)
     {
+        $data['user'] = "Tsaqif";
         $this->db->query(
             "UPDATE {$this->table}
                 SET 
+                foto = :foto,
                 nama_lengkap = :nama_lengkap,
                 jenis_kelamin = :jenis_kelamin,
                 tempat_lahir = :tempat_lahir,
@@ -101,26 +162,23 @@ class Guru_model
                 status_sertifikasi = :status_sertifikasi,
                 keahlian_ganda = :keahlian_ganda,
                 status_pernikahan = :status_pernikahan,
-                foto = :foto
+                modified_at = CURRENT_TIMESTAMP,
+                modified_by = :modified_by
             WHERE id_guru = :id"
         );
-        
-        $this->db->bind('nama_lengkap', $data['nama_lengkap']);
-        $this->db->bind('jenis_kelamin', $data['jenis_kelamin']);
-        $this->db->bind('tempat_lahir', $data['tempat_lahir']);
-        $this->db->bind('tanggal_lahir', $data['tanggal_lahir']);
-        $this->db->bind('alamat_lengkap', $data['alamat_lengkap']);
-        $this->db->bind('pendidikan_terakhir', $data['pendidikan_terakhir']);
-        $this->db->bind('jurusan_pendidikan_terakhir', $data['jurusan_pendidikan_terakhir']);
-        $this->db->bind('nomor_hp', $data['nomor_hp']);
-        $this->db->bind('kategori', $data['kategori']);
-        $this->db->bind('mapel_yg_diampu', $data['mapel_yg_diampu']);
-        $this->db->bind('kategori_mapel', $data['kategori_mapel']);
-        $this->db->bind('nip', $data['nip']);
-        $this->db->bind('status_sertifikasi', $data['status_sertifikasi']);
-        $this->db->bind('keahlian_ganda', $data['keahlian_ganda']);
-        $this->db->bind('status_pernikahan', $data['status_pernikahan']);
-        $this->db->bind('foto', $data['foto']);
+
+
+        if ($_FILES["foto"]["error"] === 4) {
+            $foto = $data['fotoLama'];
+        } else {
+            $foto = $this->uploadImage();
+        }
+
+        $this->db->bind('foto', $foto);
+        foreach ($this->fields as $field) {
+            $this->db->bind($field, $data[$field]);
+        }
+        $this->db->bind('modified_by', $data['user']);
         $this->db->bind('id', $data['id_guru']);
 
         $this->db->execute();
