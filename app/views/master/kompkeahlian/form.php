@@ -1,5 +1,5 @@
 <form action="<?= BASEURL ?>kompkeahlian/tambahData" method="post">
-    <input type="hidden" name="id_kompkeahlian" id="id_kompkeahlian">
+    <input type="hidden" name="id" id="id">
     <div class="mb-3">
         <label for="kode_kompkeahlian" class="form-label">Kode Kompetensi Keahlian</label>
         <input type="text" class="form-control" name="kode_kompkeahlian" id="kode_kompkeahlian" required>

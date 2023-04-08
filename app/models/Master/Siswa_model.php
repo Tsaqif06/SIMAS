@@ -48,7 +48,7 @@ class Siswa_model
 
     public function getDataById($id)
     {
-        $this->db->query("SELECT * FROM {$this->table} WHERE id_siswa = :id");
+        $this->db->query("SELECT * FROM {$this->table} WHERE id = :id");
         $this->db->bind("id", $id);
         return $this->db->fetch();
     }
@@ -75,7 +75,7 @@ class Siswa_model
 
     public function hapusData($id)
     {
-        $this->db->query("DELETE FROM {$this->table} WHERE id_siswa = :id");
+        $this->db->query("DELETE FROM {$this->table} WHERE id = :id");
         $this->db->bind("id", $id);
 
         $this->db->execute();
@@ -105,13 +105,13 @@ class Siswa_model
                 kelas = :kelas,
                 tanggal_lahir = :tanggal_lahir,
                 usia_sekarang = :usia_sekarang
-            WHERE id_siswa = :id"
+            WHERE id = :id"
         );
 
         foreach ($this->fields as $field) {
             $this->db->bind($field, $data[$field]);
         }
-        $this->db->bind('id', $data['id_siswa']);
+        $this->db->bind('id', $data['id']);
 
         $this->db->execute();
         return $this->db->rowCount();

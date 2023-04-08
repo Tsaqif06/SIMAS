@@ -32,7 +32,7 @@ class Walikelas_model
 
     public function getDataById($id)
     {
-        $this->db->query("SELECT * FROM {$this->table} WHERE id_walikelas = :id");
+        $this->db->query("SELECT * FROM {$this->table} WHERE id = :id");
         $this->db->bind("id", $id);
         return $this->db->fetch();
     }
@@ -57,7 +57,7 @@ class Walikelas_model
 
     public function hapusData($id)
     {
-        $this->db->query("DELETE FROM {$this->table} WHERE id_walikelas = :id");
+        $this->db->query("DELETE FROM {$this->table} WHERE id = :id");
         $this->db->bind("id", $id);
 
         $this->db->execute();
@@ -71,13 +71,13 @@ class Walikelas_model
                 SET 
                 nama_walikelas = :nama_walikelas,
                 nama_kelas = :nama_kelas
-            WHERE id_walikelas = :id"
+            WHERE id = :id"
         );
 
         foreach ($this->fields as $field) {
             $this->db->bind($field, $data[$field]);
         }
-        $this->db->bind('id', $data['id_walikelas']);
+        $this->db->bind('id', $data['id']);
 
         $this->db->execute();
         return $this->db->rowCount();

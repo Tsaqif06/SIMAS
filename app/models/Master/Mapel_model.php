@@ -33,7 +33,7 @@ class Mapel_model
 
     public function getDataById($id)
     {
-        $this->db->query("SELECT * FROM {$this->table} WHERE id_mapel = :id");
+        $this->db->query("SELECT * FROM {$this->table} WHERE id = :id");
         $this->db->bind("id", $id);
         return $this->db->fetch();
     }
@@ -58,7 +58,7 @@ class Mapel_model
 
     public function hapusData($id)
     {
-        $this->db->query("DELETE FROM {$this->table} WHERE id_mapel = :id");
+        $this->db->query("DELETE FROM {$this->table} WHERE id = :id");
         $this->db->bind("id", $id);
 
         $this->db->execute();
@@ -73,13 +73,13 @@ class Mapel_model
                 kode_mapel = :kode_mapel,
                 nama_mapel = :nama_mapel,
                 kurikulum = :kurikulum
-                WHERE id_mapel = :id"
+                WHERE id = :id"
         );
 
         foreach ($this->fields as $field) {
             $this->db->bind($field, $data[$field]);
         }
-        $this->db->bind('id', $data['id_mapel']);
+        $this->db->bind('id', $data['id']);
 
         $this->db->execute();
         return $this->db->rowCount();

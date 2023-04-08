@@ -32,7 +32,7 @@ class Jabatan_model
 
     public function getDataById($id)
     {
-        $this->db->query("SELECT * FROM {$this->table} WHERE id_jabatan = :id");
+        $this->db->query("SELECT * FROM {$this->table} WHERE id = :id");
         $this->db->bind("id", $id);
         return $this->db->fetch();
     }
@@ -59,7 +59,7 @@ class Jabatan_model
 
     public function hapusData($id)
     {
-        $this->db->query("DELETE FROM {$this->table} WHERE id_jabatan = :id");
+        $this->db->query("DELETE FROM {$this->table} WHERE id = :id");
         $this->db->bind("id", $id);
 
         $this->db->execute();
@@ -73,13 +73,13 @@ class Jabatan_model
                 SET 
                 jabatan = :jabatan,
                 nama_yang_menjabat = :nama_yang_menjabat
-            WHERE id_jabatan = :id"
+            WHERE id = :id"
         );
 
         foreach ($this->fields as $field) {
             $this->db->bind($field, $data[$field]);
         }
-        $this->db->bind('id', $data['id_jabatan']);
+        $this->db->bind('id', $data['id']);
 
         $this->db->execute();
         return $this->db->rowCount();

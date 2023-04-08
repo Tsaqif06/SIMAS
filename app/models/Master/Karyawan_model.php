@@ -44,7 +44,7 @@ class Karyawan_model
 
     public function getDataById($id)
     {
-        $this->db->query("SELECT * FROM {$this->table} WHERE id_karyawan = :id");
+        $this->db->query("SELECT * FROM {$this->table} WHERE id = :id");
         $this->db->bind("id", $id);
         return $this->db->fetch();
     }
@@ -94,7 +94,7 @@ class Karyawan_model
 
     public function hapusData($id)
     {
-        $this->db->query("DELETE FROM {$this->table} WHERE id_karyawan = :id");
+        $this->db->query("DELETE FROM {$this->table} WHERE id = :id");
         $this->db->bind("id", $id);
 
         $this->db->execute();
@@ -117,13 +117,13 @@ class Karyawan_model
                 nomor_hp = :nomor_hp, 
                 kategori = :kategori,
                 status_pernikahan = :status_pernikahan
-            WHERE id_karyawan = :id"
+            WHERE id = :id"
         );
 
         foreach ($this->fields as $field) {
             $this->db->bind($field, $data[$field]);
         }
-        $this->db->bind('id', $data['id_karyawan']);
+        $this->db->bind('id', $data['id']);
 
         $this->db->execute();
         return $this->db->rowCount();

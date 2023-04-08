@@ -10,7 +10,7 @@ class Guru extends Controller
     {
         $data['judul'] = 'SIMAS - Guru';
 
-        $data['guru'] = $this->model("$this->model_name", 'Guru_model')->getAllData();
+        $data['guru'] = $this->model("$this->model_name", 'Guru_model')->getAllExistData();
 
         $this->view('templates/header', $data);
         $this->view('master/guru/index', $data);

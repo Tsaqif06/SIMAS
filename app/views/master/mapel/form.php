@@ -1,5 +1,5 @@
 <form action="<?= BASEURL ?>mapel/tambahData" method="post">
-    <input type="hidden" name="id_mapel" id="id_mapel">
+    <input type="hidden" name="id" id="id">
     <div class="mb-3">
         <label for="kode_mapel" class="form-label">Kode Mapel</label>
         <input type="text" class="form-control" name="kode_mapel" id="kode_mapel" required>

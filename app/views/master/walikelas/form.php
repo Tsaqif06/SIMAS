@@ -1,5 +1,5 @@
 <form action="<?= BASEURL ?>walikelas/tambahData" method="post">
-    <input type="hidden" name="id_walikelas" id="id_walikelas">
+    <input type="hidden" name="id" id="id">
     <div class="mb-3">
         <label for="nama_walikelas" class="form-label">Nama Wali Kelas</label>
         <input type="text" class="form-control" name="nama_walikelas" id="nama_walikelas" required>

@@ -1,5 +1,5 @@
 <form action="<?= BASEURL ?>guru/tambahData" method="post" enctype="multipart/form-data">
-    <input type="hidden" name="id_guru" id="id_guru">
+    <input type="hidden" name="id" id="id">
     <input type="hidden" name="uuid" id="uuid">
     <input type="hidden" name="fotoLama" id="fotoLama">
     <div class="mb-3 wrapFotoSekarang">

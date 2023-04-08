@@ -1,5 +1,5 @@
 <form action="<?= BASEURL ?>progkeahlian/tambahData" method="post">
-    <input type="hidden" name="id_programkeahlian" id="id_programkeahlian">
+    <input type="hidden" name="id" id="id">
     <div class="mb-3">
         <label for="nama_jurusan" class="form-label">Nama Jurusan</label>
         <input type="text" class="form-control" name="nama_jurusan" id="nama_jurusan" required>

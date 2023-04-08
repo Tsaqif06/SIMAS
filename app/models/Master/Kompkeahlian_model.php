@@ -22,7 +22,7 @@ class Kompkeahlian_model
 
     public function getDataById($id)
     {
-        $this->db->query("SELECT * FROM {$this->table} WHERE id_kompkeahlian = :id");
+        $this->db->query("SELECT * FROM {$this->table} WHERE id = :id");
         $this->db->bind("id", $id);
         return $this->db->fetch();
     }
@@ -47,7 +47,7 @@ class Kompkeahlian_model
 
     public function hapusData($id)
     {
-        $this->db->query("DELETE FROM {$this->table} WHERE id_kompkeahlian = :id");
+        $this->db->query("DELETE FROM {$this->table} WHERE id = :id");
         $this->db->bind("id", $id);
 
         $this->db->execute();
@@ -61,13 +61,13 @@ class Kompkeahlian_model
                 SET 
                 kode_kompkeahlian = :kode_kompkeahlian,
                 nama_kompkeahlian = :nama_kompkeahlian
-            WHERE id_kompkeahlian = :id"
+            WHERE id = :id"
         );
 
         foreach ($this->fields as $field) {
             $this->db->bind($field, $data[$field]);
         }
-        $this->db->bind('id', $data['id_kompkeahlian']);
+        $this->db->bind('id', $data['id']);
 
         $this->db->execute();
         return $this->db->rowCount();
