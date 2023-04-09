@@ -10,7 +10,7 @@ class Walikelas extends Controller
     {
         $data['judul'] = 'SIMAS - Walikelas';
 
-        $data['walikelas'] = $this->model("$this->model_name", 'Walikelas_model')->getAllData();
+        $data['walikelas'] = $this->model("$this->model_name", 'Walikelas_model')->getAllExistData();
 
         $this->view('templates/header', $data);
         $this->view('master/walikelas/index', $data);

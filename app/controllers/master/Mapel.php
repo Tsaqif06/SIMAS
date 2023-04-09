@@ -10,7 +10,7 @@ class Mapel extends Controller
     {
         $data['judul'] = 'SIMAS - Mapel';
 
-        $data['mapel'] = $this->model("$this->model_name", 'Mapel_model')->getAllData();
+        $data['mapel'] = $this->model("$this->model_name", 'Mapel_model')->getAllExistData();
 
         $this->view('templates/header', $data);
         $this->view('master/mapel/index', $data);

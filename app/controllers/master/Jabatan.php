@@ -10,7 +10,7 @@ class Jabatan extends Controller
     {
         $data['judul'] = 'SIMAS - Jabatan';
 
-        $data['jabatan'] = $this->model("$this->model_name", 'Jabatan_model')->getAllData();
+        $data['jabatan'] = $this->model("$this->model_name", 'Jabatan_model')->getAllExistData();
 
         $this->view('templates/header', $data);
         $this->view('master/jabatan/index', $data);

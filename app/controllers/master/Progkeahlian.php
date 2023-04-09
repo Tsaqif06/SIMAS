@@ -10,7 +10,7 @@ class Progkeahlian extends Controller
     {
         $data['judul'] = 'SIMAS - Progkeahlian';
 
-        $data['progkeahlian'] = $this->model("$this->model_name", 'Progkeahlian_model')->getAllData();
+        $data['progkeahlian'] = $this->model("$this->model_name", 'Progkeahlian_model')->getAllExistData();
 
         $this->view('templates/header', $data);
         $this->view('master/progkeahlian/index', $data);

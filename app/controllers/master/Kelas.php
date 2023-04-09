@@ -10,7 +10,7 @@ class Kelas extends Controller
     {
         $data['judul'] = 'SIMAS - Kelas';
 
-        $data['kelas'] = $this->model("$this->model_name", 'Kelas_model')->getAllData();
+        $data['kelas'] = $this->model("$this->model_name", 'Kelas_model')->getAllExistData();
 
         $this->view('templates/header', $data);
         $this->view('master/kelas/index', $data);

@@ -10,7 +10,7 @@ class Karyawan extends Controller
     {
         $data['judul'] = 'SIMAS - Karyawan';
 
-        $data['karyawan'] = $this->model("$this->model_name", 'Karyawan_model')->getAllData();
+        $data['karyawan'] = $this->model("$this->model_name", 'Karyawan_model')->getAllExistData();
 
         $this->view('templates/header', $data);
         $this->view('master/karyawan/index', $data);

@@ -10,7 +10,7 @@ class Kompkeahlian extends Controller
     {
         $data['judul'] = 'SIMAS - Kompkeahlian';
 
-        $data['kompkeahlian'] = $this->model("$this->model_name", 'Kompkeahlian_model')->getAllData();
+        $data['kompkeahlian'] = $this->model("$this->model_name", 'Kompkeahlian_model')->getAllExistData();
 
         $this->view('templates/header', $data);
         $this->view('master/kompkeahlian/index', $data);
