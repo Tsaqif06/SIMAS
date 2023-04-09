@@ -54,6 +54,12 @@ class Guru_model
         return $this->db->fetchAll();
     }
 
+    public function getAllDeletedData()
+    {
+        $this->db->query("SELECT * FROM {$this->table} WHERE `status` = 0");
+        return $this->db->fetchAll();
+    }
+
     public function getDataById($id)
     {
         $this->db->query("SELECT * FROM {$this->table} WHERE id = :id"); // : = menghindari sql injection
@@ -154,6 +160,18 @@ class Guru_model
         return $this->db->rowCount();
     }
 
+    public function hapusDataPermanen($id)
+    {
+        $this->db->query(
+            "DELETE FROM {$this->table} WHERE id = :id"
+        );
+
+        $this->db->bind("id", $id);
+
+        $this->db->execute();
+        return $this->db->rowCount();
+    }
+
     public function ubahData($data)
     {
         $data['user'] = "Admin";
@@ -197,14 +215,5 @@ class Guru_model
 
         $this->db->execute();
         return $this->db->rowCount();
-    }
-
-    public function cariData()
-    {
-        $keyword = $_POST['keyword'];
-
-        $this->db->query("SELECT * FROM {$this->table} WHERE nama_lengkap LIKE :keyword");
-        $this->db->bind("keyword", "%$keyword%");
-        return $this->db->fetchAll();
     }
 }

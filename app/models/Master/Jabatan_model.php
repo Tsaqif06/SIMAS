@@ -3,6 +3,7 @@
 class Jabatan_model
 {
     private $table = 'masterjabatan';
+    private $user = 'Admin';
     private $fields = [
         'jabatan',
         'nama_yang_menjabat'
@@ -30,9 +31,21 @@ class Jabatan_model
         return $this->db->fetchAll();
     }
 
+    public function getAllExistData()
+    {
+        $this->db->query("SELECT * FROM {$this->table} WHERE `status` = 1");
+        return $this->db->fetchAll();
+    }
+
+    public function getAllDeletedData()
+    {
+        $this->db->query("SELECT * FROM {$this->table} WHERE `status` = 0");
+        return $this->db->fetchAll();
+    }
+
     public function getDataById($id)
     {
-        $this->db->query("SELECT * FROM {$this->table} WHERE id = :id");
+        $this->db->query("SELECT * FROM {$this->table} WHERE id = :id"); // : = menghindari sql injection
         $this->db->bind("id", $id);
         return $this->db->fetch();
     }
@@ -43,15 +56,14 @@ class Jabatan_model
             "INSERT INTO {$this->table}
                 VALUES 
             (null, :uuid, :jabatan, :nama_yang_menjabat,
-            CURRENT_TIMESTAMP, '', CURRENT_TIMESTAMP, '',
-            CURRENT_TIMESTAMP, '', CURRENT_TIMESTAMP, '', 
-            CURRENT_TIMESTAMP, '')"
+            '', CURRENT_TIMESTAMP, :created_by, null, '', null, '', null, '', 0, 0, DEFAULT)"
         );
 
         $this->db->bind('uuid', '49f20563-b288-4561-8b9c-64b8a825893d');
         foreach ($this->fields as $field) {
             $this->db->bind($field, $data[$field]);
         }
+        $this->db->bind('created_by', $this->user);
 
         $this->db->execute();
         return $this->db->rowCount();
@@ -59,7 +71,28 @@ class Jabatan_model
 
     public function hapusData($id)
     {
-        $this->db->query("DELETE FROM {$this->table} WHERE id = :id");
+        $this->db->query(
+            "UPDATE {$this->table}  
+                SET 
+                deleted_at = CURRENT_TIMESTAMP,
+                deleted_by = :deleted_by,
+                is_deleted = 1
+            WHERE id = :id"
+        );
+
+        $this->db->bind('deleted_by', $this->user);
+        $this->db->bind("id", $id);
+
+        $this->db->execute();
+        return $this->db->rowCount();
+    }
+
+    public function hapusDataPermanen($id)
+    {
+        $this->db->query(
+            "DELETE FROM {$this->table} WHERE id = :id"
+        );
+
         $this->db->bind("id", $id);
 
         $this->db->execute();
@@ -72,25 +105,19 @@ class Jabatan_model
             "UPDATE {$this->table}
                 SET 
                 jabatan = :jabatan,
-                nama_yang_menjabat = :nama_yang_menjabat
+                nama_yang_menjabat = :nama_yang_menjabat,
+                modified_at = CURRENT_TIMESTAMP,
+                modified_by = :modified_by
             WHERE id = :id"
         );
 
         foreach ($this->fields as $field) {
             $this->db->bind($field, $data[$field]);
         }
+        $this->db->bind('modified_by', $this->user);
         $this->db->bind('id', $data['id']);
 
         $this->db->execute();
         return $this->db->rowCount();
-    }
-
-    public function cariData()
-    {
-        $keyword = $_POST['keyword'];
-
-        $this->db->query("SELECT * FROM {$this->table} WHERE jabatan LIKE :keyword");
-        $this->db->bind("keyword", "%$keyword%");
-        return $this->db->fetchAll();
     }
 }

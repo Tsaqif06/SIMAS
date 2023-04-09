@@ -3,6 +3,7 @@
 class Siswa_model
 {
     private $table = 'mastersiswa';
+    private $user = 'Admin';
     private $fields = [
         'nisn',
         'nama_siswa',
@@ -46,9 +47,21 @@ class Siswa_model
         return $this->db->fetchAll();
     }
 
+    public function getAllExistData()
+    {
+        $this->db->query("SELECT * FROM {$this->table} WHERE `status` = 1");
+        return $this->db->fetchAll();
+    }
+
+    public function getAllDeletedData()
+    {
+        $this->db->query("SELECT * FROM {$this->table} WHERE `status` = 0");
+        return $this->db->fetchAll();
+    }
+
     public function getDataById($id)
     {
-        $this->db->query("SELECT * FROM {$this->table} WHERE id = :id");
+        $this->db->query("SELECT * FROM {$this->table} WHERE id = :id"); // : = menghindari sql injection
         $this->db->bind("id", $id);
         return $this->db->fetch();
     }
@@ -60,14 +73,14 @@ class Siswa_model
                 VALUES 
             (null, :uuid, :nisn, :nama_siswa, :jalur, :jurusan, :alamat, :nomor_hp_siswa, :ayah, :ibu,
             :nomor_hp_orangtua, :wali, :nomor_hp_wali, :tahun_diterima, :agama, :jenis_kelamin,
-            :tempat_lahir, :kelas, :tanggal_lahir, :usia_sekarang, CURRENT_TIMESTAMP, '', CURRENT_TIMESTAMP, 
-            '', CURRENT_TIMESTAMP, '', CURRENT_TIMESTAMP, '', CURRENT_TIMESTAMP, '')"
+            :tempat_lahir, :kelas, :tanggal_lahir, :usia_sekarang, '', CURRENT_TIMESTAMP, :created_by, null, '', null, '', null, '', 0, 0, DEFAULT)"
         );
 
         $this->db->bind('uuid', '49f20563-b288-4561-8b9c-64b8a825893d');
         foreach ($this->fields as $field) {
             $this->db->bind($field, $data[$field]);
         }
+        $this->db->bind('created_by', $this->user);
 
         $this->db->execute();
         return $this->db->rowCount();
@@ -75,7 +88,28 @@ class Siswa_model
 
     public function hapusData($id)
     {
-        $this->db->query("DELETE FROM {$this->table} WHERE id = :id");
+        $this->db->query(
+            "UPDATE {$this->table}  
+                SET 
+                deleted_at = CURRENT_TIMESTAMP,
+                deleted_by = :deleted_by,
+                is_deleted = 1
+            WHERE id = :id"
+        );
+
+        $this->db->bind('deleted_by', $this->user);
+        $this->db->bind("id", $id);
+
+        $this->db->execute();
+        return $this->db->rowCount();
+    }
+
+    public function hapusDataPermanen($id)
+    {
+        $this->db->query(
+            "DELETE FROM {$this->table} WHERE id = :id"
+        );
+
         $this->db->bind("id", $id);
 
         $this->db->execute();
@@ -104,25 +138,19 @@ class Siswa_model
                 tempat_lahir = :tempat_lahir,
                 kelas = :kelas,
                 tanggal_lahir = :tanggal_lahir,
-                usia_sekarang = :usia_sekarang
+                usia_sekarang = :usia_sekarang,
+                modified_at = CURRENT_TIMESTAMP,
+                modified_by = :modified_by
             WHERE id = :id"
         );
 
         foreach ($this->fields as $field) {
             $this->db->bind($field, $data[$field]);
         }
+        $this->db->bind('modified_by', $this->user);
         $this->db->bind('id', $data['id']);
 
         $this->db->execute();
         return $this->db->rowCount();
-    }
-
-    public function cariData()
-    {
-        $keyword = $_POST['keyword'];
-
-        $this->db->query("SELECT * FROM {$this->table} WHERE nama_siswa LIKE :keyword");
-        $this->db->bind("keyword", "%$keyword%");
-        return $this->db->fetchAll();
     }
 }

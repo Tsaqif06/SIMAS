@@ -1,5 +1,6 @@
 <form action="<?= BASEURL ?>jabatan/tambahData" method="post">
     <input type="hidden" name="id" id="id">
+    <input type="hidden" name="uuid" id="uuid">
     <div class="mb-3">
         <label for="jabatan" class="form-label">Jabatan</label>
         <input type="text" class="form-control" name="jabatan" id="jabatan" required>

@@ -3,6 +3,7 @@
 class Kelas_model
 {
     private $table = 'masterkelas';
+    private $user = 'Admin';
     private $fields = [
         'tingkat',
         'kode_kelas'
@@ -30,9 +31,21 @@ class Kelas_model
         return $this->db->fetchAll();
     }
 
+    public function getAllExistData()
+    {
+        $this->db->query("SELECT * FROM {$this->table} WHERE `status` = 1");
+        return $this->db->fetchAll();
+    }
+
+    public function getAllDeletedData()
+    {
+        $this->db->query("SELECT * FROM {$this->table} WHERE `status` = 0");
+        return $this->db->fetchAll();
+    }
+
     public function getDataById($id)
     {
-        $this->db->query("SELECT * FROM {$this->table} WHERE id = :id");
+        $this->db->query("SELECT * FROM {$this->table} WHERE id = :id"); // : = menghindari sql injection
         $this->db->bind("id", $id);
         return $this->db->fetch();
     }
@@ -42,14 +55,14 @@ class Kelas_model
         $this->db->query(
             "INSERT INTO {$this->table}
                 VALUES 
-            (null, :uuid, :tingkat, :kode_kelas, CURRENT_TIMESTAMP, '', CURRENT_TIMESTAMP, '', 
-            CURRENT_TIMESTAMP, '', CURRENT_TIMESTAMP, '', CURRENT_TIMESTAMP, '')"
+            (null, :uuid, :tingkat, :kode_kelas, '', CURRENT_TIMESTAMP, :created_by, null, '', null, '', null, '', 0, 0, DEFAULT)"
         );
 
         $this->db->bind('uuid', '49f20563-b288-4561-8b9c-64b8a825893d');
         foreach ($this->fields as $field) {
             $this->db->bind($field, $data[$field]);
         }
+        $this->db->bind('created_by', $this->user);
 
         $this->db->execute();
         return $this->db->rowCount();
@@ -57,7 +70,28 @@ class Kelas_model
 
     public function hapusData($id)
     {
-        $this->db->query("DELETE FROM {$this->table} WHERE id = :id");
+        $this->db->query(
+            "UPDATE {$this->table}  
+                SET 
+                deleted_at = CURRENT_TIMESTAMP,
+                deleted_by = :deleted_by,
+                is_deleted = 1
+            WHERE id = :id"
+        );
+
+        $this->db->bind('deleted_by', $this->user);
+        $this->db->bind("id", $id);
+
+        $this->db->execute();
+        return $this->db->rowCount();
+    }
+
+    public function hapusDataPermanen($id)
+    {
+        $this->db->query(
+            "DELETE FROM {$this->table} WHERE id = :id"
+        );
+
         $this->db->bind("id", $id);
 
         $this->db->execute();
@@ -70,25 +104,19 @@ class Kelas_model
             "UPDATE {$this->table}
                 SET 
                 tingkat = :tingkat,
-                kode_kelas = :kode_kelas
+                kode_kelas = :kode_kelas,
+                modified_at = CURRENT_TIMESTAMP,
+                modified_by = :modified_by
             WHERE id = :id"
         );
 
         foreach ($this->fields as $field) {
             $this->db->bind($field, $data[$field]);
         }
+        $this->db->bind('modified_by', $this->user);
         $this->db->bind('id', $data['id']);
 
         $this->db->execute();
         return $this->db->rowCount();
-    }
-
-    public function cariData()
-    {
-        $keyword = $_POST['keyword'];
-
-        $this->db->query("SELECT * FROM {$this->table} WHERE tingkat LIKE :keyword");
-        $this->db->bind("keyword", "%$keyword%");
-        return $this->db->fetchAll();
     }
 }

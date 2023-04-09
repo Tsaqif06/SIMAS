@@ -1,5 +1,12 @@
 <form action="<?= BASEURL ?>karyawan/tambahData" method="post" enctype="multipart/form-data">
     <input type="hidden" name="id" id="id">
+    <input type="hidden" name="uuid" id="uuid">
+    <input type="hidden" name="fotoLama" id="fotoLama">
+    <div class="mb-3 wrapFotoSekarang">
+        <label for="fotoSekarang" class="form-label">Foto Yang Sekarang</label>
+        <br>
+        <img src="" alt="Foto Sekarang" id="fotoSekarang" style="width: 70px; height: 70px;">
+    </div>
     <div class="mb-3">
         <label for="nama_lengkap" class="form-label">Nama Lengkap</label>
         <input type="text" class="form-control" name="nama_lengkap" id="nama_lengkap" required>
