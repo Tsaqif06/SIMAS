@@ -6,6 +6,6 @@ class Lupasandi extends Controller
         $data['judul'] = 'SIMAS - Lupa Sandi';
         $this->view('login/head', $data);
         $this->view('login/lupasandi');
-        $this->view('login/footer');
+        $this->view('login/foot');
     }
 }
