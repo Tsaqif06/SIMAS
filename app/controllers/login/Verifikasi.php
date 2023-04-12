@@ -6,6 +6,6 @@ class Verifikasi extends Controller
         $data['judul'] = 'SIMAS - Verifikasi';
         $this->view('login/head', $data);
         $this->view('login/verifikasi');
-        $this->view('login/footer');
+        $this->view('login/foot');
     }
 }
