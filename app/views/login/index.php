@@ -22,6 +22,11 @@
 										<input type="password" class="form-control form-control-lg" id="password" name="password" placeholder="Sandi" required />
 										<div class="invalid-feedback">Mohon isi sandi anda.</div>
 										<br />
+										<div class="row">
+           									<div class="col-lg-6">
+               									<?php Flasher::flash(); ?>
+            								</div>
+        								</div>
 										<label class="form-check-label text-muted">
 											<input type="checkbox" onclick="showPass()" />
 											Lihat Sandi

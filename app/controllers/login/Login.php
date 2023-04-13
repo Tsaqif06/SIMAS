@@ -17,24 +17,21 @@ class Login extends Controller
     }
 
     public function logProccess()
-{
+    {
     // Validasi username dan password
-    // $username = $_POST['username'];
-    // $email = $_POST['email'];
-    // $password = $_POST['password'];
-
     if (isset($_POST['username']) && $_POST['email'] && $_POST['password']) {
-        $auth['username'] = $_POST['username'];
-        $auth['email'] = $_POST['email'];
-        $auth['password'] = $_POST['password'];
-        $user = $this->model("$this->model_name", "Login_model")->auth($auth);
-    }
-    var_dump($user);
-
-    if (!$user) {
-        // Username dan password tidak cocok
-        echo 'Username atau password salah';
-        return;
+        $data['username'] = $_POST['username'];
+        $data['email'] = $_POST['email'];
+        $data['password'] = $_POST['password'];
+        $user = $this->model("$this->model_name", "Login_model")->auth($data);
+        if (!$user) {
+            Flasher::setFlash('GAGAL', 'Login', 'danger');
+            sleep(1);
+            header("Location: " . BASEURL . "login");
+        } else {
+            Flasher::setFlash('BERHASIL', 'Login', 'success');
+            header("Location: " . BASEURL);
+        }
     }
 
     // // Jika validasi berhasil, buat token JWT
@@ -49,6 +46,5 @@ class Login extends Controller
     // // Kirim token JWT sebagai respons
     // header('Content-Type: application/json');
     // echo json_encode(['token' => $jwt]);
-}
-
+    }
 }
