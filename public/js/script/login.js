@@ -1,5 +1,5 @@
 function showPass() {
-	var x = document.getElementById("inputPass");
+	var x = document.getElementById("password");
 	if (x.type === "password") {
 		x.type = "text";
 	} else {
@@ -31,13 +31,4 @@ function showPass() {
 
 function goToIndex() {
 	window.location.href = "../index.html";
-}
-
-function showPass() {
-	var x = document.getElementById("inputPass");
-	if (x.type === "password") {
-		x.type = "text";
-	} else {
-		x.type = "password";
-	}
 }

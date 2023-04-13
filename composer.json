@@ -1,6 +1,7 @@
 {
     "require": {
         "symfony/filesystem": "^6.2",
-        "ramsey/uuid": "^4.7"
+        "ramsey/uuid": "^4.7",
+        "firebase/php-jwt": "^6.4"
     }
 }
