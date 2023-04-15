@@ -103,28 +103,37 @@ class Suratpengajuan_model
         return $this->db->rowCount();
     }
 
-    public function getDataApprove()
+    public function getDataApprove($id)
     {
-        $this->db->query("SELECT * FROM {$this->table} WHERE is_approved = 1");
+        $this->db->query("SELECT * FROM {$this->table} WHERE is_approved = 1 AND id = :id");
+
+        $this->db->bind('id', $id);
+
         $this->db->execute();
         return $this->db->fetchAll();
     }
     
-    public function insertDataApprove()
+    public function insertDataApprove($id)
     {
         $this->db->query("SELECT MAX(nomor_berkas) FROM surat_masuk");
         $this->db->execute();
         $noBerkas = $this->db->fetch();
-        $from = $this->getDataApprove();
+        $noBerkas = $noBerkas['MAX(nomor_berkas)'];
+
+        $from = $this->getDataApprove($id);
         $this->db->query(
-            "INSERT INTO surat_masuk
-                VALUES 
-            (null, :nomor_berkas, :col1, :col2, :col3)"
-            );
-        foreach ($from as $row) {
-            var_dump($row);
+            "INSERT INTO `surat_masuk`(`id`, `nomor_berkas`, `alamat_pengirim`, `tanggal`, `tanggal_surat`, `nomor_surat`, `perihal`, `nomor_petunjuk`, `created_at`, `created_by`) VALUES
+            (null, :nomor_berkas, :alamat_pengirim, :tanggal, :tanggal_surat, :no_surat, :perihal, :nomor_petunjuk, :created_at, :created_by)
+            ");
+        foreach ($from as $data) {
+            foreach ($this->fields as $field) {
+                $this->db->bind($field, $data[$field]);
+            }
+            $this->db->bind("created_at", $data["requested_at"]);
+            $this->db->bind("created_by", $data["requested_by"]);
         }
-        $this->db->bind('nomor_berkas', $noBerkas++);
+        $noBerkas += 1;
+        $this->db->bind('nomor_berkas', $noBerkas);
         $this->db->execute();
     }
 
@@ -139,8 +148,10 @@ class Suratpengajuan_model
         ");
         $this->db->bind("approved_by", $this->user);
         $this->db->bind("id", $id);
-
         $this->db->execute();
+        
+        $this->insertDataApprove($id);
+
         return $this->db->rowCount();
     }
 
