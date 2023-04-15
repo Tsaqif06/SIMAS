@@ -3,6 +3,8 @@
 class Suratmasuk_model
 {
     private $table = 'surat_masuk';
+    private $user = 'Admin';
+
     private $fields = [
         'nomor_berkas',
         'alamat_pengirim',
@@ -10,18 +12,9 @@ class Suratmasuk_model
         'tanggal_surat',
         'nomor_surat',
         'perihal',
-        'nomor_petunjuk',
+        'nomor_petunjuk'
     ];
-    private $logs = [
-        'created_at',
-        'created_by',
-        'modified_at',
-        'modified_by',
-        'deleted_at',
-        'deleted_by',
-        'restored_at',
-        'restored_by'
-    ];
+
     private $db;
 
     public function __construct()
@@ -48,12 +41,13 @@ class Suratmasuk_model
             "INSERT INTO {$this->table}
                 VALUES 
             (null, :nomor_berkas, :alamat_pengirim, :tanggal, :tanggal_surat,
-            :nomor_surat, :perihal, :nomor_petunjuk)"
+            :nomor_surat, :perihal, :nomor_petunjuk, CURRENT_TIMESTAMP, :created_by)"
         );
 
         foreach ($this->fields as $field) {
             $this->db->bind($field, $data[$field]);
         }
+        $this->db->bind("created_by", $this->user);
 
         $this->db->execute();
         return $this->db->rowCount();

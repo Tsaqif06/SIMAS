@@ -3,6 +3,7 @@
 class Suratpengajuan extends Controller
 {
     public $model_name = "TU";
+    private $user = "Admin";
 
     // Main Routing //
 
@@ -11,10 +12,17 @@ class Suratpengajuan extends Controller
         $data['judul'] = 'SIMAS - Surat Pengajuan';
 
         $data['suratpengajuan'] = $this->model("$this->model_name", 'Suratpengajuan_model')->getAllData();
-
-        $this->view('templates/header', $data);
-        $this->view('tu/suratpengajuan/index', $data);
-        $this->view('templates/footerwm');
+        var_dump($data); die;
+        // $this->model("$this->model_name", 'Suratpengajuan_model')->readReqData();
+        if ($this->user == 'Admin') {
+            $this->view('templates/header', $data);
+            $this->view('tu/suratpengajuan/detail', $data);
+            $this->view('templates/footer');
+        } else {
+            $this->view('templates/header', $data);
+            $this->view('tu/suratpengajuan/index', $data);
+            $this->view('templates/footerwm');
+        }
     }
 
     // Tambah Data //

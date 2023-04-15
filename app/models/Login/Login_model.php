@@ -36,19 +36,6 @@ class Login_model
 
     public function login($data)
     {
-        // $this->db->query(
-        //     "INSERT INTO {$this->table}
-        //         VALUES 
-        //     (null, :username, :password, `:password`, `:role`, :hak_akses, :ip_address, CURRENT_TIMESTAMP, 1)"
-        // );
-
-        // foreach ($this->fields as $field) {
-        //     $this->db->bind($field, $data[$field]);
-        // }
-
-        // $this->db->execute();
-        // return $this->db->rowCount();
-        // $stmt->execute(['username' => $username, 'password' => $password]);
         $this->db->query('SELECT * FROM users WHERE username = :username AND password = :password');
         $this->db->execute();
         return $this->db->fetch();

@@ -3,13 +3,14 @@
 class Suratpengajuan_model
 {
     private $table = 'pengajuan';
+    private $user = 'Admin';
     private $fields = [
         'no_surat',
         'alamat_pengirim',
         'tanggal',
         'tanggal_surat',
         'perihal',
-        'nomor_petunjuk',
+        'nomor_petunjuk'
     ];
     private $logs = [
         'created_at',
@@ -47,12 +48,13 @@ class Suratpengajuan_model
             "INSERT INTO {$this->table}
                 VALUES 
             (null, :no_surat, :alamat_pengirim, :tanggal, :tanggal_surat, 
-            :perihal, :nomor_petunjuk, 0)"
+            :perihal, :nomor_petunjuk, CURRENT_TIMESTAMP, :requested_by, null, null, 0)"
         );
 
         foreach ($this->fields as $field) {
             $this->db->bind($field, $data[$field]);
         }
+        $this->db->bind("requested_by", $this->user);
 
         $this->db->execute();
         return $this->db->rowCount();
@@ -60,7 +62,7 @@ class Suratpengajuan_model
 
     public function hapusData($id)
     {
-        $this->db->query("DELETE FROM {$this->table} WHERE id_pengajuan = :id");
+        $this->db->query("DELETE FROM {$this->table} WHERE id = :id");
         $this->db->bind("id", $id);
 
         $this->db->execute();
@@ -78,24 +80,25 @@ class Suratpengajuan_model
                 tanggal_surat = :tanggal_surat,
                 perihal = :perihal,
                 nomor_petunjuk = :nomor_petunjuk,
-            WHERE id_pengajuan = :id"
+                approved_at = CURRENT_TIMESTAMP,
+                approved_by = :approved_by
+            WHERE id = :id"
         );
 
         foreach ($this->fields as $field) {
             $this->db->bind($field, $data[$field]);
         }
-        $this->db->bind('id', $data['id_pengajuan']);
+        $this->db->bind('approved_by', $this->user);
+        $this->db->bind('id', $data['id']);
 
         $this->db->execute();
         return $this->db->rowCount();
     }
-
-    public function cariData()
+    
+    public function readReqData()
     {
-        $keyword = $_POST['keyword'];
-
-        $this->db->query("SELECT * FROM {$this->table} WHERE no_surat LIKE :keyword");
-        $this->db->bind("keyword", "%$keyword%");
-        return $this->db->fetchAll();
+        $this->db->query("UPDATE {$this->table} SET status = 1 WHERE status = 0");
+        $this->db->execute();
+        return $this->db->rowCount();
     }
 }
