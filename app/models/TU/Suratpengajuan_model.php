@@ -36,6 +36,12 @@ class Suratpengajuan_model
         return $this->db->fetchAll();
     }
 
+    public function getQueuedData()
+    {
+        $this->db->query("SELECT * FROM {$this->table} WHERE is_approved = 0");
+        return $this->db->fetchAll();
+    }
+
     public function getDataById($id)
     {
         $this->db->query("SELECT * FROM {$this->table} WHERE id = :id");

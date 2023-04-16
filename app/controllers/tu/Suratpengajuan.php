@@ -4,6 +4,7 @@ class Suratpengajuan extends Controller
 {
     public $model_name = "TU";
     private $user = "Admin";
+    // private $user = "User";
 
     // Main Routing //
 
@@ -11,7 +12,7 @@ class Suratpengajuan extends Controller
     {
         $data['judul'] = 'SIMAS - Surat Pengajuan';
 
-        $data['suratpengajuan'] = $this->model("$this->model_name", 'Suratpengajuan_model')->getAllData();
+        $data['suratpengajuan'] = $this->model("$this->model_name", 'Suratpengajuan_model')->getQueuedData();
         if ($this->user == 'Admin') {
             $this->view('templates/header', $data);
             $this->view('tu/suratpengajuan/detail', $data);

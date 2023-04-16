@@ -6,7 +6,6 @@ class Suratkeluar_model
     private $user = 'Admin';
 
     private $fields = [
-        'nomor_berkas',
         'alamat_penerima',
         'tanggal',
         'perihal',
@@ -34,12 +33,20 @@ class Suratkeluar_model
 
     public function tambahData($data)
     {
+        $this->db->query("SELECT MAX(nomor_berkas) FROM surat_keluar");
+        $this->db->execute();
+        $noBerkas = $this->db->fetch();
+        $noBerkas = $noBerkas['MAX(nomor_berkas)'];
+
         $this->db->query(
             "INSERT INTO {$this->table}
                 VALUES 
             (null, :nomor_berkas, :alamat_penerima, 
             :tanggal, :perihal, :no_petunjuk, CURRENT_TIMESTAMP, :created_by)"
         );
+
+        $noBerkas += 1;
+        $this->db->bind("nomor_berkas", $noBerkas);
 
         foreach ($this->fields as $field) {
             $this->db->bind($field, $data[$field]);

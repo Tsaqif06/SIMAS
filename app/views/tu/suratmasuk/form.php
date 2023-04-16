@@ -1,9 +1,6 @@
 <form action="<?= BASEURL ?>suratmasuk/tambahData" method="post">
     <input type="hidden" name="id" id="id">
-    <div class="mb-3">
-        <label for="nomor_berkas" class="form-label">Nomor Berkas</label>
-        <input type="text" class="form-control" name="nomor_berkas" id="nomor_berkas" required>
-    </div>
+    <input type="hidden" name="nomor_berkas" id="nomor_berkas">
     <div class="mb-3">
         <label for="alamat_pengirim" class="form-label">Alamat Pengirim</label>
         <input type="text" class="form-control" name="alamat_pengirim" id="alamat_pengirim" required>
@@ -26,5 +23,5 @@
     </div>
     <div class="mb-3">
         <label for="nomor_petunjuk" class="form-label">Nomor Petunjuk</label>
-        <input type="text" class="form-control" name="nomor_petunjuk" id="nomor_petunjuk" required>
+        <input type="text" class="form-control" value="-" name="nomor_petunjuk" id="nomor_petunjuk" required>
     </div>
