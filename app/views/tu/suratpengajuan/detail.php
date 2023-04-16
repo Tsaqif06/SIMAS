@@ -34,7 +34,7 @@
 
         <div class="row">
             <div class="col-lg-6">
-                <button type="button" class="btn btn-primary my-3 tampilModalTambah" data-url="<?= BASEURL ?>suratmasuk/tambahData" data-bs-toggle="modal" data-bs-target="#modal">
+                <button type="button" class="btn btn-primary my-3 tampilModalTambah" data-url="<?= BASEURL ?>/suratmasuk/tambahData" data-bs-toggle="modal" data-bs-target="#modal">
                     Tambah Data Surat Masuk
                 </button>
             </div>
@@ -64,10 +64,10 @@
                                         <tr>
                                             <td><?= $i++ ?></td>
                                             <td class="font-weight-medium">
-                                                <a href="<?= BASEURL ?>suratpengajuan/approveData/<?= $row['id'] ?>" class="badge text-bg-success tampilModalUbah" style="cursor: pointer;"  onclick="return confirm('Apakah Anda Yakin Mau Menerima Surat Ini?')">
+                                                <a href="<?= BASEURL ?>/suratpengajuan/approveData/<?= $row['id'] ?>" class="badge text-bg-success tampilModalUbah" style="cursor: pointer;"  onclick="return confirm('Apakah Anda Yakin Mau Menerima Surat Ini?')">
                                                     <i class="ti ti-check"></i>
                                                 </a>
-                                                <a href="<?= BASEURL ?>suratpengajuan/declineData/<?= $row['id'] ?>" onclick="return confirm('Apakah Anda Yakin Mau Menolak Surat Ini?')">
+                                                <a href="<?= BASEURL ?>/suratpengajuan/declineData/<?= $row['id'] ?>" onclick="return confirm('Apakah Anda Yakin Mau Menolak Surat Ini?')">
                                                     <div class="font-weight-medium pt-2">
                                                         <div class="badge badge-danger delete"><i class="ti ti-close"></i></div>
                                                 </a>

@@ -8,6 +8,7 @@ class Kelas extends Controller
 
     public function index()
     {
+        $this->checkSession();
         $data['judul'] = 'SIMAS - Kelas';
 
         $data['kelas'] = $this->model("$this->model_name", 'Kelas_model')->getAllExistData();
@@ -28,7 +29,7 @@ class Kelas extends Controller
         } else {
             Flasher::setFlash('GAGAL', 'Ditambahkan', 'danger');
         }
-        header("Location: " . BASEURL . "kelas");
+        header("Location: " . BASEURL . "/kelas");
         exit;
     }
 
@@ -41,7 +42,7 @@ class Kelas extends Controller
         } else {
             Flasher::setFlash('GAGAL', 'Dihapus', 'danger');
         }
-        header("Location: " . BASEURL . "kelas");
+        header("Location: " . BASEURL . "/kelas");
         exit;
     }
 
@@ -59,7 +60,7 @@ class Kelas extends Controller
         } else {
             Flasher::setFlash('GAGAL', 'Diubah', 'danger');
         }
-        header("Location: " . BASEURL . "kelas");
+        header("Location: " . BASEURL . "/kelas");
         exit;
     }
 }

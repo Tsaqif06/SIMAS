@@ -8,6 +8,8 @@ class Suratmasuk extends Controller
 
     public function index()
     {
+        $this->checkSession();
+
         $data['judul'] = 'SIMAS - Surat Masuk';
 
         $data['suratmasuk'] = $this->model("$this->model_name", 'Suratmasuk_model')->getAllData();
@@ -22,13 +24,12 @@ class Suratmasuk extends Controller
 
     public function tambahData()
     {
-
         if ($this->model("$this->model_name", "Suratmasuk_model")->tambahData($_POST) > 0) {
             Flasher::setFlash('BERHASIL', 'Ditambahkan', 'success');
         } else {
             Flasher::setFlash('GAGAL', 'Ditambahkan', 'danger');
         }
-        header("Location: " . BASEURL . "suratmasuk");
+        header("Location: " . BASEURL . "/suratmasuk");
         exit;
     }
 
@@ -41,7 +42,7 @@ class Suratmasuk extends Controller
         } else {
             Flasher::setFlash('GAGAL', 'Dihapus', 'danger');
         }
-        header("Location: " . BASEURL . "suratmasuk");
+        header("Location: " . BASEURL . "/suratmasuk");
         exit;
     }
 
@@ -59,7 +60,7 @@ class Suratmasuk extends Controller
         } else {
             Flasher::setFlash('GAGAL', 'Diubah', 'danger');
         }
-        header("Location: " . BASEURL . "suratmasuk");
+        header("Location: " . BASEURL . "/suratmasuk");
         exit;
     }
 }

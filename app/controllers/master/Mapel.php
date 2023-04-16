@@ -8,6 +8,7 @@ class Mapel extends Controller
 
     public function index()
     {
+        $this->checkSession();
         $data['judul'] = 'SIMAS - Mapel';
 
         $data['mapel'] = $this->model("$this->model_name", 'Mapel_model')->getAllExistData();
@@ -28,7 +29,7 @@ class Mapel extends Controller
         } else {
             Flasher::setFlash('GAGAL', 'Ditambahkan', 'danger');
         }
-        header("Location: " . BASEURL . "mapel");
+        header("Location: " . BASEURL . "/mapel");
         exit;
     }
 
@@ -41,7 +42,7 @@ class Mapel extends Controller
         } else {
             Flasher::setFlash('GAGAL', 'Dihapus', 'danger');
         }
-        header("Location: " . BASEURL . "mapel");
+        header("Location: " . BASEURL . "/mapel");
         exit;
     }
 
@@ -59,7 +60,7 @@ class Mapel extends Controller
         } else {
             Flasher::setFlash('GAGAL', 'Diubah', 'danger');
         }
-        header("Location: " . BASEURL . "mapel");
+        header("Location: " . BASEURL . "/mapel");
         exit;
     }
 }

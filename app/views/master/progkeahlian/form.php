@@ -1,4 +1,4 @@
-<form action="<?= BASEURL ?>progkeahlian/tambahData" method="post">
+<form action="<?= BASEURL ?>/progkeahlian/tambahData" method="post">
     <input type="hidden" name="id" id="id">
     <input type="hidden" name="uuid" id="uuid">
     <div class="mb-3">

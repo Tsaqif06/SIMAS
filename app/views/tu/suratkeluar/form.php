@@ -1,4 +1,4 @@
-    <form action="<?= BASEURL ?>suratkeluar/tambahData" method="post">
+    <form action="<?= BASEURL ?>/suratkeluar/tambahData" method="post">
         <input type="hidden" name="id" id="id">
         <input type="hidden" name="nomor_berkas" id="nomor_berkas">
         <div class="mb-3">

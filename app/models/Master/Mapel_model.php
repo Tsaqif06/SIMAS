@@ -9,16 +9,7 @@ class Mapel_model
         'nama_mapel',
         'kurikulum'
     ];
-    private $logs = [
-        'created_at',
-        'created_by',
-        'modified_at',
-        'modified_by',
-        'deleted_at',
-        'deleted_by',
-        'restored_at',
-        'restored_by'
-    ];
+
     private $db;
 
     public function __construct()

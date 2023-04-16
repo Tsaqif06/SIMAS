@@ -12,16 +12,7 @@ class Suratpengajuan_model
         'perihal',
         'nomor_petunjuk'
     ];
-    private $logs = [
-        'created_at',
-        'created_by',
-        'modified_at',
-        'modified_by',
-        'deleted_at',
-        'deleted_by',
-        'restored_at',
-        'restored_by'
-    ];
+
     private $db;
 
 

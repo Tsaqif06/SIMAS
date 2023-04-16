@@ -9,7 +9,7 @@
                 <img src="images/logosimas.png" alt="logo">
               </div>
               <h4>Masukkan Kode Verifikasi dan Sandi Baru</h4>
-              <form class="pt-3" action="<?= BASEURL ?>login" method="post">
+              <form class="pt-3" action="<?= BASEURL ?>/login" method="post">
                 <div class="form-group">
                   <input type="text" class="form-control form-control-lg" id="inputKode" placeholder="Kode verifikasi dari email">
                 </div>

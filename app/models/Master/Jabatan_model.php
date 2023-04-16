@@ -8,16 +8,7 @@ class Jabatan_model
         'jabatan',
         'nama_yang_menjabat'
     ];
-    private $logs = [
-        'created_at',
-        'created_by',
-        'modified_at',
-        'modified_by',
-        'deleted_at',
-        'deleted_by',
-        'restored_at',
-        'restored_by'
-    ];
+
     private $db;
 
     public function __construct()

@@ -27,10 +27,10 @@ class Login_model
 
     public function auth($data)
     {
-        $this->db->query("SELECT * FROM {$this->table} WHERE username = :username AND email = :email AND `password = :password`"); // : = menghindari sql injection
+        $this->db->query("SELECT * FROM {$this->table} WHERE username = :username AND email = :email AND password = :password_field");
         $this->db->bind("username", $data['username']);
         $this->db->bind("email", $data['email']);
-        $this->db->bind("password", $data['password']);
+        $this->db->bind("password_field", $data['password']);
         return $this->db->fetch();
     }
 

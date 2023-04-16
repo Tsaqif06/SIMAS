@@ -10,6 +10,8 @@ class Suratpengajuan extends Controller
 
     public function index()
     {
+        $this->checkSession();
+
         $data['judul'] = 'SIMAS - Surat Pengajuan';
 
         $data['suratpengajuan'] = $this->model("$this->model_name", 'Suratpengajuan_model')->getQueuedData();
@@ -35,7 +37,7 @@ class Suratpengajuan extends Controller
         } else {
             Flasher::setFlash('GAGAL', 'Ditambahkan', 'danger');
         }
-        header("Location: " . BASEURL . "suratpengajuan");
+        header("Location: " . BASEURL . "/suratpengajuan");
         exit;
     }
 
@@ -48,7 +50,7 @@ class Suratpengajuan extends Controller
         } else {
             Flasher::setFlash('GAGAL', 'Dihapus', 'danger');
         }
-        header("Location: " . BASEURL . "suratpengajuan");
+        header("Location: " . BASEURL . "/suratpengajuan");
         exit;
     }
 
@@ -66,7 +68,7 @@ class Suratpengajuan extends Controller
         } else {
             Flasher::setFlash('GAGAL', 'Diubah', 'danger');
         }
-        header("Location: " . BASEURL . "suratpengajuan");
+        header("Location: " . BASEURL . "/suratpengajuan");
         exit;
     }
 
@@ -77,7 +79,7 @@ class Suratpengajuan extends Controller
         } else {
             Flasher::setFlash('GAGAL', 'Disetujui', 'danger');
         }
-        header("Location: " . BASEURL . "suratpengajuan");
+        header("Location: " . BASEURL . "/suratpengajuan");
         exit;
     }
 
@@ -88,7 +90,7 @@ class Suratpengajuan extends Controller
         } else {
             Flasher::setFlash('GAGAL', 'Ditolak', 'danger');
         }
-        header("Location: " . BASEURL . "suratpengajuan");
+        header("Location: " . BASEURL . "/suratpengajuan");
         exit;
     }
 }

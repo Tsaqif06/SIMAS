@@ -10,7 +10,7 @@
               </div>
               <h4>Lupa Sandi?</h4>
               <h6 class="font-weight-light">Kode verifikasi akan dikirim melalui email untuk mengubah kata sandi Anda.</h6>
-              <form class="pt-3" action="<?= BASEURL ?>verifikasi" method="post">
+              <form class="pt-3" action="<?= BASEURL ?>/verifikasi" method="post">
                 <div class="form-group">
                   <input type="text" class="form-control form-control-lg" id="inputNama" placeholder="Nama">
                 </div>

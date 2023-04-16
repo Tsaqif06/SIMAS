@@ -8,6 +8,7 @@ class Kompkeahlian extends Controller
 
     public function index()
     {
+        $this->checkSession();
         $data['judul'] = 'SIMAS - Kompkeahlian';
 
         $data['kompkeahlian'] = $this->model("$this->model_name", 'Kompkeahlian_model')->getAllExistData();
@@ -28,7 +29,7 @@ class Kompkeahlian extends Controller
         } else {
             Flasher::setFlash('GAGAL', 'Ditambahkan', 'danger');
         }
-        header("Location: " . BASEURL . "kompkeahlian");
+        header("Location: " . BASEURL . "/kompkeahlian");
         exit;
     }
 
@@ -41,7 +42,7 @@ class Kompkeahlian extends Controller
         } else {
             Flasher::setFlash('GAGAL', 'Dihapus', 'danger');
         }
-        header("Location: " . BASEURL . "Kompkeahlian");
+        header("Location: " . BASEURL . "/Kompkeahlian");
         exit;
     }
 
@@ -59,7 +60,7 @@ class Kompkeahlian extends Controller
         } else {
             Flasher::setFlash('GAGAL', 'Diubah', 'danger');
         }
-        header("Location: " . BASEURL . "kompkeahlian");
+        header("Location: " . BASEURL . "/kompkeahlian");
         exit;
     }
 }

@@ -10,7 +10,7 @@
 								</div>
 								<h4>Halo, Selamat Datang!</h4>
 								<h6 class="font-weight-light">Masuk terlebih dahulu</h6>
-								<form class="pt-3 needs-validation" action="<?= BASEURL ?>login/logProccess" method="post" novalidate>
+								<form class="pt-3 needs-validation" action="<?= BASEURL ?>/login/logProccess" method="post" novalidate>
 									<div class="form-group">
 										<input type="text" class="form-control form-control-lg" id="username" name="username" placeholder="Nama" required />
 										<div class="invalid-feedback">Mohon isi nama anda.</div>
@@ -45,7 +45,7 @@
 											Ingat Saya
 										</label>
 									</div>
-									<a href="<?= BASEURL ?>lupasandi" class="auth-link text-black">Lupa Sandi?</a>
+									<a href="<?= BASEURL ?>/lupasandi" class="auth-link text-black">Lupa Sandi?</a>
 								</div>
 								<div class="mb-2"></div>
 							</div>
