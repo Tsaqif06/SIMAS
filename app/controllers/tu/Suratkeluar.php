@@ -8,6 +8,7 @@ class Suratkeluar extends Controller
 
     public function index()
     {
+        $this->checkSession();
         $data['judul'] = 'SIMAS - Surat Keluar';
 
         $data['suratkeluar'] = $this->model("$this->model_name", 'Suratkeluar_model')->getAllData();
@@ -28,7 +29,7 @@ class Suratkeluar extends Controller
         } else {
             Flasher::setFlash('GAGAL', 'Ditambahkan', 'danger');
         }
-        header("Location: " . BASEURL . "suratkeluar");
+        header("Location: " . BASEURL . "/suratkeluar");
         exit;
     }
 
@@ -41,7 +42,7 @@ class Suratkeluar extends Controller
         } else {
             Flasher::setFlash('GAGAL', 'Dihapus', 'danger');
         }
-        header("Location: " . BASEURL . "suratkeluar");
+        header("Location: " . BASEURL . "/suratkeluar");
         exit;
     }
 
@@ -59,7 +60,7 @@ class Suratkeluar extends Controller
         } else {
             Flasher::setFlash('GAGAL', 'Diubah', 'danger');
         }
-        header("Location: " . BASEURL . "suratkeluar");
+        header("Location: " . BASEURL . "/suratkeluar");
         exit;
     }
 }

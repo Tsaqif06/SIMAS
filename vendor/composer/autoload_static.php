@@ -28,6 +28,10 @@ class ComposerStaticInit3e242de698c5445dace4b796c441cbb1
         array (
             'PHPMailer\\PHPMailer\\' => 20,
         ),
+        'F' => 
+        array (
+            'Firebase\\JWT\\' => 13,
+        ),
         'B' => 
         array (
             'Brick\\Math\\' => 11,
@@ -58,6 +62,10 @@ class ComposerStaticInit3e242de698c5445dace4b796c441cbb1
         'PHPMailer\\PHPMailer\\' => 
         array (
             0 => __DIR__ . '/..' . '/phpmailer/phpmailer/src',
+        ),
+        'Firebase\\JWT\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/firebase/php-jwt/src',
         ),
         'Brick\\Math\\' => 
         array (

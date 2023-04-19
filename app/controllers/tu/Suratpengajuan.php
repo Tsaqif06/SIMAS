@@ -3,18 +3,28 @@
 class Suratpengajuan extends Controller
 {
     public $model_name = "TU";
+    private $user = "Admin";
+    // private $user = "User";
 
     // Main Routing //
 
     public function index()
     {
+        $this->checkSession();
+
         $data['judul'] = 'SIMAS - Surat Pengajuan';
 
-        $data['suratpengajuan'] = $this->model("$this->model_name", 'Suratpengajuan_model')->getAllData();
-
-        $this->view('templates/header', $data);
-        $this->view('tu/suratpengajuan/index', $data);
-        $this->view('templates/footerwm');
+        $data['suratpengajuan'] = $this->model("$this->model_name", 'Suratpengajuan_model')->getQueuedData();
+        if ($this->user == 'Admin') {
+            $this->view('templates/header', $data);
+            $this->view('tu/suratpengajuan/detail', $data);
+            $this->view('templates/footer');
+            $this->model("$this->model_name", 'Suratpengajuan_model')->readReqData();
+        } else {
+            $this->view('templates/header', $data);
+            $this->view('tu/suratpengajuan/index', $data);
+            $this->view('templates/footerwm');
+        }
     }
 
     // Tambah Data //
@@ -27,7 +37,7 @@ class Suratpengajuan extends Controller
         } else {
             Flasher::setFlash('GAGAL', 'Ditambahkan', 'danger');
         }
-        header("Location: " . BASEURL . "suratpengajuan");
+        header("Location: " . BASEURL . "/suratpengajuan");
         exit;
     }
 
@@ -40,7 +50,7 @@ class Suratpengajuan extends Controller
         } else {
             Flasher::setFlash('GAGAL', 'Dihapus', 'danger');
         }
-        header("Location: " . BASEURL . "suratpengajuan");
+        header("Location: " . BASEURL . "/suratpengajuan");
         exit;
     }
 
@@ -58,7 +68,29 @@ class Suratpengajuan extends Controller
         } else {
             Flasher::setFlash('GAGAL', 'Diubah', 'danger');
         }
-        header("Location: " . BASEURL . "suratpengajuan");
+        header("Location: " . BASEURL . "/suratpengajuan");
+        exit;
+    }
+
+    public function approveData($id)
+    {
+        if ($this->model("$this->model_name", "Suratpengajuan_model")->approveData($id) > 0) {
+            Flasher::setFlash('BERHASIL', 'Disetujui', 'success');
+        } else {
+            Flasher::setFlash('GAGAL', 'Disetujui', 'danger');
+        }
+        header("Location: " . BASEURL . "/suratpengajuan");
+        exit;
+    }
+
+    public function declineData($id)
+    {
+        if ($this->model("$this->model_name", "Suratpengajuan_model")->declineData($id) > 0) {
+            Flasher::setFlash('BERHASIL', 'Ditolak', 'success');
+        } else {
+            Flasher::setFlash('GAGAL', 'Ditolak', 'danger');
+        }
+        header("Location: " . BASEURL . "/suratpengajuan");
         exit;
     }
 }

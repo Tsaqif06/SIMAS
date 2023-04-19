@@ -8,6 +8,7 @@ class Progkeahlian extends Controller
 
     public function index()
     {
+        $this->checkSession();
         $data['judul'] = 'SIMAS - Progkeahlian';
 
         $data['progkeahlian'] = $this->model("$this->model_name", 'Progkeahlian_model')->getAllExistData();
@@ -28,7 +29,7 @@ class Progkeahlian extends Controller
         } else {
             Flasher::setFlash('GAGAL', 'Ditambahkan', 'danger');
         }
-        header("Location: " . BASEURL . "progkeahlian");
+        header("Location: " . BASEURL . "/progkeahlian");
         exit;
     }
 
@@ -41,7 +42,7 @@ class Progkeahlian extends Controller
         } else {
             Flasher::setFlash('GAGAL', 'Dihapus', 'danger');
         }
-        header("Location: " . BASEURL . "progkeahlian");
+        header("Location: " . BASEURL . "/progkeahlian");
         exit;
     }
 
@@ -59,7 +60,7 @@ class Progkeahlian extends Controller
         } else {
             Flasher::setFlash('GAGAL', 'Diubah', 'danger');
         }
-        header("Location: " . BASEURL . "progkeahlian");
+        header("Location: " . BASEURL . "/progkeahlian");
         exit;
     }
 }

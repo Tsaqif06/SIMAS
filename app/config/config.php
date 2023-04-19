@@ -1,6 +1,6 @@
 <?php
 // BASEURL
-define('BASEURL', 'http://localhost/SIMAS/public/');
+define('BASEURL', 'http://localhost/SIMAS/public');
 
 // DB CONFIG
 define('DB_HOST', 'localhost');

@@ -8,6 +8,7 @@ class Jabatan extends Controller
 
     public function index()
     {
+        $this->checkSession();
         $data['judul'] = 'SIMAS - Jabatan';
 
         $data['jabatan'] = $this->model("$this->model_name", 'Jabatan_model')->getAllExistData();
@@ -28,7 +29,7 @@ class Jabatan extends Controller
         } else {
             Flasher::setFlash('GAGAL', 'Ditambahkan', 'danger');
         }
-        header("Location: " . BASEURL . "jabatan");
+        header("Location: " . BASEURL . "/jabatan");
         exit;
     }
 
@@ -41,7 +42,7 @@ class Jabatan extends Controller
         } else {
             Flasher::setFlash('GAGAL', 'Dihapus', 'danger');
         }
-        header("Location: " . BASEURL . "jabatan");
+        header("Location: " . BASEURL . "/jabatan");
         exit;
     }
 
@@ -59,7 +60,7 @@ class Jabatan extends Controller
         } else {
             Flasher::setFlash('GAGAL', 'Diubah', 'danger');
         }
-        header("Location: " . BASEURL . "jabatan");
+        header("Location: " . BASEURL . "/jabatan");
         exit;
     }
 }

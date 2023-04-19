@@ -8,6 +8,7 @@ class Guru extends Controller
 
     public function index()
     {
+        $this->checkSession();
         $data['judul'] = 'SIMAS - Guru';
 
         $data['guru'] = $this->model("$this->model_name", 'Guru_model')->getAllExistData();
@@ -28,7 +29,7 @@ class Guru extends Controller
         } else {
             Flasher::setFlash('GAGAL', 'Ditambahkan', 'danger');
         }
-        header("Location: " . BASEURL . "guru");
+        header("Location: " . BASEURL . "/guru");
         exit;
     }
 
@@ -41,7 +42,7 @@ class Guru extends Controller
         } else {
             Flasher::setFlash('GAGAL', 'Dihapus', 'danger');
         }
-        header("Location: " . BASEURL . "guru");
+        header("Location: " . BASEURL . "/guru");
         exit;
     }
 
@@ -59,7 +60,7 @@ class Guru extends Controller
         } else {
             Flasher::setFlash('GAGAL', 'Diubah', 'danger');
         }
-        header("Location: " . BASEURL . "guru");
+        header("Location: " . BASEURL . "/guru");
         exit;
     }
 }

@@ -3,25 +3,17 @@
 class Suratmasuk_model
 {
     private $table = 'surat_masuk';
+    private $user = 'Admin';
+
     private $fields = [
-        'nomor_berkas',
         'alamat_pengirim',
         'tanggal',
         'tanggal_surat',
         'nomor_surat',
         'perihal',
-        'nomor_petunjuk',
+        'nomor_petunjuk'
     ];
-    private $logs = [
-        'created_at',
-        'created_by',
-        'modified_at',
-        'modified_by',
-        'deleted_at',
-        'deleted_by',
-        'restored_at',
-        'restored_by'
-    ];
+
     private $db;
 
     public function __construct()
@@ -44,16 +36,24 @@ class Suratmasuk_model
 
     public function tambahData($data)
     {
+        $this->db->query("SELECT MAX(nomor_berkas) FROM surat_masuk");
+        $this->db->execute();
+        $noBerkas = $this->db->fetch();
+        $noBerkas = $noBerkas['MAX(nomor_berkas)'];
+
         $this->db->query(
             "INSERT INTO {$this->table}
                 VALUES 
             (null, :nomor_berkas, :alamat_pengirim, :tanggal, :tanggal_surat,
-            :nomor_surat, :perihal, :nomor_petunjuk)"
+            :nomor_surat, :perihal, :nomor_petunjuk, CURRENT_TIMESTAMP, :created_by)"
         );
 
+        $noBerkas += 1;
+        $this->db->bind('nomor_berkas', $noBerkas);
         foreach ($this->fields as $field) {
             $this->db->bind($field, $data[$field]);
         }
+        $this->db->bind("created_by", $this->user);
 
         $this->db->execute();
         return $this->db->rowCount();

@@ -8,6 +8,7 @@ class Walikelas extends Controller
 
     public function index()
     {
+        $this->checkSession();
         $data['judul'] = 'SIMAS - Walikelas';
 
         $data['walikelas'] = $this->model("$this->model_name", 'Walikelas_model')->getAllExistData();
@@ -28,7 +29,7 @@ class Walikelas extends Controller
         } else {
             Flasher::setFlash('GAGAL', 'Ditambahkan', 'danger');
         }
-        header("Location: " . BASEURL . "walikelas");
+        header("Location: " . BASEURL . "/walikelas");
         exit;
     }
 
@@ -41,7 +42,7 @@ class Walikelas extends Controller
         } else {
             Flasher::setFlash('GAGAL', 'Dihapus', 'danger');
         }
-        header("Location: " . BASEURL . "walikelas");
+        header("Location: " . BASEURL . "/walikelas");
         exit;
     }
 
@@ -59,7 +60,7 @@ class Walikelas extends Controller
         } else {
             Flasher::setFlash('GAGAL', 'Diubah', 'danger');
         }
-        header("Location: " . BASEURL . "walikelas");
+        header("Location: " . BASEURL . "/walikelas");
         exit;
     }
 }

@@ -8,6 +8,7 @@ class Karyawan extends Controller
 
     public function index()
     {
+        $this->checkSession();
         $data['judul'] = 'SIMAS - Karyawan';
 
         $data['karyawan'] = $this->model("$this->model_name", 'Karyawan_model')->getAllExistData();
@@ -28,7 +29,7 @@ class Karyawan extends Controller
         } else {
             Flasher::setFlash('GAGAL', 'Ditambahkan', 'danger');
         }
-        header("Location: " . BASEURL . "karyawan");
+        header("Location: " . BASEURL . "/karyawan");
         exit;
     }
 
@@ -41,7 +42,7 @@ class Karyawan extends Controller
         } else {
             Flasher::setFlash('GAGAL', 'Dihapus', 'danger');
         }
-        header("Location: " . BASEURL . "karyawan");
+        header("Location: " . BASEURL . "/karyawan");
         exit;
     }
 
@@ -59,7 +60,7 @@ class Karyawan extends Controller
         } else {
             Flasher::setFlash('GAGAL', 'Diubah', 'danger');
         }
-        header("Location: " . BASEURL . "karyawan");
+        header("Location: " . BASEURL . "/karyawan");
         exit;
     }
 }

@@ -3,22 +3,13 @@
 class Suratkeluar_model
 {
     private $table = 'surat_keluar';
+    private $user = 'Admin';
+
     private $fields = [
-        'nomor_berkas',
         'alamat_penerima',
         'tanggal',
         'perihal',
-        'no_petunjuk',
-    ];
-    private $logs = [
-        'created_at',
-        'created_by',
-        'modified_at',
-        'modified_by',
-        'deleted_at',
-        'deleted_by',
-        'restored_at',
-        'restored_by'
+        'no_petunjuk'
     ];
     private $db;
 
@@ -42,16 +33,25 @@ class Suratkeluar_model
 
     public function tambahData($data)
     {
+        $this->db->query("SELECT MAX(nomor_berkas) FROM surat_keluar");
+        $this->db->execute();
+        $noBerkas = $this->db->fetch();
+        $noBerkas = $noBerkas['MAX(nomor_berkas)'];
+
         $this->db->query(
             "INSERT INTO {$this->table}
                 VALUES 
             (null, :nomor_berkas, :alamat_penerima, 
-            :tanggal, :perihal, :no_petunjuk)"
+            :tanggal, :perihal, :no_petunjuk, CURRENT_TIMESTAMP, :created_by)"
         );
+
+        $noBerkas += 1;
+        $this->db->bind("nomor_berkas", $noBerkas);
 
         foreach ($this->fields as $field) {
             $this->db->bind($field, $data[$field]);
         }
+        $this->db->bind("created_by", $this->user);
 
         $this->db->execute();
         return $this->db->rowCount();
@@ -86,14 +86,5 @@ class Suratkeluar_model
 
         $this->db->execute();
         return $this->db->rowCount();
-    }
-
-    public function cariData()
-    {
-        $keyword = $_POST['keyword'];
-
-        $this->db->query("SELECT * FROM {$this->table} WHERE nomor_berkas LIKE :keyword");
-        $this->db->bind("keyword", "%$keyword%");
-        return $this->db->fetchAll();
     }
 }

@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <title><?= $data['judul'] ?></title>
     <!-- plugins:css -->
+    <link rel="stylesheet" href="css/bootstrap.css">
     <link rel="stylesheet" href="vendors/feather/feather.css" />
     <link rel="stylesheet" href="vendors/ti-icons/css/themify-icons.css" />
     <link rel="stylesheet" href="vendors/css/vendor.bundle.base.css" />

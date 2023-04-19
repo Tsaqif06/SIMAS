@@ -10,25 +10,30 @@
 								</div>
 								<h4>Halo, Selamat Datang!</h4>
 								<h6 class="font-weight-light">Masuk terlebih dahulu</h6>
-								<form class="pt-3 needs-validation" novalidate>
+								<form class="pt-3 needs-validation" action="<?= BASEURL ?>/login/logProccess" method="post" novalidate>
 									<div class="form-group">
-										<input type="text" class="form-control form-control-lg" id="inputNama" placeholder="Nama" required />
+										<input type="text" class="form-control form-control-lg" id="username" name="username" placeholder="Nama" required />
 										<div class="invalid-feedback">Mohon isi nama anda.</div>
 									</div>
 									<div class="form-group">
-										<input type="email" class="form-control form-control-lg" id="inputEmail" placeholder="Email" required />
+										<input type="email" class="form-control form-control-lg" id="email" name="email" placeholder="Email" required />
 									</div>
 									<div class="form-group">
-										<input type="password" class="form-control form-control-lg" id="inputPass" placeholder="Sandi" required />
+										<input type="password" class="form-control form-control-lg" id="password" name="password" placeholder="Sandi" required />
 										<div class="invalid-feedback">Mohon isi sandi anda.</div>
 										<br />
+										<div class="row">
+           									<div class="col-lg-6">
+               									<?php Flasher::flash(); ?>
+            								</div>
+        								</div>
 										<label class="form-check-label text-muted">
 											<input type="checkbox" onclick="showPass()" />
 											Lihat Sandi
 										</label>
 									</div>
 									<div class="mt-3">
-										<button class="btn btn-block btn-primary btn-lg font-weight-medium auth-form-btn" type="submit" onClick="goToIndex()">
+										<button class="btn btn-block btn-primary btn-lg font-weight-medium auth-form-btn" type="submit">
 											Masuk
 										</button>
 									</div>
@@ -40,7 +45,7 @@
 											Ingat Saya
 										</label>
 									</div>
-									<a href="<?= BASEURL ?>lupasandi" class="auth-link text-black">Lupa Sandi?</a>
+									<a href="<?= BASEURL ?>/lupasandi" class="auth-link text-black">Lupa Sandi?</a>
 								</div>
 								<div class="mb-2"></div>
 							</div>
