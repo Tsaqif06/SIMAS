@@ -15,12 +15,6 @@ class Controller
     public function checkSession()
     {
         require_once dirname(__DIR__) . '\\app\\controllers\\login\\Login.php';
-        // try {
-        //     $session = Login::getCurrentSession();
-        // } catch (Exception $exception) {
-        //     header('Location: ' . BASEURL . 'login');
-        //     exit(0);
-        // }
         return Login::getCurrentSession();
     }
 }

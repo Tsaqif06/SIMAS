@@ -27,7 +27,7 @@ class Login extends Controller
             if (!$user) {
                 Flasher::setFlash('GAGAL', 'Login', 'danger');
                 sleep(1);
-                header("Location: " . BASEURL . "login");
+                header("Location: " . BASEURL . "/login");
             } else {
                 Flasher::setFlash('BERHASIL', 'Login', 'success');
                 // Jika validasi berhasil, buat token JWT
@@ -45,7 +45,7 @@ class Login extends Controller
                 ];
                 $jwt = JWT::encode($payload, Login::$SECRET_KEY, 'HS256');
                 setcookie("SIMAS-SESSION", $jwt,  time() + (7 * 24 * 60 * 60), "/");
-                
+
                 // Kirim token JWT sebagai respons
                 sleep(1);
                 header("Location: " . BASEURL);
@@ -55,17 +55,19 @@ class Login extends Controller
 
     public static function getCurrentSession()
     {
-        
-        if($_COOKIE['SIMAS-SESSION']){
+
+        if ($_COOKIE['SIMAS-SESSION']) {
             $jwt = $_COOKIE['SIMAS-SESSION'];
             try {
                 $payload = JWT::decode($jwt, new Key(Login::$SECRET_KEY, 'HS256'));
                 return new Session(username: $payload->name, role: $payload->role, akses: $payload->akses);
-            }catch (Exception $exception){
-                throw new Exception("User is not login");
+            } catch (Exception $exception) {
+                header("Location: " . BASEURL . "/login");
+                exit;
             }
-        }else{
-            throw new Exception("User is not login");
+        } else {
+            header("Location: " . BASEURL . "/login");
+            exit;
         }
     }
 }

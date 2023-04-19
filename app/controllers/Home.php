@@ -6,8 +6,9 @@ class Home extends Controller
     {
         $session = $this->checkSession();
         $data['judul'] = 'SIMAS - Home';
+        $data['username'] = Login::getCurrentSession()->username;
         $this->view('templates/header', $data);
-        $this->view('home/index');
+        $this->view('home/index', $data);
         $this->view('templates/footerwm');
     }
 }
