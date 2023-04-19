@@ -1,4 +1,5 @@
 <?php
+$parent = dirname(__DIR__);
 require_once 'config/config.php';
 require_once '../vendor/autoload.php';
 require_once 'controllers/login/Session.php';

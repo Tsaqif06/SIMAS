@@ -10,15 +10,15 @@
               </div>
               <h4>Lupa Sandi?</h4>
               <h6 class="font-weight-light">Kode verifikasi akan dikirim melalui email untuk mengubah kata sandi Anda.</h6>
-              <form class="pt-3" action="<?= BASEURL ?>/verifikasi" method="post">
+              <form class="pt-3" action="<?= BASEURL ?>/lupasandi/sendEmail" method="post">
                 <div class="form-group">
-                  <input type="text" class="form-control form-control-lg" id="inputNama" placeholder="Nama">
+                  <input type="text" class="form-control form-control-lg" id="inputNama" placeholder="Nama" name="nama">
                 </div>
                 <div class="form-group">
-                  <input type="email" class="form-control form-control-lg" id="inputEmail" placeholder="Email">
+                  <input type="email" class="form-control form-control-lg" id="inputEmail" placeholder="Email" name="email">
                 </div>
                 <div class="mt-3">
-                  <button type="submit" class="btn btn-block btn-primary btn-lg font-weight-medium auth-form-btn">Kirim</button>
+                  <button type="submit" name="submit" class="btn btn-block btn-primary btn-lg font-weight-medium auth-form-btn">Kirim</button>
                 </div>
                 <div class="my-2 d-flex justify-content-between align-items-center">
                   <div class="form-check">

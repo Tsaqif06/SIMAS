@@ -11,10 +11,10 @@
               <h4>Masukkan Kode Verifikasi dan Sandi Baru</h4>
               <form class="pt-3" action="<?= BASEURL ?>/login" method="post">
                 <div class="form-group">
-                  <input type="text" class="form-control form-control-lg" id="inputKode" placeholder="Kode verifikasi dari email">
+                  <input type="text" class="form-control form-control-lg" id="inputKode" placeholder="Kode verifikasi dari email" name="otp_code" required autofocus>
                 </div>
                 <div class="form-group">
-                  <input type="password" class="form-control form-control-lg" id="inputPass" placeholder="Sandi Baru"><br>
+                  <input type="password" name="password" class="form-control form-control-lg" id="inputPass" placeholder="Sandi Baru"><br>
                   <label class="form-check-label text-muted">
                     <input type="checkbox" onclick="showPass()">
                     Lihat Sandi

@@ -9,5 +9,5 @@ define('DB_PASS', '');
 
 // DB NAMES
 define('DB_MASTER', 'masterdata');
-define('DB_TU', 'tu'); 
+define('DB_TU', 'tu');
 define('DB_USERS', 'users');

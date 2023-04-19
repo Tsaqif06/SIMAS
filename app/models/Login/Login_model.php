@@ -27,6 +27,7 @@ class Login_model
 
     public function auth($data)
     {
+
         $this->db->query("SELECT * FROM {$this->table} WHERE username = :username AND email = :email AND password = :password_field");
         $this->db->bind("username", $data['username']);
         $this->db->bind("email", $data['email']);
@@ -39,6 +40,14 @@ class Login_model
         $this->db->query("SELECT * FROM {$this->table} WHERE username = :username AND `password` = `:password`");
         $this->db->execute();
         return $this->db->fetch();
+    }
+
+    public function verifikasi($email)
+    {
+        $this->db->query("SELECT * FROM {$this->table} WHERE email = :email");
+        $this->db->bind("email", $email);
+        $this->db->execute();
+        return ['fetch' => $this->db->fetch(), 'rowCount' => $this->db->rowCount()];
     }
 
     public function hapusData($id)
