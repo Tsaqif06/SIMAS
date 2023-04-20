@@ -21,27 +21,29 @@ class Lupasandi extends Controller
         if (!empty($_POST)) {
             $mail = new PHPMailer(true);
 
+            $username = $_POST["username"];
             $email = $_POST["email"];
 
-            $search = $this->model("$this->model_name", "Login_model")->verifikasi($email);
-
-            if ($search['rowCount'] <= 0) {
+            if ($this->model("$this->model_name", "Login_model")->checkUser($username, $email) <= 0) {
                 echo "Sorry, no emails exists ";
-            } else if ($search['fetch']["status"] == 0) {
-                echo '<script>
-                    alert("Sorry, your account must verify first, before you recover your password !");
-                    window.location.replace("index.php");
-                </script>';
             } else {
                 // generate token by binaryhexa 
-                $token = bin2hex(random_bytes(50));
+                // $token = bin2hex(random_bytes(50));
                 $otp = rand(100000,999999);
-                
 
                 //session_start ();
-                $_SESSION['otp'] = $otp;
-                $_SESSION['token'] = $token;
-                $_SESSION['email'] = $email;
+
+                // $_SESSION['token'] = $token;
+                
+                // Set waktu kadaluarsa dalam detik (300 detik = 5 menit)
+                // $expiration_time = 300; 
+
+                // Hitung waktu kadaluarsa dalam waktu UNIX timestamp
+                // $expiration_timestamp = time() + $expiration_time; 
+
+                // Set waktu kadaluarsa di PHPMailer
+                // $mail->setExpiration($expiration_timestamp);
+
 
                 $mail = new PHPMailer;
 
@@ -70,12 +72,19 @@ class Lupasandi extends Controller
 
                 if (!$mail->send()) {
                     echo '<script>
-                        alert("<?php echo " Invalid Email " ?>");
+                        alert(" Invalid Email ");
                     </script>';
-                    header("Location: " . BASEURL . "Verifikasi");
                 } else {
-                    echo 'terkirim';
+                    $_SESSION['otp'] = $otp;
+                    $_SESSION['username'] = $username;
+                    $_SESSION['email'] = $email;
+                    echo 'email berhasil dikirim';
+                    // header("Location : http://localhost/SIMAS/public/verifikasi");
+                    // exit;
                 }
+                // if ($mail->isExpired()) {
+                //     echo 'Email has expired.';
+                // }
             }
         }
     }
