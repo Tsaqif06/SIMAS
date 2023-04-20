@@ -42,12 +42,23 @@ class Login_model
         return $this->db->fetch();
     }
 
-    public function verifikasi($email)
+    public function checkUser($username, $email)
     {
-        $this->db->query("SELECT * FROM {$this->table} WHERE email = :email");
+        $this->db->query("SELECT * FROM {$this->table} WHERE username = :username AND email = :email");
+        $this->db->bind("username", $username);
         $this->db->bind("email", $email);
         $this->db->execute();
-        return ['fetch' => $this->db->fetch(), 'rowCount' => $this->db->rowCount()];
+        return $this->db->rowCount();
+    }
+
+    public function changePassword($username, $email, $password)
+    {
+        $this->db->query("UPDATE {$this->table} SET `password` = :password WHERE username = :username AND email = :email");
+        $this->db->bind("username", $username);
+        $this->db->bind("email", $email);
+        $this->db->bind("password", $password);
+        $this->db->execute();
+        return $this->db->rowCount();
     }
 
     public function hapusData($id)

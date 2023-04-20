@@ -1,6 +1,9 @@
 <?php
 class Verifikasi extends Controller
 {
+
+    private $model_name = 'login';
+
     public function index()
     {
         $data['judul'] = 'SIMAS - Verifikasi';
@@ -9,31 +12,30 @@ class Verifikasi extends Controller
         $this->view('login/foot');
     }
 
-    public function verifikasi()
+    public function confirm()
     {
-        if(isset($_POST["verify"])){
+        if (isset($_POST)) {
+            $inputkode = $_POST['otp'];
             $otp = $_SESSION['otp'];
-            $email = $_SESSION['mail'];
-            $otp_code = $_POST['otp_code'];
-    
-            if($otp != $otp_code){
-                ?>
-               <script>
-                   alert("Invalid OTP code");
-               </script>
-               <?php
-            }else{
-                mysqli_query($connect, "UPDATE login SET status = 1 WHERE email = '$email'");
-                echo 
-                 '<script>
-                     alert("Verfiy account done, you may sign in now");
-                       window.location.replace("index.php");
-                 </script>';
-                 
-            }
-    
-        }
-    
-    }
 
+            if ($inputkode != $otp) {
+                echo
+                '<script>
+                    alert("Invalid OTP code");
+                </script>';
+            } else {
+                $username = $_SESSION['username'];
+                $email = $_SESSION['email'];
+                $password = $_POST['password'];
+                $this->model("$this->model_name", "Login_model")->changePassword($username, $email, $password);
+                echo
+                '<script>
+                    alert("Kata sandi telah dirubah");
+                </script>';
+                session_destroy();
+                // header("Location : " . BASEURL . "/Login");
+                // exit;
+            }
+        }
+    }
 }

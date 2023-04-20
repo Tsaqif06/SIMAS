@@ -12,7 +12,7 @@
               <h6 class="font-weight-light">Kode verifikasi akan dikirim melalui email untuk mengubah kata sandi Anda.</h6>
               <form class="pt-3" action="<?= BASEURL ?>/lupasandi/sendEmail" method="post">
                 <div class="form-group">
-                  <input type="text" class="form-control form-control-lg" id="inputNama" placeholder="Nama" name="nama">
+                  <input type="text" class="form-control form-control-lg" id="inputNama" placeholder="Nama" name="username">
                 </div>
                 <div class="form-group">
                   <input type="email" class="form-control form-control-lg" id="inputEmail" placeholder="Email" name="email">
