@@ -25,7 +25,13 @@ class Lupasandi extends Controller
             $email = $_POST["email"];
 
             if ($this->model("$this->model_name", "Login_model")->checkUser($username, $email) <= 0) {
-                echo "Sorry, no emails exists ";
+                echo
+                '<script>
+                const emailNotFound = confirm("Email Tidak Ditemukan!");
+                    if (emailNotFound == true || emailNotFound == false) {
+                        history.back();
+                    }
+                </script>';
             } else {
                 // generate token by binaryhexa 
                 // $token = bin2hex(random_bytes(50));
@@ -71,20 +77,26 @@ class Lupasandi extends Controller
                 <b>SIMAS</b>";
 
                 if (!$mail->send()) {
-                    echo '<script>
-                        alert(" Invalid Email ");
+                    echo
+                    '<script>
+                    const emailNotSend = confirm("Email Gagal Terkirim, Cek Lagi Email Anda Atau Tunggu Sebentar Lagi!");
+                        if (emailNotSend == true || emailNotSend == false) {
+                            history.back();
+                        }
                     </script>';
                 } else {
                     $_SESSION['otp'] = $otp;
                     $_SESSION['username'] = $username;
                     $_SESSION['email'] = $email;
-                    echo 'email berhasil dikirim';
-                    header("Location: " . BASEURL . "/verifikasi");
+                    echo
+                    '<script>
+                    const sendEmailSuccess = confirm("Email Berhasil Terkirim!");
+                        if (sendEmailSuccess == true || sendEmailSuccess == false) {
+                            location.href = "' . BASEURL . '/verifikasi";
+                        }
+                    </script>';
                     exit;
                 }
-                // if ($mail->isExpired()) {
-                //     echo 'Email has expired.';
-                // }
             }
         }
     }

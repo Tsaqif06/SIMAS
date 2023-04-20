@@ -21,20 +21,25 @@ class Verifikasi extends Controller
             if ($inputkode != $otp) {
                 echo
                 '<script>
-                    alert("Invalid OTP code");
+                    const invalidOTP = confirm("Invalid OTP code");
+                        if (invalidOTP == true || invalidOTP == false) {
+                            history.back();
+                        }
                 </script>';
             } else {
                 $username = $_SESSION['username'];
                 $email = $_SESSION['email'];
                 $password = $_POST['password'];
                 $this->model("$this->model_name", "Login_model")->changePassword($username, $email, $password);
+                session_destroy();
                 echo
                 '<script>
-                    alert("Kata sandi telah dirubah");
+                    const successChangePW = confirm("Kata Sandi Berhasil Dirubah");
+                        if (successChangePW == true || successChangePW == false) {
+                            location.href = "' . BASEURL . '/login";
+                        }
                 </script>';
-                session_destroy();
-                // header("Location : " . BASEURL . "/Login");
-                // exit;
+                exit;
             }
         }
     }
