@@ -1,9 +1,11 @@
 <?php
 
+require_once dirname(dirname(__DIR__)) . '/controllers/login/Login.php';
+
 class Mapel_model
 {
     private $table = 'mastermapel';
-    private $user = Login::getCurrentSession()->username;
+    private $user;
     private $fields = [
         'kode_mapel',
         'nama_mapel',
@@ -15,6 +17,7 @@ class Mapel_model
     public function __construct()
     {
         $this->db = new Database(DB_MASTER);
+        $this->user = Login::getCurrentSession()->username;
     }
 
     public function getAllData()

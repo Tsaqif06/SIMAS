@@ -4,10 +4,14 @@ use Symfony\Component\Filesystem\Exception\IOExceptionInterface;
 use Symfony\Component\Filesystem\Filesystem;
 use Symfony\Component\Filesystem\Path;
 
+require_once dirname(dirname(__DIR__)) . '/controllers/login/Login.php';
+
+
+
 class Karyawan_model
 {
     private $table = 'masterkaryawan';
-    private $user = 'Admin';
+    private $user;
     private $fields = [
         'nama_lengkap',
         'jenis_kelamin',
@@ -26,6 +30,7 @@ class Karyawan_model
     public function __construct()
     {
         $this->db = new Database(DB_MASTER);
+        $this->user = Login::getCurrentSession()->username;
     }
 
     public function getAllData()

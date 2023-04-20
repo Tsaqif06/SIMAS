@@ -1,9 +1,12 @@
 <?php
 
+require_once dirname(dirname(__DIR__)) . '/controllers/login/Login.php';
+
+
 class Kelas_model
 {
     private $table = 'masterkelas';
-    private $user = 'Admin';
+    private $user;
     private $fields = [
         'tingkat',
         'kode_kelas'
@@ -14,6 +17,7 @@ class Kelas_model
     public function __construct()
     {
         $this->db = new Database(DB_MASTER);
+        $this->user = Login::getCurrentSession()->username;
     }
 
     public function getAllData()

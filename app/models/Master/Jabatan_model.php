@@ -1,9 +1,13 @@
 <?php
 
+require_once dirname(dirname(__DIR__)) . '/controllers/login/Login.php';
+
+
+
 class Jabatan_model
 {
     private $table = 'masterjabatan';
-    private $user = 'Admin';
+    private $user;
     private $fields = [
         'jabatan',
         'nama_yang_menjabat'
@@ -14,6 +18,7 @@ class Jabatan_model
     public function __construct()
     {
         $this->db = new Database(DB_MASTER);
+        $this->user = Login::getCurrentSession()->username;
     }
 
     public function getAllData()

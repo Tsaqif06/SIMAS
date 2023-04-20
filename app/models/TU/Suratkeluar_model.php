@@ -1,9 +1,12 @@
 <?php
 
+require_once dirname(dirname(__DIR__)) . '/controllers/login/Login.php';
+
+
 class Suratkeluar_model
 {
     private $table = 'surat_keluar';
-    private $user = 'Admin';
+    private $user;
 
     private $fields = [
         'alamat_penerima',
@@ -16,6 +19,7 @@ class Suratkeluar_model
     public function __construct()
     {
         $this->db = new Database(DB_TU);
+        $this->user = Login::getCurrentSession()->username;
     }
 
     public function getAllData()

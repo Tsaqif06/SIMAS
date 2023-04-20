@@ -1,9 +1,11 @@
 <?php
 
+require_once dirname(dirname(__DIR__)) . '/controllers/login/Login.php';
+
 class Siswa_model
 {
     private $table = 'mastersiswa';
-    private $user = 'Admin';
+    private $user;
     private $fields = [
         'nisn',
         'nama_siswa',
@@ -30,6 +32,7 @@ class Siswa_model
     public function __construct()
     {
         $this->db = new Database(DB_MASTER);
+        $this->user = Login::getCurrentSession()->username;
     }
 
     public function getAllData()

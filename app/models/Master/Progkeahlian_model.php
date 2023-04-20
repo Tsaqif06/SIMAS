@@ -1,9 +1,11 @@
 <?php
 
+require_once dirname(dirname(__DIR__)) . '/controllers/login/Login.php';
+
 class Progkeahlian_model
 {
     private $table = 'masterprogramkeahlian';
-    private $user = 'Admin';
+    private $user;
     private $fields = [
         'nama_jurusan',
         'program_keahlian'
@@ -14,6 +16,7 @@ class Progkeahlian_model
     public function __construct()
     {
         $this->db = new Database(DB_MASTER);
+        $this->user = Login::getCurrentSession()->username;
     }
 
     public function getAllData()

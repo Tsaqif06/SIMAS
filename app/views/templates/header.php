@@ -299,11 +299,11 @@
             </a>
             <div class="collapse" id="tu">
               <ul class="nav flex-column sub-menu">
-                <?php if ($data['role'] == 'admin' && ($data['akses'] == 'all' || 'master,tu')) : ?>
+                <?php if ($data['role'] == 'admin' && ($data['akses'] == 'all' || $data['akses'] == 'mastertu')) : ?>
                   <li class="nav-item"> <a class="nav-link" href="<?= BASEURL ?>/suratmasuk">Surat Masuk</a></li>
                   <li class="nav-item"> <a class="nav-link" href="<?= BASEURL ?>/suratkeluar">Surat Keluar</a></li>
                 <?php endif ?>
-                <?php if ($data['role'] == 'admin' || 'user' || 'guest') : ?>
+                <?php if ($data['role'] == 'admin' || $data['role'] == 'user' || $data['role'] == 'guest') : ?>
                   <li class="nav-item"> <a class="nav-link" href="<?= BASEURL ?>/suratpengajuan">Surat Pengajuan</a></li>
                 <?php endif ?>
               </ul>

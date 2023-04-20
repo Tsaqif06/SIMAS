@@ -1,9 +1,11 @@
 <?php
 
+require_once dirname(dirname(__DIR__)) . '/controllers/login/Login.php';
+
 class Suratmasuk_model
 {
     private $table = 'surat_masuk';
-    private $user = 'Admin';
+    private $user;
 
     private $fields = [
         'alamat_pengirim',
@@ -19,6 +21,7 @@ class Suratmasuk_model
     public function __construct()
     {
         $this->db = new Database(DB_TU);
+        $this->user = Login::getCurrentSession()->username;
     }
 
     public function getAllData()

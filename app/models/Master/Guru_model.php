@@ -4,6 +4,8 @@ use Symfony\Component\Filesystem\Exception\IOExceptionInterface;
 use Symfony\Component\Filesystem\Filesystem;
 use Symfony\Component\Filesystem\Path;
 
+require_once dirname(dirname(__DIR__)) . '/controllers/login/Login.php';
+
 class Guru_model
 {
     private $table = 'masterguru';

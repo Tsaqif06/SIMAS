@@ -1,9 +1,11 @@
 <?php
 
+require_once dirname(dirname(__DIR__)) . '/controllers/login/Login.php';
+
 class Suratpengajuan_model
 {
     private $table = 'pengajuan';
-    private $user = 'Admin';
+    private $user;
     private $fields = [
         'no_surat',
         'alamat_pengirim',
@@ -19,6 +21,7 @@ class Suratpengajuan_model
     public function __construct()
     {
         $this->db = new Database(DB_TU);
+        $this->user = Login::getCurrentSession()->username;
     }
 
     public function getAllData()
@@ -92,7 +95,7 @@ class Suratpengajuan_model
         $this->db->execute();
         return $this->db->rowCount();
     }
-    
+
     public function readReqData()
     {
         $this->db->query("UPDATE {$this->table} SET status = 1 WHERE status = 0");
@@ -109,7 +112,7 @@ class Suratpengajuan_model
         $this->db->execute();
         return $this->db->fetchAll();
     }
-    
+
     public function insertDataApprove($id)
     {
         $this->db->query("SELECT MAX(nomor_berkas) FROM surat_masuk");
@@ -121,7 +124,8 @@ class Suratpengajuan_model
         $this->db->query(
             "INSERT INTO `surat_masuk`(`id`, `nomor_berkas`, `alamat_pengirim`, `tanggal`, `tanggal_surat`, `nomor_surat`, `perihal`, `nomor_petunjuk`, `created_at`, `created_by`) VALUES
             (null, :nomor_berkas, :alamat_pengirim, :tanggal, :tanggal_surat, :no_surat, :perihal, :nomor_petunjuk, :created_at, :created_by)
-            ");
+            "
+        );
         foreach ($from as $data) {
             foreach ($this->fields as $field) {
                 $this->db->bind($field, $data[$field]);
@@ -146,7 +150,7 @@ class Suratpengajuan_model
         $this->db->bind("approved_by", $this->user);
         $this->db->bind("id", $id);
         $this->db->execute();
-        
+
         $this->insertDataApprove($id);
 
         return $this->db->rowCount();

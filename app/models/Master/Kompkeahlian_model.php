@@ -1,9 +1,12 @@
 <?php
 
+
+require_once dirname(dirname(__DIR__)) . '/controllers/login/Login.php';
+
 class Kompkeahlian_model
 {
     private $table = 'masterkompetensikeahlian';
-    private $user = 'Admin';
+    private $user;
     private $fields = [
         'kode_kompkeahlian',
         'nama_kompkeahlian'
@@ -13,6 +16,7 @@ class Kompkeahlian_model
     public function __construct()
     {
         $this->db = new Database(DB_MASTER);
+        $this->user = Login::getCurrentSession()->username;
     }
 
     public function getAllData()
