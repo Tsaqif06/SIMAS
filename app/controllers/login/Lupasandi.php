@@ -30,7 +30,6 @@ class Lupasandi extends Controller
             } else if ($search['fetch']["status"] == 0) {
                 echo '<script>
                     alert("Sorry, your account must verify first, before you recover your password !");
-                    window.location.replace("index.php");
                 </script>';
             } else {
                 // generate token by binaryhexa 
@@ -72,9 +71,8 @@ class Lupasandi extends Controller
                     echo '<script>
                         alert("<?php echo " Invalid Email " ?>");
                     </script>';
-                    header("Location: " . BASEURL . "Verifikasi");
                 } else {
-                    echo 'terkirim';
+                    header("Location: " . BASEURL . "Verifikasi");
                 }
             }
         }
