@@ -3,7 +3,7 @@
 class Mapel_model
 {
     private $table = 'mastermapel';
-    private $user = 'Admin';
+    private $user = Login::getCurrentSession()->username;
     private $fields = [
         'kode_mapel',
         'nama_mapel',

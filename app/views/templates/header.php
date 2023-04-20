@@ -267,26 +267,29 @@
             </a>
           </li>
 
-          <li class="nav-item">
-            <a class="nav-link" data-toggle="collapse" href="#masterdata" aria-expanded="false" aria-controls="masterdata">
-              <i class="icon-folder menu-icon"></i>
-              <span class="menu-title">Master Data</span>
-              <i class="menu-arrow"></i>
-            </a>
-            <div class="collapse" id="masterdata">
-              <ul class="nav flex-column sub-menu">
-                <li class="nav-item"> <a class="nav-link" href="<?= BASEURL ?>/guru">Guru</a></li>
-                <li class="nav-item"> <a class="nav-link" href="<?= BASEURL ?>/karyawan">Karyawan</a></li>
-                <li class="nav-item"> <a class="nav-link" href="<?= BASEURL ?>/siswa">Siswa</a></li>
-                <li class="nav-item"> <a class="nav-link" href="<?= BASEURL ?>/kelas">Kelas</a></li>
-                <li class="nav-item"> <a class="nav-link" href="<?= BASEURL ?>/walikelas">Wali Kelas</a></li>
-                <li class="nav-item"> <a class="nav-link" href="<?= BASEURL ?>/mapel">Mapel</a></li>
-                <li class="nav-item"> <a class="nav-link" href="<?= BASEURL ?>/jabatan">Jabatan</a></li>
-                <li class="nav-item"> <a class="nav-link" href="<?= BASEURL ?>/kompkeahlian">Kompetensi Keahlian</a></li>
-                <li class="nav-item"> <a class="nav-link" href="<?= BASEURL ?>/progkeahlian">Program Keahlian</a></li>
-              </ul>
-            </div>
-          </li>
+
+          <?php if ($data['role'] == 'admin') : ?>
+            <li class="nav-item">
+              <a class="nav-link" data-toggle="collapse" href="#masterdata" aria-expanded="false" aria-controls="masterdata">
+                <i class="icon-folder menu-icon"></i>
+                <span class="menu-title">Master Data</span>
+                <i class="menu-arrow"></i>
+              </a>
+              <div class="collapse" id="masterdata">
+                <ul class="nav flex-column sub-menu">
+                  <li class="nav-item"> <a class="nav-link" href="<?= BASEURL ?>/guru">Guru</a></li>
+                  <li class="nav-item"> <a class="nav-link" href="<?= BASEURL ?>/karyawan">Karyawan</a></li>
+                  <li class="nav-item"> <a class="nav-link" href="<?= BASEURL ?>/siswa">Siswa</a></li>
+                  <li class="nav-item"> <a class="nav-link" href="<?= BASEURL ?>/kelas">Kelas</a></li>
+                  <li class="nav-item"> <a class="nav-link" href="<?= BASEURL ?>/walikelas">Wali Kelas</a></li>
+                  <li class="nav-item"> <a class="nav-link" href="<?= BASEURL ?>/mapel">Mapel</a></li>
+                  <li class="nav-item"> <a class="nav-link" href="<?= BASEURL ?>/jabatan">Jabatan</a></li>
+                  <li class="nav-item"> <a class="nav-link" href="<?= BASEURL ?>/kompkeahlian">Kompetensi Keahlian</a></li>
+                  <li class="nav-item"> <a class="nav-link" href="<?= BASEURL ?>/progkeahlian">Program Keahlian</a></li>
+                </ul>
+              </div>
+            </li>
+          <?php endif ?>
 
           <li class="nav-item">
             <a class="nav-link" data-toggle="collapse" href="#tu" aria-expanded="false" aria-controls="tu">
@@ -296,9 +299,13 @@
             </a>
             <div class="collapse" id="tu">
               <ul class="nav flex-column sub-menu">
-                <li class="nav-item"> <a class="nav-link" href="<?= BASEURL ?>/suratmasuk">Surat Masuk</a></li>
-                <li class="nav-item"> <a class="nav-link" href="<?= BASEURL ?>/suratkeluar">Surat Keluar</a></li>
-                <li class="nav-item"> <a class="nav-link" href="<?= BASEURL ?>/suratpengajuan">Surat Pengajuan</a></li>
+                <?php if ($data['role'] == 'admin' && ($data['akses'] == 'all' || 'master,tu')) : ?>
+                  <li class="nav-item"> <a class="nav-link" href="<?= BASEURL ?>/suratmasuk">Surat Masuk</a></li>
+                  <li class="nav-item"> <a class="nav-link" href="<?= BASEURL ?>/suratkeluar">Surat Keluar</a></li>
+                <?php endif ?>
+                <?php if ($data['role'] == 'admin' || 'user' || 'guest') : ?>
+                  <li class="nav-item"> <a class="nav-link" href="<?= BASEURL ?>/suratpengajuan">Surat Pengajuan</a></li>
+                <?php endif ?>
               </ul>
             </div>
           </li>
@@ -328,17 +335,17 @@
                   <li><a class="navsubitem" href="ABSENX.html">Kelas X</a></li>
                   <li><a class="navsubitem" href="ABSENXI.html">Kelas XI</a></li>
                   <li><a class="navsubitem" href="ABSENXII.html">Kelas XII</a></li>
-                  </ul>
+                </ul>
                 <li class="nav-item"> <a class="nav-link" href="PELANGGARAN.html">Pelanggaran</a></li>
                 <li class="nav-item"> <a class="nav-link" href="ADMINISTRASI.html">Administrasi</a></li>
                 <ul style="list-style-type: none;">
-                <li><a class="navsubitem" class="sub-item" href="ASURANSI.html">Asuransi</a></li>
-              </ul>
+                  <li><a class="navsubitem" class="sub-item" href="ASURANSI.html">Asuransi</a></li>
+                </ul>
                 <li class="nav-item"> <a class="nav-link" href="INFOKEGIATAN.html">Informasi Kegiatan</a></li>
                 <ul style="list-style-type: none;">
-                <li><a class="navsubitem" href="KEGIATANOSIS.html">Kegiatan Osis</a></li>
-                <li><a class="navsubitem" href="JADWALESKUL.html">Jadwal Ektrakulikuler</a></li>
-                <li><a class="navsubitem" href="KEGIATANESKUL.html">Kegiatan Ektrakulikuler</a></li>
+                  <li><a class="navsubitem" href="KEGIATANOSIS.html">Kegiatan Osis</a></li>
+                  <li><a class="navsubitem" href="JADWALESKUL.html">Jadwal Ektrakulikuler</a></li>
+                  <li><a class="navsubitem" href="KEGIATANESKUL.html">Kegiatan Ektrakulikuler</a></li>
                 </ul>
             </div>
           </li>

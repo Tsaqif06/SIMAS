@@ -4,19 +4,33 @@ class Kelas extends Controller
 {
     public $model_name = "Master";
 
+    private $akses;
+
     // Main Routing //
 
     public function index()
     {
         $this->checkSession();
+        $data['username'] = Login::getCurrentSession()->username;
+        $data['role'] = Login::getCurrentSession()->role;
+        $data['akses'] = Login::getCurrentSession()->akses;
         $data['judul'] = 'SIMAS - Kelas';
-
         $data['kelas'] = $this->model("$this->model_name", 'Kelas_model')->getAllExistData();
+        $this->akses = Login::getCurrentSession()->akses;
 
-        $this->view('templates/header', $data);
-        $this->view('master/kelas/index', $data);
-        $this->view('master/kelas/form', $data);
-        $this->view('templates/footer');
+        if ($this->akses == 'all' || $this->akses == 'mastertu') {
+            $this->view('templates/header', $data);
+            $this->view('master/kelas/index', $data);
+            $this->view('master/kelas/form', $data);
+            $this->view('templates/footer');
+        } else if ($this->akses == '') {
+            header("Location: " . BASEURL);
+            Flasher::setFlash('GAGAL', 'Anda Tidak Mempunyai Akses Untuk Menuju Halaman Tersebut', 'danger');
+        } else {
+            $this->view('templates/header', $data);
+            $this->view('master/kelas/detail', $data);
+            $this->view('templates/footer');
+        }
     }
 
     // Tambah Data //

@@ -1,6 +1,13 @@
 <!-- partial -->
 <div class="main-panel">
   <div class="content-wrapper">
+
+    <div class="row">
+      <div class="col-lg-6">
+        <?php Flasher::flash(); ?>
+      </div>
+    </div>
+
     <div class="row">
       <div class="col-md-12 grid-margin">
         <div class="row">
@@ -50,7 +57,7 @@
           <div class="col-md-6 mb-4 stretch-card transparent">
             <div class="card card-tale">
               <div class="card-body">
-                <p class="mb-4">Today’s Bookings</p>
+                <p class="mb-4">Today’s Bookings</p> 
                 <p class="fs-30 mb-2">4006</p>
                 <p>10.00% (30 days)</p>
               </div>

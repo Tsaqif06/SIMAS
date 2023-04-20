@@ -4,7 +4,7 @@
             <div class="col-md-12 grid-margin">
                 <div class="row">
                     <div class="col-12 col-xl-8 mb-4 mb-xl-0">
-                        <h3 class="font-weight-bold">DATA PROGRAM KEAHLIAN</h3>
+                        <h3 class="font-weight-bold">DATA KARYAWAN</h3>
                         <h6 class="font-weight-normal mb-0">WEB DEV | SIMAS</h6>
                     </div>
                     <div class="col-12 col-xl-4">
@@ -35,17 +35,35 @@
                                 <thead>
                                     <tr>
                                         <th>No.</th>
-                                        <th>Kode Program Keahlian</th>
-                                        <th>Nama Program Keahlian</th>
+                                        <th>Foto</th>
+                                        <th>Nama Lengkap</th>
+                                        <th>Jenis Kelamin</th>
+                                        <th>Tempat Lahir</th>
+                                        <th>Tanggal Lahir</th>
+                                        <th>Alamat Lengkap</th>
+                                        <th>Pendidikan Terakhir</th>
+                                        <th>Jurusan Pendidikan Terakhir</th>
+                                        <th>Nomor HP</th>
+                                        <th>Kategori</th>
+                                        <th>Status Pernikahan</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     <?php $i = 1 ?>
-                                    <?php foreach ($data['progkeahlian'] as $row) : ?>
+                                    <?php foreach ($data['karyawan'] as $row) : ?>
                                         <tr>
                                             <td><?= $i++ ?></td>
-                                            <td><?= $row["nama_jurusan"]; ?></td>
-                                            <td><?= $row["program_keahlian"] ?></td>
+                                            <td><img src="images/datafoto/<?= $row["foto"]; ?>" alt="<?= $row["foto"]; ?>" width="30"></td>
+                                            <td><?= $row["nama_lengkap"] ?></td>
+                                            <td><?= $row["jenis_kelamin"]; ?></td>
+                                            <td><?= $row["tempat_lahir"]; ?></td>
+                                            <td><?= $row["tanggal_lahir"]; ?></td>
+                                            <td><?= $row["alamat_lengkap"]; ?></td>
+                                            <td><?= $row["pendidikan_terakhir"]; ?></td>
+                                            <td><?= $row["jurusan_pendidikan_terakhir"]; ?></td>
+                                            <td><?= $row["nomor_hp"]; ?></td>
+                                            <td><?= $row["kategori"]; ?></td>
+                                            <td><?= $row["status_pernikahan"]; ?></td>
                                         </tr>
                                     <?php endforeach; ?>
                                 </tbody>
@@ -55,3 +73,4 @@
                 </div>
             </div>
         </div>
+

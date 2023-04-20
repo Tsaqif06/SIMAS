@@ -7,7 +7,7 @@ use Symfony\Component\Filesystem\Path;
 class Guru_model
 {
     private $table = 'masterguru';
-    private $user = 'Admin';
+    private $user;
     private $fields = [
         'nama_lengkap',
         'jenis_kelamin',
@@ -25,12 +25,13 @@ class Guru_model
         'keahlian_ganda',
         'status_pernikahan'
     ];
-    
+
     private $db;
 
     public function __construct()
     {
         $this->db = new Database(DB_MASTER);
+        $this->user = Login::getCurrentSession()->username;
     }
 
     public function getAllData()
