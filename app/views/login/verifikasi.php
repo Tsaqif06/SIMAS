@@ -9,9 +9,9 @@
                 <img src="images/logosimas.png" alt="logo">
               </div>
               <h4>Masukkan Kode Verifikasi dan Sandi Baru</h4>
-              <form class="pt-3" action="<?= BASEURL ?>/login" method="post">
+              <form class="pt-3" action="<?= BASEURL ?>/verifikasi/confirm" method="post">
                 <div class="form-group">
-                  <input type="text" class="form-control form-control-lg" id="inputKode" placeholder="Kode verifikasi dari email" name="otp_code" required autofocus>
+                      <input type="text" class="form-control form-control-lg" id="inputKode" placeholder="Kode verifikasi dari email" name="otp" required autofocus>
                 </div>
                 <div class="form-group">
                   <input type="password" name="password" class="form-control form-control-lg" id="inputPass" placeholder="Sandi Baru"><br>
