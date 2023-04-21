@@ -5,7 +5,7 @@
     <div class="mb-3 wrapFotoSekarang">
         <label for="fotoSekarang" class="form-label">Foto Yang Sekarang</label>
         <br>
-        <img src="" alt="Foto Sekarang" id="fotoSekarang" style="width: 70px; height: 70px;">
+        <img src="" alt="Tidak Ada Foto" id="fotoSekarang" style="width: 70px; height: 70px;">
     </div>
     <div class="mb-3">
         <label for="foto" class="form-label foto">Foto</label>

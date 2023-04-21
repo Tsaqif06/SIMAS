@@ -58,7 +58,11 @@
                                     <?php foreach ($data['guru'] as $row) : ?>
                                         <tr>
                                             <td><?= $i++ ?></td>
-                                            <td><img src="images/datafoto/<?= $row["foto"]; ?>" style="width: 65px; height: 65px;"></td>
+                                            <?php if (file_exists("images/datafoto/{$row["foto"]}")) : ?>
+                                                <td><img src="images/datafoto/<?= $row["foto"]; ?>" class="data-img" style="width: 65px; height: 65px;"></td>
+                                            <?php else : ?>
+                                                <td><img src="images/datafoto/pp.png" class="data-img" style="width: 65px; height: 65px;"></td>
+                                            <?php endif; ?>
                                             <td><?= $row["nama_lengkap"] ?></td>
                                             <td><?= $row["jenis_kelamin"] ?></td>
                                             <td><?= $row["tempat_lahir"] ?></td>

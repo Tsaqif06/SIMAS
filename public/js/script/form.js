@@ -21,7 +21,7 @@ $(document).ready(function () {
 				$(".modal-body form").attr("action", `${BASEURL}/ubahData`);
 				$(".wrapFotoSekarang").show();
 				$("label.foto").html("Update Foto");
-
+				
 				const data_id = $(this).data("id");
 
 				$.ajax({
