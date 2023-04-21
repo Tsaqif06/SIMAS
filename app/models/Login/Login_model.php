@@ -3,6 +3,7 @@
 class Login_model
 {
     private $table = 'login';
+
     private $fields = [
         'username',
         'email',
@@ -112,5 +113,12 @@ class Login_model
 
         $this->db->execute();
         return $this->db->rowCount();
+    }
+
+    public function getDataByName($user)
+    {
+        $this->db->query("SELECT * FROM {$this->table} WHERE username = :username");
+        $this->db->bind("username", $user);
+        return $this->db->fetch();
     }
 }

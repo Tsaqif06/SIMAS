@@ -416,19 +416,24 @@
                   <div class="info_data">
                     <div class="data">
                       <h4>Nama Pengguna</h4>
-                      <p>Shiero</p>
+                      <p><?= $data['username'] ?></p>
                     </div>
                     <br>
                     <div class="data">
                       <h4>Email</h4>
-                      <p>alex@gmail.com</p>
+                      <p><?= $data['user']['email'] ?></p>
                     </div>
                     <br>
                     <div class="data">
                       <h4>Kata Sandi</h4>
-                      <span data-hidden-value="12345678">
-                        <span class="display">********</span><br>
-                        <a class="toggle">Lihat Sandi</a>
+                      <span data-hidden-value="<?= $data['user']['password'] ?>">
+                        <?php $pwLength = strlen($data['user']['password']) ?>
+                        <span class="display">
+                          <?php for ($i = 0; $i < $pwLength; $i++) {
+                            echo "*";
+                          } ?>
+                        </span><br>
+                        <a class="toggle" style="cursor: pointer;">Lihat Sandi</a>
                       </span>
                     </div>
                   </div>
@@ -436,7 +441,11 @@
               </form>
             </div>
             <div class="modal-footer">
-              <button type="button" class="btn btn-primary" data-dismiss="modal">Keluar</button>
+              <a href="<?= BASEURL ?>/logout">
+                <div class="btn btn-primary text-white">
+                  Keluar
+                </div>
+              </a>
             </div>
           </div>
         </div>
