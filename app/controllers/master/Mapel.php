@@ -14,8 +14,8 @@ class Mapel extends Controller
         $data['role'] = Login::getCurrentSession()->role;
         $data['akses'] = Login::getCurrentSession()->akses;
         $data['judul'] = 'SIMAS - Mapel';
-        $data['mapel'] = $this->model("$this->model_name", 'Mapel_model')->getAllExistData();
         $this->akses = Login::getCurrentSession()->akses;
+        $data['mapel'] = $this->model("$this->model_name", 'Mapel_model')->getAllExistData();
 
         if ($this->akses == 'all' || $this->akses == 'mastertu' || $this->akses == 'kurikulum') {
             $this->view('templates/header', $data);

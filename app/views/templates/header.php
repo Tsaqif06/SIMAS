@@ -330,22 +330,53 @@
             </a>
             <div class="collapse" id="kesiswaan">
               <ul class="nav flex-column sub-menu">
-                <li class="nav-item"> <a class="nav-link" href="ABSEN.html">Absensi</a></li>
+                <li class="nav-item">
+                  <a class="nav-link">
+                    Data
+                  </a>
+                </li>
                 <ul style="list-style-type: none;">
-                  <li><a class="navsubitem" href="ABSENX.html">Kelas X</a></li>
-                  <li><a class="navsubitem" href="ABSENXI.html">Kelas XI</a></li>
-                  <li><a class="navsubitem" href="ABSENXII.html">Kelas XII</a></li>
+                  <li><a class="navsubitem" href="<?= BASEURL ?>/siswa">Siswa</a></li>
+                  <li><a class="navsubitem" href="<?= BASEURL ?>/kompkeahlian">Kompetensi Keahlian</a></li>
+                  <li><a class="navsubitem" href="<?= BASEURL ?>/progkeahlian">Program Keahlian</a></li>
+                  <li><a class="navsubitem" href="<?= BASEURL ?>/kelas">Kelas</a></li>
                 </ul>
-                <li class="nav-item"> <a class="nav-link" href="PELANGGARAN.html">Pelanggaran</a></li>
-                <li class="nav-item"> <a class="nav-link" href="ADMINISTRASI.html">Administrasi</a></li>
+                <li class="nav-item">
+                  <a class="nav-link">
+                    Absensi
+                  </a>
+                </li>
                 <ul style="list-style-type: none;">
-                  <li><a class="navsubitem" class="sub-item" href="ASURANSI.html">Asuransi</a></li>
+                  <li><a class="navsubitem" href="<?= BASEURL ?>/kehadiran">Kehadiran</a></li>
+                  <li><a class="navsubitem" href="<?= BASEURL ?>/izin">Izin</a></li>
                 </ul>
-                <li class="nav-item"> <a class="nav-link" href="INFOKEGIATAN.html">Informasi Kegiatan</a></li>
+                <li class="nav-item">
+                  <a class="nav-link">
+                    Pelanggaran
+                  </a>
+                </li>
                 <ul style="list-style-type: none;">
-                  <li><a class="navsubitem" href="KEGIATANOSIS.html">Kegiatan Osis</a></li>
-                  <li><a class="navsubitem" href="JADWALESKUL.html">Jadwal Ektrakulikuler</a></li>
-                  <li><a class="navsubitem" href="KEGIATANESKUL.html">Kegiatan Ektrakulikuler</a></li>
+                  <li><a class="navsubitem" href="<?= BASEURL ?>/pelanggaran">Pelanggaran</a></li>
+                  <li><a class="navsubitem" href="<?= BASEURL ?>/poin">Poin</a></li>
+                </ul>
+                <li class="nav-item">
+                  <a class="nav-link">
+                    Asuransi
+                  </a>
+                </li>
+                <ul style="list-style-type: none;">
+                  <li><a class="navsubitem" href="<?= BASEURL ?>/asuransi">Asuransi</a></li>
+                  <li><a class="navsubitem" href="<?= BASEURL ?>/asuransikecelakaan">Asuransi Kecelakaan</a></li>
+                  <li><a class="navsubitem" href="<?= BASEURL ?>/asuransiortumeninggal">Asuransi Ortu Meninggal</a></li>
+                </ul>
+                <li class="nav-item">
+                  <a class="nav-link">
+                    Informasi
+                  </a>
+                </li>
+                <ul style="list-style-type: none;">
+                  <li><a class="navsubitem" href="<?= BASEURL ?>/infokesiswaan">Informasi Kesiswaan</a></li>
+                  <li><a class="navsubitem" href="<?= BASEURL ?>/kegiatanosis">Kegiatan Osis</a></li>
                 </ul>
             </div>
           </li>

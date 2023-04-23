@@ -12,6 +12,7 @@ $(document).ready(function () {
 		$(".modal-body form").attr("action", `${BASEURL}/tambahData`);
 	});
 
+
 	$("#table").DataTable({
 		drawCallback: function (settings) {
 			$(".tampilModalUbah").click(function () {

@@ -18,7 +18,7 @@ class Siswa extends Controller
         $data['kompkeahlian'] = $this->model("$this->model_name", 'Kompkeahlian_model')->getAllData();
         $this->akses = Login::getCurrentSession()->akses;
 
-        if ($this->akses == 'all' || $this->akses == 'mastertu' || $this->akses == 'humas') {
+        if ($this->akses == 'all' || $this->akses == 'mastertu' || $this->akses == 'humas' || $this->akses == 'kesiswaan') {
             $this->view('templates/header', $data);
             $this->view('master/siswa/index', $data);
             $this->view('master/siswa/form', $data);

@@ -18,7 +18,7 @@ class Kompkeahlian extends Controller
         $data['kompkeahlian'] = $this->model("$this->model_name", 'Kompkeahlian_model')->getAllExistData();
         $this->akses = Login::getCurrentSession()->akses;
 
-        if ($this->akses == 'all' || $this->akses == 'mastertu') {
+        if ($this->akses == 'all' || $this->akses == 'mastertu' || $this->akses == 'kesiswaan') {
             $this->view('templates/header', $data);
             $this->view('master/kompkeahlian/index', $data);
             $this->view('master/kompkeahlian/form', $data);

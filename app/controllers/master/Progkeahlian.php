@@ -17,7 +17,7 @@ class Progkeahlian extends Controller
         $data['progkeahlian'] = $this->model("$this->model_name", 'Progkeahlian_model')->getAllExistData();
         $this->akses = Login::getCurrentSession()->akses;
 
-        if ($this->akses == 'all' || $this->akses == 'mastertu') {
+        if ($this->akses == 'all' || $this->akses == 'mastertu' || $this->akses == 'kesiswaan') {
             $this->view('templates/header', $data);
             $this->view('master/progkeahlian/index', $data);
             $this->view('master/progkeahlian/form', $data);

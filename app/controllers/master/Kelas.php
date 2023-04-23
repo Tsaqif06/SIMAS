@@ -18,7 +18,7 @@ class Kelas extends Controller
         $data['kelas'] = $this->model("$this->model_name", 'Kelas_model')->getAllExistData();
         $this->akses = Login::getCurrentSession()->akses;
 
-        if ($this->akses == 'all' || $this->akses == 'mastertu') {
+        if ($this->akses == 'all' || $this->akses == 'mastertu' || $this->akses == 'kesiswaan') {
             $this->view('templates/header', $data);
             $this->view('master/kelas/index', $data);
             $this->view('master/kelas/form', $data);
