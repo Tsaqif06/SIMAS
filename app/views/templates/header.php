@@ -21,6 +21,7 @@
 
   <!-- End plugin css for this page -->
   <!-- inject:css -->
+  <link rel="stylesheet" href="css/scroll.css">
   <link rel="stylesheet" href="css/style.css">
   <link rel="stylesheet" href="css/vertical-layout-light/style.css">
   <!-- endinject -->
@@ -28,6 +29,16 @@
 </head>
 
 <body>
+  <div class="container-spinner">
+    <div class="spinner">
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+    </div>
+  </div>
+
   <div class="container-scroller">
     <!-- partial:partials/_navbar.html -->
     <nav class="navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
