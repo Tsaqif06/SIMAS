@@ -50,7 +50,7 @@
                   <tr>
                     <th>No.</th>
                     <th>Aksi</th>
-                    <th>Nama Whatsapp</th>
+                    <th>Nama Guru</th>
                     <th>Nomor Whatsapp</th>
                   </tr>
                 </thead>

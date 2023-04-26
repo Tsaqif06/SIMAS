@@ -368,7 +368,7 @@
                 </li>
                 <ul style="list-style-type: none;">
                   <li><a class="navsubitem" href="<?= BASEURL ?>/pelanggaran">Pelanggaran</a></li>
-                  <li><a class="navsubitem" href="<?= BASEURL ?>/poin">Poin</a></li>
+                  <li><a class="navsubitem" href="<?= BASEURL ?>/poinpelanggaran">Poin</a></li>
                 </ul>
                 <li class="nav-item">
                   <a class="nav-link">
@@ -377,8 +377,8 @@
                 </li>
                 <ul style="list-style-type: none;">
                   <li><a class="navsubitem" href="<?= BASEURL ?>/asuransi">Asuransi</a></li>
-                  <li><a class="navsubitem" href="<?= BASEURL ?>/asuransikecelakaan">Asuransi Kecelakaan</a></li>
-                  <li><a class="navsubitem" href="<?= BASEURL ?>/asuransiortumeninggal">Asuransi Ortu Meninggal</a></li>
+                  <li><a class="navsubitem" href="<?= BASEURL ?>/kecelakaan">Asuransi Kecelakaan</a></li>
+                  <li><a class="navsubitem" href="<?= BASEURL ?>/ortumeninggal">Asuransi Ortu Meninggal</a></li>
                 </ul>
                 <li class="nav-item">
                   <a class="nav-link">
@@ -388,6 +388,9 @@
                 <ul style="list-style-type: none;">
                   <li><a class="navsubitem" href="<?= BASEURL ?>/infokesiswaan">Informasi Kesiswaan</a></li>
                   <li><a class="navsubitem" href="<?= BASEURL ?>/kegiatanosis">Kegiatan Osis</a></li>
+                </ul>
+                <ul style="list-style-type: none;">
+                  <li><a class="navsubitem" href="<?= BASEURL ?>/waguru">Whatsapp Guru</a></li>
                 </ul>
             </div>
           </li>

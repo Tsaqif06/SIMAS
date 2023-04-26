@@ -50,8 +50,8 @@
                   <tr>
                     <th>No.</th>
                     <th>Aksi</th>
-                    <th>Nama Whatsapp</th>
-                    <th>Nomor Whatsapp</th>
+                    <th>Nama Pelanggaran</th>
+                    <th>Poin Pelanggaran</th>
                   </tr>
                 </thead>
                 <tbody>
