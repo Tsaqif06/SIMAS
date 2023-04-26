@@ -23,11 +23,11 @@ class Infokesiswaan extends Controller
     public function tambahData()
     {
         if ($this->model("$this->model_name", 'Infokesiswaan_model')->tambahDataInfokesiswaan($_POST) > 0) {
-            Flasher::setFlash('berhasil', 'dihapus', 'success');
+            Flasher::setFlash('berhasil', 'ditambah', 'success');
             header('Location: ' . BASEURL . '/infokesiswaan');
             exit;
         } else {
-            Flasher::setFlash('gagal', 'dihapus', 'danger');
+            Flasher::setFlash('gagal', 'ditambah', 'danger');
             header('Location: ' . BASEURL . '/infokesiswaan');
             exit;
         }

@@ -37,7 +37,7 @@ class Infokesiswaan_model extends Database
     public function uploadImage()
     {
         $targetDir = 'images/datafoto/'; // direktori tempat menyimpan file upload
-        $temp = $_FILES['foto']['name'];
+        $temp = $_FILES['dokumentasi_infoKesiswaan']['name'];
         $imageFileType = explode('.', $temp);
         $imageFileType = strtolower(end($imageFileType));
 
@@ -55,7 +55,7 @@ class Infokesiswaan_model extends Database
         $targetFile = $targetDir . $fileName; // nama file upload
 
         // cek gambar diupload atau tidak
-        if ($_FILES["foto"]["error"] === 4) {
+        if ($_FILES["dokumentasi_infoKesiswaan"]["error"] === 4) {
             echo
             '
             <script>
@@ -66,7 +66,7 @@ class Infokesiswaan_model extends Database
         }
 
         // validasi ukuran file
-        if ($_FILES["foto"]["size"] > 1000000) {
+        if ($_FILES["dokumentasi_infoKesiswaan"]["size"] > 1000000) {
             echo
             '
                 <script>
@@ -78,7 +78,7 @@ class Infokesiswaan_model extends Database
 
         try {
             // simpan file upload ke direktori
-            move_uploaded_file($_FILES['foto']['tmp_name'], $targetFile);
+            move_uploaded_file($_FILES['dokumentasi_infoKesiswaan']['tmp_name'], $targetFile);
         } catch (IOExceptionInterface $e) {
             echo $e->getMessage();
         }
@@ -88,7 +88,7 @@ class Infokesiswaan_model extends Database
 
     public function tambahDataInfokesiswaan($data)
     {                     //nama tabel
-        $query = "INSERT INTO infokesiswaan VALUES(null, :kegiatan_infoKesiswaan, :deskripsi_infoKesiswaan, :foto, :tanggal_kegiatanOsis)";
+        $query = "INSERT INTO infokesiswaan VALUES(null, :kegiatan_infoKesiswaan, :deskripsi_infoKesiswaan, :dokumentasi_infoKesiswaan, :tanggal_kegiatanOsis)";
 
         $this->db->query($query);
         $foto = $this->uploadImage();
@@ -97,7 +97,7 @@ class Infokesiswaan_model extends Database
         }
         $this->db->bind('kegiatan_infoKesiswaan', $data['kegiatan_infoKesiswaan']);
         $this->db->bind('deskripsi_infoKesiswaan', $data['deskripsi_infoKesiswaan']);
-        $this->db->bind('foto', $foto);
+        $this->db->bind('dokumentasi_infoKesiswaan', $foto);
         $this->db->bind('tanggal_kegiatanOsis', $data['tanggal_kegiatanOsis']);
 
         $this->db->execute();
@@ -121,18 +121,18 @@ class Infokesiswaan_model extends Database
         $query = "UPDATE infokesiswaan SET
                     kegiatan_infoKesiswaan = :kegiatan_infoKesiswaan,
                     deskripsi_infoKesiswaan = :deskripsi_infoKesiswaan,
-                    foto = :foto,
+                    dokumentasi_infoKesiswaan = :dokumentasi_infoKesiswaan,
                     tanggal_kegiatanOsis = :tanggal_kegiatanOsis
                     WHERE id = :id";
 
         $this->db->query($query);
-        if ($_FILES["foto"]["error"] === 4) {
-            $foto = $data['fotoLama'];
+        if ($_FILES["dokumentasi_infoKesiswaan"]["error"] === 4) {
+            $foto = $data['dokumentasi_infoKesiswaan'];
         } else {
             $foto = $this->uploadImage();
         }
 
-        $this->db->bind('foto', $foto);
+        $this->db->bind('dokumentasi_infoKesiswaan', $foto);
         $this->db->bind('kegiatan_infoKesiswaan', $data['kegiatan_infoKesiswaan']);
         $this->db->bind('deskripsi_infoKesiswaan', $data['deskripsi_infoKesiswaan']);
         $this->db->bind('tanggal_kegiatanOsis', $data['tanggal_kegiatanOsis']);

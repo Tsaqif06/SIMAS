@@ -48,12 +48,12 @@
                                             <td><?= $i++ ?></td>
                                             <td><?= $row['kegiatan_infoKesiswaan']; ?></td>
                                             <td><?= $row['deskripsi_infoKesiswaan']; ?></td>
-                                            <?php if (file_exists("images/datafoto/{$row["foto"]}")) : ?>
-                                                <td><img src="images/datafoto/<?= $row["foto"]; ?>" class="data-img" style="width: 65px; height: 65px;"></td>
+                                            <?php if (file_exists("images/datafoto/{$row["dokumentasi_infoKesiswaan"]}")) : ?>
+                                                <td><img src="images/datafoto/<?= $row["dokumentasi_infoKesiswaan"]; ?>" class="data-img" style="width: 65px; height: 65px;"></td>
                                             <?php else : ?>
                                                 <td><img src="images/datafoto/pp.png" class="data-img" style="width: 65px; height: 65px;"></td>
                                             <?php endif; ?>
-                                            <td><?= $row['tanggal_kegiatanOsis']; ?></td>
+                                                <td><?= $row['tanggal_kegiatanOsis']; ?></td>
                                         </tr>
                                     <?php endforeach; ?>
                                 </tbody>
