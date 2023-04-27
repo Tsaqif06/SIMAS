@@ -54,6 +54,7 @@
                     <th>Nama Pelanggar</th>
                     <th>Data Pelanggaran</th>
                     <th>Poin Data Pelanggaran</th>
+                    <th>Total Poin</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -74,6 +75,7 @@
                       <td><?= $row['namaPelanggar']; ?></td>
                       <td><?= $row['namaDataPelanggaran']; ?></td>
                       <td><?= $row['poinDataPelanggaran']; ?></td>
+                      <td><?= $row['totalPoin']; ?></td>
                     </tr>
                   <?php endforeach; ?>
                 </tbody>

@@ -29,7 +29,7 @@ class Pelanggaran_model extends Database{
 
     public function tambahDataPelanggaran($data)
     {                     //nama tabel
-        $query = "INSERT INTO ". $this->table ." VALUES(null, :NIS, :namaPelanggar, :namaDataPelanggaran, :poinDataPelanggaran)";
+        $query = "INSERT INTO ". $this->table ." VALUES(null, :NIS, :namaPelanggar, :namaDataPelanggaran, :poinDataPelanggaran, 100, DEFAULT)";
         
         $this->db->query($query);
         $this->db->bind('NIS', $data['NIS']);
