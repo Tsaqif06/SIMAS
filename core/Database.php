@@ -32,17 +32,17 @@ class Database
     public function bind($params, $value, $type = null) // binding data agar terhindar dari sql injection
     {
         if (is_null($type)) {
-            switch(true) {
-                case is_int($value) :
+            switch (true) {
+                case is_int($value):
                     $type = PDO::PARAM_INT;
                     break;
-                case is_bool($value) :
+                case is_bool($value):
                     $type = PDO::PARAM_BOOL;
                     break;
-                case is_null($value) :
+                case is_null($value):
                     $type = PDO::PARAM_NULL;
                     break;
-                default :
+                default:
                     $type = PDO::PARAM_STR;
             }
         }
@@ -69,6 +69,6 @@ class Database
 
     public function rowCount()
     {
-        return $this->stmt->rowCount(); 
+        return $this->stmt->rowCount();
     }
 }

@@ -1,9 +1,12 @@
 <!-- partial:partials/_footer.html -->
 <footer class="footer">
-  <div class="d-sm-flex justify-content-center justify-content-sm-between">
-    <span class="text-muted text-center text-sm-left d-block d-sm-inline-block">Copyright © 2021. Premium <a href="https://www.bootstrapdash.com/" target="_blank">Bootstrap admin template</a> from BootstrapDash. All rights reserved.</span>
-    <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center">Hand-crafted & made with <i class="ti-heart text-danger ml-1"></i></span>
-  </div>
+    <div class="d-sm-flex justify-content-center justify-content-sm-between">
+        <span class="text-muted text-center text-sm-left d-block d-sm-inline-block">Copyright © 2021. Premium <a
+                href="https://www.bootstrapdash.com/" target="_blank">Bootstrap admin template</a> from BootstrapDash.
+            All rights reserved.</span>
+        <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center">Hand-crafted & made with <i
+                class="ti-heart text-danger ml-1"></i></span>
+    </div>
 </footer>
 <!-- partial -->
 </div>
@@ -14,6 +17,7 @@
 <!-- container-scroller -->
 
 <!-- plugins:js -->
+<script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
 <script src="vendors/js/vendor.bundle.base.js"></script>
 <!-- endinject -->
 <!-- Plugin js for this page -->
@@ -34,6 +38,7 @@
 <script src="js/todolist.js"></script>
 <script src="js/bootstrap.js"></script>
 <script src="js/script/profile.js"></script>
+<script src="js/script/carousel.js"></script>
 <script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.js"></script>
 
 <!-- endinject -->

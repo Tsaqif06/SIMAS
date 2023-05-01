@@ -5,7 +5,7 @@ use Firebase\JWT\Key;
 
 class Login extends Controller
 {
-    public static string $SECRET_KEY = "'ZHxTsCPhncHnBWhsRUatdumctOidOum9";
+    public static string $SECRET_KEY = "ZHxTsCPhncHnBWhsRUatdumctOidOum9";
     private $model_name = "Login";
 
     public function index()
@@ -43,13 +43,13 @@ class Login extends Controller
                     'iat' => time(),
                     'exp' =>  time() + (7 * 24 * 60 * 60) // Token berlaku selama 1 hari
                 ];
-                $jwt = JWT::encode($payload, Login::$SECRET_KEY, 'HS256');
-                setcookie("SIMAS-SESSION", $jwt,  time() + (7 * 24 * 60 * 60), "/");
-
-                // Kirim token JWT sebagai respons
-                sleep(1);
-                header("Location: " . BASEURL);
             }
+            $jwt = JWT::encode($payload, Login::$SECRET_KEY, 'HS256');
+            setcookie("SIMAS-SESSION", $jwt,  time() + (7 * 24 * 60 * 60), "/");
+
+            // Kirim token JWT sebagai respons
+            sleep(1);
+            header("Location: " . BASEURL);
         }
     }
 
@@ -60,7 +60,11 @@ class Login extends Controller
             $jwt = $_COOKIE['SIMAS-SESSION'];
             try {
                 $payload = JWT::decode($jwt, new Key(Login::$SECRET_KEY, 'HS256'));
-                return new Session(username: $payload->name, role: $payload->role, akses: $payload->akses);
+                return new Session(
+                    username: $payload->name,
+                    role: $payload->role,
+                    akses: $payload->akses
+                );
             } catch (Exception $exception) {
                 header("Location: " . BASEURL . "/login");
                 exit;
