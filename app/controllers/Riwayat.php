@@ -60,9 +60,8 @@ class Riwayat extends Controller
         exit;
     }
 
-    public function getData()
+    public function getDataByIndex()
     {
-        header('Content-Type: application/json');
-        echo json_encode($this->model("$this->model_name", "Riwayat_model")->getDeletedData());
+        echo json_encode($this->model("$this->model_name", "Riwayat_model")->getDeletedDataByIndex($_POST['index']));
     }
 }

@@ -1,3 +1,32 @@
+<style>
+    .card.card-tale {
+        background: linear-gradient(150deg, #39ef74, #4600f1 100%);
+        color: #ffffff;
+    }
+
+    .card.card-tale:hover {
+        background: #5050b2;
+    }
+
+    .card.card-dark-blue {
+        background: linear-gradient(150deg, #f731db, #4600f1 100%);
+        color: #ffffff;
+    }
+
+    .card.card-dark-blue:hover {
+        background: #5050b2;
+    }
+
+    .card.card-light-blue {
+        background: linear-gradient(to left, #80ffdb, #5390d9);
+        color: #ffffff;
+    }
+
+    .card.card-light-blue:hover {
+        background: #5050b2;
+    }
+</style>
+
 <!-- partial -->
 <div class="main-panel">
     <div class="content-wrapper">
@@ -13,8 +42,7 @@
                 <div class="row">
                     <div class="col-12 col-xl-8 mb-4 mb-xl-0">
                         <h3 class="font-weight-bold">Selamat Datang, <?= $data['username'] ?>!</h3>
-                        <h6 class="font-weight-normal mb-0">Web Admin SMKN 4 Malang | <span
-                                class="text-primary">SIMAS</span></h6>
+                        <h6 class="font-weight-normal mb-0">Web Admin SMKN 4 Malang | <span class="text-primary">SIMAS</span></h6>
                     </div>
                 </div>
             </div>
@@ -67,9 +95,7 @@
                 <div class="col-md-12 grid-margin stretch-card">
                     <div class="card position-relative">
                         <div class="card-body">
-                            <div id="detailedReports"
-                                class="carousel slide detailed-report-carousel position-static pt-2"
-                                data-ride="carousel">
+                            <div id="detailedReports" class="carousel slide detailed-report-carousel position-static pt-2" data-ride="carousel">
                                 <div class="carousel-inner">
                                     <div class="carousel-item active">
                                         <div class="row">
@@ -91,10 +117,7 @@
                                                                     <td class="text-muted">Terlambat</td>
                                                                     <td class="w-100 px-0">
                                                                         <div class="progress progress-md mx-4">
-                                                                            <div class="progress-bar bg-primary"
-                                                                                role="progressbar" style="width: 97%"
-                                                                                aria-valuenow="97%" aria-valuemin="0"
-                                                                                aria-valuemax="100"></div>
+                                                                            <div class="progress-bar bg-primary" role="progressbar" style="width: 97%" aria-valuenow="97%" aria-valuemin="0" aria-valuemax="100"></div>
                                                                         </div>
                                                                     </td>
                                                                     <td>
@@ -105,10 +128,7 @@
                                                                     <td class="text-muted">Merokok</td>
                                                                     <td class="w-100 px-0">
                                                                         <div class="progress progress-md mx-4">
-                                                                            <div class="progress-bar bg-warning"
-                                                                                role="progressbar" style="width: 30%"
-                                                                                aria-valuenow="30" aria-valuemin="0"
-                                                                                aria-valuemax="100"></div>
+                                                                            <div class="progress-bar bg-warning" role="progressbar" style="width: 30%" aria-valuenow="30" aria-valuemin="0" aria-valuemax="100"></div>
                                                                         </div>
                                                                     </td>
                                                                     <td>
@@ -119,10 +139,7 @@
                                                                     <td class="text-muted">Kerapian</td>
                                                                     <td class="w-100 px-0">
                                                                         <div class="progress progress-md mx-4">
-                                                                            <div class="progress-bar bg-danger"
-                                                                                role="progressbar" style="width: 95%"
-                                                                                aria-valuenow="95" aria-valuemin="0"
-                                                                                aria-valuemax="100"></div>
+                                                                            <div class="progress-bar bg-danger" role="progressbar" style="width: 95%" aria-valuenow="95" aria-valuemin="0" aria-valuemax="100"></div>
                                                                         </div>
                                                                     </td>
                                                                     <td>
@@ -133,10 +150,7 @@
                                                                     <td class="text-muted">Alpha</td>
                                                                     <td class="w-100 px-0">
                                                                         <div class="progress progress-md mx-4">
-                                                                            <div class="progress-bar bg-info"
-                                                                                role="progressbar" style="width: 60%"
-                                                                                aria-valuenow="60" aria-valuemin="0"
-                                                                                aria-valuemax="100"></div>
+                                                                            <div class="progress-bar bg-info" role="progressbar" style="width: 60%" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"></div>
                                                                         </div>
                                                                     </td>
                                                                     <td>
@@ -147,10 +161,7 @@
                                                                     <td class="text-muted">Kelakuan</td>
                                                                     <td class="w-100 px-0">
                                                                         <div class="progress progress-md mx-4">
-                                                                            <div class="progress-bar bg-primary"
-                                                                                role="progressbar" style="width: 40%"
-                                                                                aria-valuenow="40" aria-valuemin="0"
-                                                                                aria-valuemax="100"></div>
+                                                                            <div class="progress-bar bg-primary" role="progressbar" style="width: 40%" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100"></div>
                                                                         </div>
                                                                     </td>
                                                                     <td>
@@ -161,10 +172,7 @@
                                                                     <td class="text-muted">Alaska</td>
                                                                     <td class="w-100 px-0">
                                                                         <div class="progress progress-md mx-4">
-                                                                            <div class="progress-bar bg-danger"
-                                                                                role="progressbar" style="width: 75%"
-                                                                                aria-valuenow="75" aria-valuemin="0"
-                                                                                aria-valuemax="100"></div>
+                                                                            <div class="progress-bar bg-danger" role="progressbar" style="width: 75%" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
                                                                         </div>
                                                                     </td>
                                                                     <td>
@@ -324,8 +332,7 @@
                             </div>
                             <div class="add-items d-flex mb-0 mt-2">
                                 <input type="text" class="form-control todo-list-input" placeholder="Add new task">
-                                <button class="add btn btn-icon text-primary todo-list-add-btn bg-transparent"><i
-                                        class="icon-circle-plus"></i></button>
+                                <button class="add btn btn-icon text-primary todo-list-add-btn bg-transparent"><i class="icon-circle-plus"></i></button>
                             </div>
                         </div>
                     </div>
@@ -337,8 +344,7 @@
             <!--CAROUSEL GALERI-->
             <div class="slider">
                 <div class="slide active">
-                    <img src="<?= BASEURL ?>/images/foto_galeri/workshop.jpeg"
-                        alt="Workshop Pemanfaatan Energizer Dalam Proses Pembelajaran">
+                    <img src="<?= BASEURL ?>/images/foto_galeri/workshop.jpeg" alt="Workshop Pemanfaatan Energizer Dalam Proses Pembelajaran">
                     <div class="info">
                         <h4><b>Kegiatan</b></h4>
                         <h5>Workshop Pemanfaatan Energizer Dalam Proses Pembelajaran</h5>

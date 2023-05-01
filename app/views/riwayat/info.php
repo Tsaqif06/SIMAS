@@ -1,8 +1,3 @@
-<?php
-var_dump($_POST);
-$index = $_POST['index'];
-?>
-
 <!--info tabel-->
 <div id="infotabel" class="modal fade" role="dialog">
     <div class="modal-dialog">

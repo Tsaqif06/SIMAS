@@ -86,4 +86,9 @@ class Riwayat_model
 
         return $deletedRows;
     }
+
+    public function getDeletedDataByIndex($index)
+    {
+        return $this->getDeletedData()[$index];
+    }
 }
