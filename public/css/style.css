@@ -60,7 +60,7 @@
 
 /* Card Style */
 
-/* .card.card-tale {
+.card.card-tale {
   background: linear-gradient(150deg, #39ef74, #4600f1 100%) !important;
   color: #ffffff !important;
 }
@@ -85,7 +85,7 @@
 
 .card.card-light-blue:hover {
   background: #5050b2 !important;
-} */
+}
 
 /* Carousel STyle */
 
