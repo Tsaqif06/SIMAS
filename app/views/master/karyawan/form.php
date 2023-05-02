@@ -5,7 +5,12 @@
     <div class="mb-3 wrapFotoSekarang">
         <label for="fotoSekarang" class="form-label">Foto Yang Sekarang</label>
         <br>
-        <img src="" alt="Foto Sekarang" id="fotoSekarang" style="width: 70px; height: 70px;">
+        <img src="" alt="Tidak Ada Foto" id="fotoSekarang" style="width: 70px; height: 70px;">
+    </div>
+    <div class="mb-3">
+        <label for="foto" class="form-label foto">Foto</label>
+        <input type="file" class="form-control" name="foto" id="foto" accept="image/*">
+        <p class="text-danger">Ukuran Gambar Tidak Boleh Lebih Dari 1MB!</p>
     </div>
     <div class="mb-3">
         <label for="nama_lengkap" class="form-label">Nama Lengkap</label>
@@ -59,8 +64,4 @@
             <option value="Menikah">Menikah</option>
             <option value="Belum">Belum</option>
         </select>
-    </div>
-    <div class="mb-3">
-        <label for="foto" class="form-label">Foto</label>
-        <input type="file" class="form-control" name="foto" id="foto" accept="image/*" required>
     </div>

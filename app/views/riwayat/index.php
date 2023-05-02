@@ -22,7 +22,7 @@
                 <div class="card">
                     <div class="card-body">
                         <div class="table-responsive">
-                            <table id="example" class="table table-striped table-hover">
+                            <table id="riwayatTable" class="table table-striped table-hover">
                                 <thead>
                                     <tr>
                                         <th>No.</th>
@@ -39,7 +39,7 @@
                                         <tr>
                                             <td><?= $i ?></td>
                                             <td><a href="">
-                                                    <div data-toggle="modal" data-target="#infotabel" class="badge badge-info btnSelengkapnya" data-index="<?= $i-1 ?>" title="Selengkapnya">
+                                                    <div data-toggle="modal" data-target="#infotabel" class="badge badge-info btnSelengkapnya" data-index="<?= $i - 1 ?>" title="Selengkapnya">
                                                         <i class="ti ti-info"></i>
                                                     </div>
                                                 </a>

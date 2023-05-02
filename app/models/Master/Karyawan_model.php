@@ -124,8 +124,8 @@ class Karyawan_model
             return false;
         }
 
-        $this->db->bind('uuid', Uuid::uuid4()->toString());
         $this->db->bind('foto', $foto);
+        $this->db->bind('uuid', Uuid::uuid4()->toString());
         foreach ($this->fields as $field) {
             $this->db->bind($field, $data[$field]);
         }

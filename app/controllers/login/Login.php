@@ -10,6 +10,9 @@ class Login extends Controller
 
     public function index()
     {
+        if (isset($_COOKIE['SIMAS-SESSION'])) {
+            header("Location: " . BASEURL);
+        }
         $data['judul'] = 'SIMAS - Login';
         $this->view('login/head', $data);
         $this->view('login/index');

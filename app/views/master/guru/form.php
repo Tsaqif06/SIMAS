@@ -19,7 +19,7 @@
     <div class="mb-3">
         <label for="jenis_kelamin" class="form-label">Jenis Kelamin</label>
         <select class="form-select" name="jenis_kelamin" id="jenis_kelamin" required>
-            <option selected>Open this select menu</option>
+            <option selected disabled>Open this select menu</option>
             <option value="L">L</option>
             <option value="P">P</option>
         </select>
@@ -42,7 +42,8 @@
     </div>
     <div class="mb-3">
         <label for="jurusan_pendidikan_terakhir" class="form-label">Jurusan Pendidikan Terakhir</label>
-        <input type="text" class="form-control" name="jurusan_pendidikan_terakhir" id="jurusan_pendidikan_terakhir" required>
+        <input type="text" class="form-control" name="jurusan_pendidikan_terakhir" id="jurusan_pendidikan_terakhir"
+            required>
     </div>
     <div class="mb-3">
         <label for="nomor_hp" class="form-label">Nomor HP</label>
@@ -51,7 +52,7 @@
     <div class="mb-3">
         <label for="kategori" class="form-label">Kategori</label>
         <select class="form-select" name="kategori" id="kategori" required>
-            <option selected>Open this select menu</option>
+            <option selected disabled>Open this select menu</option>
             <option value="ASN">ASN</option>
             <option value="GTT">GTT</option>
             <option value="PPPK">PPPK</option>
@@ -60,7 +61,7 @@
     <div class="mb-3">
         <label for="mapel_yg_diampu" class="form-label">Mapel Yang Diampu</label>
         <select class="form-select" name="mapel_yg_diampu" id="mapel_yg_diampu" required>
-            <option selected>Open this select menu</option>
+            <option selected disabled>Open this select menu</option>
             <option value="Matematika">Matematika</option>
             <option value="Bahasa Indonesia">Bahasa Indonesia</option>
             <option value="Bahasa Inggris">Bahasa Inggris</option>
@@ -86,7 +87,7 @@
     <div class="mb-3">
         <label for="kategori_mapel" class="form-label">Kategori Mapel</label>
         <select class="form-select" name="kategori_mapel" id="kategori_mapel">
-            <option selected>Open this select menu</option>
+            <option selected disabled>Open this select menu</option>
             <option value="Umum">Umum</option>
             <option value="BK">BK</option>
             <option value="Kejuruan">Kejuruan</option>
@@ -99,7 +100,7 @@
     <div class="mb-3">
         <label for="status_sertifikasi" class="form-label">Status Sertifikasi</label>
         <select class="form-select" name="status_sertifikasi" id="status_sertifikasi" required>
-            <option selected>Open this select menu</option>
+            <option selected disabled>Open this select menu</option>
             <option value="Sudah">Sudah</option>
             <option value="Belum">Belum</option>
         </select>
@@ -111,7 +112,7 @@
     <div class="mb-3">
         <label for="status_pernikahan" class="form-label">Status Pernikahan</label>
         <select class="form-select" name="status_pernikahan" id="status_pernikahan" required>
-            <option selected>Open this select menu</option>
+            <option selected disabled>Open this select menu</option>
             <option value="Menikah">Menikah</option>
             <option value="Belum">Belum</option>
         </select>
