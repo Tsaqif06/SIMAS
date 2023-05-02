@@ -115,7 +115,7 @@ class Karyawan_model
         $this->db->query(
             "INSERT INTO {$this->table}
                 VALUES 
-            (null, :uuid, :foto :nama_lengkap, :jenis_kelamin, :tempat_lahir, :tanggal_lahir, :alamat_lengkap, :pendidikan_terakhir, :jurusan_pendidikan_terakhir,
+            (null, :uuid, :foto, :nama_lengkap, :jenis_kelamin, :tempat_lahir, :tanggal_lahir, :alamat_lengkap, :pendidikan_terakhir, :jurusan_pendidikan_terakhir,
             :nomor_hp, :kategori, :status_pernikahan, '', CURRENT_TIMESTAMP, :created_by, null, '', null, '', null, '', 0, 0, DEFAULT)"
         );
 
@@ -193,6 +193,7 @@ class Karyawan_model
             $foto = $this->uploadImage();
         }
 
+        $this->db->bind('foto', $foto);
         foreach ($this->fields as $field) {
             $this->db->bind($field, $data[$field]);
         }
