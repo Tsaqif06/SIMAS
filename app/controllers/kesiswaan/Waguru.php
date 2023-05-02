@@ -12,7 +12,8 @@ class Waguru extends Controller
         $data['akses'] = Login::getCurrentSession()->akses;
         $this->akses = Login::getCurrentSession()->akses;
         $data['judul'] = 'SIMAS - Daftar Whatsapp Guru';
-        $data['waguru'] = $this->model("$this->model_name", 'Waguru_model')->getAllWaguru();
+        $data['waguru'] = $this->model("$this->model_name", 'Waguru_model')->getAllExistData();
+        $data['user'] = $this->model('Login', 'Login_model')->getDataByName($data['username']);
         $this->view('templates/header', $data);
         $this->view('kesiswaan/waguru/index', $data);
         $this->view('kesiswaan/waguru/form', $data);
@@ -26,7 +27,7 @@ class Waguru extends Controller
             header('Location: ' . BASEURL . '/waguru');
             exit;
         } else {
-            Flasher::setFlash('gagal', 'Ditambah', 'danger');
+            Flasher::setFlash('GAGAL', 'Ditambah', 'danger');
             header('Location: ' . BASEURL . '/waguru');
             exit;
         }

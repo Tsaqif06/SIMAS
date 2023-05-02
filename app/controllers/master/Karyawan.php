@@ -15,6 +15,7 @@ class Karyawan extends Controller
         $data['akses'] = Login::getCurrentSession()->akses;
         $data['judul'] = 'SIMAS - Karyawan';
         $data['karyawan'] = $this->model("$this->model_name", 'Karyawan_model')->getAllExistData();
+        $data['user'] = $this->model('Login', 'Login_model')->getDataByName($data['username']);
         $this->akses = Login::getCurrentSession()->akses;
 
         if ($this->akses == 'all' || $this->akses == 'mastertu' || $this->akses == 'sdm') {

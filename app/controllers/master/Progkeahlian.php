@@ -15,6 +15,7 @@ class Progkeahlian extends Controller
         $data['akses'] = Login::getCurrentSession()->akses;
         $data['judul'] = 'SIMAS - Progkeahlian';
         $data['progkeahlian'] = $this->model("$this->model_name", 'Progkeahlian_model')->getAllExistData();
+        $data['user'] = $this->model('Login', 'Login_model')->getDataByName($data['username']);
         $this->akses = Login::getCurrentSession()->akses;
 
         if ($this->akses == 'all' || $this->akses == 'mastertu' || $this->akses == 'kesiswaan') {

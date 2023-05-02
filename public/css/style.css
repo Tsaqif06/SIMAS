@@ -1,7 +1,3 @@
-* {
-  font-family: "Nunito", sans-serif;
-}
-
 /* Loader */
 
 .container-spinner {
@@ -10,6 +6,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  z-index: 99;
 }
 
 .spinner {
@@ -61,11 +58,9 @@
   }
 }
 
-
-
 /* Card Style */
 
-.card.card-tale {
+/* .card.card-tale {
   background: linear-gradient(150deg, #39ef74, #4600f1 100%) !important;
   color: #ffffff !important;
 }
@@ -90,9 +85,7 @@
 
 .card.card-light-blue:hover {
   background: #5050b2 !important;
-}
-
-
+} */
 
 /* Carousel STyle */
 
@@ -232,14 +225,12 @@
   }
 }
 
-
-
 /* Table Style */
 
 table,
 tr,
 th,
 td {
-	border-collapse: collapse;
+  border-collapse: collapse;
   padding: 20px;
 }

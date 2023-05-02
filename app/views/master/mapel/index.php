@@ -66,7 +66,9 @@
                                                 </a>
                                                 <a href="<?= BASEURL ?>/mapel/hapusData/<?= $row['id'] ?>">
                                                     <div class=" font-weight-medium pt-2">
-                                                        <div class="badge badge-danger delete" onclick="return confirm('Apakah Anda Yakin Mau Menghapus Data?')"><i class="ti ti-trash"></i></div>
+                                                        <div class="badge badge-danger delete" onclick="return confirm('Apakah Anda Yakin Mau Menghapus Data?')">
+                                                            <i class="ti ti-trash"></i>
+                                                        </div>
                                                 </a>
                                             </td>
                                             <td><?= $row["kode_mapel"]; ?></td>

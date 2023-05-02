@@ -1,32 +1,3 @@
-<!-- <style>
-    .card.card-tale {
-        background: linear-gradient(150deg, #39ef74, #4600f1 100%);
-        color: #ffffff;
-    }
-
-    .card.card-tale:hover {
-        background: #5050b2;
-    }
-
-    .card.card-dark-blue {
-        background: linear-gradient(150deg, #f731db, #4600f1 100%);
-        color: #ffffff;
-    }
-
-    .card.card-dark-blue:hover {
-        background: #5050b2;
-    }
-
-    .card.card-light-blue {
-        background: linear-gradient(to left, #80ffdb, #5390d9);
-        color: #ffffff;
-    }
-
-    .card.card-light-blue:hover {
-        background: #5050b2;
-    }
-</style> -->
-
 <!-- partial -->
 <div class="main-panel">
     <div class="content-wrapper">
@@ -57,7 +28,7 @@
                                 <h4><i class="mdi mdi-account-multiple mx-2"></i>Jumlah Siswa</h4>
                                 </p>
                                 <br>
-                                <p class="fs-30 mb-2">3105</p>
+                                <p class="fs-30 mb-2"><?= $data['jmlSiswa'] ?></p>
                                 <p>April 2023</p>
                             </div>
                         </div>
@@ -69,7 +40,7 @@
                                 <h4><i class="mdi mdi-account-multiple mx-2"></i>Jumlah Guru</h4>
                                 </p>
                                 <br>
-                                <p class="fs-30 mb-2">265</p>
+                                <p class="fs-30 mb-2"><?= $data['jmlGuru'] ?></p>
                                 <p>April 2023</p>
                             </div>
                         </div>
@@ -81,7 +52,7 @@
                                 <h4><i class="mdi mdi-account-multiple mx-2"></i>Jumlah Karyawan</h4>
                                 </p>
                                 <br>
-                                <p class="fs-30 mb-2">569</p>
+                                <p class="fs-30 mb-2"><?= $data['jmlKaryawan'] ?></p>
                                 <p>April 2023</p>
                             </div>
                         </div>

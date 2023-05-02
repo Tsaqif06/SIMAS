@@ -3,11 +3,20 @@ require_once dirname(dirname(__DIR__)) . '/controllers/login/Login.php';
 
 class Asuransi_model extends Database
 {
-
-
     private $table_main = 'klaimasuransi';
     private $user;
 
+    private $fields = [
+        'email',
+        'jenisKlaimAsuransi',
+        'nama',
+        'NIS',
+        'programKeahlian',
+        'kelas',
+        'jurusan',
+        'kodeKelas',
+        'noHP'
+    ];
     private $db;
 
     public function __construct()
@@ -16,9 +25,21 @@ class Asuransi_model extends Database
         $this->user = Login::getCurrentSession()->username;
     }
 
-    public function getAllAsuransi()
+    public function getAllData()
     {
-        $this->db->query('SELECT * FROM ' . $this->table_main);
+        $this->db->query("SELECT * FROM {$this->table_main}");
+        return $this->db->fetchAll();
+    }
+
+    public function getAllExistData()
+    {
+        $this->db->query("SELECT * FROM {$this->table_main} WHERE `status` = 1");
+        return $this->db->fetchAll();
+    }
+
+    public function getAllDeletedData()
+    {
+        $this->db->query("SELECT * FROM {$this->table_main} WHERE `status` = 0");
         return $this->db->fetchAll();
     }
 
@@ -32,19 +53,15 @@ class Asuransi_model extends Database
 
     public function tambahDataAsuransi($data)
     {                     //nama tabel
-        $query = "INSERT INTO " . $this->table_main . " VALUES(null, :uuid, :email, :jenisKlaimAsuransi, :nama, :NIS, :programKeahlian, :kelas, :jurusan, :kodeKelas, :noHP)";
+        $query = "INSERT INTO " . $this->table_main . " VALUES(
+            null, :uuid, :email, :jenisKlaimAsuransi, :nama, :NIS, :programKeahlian, :kelas, :jurusan, :kodeKelas, :noHP, '', CURRENT_TIMESTAMP, :created_by, null, '', null, '', null, '', 0, 0, DEFAULT)";
 
         $this->db->query($query);
-        $this->db->bind('uuid', 0);
-        $this->db->bind('email', $data['email']);
-        $this->db->bind('jenisKlaimAsuransi', $data['jenisKlaimAsuransi']);
-        $this->db->bind('nama', $data['nama']);
-        $this->db->bind('NIS', $data['NIS']);
-        $this->db->bind('programKeahlian', $data['programKeahlian']);
-        $this->db->bind('kelas', $data['kelas']);
-        $this->db->bind('jurusan', $data['jurusan']);
-        $this->db->bind('kodeKelas', $data['kodeKelas']);
-        $this->db->bind('noHP', $data['noHP']);
+        $this->db->bind('uuid', '8');
+        foreach ($this->fields as $field) {
+            $this->db->bind($field, $data[$field]);
+        }
+        $this->db->bind('created_by', $this->user);
 
         $this->db->execute();
 
@@ -53,12 +70,31 @@ class Asuransi_model extends Database
 
     public function hapusDataAsuransi($id)
     {
-        $query = "DELETE FROM " . $this->table_main . " WHERE id = :id";
-        $this->db->query($query);
-        $this->db->bind('id', $id);
+        $this->db->query(
+            "UPDATE {$this->table_main}  
+                SET 
+                deleted_at = CURRENT_TIMESTAMP,
+                deleted_by = :deleted_by,
+                is_deleted = 1
+            WHERE id = :id"
+        );
+
+        $this->db->bind('deleted_by', $this->user);
+        $this->db->bind("id", $id);
 
         $this->db->execute();
+        return $this->db->rowCount();
+    }
 
+    public function hapusDataPermanen($id)
+    {
+        $this->db->query(
+            "DELETE FROM {$this->table_main} WHERE id = :id"
+        );
+
+        $this->db->bind("id", $id);
+
+        $this->db->execute();
         return $this->db->rowCount();
     }
 
@@ -73,21 +109,17 @@ class Asuransi_model extends Database
                     kelas = :kelas,
                     jurusan = :jurusan,
                     kodeKelas = :kodeKelas,
-                    noHP = :noHP
+                    noHP = :noHP,
+                    modified_at = CURRENT_TIMESTAMP,
+                    modified_by = :modified_by
                     WHERE id = :id";
 
         $this->db->query($query);
-        $this->db->bind('email', $data['email']);
-        $this->db->bind('jenisKlaimAsuransi', $data['jenisKlaimAsuransi']);
-        $this->db->bind('nama', $data['nama']);
-        $this->db->bind('NIS', $data['NIS']);
-        $this->db->bind('programKeahlian', $data['programKeahlian']);
-        $this->db->bind('kelas', $data['kelas']);
-        $this->db->bind('jurusan', $data['jurusan']);
-        $this->db->bind('kodeKelas', $data['kodeKelas']);
-        $this->db->bind('noHP', $data['noHP']);
+        foreach ($this->fields as $field) {
+            $this->db->bind($field, $data[$field]);
+        }
+        $this->db->bind('modified_by', $this->user);
         $this->db->bind('id', $data['id']);
-
         $this->db->execute();
 
         return $this->db->rowCount();

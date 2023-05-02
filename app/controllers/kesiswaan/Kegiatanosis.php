@@ -12,7 +12,8 @@ class Kegiatanosis extends Controller
         $data['akses'] = Login::getCurrentSession()->akses;
         $this->akses = Login::getCurrentSession()->akses;
         $data['judul'] = 'SIMAS - Daftar Kegiatan Osis';
-        $data['kegiatanosis'] =  $this->model("$this->model_name", 'Kegiatanosis_model')->getAllKegiatanosis();
+        $data['kegiatanosis'] =  $this->model("$this->model_name", 'Kegiatanosis_model')->getAllExistData();
+        $data['user'] = $this->model('Login', 'Login_model')->getDataByName($data['username']);
         $this->view('templates/header', $data);
         $this->view('kesiswaan/kegiatanosis/index', $data);
         $this->view('kesiswaan/kegiatanosis/form', $data);
@@ -22,11 +23,11 @@ class Kegiatanosis extends Controller
     public function tambahData()
     {
         if ($this->model("$this->model_name", 'Kegiatanosis_model')->tambahDataKegiatanosis($_POST) > 0) {
-            Flasher::setFlash('berhasil', 'ditambah', 'success');
+            Flasher::setFlash('BERHASIL', 'Ditambah', 'success');
             header('Location: ' . BASEURL . '/kegiatanosis');
             exit;
         } else {
-            Flasher::setFlash('gagal', 'ditambah', 'danger');
+            Flasher::setFlash('GAGAL', 'Ditambah', 'danger');
             header('Location: ' . BASEURL . '/kegiatanosis');
             exit;
         }
@@ -35,11 +36,11 @@ class Kegiatanosis extends Controller
     public function hapusData($id)
     {
         if ($this->model("$this->model_name", 'Kegiatanosis_model')->hapusDataKegiatanosis($id) > 0) {
-            Flasher::setFlash('berhasil', 'dihapus', 'success');
+            Flasher::setFlash('BERHASIL', 'Dihapus', 'success');
             header('Location: ' . BASEURL . '/kegiatanosis');
             exit;
         } else {
-            Flasher::setFlash('gagal', 'dihapus', 'danger');
+            Flasher::setFlash('GAGAL', 'Dihapus', 'danger');
             header('Location: ' . BASEURL . '/kegiatanosis');
             exit;
         }
@@ -53,11 +54,11 @@ class Kegiatanosis extends Controller
     public function ubahData()
     {
         if ($this->model("$this->model_name", 'Kegiatanosis_model')->ubahDataKegiatanosis($_POST) > 0) {
-            Flasher::setFlash('berhasil', 'diubah', 'success');
+            Flasher::setFlash('BERHASIL', 'Diubah', 'success');
             header('Location: ' . BASEURL . '/kegiatanosis');
             exit;
         } else {
-            Flasher::setFlash('gagal', 'diubah', 'danger');
+            Flasher::setFlash('GAGAL', 'Diubah', 'danger');
             header('Location: ' . BASEURL . '/kegiatanosis');
             exit;
         }

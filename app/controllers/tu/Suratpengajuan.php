@@ -13,6 +13,7 @@ class Suratpengajuan extends Controller
         $data['username'] = Login::getCurrentSession()->username;
         $data['role'] = Login::getCurrentSession()->role;
         $this->user = Login::getCurrentSession()->role;
+        $data['user'] = $this->model('Login', 'Login_model')->getDataByName($data['username']);
         $data['akses'] = Login::getCurrentSession()->akses;
 
         $data['judul'] = 'SIMAS - Surat Pengajuan';

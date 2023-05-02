@@ -22,9 +22,21 @@ class Kehadiran_model extends Database
         $this->user = Login::getCurrentSession()->username;
     }
 
-    public function getAllKehadiran()
+    public function getAllData()
     {
-        $this->db->query('SELECT * FROM ' . $this->table);
+        $this->db->query("SELECT * FROM {$this->table}");
+        return $this->db->fetchAll();
+    }
+
+    public function getAllExistData()
+    {
+        $this->db->query("SELECT * FROM {$this->table} WHERE `status` = 1");
+        return $this->db->fetchAll();
+    }
+
+    public function getAllDeletedData()
+    {
+        $this->db->query("SELECT * FROM {$this->table} WHERE `status` = 0");
         return $this->db->fetchAll();
     }
 
@@ -41,7 +53,7 @@ class Kehadiran_model extends Database
         $this->db->query(
             "INSERT INTO {$this->table}
                 VALUES 
-            (null, :uuid, :nama, :nisn, :keterangan, :lokasi, CURRENT_TIMESTAMP, :attend_by, NULL, NULL, DEFAULT)"
+            (null, :uuid, :nama, :nisn, :keterangan, :lokasi, CURRENT_TIMESTAMP, :attend_by, NULL, '', DEFAULT, NULL, '', NULL, '', 0, 0, DEFAULT)"
         );
         $this->db->bind('uuid', '49f20563-b288-4561-8b9c-64b8a825893d');
         foreach ($this->fields as $field) {
@@ -54,6 +66,24 @@ class Kehadiran_model extends Database
     }
 
     public function hapusDataKehadiran($id)
+    {
+        $this->db->query(
+            "UPDATE {$this->table}  
+                SET 
+                deleted_at = CURRENT_TIMESTAMP,
+                deleted_by = :deleted_by,
+                is_deleted = 1
+            WHERE id = :id"
+        );
+
+        $this->db->bind('deleted_by', $this->user);
+        $this->db->bind("id", $id);
+
+        $this->db->execute();
+        return $this->db->rowCount();
+    }
+
+    public function hapusDataPermanen($id)
     {
         $this->db->query(
             "DELETE FROM {$this->table} WHERE id = :id"

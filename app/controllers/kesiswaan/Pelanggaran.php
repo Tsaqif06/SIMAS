@@ -13,7 +13,8 @@ class Pelanggaran extends Controller
         $data['akses'] = Login::getCurrentSession()->akses;
         $this->akses = Login::getCurrentSession()->akses;
         $data['judul'] = 'SIMAS - Pelanggaran';
-        $data['pelanggaran'] = $this->model("$this->model_name", 'Pelanggaran_model')->getAllPelanggaran();
+        $data['pelanggaran'] = $this->model("$this->model_name", 'Pelanggaran_model')->getAllExistData();
+        $data['user'] = $this->model('Login', 'Login_model')->getDataByName($data['username']);
         $this->view('templates/header', $data);
         $this->view('kesiswaan/pelanggaran/index', $data);
         $this->view('kesiswaan/pelanggaran/form', $data);
@@ -23,11 +24,11 @@ class Pelanggaran extends Controller
     public function tambahData()
     {
         if ($this->model("$this->model_name", 'Pelanggaran_model')->tambahDataPelanggaran($_POST) > 0) {
-            Flasher::setFlash('berhasil', 'ditambahkan', 'success');
+            Flasher::setFlash('BERHASIL', 'Ditambah', 'success');
             header('Location: ' . BASEURL . '/pelanggaran');
             exit;
         } else {
-            Flasher::setFlash('gagal', 'ditambahkan', 'danger');
+            Flasher::setFlash('GAGAL', 'Ditambah', 'danger');
             header('Location: ' . BASEURL . '/pelanggaran');
             exit;
         }
@@ -36,11 +37,11 @@ class Pelanggaran extends Controller
     public function hapusData($id)
     {
         if ($this->model("$this->model_name", 'Pelanggaran_model')->hapusDataPelanggaran($id) > 0) {
-            Flasher::setFlash('berhasil', 'dihapus', 'success');
+            Flasher::setFlash('BERHASIL', 'Dihapus', 'success');
             header('Location: ' . BASEURL . '/pelanggaran');
             exit;
         } else {
-            Flasher::setFlash('gagal', 'dihapus', 'danger');
+            Flasher::setFlash('GAGAL', 'Dihapus', 'danger');
             header('Location: ' . BASEURL . '/pelanggaran');
             exit;
         }
@@ -54,11 +55,11 @@ class Pelanggaran extends Controller
     public function ubahData()
     {
         if ($this->model("$this->model_name", 'Pelanggaran_model')->ubahDataPelanggaran($_POST) > 0) {
-            Flasher::setFlash('berhasil', 'diubah', 'success');
+            Flasher::setFlash('BERHASIL', 'Diubah', 'success');
             header('Location: ' . BASEURL . '/pelanggaran');
             exit;
         } else {
-            Flasher::setFlash('gagal', 'diubah', 'danger');
+            Flasher::setFlash('GAGAL', 'Diubah', 'danger');
             header('Location: ' . BASEURL . '/pelanggaran');
             exit;
         }

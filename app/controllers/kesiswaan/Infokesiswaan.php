@@ -13,7 +13,8 @@ class Infokesiswaan extends Controller
         $data['akses'] = Login::getCurrentSession()->akses;
         $this->akses = Login::getCurrentSession()->akses;
         $data['judul'] = 'SIMAS - Daftar Informasi';
-        $data['infokesiswaan'] = $this->model("$this->model_name", 'Infokesiswaan_model')->getAllInfokesiswaan();
+        $data['infokesiswaan'] = $this->model("$this->model_name", 'Infokesiswaan_model')->getAllExistData();
+        $data['user'] = $this->model('Login', 'Login_model')->getDataByName($data['username']);
         $this->view('templates/header', $data);
         $this->view('kesiswaan/infokesiswaan/index', $data);
         $this->view('kesiswaan/infokesiswaan/form', $data);
@@ -23,11 +24,11 @@ class Infokesiswaan extends Controller
     public function tambahData()
     {
         if ($this->model("$this->model_name", 'Infokesiswaan_model')->tambahDataInfokesiswaan($_POST) > 0) {
-            Flasher::setFlash('berhasil', 'ditambah', 'success');
+            Flasher::setFlash('BERHASIL', 'Ditambah', 'success');
             header('Location: ' . BASEURL . '/infokesiswaan');
             exit;
         } else {
-            Flasher::setFlash('gagal', 'ditambah', 'danger');
+            Flasher::setFlash('GAGAL', 'Ditambah', 'danger');
             header('Location: ' . BASEURL . '/infokesiswaan');
             exit;
         }
@@ -36,11 +37,11 @@ class Infokesiswaan extends Controller
     public function hapusData($id)
     {
         if ($this->model("$this->model_name", 'Infokesiswaan_model')->hapusDataInfokesiswaan($id) > 0) {
-            Flasher::setFlash('berhasil', 'dihapus', 'success');
+            Flasher::setFlash('BERHASIL', 'Dihapus', 'success');
             header('Location: ' . BASEURL . '/infokesiswaan');
             exit;
         } else {
-            Flasher::setFlash('gagal', 'dihapus', 'danger');
+            Flasher::setFlash('GAGAL', 'Dihapus', 'danger');
             header('Location: ' . BASEURL . '/infokesiswaan');
             exit;
         }
@@ -54,11 +55,11 @@ class Infokesiswaan extends Controller
     public function ubahData()
     {
         if ($this->model("$this->model_name", 'Infokesiswaan_model')->ubahDataInfokesiswaan($_POST) > 0) {
-            Flasher::setFlash('berhasil', 'diubah', 'success');
+            Flasher::setFlash('BERHASIL', 'Diubah', 'success');
             header('Location: ' . BASEURL . '/infokesiswaan');
             exit;
         } else {
-            Flasher::setFlash('gagal', 'diubah', 'danger');
+            Flasher::setFlash('GAGAL', 'Diubah', 'danger');
             header('Location: ' . BASEURL . '/infokesiswaan');
             exit;
         }

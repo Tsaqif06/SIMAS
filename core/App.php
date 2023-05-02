@@ -33,6 +33,9 @@ class App
             $folder = "login/";
             $this->controller = $url[0];
             unset($url[0]);
+        } else {
+            $this->controller = 'Notfound';
+            unset($url[0]);
         }
 
         require_once "../app/controllers/{$folder}{$this->controller}.php";

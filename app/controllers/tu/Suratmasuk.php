@@ -15,6 +15,7 @@ class Suratmasuk extends Controller
         $data['akses'] = Login::getCurrentSession()->akses;
         $data['judul'] = 'SIMAS - Surat Masuk';
         $data['suratmasuk'] = $this->model("$this->model_name", 'Suratmasuk_model')->getAllData();
+        $data['user'] = $this->model('Login', 'Login_model')->getDataByName($data['username']);
         $this->akses = Login::getCurrentSession()->akses;
 
         if ($this->akses == 'all' || $this->akses == 'mastertu') {

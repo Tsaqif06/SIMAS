@@ -8,6 +8,11 @@ class Kecelakaan_model extends Database
     private $table = 'asuransikecelakaan';
     private $user;
 
+    private $fields = [
+        'NIS',
+        'tanggalKecelakaan',
+        'jenisKlaimAsuransi'
+    ];
     private $db;
 
     public function __construct()
@@ -16,9 +21,21 @@ class Kecelakaan_model extends Database
         $this->user = Login::getCurrentSession()->username;
     }
 
-    public function getAllKecelakaan()
+    public function getAllData()
     {
-        $this->db->query('SELECT * FROM ' . $this->table);
+        $this->db->query("SELECT * FROM {$this->table}");
+        return $this->db->fetchAll();
+    }
+
+    public function getAllExistData()
+    {
+        $this->db->query("SELECT * FROM {$this->table} WHERE `status` = 1");
+        return $this->db->fetchAll();
+    }
+
+    public function getAllDeletedData()
+    {
+        $this->db->query("SELECT * FROM {$this->table} WHERE `status` = 0");
         return $this->db->fetchAll();
     }
 
@@ -32,14 +49,16 @@ class Kecelakaan_model extends Database
 
     public function tambahDataKecelakaan($data)
     {                     //nama tabel
-        $query = "INSERT INTO " . $this->table . " VALUES(null, :uuid, :NIS, :tanggalKecelakaan, :jenisKlaimAsuransi)";
+        $query = "INSERT INTO " . $this->table . " VALUES(
+            null, :uuid, :NIS, :tanggalKecelakaan, :jenisKlaimAsuransi, '', CURRENT_TIMESTAMP, :created_by, null, '', null, '', null, '', 0, 0, DEFAULT)";
 
         $this->db->query($query);
-        $this->db->bind('NIS', $data['NIS']);
-        $this->db->bind('uuid', 0);
-        $this->db->bind('tanggalKecelakaan', $data['tanggalKecelakaan']);
-        $this->db->bind('jenisKlaimAsuransi', $data['jenisKlaimAsuransi']);
+        $this->db->bind('uuid', '8');
+        foreach ($this->fields as $field) {
+            $this->db->bind($field, $data[$field]);
+        }
 
+        $this->db->bind('created_by', $this->user);
         $this->db->execute();
 
         return $this->db->rowCount();
@@ -47,12 +66,31 @@ class Kecelakaan_model extends Database
 
     public function hapusDataKecelakaan($id)
     {
-        $query = "DELETE FROM " . $this->table . " WHERE id = :id";
-        $this->db->query($query);
-        $this->db->bind('id', $id);
+        $this->db->query(
+            "UPDATE {$this->table}  
+                SET 
+                deleted_at = CURRENT_TIMESTAMP,
+                deleted_by = :deleted_by,
+                is_deleted = 1
+            WHERE id = :id"
+        );
+
+        $this->db->bind('deleted_by', $this->user);
+        $this->db->bind("id", $id);
 
         $this->db->execute();
+        return $this->db->rowCount();
+    }
 
+    public function hapusDataPermanen($id)
+    {
+        $this->db->query(
+            "DELETE FROM {$this->table} WHERE id = :id"
+        );
+
+        $this->db->bind("id", $id);
+
+        $this->db->execute();
         return $this->db->rowCount();
     }
 
@@ -61,14 +99,18 @@ class Kecelakaan_model extends Database
         $query = "UPDATE asuransikecelakaan SET
                     NIS = :NIS,
                     tanggalKecelakaan = :tanggalKecelakaan,
-                    jenisKlaimAsuransi = :jenisKlaimAsuransi
+                    jenisKlaimAsuransi = :jenisKlaimAsuransi,
+                    modified_at = CURRENT_TIMESTAMP,
+                    modified_by = :modified_by
                     WHERE id = :id";
 
         $this->db->query($query);
-        $this->db->bind('NIS', $data['NIS']);
-        $this->db->bind('tanggalKecelakaan', $data['tanggalKecelakaan']);
-        $this->db->bind('jenisKlaimAsuransi', $data['jenisKlaimAsuransi']);
+        foreach ($this->fields as $field) {
+            $this->db->bind($field, $data[$field]);
+        }
+        $this->db->bind('modified_by', $this->user);
         $this->db->bind('id', $data['id']);
+
 
         $this->db->execute();
 

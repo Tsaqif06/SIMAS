@@ -147,4 +147,10 @@ class Siswa_model
         $this->db->execute();
         return $this->db->rowCount();
     }
+
+    public function getJmlData()
+    {
+        $this->db->query("SELECT COUNT(*) AS count FROM {$this->table} WHERE `status` = 1");
+        return $this->db->fetch();
+    }
 }

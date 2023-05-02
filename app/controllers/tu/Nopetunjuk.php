@@ -14,6 +14,7 @@ class Nopetunjuk extends Controller
         $data['role'] = Login::getCurrentSession()->role;
         $this->user = Login::getCurrentSession()->role;
         $data['akses'] = Login::getCurrentSession()->akses;
+        $data['user'] = $this->model('Login', 'Login_model')->getDataByName($data['username']);
 
         $data['judul'] = 'SIMAS - Nomor Petunjuk Surat';
 

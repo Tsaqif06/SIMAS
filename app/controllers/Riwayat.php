@@ -14,6 +14,7 @@ class Riwayat extends Controller
         $data['role'] = Login::getCurrentSession()->role;
         $data['akses'] = Login::getCurrentSession()->akses;
         $data['judul'] = 'SIMAS - Riwayat';
+        $data['user'] = $this->model('Login', 'Login_model')->getDataByName($data['username']);
         $this->akses = Login::getCurrentSession()->akses;
         $data['riwayat'] = $this->model("$this->model_name", "Riwayat_model")->getDeletedData();
 
