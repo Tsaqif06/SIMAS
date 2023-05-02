@@ -4,6 +4,7 @@ require_once dirname(dirname(__DIR__)) . '/controllers/login/Login.php';
 use Symfony\Component\Filesystem\Exception\IOExceptionInterface;
 use Symfony\Component\Filesystem\Filesystem;
 use Symfony\Component\Filesystem\Path;
+use Ramsey\Uuid\Uuid;
 
 class Kegiatanosis_model extends Database
 {
@@ -114,6 +115,7 @@ class Kegiatanosis_model extends Database
             return false;
         }
         $this->db->bind('foto', $foto);
+        $this->db->bind('uuid', Uuid::uuid4()->toString());
         foreach ($this->fields as $field) {
             $this->db->bind($field, $data[$field]);
         }
@@ -173,7 +175,6 @@ class Kegiatanosis_model extends Database
             $foto = $this->uploadImage();
         }
 
-        $this->db->bind('uuid', '8');
         $this->db->bind('foto', $foto);
         foreach ($this->fields as $field) {
             $this->db->bind($field, $data[$field]);

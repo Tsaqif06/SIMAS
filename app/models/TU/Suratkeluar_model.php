@@ -2,6 +2,7 @@
 
 require_once dirname(dirname(__DIR__)) . '/controllers/login/Login.php';
 
+use Ramsey\Uuid\Uuid;
 
 class Suratkeluar_model
 {
@@ -51,7 +52,7 @@ class Suratkeluar_model
 
         $noBerkas += 1;
         $this->db->bind("nomor_berkas", $noBerkas);
-
+        $this->db->bind('uuid', Uuid::uuid4()->toString());
         foreach ($this->fields as $field) {
             $this->db->bind($field, $data[$field]);
         }

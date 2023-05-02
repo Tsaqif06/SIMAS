@@ -2,6 +2,8 @@
 
 require_once dirname(dirname(__DIR__)) . '/controllers/login/Login.php';
 
+use Ramsey\Uuid\Uuid;
+
 class Suratpengajuan_model
 {
     private $table = 'pengajuan';
@@ -48,10 +50,11 @@ class Suratpengajuan_model
         $this->db->query(
             "INSERT INTO {$this->table}
                 VALUES 
-            (null, :no_surat, :alamat_pengirim, :tanggal, :tanggal_surat, 
+            (null, :uuid, :no_surat, :alamat_pengirim, :tanggal, :tanggal_surat, 
             :perihal, :nomor_petunjuk, CURRENT_TIMESTAMP, :requested_by, null, null, 0, 0)"
         );
 
+        $this->db->bind('uuid', Uuid::uuid4()->toString());
         foreach ($this->fields as $field) {
             $this->db->bind($field, $data[$field]);
         }

@@ -2,6 +2,8 @@
 
 require_once dirname(dirname(__DIR__)) . '/controllers/login/Login.php';
 
+use Ramsey\Uuid\Uuid;
+
 class Siswa_model
 {
     private $table = 'mastersiswa';
@@ -70,7 +72,7 @@ class Siswa_model
             :tempat_lahir, :kelas, :tanggal_lahir, :usia_sekarang, '', CURRENT_TIMESTAMP, :created_by, null, '', null, '', null, '', 0, 0, DEFAULT)"
         );
 
-        $this->db->bind('uuid', '49f20563-b288-4561-8b9c-64b8a825893d');
+        $this->db->bind('uuid', Uuid::uuid4()->toString());
         foreach ($this->fields as $field) {
             $this->db->bind($field, $data[$field]);
         }

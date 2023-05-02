@@ -4,6 +4,7 @@ require_once dirname(dirname(__DIR__)) . '/controllers/login/Login.php';
 use Symfony\Component\Filesystem\Exception\IOExceptionInterface;
 use Symfony\Component\Filesystem\Filesystem;
 use Symfony\Component\Filesystem\Path;
+use Ramsey\Uuid\Uuid;
 
 class Infokesiswaan_model extends Database
 {
@@ -114,7 +115,7 @@ class Infokesiswaan_model extends Database
         if (!$foto) {
             return false;
         }
-        $this->db->bind('uuid', '8');
+        $this->db->bind('uuid', Uuid::uuid4()->toString());
         $this->db->bind('dokumentasi_infoKesiswaan', $foto);
         foreach ($this->fields as $field) {
             $this->db->bind($field, $data[$field]);

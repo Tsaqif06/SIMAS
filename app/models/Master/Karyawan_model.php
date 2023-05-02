@@ -1,11 +1,12 @@
 <?php
 
-use Symfony\Component\Filesystem\Exception\IOExceptionInterface;
-use Symfony\Component\Filesystem\Filesystem;
-use Symfony\Component\Filesystem\Path;
 
 require_once dirname(dirname(__DIR__)) . '/controllers/login/Login.php';
 
+use Symfony\Component\Filesystem\Exception\IOExceptionInterface;
+use Symfony\Component\Filesystem\Filesystem;
+use Symfony\Component\Filesystem\Path;
+use Ramsey\Uuid\Uuid;
 
 
 class Karyawan_model
@@ -123,7 +124,7 @@ class Karyawan_model
             return false;
         }
 
-        $this->db->bind('uuid', '49f20563-b288-4561-8b9c-64b8a825893d');
+        $this->db->bind('uuid', Uuid::uuid4()->toString());
         $this->db->bind('foto', $foto);
         foreach ($this->fields as $field) {
             $this->db->bind($field, $data[$field]);

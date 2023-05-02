@@ -1,6 +1,9 @@
 <?php
 
 require_once dirname(dirname(__DIR__)) . '/controllers/login/Login.php';
+
+use Ramsey\Uuid\Uuid;
+
 class Pelanggaran_model extends Database
 {
     private $table = 'datapelanggaran';
@@ -51,7 +54,7 @@ class Pelanggaran_model extends Database
             null, :uuid, :NIS, :namaPelanggar, :namaDataPelanggaran, :poinDataPelanggaran, 100, DEFAULT, '', CURRENT_TIMESTAMP, :created_by, null, '', null, '', null, '', 0, 0, DEFAULT)";
 
         $this->db->query($query);
-        $this->db->bind('uuid', '8');
+        $this->db->bind('uuid', Uuid::uuid4()->toString());
         foreach ($this->fields as $field) {
             $this->db->bind($field, $data[$field]);
         }

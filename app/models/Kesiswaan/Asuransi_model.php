@@ -1,6 +1,8 @@
 <?php
 require_once dirname(dirname(__DIR__)) . '/controllers/login/Login.php';
 
+use Ramsey\Uuid\Uuid;
+
 class Asuransi_model extends Database
 {
     private $table_main = 'klaimasuransi';
@@ -57,7 +59,7 @@ class Asuransi_model extends Database
             null, :uuid, :email, :jenisKlaimAsuransi, :nama, :NIS, :programKeahlian, :kelas, :jurusan, :kodeKelas, :noHP, '', CURRENT_TIMESTAMP, :created_by, null, '', null, '', null, '', 0, 0, DEFAULT)";
 
         $this->db->query($query);
-        $this->db->bind('uuid', '8');
+        $this->db->bind('uuid', Uuid::uuid4()->toString());
         foreach ($this->fields as $field) {
             $this->db->bind($field, $data[$field]);
         }
