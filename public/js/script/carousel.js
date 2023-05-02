@@ -1,7 +1,7 @@
 const slider = document.querySelector(".slider");
 const nextBtn = document.querySelector(".next-btn");
 const prevBtn = document.querySelector(".prev-btn");
-const slides = document.querySelectorAll(".slide");
+const slides = document.querySelectorAll(".slider .slide");
 const slideIcons = document.querySelectorAll(".slide-icon");
 const numberOfSlides = slides.length;
 var slideNumber = 0;

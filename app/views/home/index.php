@@ -1,4 +1,4 @@
-<style>
+<!-- <style>
     .card.card-tale {
         background: linear-gradient(150deg, #39ef74, #4600f1 100%);
         color: #ffffff;
@@ -25,7 +25,7 @@
     .card.card-light-blue:hover {
         background: #5050b2;
     }
-</style>
+</style> -->
 
 <!-- partial -->
 <div class="main-panel">

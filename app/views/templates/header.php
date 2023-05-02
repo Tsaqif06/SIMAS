@@ -25,9 +25,9 @@
     <!-- inject:css -->
     <link rel="stylesheet" href="css/vertical-layout-light/style.css">
     <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/scroll.css">
+    <!-- <link rel="stylesheet" href="css/scroll.css">
     <link rel="stylesheet" href="css/loader.css">
-    <link rel="stylesheet" href="css/carousel.css">
+    <link rel="stylesheet" href="css/carousel.css"> -->
     <link rel="stylesheet" href="css/vertical-layout-light/style.css">
     <!-- endinject -->
     <link rel="shortcut icon" href="images/favicon.png" />
