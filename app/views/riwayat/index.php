@@ -39,7 +39,7 @@
                                         <tr>
                                             <td><?= $i ?></td>
                                             <td><a href="">
-                                                    <div data-toggle="modal" data-target="#infotabel" class="badge badge-info btnSelengkapnya" data-index="<?= $i ?>" title="Selengkapnya">
+                                                    <div data-toggle="modal" data-target="#infotabel" class="badge badge-info btnSelengkapnya" data-index="<?= $i-1 ?>" title="Selengkapnya">
                                                         <i class="ti ti-info"></i>
                                                     </div>
                                                 </a>
