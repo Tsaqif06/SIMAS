@@ -91,4 +91,35 @@ class Riwayat_model
     {
         return $this->getDeletedData()[$index];
     }
+
+    public function restoreData($uuid, $db)
+    {
+        $this->db->query(
+            "UPDATE {$db}
+                SET 
+                restored_at = CURRENT_TIMESTAMP,
+                restored_by = :restored_by,
+                is_restored = 1,
+                is_deleted = 0
+            WHERE uuid = :uuid"
+        );
+
+        $this->db->bind('restored_by', $this->user);
+        $this->db->bind("uuid", $uuid);
+
+        $this->db->execute();
+        return $this->db->rowCount();
+    }
+
+    public function deletePermanentData($uuid, $db)
+    {
+        $this->db->query(
+            "DELETE FROM {$db} WHERE uuid = :uuid"
+        );
+
+        $this->db->bind("uuid", $uuid);
+
+        $this->db->execute();
+        return $this->db->rowCount();
+    }
 }
