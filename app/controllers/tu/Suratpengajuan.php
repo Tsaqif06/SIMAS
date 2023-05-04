@@ -3,23 +3,18 @@
 class Suratpengajuan extends Controller
 {
     public $model_name = "TU";
-    private $user;
 
     // Main Routing //
 
     public function index()
     {
-        $this->checkSession();
-        $data['username'] = Login::getCurrentSession()->username;
-        $data['role'] = Login::getCurrentSession()->role;
-        $this->user = Login::getCurrentSession()->role;
-        $data['user'] = $this->model('Login', 'Login_model')->getDataByName($data['username']);
-        $data['akses'] = Login::getCurrentSession()->akses;
-
         $data['judul'] = 'SIMAS - Surat Pengajuan';
+        
+        $data['user'] = $this->user;
 
         $data['suratpengajuan'] = $this->model("$this->model_name", 'Suratpengajuan_model')->getQueuedData();
-        if ($this->user == 'admin') {
+
+        if ($data['user']['role'] == 'admin') {
             $this->view('templates/header', $data);
             $this->view('tu/suratpengajuan/detail', $data);
             $this->view('templates/footer');

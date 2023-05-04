@@ -1,7 +1,5 @@
 <?php
 
-require_once dirname(dirname(__DIR__)) . '/controllers/login/Login.php';
-
 class Riwayat_model
 {
     private $user;
@@ -16,7 +14,7 @@ class Riwayat_model
     public function __construct()
     {
         $this->db = new Database(DB_MASTER);
-        $this->user = Login::getCurrentSession()->username;
+        $this->user = Cookie::get_jwt()->name;
     }
 
     public function getAllTable()

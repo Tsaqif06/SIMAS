@@ -9,8 +9,12 @@ require dirname(dirname(dirname(__DIR__))) . '\\vendor\\autoload.php';
 class Lupasandi extends Controller
 {
     private $model_name = 'login';
+
     public function index()
     {
+        if (isset($_COOKIE['SIMAS-SESSION'])) {
+            header("Location: " . BASEURL);
+        }
         $data['judul'] = 'SIMAS - Lupa Sandi';
         $this->view('login/head', $data);
         $this->view('login/lupasandi');

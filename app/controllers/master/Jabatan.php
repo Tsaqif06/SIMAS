@@ -4,27 +4,23 @@ class Jabatan extends Controller
 {
     public $model_name = "Master";
 
-    private $akses;
-
     // Main Routing //
 
     public function index()
     {
-        $this->checkSession();
-        $data['username'] = Login::getCurrentSession()->username;
-        $data['role'] = Login::getCurrentSession()->role;
-        $data['akses'] = Login::getCurrentSession()->akses;
         $data['judul'] = 'SIMAS - Jabatan';
-        $data['jabatan'] = $this->model("$this->model_name", 'Jabatan_model')->getAllExistData();
-        $data['user'] = $this->model('Login', 'Login_model')->getDataByName($data['username']);
-        $this->akses = Login::getCurrentSession()->akses;
 
-        if ($this->akses == 'all' || $this->akses == 'mastertu') {
+        $data['user'] = $this->user;
+        $akses = ['all', 'mastertu'];
+        
+        $data['jabatan'] = $this->model("$this->model_name", 'Jabatan_model')->getAllExistData();
+
+        if (in_array($data['user']['hak_akses'], $akses)) {
             $this->view('templates/header', $data);
             $this->view('master/jabatan/index', $data);
             $this->view('master/jabatan/form', $data);
             $this->view('templates/footer');
-        } else if ($this->akses == '') {
+        } else if ($data['user']['hak_akses'] == '') {
             header("Location: " . BASEURL);
             Flasher::setFlash('GAGAL', 'Anda Tidak Mempunyai Akses Untuk Menuju Halaman Tersebut', 'danger');
         } else {

@@ -1,17 +1,13 @@
 <?php
-require_once dirname(dirname(__DIR__)) . '/controllers/login/Login.php';
 
 use Symfony\Component\Filesystem\Exception\IOExceptionInterface;
 use Symfony\Component\Filesystem\Filesystem;
 use Symfony\Component\Filesystem\Path;
 use Ramsey\Uuid\Uuid;
 
-class Kegiatanosis_model extends Database
+class Kegiatanosis_model
 {
-
-
     private $table = 'kegiatanosis';
-    private $user;
     private $fields = [
         'kegiatan_kegiatanOsis',
         'deskripsi_kegiatanOsis',
@@ -19,12 +15,13 @@ class Kegiatanosis_model extends Database
         'tanggal_kegiatanOsis'
     ];
 
+    private $user;
     private $db;
 
     public function __construct()
     {
         $this->db = new Database(DB_KESISWAAN);
-        $this->user = Login::getCurrentSession()->username;
+        $this->user = Cookie::get_jwt()->name;
     }
 
     public function getAllData()

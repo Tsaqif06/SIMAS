@@ -1,25 +1,23 @@
 <?php
 
-require_once dirname(dirname(__DIR__)) . '/controllers/login/Login.php';
-
 use Ramsey\Uuid\Uuid;
 
 class Mapel_model
 {
     private $table = 'mastermapel';
-    private $user;
     private $fields = [
         'kode_mapel',
         'nama_mapel',
         'kurikulum'
     ];
 
+    private $user;
     private $db;
 
     public function __construct()
     {
         $this->db = new Database(DB_MASTER);
-        $this->user = Login::getCurrentSession()->username;
+        $this->user = Cookie::get_jwt()->name;
     }
 
     public function getAllData()

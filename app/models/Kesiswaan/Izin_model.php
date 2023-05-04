@@ -1,26 +1,23 @@
 <?php
-require_once dirname(dirname(__DIR__)) . '/controllers/login/Login.php';
 
 use Ramsey\Uuid\Uuid;
 
-class Izin_model extends Database
+class Izin_model
 {
-
-
     private $table = 'keterangan__izins';
-    private $user;
     private $fields = [
         'ID_KEHADIRAN',
         'KETERANGAN',
         'STATUSS'
     ];
 
+    private $user;
     private $db;
 
     public function __construct()
     {
         $this->db = new Database(DB_KESISWAAN);
-        $this->user = Login::getCurrentSession()->username;
+        $this->user = Cookie::get_jwt()->name;
     }
 
     public function getAllData()

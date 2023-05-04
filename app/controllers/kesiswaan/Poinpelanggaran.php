@@ -1,18 +1,16 @@
 <?php
 
-class Poinpelanggaran extends Controller{
+class Poinpelanggaran extends Controller
+{
     public $model_name = "Kesiswaan";
-    private $akses;
+
     public function index()
     {
-        $this->checkSession();
-        $data['username'] = Login::getCurrentSession()->username;
-        $data['role'] = Login::getCurrentSession()->role;
-        $data['akses'] = Login::getCurrentSession()->akses;
-        $this->akses = Login::getCurrentSession()->akses;
         $data['judul'] = 'SIMAS - Daftar Poin';
+
+        $data['user'] = $this->user;
+
         $data['poinpelanggaran'] = $this->model("$this->model_name", 'Poinpelanggaran_model')->getAllExistData();
-        $data['user'] = $this->model('Login', 'Login_model')->getDataByName($data['username']);
         $this->view('templates/header',$data);
         $this->view('kesiswaan/poinpelanggaran/index',$data);
         $this->view('kesiswaan/poinpelanggaran/form',$data);

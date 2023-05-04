@@ -3,22 +3,19 @@
 class Suratmasuk extends Controller
 {
     public $model_name = "TU";
-    private $akses;
 
     // Main Routing //
 
     public function index()
     {
-        $this->checkSession();
-        $data['username'] = Login::getCurrentSession()->username;
-        $data['role'] = Login::getCurrentSession()->role;
-        $data['akses'] = Login::getCurrentSession()->akses;
         $data['judul'] = 'SIMAS - Surat Masuk';
-        $data['suratmasuk'] = $this->model("$this->model_name", 'Suratmasuk_model')->getAllData();
-        $data['user'] = $this->model('Login', 'Login_model')->getDataByName($data['username']);
-        $this->akses = Login::getCurrentSession()->akses;
 
-        if ($this->akses == 'all' || $this->akses == 'mastertu') {
+        $data['user'] = $this->user;
+        $akses = ['all', 'mastertu'];
+
+        $data['suratmasuk'] = $this->model("$this->model_name", 'Suratmasuk_model')->getAllData();
+
+        if (in_array($data['user']['hak_akses'], $akses)) {
             $this->view('templates/header', $data);
             $this->view('tu/suratmasuk/index', $data);
             $this->view('tu/suratmasuk/form', $data);

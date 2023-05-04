@@ -1,13 +1,11 @@
 <?php
 
-require_once dirname(dirname(__DIR__)) . '/controllers/login/Login.php';
-
 use Ramsey\Uuid\Uuid;
 
 class Suratpengajuan_model
 {
     private $table = 'pengajuan';
-    private $user;
+    
     private $fields = [
         'no_surat',
         'alamat_pengirim',
@@ -17,13 +15,14 @@ class Suratpengajuan_model
         'nomor_petunjuk'
     ];
 
+    private $user;
     private $db;
 
 
     public function __construct()
     {
         $this->db = new Database(DB_TU);
-        $this->user = Login::getCurrentSession()->username;
+        $this->user = Cookie::get_jwt()->name;
     }
 
     public function getAllData()

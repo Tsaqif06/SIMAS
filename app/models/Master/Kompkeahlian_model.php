@@ -1,24 +1,22 @@
 <?php
 
-
-require_once dirname(dirname(__DIR__)) . '/controllers/login/Login.php';
-
 use Ramsey\Uuid\Uuid;
 
 class Kompkeahlian_model
 {
     private $table = 'masterkompetensikeahlian';
-    private $user;
     private $fields = [
         'kode_kompkeahlian',
         'nama_kompkeahlian'
     ];
+
+    private $user;
     private $db;
 
     public function __construct()
     {
         $this->db = new Database(DB_MASTER);
-        $this->user = Login::getCurrentSession()->username;
+        $this->user = Cookie::get_jwt()->name;
     }
 
     public function getAllData()

@@ -13,7 +13,9 @@ class Login extends Controller
         if (isset($_COOKIE['SIMAS-SESSION'])) {
             header("Location: " . BASEURL);
         }
+
         $data['judul'] = 'SIMAS - Login';
+        
         $this->view('login/head', $data);
         $this->view('login/index');
         $this->view('login/foot');
@@ -26,7 +28,7 @@ class Login extends Controller
             $data['username'] = $_POST['username'];
             $data['email'] = $_POST['email'];
             $data['password'] = $_POST['password'];
-            $user = $this->model("$this->model_name", "Login_model")->auth($data);
+            $user = $this->model("$this->model_name", "Login_model")->login($data);
             if (!$user) {
                 Flasher::setFlash('GAGAL', 'Login', 'danger');
                 sleep(1);
@@ -34,47 +36,19 @@ class Login extends Controller
             } else {
                 Flasher::setFlash('BERHASIL', 'Login', 'success');
                 // Jika validasi berhasil, buat token JWT
-                $userId = $user['id'];
-                $userName = $user['username'];
-                $role = $user['role'];
-                $hakAkses = $user['hak_akses'];
                 $payload = [
-                    'sub' => $userId,
-                    'name' => $userName,
-                    'role' => $role,
-                    'akses' => $hakAkses,
+                    'sub' => $user['id'],
+                    'name' => $user['username'],
+                    'role' => $user['role'],
+                    'akses' => $user['hak_akses'],
                     'iat' => time(),
                     'exp' =>  time() + (7 * 24 * 60 * 60) // Token berlaku selama 1 hari
                 ];
+                Cookie::create_jwt($payload, $payload['exp']);
+                // Kirim token JWT sebagai respons
+                sleep(1);
+                header("Location: " . BASEURL);
             }
-            $jwt = JWT::encode($payload, Login::$SECRET_KEY, 'HS256');
-            setcookie("SIMAS-SESSION", $jwt,  time() + (7 * 24 * 60 * 60), "/");
-
-            // Kirim token JWT sebagai respons
-            sleep(1);
-            header("Location: " . BASEURL);
-        }
-    }
-
-    public static function getCurrentSession()
-    {
-
-        if ($_COOKIE['SIMAS-SESSION']) {
-            $jwt = $_COOKIE['SIMAS-SESSION'];
-            try {
-                $payload = JWT::decode($jwt, new Key(Login::$SECRET_KEY, 'HS256'));
-                return new Session(
-                    username: $payload->name,
-                    role: $payload->role,
-                    akses: $payload->akses
-                );
-            } catch (Exception $exception) {
-                header("Location: " . BASEURL . "/login");
-                exit;
-            }
-        } else {
-            header("Location: " . BASEURL . "/login");
-            exit;
         }
     }
 }
