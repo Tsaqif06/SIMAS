@@ -2,19 +2,16 @@
 
 class Asuransi extends Controller
 {
-
     public $model_name = "Kesiswaan";
-    private $akses;
+
     public function index()
     {
-        $this->checkSession();
-        $data['username'] = Login::getCurrentSession()->username;
-        $data['role'] = Login::getCurrentSession()->role;
-        $data['akses'] = Login::getCurrentSession()->akses;
-        $this->akses = Login::getCurrentSession()->akses;
         $data['judul'] = 'SIMAS - Asuransi';
+        
+        $data['user'] = $this->user;
+
         $data['asuransi'] = $this->model("$this->model_name", 'Asuransi_model')->getAllExistData();
-        $data['user'] = $this->model('Login', 'Login_model')->getDataByName($data['username']);
+
         $this->view('templates/header', $data);
         $this->view('kesiswaan/asuransi/index', $data);
         $this->view('kesiswaan/asuransi/form', $data);

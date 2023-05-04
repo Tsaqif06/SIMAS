@@ -1,23 +1,22 @@
 <?php
-require_once dirname(dirname(__DIR__)) . '/controllers/login/Login.php';
 
 use Ramsey\Uuid\Uuid;
 
-class Poinpelanggaran_model extends Database
+class Poinpelanggaran_model
 {
-
     private $table = 'poinpelanggaran';
-    private $user;
     private $fields = [
         'namaPelanggaran',
         'poinPelanggaran'
     ];
+
+    private $user;
     private $db;
 
     public function __construct()
     {
         $this->db = new Database(DB_KESISWAAN);
-        $this->user = Login::getCurrentSession()->username;
+        $this->user = Cookie::get_jwt()->name;
     }
 
     public function getAllData()

@@ -4,7 +4,7 @@ class Logout extends Controller
 {
     public function index()
     {
-        setcookie("SIMAS-SESSION", "", time() - 3600, "/");
+        Cookie::delete_jwt();
         header("Location: " . BASEURL . "/login");
         exit;
     }

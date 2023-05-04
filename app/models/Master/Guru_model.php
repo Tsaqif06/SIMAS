@@ -1,8 +1,5 @@
 <?php
 
-
-require_once dirname(dirname(__DIR__)) . '/controllers/login/Login.php';
-
 use Symfony\Component\Filesystem\Exception\IOExceptionInterface;
 use Symfony\Component\Filesystem\Filesystem;
 use Symfony\Component\Filesystem\Path;
@@ -11,7 +8,6 @@ use Ramsey\Uuid\Uuid;
 class Guru_model
 {
     private $table = 'masterguru';
-    private $user;
     private $fields = [
         'nama_lengkap',
         'jenis_kelamin',
@@ -30,12 +26,13 @@ class Guru_model
         'status_pernikahan'
     ];
 
+    private $user;
     private $db;
 
     public function __construct()
     {
         $this->db = new Database(DB_MASTER);
-        $this->user = Login::getCurrentSession()->username;
+        $this->user = Cookie::get_jwt()->name;
     }
 
     public function getAllData()

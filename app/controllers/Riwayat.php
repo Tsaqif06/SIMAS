@@ -3,27 +3,24 @@
 class Riwayat extends Controller
 {
     public $model_name = "Riwayat";
-    private $akses;
 
     // Main Routing //
 
     public function index()
     {
-        $this->checkSession();
-        $data['username'] = Login::getCurrentSession()->username;
-        $data['role'] = Login::getCurrentSession()->role;
-        $data['akses'] = Login::getCurrentSession()->akses;
         $data['judul'] = 'SIMAS - Riwayat';
-        $data['user'] = $this->model('Login', 'Login_model')->getDataByName($data['username']);
-        $this->akses = Login::getCurrentSession()->akses;
+
+        $data['user'] = $this->user;
+        $akses = ['all', 'mastertu', 'kurikulum'];
+
         $data['riwayat'] = $this->model("$this->model_name", "Riwayat_model")->getDeletedData();
 
-        if ($this->akses == 'all' || $this->akses == 'mastertu' || $this->akses == 'kurikulum') {
+        if (in_array($data['user']['hak_akses'], $akses)) {
             $this->view('templates/header', $data);
             $this->view('riwayat/index', $data);
             $this->view('riwayat/info', $data);
             $this->view('templates/footer');
-        } else if ($this->akses == '') {
+        } else if ($data['user']['hak_akses'] == '') {
             header("Location: " . BASEURL);
             Flasher::setFlash('GAGAL', 'Anda Tidak Mempunyai Akses Untuk Menuju Halaman Tersebut', 'danger');
         } else {

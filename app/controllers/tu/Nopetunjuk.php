@@ -3,20 +3,14 @@
 class Nopetunjuk extends Controller
 {
     public $model_name = "TU";
-    private $user;
 
     // Main Routing //
 
     public function index()
     {
-        $this->checkSession();
-        $data['username'] = Login::getCurrentSession()->username;
-        $data['role'] = Login::getCurrentSession()->role;
-        $this->user = Login::getCurrentSession()->role;
-        $data['akses'] = Login::getCurrentSession()->akses;
-        $data['user'] = $this->model('Login', 'Login_model')->getDataByName($data['username']);
-
         $data['judul'] = 'SIMAS - Nomor Petunjuk Surat';
+        
+        $data['user'] = $this->user;
 
         $this->view('templates/header', $data);
         $this->view('tu/nopetunjuk/index', $data);

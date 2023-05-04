@@ -4,27 +4,23 @@ class Kompkeahlian extends Controller
 {
     public $model_name = "Master";
 
-    private $akses;
-
     // Main Routing //
 
     public function index()
     {
-        $this->checkSession();
-        $data['username'] = Login::getCurrentSession()->username;
-        $data['role'] = Login::getCurrentSession()->role;
-        $data['akses'] = Login::getCurrentSession()->akses;
         $data['judul'] = 'SIMAS - Kompkeahlian';
+        
+        $data['user'] = $this->user;
+        $akses = ['all', 'mastertu', 'kesiswaan'];
+        
         $data['kompkeahlian'] = $this->model("$this->model_name", 'Kompkeahlian_model')->getAllExistData();
-        $data['user'] = $this->model('Login', 'Login_model')->getDataByName($data['username']);
-        $this->akses = Login::getCurrentSession()->akses;
 
-        if ($this->akses == 'all' || $this->akses == 'mastertu' || $this->akses == 'kesiswaan') {
+        if (in_array($data['user']['hak_akses'], $akses)) {
             $this->view('templates/header', $data);
             $this->view('master/kompkeahlian/index', $data);
             $this->view('master/kompkeahlian/form', $data);
             $this->view('templates/footer');
-        } else if ($this->akses == '') {
+        } else if ($data['user']['hak_akses'] == '') {
             header("Location: " . BASEURL);
             Flasher::setFlash('GAGAL', 'Anda Tidak Mempunyai Akses Untuk Menuju Halaman Tersebut', 'danger');
         } else {

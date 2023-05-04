@@ -3,27 +3,24 @@
 class Mapel extends Controller
 {
     public $model_name = "Master";
-    private $akses;
 
     // Main Routing //
 
     public function index()
     {
-        $this->checkSession();
-        $data['username'] = Login::getCurrentSession()->username;
-        $data['role'] = Login::getCurrentSession()->role;
-        $data['akses'] = Login::getCurrentSession()->akses;
         $data['judul'] = 'SIMAS - Mapel';
-        $this->akses = Login::getCurrentSession()->akses;
-        $data['user'] = $this->model('Login', 'Login_model')->getDataByName($data['username']);
+        
+        $data['user'] = $this->user;
+        $akses = ['all', 'mastertu', 'kurikulum'];
+
         $data['mapel'] = $this->model("$this->model_name", 'Mapel_model')->getAllExistData();
 
-        if ($this->akses == 'all' || $this->akses == 'mastertu' || $this->akses == 'kurikulum') {
+        if (in_array($data['user']['hak_akses'], $akses)) {
             $this->view('templates/header', $data);
             $this->view('master/mapel/index', $data);
             $this->view('master/mapel/form', $data);
             $this->view('templates/footer');
-        } else if ($this->akses == '') {
+        } else if ($data['user']['hak_akses'] == '') {
             header("Location: " . BASEURL);
             Flasher::setFlash('GAGAL', 'Anda Tidak Mempunyai Akses Untuk Menuju Halaman Tersebut', 'danger');
         } else {

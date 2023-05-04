@@ -330,7 +330,7 @@
                         </li>
 
 
-                        <?php if ($data['role'] == 'admin') : ?>
+                        <?php if ($data['user']['role'] == 'admin') : ?>
                             <li class="nav-item">
                                 <a class="nav-link" data-toggle="collapse" href="#masterdata" aria-expanded="false" aria-controls="masterdata">
                                     <i class="icon-folder menu-icon"></i>
@@ -369,13 +369,13 @@
                             </a>
                             <div class="collapse" id="tu">
                                 <ul class="nav flex-column sub-menu">
-                                    <?php if ($data['role'] == 'admin' && ($data['akses'] == 'all' || $data['akses'] == 'mastertu')) : ?>
+                                    <?php if ($data['user']['role'] == 'admin' && ($data['user']['hak_akses'] == 'all' || $data['user']['hak_akses'] == 'mastertu')) : ?>
                                         <li class="nav-item"> <a class="nav-link" href="<?= BASEURL ?>/suratmasuk">Surat
                                                 Masuk</a></li>
                                         <li class="nav-item"> <a class="nav-link" href="<?= BASEURL ?>/suratkeluar">Surat
                                                 Keluar</a></li>
                                     <?php endif ?>
-                                    <?php if ($data['role'] == 'admin' || $data['role'] == 'user' || $data['role'] == 'guest') : ?>
+                                    <?php if ($data['user']['role'] == 'admin' || $data['user']['role'] == 'user' || $data['user']['role'] == 'guest') : ?>
                                         <li class="nav-item"> <a class="nav-link" href="<?= BASEURL ?>/suratpengajuan">Surat
                                                 Pengajuan</a></li>
                                         <li class="nav-item"> <a class="nav-link" href="<?= BASEURL ?>/nopetunjuk">Nomor
@@ -526,7 +526,7 @@
                                         <div class="info_data">
                                             <div class="data">
                                                 <h4>Nama Pengguna</h4>
-                                                <p><?= $data['username'] ?></p>
+                                                <p><?= $data['user']['username'] ?></p>
                                             </div>
                                             <br>
                                             <div class="data">
