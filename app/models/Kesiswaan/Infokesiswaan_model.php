@@ -131,23 +131,12 @@ class Infokesiswaan_model
                 SET 
                 deleted_at = CURRENT_TIMESTAMP,
                 deleted_by = :deleted_by,
-                is_deleted = 1
+                is_deleted = 1,
+                is_restored = 0
             WHERE id = :id"
         );
 
         $this->db->bind('deleted_by', $this->user);
-        $this->db->bind("id", $id);
-
-        $this->db->execute();
-        return $this->db->rowCount();
-    }
-
-    public function hapusDataPermanen($id)
-    {
-        $this->db->query(
-            "DELETE FROM {$this->table} WHERE id = :id"
-        );
-
         $this->db->bind("id", $id);
 
         $this->db->execute();

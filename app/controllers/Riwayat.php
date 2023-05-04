@@ -33,10 +33,10 @@ class Riwayat extends Controller
 
     // Restore Data //
 
-    public function restoreData()
+    public function restoreData($uuid, $db)
     {
 
-        if ($this->model("$this->model_name", "Riwayat_model")->restoreData($_POST) > 0) {
+        if ($this->model("$this->model_name", "Riwayat_model")->restoreData($uuid, $db) > 0) {
             Flasher::setFlash('BERHASIL', 'Ditambahkan', 'success');
         } else {
             Flasher::setFlash('GAGAL', 'Ditambahkan', 'danger');
@@ -47,9 +47,9 @@ class Riwayat extends Controller
 
     // Hapus Data //
 
-    public function hapusData($id)
+    public function deletePermanentData($uuid, $db)
     {
-        if ($this->model("$this->model_name", "Riwayat_model")->hapusData($id) > 0) {
+        if ($this->model("$this->model_name", "Riwayat_model")->deletePermanentData($uuid, $db) > 0) {
             Flasher::setFlash('BERHASIL', 'Dihapus', 'success');
         } else {
             Flasher::setFlash('GAGAL', 'Dihapus', 'danger');
