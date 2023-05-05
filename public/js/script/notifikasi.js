@@ -5,10 +5,10 @@ let notification = {
 			notif.remove();
 		}
 	},
-	add: function (title, content, icon = "ti-email") {
+	add: function (title, content, href = '', icon = "ti-email") {
 		// Create and append the element
 		$("#notification .dropdown-menu").append(`
-      <a class="dropdown-item preview-item">
+      <a ${href == '' ? '' : `href="${href}" `}class="dropdown-item preview-item">
         <div class="preview-thumbnail">
           <div class="preview-icon bg-info">
             <i class="${icon} mx-0"></i>
@@ -28,8 +28,8 @@ let notification = {
 $(document).ready(function () {
 	setInterval(function () {
 		$.ajax({
-			url: "http://localhost/SIMAS/public/tu/notifikasi",
-			data: { user: "admin", method: "get" },
+			url: "http://localhost/SIMAS/public/notification",
+			data: { method : "get_pengajuan" },
 			method: "post",
 			dataType: "json",
 			success: function (data) {
@@ -39,8 +39,9 @@ $(document).ready(function () {
 				} else {
 					$("#notification .count").removeClass("d-none");
 					notification.add(
-						"Pengajuan Baru",
-						`${data} Pengajuan Surat Telah Diajukan`
+						"Pengajuan Surat Baru",
+						`${data} surat baru sedang diajukan`,
+						"http://localhost/SIMAS/public/suratpengajuan"
 					);
 				}
 			},
