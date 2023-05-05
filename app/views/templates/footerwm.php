@@ -47,7 +47,7 @@
 <!-- End custom js for this page-->
 
 <!-- notification handler -->
-<script src="js/script/notifikasi/tu.js"></script>
+<script src="js/script/notifikasi.js"></script>
 
 </body>
 
