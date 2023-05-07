@@ -40,14 +40,14 @@ class Kehadiran_model
     }
 
 
-    public function getKehadiranById($id)
+    public function getDataById($id)
     {
         $this->db->query('SELECT * FROM ' . $this->table . ' WHERE id=:id');
         $this->db->bind('id', $id);
         return $this->db->fetch();
     }
 
-    public function tambahDataKehadiran($data)
+    public function tambahData($data)
     {
         $this->db->query(
             "INSERT INTO {$this->table}
@@ -64,7 +64,7 @@ class Kehadiran_model
         return $this->db->rowCount();
     }
 
-    public function hapusDataKehadiran($id)
+    public function hapusData($id)
     {
         $this->db->query(
             "UPDATE {$this->table}  
@@ -83,7 +83,7 @@ class Kehadiran_model
         return $this->db->rowCount();
     }
 
-    public function ubahDataKehadiran($data)
+    public function ubahData($data)
     {
         $this->db->query(
             "UPDATE {$this->table}
@@ -102,6 +102,30 @@ class Kehadiran_model
         }
         $this->db->bind('modified_by', $this->user);
         $this->db->bind('id', $data['id']);
+
+        $this->db->execute();
+        return $this->db->rowCount();
+    }
+
+    public function ubahDataAPI($id, $data)
+    {
+        $this->db->query(
+            "UPDATE {$this->table}
+                SET 
+                nisn = :nisn,
+                nama = :nama,
+                lokasi = :lokasi,
+                keterangan = :keterangan,
+                modified_at = CURRENT_TIMESTAMP,
+                modified_by = :modified_by
+            WHERE id = :id"
+        );
+
+        foreach ($this->fields as $field) {
+            $this->db->bind($field, $data[$field]);
+        }
+        $this->db->bind('modified_by', $this->user);
+        $this->db->bind('id', $id);
 
         $this->db->execute();
         return $this->db->rowCount();

@@ -38,14 +38,14 @@ class Poinpelanggaran_model
     }
 
 
-    public function getPoinpelanggaranById($id)
+    public function getDataById($id)
     {
         $this->db->query('SELECT * FROM ' . $this->table . ' WHERE id=:id');
         $this->db->bind('id', $id);
         return $this->db->fetch();
     }
 
-    public function tambahDataPoinpelanggaran($data)
+    public function tambahData($data)
     {                     //nama tabel
         $query = "INSERT INTO poinpelanggaran VALUES(
             null, :uuid, :namaPelanggaran, :poinPelanggaran, '', CURRENT_TIMESTAMP, :created_by, null, '', null, '', null, '', 0, 0, DEFAULT)";
@@ -62,7 +62,7 @@ class Poinpelanggaran_model
         return $this->db->rowCount();
     }
 
-    public function hapusDataPoinpelanggaran($id)
+    public function hapusData($id)
     {
         $this->db->query(
             "UPDATE {$this->table}  
@@ -81,7 +81,7 @@ class Poinpelanggaran_model
         return $this->db->rowCount();
     }
 
-    public function ubahDataPoinpelanggaran($data)
+    public function ubahData($data)
     {                     //nama tabel
         $query = "UPDATE poinpelanggaran SET
                     namaPelanggaran = :namaPelanggaran,
@@ -96,6 +96,27 @@ class Poinpelanggaran_model
         }
         $this->db->bind('modified_by', $this->user);
         $this->db->bind('id', $data['id']);
+
+        $this->db->execute();
+
+        return $this->db->rowCount();
+    }
+
+    public function ubahDataAPI($id, $data)
+    {                     //nama tabel
+        $query = "UPDATE poinpelanggaran SET
+                    namaPelanggaran = :namaPelanggaran,
+                    poinPelanggaran = :poinPelanggaran,
+                    modified_at = CURRENT_TIMESTAMP,
+                    modified_by = :modified_by
+                    WHERE id = :id";
+
+        $this->db->query($query);
+        foreach ($this->fields as $field) {
+            $this->db->bind($field, $data[$field]);
+        }
+        $this->db->bind('modified_by', $this->user);
+        $this->db->bind('id', $id);
 
         $this->db->execute();
 
