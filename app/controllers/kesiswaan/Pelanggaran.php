@@ -20,7 +20,7 @@ class Pelanggaran extends Controller
 
     public function tambahData()
     {
-        if ($this->model("$this->model_name", 'Pelanggaran_model')->tambahDataPelanggaran($_POST) > 0) {
+        if ($this->model("$this->model_name", 'Pelanggaran_model')->tambahData($_POST) > 0) {
             Flasher::setFlash('BERHASIL', 'Ditambah', 'success');
             header('Location: ' . BASEURL . '/pelanggaran');
             exit;
@@ -33,7 +33,7 @@ class Pelanggaran extends Controller
 
     public function hapusData($id)
     {
-        if ($this->model("$this->model_name", 'Pelanggaran_model')->hapusDataPelanggaran($id) > 0) {
+        if ($this->model("$this->model_name", 'Pelanggaran_model')->hapusData($id) > 0) {
             Flasher::setFlash('BERHASIL', 'Dihapus', 'success');
             header('Location: ' . BASEURL . '/pelanggaran');
             exit;
@@ -46,12 +46,12 @@ class Pelanggaran extends Controller
 
     public function getUbahData()
     {
-        echo json_encode($this->model("$this->model_name", 'Pelanggaran_model')->getPelanggaranById($_POST['id']));
+        echo json_encode($this->model("$this->model_name", 'Pelanggaran_model')->getDataById($_POST['id']));
     }
 
     public function ubahData()
     {
-        if ($this->model("$this->model_name", 'Pelanggaran_model')->ubahDataPelanggaran($_POST) > 0) {
+        if ($this->model("$this->model_name", 'Pelanggaran_model')->ubahData($_POST) > 0) {
             Flasher::setFlash('BERHASIL', 'Diubah', 'success');
             header('Location: ' . BASEURL . '/pelanggaran');
             exit;
