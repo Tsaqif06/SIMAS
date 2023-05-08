@@ -92,7 +92,7 @@ class API extends Controller
 
 
 
-    public function poinpelanggaran($id = null)
+    public function Poinpelanggaran($id = null)
     {
         header('Content-Type: application/json');
         ($id == null) ?
@@ -122,10 +122,50 @@ class API extends Controller
 
     public function ubahDataPoinpelanggaran($id)
     {
-        if ($this->model("Kesiswaan", "Pelanggaran_model")->ubahDataAPI($id, $_POST) > 0) {
+        if ($this->model("Kesiswaan", "Poinpelanggaran_model")->ubahDataAPI($id, $_POST) > 0) {
             echo json_encode(["status" => "success", "message" => "Data Poin Pelanggaran berhasil diubah"]);
         } else {
             echo json_encode(["status" => "success", "message" => "Data Poin Pelanggaran gagal ditambahkan"]);
+        }
+    }
+
+
+    //  SISWA  //
+
+    public function Siswa($id = null)
+    {
+        header('Content-Type: application/json');
+        ($id == null) ?
+            $data = $this->model("Master", 'Siswa_model')->getAllExistData() :
+            $data = $this->model("Master", 'Siswa_model')->getDataById($id);
+
+        echo json_encode($data);
+    }
+
+    public function tambahDataSiswa()
+    {
+        if ($this->model("Master", "Siswa_model")->tambahData($_POST) > 0) {
+            echo json_encode(["status" => "success", "message" => "Data Siswa berhasil ditambahkan"]);
+        } else {
+            echo json_encode(["status" => "success", "message" => "Data Siswa gagal dihapus"]);
+        }
+    }
+
+    public function hapusDataSiswa($id)
+    {
+        if ($this->model("Master", "Siswa_model")->hapusData($id) > 0) {
+            echo json_encode(["status" => "success", "message" => "Data Siswa berhasil dihapus"]);
+        } else {
+            echo json_encode(["status" => "success", "message" => "Data Siswa gagal dihapus"]);
+        }
+    }
+
+    public function ubahDataSiswa($id)
+    {
+        if ($this->model("Master", "Siswa_model")->ubahDataAPI($id, $_POST) > 0) {
+            echo json_encode(["status" => "success", "message" => "Data Siswa berhasil diubah"]);
+        } else {
+            echo json_encode(["status" => "success", "message" => "Data Siswa gagal ditambahkan"]);
         }
     }
 }
