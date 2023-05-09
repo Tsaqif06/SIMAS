@@ -7,7 +7,7 @@
         </div>
         <div class="mb-3">
             <label for="tanggal" class="form-label">Tanggal</label>
-            <input type="text" class="form-control" name="tanggal" id="tanggal" required>
+            <input type="date" placeholder="dd/mm/yyyy" class="form-control" name="tanggal" id="tanggal" required>
         </div>
         <div class="mb-3">
             <label for="perihal" class="form-label">Perihal</label>

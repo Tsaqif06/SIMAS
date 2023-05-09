@@ -20,7 +20,8 @@ class Login_model
             `username` = :username AND
             `email` = :email AND
             `password` = :password_field
-        ");
+        "
+        );
 
         $this->db->bind("username", $data['username']);
         $this->db->bind("email", $data['email']);
@@ -29,8 +30,39 @@ class Login_model
         return $this->db->fetch();
     }
 
+    public function log($id)
+    {
+        $this->db->query(
+            "UPDATE {$this->table}
+                SET 
+                last_login_at = CURRENT_TIMESTAMP,
+                status_login = 1
+            WHERE id = :id"
+        );
+
+        $this->db->bind("id", $id);
+
+        $this->db->execute();
+        return $this->db->rowCount();
+    }
+
+    public function logout($id)
+    {
+        $this->db->query(
+            "UPDATE {$this->table}
+                SET 
+                status_login = 0
+            WHERE id = :id"
+        );
+
+        $this->db->bind("id", $id);
+
+        $this->db->execute();
+        return $this->db->rowCount();
+    }
+
     // Method untuk otentikasi jwt //
-    
+
     public function authentication($data)
     {
         $query = "";
@@ -73,5 +105,4 @@ class Login_model
         $this->db->execute();
         return $this->db->rowCount();
     }
-
 }

@@ -24,7 +24,7 @@
         <select class="form-select" name="jurusan" id="jurusan" required>
             <option selected disabled>Open this select menu</option>
             <?php foreach ($data['kompkeahlian'] as $row) : ?>
-            <option value="<?= $row['kode_kompkeahlian'] ?>"><?= $row['kode_kompkeahlian'] ?></option>
+                <option value="<?= $row['kode_kompkeahlian'] ?>"><?= $row['kode_kompkeahlian'] ?></option>
             <?php endforeach ?>
         </select>
     </div>
@@ -34,7 +34,7 @@
     </div>
     <div class="mb-3">
         <label for="tanggal_lahir" class="form-label">Tanggal Lahir</label>
-        <input type="text" class="form-control" name="tanggal_lahir" id="tanggal_lahir" required>
+        <input type="date" placeholder="dd/mm/yyyy" class="form-control" name="tanggal_lahir" id="tanggal_lahir" required>
     </div>
     <div class="mb-3">
         <label for="tempat_lahir" class="form-label">Tempat Lahir</label>

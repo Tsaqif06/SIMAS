@@ -15,7 +15,7 @@ class Login extends Controller
         }
 
         $data['judul'] = 'SIMAS - Login';
-        
+
         $this->view('login/head', $data);
         $this->view('login/index');
         $this->view('login/foot');
@@ -31,23 +31,23 @@ class Login extends Controller
             $user = $this->model("$this->model_name", "Login_model")->login($data);
             if (!$user) {
                 Flasher::setFlash('GAGAL', 'Login', 'danger');
-                sleep(1);
                 header("Location: " . BASEURL . "/login");
             } else {
-                Flasher::setFlash('BERHASIL', 'Login', 'success');
-                // Jika validasi berhasil, buat token JWT
-                $payload = [
-                    'sub' => $user['id'],
-                    'name' => $user['username'],
-                    'role' => $user['role'],
-                    'akses' => $user['hak_akses'],
-                    'iat' => time(),
-                    'exp' =>  time() + (7 * 24 * 60 * 60) // Token berlaku selama 1 hari
-                ];
-                Cookie::create_jwt($payload, $payload['exp']);
-                // Kirim token JWT sebagai respons
-                sleep(1);
-                header("Location: " . BASEURL);
+                if ($this->model("$this->model_name", "Login_model")->log($user['id']) > 0) {
+                    Flasher::setFlash('BERHASIL', 'Login', 'success');
+                    // Jika validasi berhasil, buat token JWT
+                    $payload = [
+                        'sub' => $user['id'],
+                        'name' => $user['username'],
+                        'role' => $user['role'],
+                        'akses' => $user['hak_akses'],
+                        'iat' => time(),
+                        'exp' =>  time() + (7 * 24 * 60 * 60) // Token berlaku selama 1 hari
+                    ];
+                    Cookie::create_jwt($payload, $payload['exp']);
+                    // Kirim token JWT sebagai respons
+                    header("Location: " . BASEURL);
+                }
             }
         }
     }

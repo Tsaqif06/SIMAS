@@ -30,7 +30,7 @@
     </div>
     <div class="mb-3">
         <label for="tanggal_lahir" class="form-label">Tanggal Lahir</label>
-        <input type="text" class="form-control" name="tanggal_lahir" id="tanggal_lahir" required>
+        <input type="date" placeholder="dd/mm/yyyy" class="form-control" name="tanggal_lahir" id="tanggal_lahir" required>
     </div>
     <div class="mb-3">
         <label for="alamat_lengkap" class="form-label">Alamat Lengkap</label>

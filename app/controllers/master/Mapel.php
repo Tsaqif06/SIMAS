@@ -34,7 +34,6 @@ class Mapel extends Controller
 
     public function tambahData()
     {
-
         if ($this->model("$this->model_name", "Mapel_model")->tambahData($_POST) > 0) {
             Flasher::setFlash('BERHASIL', 'Ditambahkan', 'success');
         } else {

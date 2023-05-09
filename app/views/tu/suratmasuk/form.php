@@ -7,11 +7,12 @@
     </div>
     <div class="mb-3">
         <label for="tanggal" class="form-label">Tanggal</label>
-        <input type="text" class="form-control" name="tanggal" id="tanggal" required>
+        <input type="date" placeholder="dd/mm/yyyy" class="form-control" name="tanggal" id="tanggal" required>
     </div>
     <div class="mb-3">
         <label for="tanggal_surat" class="form-label">Tanggal Surat</label>
-        <input type="text" class="form-control" name="tanggal_surat" id="tanggal_surat" required>
+        <input type="date" placeholder="dd/mm/yyyy" class="form-control" name="tanggal_surat" id="tanggal_surat"
+            required>
     </div>
     <div class="mb-3">
         <label for="nomor_surat" class="form-label">Nomor Surat</label>

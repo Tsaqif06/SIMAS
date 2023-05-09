@@ -1,24 +1,24 @@
-<?php 
+<?php
 
 use Firebase\JWT\JWT;
 use Firebase\JWT\Key;
 
 class Cookie
 {
-	private static $SECRET_KEY = "ZHxTsCPhncHnBWhsRUatdumctOidOum9";
+    private static $SECRET_KEY = "ZHxTsCPhncHnBWhsRUatdumctOidOum9";
 
-	public static function create_jwt($payload, $exp)
-	{
-		$jwt = JWT::encode($payload, self::$SECRET_KEY, 'HS256');
+    public static function create_jwt($payload, $exp)
+    {
+        $jwt = JWT::encode($payload, self::$SECRET_KEY, 'HS256');
         setcookie("SIMAS-SESSION", $jwt, $exp, "/");
-	}
+    }
 
-	public static function delete_jwt()
-	{
-		setcookie("SIMAS-SESSION", "", time() - 3600, "/");
-	}
+    public static function delete_jwt()
+    {
+        setcookie("SIMAS-SESSION", "", time() - 3600, "/");
+    }
 
-	public static function get_jwt()
+    public static function get_jwt()
     {
         if (isset($_COOKIE['SIMAS-SESSION'])) {
             $jwt = $_COOKIE['SIMAS-SESSION'];
