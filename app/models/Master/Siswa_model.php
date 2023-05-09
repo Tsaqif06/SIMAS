@@ -62,6 +62,30 @@ class Siswa_model
         return $this->db->fetch();
     }
 
+    public function getUmur($birthdate)
+    {
+        $birthdate = date('Y-m-d', strtotime($birthdate));
+        $birthdateObj = new DateTime($birthdate);
+        $currentDate = new DateTime();
+
+        // mengambil tanggal dan bulan saat ini
+        $currentDayMonth = $currentDate->format('d-m');
+
+        // mengambil tanggal dan bulan tanggal lahir
+        $birthDayMonth = $birthdateObj->format('d-m');
+
+        // menghitung umur
+        $age = $currentDate->diff($birthdateObj)->y;
+
+        // jika tanggal dan bulan saat ini sama dengan tanggal dan bulan tanggal lahir
+        // artinya seseorang sudah berulang tahun, maka tambahkan 1 tahun ke umur
+        if ($currentDayMonth == $birthDayMonth) {
+            $age++;
+        }
+
+        return $age;
+    }
+
     public function tambahData($data)
     {
         $this->db->query(
@@ -74,8 +98,12 @@ class Siswa_model
 
         $this->db->bind('uuid', Uuid::uuid4()->toString());
         foreach ($this->fields as $field) {
+            if ($field == 'usia_sekarang') {
+                continue;
+            }
             $this->db->bind($field, $data[$field]);
         }
+        $this->db->bind('usia_sekarang', $this->getUmur($data['tanggal_lahir']));
         $this->db->bind('created_by', $this->user);
 
         $this->db->execute();
@@ -130,8 +158,12 @@ class Siswa_model
         );
 
         foreach ($this->fields as $field) {
+            if ($field == 'usia_sekarang') {
+                continue;
+            }
             $this->db->bind($field, $data[$field]);
         }
+        $this->db->bind('usia_sekarang', $this->getUmur($data['tanggal_lahir']));
         $this->db->bind('modified_by', $this->user);
         $this->db->bind('id', $data['id']);
 
