@@ -11,7 +11,7 @@ class Kecelakaan extends Controller
         $data['user'] = $this->user;
 
         $data['kecelakaan'] = $this->model("$this->model_name", 'Kecelakaan_model')->getAllExistData();
-        
+
         $this->view('templates/header', $data);
         $this->view('kesiswaan/kecelakaan/index', $data);
         $this->view('kesiswaan/kecelakaan/form', $data);
@@ -61,5 +61,16 @@ class Kecelakaan extends Controller
             header('Location: ' . BASEURL . '/kecelakaan');
             exit;
         }
+    }
+
+    public function importData()
+    {
+        if ($this->model("$this->model_name", "Kecelakaan_model")->importData($_POST) > 0) {
+            Flasher::setFlash('BERHASIL', 'Diimport', 'success');
+        } else {
+            Flasher::setFlash('GAGAL', 'Diimport', 'danger');
+        }
+        header("Location: " . BASEURL . "/kecelakaan");
+        exit;
     }
 }

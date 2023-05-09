@@ -7,11 +7,11 @@ class Ortumeninggal extends Controller
     public function index()
     {
         $data['judul'] = 'SIMAS - Asuransi Ortu Meninggal';
-        
+
         $data['user'] = $this->user;
 
         $data['ortumeninggal'] = $this->model("$this->model_name", 'Ortumeninggal_model')->getAllExistData();
-        
+
         $this->view('templates/header', $data);
         $this->view('kesiswaan/ortumeninggal/index', $data);
         $this->view('kesiswaan/ortumeninggal/form', $data);
@@ -62,12 +62,14 @@ class Ortumeninggal extends Controller
         }
     }
 
-    public function cari()
+    public function importData()
     {
-        $data['judul'] = 'Daftar Ortumeninggal';
-        $data['mhs'] = $this->model("$this->model_name", 'Ortumeninggal_model')->cariDataOrtumeninggal();
-        $this->view('templates/header', $data);
-        $this->view('ortumeninggal/index', $data);
-        $this->view('templates/footer');
+        if ($this->model("$this->model_name", "Ortumeninggal_model")->importData($_POST) > 0) {
+            Flasher::setFlash('BERHASIL', 'Diimport', 'success');
+        } else {
+            Flasher::setFlash('GAGAL', 'Diimport', 'danger');
+        }
+        header("Location: " . BASEURL . "/ortumeninggal");
+        exit;
     }
 }

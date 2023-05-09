@@ -9,7 +9,7 @@ class Suratpengajuan extends Controller
     public function index()
     {
         $data['judul'] = 'SIMAS - Surat Pengajuan';
-        
+
         $data['user'] = $this->user;
 
         $data['suratpengajuan'] = $this->model("$this->model_name", 'Suratpengajuan_model')->getQueuedData();
@@ -88,6 +88,17 @@ class Suratpengajuan extends Controller
             Flasher::setFlash('BERHASIL', 'Ditolak', 'success');
         } else {
             Flasher::setFlash('GAGAL', 'Ditolak', 'danger');
+        }
+        header("Location: " . BASEURL . "/suratpengajuan");
+        exit;
+    }
+
+    public function importData()
+    {
+        if ($this->model("$this->model_name", "Suratpengajuan_model")->importData($_POST) > 0) {
+            Flasher::setFlash('BERHASIL', 'Diimport', 'success');
+        } else {
+            Flasher::setFlash('GAGAL', 'Diimport', 'danger');
         }
         header("Location: " . BASEURL . "/suratpengajuan");
         exit;

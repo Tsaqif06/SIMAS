@@ -74,4 +74,15 @@ class Karyawan extends Controller
         header("Location: " . BASEURL . "/karyawan");
         exit;
     }
+
+    public function importData()
+    {
+        if ($this->model("$this->model_name", "Karyawan_model")->importData($_POST) > 0) {
+            Flasher::setFlash('BERHASIL', 'Diimport', 'success');
+        } else {
+            Flasher::setFlash('GAGAL', 'Diimport', 'danger');
+        }
+        header("Location: " . BASEURL . "/karyawan");
+        exit;
+    }
 }

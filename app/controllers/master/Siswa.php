@@ -9,7 +9,7 @@ class Siswa extends Controller
     public function index()
     {
         $data['judul'] = 'SIMAS - Siswa';
-        
+
         $data['user'] = $this->user;
         $akses = ['all', 'mastertu', 'humas', 'kesiswaan'];
 
@@ -35,7 +35,6 @@ class Siswa extends Controller
 
     public function tambahData()
     {
-
         if ($this->model("$this->model_name", "Siswa_model")->tambahData($_POST) > 0) {
             Flasher::setFlash('BERHASIL', 'Ditambahkan', 'success');
         } else {
@@ -71,6 +70,17 @@ class Siswa extends Controller
             Flasher::setFlash('BERHASIL', 'Diubah', 'success');
         } else {
             Flasher::setFlash('GAGAL', 'Diubah', 'danger');
+        }
+        header("Location: " . BASEURL . "/siswa");
+        exit;
+    }
+
+    public function importData()
+    {
+        if ($this->model("$this->model_name", "Siswa_model")->importData($_POST) > 0) {
+            Flasher::setFlash('BERHASIL', 'Diimport', 'success');
+        } else {
+            Flasher::setFlash('GAGAL', 'Diimport', 'danger');
         }
         header("Location: " . BASEURL . "/siswa");
         exit;

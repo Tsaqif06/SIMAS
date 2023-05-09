@@ -37,6 +37,9 @@
                 <button type="button" class="btn btn-primary my-3 tampilModalTambah" data-url="<?= BASEURL ?>/mapel/tambahData" data-bs-toggle="modal" data-bs-target="#modal">
                     Tambah Data Mapel
                 </button>
+                <button type="button" class="btn btn-primary my-3 mx-3 tampilModalImport" data-bs-toggle="modal" data-bs-target="#modalImport">
+                    Import Data Dari Excel
+                </button>
             </div>
         </div>
 
@@ -52,7 +55,7 @@
                                         <th>Aksi</th>
                                         <th>Kode Mapel</th>
                                         <th>Nama Mapel</th>
-                                        <th>kurikulum</th>
+                                        <th>Kurikulum</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -85,7 +88,28 @@
         </div>
 
 
-
+        <div class="modal fade" id="modalImport" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="modalLabel">Import Data</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <form action="<?= BASEURL ?>/mapel/importData" method="post" enctype="multipart/form-data">
+                            <div class="mb-3">
+                                <label for="file">Pilih file Excel (.xlsx)</label>
+                                <input type="file" name="file" id="file">
+                            </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary batal" data-bs-dismiss="modal">Batal</button>
+                        <button type="submit" class="btn btn-primary">Tambah Data</button>
+                    </div>
+                    </form>
+                </div>
+            </div>
+        </div>
 
 
         <!-- Modal -->

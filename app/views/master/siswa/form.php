@@ -24,13 +24,21 @@
         <select class="form-select" name="jurusan" id="jurusan" required>
             <option selected disabled>Open this select menu</option>
             <?php foreach ($data['kompkeahlian'] as $row) : ?>
-                <option value="<?= $row['kode_kompkeahlian'] ?>"><?= $row['kode_kompkeahlian'] ?></option>
+            <option value="<?= $row['kode_kompkeahlian'] ?>"><?= $row['kode_kompkeahlian'] ?></option>
             <?php endforeach ?>
         </select>
     </div>
     <div class="mb-3">
         <label for="alamat" class="form-label">Alamat</label>
         <input type="text" class="form-control" name="alamat" id="alamat" required>
+    </div>
+    <div class="mb-3">
+        <label for="tanggal_lahir" class="form-label">Tanggal Lahir</label>
+        <input type="text" class="form-control" name="tanggal_lahir" id="tanggal_lahir" required>
+    </div>
+    <div class="mb-3">
+        <label for="tempat_lahir" class="form-label">Tempat Lahir</label>
+        <input type="text" class="form-control" name="tempat_lahir" id="tempat_lahir" required>
     </div>
     <div class="mb-3">
         <label for="nomor_hp_siswa" class="form-label">No. HP Siswa</label>
@@ -49,12 +57,12 @@
         <input type="text" class="form-control" name="nomor_hp_orangtua" id="nomor_hp_orangtua" required>
     </div>
     <div class="mb-3">
-        <label for="wali" class="form-label">Wali</label>
-        <input type="text" class="form-control" name="wali" id="wali" required>
+        <label for="wali" class="form-label">Wali (opsional)</label>
+        <input type="text" class="form-control" name="wali" id="wali">
     </div>
     <div class="mb-3">
-        <label for="nomor_hp_wali" class="form-label">No. HP Wali</label>
-        <input type="text" class="form-control" name="nomor_hp_wali" id="nomor_hp_wali" required>
+        <label for="nomor_hp_wali" class="form-label">No. HP Wali (opsional)</label>
+        <input type="text" class="form-control" name="nomor_hp_wali" id="nomor_hp_wali">
     </div>
     <div class="mb-3">
         <label for="tahun_diterima" class="form-label">Tahun Diterima</label>
@@ -81,16 +89,8 @@
         </select>
     </div>
     <div class="mb-3">
-        <label for="tempat_lahir" class="form-label">Tempat Lahir</label>
-        <input type="text" class="form-control" name="tempat_lahir" id="tempat_lahir" required>
-    </div>
-    <div class="mb-3">
         <label for="kelas" class="form-label">Kelas</label>
         <input type="text" class="form-control" name="kelas" id="kelas" required>
-    </div>
-    <div class="mb-3">
-        <label for="tanggal_lahir" class="form-label">Tanggal Lahir</label>
-        <input type="text" class="form-control" name="tanggal_lahir" id="tanggal_lahir" required>
     </div>
     <div class="mb-3">
         <label for="usia_sekarang" class="form-label">Usia Sekarang</label>

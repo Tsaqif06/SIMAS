@@ -61,4 +61,15 @@ class Izin extends Controller
             exit;
         }
     }
+
+    public function importData()
+    {
+        if ($this->model("$this->model_name", "Izin_model")->importData($_POST) > 0) {
+            Flasher::setFlash('BERHASIL', 'Diimport', 'success');
+        } else {
+            Flasher::setFlash('GAGAL', 'Diimport', 'danger');
+        }
+        header("Location: " . BASEURL . "/izin");
+        exit;
+    }
 }

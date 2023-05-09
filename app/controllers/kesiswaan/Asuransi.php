@@ -7,7 +7,7 @@ class Asuransi extends Controller
     public function index()
     {
         $data['judul'] = 'SIMAS - Asuransi';
-        
+
         $data['user'] = $this->user;
 
         $data['asuransi'] = $this->model("$this->model_name", 'Asuransi_model')->getAllExistData();
@@ -60,5 +60,16 @@ class Asuransi extends Controller
             header('Location: ' . BASEURL . '/asuransi');
             exit;
         }
+    }
+
+    public function importData()
+    {
+        if ($this->model("$this->model_name", "Asuransi_model")->importData($_POST) > 0) {
+            Flasher::setFlash('BERHASIL', 'Diimport', 'success');
+        } else {
+            Flasher::setFlash('GAGAL', 'Diimport', 'danger');
+        }
+        header("Location: " . BASEURL . "/asuransi");
+        exit;
     }
 }

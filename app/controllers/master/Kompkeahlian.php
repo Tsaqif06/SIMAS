@@ -9,10 +9,10 @@ class Kompkeahlian extends Controller
     public function index()
     {
         $data['judul'] = 'SIMAS - Kompkeahlian';
-        
+
         $data['user'] = $this->user;
         $akses = ['all', 'mastertu', 'kesiswaan'];
-        
+
         $data['kompkeahlian'] = $this->model("$this->model_name", 'Kompkeahlian_model')->getAllExistData();
 
         if (in_array($data['user']['hak_akses'], $akses)) {
@@ -70,6 +70,17 @@ class Kompkeahlian extends Controller
             Flasher::setFlash('BERHASIL', 'Diubah', 'success');
         } else {
             Flasher::setFlash('GAGAL', 'Diubah', 'danger');
+        }
+        header("Location: " . BASEURL . "/kompkeahlian");
+        exit;
+    }
+
+    public function importData()
+    {
+        if ($this->model("$this->model_name", "Kompkeahlian_model")->importData($_POST) > 0) {
+            Flasher::setFlash('BERHASIL', 'Diimport', 'success');
+        } else {
+            Flasher::setFlash('GAGAL', 'Diimport', 'danger');
         }
         header("Location: " . BASEURL . "/kompkeahlian");
         exit;

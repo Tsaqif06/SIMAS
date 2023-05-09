@@ -74,4 +74,15 @@ class Guru extends Controller
         header("Location: " . BASEURL . "/guru");
         exit;
     }
+
+    public function importData()
+    {
+        if ($this->model("$this->model_name", "Guru_model")->importData($_POST) > 0) {
+            Flasher::setFlash('BERHASIL', 'Diimport', 'success');
+        } else {
+            Flasher::setFlash('GAGAL', 'Diimport', 'danger');
+        }
+        header("Location: " . BASEURL . "/guru");
+        exit;
+    }
 }

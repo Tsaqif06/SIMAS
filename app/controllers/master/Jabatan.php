@@ -12,7 +12,7 @@ class Jabatan extends Controller
 
         $data['user'] = $this->user;
         $akses = ['all', 'mastertu'];
-        
+
         $data['jabatan'] = $this->model("$this->model_name", 'Jabatan_model')->getAllExistData();
 
         if (in_array($data['user']['hak_akses'], $akses)) {
@@ -28,8 +28,6 @@ class Jabatan extends Controller
             $this->view('master/jabatan/detail', $data);
             $this->view('templates/footer');
         }
-
-
     }
 
     // Tambah Data //
@@ -72,6 +70,17 @@ class Jabatan extends Controller
             Flasher::setFlash('BERHASIL', 'Diubah', 'success');
         } else {
             Flasher::setFlash('GAGAL', 'Diubah', 'danger');
+        }
+        header("Location: " . BASEURL . "/jabatan");
+        exit;
+    }
+
+    public function importData()
+    {
+        if ($this->model("$this->model_name", "Jabatan_model")->importData($_POST) > 0) {
+            Flasher::setFlash('BERHASIL', 'Diimport', 'success');
+        } else {
+            Flasher::setFlash('GAGAL', 'Diimport', 'danger');
         }
         header("Location: " . BASEURL . "/jabatan");
         exit;

@@ -74,4 +74,15 @@ class Kelas extends Controller
         header("Location: " . BASEURL . "/kelas");
         exit;
     }
+
+    public function importData()
+    {
+        if ($this->model("$this->model_name", "Kelas_model")->importData($_POST) > 0) {
+            Flasher::setFlash('BERHASIL', 'Diimport', 'success');
+        } else {
+            Flasher::setFlash('GAGAL', 'Diimport', 'danger');
+        }
+        header("Location: " . BASEURL . "/kelas");
+        exit;
+    }
 }

@@ -9,7 +9,7 @@ class Walikelas extends Controller
     public function index()
     {
         $data['judul'] = 'SIMAS - Walikelas';
-                
+
         $data['user'] = $this->user;
         $akses = ['all', 'mastertu'];
 
@@ -64,12 +64,12 @@ class Walikelas extends Controller
         echo json_encode($this->model("$this->model_name", "Walikelas_model")->getDataById($_POST["id"]));
     }
 
-    public function ubahData()
+    public function importData()
     {
-        if ($this->model("$this->model_name", "Walikelas_model")->ubahData($_POST) > 0) {
-            Flasher::setFlash('BERHASIL', 'Diubah', 'success');
+        if ($this->model("$this->model_name", "Walikelas_model")->importData($_POST) > 0) {
+            Flasher::setFlash('BERHASIL', 'Diimport', 'success');
         } else {
-            Flasher::setFlash('GAGAL', 'Diubah', 'danger');
+            Flasher::setFlash('GAGAL', 'Diimport', 'danger');
         }
         header("Location: " . BASEURL . "/walikelas");
         exit;

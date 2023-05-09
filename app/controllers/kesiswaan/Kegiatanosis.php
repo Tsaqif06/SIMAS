@@ -11,7 +11,7 @@ class Kegiatanosis extends Controller
         $data['user'] = $this->user;
 
         $data['kegiatanosis'] =  $this->model("$this->model_name", 'Kegiatanosis_model')->getAllExistData();
-        
+
         $this->view('templates/header', $data);
         $this->view('kesiswaan/kegiatanosis/index', $data);
         $this->view('kesiswaan/kegiatanosis/form', $data);
@@ -60,5 +60,16 @@ class Kegiatanosis extends Controller
             header('Location: ' . BASEURL . '/kegiatanosis');
             exit;
         }
+    }
+
+    public function importData()
+    {
+        if ($this->model("$this->model_name", "Kegiatanosis_model")->importData($_POST) > 0) {
+            Flasher::setFlash('BERHASIL', 'Diimport', 'success');
+        } else {
+            Flasher::setFlash('GAGAL', 'Diimport', 'danger');
+        }
+        header("Location: " . BASEURL . "/kegiatanosis");
+        exit;
     }
 }

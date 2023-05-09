@@ -7,11 +7,11 @@ class Waguru extends Controller
     public function index()
     {
         $data['judul'] = 'SIMAS - Daftar Whatsapp Guru';
-        
+
         $data['user'] = $this->user;
 
         $data['waguru'] = $this->model("$this->model_name", 'Waguru_model')->getAllExistData();
-        
+
         $this->view('templates/header', $data);
         $this->view('kesiswaan/waguru/index', $data);
         $this->view('kesiswaan/waguru/form', $data);
@@ -60,5 +60,16 @@ class Waguru extends Controller
             header('Location: ' . BASEURL . '/waguru');
             exit;
         }
+    }
+
+    public function importData()
+    {
+        if ($this->model("$this->model_name", "Waguru_model")->importData($_POST) > 0) {
+            Flasher::setFlash('BERHASIL', 'Diimport', 'success');
+        } else {
+            Flasher::setFlash('GAGAL', 'Diimport', 'danger');
+        }
+        header("Location: " . BASEURL . "/waguru");
+        exit;
     }
 }

@@ -61,4 +61,15 @@ class Kehadiran extends Controller
             exit;
         }
     }
+
+    public function importData()
+    {
+        if ($this->model("$this->model_name", "Kehadiran_model")->importData($_POST) > 0) {
+            Flasher::setFlash('BERHASIL', 'Diimport', 'success');
+        } else {
+            Flasher::setFlash('GAGAL', 'Diimport', 'danger');
+        }
+        header("Location: " . BASEURL . "/kehadiran");
+        exit;
+    }
 }

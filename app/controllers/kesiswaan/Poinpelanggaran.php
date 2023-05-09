@@ -60,4 +60,15 @@ class Poinpelanggaran extends Controller
             exit;
         }
     }
+
+    public function importData()
+    {
+        if ($this->model("$this->model_name", "Poinpelanggaran_model")->importData($_POST) > 0) {
+            Flasher::setFlash('BERHASIL', 'Diimport', 'success');
+        } else {
+            Flasher::setFlash('GAGAL', 'Diimport', 'danger');
+        }
+        header("Location: " . BASEURL . "/poinpelanggaran");
+        exit;
+    }
 }

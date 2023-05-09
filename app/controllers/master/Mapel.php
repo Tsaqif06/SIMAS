@@ -9,7 +9,7 @@ class Mapel extends Controller
     public function index()
     {
         $data['judul'] = 'SIMAS - Mapel';
-        
+
         $data['user'] = $this->user;
         $akses = ['all', 'mastertu', 'kurikulum'];
 
@@ -70,6 +70,17 @@ class Mapel extends Controller
             Flasher::setFlash('BERHASIL', 'Diubah', 'success');
         } else {
             Flasher::setFlash('GAGAL', 'Diubah', 'danger');
+        }
+        header("Location: " . BASEURL . "/mapel");
+        exit;
+    }
+
+    public function importData()
+    {
+        if ($this->model("$this->model_name", "Mapel_model")->importData($_POST) > 0) {
+            Flasher::setFlash('BERHASIL', 'Diimport', 'success');
+        } else {
+            Flasher::setFlash('GAGAL', 'Diimport', 'danger');
         }
         header("Location: " . BASEURL . "/mapel");
         exit;

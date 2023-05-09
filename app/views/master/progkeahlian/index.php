@@ -37,6 +37,9 @@
                 <button type="button" class="btn btn-primary my-3 tampilModalTambah" data-url="<?= BASEURL ?>/progkeahlian/tambahData" data-bs-toggle="modal" data-bs-target="#modal">
                     Tambah Data Program Keahlian
                 </button>
+                <button type="button" class="btn btn-primary my-3 mx-3 tampilModalImport" data-bs-toggle="modal" data-bs-target="#modalImport">
+                    Import Data Dari Excel
+                </button>
             </div>
         </div>
 
@@ -65,7 +68,9 @@
                                                 </a>
                                                 <a href="<?= BASEURL ?>/progkeahlian/hapusData/<?= $row['id'] ?>">
                                                     <div class=" font-weight-medium pt-2">
-                                                        <div class="badge badge-danger delete" onclick="return confirm('Apakah Anda Yakin Mau Menghapus Data?')"><i class="ti ti-trash"></i></div>
+                                                        <div class="badge badge-danger delete" onclick="return confirm('Apakah Anda Yakin Mau Menghapus Data?')">
+                                                            <i class="ti ti-trash"></i>
+                                                        </div>
                                                 </a>
                                             </td>
                                             <td><?= $row["nama_jurusan"]; ?></td>
@@ -80,7 +85,28 @@
             </div>
         </div>
 
-
+        <div class="modal fade" id="modalImport" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="modalLabel">Import Data</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <form action="<?= BASEURL ?>/progkeahlian/importData" method="post" enctype="multipart/form-data">
+                            <div class="mb-3">
+                                <label for="file">Pilih file Excel (.xlsx)</label>
+                                <input type="file" name="file" id="file">
+                            </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary batal" data-bs-dismiss="modal">Batal</button>
+                        <button type="submit" class="btn btn-primary">Tambah Data</button>
+                    </div>
+                    </form>
+                </div>
+            </div>
+        </div>
 
 
 

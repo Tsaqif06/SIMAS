@@ -1,6 +1,8 @@
 <?php
 
 use Ramsey\Uuid\Uuid;
+use PhpOffice\PhpSpreadsheet\IOFactory;
+use PhpOffice\PhpSpreadsheet\Cell\Coordinate;
 
 class Kecelakaan_model
 {
@@ -103,5 +105,44 @@ class Kecelakaan_model
         $this->db->execute();
 
         return $this->db->rowCount();
+    }
+
+    public function importData()
+    {
+        // Cek file diupload apa belum
+        if (!isset($_FILES['file']['name'])) {
+            Flasher::setFlash('Error', 'Harap pilih file Excel terlebih dahulu', 'danger');
+            header('location: ' . BASEURL . '/siswa');
+            exit;
+        }
+
+        // Baca file Excel menggunakan PhpSpreadsheet
+        $inputFileName = $_FILES['file']['tmp_name'];
+        $spreadsheet = IOFactory::load($inputFileName);
+
+        // Ambil data dari sheet pertama
+        $worksheet = $spreadsheet->getActiveSheet();
+        $highestRow = $worksheet->getHighestRow();
+        $highestColumn = $worksheet->getHighestColumn();
+        $maxColumnIndex = Coordinate::columnIndexFromString($highestColumn);
+
+        // Daftar kolom yang akan diambil dari file Excel dan disimpan ke database
+        $columns = $this->fields;
+
+        // Looping untuk membaca setiap baris data
+        for ($row = 2; $row <= $highestRow; $row++) {
+            $data = [];
+
+            // Looping untuk membaca setiap kolom data
+            for ($col = 2; $col <= count($columns) + 1; $col++) {
+                $columnLetter = Coordinate::stringFromColumnIndex($col);
+                $cellValue = $worksheet->getCell($columnLetter . $row)->getValue();
+                $data[$columns[$col - 2]] = $cellValue;
+            }
+
+            // Simpan data ke database
+            $response = $this->tambahDataKecelakaan($data);
+        }
+        return $response;
     }
 }

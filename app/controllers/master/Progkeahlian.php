@@ -12,7 +12,7 @@ class Progkeahlian extends Controller
 
         $data['user'] = $this->user;
         $akses = ['all', 'mastertu', 'kesiswaan'];
-        
+
         $data['progkeahlian'] = $this->model("$this->model_name", 'Progkeahlian_model')->getAllExistData();
 
         if (in_array($data['user']['hak_akses'], $akses)) {
@@ -70,6 +70,17 @@ class Progkeahlian extends Controller
             Flasher::setFlash('BERHASIL', 'Diubah', 'success');
         } else {
             Flasher::setFlash('GAGAL', 'Diubah', 'danger');
+        }
+        header("Location: " . BASEURL . "/progkeahlian");
+        exit;
+    }
+
+    public function importData()
+    {
+        if ($this->model("$this->model_name", "Progkeahlian_model")->importData($_POST) > 0) {
+            Flasher::setFlash('BERHASIL', 'Diimport', 'success');
+        } else {
+            Flasher::setFlash('GAGAL', 'Diimport', 'danger');
         }
         header("Location: " . BASEURL . "/progkeahlian");
         exit;

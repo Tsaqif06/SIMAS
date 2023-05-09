@@ -11,7 +11,7 @@ class Feedback extends Controller
         $data['user'] = $this->user;
 
         $data['feedback'] = $this->model("$this->model_name", 'Feedback_model')->getAllExistData();
-        
+
         $this->view('templates/header', $data);
         $this->view('kesiswaan/feedback/index', $data);
         $this->view('kesiswaan/feedback/form', $data);
@@ -60,5 +60,16 @@ class Feedback extends Controller
             header('Location: ' . BASEURL . '/feedback');
             exit;
         }
+    }
+
+    public function importData()
+    {
+        if ($this->model("$this->model_name", "Feedback_model")->importData($_POST) > 0) {
+            Flasher::setFlash('BERHASIL', 'Diimport', 'success');
+        } else {
+            Flasher::setFlash('GAGAL', 'Diimport', 'danger');
+        }
+        header("Location: " . BASEURL . "/feedback");
+        exit;
     }
 }
