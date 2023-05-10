@@ -6,6 +6,7 @@ use Symfony\Component\Filesystem\Path;
 use Ramsey\Uuid\Uuid;
 use PhpOffice\PhpSpreadsheet\IOFactory;
 use PhpOffice\PhpSpreadsheet\Cell\Coordinate;
+
 class Infokesiswaan_model
 {
     private $table = 'infokesiswaan';
@@ -13,7 +14,6 @@ class Infokesiswaan_model
         'kegiatan_infoKesiswaan',
         'deskripsi_infoKesiswaan',
         'tanggal_kegiatanOsis'
-    ];
 
     private $user;
     private $db;
@@ -205,7 +205,6 @@ class Infokesiswaan_model
     //             $cellValue = $worksheet->getCell($columnLetter . $row)->getValue();
     //             $data[$columns[$col - 2]] = $cellValue;
     //         }
-
     //         // Simpan data ke database
     //         $response = $this->tambahDataInfokesiswaan($data);
     //     }

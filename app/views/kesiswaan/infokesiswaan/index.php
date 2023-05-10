@@ -221,6 +221,7 @@
                     <div class="form-group">
                       <label for="exampleInputEmail1">Deskripsi Kegiatan</label>
                       <input type="text" class="form-control" id="deskripsi_infoKesiswaan" name="deskripsi_infoKesiswaan" placeholder="" required/>
+
                     </div>
                 </div>
                 <div class="modal-footer">
