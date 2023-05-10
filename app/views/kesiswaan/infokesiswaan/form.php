@@ -17,6 +17,6 @@
     </div>
 
     <div class="form-group">
-        <label for="tanggal_kegiatanOsis">Tanggal Kegiatan Osis</label>
-        <input type="date" class="form-control" id="tanggal_kegiatanOsis" name="tanggal_kegiatanOsis">
+        <label for="tanggal_infoKesiswaan">Tanggal Kegiatan Osis</label>
+        <input type="date" class="form-control" id="tanggal_infoKesiswaan" name="tanggal_infoKesiswaan">
     </div>

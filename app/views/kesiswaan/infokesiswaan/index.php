@@ -93,7 +93,7 @@
                                         <td><img src="images/datafoto/pp.png" class="data-img"
                                                 style="width: 65px; height: 65px;"></td>
                                         <?php endif; ?>
-                                        <td><?= $row['tanggal_kegiatanOsis']; ?></td>
+                                        <td><?= $row['tanggal_infoKesiswaan']; ?></td>
                                     </tr>
                                     <?php endforeach; ?>
                                 </tbody>

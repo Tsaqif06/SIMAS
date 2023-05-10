@@ -6,6 +6,7 @@ use Symfony\Component\Filesystem\Path;
 use Ramsey\Uuid\Uuid;
 use PhpOffice\PhpSpreadsheet\IOFactory;
 use PhpOffice\PhpSpreadsheet\Cell\Coordinate;
+
 class Infokesiswaan_model
 {
     private $table = 'infokesiswaan';
@@ -13,7 +14,7 @@ class Infokesiswaan_model
         'kegiatan_infoKesiswaan',
         'deskripsi_infoKesiswaan',
         'dokumentasi_infoKesiswaan',
-        'tanggal_kegiatanOsis'
+        'tanggal_iinfoKesiswaan'
     ];
 
     private $user;
@@ -106,7 +107,7 @@ class Infokesiswaan_model
     public function tambahDataInfokesiswaan($data)
     {                     //nama tabel
         $query = "INSERT INTO infokesiswaan VALUES(
-            null, :uuid, :kegiatan_infoKesiswaan, :deskripsi_infoKesiswaan, :dokumentasi_infoKesiswaan, :tanggal_kegiatanOsis, '', CURRENT_TIMESTAMP, :created_by, null, '', null, '', null, '', 0, 0, DEFAULT)";
+            null, :uuid, :kegiatan_infoKesiswaan, :deskripsi_infoKesiswaan, :dokumentasi_infoKesiswaan, :tanggal_infoKesiswaan, '', CURRENT_TIMESTAMP, :created_by, null, '', null, '', null, '', 0, 0, DEFAULT)";
 
         $this->db->query($query);
         $foto = $this->uploadImage();
@@ -150,7 +151,7 @@ class Infokesiswaan_model
                     kegiatan_infoKesiswaan = :kegiatan_infoKesiswaan,
                     deskripsi_infoKesiswaan = :deskripsi_infoKesiswaan,
                     dokumentasi_infoKesiswaan = :dokumentasi_infoKesiswaan,
-                    tanggal_kegiatanOsis = :tanggal_kegiatanOsis,
+                    tanggal_infoKesiswaan = :tanggal_infoKesiswaan,
                     modified_at = CURRENT_TIMESTAMP,
                     modified_by = :modified_by
                     WHERE id = :id";
