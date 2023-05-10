@@ -29,6 +29,10 @@ class App
             $folder = "kesiswaan/";
             $this->controller = $url[0];
             unset($url[0]);
+        } else if (file_exists("../app/controllers/humas/$url[0].php")) {
+            $folder = "humas/";
+            $this->controller = $url[0];
+            unset($url[0]);
         } else if (file_exists("../app/controllers/login/$url[0].php")) {
             $folder = "login/";
             $this->controller = $url[0];
