@@ -12,8 +12,8 @@
     </div>
 
     <div class="form-group">
-        <label for="dokumentasi_infoKesiswaan">Dokumentasi</label>
-        <input type="file" class="form-control" id="dokumentasi_infoKesiswaan" name="dokumentasi_infoKesiswaan" accept="image/*">
+        <label for="foto">Dokumentasi</label>
+        <input type="file" class="form-control" id="foto" name="foto" accept="image/*">
     </div>
 
     <div class="form-group">
