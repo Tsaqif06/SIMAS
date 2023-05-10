@@ -1,34 +1,4 @@
 
-<div class="collapse" id="form-elements">
-              <ul class="nav flex-column sub-menu">
-              <li class="nav-item"><a class="nav-link" href="<?= BASEURL; ?>/pkl/index">PKL</a></li>
-                <div class="collapse" id="form-elements">
-                  <div class="navsubitem">
-                    <a class="nav-link" href="<?= BASEURL; ?>/pkl/rekap">Rekap PKL</a>
-                    <a class="nav-link" href="<?= BASEURL; ?>/pkl/pembekalan">Pembekalan PKL</a>
-                    <a class="nav-link" href="<?= BASEURL; ?>/pkl/pemberkasan">Pemberkasan</a>
-                    <a class="nav-link" href="<?= BASEURL; ?>/pkl/prakerin">Prakerin</a>
-                    <a class="nav-link" href="<?= BASEURL; ?>/pkl/nilai">Nilai PKL</a>
-                    <a class="nav-link" href="<?= BASEURL; ?>/pkl/dtampung">Daya Tampung</a>
-                  </div>
-                <li class="nav-item"><a class="nav-link" href="<?= BASEURL;?>/bkk/index">BKK</a></li>
-                  <div class="navsubitem">
-                    <a class="nav-link" href="<?= BASEURL;?>/bkk/das">Alumni Sukses</a>
-                    <a class="nav-link" href="<?= BASEURL;?>/bkk/mou">MoU</a>
-                    <a class="nav-link" href="<?= BASEURL;?>/bkk/peminatan">Peminatan</a>
-                    <a class="nav-link" href="<?= BASEURL;?>/bkk/workshop">Workshop</a>
-                    <a class="nav-link" href="<?= BASEURL;?>/bkk/kebekerjaan">Kebekerjaan</a>
-                    <a class="nav-link" href="<?= BASEURL;?>/bkk/spw">SPW</a>
-                    <a class="nav-link" href="<?= BASEURL;?>/bkk/lomba">Lomba</a>
-                    <a class="nav-link" href="<?= BASEURL;?>/bkk/loker">Lowongan Kerja</a>
-                  </div>
-                <li class="nav-item"><a class="nav-link" href="<?= BASEURL; ?>/ict/index">ICT</a></li>
-                <li class="nav-item"><a class="nav-link" href="<?= BASEURL; ?>/stiru/index">Studi Tiru</a></li>
-              </ul>
-            </div>
-            </li>  
-        </ul>
-      </nav> 
       <!-- partial -->
       <div class="main-panel">
         <div class="content-wrapper">
@@ -37,7 +7,7 @@
               <div class="row">
                 <div class="col-12 col-xl-8 mb-4 mb-xl-0">
                   <h3 class="font-weight-bold">Data Penempatan Teknik Grafika</h3>
-                  <h6 class="font-weight-normal mb-0"><a class="text-dark" href="<? BASEURL; ?>/pkl"> Laman PKL</a> | <a class="text-dark" href="<? BASEURL; ?>/pkl/rekap"> Rekapitulasi </a> | <a class="text-dark" href="<? BASEURL; ?>/pkl/penempatan"> Data Penempatan </a> | <span class="text-primary"> Teknik Grafika </span></h6>
+                  <h6 class="font-weight-normal mb-0">Laman Data Penempatan Teknik Grafika | <span class="text-primary">SIMAS</span></h6>
                 </div>
 
                 <div class="col-12 col-xl-4">
@@ -47,14 +17,14 @@
                          DG C
                        </button>
                        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuDate2">
-                       <a class="dropdown-item" href="<?= BASEURL; ?>/pkl/penempatandga">DG A</a>
-                         <a class="dropdown-item" href="<?= BASEURL; ?>/pkl/penempatandgb">DG B</a>
-                         <a class="dropdown-item" href="<?= BASEURL; ?>/pkl/penempatandgc">DG C</a>
-                         <a class="dropdown-item" href="<?= BASEURL; ?>/pkl/penempatandgd">DG D</a>
-                         <a class="dropdown-item" href="<?= BASEURL; ?>/pkl/penempatanpda">PD A</a>
-                         <a class="dropdown-item" href="<?= BASEURL; ?>/pkl/penempatanpdb">PD B</a>
-                         <a class="dropdown-item" href="<?= BASEURL; ?>/pkl/penempatanpdc">PD C</a>
-                         <a class="dropdown-item" href="<?= BASEURL; ?>/pkl/penempatanpdd">PD D</a>
+                       <a class="dropdown-item" href="<?= BASESDATAS; ?>/pkl/penempatandga">DG A</a>
+                         <a class="dropdown-item" href="<?= BASESDATAS; ?>/pkl/penempatandgb">DG B</a>
+                         <a class="dropdown-item" href="<?= BASESDATAS; ?>/pkl/penempatandgc">DG C</a>
+                         <a class="dropdown-item" href="<?= BASESDATAS; ?>/pkl/penempatandgd">DG D</a>
+                         <a class="dropdown-item" href="<?= BASESDATAS; ?>/pkl/penempatanpda">PD A</a>
+                         <a class="dropdown-item" href="<?= BASESDATAS; ?>/pkl/penempatanpdb">PD B</a>
+                         <a class="dropdown-item" href="<?= BASESDATAS; ?>/pkl/penempatanpdc">PD C</a>
+                         <a class="dropdown-item" href="<?= BASESDATAS; ?>/pkl/penempatanpdd">PD D</a>
                        </div>
                      </div>
                     </div>
@@ -63,6 +33,12 @@
             </div>
           </div>
 
+          <div class="row">
+            <div class="col-lg-6">
+              <?php Flasher ::flash(); ?>
+            </div>
+          </div>
+          
           <div class="row">
             <div class="col-md-12 grid-margin">
             <div class="template-demo">
@@ -82,75 +58,124 @@
                     </button>
                   </div>
                   <div class="modal-body">
-                    <form>
+                    <form action="<?= BASESDATAS; ?>/PKL/tambahDataPenempatanDGC" method="post">
+                      <input type="hidden" name="id" id="id">
                       <div class="form-group">
                         <label for="nisn" class="col-form-label">NISN</label>
-                        <input type="number" class="form-control" id="nisn">
-                      </div>
-                      <div class="form-group">
-                        <label for="nis" class="col-form-label">NIS</label>
-                        <input type="text" class="form-control" id="nis">
+                        <input type="number" class="form-control" id="nisn" name="nisn">
                       </div>
                       <div class="form-group">
                         <label for="nama" class="col-form-label">Nama</label>
-                        <input type="text" class="form-control" id="nama">
+                        <input type="text" class="form-control" id="namasiswa" name="namasiswa">
                       </div>
                       <div class="form-group">
                         <label for="kelas" class="col-form-label">Kelas</label>
-                        <input type="text" class="form-control" id="kelas">
+                        <input type="text" value="XI DG C" class="form-control" id="kelassiswa" name="kelassiswa" readonly>
                       </div>
                       <div class="form-group">
                         <label for="perusahaan" class="col-form-label">Nama Perusahaan</label>
-                        <input type="text" class="form-control" id="perusahaan">
+                        <input type="text" class="form-control" id="namaperusahaan" name="namaperusahaan">
                       </div>
-                    </form>
-                  </div>
+                    </div>
                   <div class="modal-footer">
                     <button type="button" class="btn btn-outline-secondary btn-fw" data-dismiss="modal">Tutup</button>
-                    <button type="button" class="btn btn-primary">Simpan Data</button>
+                    <button type="submit" class="btn btn-primary">Simpan Data</button>
+                  </form>
                   </div>
                 </div>
               </div>
             </div>
         </div>
-
-        
-
           <div class="row">
             <div class="col-lg-12 grid-margin stretch-card">
             <div class="card">
             <div class="card-body">
             <div class="table-responsive ">
-              <table class="table table-hover" id="tabledptg">  
-                  <thead>
+              <table class="table table-hover" id="myTable">  
+                <thead>
+                  <tr>
+                    <th>Aksi</th>
+                    <th>NISN</th>
+                    <th>Nama</th>
+                    <th>Kelas</th>
+                    <th>Nama Perusahaan</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <?php foreach ( $data['ppdgc'] as $ppdga ) : ?>
                     <tr>
-                      <th>Aksi</th>
-                      <th>NISN</th>
-                      <th>NIS</th>
-                      <th>Nama</th>
-                      <th>Kelas</th>
-                      <th>Nama Perusahaan</th>
+                      <td>
+                        <a href="<?= BASESDATAS; ?>/PKL/ubahDTAIZ/<?= $ppdga['id'];?>" class="ppdgc" data-bs-toggle="modal" data-bs-target="#exampleModal" data-id=<?= $ppdga['id']; ?>>
+                          <label class="badge badge-success">
+                            <i class="mdi mdi-lead-pencil"></i>
+                          </label>
+                        </a>
+                        <a  href="<?= BASESDATAS; ?>/PKL/hapusDataPenempatanDGC/<?= $ppdga['id'];?>" onclick="return confirm('Apakah anda sudah yakin?');">
+                          <label class="badge badge-danger">
+                            <i class="mdi mdi-delete"></i>
+                          </label>
+                        </a>
+                      </td>
+                      <td><?=$ppdga['nisn']?></td>
+                      <td><?=$ppdga['namasiswa']?></td>
+                      <td><?=$ppdga['kelassiswa']?></td>
+                      <td><?=$ppdga['namaperusahaan']?></td>
                     </tr>
-                  </thead>
-                  <tbody>
-                    <tr>
-                      <td><label class="badge badge-info"><i class="mdi mdi-information-variant"></i></label>
-                        <label class="badge badge-success"><i class="mdi mdi-lead-pencil"></i></label>
-                        <label class="badge badge-danger"><i class="mdi mdi-delete"></i></label></td>
-                      <td>0071789957</td>
-                      <td>2267/1772/063</td>
-                      <td>Raib</td>
-                      <td>XII DG C</td>
-                      <td>Pt. Paralel</td>
-                    </tr>
+                  <?php endforeach; ?>
                 </tbody>
-                </table>
+              </table>
+            </div>
           </div>
-          </div>
-          </div>
-          </div>
-          </div>
-                
-       
         </div>
-        
+      </div>
+    </div>
+  </div>
+  <footer class="footer">
+    <div class="d-sm-flex justify-content-center justify-content-sm-between">
+      <span class="text-muted text-center text-sm-left d-block d-sm-inline-block">Copyright © 2023. SIMAS. All rights reserved.</span>
+    </div>
+  </footer>
+        <!-- partial -->
+      </div>
+      <!-- main-panel ends -->
+    </div>
+    <!-- page-body-wrapper ends -->
+  </div>
+
+  <script>
+    $(function() {
+    // const BASEURL = window.location;
+    // console.log(BASEURL)
+    $('.tombolTambahData').on('click', function(){
+        $('formModalLabel').html('Tambah Data Struktur Organisasi')
+        $('.modal-footer button[type=submit]').html('Tambah Data');
+
+    });
+
+    $(".ppdgc").click(function () {
+				$("#modal").addClass("edit");
+				$("#modalLabel").html("Ubah Data Industri");
+				$(".modal-footer button[type=submit]").html("Ubah Data");
+				$(".modal-body form").attr("action", `http://localhost/simashumaspkl/public/pkl/ubahDataPenempatanDGC`);
+
+				const id = $(this).data("id");
+        console.log(id);
+
+				$.ajax({
+					url: `http://localhost/simashumaspkl/public/pkl/getUbahPenempatanDGC`,
+					data: { id: id },
+					method: "post",
+					dataType: "json",
+					success: function (data) {
+						$('#nisn').val(data.nisn);
+            $('#namasiswa').val(data.namasiswa);
+            $('#kelassiswa').val(data.kelassiswa);
+            $('#namaperusahaan').val(data.namaperusahaan);
+            $('#id').val(data.id);
+            console.log(data);
+					},
+				})
+      })
+		}
+	);
+  </script>
