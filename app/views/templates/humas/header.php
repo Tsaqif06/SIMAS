@@ -341,10 +341,11 @@
                 </div>
                 <!-- partial -->
                 <!-- partial:partials/_sidebar.html -->
+                <!-- partial:partials/_sidebar.html -->
                 <nav class="sidebar sidebar-offcanvas" id="sidebar">
                     <ul class="nav">
                         <li class="nav-item">
-                            <a class="nav-link" href="../">
+                            <a class="nav-link" href="<?= BASEURL ?>/">
                                 <i class="icon-grid menu-icon"></i>
                                 <span class="menu-title">Dashboard</span>
                             </a>
@@ -361,22 +362,24 @@
                             </a>
                             <div class="collapse" id="masterdata">
                                 <ul class="nav flex-column sub-menu">
-                                    <li class="nav-item"> <a class="nav-link" href="../guru">Guru</a></li>
-                                    <li class="nav-item"> <a class="nav-link" href="../karyawan">Karyawan</a>
+                                    <li class="nav-item"> <a class="nav-link" href="<?= BASEURL ?>/guru">Guru</a></li>
+                                    <li class="nav-item"> <a class="nav-link"
+                                            href="<?= BASEURL ?>/karyawan">Karyawan</a>
                                     </li>
-                                    <li class="nav-item"> <a class="nav-link" href="../siswa">Siswa</a></li>
-                                    <li class="nav-item"> <a class="nav-link" href="../kelas">Kelas</a></li>
-                                    <li class="nav-item"> <a class="nav-link" href="../walikelas">Wali
+                                    <li class="nav-item"> <a class="nav-link" href="<?= BASEURL ?>/siswa">Siswa</a></li>
+                                    <li class="nav-item"> <a class="nav-link" href="<?= BASEURL ?>/kelas">Kelas</a></li>
+                                    <li class="nav-item"> <a class="nav-link" href="<?= BASEURL ?>/walikelas">Wali
                                             Kelas</a>
                                     </li>
-                                    <li class="nav-item"> <a class="nav-link" href="../mapel">Mata
+                                    <li class="nav-item"> <a class="nav-link" href="<?= BASEURL ?>/mapel">Mata
                                             Pelajaran</a>
                                     </li>
-                                    <li class="nav-item"> <a class="nav-link" href="../jabatan">Jabatan</a>
+                                    <li class="nav-item"> <a class="nav-link" href="<?= BASEURL ?>/jabatan">Jabatan</a>
                                     </li>
-                                    <li class="nav-item"> <a class="nav-link" href="../kompkeahlian">Kompetensi
+                                    <li class="nav-item"> <a class="nav-link"
+                                            href="<?= BASEURL ?>/kompkeahlian">Kompetensi
                                             Keahlian</a></li>
-                                    <li class="nav-item"> <a class="nav-link" href="../progkeahlian">Program
+                                    <li class="nav-item"> <a class="nav-link" href="<?= BASEURL ?>/progkeahlian">Program
                                             Keahlian</a></li>
                                 </ul>
                             </div>
@@ -393,21 +396,22 @@
                             <div class="collapse" id="tu">
                                 <ul class="nav flex-column sub-menu">
                                     <?php if ($data['user']['role'] == 'admin' && ($data['user']['hak_akses'] == 'all' || $data['user']['hak_akses'] == 'mastertu')) : ?>
-                                    <li class="nav-item"> <a class="nav-link" href="../suratmasuk">Surat
+                                    <li class="nav-item"> <a class="nav-link" href="<?= BASEURL ?>/suratmasuk">Surat
                                             Masuk</a></li>
-                                    <li class="nav-item"> <a class="nav-link" href="../suratkeluar">Surat
+                                    <li class="nav-item"> <a class="nav-link" href="<?= BASEURL ?>/suratkeluar">Surat
                                             Keluar</a></li>
                                     <?php endif ?>
                                     <?php if ($data['user']['role'] == 'admin' || $data['user']['role'] == 'user' || $data['user']['role'] == 'guest') : ?>
-                                    <li class="nav-item"> <a class="nav-link" href="../suratpengajuan">Surat
+                                    <li class="nav-item"> <a class="nav-link" href="<?= BASEURL ?>/suratpengajuan">Surat
                                             Pengajuan</a></li>
-                                    <li class="nav-item"> <a class="nav-link" href="../nopetunjuk">Nomor
+                                    <li class="nav-item"> <a class="nav-link" href="<?= BASEURL ?>/nopetunjuk">Nomor
                                             Petunjuk</a></li>
                                     <?php endif ?>
                                 </ul>
                             </div>
                         </li>
 
+                        <?php if ($data['user']['role'] == 'admin' && ($data['user']['hak_akses'] == 'all' || $data['user']['hak_akses'] == 'humas')) : ?>
                         <li class="nav-item">
                             <a class="nav-link" data-toggle="collapse" href="#pkl" aria-expanded="false"
                                 aria-controls="pkl">
@@ -450,6 +454,9 @@
                                 </ul>
                             </div>
                         </li>
+                        <?php endif ?>
+
+                        <?php if ($data['user']['role'] == 'admin' && ($data['user']['hak_akses'] == 'all' || $data['user']['hak_akses'] == 'kesiswaan')) : ?>
                         <li class="nav-item">
                             <a class="nav-link" data-toggle="collapse" href="#kesiswaan" aria-expanded="false"
                                 aria-controls="kesiswaan">
@@ -465,14 +472,14 @@
                                         </a>
                                     </li>
                                     <ul style="list-style-type: none;">
-                                        <li><a class="navsubitem" href="../siswa">Siswa</a></li>
-                                        <li><a class="navsubitem" href="../kompkeahlian">Kompetensi
+                                        <li><a class="navsubitem" href="<?= BASEURL ?>/siswa">Siswa</a></li>
+                                        <li><a class="navsubitem" href="<?= BASEURL ?>/kompkeahlian">Kompetensi
                                                 Keahlian</a>
                                         </li>
-                                        <li><a class="navsubitem" href="../progkeahlian">Program
+                                        <li><a class="navsubitem" href="<?= BASEURL ?>/progkeahlian">Program
                                                 Keahlian</a>
                                         </li>
-                                        <li><a class="navsubitem" href="../kelas">Kelas</a></li>
+                                        <li><a class="navsubitem" href="<?= BASEURL ?>/kelas">Kelas</a></li>
                                     </ul>
                                     <li class="nav-item">
                                         <a class="nav-link">
@@ -480,8 +487,8 @@
                                         </a>
                                     </li>
                                     <ul style="list-style-type: none;">
-                                        <li><a class="navsubitem" href="../kehadiran">Kehadiran</a></li>
-                                        <li><a class="navsubitem" href="../izin">Izin</a></li>
+                                        <li><a class="navsubitem" href="<?= BASEURL ?>/kehadiran">Kehadiran</a></li>
+                                        <li><a class="navsubitem" href="<?= BASEURL ?>/izin">Izin</a></li>
                                     </ul>
                                     <li class="nav-item">
                                         <a class="nav-link">
@@ -489,8 +496,8 @@
                                         </a>
                                     </li>
                                     <ul style="list-style-type: none;">
-                                        <li><a class="navsubitem" href="../pelanggaran">Pelanggaran</a></li>
-                                        <li><a class="navsubitem" href="../poinpelanggaran">Poin</a></li>
+                                        <li><a class="navsubitem" href="<?= BASEURL ?>/pelanggaran">Pelanggaran</a></li>
+                                        <li><a class="navsubitem" href="<?= BASEURL ?>/poinpelanggaran">Poin</a></li>
                                     </ul>
                                     <li class="nav-item">
                                         <a class="nav-link">
@@ -498,11 +505,11 @@
                                         </a>
                                     </li>
                                     <ul style="list-style-type: none;">
-                                        <li><a class="navsubitem" href="../asuransi">Asuransi</a></li>
-                                        <li><a class="navsubitem" href="../kecelakaan">Asuransi
+                                        <li><a class="navsubitem" href="<?= BASEURL ?>/asuransi">Asuransi</a></li>
+                                        <li><a class="navsubitem" href="<?= BASEURL ?>/kecelakaan">Asuransi
                                                 Kecelakaan</a>
                                         </li>
-                                        <li><a class="navsubitem" href="../ortumeninggal">Asuransi Ortu
+                                        <li><a class="navsubitem" href="<?= BASEURL ?>/ortumeninggal">Asuransi Ortu
                                                 Meninggal</a></li>
                                     </ul>
                                     <li class="nav-item">
@@ -511,16 +518,19 @@
                                         </a>
                                     </li>
                                     <ul style="list-style-type: none;">
-                                        <li><a class="navsubitem" href="../infokesiswaan">Informasi
+                                        <li><a class="navsubitem" href="<?= BASEURL ?>/infokesiswaan">Informasi
                                                 Kesiswaan</a></li>
-                                        <li><a class="navsubitem" href="../kegiatanosis">Kegiatan Osis</a>
+                                        <li><a class="navsubitem" href="<?= BASEURL ?>/kegiatanosis">Kegiatan Osis</a>
                                         </li>
                                     </ul>
                                     <ul style="list-style-type: none;">
-                                        <li><a class="navsubitem" href="../waguru">Whatsapp Guru</a></li>
+                                        <li><a class="navsubitem" href="<?= BASEURL ?>/waguru">Whatsapp Guru</a></li>
                                     </ul>
                             </div>
                         </li>
+                        <?php endif ?>
+
+                        <?php if ($data['user']['role'] == 'admin' && ($data['user']['hak_akses'] == 'all' || $data['user']['hak_akses'] == 'kurikulum')) : ?>
                         <li class="nav-item">
                             <a class="nav-link" data-toggle="collapse" href="#kurikulumpage" aria-expanded="false"
                                 aria-controls="kurikulum">
@@ -534,19 +544,25 @@
                                 </ul>
                             </div>
                         </li>
+                        <?php endif ?>
+
+                        <?php if ($data['user']['role'] == 'admin' && ($data['user']['hak_akses'] == 'all' || $data['user']['hak_akses'] == 'psdm')) : ?>
                         <li class="nav-item">
-                            <a class="nav-link" data-toggle="collapse" href="#sdm" aria-expanded="false"
-                                aria-controls="sdm">
+                            <a class="nav-link" data-toggle="collapse" href="#psdm" aria-expanded="false"
+                                aria-controls="psdm">
                                 <i class="icon-bar-graph menu-icon"></i>
-                                <span class="menu-title">SDM</span>
+                                <span class="menu-title">PSDM</span>
                                 <i class="menu-arrow"></i>
                             </a>
-                            <div class="collapse" id="sdm">
+                            <div class="collapse" id="psdm">
                                 <ul class="nav flex-column sub-menu">
                                     <li class="nav-item"> <a class="nav-link" href="isisdm.html">kosong</a></li>
                                 </ul>
                             </div>
                         </li>
+                        <?php endif ?>
+
+                        <?php if ($data['user']['role'] == 'admin' && ($data['user']['hak_akses'] == 'all' || $data['user']['hak_akses'] == 'sarpras')) : ?>
                         <li class="nav-item">
                             <a class="nav-link" data-toggle="collapse" href="#sarpras" aria-expanded="false"
                                 aria-controls="sarpras">
@@ -561,11 +577,12 @@
                             </div>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="../riwayat">
+                            <a class="nav-link" href="<?= BASEURL ?>/riwayat">
                                 <i class="ti-time menu-icon"></i>
                                 <span class="menu-title">Riwayat</span>
                             </a>
                         </li>
+                        <?php endif ?>
                     </ul>
                 </nav>
 
