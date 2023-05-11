@@ -19,12 +19,13 @@ class pkl_model extends Database
     private $tablepp = 'perpanjangmasapkl';
     private $tableiz = 'perizinanpkl';
     private $tablebm = 'siswabermasalah';
-
+    private $user;
     private $db;
 
     public function __construct()
     {
         $this->db = new Database(DB_HUMAS);
+        $this->user = Cookie::get_jwt()->name;
     }
     public function getSiswaPegawai()
     {
@@ -42,9 +43,10 @@ class pkl_model extends Database
     {
         $query  = "INSERT INTO daftarsiswapegawai
                               VALUES 
-                         (null, :nisn, :namasiswa, :kelas, :jurusan, :namaperusahaan, '', CURRENT_TIMESTAMP, :created_by, null, '', null, '', null, '',0 ,0, DEFAULT)";
+                         (null, :uuid, :nisn, :namasiswa, :kelas, :jurusan, :namaperusahaan, '', CURRENT_TIMESTAMP, :created_by, null, '', null, '', null, '',0 ,0, DEFAULT)";
 
         $this->db->query($query);
+        $this->db->bind('uuid', Uuid::uuid4()->toString());
         $this->db->bind('nisn', $data['nisn']);
         $this->db->bind('namasiswa', $data['namasiswa']);
         $this->db->bind('kelas', $data['kelas']);
@@ -134,9 +136,10 @@ class pkl_model extends Database
     {
         $query  = "INSERT INTO dataindustripkl
                               VALUES 
-                         (null, :kompetensikeahlian, :namaperusahaan, :alamat, :kota, '', CURRENT_TIMESTAMP, :created_by, null, '', null, '', null, '',0 ,0, DEFAULT)";
+                         (null, :uuid, :kompetensikeahlian, :namaperusahaan, :alamat, :kota, '', CURRENT_TIMESTAMP, :created_by, null, '', null, '', null, '',0 ,0, DEFAULT)";
 
         $this->db->query($query);
+        $this->db->bind('uuid', Uuid::uuid4()->toString());
         $this->db->bind('kompetensikeahlian', $data['kompetensikeahlian']);
         $this->db->bind('namaperusahaan', $data['namaperusahaan']);
         $this->db->bind('alamat', $data['alamat']);
@@ -798,9 +801,10 @@ class pkl_model extends Database
     {
         $query  = "INSERT INTO dayatampungpkl
                               VALUES 
-                         (null, :namaperusahaan, :jurusan, :jeniskelamin, :jumlah, '', CURRENT_TIMESTAMP, :created_by, null, '', null, '', null, '',0 ,0, DEFAULT)";
+                         (null, :uuid, :namaperusahaan, :jurusan, :jeniskelamin, :jumlah, '', CURRENT_TIMESTAMP, :created_by, null, '', null, '', null, '',0 ,0, DEFAULT)";
 
         $this->db->query($query);
+        $this->db->bind('uuid', Uuid::uuid4()->toString());
         $this->db->bind('namaperusahaan', $data['namaperusahaan']);
         $this->db->bind('jurusan', $data['jurusan']);
         $this->db->bind('jeniskelamin', $data['jeniskelamin']);
@@ -888,9 +892,10 @@ class pkl_model extends Database
     {
         $query  = "INSERT INTO perpanjangmasapkl
                               VALUES 
-                         (null, :ppnama, :ppkelas, :nisn, :namaperusahaan, :tanggalperpanjangpkl, '', CURRENT_TIMESTAMP, :created_by, null, '', null, '', null, '',0 ,0, DEFAULT)";
+                         (null, :uuid, :ppnama, :ppkelas, :nisn, :namaperusahaan, :tanggalperpanjangpkl, '', CURRENT_TIMESTAMP, :created_by, null, '', null, '', null, '',0 ,0, DEFAULT)";
 
         $this->db->query($query);
+        $this->db->bind('uuid', Uuid::uuid4()->toString());
         $this->db->bind('ppnama', $data['ppnama']);
         $this->db->bind('ppkelas', $data['ppkelas']);
         $this->db->bind('nisn', $data['nisn']);
@@ -984,9 +989,10 @@ class pkl_model extends Database
     {
         $query  = "INSERT INTO perizinanpkl
                               VALUES 
-                         (null, :nisn, :nama, :kelas, :namaperusahaan, :halizin, :drtanggal, :hgtanggal, '', CURRENT_TIMESTAMP, :created_by, null, '', null, '', null, '',0 ,0, DEFAULT)";
+                         (null, :uuid, :nisn, :nama, :kelas, :namaperusahaan, :halizin, :drtanggal, :hgtanggal, '', CURRENT_TIMESTAMP, :created_by, null, '', null, '', null, '',0 ,0, DEFAULT)";
 
         $this->db->query($query);
+        $this->db->bind('uuid', Uuid::uuid4()->toString());
         $this->db->bind('nisn', $data['nisn']);
         $this->db->bind('nama', $data['nama']);
         $this->db->bind('kelas', $data['kelas']);

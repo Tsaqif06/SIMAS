@@ -19,11 +19,13 @@ class BKK_model
     private $tablerekrutindustri = "rekrutmendenganindustri";
     private $tablespw = "spw";
     private $tableworkshop = "workshop";
+    private $user;
     private $db;
 
     public function __construct()
     {
         $this->db = new Database(DB_HUMAS);
+        $this->user = Cookie::get_jwt()->name;
     }
 
 
@@ -243,8 +245,10 @@ class BKK_model
 
         $query = "INSERT INTO alumnisukses 
             VALUES 
-            (null, :namalengkap, :jurusan,  :jk, :notelpwa, :namaperusahaansaatini, :jabatansaatini, :uploadfototerbaru, :uploadcvterbaru, '', CURRENT_TIMESTAMP, :created_by, null, '', null, '', null, '',0 ,0, DEFAULT)";
+            (null, :uuid, :namalengkap, :jurusan,  :jk, :notelpwa, :namaperusahaansaatini, :jabatansaatini, :uploadfototerbaru, :uploadcvterbaru, '', CURRENT_TIMESTAMP, :created_by, null, '', null, '', null, '',0 ,0, DEFAULT)";
 
+
+        $this->db->bind('uuid', Uuid::uuid4()->toString());
 
         $this->db->query($query);
         $foto = $this->uploadFotoDas();
@@ -324,9 +328,11 @@ class BKK_model
     {
         $query = "INSERT INTO {$this->tablelomba} 
             VALUES 
-            (null, :penyelenggara, :peserta, :tanggaldaftar, :tanggallomba, :tempatlomba, :pamfletlomba, '', CURRENT_TIMESTAMP, :created_by, null, '', null, '', null, '',0 ,0, DEFAULT)";
+            (null, :uuid, :penyelenggara, :peserta, :tanggaldaftar, :tanggallomba, :tempatlomba, :pamfletlomba, '', CURRENT_TIMESTAMP, :created_by, null, '', null, '', null, '',0 ,0, DEFAULT)";
 
         $this->db->query($query);
+        $this->db->bind('uuid', Uuid::uuid4()->toString());
+
         $pamflet = $this->uploadPamfletLomba();
         if (!$pamflet) {
             return false;
@@ -347,9 +353,11 @@ class BKK_model
     {
         $query = "INSERT INTO {$this->tablepeminatan} 
             VALUES 
-            (null, :nama, :jeniskelamin, :kelas, :domisili, :alamat, :nohp, :rencanasetelahlulus, '', CURRENT_TIMESTAMP, :created_by, null, '', null, '', null, '',0 ,0, DEFAULT)";
+            (null, :uuid, :nama, :jeniskelamin, :kelas, :domisili, :alamat, :nohp, :rencanasetelahlulus, '', CURRENT_TIMESTAMP, :created_by, null, '', null, '', null, '',0 ,0, DEFAULT)";
 
         $this->db->query($query);
+        $this->db->bind('uuid', Uuid::uuid4()->toString());
+
         $this->db->bind('nama', $data['nama']);
         $this->db->bind('jeniskelamin', $data['jeniskelamin']);
         $this->db->bind('kelas', $data['kelas']);
@@ -418,9 +426,11 @@ class BKK_model
     {
         $query = "INSERT INTO {$this->tableloker}  
             VALUES 
-            (null, :namaperusahaan, :untukjurusan, :profesiygdibutuhkan, :kriteriaprofesi, :kontakperusahaan, :upfotoloker, '', CURRENT_TIMESTAMP, :created_by, null, '', null, '', null, '',0 ,0, DEFAULT)";
+            (null, :uuid, :namaperusahaan, :untukjurusan, :profesiygdibutuhkan, :kriteriaprofesi, :kontakperusahaan, :upfotoloker, '', CURRENT_TIMESTAMP, :created_by, null, '', null, '', null, '',0 ,0, DEFAULT)";
 
         $this->db->query($query);
+        $this->db->bind('uuid', Uuid::uuid4()->toString());
+
         $fotoloker = $this->uploadLoker();
         if (!$fotoloker) {
             return false;
@@ -543,9 +553,11 @@ class BKK_model
     {
         $query = "INSERT INTO {$this->tablespw} 
             VALUES 
-            (null, :nisn, :namalengkap, :jk, :kelas, :notelp, :namausaha, :alamat, :kepemilikanusaha, :sejaktgl, :omzet, :fotodiri, :fotousaha, '', CURRENT_TIMESTAMP, :created_by, null, '', null, '', null, '',0 ,0, DEFAULT)";
+            (null, :uuid, :nisn, :namalengkap, :jk, :kelas, :notelp, :namausaha, :alamat, :kepemilikanusaha, :sejaktgl, :omzet, :fotodiri, :fotousaha, '', CURRENT_TIMESTAMP, :created_by, null, '', null, '', null, '',0 ,0, DEFAULT)";
 
         $this->db->query($query);
+        $this->db->bind('uuid', Uuid::uuid4()->toString());
+
         $diri = $this->uploadDiriSpw();
         if (!$diri) {
             return false;
@@ -577,9 +589,11 @@ class BKK_model
     {
         $query = "INSERT INTO {$this->tableworkshop}  
             VALUES 
-            (null, :penyelenggara, :kegiatan, :tujuan, :peserta, :tanggalpersiapan, :tanggaldilakukan, :tempat, '', CURRENT_TIMESTAMP, :created_by, null, '', null, '', null, '',0 ,0, DEFAULT)";
+            (null, :uuid, :penyelenggara, :kegiatan, :tujuan, :peserta, :tanggalpersiapan, :tanggaldilakukan, :tempat, '', CURRENT_TIMESTAMP, :created_by, null, '', null, '', null, '',0 ,0, DEFAULT)";
 
         $this->db->query($query);
+        $this->db->bind('uuid', Uuid::uuid4()->toString());
+
         $this->db->bind('penyelenggara', $data['penyelenggara']);
         $this->db->bind('kegiatan', $data['kegiatan']);
         $this->db->bind('tujuan', $data['tujuan']);

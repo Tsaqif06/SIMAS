@@ -7,11 +7,13 @@ use PhpOffice\PhpSpreadsheet\Cell\Coordinate;
 class Stiru_model
 {
     private $table = "studitiru";
+    private $user;
     private $db;
 
     public function __construct()
     {
         $this->db = new Database(DB_HUMAS);
+        $this->user = Cookie::get_jwt()->name;
     }
     public function getAllStiru()
     {
@@ -28,9 +30,10 @@ class Stiru_model
     {
         $query = 'INSERT INTO ' . $this->table . ' 
             VALUES 
-            (null, :instansi, :peserta, :tanggal, :tujuan, :tempat)';
+            (null, :uuid, :instansi, :peserta, :tanggal, :tujuan, :tempat)';
 
         $this->db->query($query);
+        $this->db->bind('uuid', Uuid::uuid4()->toString());
         $this->db->bind('instansi', $data['instansi']);
         $this->db->bind('peserta', $data['peserta']);
         $this->db->bind('tanggal', $data['tanggal']);
