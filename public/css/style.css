@@ -234,3 +234,17 @@ td {
   border-collapse: collapse;
   padding: 20px;
 }
+
+/* Text */
+
+.text-lightpurple {
+  color: #a7c9e8;
+}
+
+.text-pink {
+  color: #f59095;
+}
+
+.text-yellow {
+  color: #ffc100;
+}

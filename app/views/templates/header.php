@@ -424,25 +424,35 @@
                                     </li>
                                     <div class="collapse" id="pkl">
                                         <div class="navsubitem">
-                                            <a class="nav-link" href="<?= BASEURL; ?>/pkl/rekap">Rekap PKL</a>
-                                            <a class="nav-link" href="<?= BASEURL; ?>/pkl/pembekalan">Pembekalan PKL</a>
-                                            <a class="nav-link" href="<?= BASEURL; ?>/pkl/pemberkasan">Pemberkasan</a>
-                                            <a class="nav-link" href="<?= BASEURL; ?>/pkl/prakerin">Prakerin</a>
-                                            <a class="nav-link" href="<?= BASEURL; ?>/pkl/nilai">Nilai PKL</a>
-                                            <a class="nav-link" href="<?= BASEURL; ?>/pkl/dtampung">Daya Tampung</a>
+                                            <a class="nav-link text-white" href="<?= BASEURL; ?>/pkl/rekap">Rekap
+                                                PKL</a>
+                                            <a class="nav-link text-white"
+                                                href="<?= BASEURL; ?>/pkl/pembekalan">Pembekalan PKL</a>
+                                            <a class="nav-link text-white"
+                                                href="<?= BASEURL; ?>/pkl/pemberkasan">Pemberkasan</a>
+                                            <a class="nav-link text-white"
+                                                href="<?= BASEURL; ?>/pkl/prakerin">Prakerin</a>
+                                            <a class="nav-link text-white" href="<?= BASEURL; ?>/pkl/nilai">Nilai
+                                                PKL</a>
+                                            <a class="nav-link text-white" href="<?= BASEURL; ?>/pkl/dtampung">Daya
+                                                Tampung</a>
                                         </div>
                                         <li class="nav-item"><a class="nav-link"
                                                 href="<?= BASEURL; ?>/bkk/index">BKK</a>
                                         </li>
                                         <div class="navsubitem">
-                                            <a class="nav-link" href="#">Alumni Sukses</a>
-                                            <a class="nav-link" href="<?= BASEURL; ?>/bkk/mou">MoU</a>
-                                            <a class="nav-link" href="<?= BASEURL; ?>/bkk/peminatan">Peminatan</a>
-                                            <a class="nav-link" href="<?= BASEURL; ?>/bkk/workshop">Workshop</a>
-                                            <a class="nav-link" href="<?= BASEURL; ?>/bkk/kebekerjaan">Kebekerjaan</a>
-                                            <a class="nav-link" href="<?= BASEURL; ?>/bkk/spw">SPW</a>
-                                            <a class="nav-link" href="<?= BASEURL; ?>/bkk/lomba">Lomba</a>
-                                            <a class="nav-link" href="<?= BASEURL; ?>/bkk/loker">Lowongan Kerja</a>
+                                            <a class="nav-link text-white" href="#">Alumni Sukses</a>
+                                            <a class="nav-link text-white" href="<?= BASEURL; ?>/bkk/mou">MoU</a>
+                                            <a class="nav-link text-white"
+                                                href="<?= BASEURL; ?>/bkk/peminatan">Peminatan</a>
+                                            <a class="nav-link text-white"
+                                                href="<?= BASEURL; ?>/bkk/workshop">Workshop</a>
+                                            <a class="nav-link text-white"
+                                                href="<?= BASEURL; ?>/bkk/kebekerjaan">Kebekerjaan</a>
+                                            <a class="nav-link text-white" href="<?= BASEURL; ?>/bkk/spw">SPW</a>
+                                            <a class="nav-link text-white" href="<?= BASEURL; ?>/bkk/lomba">Lomba</a>
+                                            <a class="nav-link text-white" href="<?= BASEURL; ?>/bkk/loker">Lowongan
+                                                Kerja</a>
                                         </div>
                                         <li class="nav-item"><a class="nav-link"
                                                 href="<?= BASEURL; ?>/ict/index">ICT</a>
@@ -471,14 +481,15 @@
                                         </a>
                                     </li>
                                     <ul style="list-style-type: none;">
-                                        <li><a class="navsubitem" href="<?= BASEURL ?>/siswa">Siswa</a></li>
-                                        <li><a class="navsubitem" href="<?= BASEURL ?>/kompkeahlian">Kompetensi
+                                        <li><a class="navsubitem text-white" href="<?= BASEURL ?>/siswa">Siswa</a></li>
+                                        <li><a class="navsubitem text-white"
+                                                href="<?= BASEURL ?>/kompkeahlian">Kompetensi
                                                 Keahlian</a>
                                         </li>
-                                        <li><a class="navsubitem" href="<?= BASEURL ?>/progkeahlian">Program
+                                        <li><a class="navsubitem text-white" href="<?= BASEURL ?>/progkeahlian">Program
                                                 Keahlian</a>
                                         </li>
-                                        <li><a class="navsubitem" href="<?= BASEURL ?>/kelas">Kelas</a></li>
+                                        <li><a class="navsubitem text-white" href="<?= BASEURL ?>/kelas">Kelas</a></li>
                                     </ul>
                                     <li class="nav-item">
                                         <a class="nav-link">
@@ -486,8 +497,9 @@
                                         </a>
                                     </li>
                                     <ul style="list-style-type: none;">
-                                        <li><a class="navsubitem" href="<?= BASEURL ?>/kehadiran">Kehadiran</a></li>
-                                        <li><a class="navsubitem" href="<?= BASEURL ?>/izin">Izin</a></li>
+                                        <li><a class="navsubitem text-white"
+                                                href="<?= BASEURL ?>/kehadiran">Kehadiran</a></li>
+                                        <li><a class="navsubitem text-white" href="<?= BASEURL ?>/izin">Izin</a></li>
                                     </ul>
                                     <li class="nav-item">
                                         <a class="nav-link">
@@ -495,8 +507,10 @@
                                         </a>
                                     </li>
                                     <ul style="list-style-type: none;">
-                                        <li><a class="navsubitem" href="<?= BASEURL ?>/pelanggaran">Pelanggaran</a></li>
-                                        <li><a class="navsubitem" href="<?= BASEURL ?>/poinpelanggaran">Poin</a></li>
+                                        <li><a class="navsubitem text-white"
+                                                href="<?= BASEURL ?>/pelanggaran">Pelanggaran</a></li>
+                                        <li><a class="navsubitem text-white"
+                                                href="<?= BASEURL ?>/poinpelanggaran">Poin</a></li>
                                     </ul>
                                     <li class="nav-item">
                                         <a class="nav-link">
@@ -504,11 +518,13 @@
                                         </a>
                                     </li>
                                     <ul style="list-style-type: none;">
-                                        <li><a class="navsubitem" href="<?= BASEURL ?>/asuransi">Asuransi</a></li>
-                                        <li><a class="navsubitem" href="<?= BASEURL ?>/kecelakaan">Asuransi
+                                        <li><a class="navsubitem text-white" href="<?= BASEURL ?>/asuransi">Asuransi</a>
+                                        </li>
+                                        <li><a class="navsubitem text-white" href="<?= BASEURL ?>/kecelakaan">Asuransi
                                                 Kecelakaan</a>
                                         </li>
-                                        <li><a class="navsubitem" href="<?= BASEURL ?>/ortumeninggal">Asuransi Ortu
+                                        <li><a class="navsubitem text-white"
+                                                href="<?= BASEURL ?>/ortumeninggal">Asuransi Ortu
                                                 Meninggal</a></li>
                                     </ul>
                                     <li class="nav-item">
@@ -517,13 +533,16 @@
                                         </a>
                                     </li>
                                     <ul style="list-style-type: none;">
-                                        <li><a class="navsubitem" href="<?= BASEURL ?>/infokesiswaan">Informasi
+                                        <li><a class="navsubitem text-white"
+                                                href="<?= BASEURL ?>/infokesiswaan">Informasi
                                                 Kesiswaan</a></li>
-                                        <li><a class="navsubitem" href="<?= BASEURL ?>/kegiatanosis">Kegiatan Osis</a>
+                                        <li><a class="navsubitem text-white" href="<?= BASEURL ?>/kegiatanosis">Kegiatan
+                                                Osis</a>
                                         </li>
                                     </ul>
                                     <ul style="list-style-type: none;">
-                                        <li><a class="navsubitem" href="<?= BASEURL ?>/waguru">Whatsapp Guru</a></li>
+                                        <li><a class="navsubitem text-white" href="<?= BASEURL ?>/waguru">Whatsapp
+                                                Guru</a></li>
                                     </ul>
                             </div>
                         </li>

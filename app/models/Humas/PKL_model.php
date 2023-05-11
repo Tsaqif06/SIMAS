@@ -27,6 +27,43 @@ class pkl_model extends Database
         $this->db = new Database(DB_HUMAS);
         $this->user = Cookie::get_jwt()->name;
     }
+
+
+    public function getJmlDatapp()
+    {
+        $this->db->query("SELECT COUNT(*) AS count FROM {$this->tablepp} WHERE `status` = 1");
+        return $this->db->fetch();
+    }
+
+    public function getJmlDataiz()
+    {
+        $this->db->query("SELECT COUNT(*) AS count FROM {$this->tableiz} WHERE `status` = 1");
+        return $this->db->fetch();
+    }
+
+    public function getJmlDataind()
+    {
+        $this->db->query("SELECT COUNT(*) AS count FROM {$this->tableind} WHERE `status` = 1");
+        return $this->db->fetch();
+    }
+
+    public function getJmlDatadp()
+    {
+        $this->db->query("SELECT COUNT(*) AS count FROM {$this->tabledp} WHERE `status` = 1");
+        return $this->db->fetch();
+    }
+
+    public function getJmlDatatable()
+    {
+        $this->db->query("SELECT COUNT(*) AS count FROM {$this->table} WHERE `status` = 1");
+        return $this->db->fetch();
+    }
+
+    public function getJmlDatabm()
+    {
+        $this->db->query("SELECT COUNT(*) AS count FROM {$this->tablebm} WHERE `status` = 1");
+        return $this->db->fetch();
+    }
     public function getSiswaPegawai()
     {
         $this->db->query('SELECT * FROM ' . $this->table);

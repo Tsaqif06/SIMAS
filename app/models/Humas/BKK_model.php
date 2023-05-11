@@ -34,9 +34,52 @@ class BKK_model
         $this->db->query('SELECT * FROM ' . $this->tabledas . '  WHERE `status` = 1 ORDER BY namalengkap ASC');
         return $this->db->fetchAll();
     }
-    public function getJmlDataDas()
+
+    public function getJmlDatadas()
     {
         $this->db->query("SELECT COUNT(*) AS count FROM {$this->tabledas} WHERE `status` = 1");
+        return $this->db->fetch();
+    }
+
+    public function getJmlDatalomba()
+    {
+        $this->db->query("SELECT COUNT(*) AS count FROM {$this->tablelomba} WHERE `status` = 1");
+        return $this->db->fetch();
+    }
+
+    public function getJmlDataloker()
+    {
+        $this->db->query("SELECT COUNT(*) AS count FROM {$this->tableloker} WHERE `status` = 1");
+        return $this->db->fetch();
+    }
+
+    public function getJmlDatamou()
+    {
+        $this->db->query("SELECT COUNT(*) AS count FROM {$this->tablemou} WHERE `status` = 1");
+        return $this->db->fetch();
+    }
+
+    public function getJmlDatapeminatan()
+    {
+        $this->db->query("SELECT COUNT(*) AS count FROM {$this->tablepeminatan} WHERE `status` = 1");
+        return $this->db->fetch();
+    }
+
+    public function getJmlDatrekrutindustri()
+    {
+        $this->db->query("SELECT COUNT(*) AS count FROM {$this->tablerekrutindustri} WHERE `status` = 1");
+        return $this->db->fetch();
+    }
+
+    public function getJmlDataspw()
+    {
+        $this->db->query("SELECT COUNT(*) AS count FROM {$this->tablespw} WHERE `status` = 1");
+        return $this->db->fetch();
+    }
+
+    public function getJmlDataworkshop()
+    {
+        $this->db->query("SELECT COUNT(*) AS count FROM {$this->tableworkshop} WHERE `status` = 1");
         return $this->db->fetch();
     }
 
