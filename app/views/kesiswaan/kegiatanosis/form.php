@@ -1,4 +1,4 @@
-<form action="<?= BASEURL; ?>/kegiatanosis/tambahData" method="post" enctype="multipart/form-data">
+<!-- <form action="<?= BASEURL; ?>/kegiatanosis/tambahData" method="post" enctype="multipart/form-data">
     <input type="hidden" name="id" id="id">
     <input type="hidden" name="fotoLama" id="fotoLama">
     <div class="mb-3 wrapFotoSekarang">
@@ -26,4 +26,4 @@
     <div class="form-group">
         <label for="tanggal_kegiatanOsis">Tanggal Kegiatan Osis</label>
         <input type="date" class="form-control" id="tanggal_kegiatanOsis" name="tanggal_kegiatanOsis">
-    </div>
+    </div> -->
