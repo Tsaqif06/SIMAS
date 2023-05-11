@@ -267,7 +267,7 @@ class BKK_model
         $this->db->bind('jabatansaatini', $data['jabatansaatini']);
         $this->db->bind('uploadfototerbaru', $foto);
         $this->db->bind('uploadcvterbaru', $cv);
-        $this->db->bind('created_by', "Super Admin");
+        $this->db->bind('created_by', $this->user);
 
         $this->db->execute();
         return $this->db->rowCount();
@@ -343,7 +343,7 @@ class BKK_model
         $this->db->bind('tanggallomba', $data['tanggallomba']);
         $this->db->bind('tempatlomba', $data['tempatlomba']);
         $this->db->bind('pamfletlomba', $pamflet);
-        $this->db->bind('created_by', "Super Admin");
+        $this->db->bind('created_by', $this->user);
 
         $this->db->execute();
         return $this->db->rowCount();
@@ -365,7 +365,7 @@ class BKK_model
         $this->db->bind('alamat', $data['alamat']);
         $this->db->bind('nohp', $data['nohp']);
         $this->db->bind('rencanasetelahlulus', $data['rencanasetelahlulus']);
-        $this->db->bind('created_by', "Super Admin");
+        $this->db->bind('created_by', $this->user);
 
         $this->db->execute();
         return $this->db->rowCount();
@@ -441,7 +441,7 @@ class BKK_model
         $this->db->bind('kriteriaprofesi', $data['kriteriaprofesi']);
         $this->db->bind('kontakperusahaan', $data['kontakperusahaan']);
         $this->db->bind('upfotoloker', $fotoloker);
-        $this->db->bind('created_by', "Super Admin");
+        $this->db->bind('created_by', $this->user);
 
 
         $this->db->execute();
@@ -578,7 +578,7 @@ class BKK_model
         $this->db->bind('omzet', $data['omzet']);
         $this->db->bind('fotodiri', $diri);
         $this->db->bind('fotousaha', $usaha);
-        $this->db->bind('created_by', "Super Admin");
+        $this->db->bind('created_by', $this->user);
 
 
         $this->db->execute();
@@ -601,7 +601,7 @@ class BKK_model
         $this->db->bind('tanggalpersiapan', $data['tanggalpersiapan']);
         $this->db->bind('tanggaldilakukan', $data['tanggaldilakukan']);
         $this->db->bind('tempat', $data['tempat']);
-        $this->db->bind('created_by', "Super Admin");
+        $this->db->bind('created_by', $this->user);
 
         $this->db->execute();
         return $this->db->rowCount();
@@ -622,7 +622,7 @@ class BKK_model
         $this->db->bind('bidangkerjadudika', $data['bidangkerjadudika']);
         $this->db->bind('tglmou', $data['tglmou']);
         $this->db->bind('no_mou', $data['no_mou']);
-        $this->db->bind('created_by', "Super Admin");
+        $this->db->bind('created_by', $this->user);
 
 
         $this->db->execute();
@@ -641,7 +641,7 @@ class BKK_model
               WHERE id = :id"
         );
 
-        $this->db->bind('deleted_by', "Super Admin");
+        $this->db->bind('deleted_by', $this->user);
         $this->db->bind("id", $id);
 
         $this->db->execute();
@@ -660,7 +660,7 @@ class BKK_model
               WHERE id = :id"
         );
 
-        $this->db->bind('deleted_by', "Super Admin");
+        $this->db->bind('deleted_by', $this->user);
         $this->db->bind("id", $id);
 
         $this->db->execute();
@@ -679,7 +679,7 @@ class BKK_model
               WHERE id = :id"
         );
 
-        $this->db->bind('deleted_by', "Super Admin");
+        $this->db->bind('deleted_by', $this->user);
         $this->db->bind("id", $id);
 
         $this->db->execute();
@@ -698,7 +698,7 @@ class BKK_model
               WHERE id = :id"
         );
 
-        $this->db->bind('deleted_by', "Super Admin");
+        $this->db->bind('deleted_by', $this->user);
         $this->db->bind("id", $id);
 
         $this->db->execute();
@@ -717,7 +717,7 @@ class BKK_model
               WHERE id = :id"
         );
 
-        $this->db->bind('deleted_by', "Super Admin");
+        $this->db->bind('deleted_by', $this->user);
         $this->db->bind("id", $id);
 
         $this->db->execute();
@@ -737,7 +737,7 @@ class BKK_model
               WHERE id = :id"
         );
 
-        $this->db->bind('deleted_by', "Super Admin");
+        $this->db->bind('deleted_by', $this->user);
         $this->db->bind("id", $id);
 
         $this->db->execute();
@@ -756,7 +756,7 @@ class BKK_model
               WHERE id = :id"
         );
 
-        $this->db->bind('deleted_by', "Super Admin");
+        $this->db->bind('deleted_by', $this->user);
         $this->db->bind("id", $id);
 
         $this->db->execute();
@@ -804,7 +804,7 @@ class BKK_model
         $this->db->bind('jabatansaatini', $data['jabatansaatini']);
         $this->db->bind('uploadfototerbaru', $foto);
         $this->db->bind('uploadcvterbaru', $cv);
-        $this->db->bind('modified_by', "Super Admin");
+        $this->db->bind('modified_by', $this->user);
 
         $this->db->bind('id', $data['id']);
 
@@ -834,7 +834,7 @@ class BKK_model
         $this->db->bind('alamat', $data['alamat']);
         $this->db->bind('nohp', $data['nohp']);
         $this->db->bind('rencanasetelahlulus', $data['rencanasetelahlulus']);
-        $this->db->bind('modified_by', "Super Admin");
+        $this->db->bind('modified_by', $this->user);
 
         $this->db->bind('id', $data['id']);
 
@@ -858,7 +858,7 @@ class BKK_model
         $this->db->bind('bidangkerjadudika', $data['bidangkerjadudika']);
         $this->db->bind('tglmou', $data['tglmou']);
         $this->db->bind('no_mou', $data['no_mou']);
-        $this->db->bind('modified_by', "Super Admin");
+        $this->db->bind('modified_by', $this->user);
 
         $this->db->bind('id', $data['id']);
 
@@ -886,7 +886,7 @@ class BKK_model
         $this->db->bind('tanggalpersiapan', $data['tanggalpersiapan']);
         $this->db->bind('tanggaldilakukan', $data['tanggaldilakukan']);
         $this->db->bind('tempat', $data['tempat']);
-        $this->db->bind('modified_by', "Super Admin");
+        $this->db->bind('modified_by', $this->user);
 
         $this->db->bind('id', $data['id']);
 
@@ -937,7 +937,7 @@ class BKK_model
         $this->db->bind('omzet', $data['omzet']);
         $this->db->bind('fotodiri', $diri);
         $this->db->bind('fotousaha', $usaha);
-        $this->db->bind('modified_by', "Super Admin");
+        $this->db->bind('modified_by', $this->user);
 
         $this->db->bind('id', $data['id']);
 
@@ -971,7 +971,7 @@ class BKK_model
         $this->db->bind('kriteriaprofesi', $data['kriteriaprofesi']);
         $this->db->bind('kontakperusahaan', $data['kontakperusahaan']);
         $this->db->bind('upfotoloker', $loker);
-        $this->db->bind('modified_by', "Super Admin");
+        $this->db->bind('modified_by', $this->user);
 
         $this->db->bind('id', $data['id']);
 
@@ -1004,7 +1004,7 @@ class BKK_model
         $this->db->bind('tanggallomba', $data['tanggallomba']);
         $this->db->bind('tempatlomba', $data['tempatlomba']);
         $this->db->bind('pamfletlomba', $pamfletlomba);
-        $this->db->bind('modified_by', "Super Admin");
+        $this->db->bind('modified_by', $this->user);
         $this->db->bind('id', $data['id']);
 
         $this->db->execute();

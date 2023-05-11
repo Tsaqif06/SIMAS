@@ -28,9 +28,9 @@ class Stiru_model
     }
     public function tambahDataStiru($data)
     {
-        $query = 'INSERT INTO ' . $this->table . ' 
+        $query = 'INSERT INTO ' . $this->table . "
             VALUES 
-            (null, :uuid, :instansi, :peserta, :tanggal, :tujuan, :tempat)';
+            (null, :uuid, :instansi, :peserta, :tanggal, :tujuan, :tempat, '', CURRENT_TIMESTAMP, :created_by, null, '', null, '', null, '',0 ,0, DEFAULT)";
 
         $this->db->query($query);
         $this->db->bind('uuid', Uuid::uuid4()->toString());
@@ -39,6 +39,7 @@ class Stiru_model
         $this->db->bind('tanggal', $data['tanggal']);
         $this->db->bind('tujuan', $data['tujuan']);
         $this->db->bind('tempat', $data['tempat']);
+        $this->db->bind('created_by', $this->user);
 
         $this->db->execute();
         return $this->db->rowCount();
@@ -54,7 +55,7 @@ class Stiru_model
                 is_restored = 0
               WHERE id = :id"
         );
-        $this->db->bind('deleted_by', "Super Admin");
+        $this->db->bind('deleted_by', $this->user);
         $this->db->bind('id', $id);
 
         $this->db->execute();
@@ -67,7 +68,9 @@ class Stiru_model
                   peserta = :peserta, 
                   tanggal = :tanggal, 
                   tujuan = :tujuan, 
-                  tempat = :tempat 
+                  tempat = :tempat,
+                  modified_at = CURRENT_TIMESTAMP,
+                  modified_by = :modified_by
                   WHERE id = :id';
 
         $this->db->query($query);
@@ -76,6 +79,7 @@ class Stiru_model
         $this->db->bind('tanggal', $data['tanggal']);
         $this->db->bind('tujuan', $data['tujuan']);
         $this->db->bind('tempat', $data['tempat']);
+        $this->db->bind('modified_by', $this->user);
         $this->db->bind('id', $data['id']);
 
         $this->db->execute();

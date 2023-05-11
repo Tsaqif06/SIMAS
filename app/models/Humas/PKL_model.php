@@ -52,7 +52,7 @@ class pkl_model extends Database
         $this->db->bind('kelas', $data['kelas']);
         $this->db->bind('jurusan', $data['jurusan']);
         $this->db->bind('namaperusahaan', $data['namaperusahaan']);
-        $this->db->bind('created_by', "Super Admin");
+        $this->db->bind('created_by', $this->user);
 
 
 
@@ -73,7 +73,7 @@ class pkl_model extends Database
                   WHERE id = :id"
         );
 
-        $this->db->bind('deleted_by', "Super Admin");
+        $this->db->bind('deleted_by', $this->user);
         $this->db->bind("id", $id);
 
         $this->db->execute();
@@ -100,7 +100,7 @@ class pkl_model extends Database
         $this->db->bind('kelas', $data['kelas']);
         $this->db->bind('jurusan', $data['jurusan']);
         $this->db->bind('namaperusahaan', $data['namaperusahaan']);
-        $this->db->bind('modified_by', "Super Admin");
+        $this->db->bind('modified_by', $this->user);
 
         $this->db->bind('id', $data['id']);
 
@@ -144,7 +144,7 @@ class pkl_model extends Database
         $this->db->bind('namaperusahaan', $data['namaperusahaan']);
         $this->db->bind('alamat', $data['alamat']);
         $this->db->bind('kota', $data['kota']);
-        $this->db->bind('created_by', "Super Admin");
+        $this->db->bind('created_by', $this->user);
 
 
 
@@ -165,7 +165,7 @@ class pkl_model extends Database
                   WHERE id = :id"
         );
 
-        $this->db->bind('deleted_by', "Super Admin");
+        $this->db->bind('deleted_by', $this->user);
         $this->db->bind("id", $id);
 
         $this->db->execute();
@@ -190,7 +190,7 @@ class pkl_model extends Database
         $this->db->bind('namaperusahaan', $data['namaperusahaan']);
         $this->db->bind('alamat', $data['alamat']);
         $this->db->bind('kota', $data['kota']);
-        $this->db->bind('modified_by', "Super Admin");
+        $this->db->bind('modified_by', $this->user);
 
         $this->db->bind('id', $data['id']);
 
@@ -239,7 +239,7 @@ class pkl_model extends Database
         $this->db->bind('namasiswa', $data['namasiswa']);
         $this->db->bind('kelassiswa', $data['kelassiswa']);
         $this->db->bind('namaperusahaan', $data['namaperusahaan']);
-        $this->db->bind('created_by', "Super Admin");
+        $this->db->bind('created_by', $this->user);
 
 
 
@@ -260,7 +260,7 @@ class pkl_model extends Database
               WHERE id = :id"
         );
 
-        $this->db->bind('deleted_by', "Super Admin");
+        $this->db->bind('deleted_by', $this->user);
         $this->db->bind("id", $id);
 
         $this->db->execute();
@@ -285,7 +285,7 @@ class pkl_model extends Database
         $this->db->bind('namasiswa', $data['namasiswa']);
         $this->db->bind('kelassiswa', $data['kelassiswa']);
         $this->db->bind('namaperusahaan', $data['namaperusahaan']);
-        $this->db->bind('modified_by', "Super Admin");
+        $this->db->bind('modified_by', $this->user);
 
         $this->db->bind('id', $data['id']);
 
@@ -327,7 +327,7 @@ class pkl_model extends Database
         $this->db->bind('namaperusahaan_monitoringpkl', $data['namaperusahaan_monitoringpkl']);
         $this->db->bind('namaguru_monitoringpkl', $data['namaguru_monitoringpkl']);
         $this->db->bind('tanggal_monitoringpkl', $data['tanggal_monitoringpkl']);
-        $this->db->bind('created_by', "Super Admin");
+        $this->db->bind('created_by', $this->user);
 
 
 
@@ -348,7 +348,7 @@ class pkl_model extends Database
                   WHERE id = :id"
         );
 
-        $this->db->bind('deleted_by', "Super Admin");
+        $this->db->bind('deleted_by', $this->user);
         $this->db->bind("id", $id);
 
         $this->db->execute();
@@ -371,7 +371,7 @@ class pkl_model extends Database
         $this->db->bind('namaperusahaan_monitoringpkl', $data['namaperusahaan_monitoringpkl']);
         $this->db->bind('namaguru_monitoringpkl', $data['namaguru_monitoringpkl']);
         $this->db->bind('tanggal_monitoringpkl', $data['tanggal_monitoringpkl']);
-        $this->db->bind('modified_by', "Super Admin");
+        $this->db->bind('modified_by', $this->user);
 
         $this->db->bind('id', $data['id']);
 
@@ -414,7 +414,7 @@ class pkl_model extends Database
         $this->db->bind('jadwal', $data['jadwal']);
         $this->db->bind('peserta', $data['peserta']);
         $this->db->bind('tempat', $data['tempat']);
-        $this->db->bind('created_by', "Super Admin");
+        $this->db->bind('created_by', $this->user);
 
 
 
@@ -435,7 +435,7 @@ class pkl_model extends Database
               WHERE id = :id"
         );
 
-        $this->db->bind('deleted_by', "Super Admin");
+        $this->db->bind('deleted_by', $this->user);
         $this->db->bind("id", $id);
 
         $this->db->execute();
@@ -462,7 +462,7 @@ class pkl_model extends Database
         $this->db->bind('jadwal', $data['jadwal']);
         $this->db->bind('peserta', $data['peserta']);
         $this->db->bind('tempat', $data['tempat']);
-        $this->db->bind('modified_by', "Super Admin");
+        $this->db->bind('modified_by', $this->user);
 
         $this->db->bind('id', $data['id']);
 
@@ -702,7 +702,7 @@ class pkl_model extends Database
         $this->db->bind('uploadfoto_pemberkasan', $foto);
         $this->db->bind('uploadebookraport_pemberkasan', $raport);
         $this->db->bind('uploadbuktilunas_pemberkasan', $bukti);
-        $this->db->bind('created_by', "Super Admin");
+        $this->db->bind('created_by', $this->user);
 
 
         $this->db->execute();
@@ -721,7 +721,7 @@ class pkl_model extends Database
                     WHERE id = :id"
         );
 
-        $this->db->bind('deleted_by', "Super Admin");
+        $this->db->bind('deleted_by', $this->user);
         $this->db->bind("id", $id);
 
         $this->db->execute();
@@ -770,7 +770,7 @@ class pkl_model extends Database
         $this->db->bind('uploadfoto_pemberkasan', $foto);
         $this->db->bind('uploadebookraport_pemberkasan', $raport);
         $this->db->bind('uploadbuktilunas_pemberkasan', $bukti);
-        $this->db->bind('modified_by', "Super Admin");
+        $this->db->bind('modified_by', $this->user);
         $this->db->bind('id', $data['id']);
 
         $this->db->execute();
@@ -809,7 +809,7 @@ class pkl_model extends Database
         $this->db->bind('jurusan', $data['jurusan']);
         $this->db->bind('jeniskelamin', $data['jeniskelamin']);
         $this->db->bind('jumlah', $data['jumlah']);
-        $this->db->bind('created_by', "Super Admin");
+        $this->db->bind('created_by', $this->user);
 
 
 
@@ -830,7 +830,7 @@ class pkl_model extends Database
                   WHERE id = :id"
         );
 
-        $this->db->bind('deleted_by', "Super Admin");
+        $this->db->bind('deleted_by', $this->user);
         $this->db->bind("id", $id);
 
         $this->db->execute();
@@ -855,7 +855,7 @@ class pkl_model extends Database
         $this->db->bind('jurusan', $data['jurusan']);
         $this->db->bind('jeniskelamin', $data['jeniskelamin']);
         $this->db->bind('jumlah', $data['jumlah']);
-        $this->db->bind('modified_by', "Super Admin");
+        $this->db->bind('modified_by', $this->user);
 
         $this->db->bind('id', $data['id']);
 
@@ -901,7 +901,7 @@ class pkl_model extends Database
         $this->db->bind('nisn', $data['nisn']);
         $this->db->bind('namaperusahaan', $data['namaperusahaan']);
         $this->db->bind('tanggalperpanjangpkl', $data['tanggalperpanjangpkl']);
-        $this->db->bind('created_by', "Super Admin");
+        $this->db->bind('created_by', $this->user);
 
 
 
@@ -922,7 +922,7 @@ class pkl_model extends Database
                   WHERE id = :id"
         );
 
-        $this->db->bind('deleted_by', "Super Admin");
+        $this->db->bind('deleted_by', $this->user);
         $this->db->bind("id", $id);
 
         $this->db->execute();
@@ -949,7 +949,7 @@ class pkl_model extends Database
         $this->db->bind('nisn', $data['nisn']);
         $this->db->bind('namaperusahaan', $data['namaperusahaan']);
         $this->db->bind('tanggalperpanjangpkl', $data['tanggalperpanjangpkl']);
-        $this->db->bind('modified_by', "Super Admin");
+        $this->db->bind('modified_by', $this->user);
 
         $this->db->bind('id', $data['id']);
 
@@ -1000,7 +1000,7 @@ class pkl_model extends Database
         $this->db->bind('halizin', $data['halizin']);
         $this->db->bind('drtanggal', $data['drtanggal']);
         $this->db->bind('hgtanggal', $data['hgtanggal']);
-        $this->db->bind('created_by', "Super Admin");
+        $this->db->bind('created_by', $this->user);
 
 
 
@@ -1021,7 +1021,7 @@ class pkl_model extends Database
                   WHERE id = :id"
         );
 
-        $this->db->bind('deleted_by', "Super Admin");
+        $this->db->bind('deleted_by', $this->user);
         $this->db->bind("id", $id);
         $this->db->execute();
 
@@ -1052,7 +1052,7 @@ class pkl_model extends Database
         $this->db->bind('halizin', $data['halizin']);
         $this->db->bind('drtanggal', $data['drtanggal']);
         $this->db->bind('hgtanggal', $data['hgtanggal']);
-        $this->db->bind('modified_by', "Super Admin");
+        $this->db->bind('modified_by', $this->user);
 
         $this->db->bind('id', $data['id']);
 
@@ -1101,7 +1101,7 @@ class pkl_model extends Database
         $this->db->bind('namaperusahaan', $data['namaperusahaan']);
         $this->db->bind('jenismasalah', $data['jenismasalah']);
         $this->db->bind('solusi', $data['solusi']);
-        $this->db->bind('created_by', "Super Admin");
+        $this->db->bind('created_by', $this->user);
 
 
 
@@ -1122,7 +1122,7 @@ class pkl_model extends Database
               WHERE id = :id"
         );
 
-        $this->db->bind('deleted_by', "Super Admin");
+        $this->db->bind('deleted_by', $this->user);
         $this->db->bind("id", $id);
 
         $this->db->execute();
@@ -1153,7 +1153,7 @@ class pkl_model extends Database
         $this->db->bind('namaperusahaan', $data['namaperusahaan']);
         $this->db->bind('jenismasalah', $data['jenismasalah']);
         $this->db->bind('solusi', $data['solusi']);
-        $this->db->bind('modified_by', "Super Admin");
+        $this->db->bind('modified_by', $this->user);
 
 
         $this->db->bind('id', $data['id']);
