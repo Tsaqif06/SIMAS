@@ -1,141 +1,402 @@
-<div class="main-panel">
-    <div class="content-wrapper">
-        <div class="row">
-            <div class="col-md-12 grid-margin">
-                <div class="row">
-                    <div class="col-12 col-xl-8 mb-4 mb-xl-0">
-                        <h3 class="font-weight-bold">DATA INFO KESISWAAN</h3>
-                        <h6 class="font-weight-normal mb-0">WEB DEV | SIMAS</h6>
-                    </div>
-                    <div class="col-12 col-xl-4">
-                        <div class="justify-content-end d-flex">
-                            <div class="dropdown flex-md-grow-1 flex-xl-grow-0">
-                                <button class="btn btn-sm btn-light bg-white dropdown-toggle" type="button"
-                                    id="dropdownMenuDate2" data-toggle="dropdown" aria-haspopup="true"
-                                    aria-expanded="true">
-                                    <i class="mdi mdi-calendar"></i> Hari ini (11 Mar 2023)
-                                </button>
-                                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuDate2">
-                                    <a class="dropdown-item" href="#">January - March</a>
-                                    <a class="dropdown-item" href="#">March - June</a>
-                                    <a class="dropdown-item" href="#">June - August</a>
-                                    <a class="dropdown-item" href="#">August - November</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+<style>
+    *{
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      /* font-family: "Poppins", sans-serif; */
+    }
+    
+    .slider{
+      position: relative;
+      background: #d1dff0;
+      width: 800px;
+      min-height: 500px;
+      /* margin: 20px; */
+      overflow: hidden;
+      border-radius: 10px;
+    }
+    
+    .slider .slide{
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      clip-path: circle(0% at 0 50%);
+    }
+    
+    .slider .slide.active{
+      clip-path: circle(150% at 0 50%);
+      transition: 2s;
+    }
+    
+    .slider .slide img{
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    
+    .slider .slide .info{
+      position: absolute;
+      color: #000000;
+      background: rgba(255, 249, 249, 0.529);
+      width: 90%;
+      margin-top: 50px;
+      margin-left: 50px;
+      padding: 20px;
+      border-radius: 5px;
+      box-shadow: 0 5px 25px rgba(1, 1, 1, 0.25);
+    }
+    
+    .slider .slide .info h2{
+      font-size: 2em;
+      font-weight: 800;
+    }
+    
+    .slider .slide .info p{
+      font-size: 1em;
+      font-weight: 400;
+    }
+    
+    .navigation{
+      height: 500px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      opacity: 0;
+      transition: opacity 0.5s ease;
+    }
+    
+    .slider:hover .navigation{
+      opacity: 1;
+    }
+    
+    .prev-btn, .next-btn{
+      z-index: 1;
+      font-size: 2em;
+      color: #222;
+      background: rgba(255, 255, 255, 0.8);
+      padding: 10px;
+      cursor: pointer;
+    }
+    
+    .prev-btn{
+      border-top-right-radius: 3px;
+      border-bottom-right-radius: 3px;
+    }
+    
+    .next-btn{
+      border-top-left-radius: 3px;
+      border-bottom-left-radius: 3px;
+    }
+    
+    .navigation-visibility{
+      z-index: 1;
+      display: flex;
+      justify-content: center;
+    }
+    
+    .navigation-visibility .slide-icon{
+      z-index: 1;
+      background: rgba(255, 255, 255, 0.5);
+      width: 20px;
+      height: 10px;
+      transform: translateY(-50px);
+      margin: 0 6px;
+      border-radius: 2px;
+      box-shadow: 0 5px 25px rgb(1 1 1 / 20%);
+    }
+    
+    .navigation-visibility .slide-icon.active{
+      background: #f7faff;
+    }
+    
+    @media (max-width: 900px){
+      .slider{
+        width: 100%;
+      }
+    
+      .slider .slide .info{
+        position: relative;
+        width: 80%;
+        margin-left: auto;
+        margin-right: auto;
+      }
+    }
+    
+    @media (max-width: 500px){
+      .slider .slide .info h2{
+        font-size: 1.8em;
+        line-height: 40px;
+      }
+    
+      .slider .slide .info p{
+        font-size: 0.9em;
+      }
+    }
+
+    .button-arounder {
+    background: white;
+    font-size: 4px;
+    border: solid 2px #4B49AC;
+    padding: .375em 1.125em;
+    font-weight: bold;
+    border-radius: 10px;
+    color: #4B49AC;
+    z-index: 2;
+    // width: 50%;
+  }
+  
+  .button-arounder:hover,
+  .button-arounder:focus {
+    box-shadow: 0 4px 8px hsla(190deg, 15%, 5%, .2);
+    transform: translateY(-4px);
+    background:#4B49AC;
+    border-top-left-radius: var(--radius);
+    border-top-right-radius: var(--radius);
+    border-bottom-left-radius: var(--radius);
+    border-bottom-right-radius: var(--radius);
+    color:white;
+    border-radius: 10px;
+    // width: 50%;
+  }
+          
+</style>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+
+<div class="content-wrapper">
+    <div class="row">
+        <div class="col-md-12 grid-margin">
+            <div class="row">
+                <div class="col-12 col-xl-8 mb-4 mb-xl-0">
+                <h3 class="font-weight-bold">SELAMAT DATANG DI GALERI KEGIATAN</h3>
+                <h6 class="font-weight-normal mb-0"> <span class="text-primary">Berbagai Kegiatan yang Dilakukan di SMKN 4 Malang</span></h6>
                 </div>
             </div>
         </div>
+    </div>
 
-        <div class="row">
-            <div class="col-lg-6">
-                <?php Flasher::flash(); ?>
-            </div>
-        </div>
+    <div class="row">
+    <div class="col-lg-6">
+        <?php Flasher ::flash(); ?>
+    </div>
+    </div>
 
-        <div class="row">
-            <div class="col-lg-6">
-                <button type="button" class="btn btn-primary my-3 tampilModalTambah"
-                    data-url="<?= BASEURL ?>/infokesiswaan/tambahData" data-bs-toggle="modal" data-bs-target="#modal">
-                    Tambah Data Info Kesiswaan
-                </button>
-                <button type="button" class="btn btn-primary my-3 mx-3 tampilModalImport" data-bs-toggle="modal"
-                    data-bs-target="#modalImport">
-                    Import Data Dari Excel
-                </button>
-            </div>
-        </div>
+    <div class="row mb-4">
+    <div class="col">
+        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModalLong">Tambah Data Kegiatan</button>
+    </div>
+    </div>
 
-        <div class="row">
-            <div class="col-md-12 grid-margin stretch-card">
-                <div class="card">
-                    <div class="card-body">
-                        <div class="table-responsive">
-                            <table id="table" class="table table-striped table-main">
-                                <thead>
-                                    <tr>
-                                        <th>No.</th>
-                                        <th>Aksi</th>
-                                        <th>Kegiatan</th>
-                                        <th>deskripsi</th>
-                                        <th>Dokumentasi</th>
-                                        <th>Tanggal Kegiatan Osis</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <?php $i = 1 ?>
-                                    <?php foreach ($data['infokesiswaan'] as $row) : ?>
-                                    <tr>
-                                        <td><?= $i++ ?></td>
-                                        <td class="font-weight-medium">
-                                            <a href="" class="badge text-bg-success tampilModalUbah"
-                                                style="cursor: pointer;"
-                                                data-url="<?= BASEURL ?>/infoesisinfokesiswaan/ubahData"
-                                                data-bs-toggle="modal" data-bs-target="#modal"
-                                                data-id="<?= $row['id'] ?>">
-                                                <i class="ti ti-pencil"></i>
-                                            </a>
-                                            <a href="<?= BASEURL ?>/infokesiswaan/hapusData/<?= $row['id'] ?>">
-                                                <div class=" font-weight-medium pt-2">
-                                                    <div class="badge badge-danger delete"
-                                                        onclick="return confirm('Apakah Anda Yakin Mau Menghapus Data?')">
-                                                        <i class="ti ti-trash"></i>
-                                                    </div>
-                                            </a>
-                                        </td>
-                                        <td><?= $row['kegiatan_infoKesiswaan']; ?></td>
-                                        <td><?= $row['deskripsi_infoKesiswaan']; ?></td>
-                                        <?php if (file_exists("images/datafoto/{$row["foto"]}")) : ?>
-                                        <td><img src="images/datafoto/<?= $row["foto"]; ?>" class="data-img"
-                                                style="width: 65px; height: 65px;"></td>
-                                        <?php else : ?>
-                                        <td><img src="images/datafoto/pp.png" class="data-img"
-                                                style="width: 65px; height: 65px;"></td>
-                                        <?php endif; ?>
-                                        <td><?= $row['tanggal_kegiatanOsis']; ?></td>
-                                    </tr>
-                                    <?php endforeach; ?>
-                                </tbody>
-                            </table>
-                        </div>
+    <div id="exampleModalLong" class="modal fade" role="dialog" data-backdrop="static" >
+            <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                <h3 id="modalLabel"> Tambah Data </h3>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+                <div class="modal-body">
+                  <form enctype="multipart/form-data" action="<?= BASEURL; ?>/infokesiswaan/tambahData" method="post">
+                      <input type="hidden" name="id" id="id">
+                      <input type="hidden" name="fotoLama" id="fotoLama">
+
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Nama Kegiatan</label>
+                        <input type="text" class="form-control" id="kegiatan_infoKesiswaan" name="kegiatan_infoKesiswaan" placeholder="" required/>
+                      </div>
+
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Tanggal Kegiatan</label>
+                        <input type="date" class="form-control" id="tanggal_infoKesiswaan" name="tanggal_infoKesiswaan" placeholder="" required/>
+                      </div>
+
+                    
+                      <label for="exampleInputEmail1">Foto Kegiatan</label>
+                      <input class="form-control" type="file" id="foto" name="foto">
+                    
+
+                    <div class="form-group">
+                      <label for="exampleInputEmail1">Deskripsi Kegiatan</label>
+                      <input type="text" class="form-control" id="deskripsi_infoKesiswaan" name="deskripsi_infoKesiswaan" placeholder="" required/>
                     </div>
                 </div>
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-primary">Tambah Data</button>
+                    <button type="button" class="btn btn-default" data-bs-dismiss="modal" aria-label="Close">Tutup</button>
+                  </div>
+              </form>
+              </div>
             </div>
-        </div>
-
-
-        <div class="modal fade" id="modalImport" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h1 class="modal-title fs-5" id="modalLabel">Import Data</h1>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                    <div class="modal-body">
-                        <form action="<?= BASEURL ?>/infokesiswaan/importData" method="post"
-                            enctype="multipart/form-data">
-                            <div class="mb-3">
-                                <label for="file">Pilih file Excel (.xlsx)</label>
-                                <input type="file" name="file" id="file">
-                            </div>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary batal" data-bs-dismiss="modal">Batal</button>
-                        <button type="submit" class="btn btn-primary">Tambah Data</button>
-                    </div>
-                    </form>
-                </div>
             </div>
+
+    <div class="row">
+      <div class="col-lg-8">
+        <div class="slider" style="width: 100%; height: auto;">
+            <?php foreach( $data['infokesiswaan'] as $infokesiswaan ) : ?>
+            <div class="slide active">
+              <img src="images/datafoto/<?=$infokesiswaan['foto']?>">
+              <div class="info">
+                <h4><b><?=$infokesiswaan['kegiatan_infoKesiswaan']?></b></h4>
+                <h4><b><?=$infokesiswaan['tanggal_infoKesiswaan']?></b></h4>
+                <h5><?=$infokesiswaan['deskripsi_infoKesiswaan']?></h5>
+                <a href="<?= BASEURL;?>/infokesiswaan/ubahData/<?=$infokesiswaan['id']?>" data-bs-toggle="modal" data-bs-target="#exampleModalLong" class="tampilModalUbah" data-id="<?= $infokesiswaan['id'];?>" style="text-align:right; text-decoration: none; color: black;">
+                  <!-- <button class="button-arounder">  -->
+                    <span class="material-symbols-outlined"> edit </span>
+                  <!-- </button> -->
+                </a>
+                <a href="<?= BASEURL;?>/infokesiswaan/hapusData/<?=$infokesiswaan['id']?>" onclick="return confirm ('Hapus data?')" style="text-align:right; text-decoration: none; color: black;">
+                  <!-- <button class="button-arounder"> -->
+                    <span class="material-symbols-outlined"> delete </span>
+                  <!-- </button> -->
+                </a>
+              </div>
+            </div>
+            <?php endforeach; ?>
+                        
+            <div class="navigation">
+                <i class="fas fa-chevron-left prev-btn"></i>
+                <i class="fas fa-chevron-right next-btn"></i>
+            </div>
+          <!-- <div class="navigation-visibility">
+              <div class="slide-icon active"></div>
+              <div class="slide-icon"></div>
+              <div class="slide-icon"></div>
+              <div class="slide-icon"></div>
+              <div class="slide-icon"></div>
+              <div class="slide-icon"></div>
+              </div>
+          </div> -->
         </div>
+    </div>
+  </div>
+            </div>
 
 
-        <!-- Modal -->
-        <div class="modal fade" id="modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h1 class="modal-title fs-5" id="modalLabel">Tambah Data</h1>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                    <div class="modal-body">
+<script>
+  $(function() {
+    const BASEURL = window.location.href;
+    console.log(BASEURL)
+    $('.tombolTambahData').on('click', function(){
+        $('formModalLabel').html('Tambah Data')
+        $('.modal-footer button[type=submit]').html('Tambah Data');
+
+    });
+
+    $(".tampilModalUbah").click(function () {
+      $("#modal").addClass("edit");
+      $("#modalLabel").html("Ubah Data");
+      $(".modal-footer button[type=submit]").html("Ubah Data");
+      $(".modal-body form").attr("action", `${BASEURL}/ubahData`);
+
+		  const id = $(this).data("id");
+        console.log(id);
+
+      $.ajax({
+        url: `${BASEURL}/getUbahData`,
+        data: { id: id },
+        method: "post",
+        dataType: "json",
+        success: function (data) {
+            // console.log(data)
+          $('#id').val(data.id);
+          $('#kegiatan_infoKesiswaan').val(data.kegiatan_infoKesiswaan);
+          $('#deskripsi_infoKesiswaan').val(data.deskripsi_infoKesiswaan);
+          $('#tanggal_infoKesiswaan').val(data.tanggal_infoKesiswaan);
+          // $("#fotoSekarang").attr("src", `datafoto/${data.fotokegiatan}`);
+          $("#foto").val(data.foto);
+          // for (let key of Object.keys(data)) {
+          //   if (key == "foto") {
+          //     continue;
+          //   }
+          //   $(`#${key}`).val(data[key]);
+          //   console.log(data);
+        },
+      })
+    })
+  });
+</script>
+<script type="text/javascript">
+    const slider = document.querySelector(".slider");
+    const nextBtn = document.querySelector(".next-btn");
+    const prevBtn = document.querySelector(".prev-btn");
+    const slides = document.querySelectorAll(".slide");
+    const slideIcons = document.querySelectorAll(".slide-icon");
+    const numberOfSlides = slides.length;
+    var slideNumber = 0;
+
+    //image slider next button
+    nextBtn.addEventListener("click", () => {
+      slides.forEach((slide) => {
+        slide.classList.remove("active");
+      });
+      slideIcons.forEach((slideIcon) => {
+        slideIcon.classList.remove("active");
+      });
+
+      slideNumber++;
+
+      if(slideNumber > (numberOfSlides - 1)){
+        slideNumber = 0;
+      }
+
+      slides[slideNumber].classList.add("active");
+      slideIcons[slideNumber].classList.add("active");
+    });
+
+    //image slider previous button
+    prevBtn.addEventListener("click", () => {
+      slides.forEach((slide) => {
+        slide.classList.remove("active");
+      });
+      slideIcons.forEach((slideIcon) => {
+        slideIcon.classList.remove("active");
+      });
+
+      slideNumber--;
+
+      if(slideNumber < 0){
+        slideNumber = numberOfSlides - 1;
+      }
+
+      slides[slideNumber].classList.add("active");
+      slideIcons[slideNumber].classList.add("active");
+    });
+
+    //image slider autoplay
+    var playSlider;
+
+    var repeater = () => {
+      playSlider = setInterval(function(){
+        slides.forEach((slide) => {
+          slide.classList.remove("active");
+        });
+        slideIcons.forEach((slideIcon) => {
+          slideIcon.classList.remove("active");
+        });
+
+        slideNumber++;
+
+        if(slideNumber > (numberOfSlides - 1)){
+          slideNumber = 0;
+        }
+
+        slides[slideNumber].classList.add("active");
+        slideIcons[slideNumber].classList.add("active");
+      }, 4000);
+    }
+    repeater();
+
+    //stop the image slider autoplay on mouseover
+    slider.addEventListener("mouseover", () => {
+      clearInterval(playSlider);
+    });
+
+    //start the image slider autoplay again on mouseout
+    slider.addEventListener("mouseout", () => {
+      repeater();
+    });
+    </script>

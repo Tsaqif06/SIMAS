@@ -12,8 +12,7 @@ class Infokesiswaan_model
     private $fields = [
         'kegiatan_infoKesiswaan',
         'deskripsi_infoKesiswaan',
-        'dokumentasi_infoKesiswaan',
-        'tanggal_kegiatanOsis'
+        'tanggal_infoKesiswaan'
     ];
 
     private $user;
@@ -54,7 +53,7 @@ class Infokesiswaan_model
     public function uploadImage()
     {
         $targetDir = 'images/datafoto/'; // direktori tempat menyimpan file upload
-        $temp = $_FILES['dokumentasi_infoKesiswaan']['name'];
+        $temp = $_FILES['foto']['name'];
         $imageFileType = explode('.', $temp);
         $imageFileType = strtolower(end($imageFileType));
 
@@ -72,7 +71,7 @@ class Infokesiswaan_model
         $targetFile = $targetDir . $fileName; // nama file upload
 
         // cek gambar diupload atau tidak
-        if ($_FILES["dokumentasi_infoKesiswaan"]["error"] === 4) {
+        if ($_FILES["foto"]["error"] === 4) {
             echo
             '
             <script>
@@ -83,7 +82,7 @@ class Infokesiswaan_model
         }
 
         // validasi ukuran file
-        if ($_FILES["dokumentasi_infoKesiswaan"]["size"] > 1000000) {
+        if ($_FILES["foto"]["size"] > 10044070) {
             echo
             '
                 <script>
@@ -95,7 +94,7 @@ class Infokesiswaan_model
 
         try {
             // simpan file upload ke direktori
-            move_uploaded_file($_FILES['dokumentasi_infoKesiswaan']['tmp_name'], $targetFile);
+            move_uploaded_file($_FILES['foto']['tmp_name'], $targetFile);
         } catch (IOExceptionInterface $e) {
             echo $e->getMessage();
         }
@@ -106,19 +105,19 @@ class Infokesiswaan_model
     public function tambahDataInfokesiswaan($data)
     {                     //nama tabel
         $query = "INSERT INTO infokesiswaan VALUES(
-            null, :uuid, :kegiatan_infoKesiswaan, :deskripsi_infoKesiswaan, :dokumentasi_infoKesiswaan, :tanggal_kegiatanOsis, '', CURRENT_TIMESTAMP, :created_by, null, '', null, '', null, '', 0, 0, DEFAULT)";
+            null, :uuid, :kegiatan_infoKesiswaan, :deskripsi_infoKesiswaan, :foto, :tanggal_infoKesiswaan, '', CURRENT_TIMESTAMP, :created_by, null, '', null, '', null, '', 0, 0, DEFAULT)";
 
         $this->db->query($query);
         $foto = $this->uploadImage();
         if (!$foto) {
             return false;
         }
-        $this->db->bind('uuid', Uuid::uuid4()->toString());
-        $this->db->bind('dokumentasi_infoKesiswaan', $foto);
+        $this->db->bind('foto', $foto);
+
         foreach ($this->fields as $field) {
             $this->db->bind($field, $data[$field]);
         }
-
+        $this->db->bind('uuid', Uuid::uuid4()->toString());
         $this->db->bind('created_by', $this->user);
         $this->db->execute();
 
@@ -149,20 +148,20 @@ class Infokesiswaan_model
         $query = "UPDATE infokesiswaan SET
                     kegiatan_infoKesiswaan = :kegiatan_infoKesiswaan,
                     deskripsi_infoKesiswaan = :deskripsi_infoKesiswaan,
-                    dokumentasi_infoKesiswaan = :dokumentasi_infoKesiswaan,
-                    tanggal_kegiatanOsis = :tanggal_kegiatanOsis,
+                    foto = :foto,
+                    tanggal_infoKesiswaan = :tanggal_infoKesiswaan,
                     modified_at = CURRENT_TIMESTAMP,
                     modified_by = :modified_by
                     WHERE id = :id";
 
         $this->db->query($query);
-        if ($_FILES["dokumentasi_infoKesiswaan"]["error"] === 4) {
-            $foto = $data['dokumentasi_infoKesiswaan'];
+        if ($_FILES["foto"]["error"] === 4) {
+            $foto = $data['foto'];
         } else {
             $foto = $this->uploadImage();
         }
+        $this->db->bind('foto', $foto);
 
-        $this->db->bind('dokumentasi_infoKesiswaan', $foto);
         foreach ($this->fields as $field) {
             $this->db->bind($field, $data[$field]);
         }
@@ -174,42 +173,42 @@ class Infokesiswaan_model
         return $this->db->rowCount();
     }
 
-    public function importData()
-    {
-        // Cek file diupload apa belum
-        if (!isset($_FILES['file']['name'])) {
-            Flasher::setFlash('Error', 'Harap pilih file Excel terlebih dahulu', 'danger');
-            header('location: ' . BASEURL . '/siswa');
-            exit;
-        }
+    // public function importData()
+    // {
+    //     // Cek file diupload apa belum
+    //     if (!isset($_FILES['file']['name'])) {
+    //         Flasher::setFlash('Error', 'Harap pilih file Excel terlebih dahulu', 'danger');
+    //         header('location: ' . BASEURL . '/siswa');
+    //         exit;
+    //     }
 
-        // Baca file Excel menggunakan PhpSpreadsheet
-        $inputFileName = $_FILES['file']['tmp_name'];
-        $spreadsheet = IOFactory::load($inputFileName);
+    //     // Baca file Excel menggunakan PhpSpreadsheet
+    //     $inputFileName = $_FILES['file']['tmp_name'];
+    //     $spreadsheet = IOFactory::load($inputFileName);
 
-        // Ambil data dari sheet pertama
-        $worksheet = $spreadsheet->getActiveSheet();
-        $highestRow = $worksheet->getHighestRow();
-        $highestColumn = $worksheet->getHighestColumn();
-        $maxColumnIndex = Coordinate::columnIndexFromString($highestColumn);
+    //     // Ambil data dari sheet pertama
+    //     $worksheet = $spreadsheet->getActiveSheet();
+    //     $highestRow = $worksheet->getHighestRow();
+    //     $highestColumn = $worksheet->getHighestColumn();
+    //     $maxColumnIndex = Coordinate::columnIndexFromString($highestColumn);
 
-        // Daftar kolom yang akan diambil dari file Excel dan disimpan ke database
-        $columns = $this->fields;
+    //     // Daftar kolom yang akan diambil dari file Excel dan disimpan ke database
+    //     $columns = $this->fields;
 
-        // Looping untuk membaca setiap baris data
-        for ($row = 2; $row <= $highestRow; $row++) {
-            $data = [];
+    //     // Looping untuk membaca setiap baris data
+    //     for ($row = 2; $row <= $highestRow; $row++) {
+    //         $data = [];
 
-            // Looping untuk membaca setiap kolom data
-            for ($col = 2; $col <= count($columns) + 1; $col++) {
-                $columnLetter = Coordinate::stringFromColumnIndex($col);
-                $cellValue = $worksheet->getCell($columnLetter . $row)->getValue();
-                $data[$columns[$col - 2]] = $cellValue;
-            }
+    //         // Looping untuk membaca setiap kolom data
+    //         for ($col = 2; $col <= count($columns) + 1; $col++) {
+    //             $columnLetter = Coordinate::stringFromColumnIndex($col);
+    //             $cellValue = $worksheet->getCell($columnLetter . $row)->getValue();
+    //             $data[$columns[$col - 2]] = $cellValue;
+    //         }
 
-            // Simpan data ke database
-            $response = $this->tambahDataInfokesiswaan($data);
-        }
-        return $response;
-    }
+    //         // Simpan data ke database
+    //         $response = $this->tambahDataInfokesiswaan($data);
+    //     }
+    //     return $response;
+    // }
 }
