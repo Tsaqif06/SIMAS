@@ -33,8 +33,16 @@ class App
             $folder = "humas/";
             $this->controller = $url[0];
             unset($url[0]);
+        } else if (file_exists("../app/controllers/kurikulum/$url[0].php")) {
+            $folder = "kurikulum/";
+            $this->controller = $url[0];
+            unset($url[0]);
         } else if (file_exists("../app/controllers/psdm/$url[0].php")) {
             $folder = "psdm/";
+            $this->controller = $url[0];
+            unset($url[0]);
+        } else if (file_exists("../app/controllers/sarpras/$url[0].php")) {
+            $folder = "sarpras/";
             $this->controller = $url[0];
             unset($url[0]);
         } else if (file_exists("../app/controllers/login/$url[0].php")) {

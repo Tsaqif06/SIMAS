@@ -18,6 +18,12 @@ $(document).ready(function () {
 	}
 
 	$("#table").DataTable({
+		dom: 'Bfrtip',
+		buttons: [
+			'pageLength', 'copy', 'excel', 'pdf', 'print'
+		],
+		'lengthChange': true,
+  		'lengthMenu': [[10, 25, 50, -1], [10, 25, 50, 'All']],
 		drawCallback: function (settings) {
 			$(".tampilModalUbah").click(function () {
 				$("#modal").addClass("edit");

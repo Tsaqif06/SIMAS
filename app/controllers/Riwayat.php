@@ -11,23 +11,22 @@ class Riwayat extends Controller
         $data['judul'] = 'SIMAS - Riwayat';
 
         $data['user'] = $this->user;
-        $akses = ['all', 'mastertu', 'kurikulum'];
 
         $data['riwayat'] = $this->model("$this->model_name", "Riwayat_model")->getDeletedData();
 
-        if (in_array($data['user']['hak_akses'], $akses)) {
+        if ($data['user']['hak_akses'] == '') {
+            header("Location: " . BASEURL);
+            Flasher::setFlash('GAGAL', 'Anda Tidak Mempunyai Akses Untuk Menuju Halaman Tersebut', 'danger');
+        } else if ($data['user']['hak_akses']) {
             $this->view('templates/header', $data);
             $this->view('riwayat/index', $data);
             $this->view('riwayat/info', $data);
-            $this->view('templates/footer');
-        } else if ($data['user']['hak_akses'] == '') {
-            header("Location: " . BASEURL);
-            Flasher::setFlash('GAGAL', 'Anda Tidak Mempunyai Akses Untuk Menuju Halaman Tersebut', 'danger');
+            $this->view('templates/footerwm');
         } else {
             $this->view('templates/header', $data);
             $this->view('riwayat/detail', $data);
             $this->view('riwayat/info', $data);
-            $this->view('templates/footer');
+            $this->view('templates/footerwm');
         }
     }
 

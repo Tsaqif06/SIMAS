@@ -20,11 +20,20 @@
     <!-- Plugin css for this page -->
     <link rel="stylesheet" href="<?= BASEURL ?>/vendors/datatables.net-bs4/dataTables.bootstrap4.css">
     <link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/jquery.dataTables.css" />
-
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/dataTables.bootstrap5.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <script src="https://code.jquery.com/jquery-3.6.4.js" integrity="sha256-a9jBBRygX1Bh5lt8GZjXDzyOB+bWve9EiO7tROUtj/E=" crossorigin="anonymous"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.13.4/css/jquery.dataTables.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/buttons/2.3.6/css/buttons.dataTables.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
-
+    <!-- Editor -->
+    <link href="https://editor.datatables.net/extensions/Editor/css/editor.dataTables.min.css" rel="stylesheet" type="text/css" />
+    <script src="https://editor.datatables.net/extensions/Editor/js/dataTables.editor.min.js"></script>
+    <!-- Buttons -->
+    <link href="https://nightly.datatables.net/buttons/css/buttons.dataTables.css?_=c6b24f8a56e04fcee6105a02f4027462.css" rel="stylesheet" type="text/css" />
+    <script src="https://nightly.datatables.net/buttons/js/dataTables.buttons.js?_=c6b24f8a56e04fcee6105a02f4027462"></script>
     <!-- End plugin css for this page -->
     <!-- inject:css -->
     <link rel="stylesheet" href="<?= BASEURL ?>/css/style.css">
@@ -344,8 +353,8 @@
                                 </a>
                                 <div class="collapse" id="masterdata">
                                     <ul class="nav flex-column sub-menu">
-                                        <li class="nav-item"> <a class="nav-link spa-load" href="<?= BASEURL ?>/guru">Guru</a></li>
-                                        <li class="nav-item"> <a class="nav-link spa-load" href="<?= BASEURL ?>/karyawan">Karyawan</a>
+                                        <li class="nav-item"> <a class="nav-link" href="<?= BASEURL ?>/guru">Guru</a></li>
+                                        <li class="nav-item"> <a class="nav-link" href="<?= BASEURL ?>/karyawan">Karyawan</a>
                                         </li>
                                         <li class="nav-item"> <a class="nav-link" href="<?= BASEURL ?>/siswa">Siswa</a></li>
                                         <li class="nav-item"> <a class="nav-link" href="<?= BASEURL ?>/kelas">Kelas</a></li>
@@ -560,17 +569,28 @@
 
                         <?php if ($data['user']['role'] == 'admin' && ($data['user']['hak_akses'] == 'all' || $data['user']['hak_akses'] == 'sarpras')) : ?>
                             <li class="nav-item">
-                                <a class="nav-link" data-toggle="collapse" href="#sarpras" aria-expanded="false" aria-controls="sarpras">
+                                <a class="nav-link" data-toggle="collapse" href="#tables" aria-expanded="false" aria-controls="tables">
                                     <i class="icon-grid-2 menu-icon"></i>
                                     <span class="menu-title">SARPRAS</span>
                                     <i class="menu-arrow"></i>
                                 </a>
-                                <div class="collapse" id="sarpras">
+                                <div class="collapse" id="tables">
                                     <ul class="nav flex-column sub-menu">
-                                        <li class="nav-item"> <a class="nav-link" href="isisarpras.html">kosong</a></li>
+                                        <li class="nav-item"> <a class="nav-link spa-load" href="<?= BASEURL; ?>/fasilitas">Fasilitas</a></li>
+                                        <li class="nav-item"> <a class="nav-link spa-load" href="<?= BASEURL; ?>/peminjamanBarang">Peminjaman Barang</a></li>
+                                        <li class="nav-item"> <a class="nav-link spa-load" href="<?= BASEURL; ?>/pengajuanBarang">Pengajuan Barang</a></li>
+                                        <li class="nav-item"> <a class="nav-link spa-load" href="<?= BASEURL; ?>/barangMasuk">Barang Masuk</a></li>
+                                        <li class="nav-item"> <a class="nav-link spa-load" href="<?= BASEURL; ?>/barangKeluar">Barang Keluar</a></li>
+                                        <li class="nav-item"><a class="nav-link spa-load" href="<?= BASEURL; ?>/barangAset">Stok Barang Aset</a></li>
+                                        <li class="nav-item"><a class="nav-link spa-load" href="<?= BASEURL; ?>/stokBarang">Stok Barang</a></li>
+                                        <li class="nav-item"><a class="nav-link spa-load" href="<?= BASEURL; ?>/dataRuang">Data Ruang</a></li>
+                                        <li class="nav-item"><a class="nav-link spa-load" href="<?= BASEURL; ?>/perbaikan">Perbaikan</a></li>
                                     </ul>
                                 </div>
                             </li>
+                        <?php endif ?>
+
+                        <?php if ($data['user']['role'] == 'admin') : ?>
                             <li class="nav-item">
                                 <a class="nav-link" href="<?= BASEURL ?>/riwayat">
                                     <i class="ti-time menu-icon"></i>
