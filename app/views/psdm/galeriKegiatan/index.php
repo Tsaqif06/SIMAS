@@ -270,7 +270,7 @@
 </div>
 
 
-<!-- <script>
+<script>
   $(function() {
     const BASEURL = window.location.href;
     console.log(BASEURL)
@@ -393,4 +393,4 @@
   slider.addEventListener("mouseout", () => {
     repeater();
   });
-</script> -->
+</script>
