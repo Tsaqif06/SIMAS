@@ -233,7 +233,7 @@
       <div class="slider" style="width: 100%; height: auto;">
         <?php foreach ($data['galeri'] as $galeri) : ?>
           <div class="slide active">
-            <img src="datafoto/<?= $galeri['fotokegiatan'] ?>">
+            <img src="<?= BASEURL ?>/images/datafoto/<?= $galeri['fotokegiatan'] ?>">
             <div class="info">
               <h4><b><?= $galeri['nama'] ?></b></h4>
               <h5><?= $galeri['deskripsi'] ?></h5>

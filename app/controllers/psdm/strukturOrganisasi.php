@@ -16,7 +16,7 @@ class strukturOrganisasi extends Controller
             } else {
                 $this->view('templates/header', $data);
                 $this->view('psdm/strukturOrganisasi/index', $data);
-                $this->view('templates/footer');
+                $this->view('templates/footerwm');
             }
         } else if ($data['user']['hak_akses'] == '') {
             header("Location: " . BASEURL);

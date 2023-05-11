@@ -16,7 +16,7 @@ class galeriKegiatan extends Controller
             } else {
                 $this->view('templates/header', $data);
                 $this->view('psdm/galeriKegiatan/index', $data);
-                $this->view('templates/footer');
+                $this->view('templates/footerwm');
             }
         } else if ($data['user']['hak_akses'] == '') {
             header("Location: " . BASEURL);
