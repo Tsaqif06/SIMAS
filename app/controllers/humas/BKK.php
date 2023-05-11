@@ -11,9 +11,9 @@ class BKK extends Controller
         $data['user'] = $this->user;
         $akses = ['all', 'humas'];
         if (in_array($data['user']['hak_akses'], $akses)) {
+            $this->view('templates/header', $data);
             $this->view('humas/bkk/home/index', $data);
             $this->view('templates/footerwm');
-            $this->view('templates/header', $data);
         } else if ($data['user']['hak_akses'] == '') {
             header("Location: " . BASEURL);
             Flasher::setFlash('GAGAL', 'Anda Tidak Mempunyai Akses Untuk Menuju Halaman Tersebut', 'danger');
@@ -29,7 +29,7 @@ class BKK extends Controller
         if (in_array($data['user']['hak_akses'], $akses)) {
             $this->view('templates/header', $data);
             $this->view('humas/bkk/loker/bkklokerlaporan', $data);
-            $this->view('templates/footer');
+            $this->view('templates/footerwm');
         } else if ($data['user']['hak_akses'] == '') {
             header("Location: " . BASEURL);
             Flasher::setFlash('GAGAL', 'Anda Tidak Mempunyai Akses Untuk Menuju Halaman Tersebut', 'danger');
@@ -43,7 +43,7 @@ class BKK extends Controller
         if (in_array($data['user']['hak_akses'], $akses)) {
             $this->view('templates/header', $data);
             $this->view('humas/bkk/kebekerjaan/bkkkebekerjaan');
-            $this->view('templates/footer');
+            $this->view('templates/footerwm');
         } else if ($data['user']['hak_akses'] == '') {
             header("Location: " . BASEURL);
             Flasher::setFlash('GAGAL', 'Anda Tidak Mempunyai Akses Untuk Menuju Halaman Tersebut', 'danger');
@@ -58,7 +58,7 @@ class BKK extends Controller
         if (in_array($data['user']['hak_akses'], $akses)) {
             $this->view('templates/header', $data);
             $this->view('humas/bkk/kebekerjaan/bkkmodullembarkerja');
-            $this->view('templates/footer');
+            $this->view('templates/footerwm');
         } else if ($data['user']['hak_akses'] == '') {
             header("Location: " . BASEURL);
             Flasher::setFlash('GAGAL', 'Anda Tidak Mempunyai Akses Untuk Menuju Halaman Tersebut', 'danger');
@@ -72,7 +72,7 @@ class BKK extends Controller
         if (in_array($data['user']['hak_akses'], $akses)) {
             $this->view('templates/header', $data);
             $this->view('humas/bkk/kebekerjaan/bkkrundownsmkn4malang');
-            $this->view('templates/footer');
+            $this->view('templates/footerwm');
         } else if ($data['user']['hak_akses'] == '') {
             header("Location: " . BASEURL);
             Flasher::setFlash('GAGAL', 'Anda Tidak Mempunyai Akses Untuk Menuju Halaman Tersebut', 'danger');
@@ -86,7 +86,7 @@ class BKK extends Controller
         if (in_array($data['user']['hak_akses'], $akses)) {
             $this->view('templates/header', $data);
             $this->view('humas/bkk/kebekerjaan/bkkmodulsmkn4malang');
-            $this->view('templates/footer');
+            $this->view('templates/footerwm');
         } else if ($data['user']['hak_akses'] == '') {
             header("Location: " . BASEURL);
             Flasher::setFlash('GAGAL', 'Anda Tidak Mempunyai Akses Untuk Menuju Halaman Tersebut', 'danger');
@@ -100,7 +100,7 @@ class BKK extends Controller
         if (in_array($data['user']['hak_akses'], $akses)) {
             $this->view('templates/header', $data);
             $this->view('humas/bkk/kebekerjaan/bkkmodulpapikostick');
-            $this->view('templates/footer');
+            $this->view('templates/footerwm');
         } else if ($data['user']['hak_akses'] == '') {
             header("Location: " . BASEURL);
             Flasher::setFlash('GAGAL', 'Anda Tidak Mempunyai Akses Untuk Menuju Halaman Tersebut', 'danger');
@@ -114,7 +114,7 @@ class BKK extends Controller
         if (in_array($data['user']['hak_akses'], $akses)) {
             $this->view('templates/header', $data);
             $this->view('humas/bkk/kebekerjaan/bkkmodulpapikostick003');
-            $this->view('templates/footer');
+            $this->view('templates/footerwm');
         } else if ($data['user']['hak_akses'] == '') {
             header("Location: " . BASEURL);
             Flasher::setFlash('GAGAL', 'Anda Tidak Mempunyai Akses Untuk Menuju Halaman Tersebut', 'danger');
@@ -128,7 +128,7 @@ class BKK extends Controller
         if (in_array($data['user']['hak_akses'], $akses)) {
             $this->view('templates/header', $data);
             $this->view('humas/bkk/kebekerjaan/bkkmodulgambarnskrepline');
-            $this->view('templates/footer');
+            $this->view('templates/footerwm');
         } else if ($data['user']['hak_akses'] == '') {
             header("Location: " . BASEURL);
             Flasher::setFlash('GAGAL', 'Anda Tidak Mempunyai Akses Untuk Menuju Halaman Tersebut', 'danger');
@@ -142,7 +142,7 @@ class BKK extends Controller
         if (in_array($data['user']['hak_akses'], $akses)) {
             $this->view('templates/header', $data);
             $this->view('humas/bkk/kebekerjaan/bkkmodultestwawancara');
-            $this->view('templates/footer');
+            $this->view('templates/footerwm');
         } else if ($data['user']['hak_akses'] == '') {
             header("Location: " . BASEURL);
             Flasher::setFlash('GAGAL', 'Anda Tidak Mempunyai Akses Untuk Menuju Halaman Tersebut', 'danger');
@@ -156,7 +156,7 @@ class BKK extends Controller
         if (in_array($data['user']['hak_akses'], $akses)) {
             $this->view('templates/header', $data);
             $this->view('humas/bkk/kebekerjaan/bkkmodultiu');
-            $this->view('templates/footer');
+            $this->view('templates/footerwm');
         } else if ($data['user']['hak_akses'] == '') {
             header("Location: " . BASEURL);
             Flasher::setFlash('GAGAL', 'Anda Tidak Mempunyai Akses Untuk Menuju Halaman Tersebut', 'danger');
@@ -170,7 +170,7 @@ class BKK extends Controller
         if (in_array($data['user']['hak_akses'], $akses)) {
             $this->view('templates/header', $data);
             $this->view('humas/bkk/kebekerjaan/bkkmodullaporanp5kebekerjaan');
-            $this->view('templates/footer');
+            $this->view('templates/footerwm');
         } else if ($data['user']['hak_akses'] == '') {
             header("Location: " . BASEURL);
             Flasher::setFlash('GAGAL', 'Anda Tidak Mempunyai Akses Untuk Menuju Halaman Tersebut', 'danger');
@@ -187,7 +187,7 @@ class BKK extends Controller
         } else if ($data['user']['hak_akses'] == '') {
             $this->view('templates/header', $data);
             $this->view('humas/bkk/peminatan/bkkpeminatanlaporan', $data);
-            $this->view('templates/footer');
+            $this->view('templates/footerwm');
         } else {
         }
     }
@@ -201,7 +201,7 @@ class BKK extends Controller
         if (in_array($data['user']['hak_akses'], $akses)) {
             $this->view('templates/header', $data);
             $this->view('humas/bkk/lomba/bkklombalaporan', $data);
-            $this->view('templates/footer');
+            $this->view('templates/footerwm');
         } else if ($data['user']['hak_akses'] == '') {
             header("Location: " . BASEURL);
             Flasher::setFlash('GAGAL', 'Anda Tidak Mempunyai Akses Untuk Menuju Halaman Tersebut', 'danger');
@@ -217,7 +217,7 @@ class BKK extends Controller
         if (in_array($data['user']['hak_akses'], $akses)) {
             $this->view('templates/header', $data);
             $this->view('humas/bkk/spw/bkkspwlaporan', $data);
-            $this->view('templates/footer');
+            $this->view('templates/footerwm');
         } else if ($data['user']['hak_akses'] == '') {
             header("Location: " . BASEURL);
             Flasher::setFlash('GAGAL', 'Anda Tidak Mempunyai Akses Untuk Menuju Halaman Tersebut', 'danger');
@@ -233,7 +233,7 @@ class BKK extends Controller
         if (in_array($data['user']['hak_akses'], $akses)) {
             $this->view('templates/header', $data);
             $this->view('humas/bkk/mou/bkkmou', $data);
-            $this->view('templates/footer');
+            $this->view('templates/footerwm');
         } else if ($data['user']['hak_akses'] == '') {
             header("Location: " . BASEURL);
             Flasher::setFlash('GAGAL', 'Anda Tidak Mempunyai Akses Untuk Menuju Halaman Tersebut', 'danger');
@@ -249,7 +249,7 @@ class BKK extends Controller
         if (in_array($data['user']['hak_akses'], $akses)) {
             $this->view('templates/header', $data);
             $this->view('humas/bkk/das/bkkalumnisukseslaporan', $data);
-            $this->view('templates/footer');
+            $this->view('templates/footerwm');
         } else if ($data['user']['hak_akses'] == '') {
             header("Location: " . BASEURL);
             Flasher::setFlash('GAGAL', 'Anda Tidak Mempunyai Akses Untuk Menuju Halaman Tersebut', 'danger');
@@ -265,7 +265,7 @@ class BKK extends Controller
         if (in_array($data['user']['hak_akses'], $akses)) {
             $this->view('templates/header', $data);
             $this->view('humas/bkk/workshop/bkkworkshoplaporan', $data);
-            $this->view('templates/footer');
+            $this->view('templates/footerwm');
         } else if ($data['user']['hak_akses'] == '') {
             header("Location: " . BASEURL);
             Flasher::setFlash('GAGAL', 'Anda Tidak Mempunyai Akses Untuk Menuju Halaman Tersebut', 'danger');
@@ -281,7 +281,7 @@ class BKK extends Controller
         if (in_array($data['user']['hak_akses'], $akses)) {
             $this->view('templates/header', $data);
             $this->view('humas/bkk/loker/rekrutmenIndustri', $data);
-            $this->view('templates/footer');
+            $this->view('templates/footerwm');
         } else if ($data['user']['hak_akses'] == '') {
             header("Location: " . BASEURL);
             Flasher::setFlash('GAGAL', 'Anda Tidak Mempunyai Akses Untuk Menuju Halaman Tersebut', 'danger');
