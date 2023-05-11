@@ -8,17 +8,17 @@
     <title><?= $data['judul'] ?></title>
     <!-- plugins:css -->
     <script src="js/jquery.min.js"></script>
-    <link rel="stylesheet" href="css/bootstrap.css">
-    <link rel="stylesheet" href="vendors/feather/feather.css">
-    <link rel="stylesheet" href="vendors/ti-icons/css/themify-icons.css">
-    <link rel="stylesheet" href="vendors/css/vendor.bundle.base.css">
-    <link rel="stylesheet" href="vendors/mdi/css/materialdesignicons.min.css">
-    <link rel="stylesheet" href="vendors/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="<?= BASEURL ?>/css/bootstrap.css">
+    <link rel="stylesheet" href="<?= BASEURL ?>/vendors/feather/feather.css">
+    <link rel="stylesheet" href="<?= BASEURL ?>/vendors/ti-icons/css/themify-icons.css">
+    <link rel="stylesheet" href="<?= BASEURL ?>/vendors/css/vendor.bundle.base.css">
+    <link rel="stylesheet" href="<?= BASEURL ?>/vendors/mdi/css/materialdesignicons.min.css">
+    <link rel="stylesheet" href="<?= BASEURL ?>/vendors/font-awesome/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/cd-themify-icons/index.min.css">
-    <link rel="stylesheet" type="text/css" href="js/select.dataTables.min.css">
+    <link rel="stylesheet" type="text/css" href="<?= BASEURL ?>/js/select.dataTables.min.css">
     <!-- endinject -->
     <!-- Plugin css for this page -->
-    <link rel="stylesheet" href="vendors/datatables.net-bs4/dataTables.bootstrap4.css">
+    <link rel="stylesheet" href="<?= BASEURL ?>/vendors/datatables.net-bs4/dataTables.bootstrap4.css">
     <link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/jquery.dataTables.css" />
 
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
@@ -27,9 +27,9 @@
 
     <!-- End plugin css for this page -->
     <!-- inject:css -->
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/scroll.css">
-    <link rel="stylesheet" href="css/vertical-layout-light/style.css">
+    <link rel="stylesheet" href="<?= BASEURL ?>/css/style.css">
+    <link rel="stylesheet" href="<?= BASEURL ?>/css/scroll.css">
+    <link rel="stylesheet" href="<?= BASEURL ?>/css/vertical-layout-light/style.css">
     <!-- endinject -->
     <link rel="shortcut icon" href="images/favicon.png" />
 </head>
@@ -50,10 +50,10 @@
             <!-- partial:partials/_navbar.html -->
             <nav class="navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
                 <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-center">
-                    <a class="navbar-brand brand-logo mr-5" href="<?= BASEURL ?>"><img src="images/logosimas.png"
-                            class="mr-2" alt="SIMAS" /></a>
-                    <a class="navbar-brand brand-logo-mini" href="<?= BASEURL ?>"><img src="images/logosaja.png"
-                            alt="SIMAS" /></a>
+                    <a class="navbar-brand brand-logo mr-5" href="<?= BASEURL ?>"><img
+                            src="<?= BASEURL ?>/images/logosimas.png" class="mr-2" alt="SIMAS" /></a>
+                    <a class="navbar-brand brand-logo-mini" href="<?= BASEURL ?>"><img
+                            src="<?= BASEURL ?>/images/logosaja.png" alt="SIMAS" /></a>
                 </div>
                 <div class="navbar-menu-wrapper d-flex align-items-center justify-content-end">
                     <button class="navbar-toggler navbar-toggler align-self-center" type="button"
@@ -75,8 +75,7 @@
                     </ul>
                     <ul class="navbar-nav navbar-nav-right">
                         <li class="nav-item dropdown" id="notification">
-                            <a class="nav-link count-indicator dropdown-toggle" href="#"
-                                data-toggle="dropdown">
+                            <a class="nav-link count-indicator dropdown-toggle" href="#" data-toggle="dropdown">
                                 <i class="icon-bell mx-0"></i>
                                 <span class="count d-none"></span>
                             </a>
@@ -357,34 +356,37 @@
 
 
                         <?php if ($data['user']['role'] == 'admin') : ?>
-                            <li class="nav-item">
-                                <a class="nav-link" data-toggle="collapse" href="#masterdata" aria-expanded="false" aria-controls="masterdata">
-                                    <i class="icon-folder menu-icon"></i>
-                                    <span class="menu-title">Master Data</span>
-                                    <i class="menu-arrow"></i>
-                                </a>
-                                <div class="collapse" id="masterdata">
-                                    <ul class="nav flex-column sub-menu">
-                                        <li class="nav-item"> <a class="nav-link" href="<?= BASEURL ?>/guru">Guru</a></li>
-                                        <li class="nav-item"> <a class="nav-link" href="<?= BASEURL ?>/karyawan">Karyawan</a>
-                                        </li>
-                                        <li class="nav-item"> <a class="nav-link" href="<?= BASEURL ?>/siswa">Siswa</a></li>
-                                        <li class="nav-item"> <a class="nav-link" href="<?= BASEURL ?>/kelas">Kelas</a></li>
-                                        <li class="nav-item"> <a class="nav-link" href="<?= BASEURL ?>/walikelas">Wali
-                                                Kelas</a>
-                                        </li>
-                                        <li class="nav-item"> <a class="nav-link" href="<?= BASEURL ?>/mapel">Mata
-                                                Pelajaran</a>
-                                        </li>
-                                        <li class="nav-item"> <a class="nav-link" href="<?= BASEURL ?>/jabatan">Jabatan</a>
-                                        </li>
-                                        <li class="nav-item"> <a class="nav-link" href="<?= BASEURL ?>/kompkeahlian">Kompetensi
-                                                Keahlian</a></li>
-                                        <li class="nav-item"> <a class="nav-link" href="<?= BASEURL ?>/progkeahlian">Program
-                                                Keahlian</a></li>
-                                    </ul>
-                                </div>
-                            </li>
+                        <li class="nav-item">
+                            <a class="nav-link" data-toggle="collapse" href="#masterdata" aria-expanded="false"
+                                aria-controls="masterdata">
+                                <i class="icon-folder menu-icon"></i>
+                                <span class="menu-title">Master Data</span>
+                                <i class="menu-arrow"></i>
+                            </a>
+                            <div class="collapse" id="masterdata">
+                                <ul class="nav flex-column sub-menu">
+                                    <li class="nav-item"> <a class="nav-link" href="<?= BASEURL ?>/guru">Guru</a></li>
+                                    <li class="nav-item"> <a class="nav-link"
+                                            href="<?= BASEURL ?>/karyawan">Karyawan</a>
+                                    </li>
+                                    <li class="nav-item"> <a class="nav-link" href="<?= BASEURL ?>/siswa">Siswa</a></li>
+                                    <li class="nav-item"> <a class="nav-link" href="<?= BASEURL ?>/kelas">Kelas</a></li>
+                                    <li class="nav-item"> <a class="nav-link" href="<?= BASEURL ?>/walikelas">Wali
+                                            Kelas</a>
+                                    </li>
+                                    <li class="nav-item"> <a class="nav-link" href="<?= BASEURL ?>/mapel">Mata
+                                            Pelajaran</a>
+                                    </li>
+                                    <li class="nav-item"> <a class="nav-link" href="<?= BASEURL ?>/jabatan">Jabatan</a>
+                                    </li>
+                                    <li class="nav-item"> <a class="nav-link"
+                                            href="<?= BASEURL ?>/kompkeahlian">Kompetensi
+                                            Keahlian</a></li>
+                                    <li class="nav-item"> <a class="nav-link" href="<?= BASEURL ?>/progkeahlian">Program
+                                            Keahlian</a></li>
+                                </ul>
+                            </div>
+                        </li>
                         <?php endif ?>
 
                         <li class="nav-item">
@@ -397,34 +399,67 @@
                             <div class="collapse" id="tu">
                                 <ul class="nav flex-column sub-menu">
                                     <?php if ($data['user']['role'] == 'admin' && ($data['user']['hak_akses'] == 'all' || $data['user']['hak_akses'] == 'mastertu')) : ?>
-                                        <li class="nav-item"> <a class="nav-link" href="<?= BASEURL ?>/suratmasuk">Surat
-                                                Masuk</a></li>
-                                        <li class="nav-item"> <a class="nav-link" href="<?= BASEURL ?>/suratkeluar">Surat
-                                                Keluar</a></li>
+                                    <li class="nav-item"> <a class="nav-link" href="<?= BASEURL ?>/suratmasuk">Surat
+                                            Masuk</a></li>
+                                    <li class="nav-item"> <a class="nav-link" href="<?= BASEURL ?>/suratkeluar">Surat
+                                            Keluar</a></li>
                                     <?php endif ?>
                                     <?php if ($data['user']['role'] == 'admin' || $data['user']['role'] == 'user' || $data['user']['role'] == 'guest') : ?>
-                                        <li class="nav-item"> <a class="nav-link" href="<?= BASEURL ?>/suratpengajuan">Surat
-                                                Pengajuan</a></li>
-                                        <li class="nav-item"> <a class="nav-link" href="<?= BASEURL ?>/nopetunjuk">Nomor
-                                                Petunjuk</a></li>
+                                    <li class="nav-item"> <a class="nav-link" href="<?= BASEURL ?>/suratpengajuan">Surat
+                                            Pengajuan</a></li>
+                                    <li class="nav-item"> <a class="nav-link" href="<?= BASEURL ?>/nopetunjuk">Nomor
+                                            Petunjuk</a></li>
                                     <?php endif ?>
                                 </ul>
                             </div>
                         </li>
 
+                        <?php if ($data['user']['role'] == 'admin' && ($data['user']['hak_akses'] == 'all' || $data['user']['hak_akses'] == 'humas')) : ?>
                         <li class="nav-item">
-                            <a class="nav-link" data-toggle="collapse" href="#humas" aria-expanded="false"
-                                aria-controls="humas">
+                            <a class="nav-link" data-toggle="collapse" href="#pkl" aria-expanded="false"
+                                aria-controls="pkl">
                                 <i class="icon-columns menu-icon"></i>
                                 <span class="menu-title">Humas</span>
                                 <i class="menu-arrow"></i>
                             </a>
-                            <div class="collapse" id="humas">
+                            <div class="collapse" id="pkl">
                                 <ul class="nav flex-column sub-menu">
-                                    <li class="nav-item"><a class="nav-link" href="isihumas.html">kosong</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="<?= BASEURL; ?>/pkl/index">PKL</a>
+                                    </li>
+                                    <div class="collapse" id="pkl">
+                                        <div class="navsubitem">
+                                            <a class="nav-link" href="<?= BASEURL; ?>/pkl/rekap">Rekap PKL</a>
+                                            <a class="nav-link" href="<?= BASEURL; ?>/pkl/pembekalan">Pembekalan PKL</a>
+                                            <a class="nav-link" href="<?= BASEURL; ?>/pkl/pemberkasan">Pemberkasan</a>
+                                            <a class="nav-link" href="<?= BASEURL; ?>/pkl/prakerin">Prakerin</a>
+                                            <a class="nav-link" href="<?= BASEURL; ?>/pkl/nilai">Nilai PKL</a>
+                                            <a class="nav-link" href="<?= BASEURL; ?>/pkl/dtampung">Daya Tampung</a>
+                                        </div>
+                                        <li class="nav-item"><a class="nav-link"
+                                                href="<?= BASEURL; ?>/bkk/index">BKK</a>
+                                        </li>
+                                        <div class="navsubitem">
+                                            <a class="nav-link" href="#">Alumni Sukses</a>
+                                            <a class="nav-link" href="<?= BASEURL; ?>/bkk/mou">MoU</a>
+                                            <a class="nav-link" href="<?= BASEURL; ?>/bkk/peminatan">Peminatan</a>
+                                            <a class="nav-link" href="<?= BASEURL; ?>/bkk/workshop">Workshop</a>
+                                            <a class="nav-link" href="<?= BASEURL; ?>/bkk/kebekerjaan">Kebekerjaan</a>
+                                            <a class="nav-link" href="<?= BASEURL; ?>/bkk/spw">SPW</a>
+                                            <a class="nav-link" href="<?= BASEURL; ?>/bkk/lomba">Lomba</a>
+                                            <a class="nav-link" href="<?= BASEURL; ?>/bkk/loker">Lowongan Kerja</a>
+                                        </div>
+                                        <li class="nav-item"><a class="nav-link"
+                                                href="<?= BASEURL; ?>/ict/index">ICT</a>
+                                        </li>
+                                        <li class="nav-item"><a class="nav-link"
+                                                href="<?= BASEURL; ?>/stiru/index">Studi
+                                                Tiru</a></li>
                                 </ul>
                             </div>
                         </li>
+                        <?php endif ?>
+
+                        <?php if ($data['user']['role'] == 'admin' && ($data['user']['hak_akses'] == 'all' || $data['user']['hak_akses'] == 'kesiswaan')) : ?>
                         <li class="nav-item">
                             <a class="nav-link" data-toggle="collapse" href="#kesiswaan" aria-expanded="false"
                                 aria-controls="kesiswaan">
@@ -496,6 +531,9 @@
                                     </ul>
                             </div>
                         </li>
+                        <?php endif ?>
+
+                        <?php if ($data['user']['role'] == 'admin' && ($data['user']['hak_akses'] == 'all' || $data['user']['hak_akses'] == 'kurikulum')) : ?>
                         <li class="nav-item">
                             <a class="nav-link" data-toggle="collapse" href="#kurikulumpage" aria-expanded="false"
                                 aria-controls="kurikulum">
@@ -509,19 +547,25 @@
                                 </ul>
                             </div>
                         </li>
+                        <?php endif ?>
+
+                        <?php if ($data['user']['role'] == 'admin' && ($data['user']['hak_akses'] == 'all' || $data['user']['hak_akses'] == 'psdm')) : ?>
                         <li class="nav-item">
-                            <a class="nav-link" data-toggle="collapse" href="#sdm" aria-expanded="false"
-                                aria-controls="sdm">
+                            <a class="nav-link" data-toggle="collapse" href="#psdm" aria-expanded="false"
+                                aria-controls="psdm">
                                 <i class="icon-bar-graph menu-icon"></i>
-                                <span class="menu-title">SDM</span>
+                                <span class="menu-title">PSDM</span>
                                 <i class="menu-arrow"></i>
                             </a>
-                            <div class="collapse" id="sdm">
+                            <div class="collapse" id="psdm">
                                 <ul class="nav flex-column sub-menu">
                                     <li class="nav-item"> <a class="nav-link" href="isisdm.html">kosong</a></li>
                                 </ul>
                             </div>
                         </li>
+                        <?php endif ?>
+
+                        <?php if ($data['user']['role'] == 'admin' && ($data['user']['hak_akses'] == 'all' || $data['user']['hak_akses'] == 'sarpras')) : ?>
                         <li class="nav-item">
                             <a class="nav-link" data-toggle="collapse" href="#sarpras" aria-expanded="false"
                                 aria-controls="sarpras">
@@ -541,6 +585,7 @@
                                 <span class="menu-title">Riwayat</span>
                             </a>
                         </li>
+                        <?php endif ?>
                     </ul>
                 </nav>
 

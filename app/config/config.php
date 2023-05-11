@@ -12,3 +12,4 @@ define('DB_MASTER', 'masterdata');
 define('DB_TU', 'tu');
 define('DB_USERS', 'users');
 define('DB_KESISWAAN', 'kesiswaan');
+define('DB_HUMAS', 'humas');
