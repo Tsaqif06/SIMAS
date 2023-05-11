@@ -1,5 +1,8 @@
 <?php
 
+use Symfony\Component\Filesystem\Exception\IOExceptionInterface;
+use Symfony\Component\Filesystem\Filesystem;
+use Symfony\Component\Filesystem\Path;
 use Ramsey\Uuid\Uuid;
 
 class galeriKegiatan_model
@@ -32,63 +35,60 @@ class galeriKegiatan_model
         $this->db->query('SELECT * FROM ' . $this->table . ' WHERE `status` = 1');
         return $this->db->fetchAll();
     }
-    function upload()
+    public function uploadImage()
     {
-        global $con;
-        $targetDir = 'datafoto/'; // direktori tempat menyimpan file upload
-        $namaFile = $_FILES['fotokegiatan']['name'];
-        $ukuranFile = $_FILES['fotokegiatan']['size'];
-        // $error = $_FILES['foto']['error'];
-        $tmpName = $_FILES['fotokegiatan']['tmp_name'];
-        // nama file upload
-        // var_dump($_FILES); die;
+        $targetDir = 'images/datafoto/'; // direktori tempat menyimpan file upload
+        $temp = $_FILES['fotokegiatan']['name'];
+        $imageFileType = explode('.', $temp);
+        $imageFileType = strtolower(end($imageFileType));
 
-        //cek apakah ada gambar yang diupload
-        // if ( error === 4 ) {
-        //     echo "<script>
-        //             alert('Pilih gambar terlebih dahulu1');
-        //           </script>";
-        //     return false;
-        // }
+        // validasi ekstensi file
+        // $imageFileType = strtolower(pathinfo($targetFile, PATHINFO_EXTENSION));
+        if ($imageFileType != "jpg" && $imageFileType != "jpeg" && $imageFileType != "png" && $imageFileType != "gif") {
+            echo "Sorry, only JPG, JPEG, PNG & GIF files are allowed.";
+            exit;
+        }
 
-        //cek apakah file yang diupload adalah gambar
-        $ekstensiGambarValid = ['jpg', 'jpeg', 'png'];
-        $ekstensiGambar = explode('.', $namaFile);
-        $ekstensiGambar = strtolower(end($ekstensiGambar));
-        if (!in_array($ekstensiGambar, $ekstensiGambarValid)) {
-            echo "<script>
-                    alert('Yang Anda upload bukan gambar!');
-                  </script>";
+        $fileName = uniqid();
+        $fileName .= '.';
+        $fileName .= $imageFileType;
+        $targetFile = $targetDir . $fileName; // nama file upload
+
+        // cek gambar diupload atau tidak
+        if ($_FILES["fotokegiatan"]["error"] === 4) {
+            echo
+            '
+            <script>
+                alert("Silahkan Upload Gambar")
+            </script>
+        ';
             return false;
         }
 
-        //cek jika ukuran gambar terlalu basar
-        if ($ukuranFile > 10044070) {
-            echo "<script>
-                    alert('Ukuran gambar terlalu bersar!');
-                  </script>";
+        // validasi ukuran file
+        if ($_FILES["fotokegiatan"]["size"] > 1000000) {
+            echo
+            '
+                <script>
+                    alert("Ukuran File Terlalu Besar")
+                </script>
+            ';
             return false;
         }
 
-        //lolos pengecekan
-        //generate nama file baru
-        $namaFileBaru = uniqid();
-        $namaFileBaru .= '.';
-        $namaFileBaru .= $ekstensiGambar;
+        try {
+            // simpan file upload ke direktori
+            move_uploaded_file($_FILES['fotokegiatan']['tmp_name'], $targetFile);
+        } catch (IOExceptionInterface $e) {
+            echo $e->getMessage();
+        }
 
-        $targetFile = $targetDir . $namaFileBaru;
-
-        move_uploaded_file($tmpName, $targetFile);
-
-        // var_dump($namaFileBaru); die;
-        // var_dump($targetFile); die;
-
-        return $namaFileBaru;
+        return $fileName;
     }
 
     public function tambahDataKegiatan($data)
     {
-        $foto = $this->upload();
+        $foto = $this->uploadImage();
         if (!$foto) {
             return false;
         };
@@ -145,7 +145,7 @@ class galeriKegiatan_model
         if ($_FILES["fotokegiatan"]["error"] === 4) {
             $foto = $data['fotoLama'];
         } else {
-            $foto = $this->upload();
+            $foto = $this->uploadImage();
         }
 
         // $this->db->bind('foto', $foto);
