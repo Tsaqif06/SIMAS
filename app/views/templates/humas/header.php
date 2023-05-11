@@ -8,24 +8,24 @@
     <title><?= $data['judul'] ?></title>
     <!-- plugins:css -->
     <script src="js/jquery.min.js"></script>
-    <link rel="stylesheet" href="<?= BASEURL ?>/css/bootstrap.css">
-    <link rel="stylesheet" href="<?= BASEURL ?>/vendors/feather/feather.css">
-    <link rel="stylesheet" href="<?= BASEURL ?>/vendors/ti-icons/css/themify-icons.css">
-    <link rel="stylesheet" href="<?= BASEURL ?>/vendors/css/vendor.bundle.base.css">
-    <link rel="stylesheet" href="<?= BASEURL ?>/vendors/mdi/css/materialdesignicons.min.css">
-    <link rel="stylesheet" href="<?= BASEURL ?>/vendors/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="../css/bootstrap.css">
+    <link rel="stylesheet" href="../vendors/feather/feather.css">
+    <link rel="stylesheet" href="../vendors/ti-icons/css/themify-icons.css">
+    <link rel="stylesheet" href="../vendors/css/vendor.bundle.base.css">
+    <link rel="stylesheet" href="../vendors/mdi/css/materialdesignicons.min.css">
+    <link rel="stylesheet" href="../vendors/font-awesome/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/cd-themify-icons/index.min.css">
-    <link rel="stylesheet" type="text/css" href="<?= BASEURL ?>/js/select.dataTables.min.css">
+    <link rel="stylesheet" type="text/css" href="../js/select.dataTables.min.css">
     <!-- endinject -->
     <!-- Plugin css for this page -->
-    <link rel="stylesheet" href="<?= BASEURL ?>/vendors/datatables.net-bs4/dataTables.bootstrap4.css">
+    <link rel="stylesheet" href="../vendors/datatables.net-bs4/dataTables.bootstrap4.css">
     <link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/jquery.dataTables.css" />
 
     <!-- End plugin css for this page -->
     <!-- inject:css -->
-    <link rel="stylesheet" href="<?= BASEURL ?>/css/style.css">
-    <link rel="stylesheet" href="<?= BASEURL ?>/css/scroll.css">
-    <link rel="stylesheet" href="<?= BASEURL ?>/css/vertical-layout-light/style.css">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/scroll.css">
+    <link rel="stylesheet" href="../css/vertical-layout-light/style.css">
     <!-- endinject -->
     <link rel="shortcut icon" href="images/favicon.png" />
 </head>
@@ -46,10 +46,10 @@
             <!-- partial:partials/_navbar.html -->
             <nav class="navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
                 <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-center">
-                    <a class="navbar-brand brand-logo mr-5" href="<?= BASEURL ?>"><img
-                            src="<?= BASEURL ?>/images/logosimas.png" class="mr-2" alt="SIMAS" /></a>
-                    <a class="navbar-brand brand-logo-mini" href="<?= BASEURL ?>"><img
-                            src="<?= BASEURL ?>/images/logosaja.png" alt="SIMAS" /></a>
+                    <a class="navbar-brand brand-logo mr-5" href=".."><img src="../images/logosimas.png" class="mr-2"
+                            alt="SIMAS" /></a>
+                    <a class="navbar-brand brand-logo-mini" href=".."><img src="../images/logosaja.png"
+                            alt="SIMAS" /></a>
                 </div>
                 <div class="navbar-menu-wrapper d-flex align-items-center justify-content-end">
                     <button class="navbar-toggler navbar-toggler align-self-center" type="button"
@@ -134,7 +134,7 @@
                                     <i class="ti-user text-primary"></i>
                                     Profil
                                 </a>
-                                <a class="dropdown-item" href="<?= BASEURL ?>/logout">
+                                <a class="dropdown-item" href="../logout">
                                     <i class="ti-power-off text-primary"></i>
                                     Keluar
                                 </a>
@@ -344,7 +344,7 @@
                 <nav class="sidebar sidebar-offcanvas" id="sidebar">
                     <ul class="nav">
                         <li class="nav-item">
-                            <a class="nav-link" href="<?= BASEURL ?>/">
+                            <a class="nav-link" href="../">
                                 <i class="icon-grid menu-icon"></i>
                                 <span class="menu-title">Dashboard</span>
                             </a>
@@ -361,24 +361,22 @@
                             </a>
                             <div class="collapse" id="masterdata">
                                 <ul class="nav flex-column sub-menu">
-                                    <li class="nav-item"> <a class="nav-link" href="<?= BASEURL ?>/guru">Guru</a></li>
-                                    <li class="nav-item"> <a class="nav-link"
-                                            href="<?= BASEURL ?>/karyawan">Karyawan</a>
+                                    <li class="nav-item"> <a class="nav-link" href="../guru">Guru</a></li>
+                                    <li class="nav-item"> <a class="nav-link" href="../karyawan">Karyawan</a>
                                     </li>
-                                    <li class="nav-item"> <a class="nav-link" href="<?= BASEURL ?>/siswa">Siswa</a></li>
-                                    <li class="nav-item"> <a class="nav-link" href="<?= BASEURL ?>/kelas">Kelas</a></li>
-                                    <li class="nav-item"> <a class="nav-link" href="<?= BASEURL ?>/walikelas">Wali
+                                    <li class="nav-item"> <a class="nav-link" href="../siswa">Siswa</a></li>
+                                    <li class="nav-item"> <a class="nav-link" href="../kelas">Kelas</a></li>
+                                    <li class="nav-item"> <a class="nav-link" href="../walikelas">Wali
                                             Kelas</a>
                                     </li>
-                                    <li class="nav-item"> <a class="nav-link" href="<?= BASEURL ?>/mapel">Mata
+                                    <li class="nav-item"> <a class="nav-link" href="../mapel">Mata
                                             Pelajaran</a>
                                     </li>
-                                    <li class="nav-item"> <a class="nav-link" href="<?= BASEURL ?>/jabatan">Jabatan</a>
+                                    <li class="nav-item"> <a class="nav-link" href="../jabatan">Jabatan</a>
                                     </li>
-                                    <li class="nav-item"> <a class="nav-link"
-                                            href="<?= BASEURL ?>/kompkeahlian">Kompetensi
+                                    <li class="nav-item"> <a class="nav-link" href="../kompkeahlian">Kompetensi
                                             Keahlian</a></li>
-                                    <li class="nav-item"> <a class="nav-link" href="<?= BASEURL ?>/progkeahlian">Program
+                                    <li class="nav-item"> <a class="nav-link" href="../progkeahlian">Program
                                             Keahlian</a></li>
                                 </ul>
                             </div>
@@ -395,15 +393,15 @@
                             <div class="collapse" id="tu">
                                 <ul class="nav flex-column sub-menu">
                                     <?php if ($data['user']['role'] == 'admin' && ($data['user']['hak_akses'] == 'all' || $data['user']['hak_akses'] == 'mastertu')) : ?>
-                                    <li class="nav-item"> <a class="nav-link" href="<?= BASEURL ?>/suratmasuk">Surat
+                                    <li class="nav-item"> <a class="nav-link" href="../suratmasuk">Surat
                                             Masuk</a></li>
-                                    <li class="nav-item"> <a class="nav-link" href="<?= BASEURL ?>/suratkeluar">Surat
+                                    <li class="nav-item"> <a class="nav-link" href="../suratkeluar">Surat
                                             Keluar</a></li>
                                     <?php endif ?>
                                     <?php if ($data['user']['role'] == 'admin' || $data['user']['role'] == 'user' || $data['user']['role'] == 'guest') : ?>
-                                    <li class="nav-item"> <a class="nav-link" href="<?= BASEURL ?>/suratpengajuan">Surat
+                                    <li class="nav-item"> <a class="nav-link" href="../suratpengajuan">Surat
                                             Pengajuan</a></li>
-                                    <li class="nav-item"> <a class="nav-link" href="<?= BASEURL ?>/nopetunjuk">Nomor
+                                    <li class="nav-item"> <a class="nav-link" href="../nopetunjuk">Nomor
                                             Petunjuk</a></li>
                                     <?php endif ?>
                                 </ul>
@@ -467,14 +465,14 @@
                                         </a>
                                     </li>
                                     <ul style="list-style-type: none;">
-                                        <li><a class="navsubitem" href="<?= BASEURL ?>/siswa">Siswa</a></li>
-                                        <li><a class="navsubitem" href="<?= BASEURL ?>/kompkeahlian">Kompetensi
+                                        <li><a class="navsubitem" href="../siswa">Siswa</a></li>
+                                        <li><a class="navsubitem" href="../kompkeahlian">Kompetensi
                                                 Keahlian</a>
                                         </li>
-                                        <li><a class="navsubitem" href="<?= BASEURL ?>/progkeahlian">Program
+                                        <li><a class="navsubitem" href="../progkeahlian">Program
                                                 Keahlian</a>
                                         </li>
-                                        <li><a class="navsubitem" href="<?= BASEURL ?>/kelas">Kelas</a></li>
+                                        <li><a class="navsubitem" href="../kelas">Kelas</a></li>
                                     </ul>
                                     <li class="nav-item">
                                         <a class="nav-link">
@@ -482,8 +480,8 @@
                                         </a>
                                     </li>
                                     <ul style="list-style-type: none;">
-                                        <li><a class="navsubitem" href="<?= BASEURL ?>/kehadiran">Kehadiran</a></li>
-                                        <li><a class="navsubitem" href="<?= BASEURL ?>/izin">Izin</a></li>
+                                        <li><a class="navsubitem" href="../kehadiran">Kehadiran</a></li>
+                                        <li><a class="navsubitem" href="../izin">Izin</a></li>
                                     </ul>
                                     <li class="nav-item">
                                         <a class="nav-link">
@@ -491,8 +489,8 @@
                                         </a>
                                     </li>
                                     <ul style="list-style-type: none;">
-                                        <li><a class="navsubitem" href="<?= BASEURL ?>/pelanggaran">Pelanggaran</a></li>
-                                        <li><a class="navsubitem" href="<?= BASEURL ?>/poinpelanggaran">Poin</a></li>
+                                        <li><a class="navsubitem" href="../pelanggaran">Pelanggaran</a></li>
+                                        <li><a class="navsubitem" href="../poinpelanggaran">Poin</a></li>
                                     </ul>
                                     <li class="nav-item">
                                         <a class="nav-link">
@@ -500,11 +498,11 @@
                                         </a>
                                     </li>
                                     <ul style="list-style-type: none;">
-                                        <li><a class="navsubitem" href="<?= BASEURL ?>/asuransi">Asuransi</a></li>
-                                        <li><a class="navsubitem" href="<?= BASEURL ?>/kecelakaan">Asuransi
+                                        <li><a class="navsubitem" href="../asuransi">Asuransi</a></li>
+                                        <li><a class="navsubitem" href="../kecelakaan">Asuransi
                                                 Kecelakaan</a>
                                         </li>
-                                        <li><a class="navsubitem" href="<?= BASEURL ?>/ortumeninggal">Asuransi Ortu
+                                        <li><a class="navsubitem" href="../ortumeninggal">Asuransi Ortu
                                                 Meninggal</a></li>
                                     </ul>
                                     <li class="nav-item">
@@ -513,13 +511,13 @@
                                         </a>
                                     </li>
                                     <ul style="list-style-type: none;">
-                                        <li><a class="navsubitem" href="<?= BASEURL ?>/infokesiswaan">Informasi
+                                        <li><a class="navsubitem" href="../infokesiswaan">Informasi
                                                 Kesiswaan</a></li>
-                                        <li><a class="navsubitem" href="<?= BASEURL ?>/kegiatanosis">Kegiatan Osis</a>
+                                        <li><a class="navsubitem" href="../kegiatanosis">Kegiatan Osis</a>
                                         </li>
                                     </ul>
                                     <ul style="list-style-type: none;">
-                                        <li><a class="navsubitem" href="<?= BASEURL ?>/waguru">Whatsapp Guru</a></li>
+                                        <li><a class="navsubitem" href="../waguru">Whatsapp Guru</a></li>
                                     </ul>
                             </div>
                         </li>
@@ -563,7 +561,7 @@
                             </div>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="<?= BASEURL ?>/riwayat">
+                            <a class="nav-link" href="../riwayat">
                                 <i class="ti-time menu-icon"></i>
                                 <span class="menu-title">Riwayat</span>
                             </a>
@@ -611,7 +609,7 @@
                                 </form>
                             </div>
                             <div class="modal-footer">
-                                <a href="<?= BASEURL ?>/logout">
+                                <a href="../logout">
                                     <div class="btn btn-primary text-white">
                                         Keluar
                                     </div>

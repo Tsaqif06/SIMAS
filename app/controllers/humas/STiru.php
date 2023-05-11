@@ -10,9 +10,9 @@ class STiru extends Controller
         $data['user'] = $this->user;
         $akses = ['all', 'humas'];
         if (in_array($data['user']['hak_akses'], $akses)) {
-            $this->view('templates/header', $data);
+            $this->view('templates/humas/header', $data);
             $this->view('humas/stiru/studitiru');
-            $this->view('templates/footerwm');
+            $this->view('templates/humas/footer');
         } else if ($data['user']['hak_akses'] == '') {
             header("Location: " . BASEURL);
             Flasher::setFlash('GAGAL', 'Anda Tidak Mempunyai Akses Untuk Menuju Halaman Tersebut', 'danger');
@@ -25,9 +25,9 @@ class STiru extends Controller
         $data['stiru'] = $this->model("$this->model_name", 'Stiru_model')->getAllStiru();
         $akses = ['all', 'humas'];
         if (in_array($data['user']['hak_akses'], $akses)) {
-            $this->view('templates/header', $data);
+            $this->view('templates/humas/header', $data);
             $this->view('humas/stiru/studitirulaporan', $data);
-            $this->view('templates/footerwm');
+            $this->view('templates/humas/footer');
         } else if ($data['user']['hak_akses'] == '') {
             header("Location: " . BASEURL);
             Flasher::setFlash('GAGAL', 'Anda Tidak Mempunyai Akses Untuk Menuju Halaman Tersebut', 'danger');
@@ -40,9 +40,9 @@ class STiru extends Controller
         $data['stiru'] = $this->model("$this->model_name", 'Stiru_model')->getAllStiru();
         $akses = ['all', 'humas'];
         if (in_array($data['user']['hak_akses'], $akses)) {
-            $this->view('templates/header', $data);
+            $this->view('templates/humas/header', $data);
             $this->view('humas/stiru/studitiruform', $data);
-            $this->view('templates/footerwm');
+            $this->view('templates/humas/footer');
         } else if ($data['user']['hak_akses'] == '') {
             header("Location: " . BASEURL);
             Flasher::setFlash('GAGAL', 'Anda Tidak Mempunyai Akses Untuk Menuju Halaman Tersebut', 'danger');
