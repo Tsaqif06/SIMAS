@@ -410,6 +410,7 @@
                             </div>
                         </li>
 
+                        <?php if ($data['user']['role'] == 'admin' && ($data['user']['hak_akses'] == 'all' || $data['user']['hak_akses'] == 'humas')) : ?>
                         <li class="nav-item">
                             <a class="nav-link" data-toggle="collapse" href="#pkl" aria-expanded="false"
                                 aria-controls="pkl">
@@ -452,6 +453,9 @@
                                 </ul>
                             </div>
                         </li>
+                        <?php endif ?>
+
+                        <?php if ($data['user']['role'] == 'admin' && ($data['user']['hak_akses'] == 'all' || $data['user']['hak_akses'] == 'kesiswaan')) : ?>
                         <li class="nav-item">
                             <a class="nav-link" data-toggle="collapse" href="#kesiswaan" aria-expanded="false"
                                 aria-controls="kesiswaan">
@@ -523,6 +527,9 @@
                                     </ul>
                             </div>
                         </li>
+                        <?php endif ?>
+
+                        <?php if ($data['user']['role'] == 'admin' && ($data['user']['hak_akses'] == 'all' || $data['user']['hak_akses'] == 'kurikulum')) : ?>
                         <li class="nav-item">
                             <a class="nav-link" data-toggle="collapse" href="#kurikulumpage" aria-expanded="false"
                                 aria-controls="kurikulum">
@@ -536,19 +543,25 @@
                                 </ul>
                             </div>
                         </li>
+                        <?php endif ?>
+
+                        <?php if ($data['user']['role'] == 'admin' && ($data['user']['hak_akses'] == 'all' || $data['user']['hak_akses'] == 'psdm')) : ?>
                         <li class="nav-item">
-                            <a class="nav-link" data-toggle="collapse" href="#sdm" aria-expanded="false"
-                                aria-controls="sdm">
+                            <a class="nav-link" data-toggle="collapse" href="#psdm" aria-expanded="false"
+                                aria-controls="psdm">
                                 <i class="icon-bar-graph menu-icon"></i>
-                                <span class="menu-title">SDM</span>
+                                <span class="menu-title">PSDM</span>
                                 <i class="menu-arrow"></i>
                             </a>
-                            <div class="collapse" id="sdm">
+                            <div class="collapse" id="psdm">
                                 <ul class="nav flex-column sub-menu">
                                     <li class="nav-item"> <a class="nav-link" href="isisdm.html">kosong</a></li>
                                 </ul>
                             </div>
                         </li>
+                        <?php endif ?>
+
+                        <?php if ($data['user']['role'] == 'admin' && ($data['user']['hak_akses'] == 'all' || $data['user']['hak_akses'] == 'sarpras')) : ?>
                         <li class="nav-item">
                             <a class="nav-link" data-toggle="collapse" href="#sarpras" aria-expanded="false"
                                 aria-controls="sarpras">
@@ -568,6 +581,7 @@
                                 <span class="menu-title">Riwayat</span>
                             </a>
                         </li>
+                        <?php endif ?>
                     </ul>
                 </nav>
 
