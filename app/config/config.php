@@ -13,3 +13,6 @@ define('DB_TU', 'tu');
 define('DB_USERS', 'users');
 define('DB_KESISWAAN', 'kesiswaan');
 define('DB_HUMAS', 'humas');
+define('DB_KURIKULUM', 'kurikulum');
+define('DB_PSDM', 'psdm');
+define('DB_SARPRAS', 'sarpras');

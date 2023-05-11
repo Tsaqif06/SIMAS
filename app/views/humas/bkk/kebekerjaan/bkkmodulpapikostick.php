@@ -1,4 +1,3 @@
-<div class="main-panel">
     <div class="content-wrapper">
         <div class="row">
             <div class="col-md-12 grid-margin">
@@ -15,8 +14,7 @@
 
         <div class="row">
             <div class="col-md-12 grid-margin stretch-card">
-                <object data"<?= BASEURL; ?>/images/bkkkeberkejaan/papi kopstick.pdf" width="100%"
-                    height="800"></object>
+                <object data"<?= BASEURL; ?>/images/bkkkeberkejaan/papi kopstick.pdf" width="100%" height="800"></object>
             </div>
         </div>
 
@@ -33,9 +31,9 @@
         </div>
     </footer>
     <!-- partial -->
-</div>
-<!-- main-panel ends -->
-</div>
-<!-- page-body-wrapper ends -->
-</div>
-<!-- container-scroller -->
+    </div>
+    <!-- main-panel ends -->
+    </div>
+    <!-- page-body-wrapper ends -->
+    </div>
+    <!-- container-scroller -->

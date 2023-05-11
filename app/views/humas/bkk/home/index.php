@@ -1,4 +1,3 @@
-<div class="main-panel">
     <div class="content-wrapper">
         <div class="row">
             <div class="col-md-12 grid-margin">
@@ -41,8 +40,7 @@
                         </div>
                         <div class="card-body">
                             <div class="row">
-                                <a href="<?= BASEURL; ?>/bkk/das"><button type="button"
-                                        class="btn btn-inverse-primary btn-fw btn-block">Masuk Laman Ini</button></a>
+                                <a href="<?= BASEURL; ?>/bkk/das"><button type="button" class="btn btn-inverse-primary btn-fw btn-block">Masuk Laman Ini</button></a>
                             </div>
                         </div>
                     </div>
@@ -74,8 +72,7 @@
                         </div>
                         <div class="card-body">
                             <div class="row">
-                                <a href="<?= BASEURL; ?>/bkk/mou"><button type="button"
-                                        class="btn btn-inverse-primary btn-fw btn-block">Masuk Laman Ini</button></a>
+                                <a href="<?= BASEURL; ?>/bkk/mou"><button type="button" class="btn btn-inverse-primary btn-fw btn-block">Masuk Laman Ini</button></a>
                             </div>
                         </div>
                     </div>
@@ -107,8 +104,7 @@
                         </div>
                         <div class="card-body">
                             <div class="row">
-                                <a href="<?= BASEURL; ?>/bkk/peminatan"><button type="button"
-                                        class="btn btn-inverse-primary btn-fw btn-block">Masuk Laman Ini</button></a>
+                                <a href="<?= BASEURL; ?>/bkk/peminatan"><button type="button" class="btn btn-inverse-primary btn-fw btn-block">Masuk Laman Ini</button></a>
                             </div>
                         </div>
                     </div>
@@ -140,8 +136,7 @@
                         </div>
                         <div class="card-body">
                             <div class="row">
-                                <a href="<?= BASEURL; ?>/bkk/workshop"><button type="button"
-                                        class="btn btn-inverse-primary btn-fw btn-block">Masuk Laman Ini</button></a>
+                                <a href="<?= BASEURL; ?>/bkk/workshop"><button type="button" class="btn btn-inverse-primary btn-fw btn-block">Masuk Laman Ini</button></a>
                             </div>
                         </div>
                     </div>
@@ -173,8 +168,7 @@
                         </div>
                         <div class="card-body">
                             <div class="row">
-                                <a href="<?= BASEURL; ?>/bkk/kebekerjaan"><button type="button"
-                                        class="btn btn-inverse-primary btn-fw btn-block">Masuk Laman Ini</button></a>
+                                <a href="<?= BASEURL; ?>/bkk/kebekerjaan"><button type="button" class="btn btn-inverse-primary btn-fw btn-block">Masuk Laman Ini</button></a>
                             </div>
                         </div>
                     </div>
@@ -206,8 +200,7 @@
                         </div>
                         <div class="card-body">
                             <div class="row">
-                                <a href="<?= BASEURL; ?>/bkk/spw"><button type="button"
-                                        class="btn btn-inverse-primary btn-fw btn-block">Masuk Laman Ini</button></a>
+                                <a href="<?= BASEURL; ?>/bkk/spw"><button type="button" class="btn btn-inverse-primary btn-fw btn-block">Masuk Laman Ini</button></a>
                             </div>
                         </div>
                     </div>
@@ -239,8 +232,7 @@
                         </div>
                         <div class="card-body">
                             <div class="row">
-                                <a href="<?= BASEURL; ?>/bkk/lomba"><button type="button"
-                                        class="btn btn-inverse-primary btn-fw btn-block">Masuk Laman Ini</button></a>
+                                <a href="<?= BASEURL; ?>/bkk/lomba"><button type="button" class="btn btn-inverse-primary btn-fw btn-block">Masuk Laman Ini</button></a>
                             </div>
                         </div>
                     </div>
@@ -272,8 +264,7 @@
                         </div>
                         <div class="card-body">
                             <div class="row">
-                                <a href="<?= BASEURL; ?>/bkk/loker"><button type="button"
-                                        class="btn btn-inverse-primary btn-fw btn-block">Masuk Laman Ini</button></a>
+                                <a href="<?= BASEURL; ?>/bkk/loker"><button type="button" class="btn btn-inverse-primary btn-fw btn-block">Masuk Laman Ini</button></a>
                             </div>
                         </div>
                     </div>
@@ -292,9 +283,9 @@
         </div>
     </footer>
     <!-- partial -->
-</div>
-<!-- main-panel ends -->
-</div>
-<!-- page-body-wrapper ends -->
-</div>
-<!-- container-scroller -->
+    </div>
+    <!-- main-panel ends -->
+    </div>
+    <!-- page-body-wrapper ends -->
+    </div>
+    <!-- container-scroller -->

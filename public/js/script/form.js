@@ -12,6 +12,10 @@ $(document).ready(function () {
 		$(".modal-body form").attr("action", `${BASEURL}/tambahData`);
 	});
 
+	// Menghancurkan tabel DataTable yang sudah ada
+	if ($.fn.DataTable.isDataTable('#table')) {
+		$('#table').DataTable().destroy();
+	}
 
 	$("#table").DataTable({
 		drawCallback: function (settings) {

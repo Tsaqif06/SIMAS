@@ -1,4 +1,3 @@
-<div class="main-panel">
     <div class="content-wrapper">
         <div class="row">
             <div class="col-md-12 grid-margin">
@@ -53,7 +52,7 @@
                                             <?php else : ?>
                                                 <td><img src="images/datafoto/pp.png" class="data-img" style="width: 65px; height: 65px;"></td>
                                             <?php endif; ?>
-                                                <td><?= $row['tanggal_infoKesiswaan']; ?></td>
+                                            <td><?= $row['tanggal_infoKesiswaan']; ?></td>
                                         </tr>
                                     <?php endforeach; ?>
                                 </tbody>

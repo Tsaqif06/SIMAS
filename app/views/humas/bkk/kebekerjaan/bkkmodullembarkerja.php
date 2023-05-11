@@ -1,4 +1,3 @@
-      <div class="main-panel">
           <div class="content-wrapper">
               <div class="row">
                   <div class="col-md-12 grid-margin">
@@ -30,9 +29,9 @@
               </div>
           </footer>
           <!-- partial -->
-      </div>
-      <!-- main-panel ends -->
-      </div>
-      <!-- page-body-wrapper ends -->
-      </div>
-      <!-- container-scroller -->
+          </div>
+          <!-- main-panel ends -->
+          </div>
+          <!-- page-body-wrapper ends -->
+          </div>
+          <!-- container-scroller -->

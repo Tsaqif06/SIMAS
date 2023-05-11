@@ -50,14 +50,11 @@
             <!-- partial:partials/_navbar.html -->
             <nav class="navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
                 <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-center">
-                    <a class="navbar-brand brand-logo mr-5" href="<?= BASEURL ?>"><img
-                            src="<?= BASEURL ?>/images/logosimas.png" class="mr-2" alt="SIMAS" /></a>
-                    <a class="navbar-brand brand-logo-mini" href="<?= BASEURL ?>"><img
-                            src="<?= BASEURL ?>/images/logosaja.png" alt="SIMAS" /></a>
+                    <a class="navbar-brand brand-logo mr-5" href="<?= BASEURL ?>"><img src="<?= BASEURL ?>/images/logosimas.png" class="mr-2" alt="SIMAS" /></a>
+                    <a class="navbar-brand brand-logo-mini" href="<?= BASEURL ?>"><img src="<?= BASEURL ?>/images/logosaja.png" alt="SIMAS" /></a>
                 </div>
                 <div class="navbar-menu-wrapper d-flex align-items-center justify-content-end">
-                    <button class="navbar-toggler navbar-toggler align-self-center" type="button"
-                        data-toggle="minimize">
+                    <button class="navbar-toggler navbar-toggler align-self-center" type="button" data-toggle="minimize">
                         <span class="icon-menu"></span>
                     </button>
                     <ul class="navbar-nav mr-lg-2">
@@ -68,8 +65,7 @@
                                         <i class="icon-search"></i>
                                     </span>
                                 </div>
-                                <input type="text" class="form-control" id="navbar-search-input"
-                                    placeholder="Search now" aria-label="search" aria-describedby="search">
+                                <input type="text" class="form-control" id="navbar-search-input" placeholder="Search now" aria-label="search" aria-describedby="search">
                             </div>
                         </li>
                     </ul>
@@ -79,8 +75,7 @@
                                 <i class="icon-bell mx-0"></i>
                                 <span class="count d-none"></span>
                             </a>
-                            <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list"
-                                aria-labelledby="notificationDropdown">
+                            <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list" aria-labelledby="notificationDropdown">
                                 <p class="mb-0 font-weight-normal float-left dropdown-header">Notifications</p>
                                 <!-- <a class="dropdown-item preview-item">
                                     <div class="preview-thumbnail">
@@ -125,15 +120,12 @@
                         </li>
                         <li class="nav-item nav-profile dropdown">
                             <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" id="profileDropdown">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" fill="currentColor"
-                                    class="bi bi-person-circle" viewBox="0 0 16 16">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" fill="currentColor" class="bi bi-person-circle" viewBox="0 0 16 16">
                                     <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z" />
-                                    <path fill-rule="evenodd"
-                                        d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z" />
+                                    <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z" />
                                 </svg>
                             </a>
-                            <div class="dropdown-menu dropdown-menu-right navbar-dropdown"
-                                aria-labelledby="profileDropdown">
+                            <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="profileDropdown">
                                 <a class="dropdown-item" data-toggle="modal" data-target="#profil">
                                     <i class="ti-user text-primary"></i>
                                     Profil
@@ -150,8 +142,7 @@
                             </a>
                         </li>
                     </ul>
-                    <button class="navbar-toggler navbar-toggler-right d-lg-none align-self-center" type="button"
-                        data-toggle="offcanvas">
+                    <button class="navbar-toggler navbar-toggler-right d-lg-none align-self-center" type="button" data-toggle="offcanvas">
                         <span class="icon-menu"></span>
                     </button>
                 </div>
@@ -185,23 +176,19 @@
                     <i class="settings-close ti-close"></i>
                     <ul class="nav nav-tabs border-top" id="setting-panel" role="tablist">
                         <li class="nav-item">
-                            <a class="nav-link active" id="todo-tab" data-toggle="tab" href="#todo-section" role="tab"
-                                aria-controls="todo-section" aria-expanded="true">TO DO LIST</a>
+                            <a class="nav-link active" id="todo-tab" data-toggle="tab" href="#todo-section" role="tab" aria-controls="todo-section" aria-expanded="true">TO DO LIST</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" id="chats-tab" data-toggle="tab" href="#chats-section" role="tab"
-                                aria-controls="chats-section">CHATS</a>
+                            <a class="nav-link" id="chats-tab" data-toggle="tab" href="#chats-section" role="tab" aria-controls="chats-section">CHATS</a>
                         </li>
                     </ul>
                     <div class="tab-content" id="setting-content">
-                        <div class="tab-pane fade show active scroll-wrapper" id="todo-section" role="tabpanel"
-                            aria-labelledby="todo-section">
+                        <div class="tab-pane fade show active scroll-wrapper" id="todo-section" role="tabpanel" aria-labelledby="todo-section">
                             <div class="add-items d-flex px-3 mb-0">
                                 <form class="form w-100">
                                     <div class="form-group d-flex">
                                         <input type="text" class="form-control todo-list-input" placeholder="Add To-do">
-                                        <button type="submit" class="add btn btn-primary todo-list-add-btn"
-                                            id="add-task">Add</button>
+                                        <button type="submit" class="add btn btn-primary todo-list-add-btn" id="add-task">Add</button>
                                     </div>
                                 </form>
                             </div>
@@ -276,14 +263,12 @@
                         <div class="tab-pane fade" id="chats-section" role="tabpanel" aria-labelledby="chats-section">
                             <div class="d-flex align-items-center justify-content-between border-bottom">
                                 <p class="settings-heading border-top-0 mb-3 pl-3 pt-0 border-bottom-0 pb-0">Friends</p>
-                                <small
-                                    class="settings-heading border-top-0 mb-3 pt-0 border-bottom-0 pb-0 pr-3 font-weight-normal">See
+                                <small class="settings-heading border-top-0 mb-3 pt-0 border-bottom-0 pb-0 pr-3 font-weight-normal">See
                                     All</small>
                             </div>
                             <ul class="chat-list">
                                 <li class="list active">
-                                    <div class="profile"><img src="images/faces/face1.jpg" alt="image"><span
-                                            class="online"></span></div>
+                                    <div class="profile"><img src="images/faces/face1.jpg" alt="image"><span class="online"></span></div>
                                     <div class="info">
                                         <p>Thomas Douglas</p>
                                         <p>Available</p>
@@ -291,8 +276,7 @@
                                     <small class="text-muted my-auto">19 min</small>
                                 </li>
                                 <li class="list">
-                                    <div class="profile"><img src="images/faces/face2.jpg" alt="image"><span
-                                            class="offline"></span></div>
+                                    <div class="profile"><img src="images/faces/face2.jpg" alt="image"><span class="offline"></span></div>
                                     <div class="info">
                                         <div class="wrapper d-flex">
                                             <p>Catherine</p>
@@ -303,8 +287,7 @@
                                     <small class="text-muted my-auto">23 min</small>
                                 </li>
                                 <li class="list">
-                                    <div class="profile"><img src="images/faces/face3.jpg" alt="image"><span
-                                            class="online"></span></div>
+                                    <div class="profile"><img src="images/faces/face3.jpg" alt="image"><span class="online"></span></div>
                                     <div class="info">
                                         <p>Daniel Russell</p>
                                         <p>Available</p>
@@ -312,8 +295,7 @@
                                     <small class="text-muted my-auto">14 min</small>
                                 </li>
                                 <li class="list">
-                                    <div class="profile"><img src="images/faces/face4.jpg" alt="image"><span
-                                            class="offline"></span></div>
+                                    <div class="profile"><img src="images/faces/face4.jpg" alt="image"><span class="offline"></span></div>
                                     <div class="info">
                                         <p>James Richardson</p>
                                         <p>Away</p>
@@ -321,8 +303,7 @@
                                     <small class="text-muted my-auto">2 min</small>
                                 </li>
                                 <li class="list">
-                                    <div class="profile"><img src="images/faces/face5.jpg" alt="image"><span
-                                            class="online"></span></div>
+                                    <div class="profile"><img src="images/faces/face5.jpg" alt="image"><span class="online"></span></div>
                                     <div class="info">
                                         <p>Madeline Kennedy</p>
                                         <p>Available</p>
@@ -330,8 +311,7 @@
                                     <small class="text-muted my-auto">5 min</small>
                                 </li>
                                 <li class="list">
-                                    <div class="profile"><img src="images/faces/face6.jpg" alt="image"><span
-                                            class="online"></span></div>
+                                    <div class="profile"><img src="images/faces/face6.jpg" alt="image"><span class="online"></span></div>
                                     <div class="info">
                                         <p>Sarah Graves</p>
                                         <p>Available</p>
@@ -356,42 +336,38 @@
 
 
                         <?php if ($data['user']['role'] == 'admin') : ?>
-                        <li class="nav-item">
-                            <a class="nav-link" data-toggle="collapse" href="#masterdata" aria-expanded="false"
-                                aria-controls="masterdata">
-                                <i class="icon-folder menu-icon"></i>
-                                <span class="menu-title">Master Data</span>
-                                <i class="menu-arrow"></i>
-                            </a>
-                            <div class="collapse" id="masterdata">
-                                <ul class="nav flex-column sub-menu">
-                                    <li class="nav-item"> <a class="nav-link" href="<?= BASEURL ?>/guru">Guru</a></li>
-                                    <li class="nav-item"> <a class="nav-link"
-                                            href="<?= BASEURL ?>/karyawan">Karyawan</a>
-                                    </li>
-                                    <li class="nav-item"> <a class="nav-link" href="<?= BASEURL ?>/siswa">Siswa</a></li>
-                                    <li class="nav-item"> <a class="nav-link" href="<?= BASEURL ?>/kelas">Kelas</a></li>
-                                    <li class="nav-item"> <a class="nav-link" href="<?= BASEURL ?>/walikelas">Wali
-                                            Kelas</a>
-                                    </li>
-                                    <li class="nav-item"> <a class="nav-link" href="<?= BASEURL ?>/mapel">Mata
-                                            Pelajaran</a>
-                                    </li>
-                                    <li class="nav-item"> <a class="nav-link" href="<?= BASEURL ?>/jabatan">Jabatan</a>
-                                    </li>
-                                    <li class="nav-item"> <a class="nav-link"
-                                            href="<?= BASEURL ?>/kompkeahlian">Kompetensi
-                                            Keahlian</a></li>
-                                    <li class="nav-item"> <a class="nav-link" href="<?= BASEURL ?>/progkeahlian">Program
-                                            Keahlian</a></li>
-                                </ul>
-                            </div>
-                        </li>
+                            <li class="nav-item">
+                                <a class="nav-link" data-toggle="collapse" href="#masterdata" aria-expanded="false" aria-controls="masterdata">
+                                    <i class="icon-folder menu-icon"></i>
+                                    <span class="menu-title">Master Data</span>
+                                    <i class="menu-arrow"></i>
+                                </a>
+                                <div class="collapse" id="masterdata">
+                                    <ul class="nav flex-column sub-menu">
+                                        <li class="nav-item"> <a class="nav-link spa-load" href="<?= BASEURL ?>/guru">Guru</a></li>
+                                        <li class="nav-item"> <a class="nav-link spa-load" href="<?= BASEURL ?>/karyawan">Karyawan</a>
+                                        </li>
+                                        <li class="nav-item"> <a class="nav-link" href="<?= BASEURL ?>/siswa">Siswa</a></li>
+                                        <li class="nav-item"> <a class="nav-link" href="<?= BASEURL ?>/kelas">Kelas</a></li>
+                                        <li class="nav-item"> <a class="nav-link" href="<?= BASEURL ?>/walikelas">Wali
+                                                Kelas</a>
+                                        </li>
+                                        <li class="nav-item"> <a class="nav-link" href="<?= BASEURL ?>/mapel">Mata
+                                                Pelajaran</a>
+                                        </li>
+                                        <li class="nav-item"> <a class="nav-link" href="<?= BASEURL ?>/jabatan">Jabatan</a>
+                                        </li>
+                                        <li class="nav-item"> <a class="nav-link" href="<?= BASEURL ?>/kompkeahlian">Kompetensi
+                                                Keahlian</a></li>
+                                        <li class="nav-item"> <a class="nav-link" href="<?= BASEURL ?>/progkeahlian">Program
+                                                Keahlian</a></li>
+                                    </ul>
+                                </div>
+                            </li>
                         <?php endif ?>
 
                         <li class="nav-item">
-                            <a class="nav-link" data-toggle="collapse" href="#tu" aria-expanded="false"
-                                aria-controls="tu">
+                            <a class="nav-link" data-toggle="collapse" href="#tu" aria-expanded="false" aria-controls="tu">
                                 <i class="icon-mail menu-icon"></i>
                                 <span class="menu-title">Tata Usaha</span>
                                 <i class="menu-arrow"></i>
@@ -399,211 +375,208 @@
                             <div class="collapse" id="tu">
                                 <ul class="nav flex-column sub-menu">
                                     <?php if ($data['user']['role'] == 'admin' && ($data['user']['hak_akses'] == 'all' || $data['user']['hak_akses'] == 'mastertu')) : ?>
-                                    <li class="nav-item"> <a class="nav-link" href="<?= BASEURL ?>/suratmasuk">Surat
-                                            Masuk</a></li>
-                                    <li class="nav-item"> <a class="nav-link" href="<?= BASEURL ?>/suratkeluar">Surat
-                                            Keluar</a></li>
+                                        <li class="nav-item"> <a class="nav-link" href="<?= BASEURL ?>/suratmasuk">Surat
+                                                Masuk</a></li>
+                                        <li class="nav-item"> <a class="nav-link" href="<?= BASEURL ?>/suratkeluar">Surat
+                                                Keluar</a></li>
                                     <?php endif ?>
                                     <?php if ($data['user']['role'] == 'admin' || $data['user']['role'] == 'user' || $data['user']['role'] == 'guest') : ?>
-                                    <li class="nav-item"> <a class="nav-link" href="<?= BASEURL ?>/suratpengajuan">Surat
-                                            Pengajuan</a></li>
-                                    <li class="nav-item"> <a class="nav-link" href="<?= BASEURL ?>/nopetunjuk">Nomor
-                                            Petunjuk</a></li>
+                                        <li class="nav-item"> <a class="nav-link" href="<?= BASEURL ?>/suratpengajuan">Surat
+                                                Pengajuan</a></li>
+                                        <li class="nav-item"> <a class="nav-link" href="<?= BASEURL ?>/nopetunjuk">Nomor
+                                                Petunjuk</a></li>
                                     <?php endif ?>
                                 </ul>
                             </div>
                         </li>
 
                         <?php if ($data['user']['role'] == 'admin' && ($data['user']['hak_akses'] == 'all' || $data['user']['hak_akses'] == 'humas')) : ?>
-                        <li class="nav-item">
-                            <a class="nav-link" data-toggle="collapse" href="#pkl" aria-expanded="false"
-                                aria-controls="pkl">
-                                <i class="icon-columns menu-icon"></i>
-                                <span class="menu-title">Humas</span>
-                                <i class="menu-arrow"></i>
-                            </a>
-                            <div class="collapse" id="pkl">
-                                <ul class="nav flex-column sub-menu">
-                                    <li class="nav-item"><a class="nav-link" href="<?= BASEURL; ?>/pkl/index">PKL</a>
-                                    </li>
-                                    <div class="collapse" id="pkl">
-                                        <div class="navsubitem">
-                                            <a class="nav-link text-white" href="<?= BASEURL; ?>/pkl/rekap">Rekap
-                                                PKL</a>
-                                            <a class="nav-link text-white"
-                                                href="<?= BASEURL; ?>/pkl/pembekalan">Pembekalan PKL</a>
-                                            <a class="nav-link text-white"
-                                                href="<?= BASEURL; ?>/pkl/pemberkasan">Pemberkasan</a>
-                                            <a class="nav-link text-white"
-                                                href="<?= BASEURL; ?>/pkl/prakerin">Prakerin</a>
-                                            <a class="nav-link text-white" href="<?= BASEURL; ?>/pkl/nilai">Nilai
-                                                PKL</a>
-                                            <a class="nav-link text-white" href="<?= BASEURL; ?>/pkl/dtampung">Daya
-                                                Tampung</a>
-                                        </div>
-                                        <li class="nav-item"><a class="nav-link"
-                                                href="<?= BASEURL; ?>/bkk/index">BKK</a>
+                            <li class="nav-item">
+                                <a class="nav-link" data-toggle="collapse" href="#pkl" aria-expanded="false" aria-controls="pkl">
+                                    <i class="icon-columns menu-icon"></i>
+                                    <span class="menu-title">Humas</span>
+                                    <i class="menu-arrow"></i>
+                                </a>
+                                <div class="collapse" id="pkl">
+                                    <ul class="nav flex-column sub-menu">
+                                        <li class="nav-item"><a class="nav-link" href="<?= BASEURL; ?>/pkl/index">PKL</a>
                                         </li>
-                                        <div class="navsubitem">
-                                            <a class="nav-link text-white" href="#">Alumni Sukses</a>
-                                            <a class="nav-link text-white" href="<?= BASEURL; ?>/bkk/mou">MoU</a>
-                                            <a class="nav-link text-white"
-                                                href="<?= BASEURL; ?>/bkk/peminatan">Peminatan</a>
-                                            <a class="nav-link text-white"
-                                                href="<?= BASEURL; ?>/bkk/workshop">Workshop</a>
-                                            <a class="nav-link text-white"
-                                                href="<?= BASEURL; ?>/bkk/kebekerjaan">Kebekerjaan</a>
-                                            <a class="nav-link text-white" href="<?= BASEURL; ?>/bkk/spw">SPW</a>
-                                            <a class="nav-link text-white" href="<?= BASEURL; ?>/bkk/lomba">Lomba</a>
-                                            <a class="nav-link text-white" href="<?= BASEURL; ?>/bkk/loker">Lowongan
-                                                Kerja</a>
-                                        </div>
-                                        <li class="nav-item"><a class="nav-link"
-                                                href="<?= BASEURL; ?>/ict/index">ICT</a>
-                                        </li>
-                                        <li class="nav-item"><a class="nav-link"
-                                                href="<?= BASEURL; ?>/stiru/index">Studi
-                                                Tiru</a></li>
-                                </ul>
-                            </div>
-                        </li>
+                                        <div class="collapse" id="pkl">
+                                            <div class="navsubitem">
+                                                <a class="nav-link text-white" href="<?= BASEURL; ?>/pkl/rekap">Rekap
+                                                    PKL</a>
+                                                <a class="nav-link text-white" href="<?= BASEURL; ?>/pkl/pembekalan">Pembekalan PKL</a>
+                                                <a class="nav-link text-white" href="<?= BASEURL; ?>/pkl/pemberkasan">Pemberkasan</a>
+                                                <a class="nav-link text-white" href="<?= BASEURL; ?>/pkl/prakerin">Prakerin</a>
+                                                <a class="nav-link text-white" href="<?= BASEURL; ?>/pkl/nilai">Nilai
+                                                    PKL</a>
+                                                <a class="nav-link text-white" href="<?= BASEURL; ?>/pkl/dtampung">Daya
+                                                    Tampung</a>
+                                            </div>
+                                            <li class="nav-item"><a class="nav-link" href="<?= BASEURL; ?>/bkk/index">BKK</a>
+                                            </li>
+                                            <div class="navsubitem">
+                                                <a class="nav-link text-white" href="#">Alumni Sukses</a>
+                                                <a class="nav-link text-white" href="<?= BASEURL; ?>/bkk/mou">MoU</a>
+                                                <a class="nav-link text-white" href="<?= BASEURL; ?>/bkk/peminatan">Peminatan</a>
+                                                <a class="nav-link text-white" href="<?= BASEURL; ?>/bkk/workshop">Workshop</a>
+                                                <a class="nav-link text-white" href="<?= BASEURL; ?>/bkk/kebekerjaan">Kebekerjaan</a>
+                                                <a class="nav-link text-white" href="<?= BASEURL; ?>/bkk/spw">SPW</a>
+                                                <a class="nav-link text-white" href="<?= BASEURL; ?>/bkk/lomba">Lomba</a>
+                                                <a class="nav-link text-white" href="<?= BASEURL; ?>/bkk/loker">Lowongan
+                                                    Kerja</a>
+                                            </div>
+                                            <li class="nav-item"><a class="nav-link" href="<?= BASEURL; ?>/ict/index">ICT</a>
+                                            </li>
+                                            <li class="nav-item"><a class="nav-link" href="<?= BASEURL; ?>/stiru/index">Studi
+                                                    Tiru</a></li>
+                                    </ul>
+                                </div>
+                            </li>
                         <?php endif ?>
 
                         <?php if ($data['user']['role'] == 'admin' && ($data['user']['hak_akses'] == 'all' || $data['user']['hak_akses'] == 'kesiswaan')) : ?>
-                        <li class="nav-item">
-                            <a class="nav-link" data-toggle="collapse" href="#kesiswaan" aria-expanded="false"
-                                aria-controls="kesiswaan">
-                                <i class="ti-user menu-icon"></i>
-                                <span class="menu-title">Kesiswaan</span>
-                                <i class="menu-arrow"></i>
-                            </a>
-                            <div class="collapse" id="kesiswaan">
-                                <ul class="nav flex-column sub-menu">
-                                    <li class="nav-item">
-                                        <a class="nav-link">
-                                            Data
-                                        </a>
-                                    </li>
-                                    <ul style="list-style-type: none;">
-                                        <li><a class="navsubitem text-white" href="<?= BASEURL ?>/siswa">Siswa</a></li>
-                                        <li><a class="navsubitem text-white"
-                                                href="<?= BASEURL ?>/kompkeahlian">Kompetensi
-                                                Keahlian</a>
+                            <li class="nav-item">
+                                <a class="nav-link" data-toggle="collapse" href="#kesiswaan" aria-expanded="false" aria-controls="kesiswaan">
+                                    <i class="ti-user menu-icon"></i>
+                                    <span class="menu-title">Kesiswaan</span>
+                                    <i class="menu-arrow"></i>
+                                </a>
+                                <div class="collapse" id="kesiswaan">
+                                    <ul class="nav flex-column sub-menu">
+                                        <li class="nav-item">
+                                            <a class="nav-link">
+                                                Data
+                                            </a>
                                         </li>
-                                        <li><a class="navsubitem text-white" href="<?= BASEURL ?>/progkeahlian">Program
-                                                Keahlian</a>
+                                        <ul style="list-style-type: none;">
+                                            <li><a class="navsubitem text-white" href="<?= BASEURL ?>/siswa">Siswa</a></li>
+                                            <li><a class="navsubitem text-white" href="<?= BASEURL ?>/kompkeahlian">Kompetensi
+                                                    Keahlian</a>
+                                            </li>
+                                            <li><a class="navsubitem text-white" href="<?= BASEURL ?>/progkeahlian">Program
+                                                    Keahlian</a>
+                                            </li>
+                                            <li><a class="navsubitem text-white" href="<?= BASEURL ?>/kelas">Kelas</a></li>
+                                        </ul>
+                                        <li class="nav-item">
+                                            <a class="nav-link">
+                                                Absensi
+                                            </a>
                                         </li>
-                                        <li><a class="navsubitem text-white" href="<?= BASEURL ?>/kelas">Kelas</a></li>
-                                    </ul>
-                                    <li class="nav-item">
-                                        <a class="nav-link">
-                                            Absensi
-                                        </a>
-                                    </li>
-                                    <ul style="list-style-type: none;">
-                                        <li><a class="navsubitem text-white"
-                                                href="<?= BASEURL ?>/kehadiran">Kehadiran</a></li>
-                                        <li><a class="navsubitem text-white" href="<?= BASEURL ?>/izin">Izin</a></li>
-                                    </ul>
-                                    <li class="nav-item">
-                                        <a class="nav-link">
-                                            Pelanggaran
-                                        </a>
-                                    </li>
-                                    <ul style="list-style-type: none;">
-                                        <li><a class="navsubitem text-white"
-                                                href="<?= BASEURL ?>/pelanggaran">Pelanggaran</a></li>
-                                        <li><a class="navsubitem text-white"
-                                                href="<?= BASEURL ?>/poinpelanggaran">Poin</a></li>
-                                    </ul>
-                                    <li class="nav-item">
-                                        <a class="nav-link">
-                                            Asuransi
-                                        </a>
-                                    </li>
-                                    <ul style="list-style-type: none;">
-                                        <li><a class="navsubitem text-white" href="<?= BASEURL ?>/asuransi">Asuransi</a>
+                                        <ul style="list-style-type: none;">
+                                            <li><a class="navsubitem text-white" href="<?= BASEURL ?>/kehadiran">Kehadiran</a></li>
+                                            <li><a class="navsubitem text-white" href="<?= BASEURL ?>/izin">Izin</a></li>
+                                        </ul>
+                                        <li class="nav-item">
+                                            <a class="nav-link">
+                                                Pelanggaran
+                                            </a>
                                         </li>
-                                        <li><a class="navsubitem text-white" href="<?= BASEURL ?>/kecelakaan">Asuransi
-                                                Kecelakaan</a>
+                                        <ul style="list-style-type: none;">
+                                            <li><a class="navsubitem text-white" href="<?= BASEURL ?>/pelanggaran">Pelanggaran</a></li>
+                                            <li><a class="navsubitem text-white" href="<?= BASEURL ?>/poinpelanggaran">Poin</a></li>
+                                        </ul>
+                                        <li class="nav-item">
+                                            <a class="nav-link">
+                                                Asuransi
+                                            </a>
                                         </li>
-                                        <li><a class="navsubitem text-white"
-                                                href="<?= BASEURL ?>/ortumeninggal">Asuransi Ortu
-                                                Meninggal</a></li>
-                                    </ul>
-                                    <li class="nav-item">
-                                        <a class="nav-link">
-                                            Informasi
-                                        </a>
-                                    </li>
-                                    <ul style="list-style-type: none;">
-                                        <li><a class="navsubitem text-white"
-                                                href="<?= BASEURL ?>/infokesiswaan">Informasi
-                                                Kesiswaan</a></li>
-                                        <li><a class="navsubitem text-white" href="<?= BASEURL ?>/kegiatanosis">Kegiatan
-                                                Osis</a>
+                                        <ul style="list-style-type: none;">
+                                            <li><a class="navsubitem text-white" href="<?= BASEURL ?>/asuransi">Asuransi</a>
+                                            </li>
+                                            <li><a class="navsubitem text-white" href="<?= BASEURL ?>/kecelakaan">Asuransi
+                                                    Kecelakaan</a>
+                                            </li>
+                                            <li><a class="navsubitem text-white" href="<?= BASEURL ?>/ortumeninggal">Asuransi Ortu
+                                                    Meninggal</a></li>
+                                        </ul>
+                                        <li class="nav-item">
+                                            <a class="nav-link">
+                                                Informasi
+                                            </a>
                                         </li>
-                                    </ul>
-                                    <ul style="list-style-type: none;">
-                                        <li><a class="navsubitem text-white" href="<?= BASEURL ?>/waguru">Whatsapp
-                                                Guru</a></li>
-                                    </ul>
-                            </div>
-                        </li>
+                                        <ul style="list-style-type: none;">
+                                            <li><a class="navsubitem text-white" href="<?= BASEURL ?>/infokesiswaan">Informasi
+                                                    Kesiswaan</a></li>
+                                            <li><a class="navsubitem text-white" href="<?= BASEURL ?>/kegiatanosis">Kegiatan
+                                                    Osis</a>
+                                            </li>
+                                        </ul>
+                                        <ul style="list-style-type: none;">
+                                            <li><a class="navsubitem text-white" href="<?= BASEURL ?>/waguru">Whatsapp
+                                                    Guru</a></li>
+                                        </ul>
+                                </div>
+                            </li>
                         <?php endif ?>
 
                         <?php if ($data['user']['role'] == 'admin' && ($data['user']['hak_akses'] == 'all' || $data['user']['hak_akses'] == 'kurikulum')) : ?>
-                        <li class="nav-item">
-                            <a class="nav-link" data-toggle="collapse" href="#kurikulumpage" aria-expanded="false"
-                                aria-controls="kurikulum">
-                                <i class="icon-grid-2 menu-icon"></i>
-                                <span class="menu-title">Kurikulum</span>
-                                <i class="menu-arrow"></i>
-                            </a>
-                            <div class="collapse" id="kurikulumpage">
-                                <ul class="nav flex-column sub-menu">
-                                    <li class="nav-item"> <a class="nav-link" href="isikurikulum.html">kosong</a></li>
-                                </ul>
-                            </div>
-                        </li>
+                            <li class="nav-item">
+                                <a class="nav-link" data-toggle="collapse" href="#kurikulumpage" aria-expanded="false" aria-controls="kurikulum">
+                                    <i class="icon-grid-2 menu-icon"></i>
+                                    <span class="menu-title">Kurikulum</span>
+                                    <i class="menu-arrow"></i>
+                                </a>
+                                <div class="collapse" id="kurikulumpage">
+                                    <ul class="nav flex-column sub-menu">
+                                        <li class="nav-item"> <a class="nav-link" href="isikurikulum.html">kosong</a></li>
+                                    </ul>
+                                </div>
+                            </li>
                         <?php endif ?>
 
                         <?php if ($data['user']['role'] == 'admin' && ($data['user']['hak_akses'] == 'all' || $data['user']['hak_akses'] == 'psdm')) : ?>
-                        <li class="nav-item">
-                            <a class="nav-link" data-toggle="collapse" href="#psdm" aria-expanded="false"
-                                aria-controls="psdm">
-                                <i class="icon-bar-graph menu-icon"></i>
-                                <span class="menu-title">PSDM</span>
-                                <i class="menu-arrow"></i>
-                            </a>
-                            <div class="collapse" id="psdm">
-                                <ul class="nav flex-column sub-menu">
-                                    <li class="nav-item"> <a class="nav-link" href="isisdm.html">kosong</a></li>
-                                </ul>
-                            </div>
-                        </li>
+                            <li class="nav-item">
+                                <a class="nav-link" data-toggle="collapse" href="#charts" aria-expanded="false" aria-controls="charts">
+                                    <i class="icon-bar-graph menu-icon"></i>
+                                    <span class="menu-title">PSDM</span>
+                                    <i class="menu-arrow"></i>
+                                </a>
+                                <div class="collapse" id="charts">
+                                    <ul class="nav flex-column sub-menu">
+                                        <li class="nav-item">
+                                            <a class="nav-link spa-load" href="<?= BASEURL; ?>/profilGuru">Profil Guru</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link spa-load" href="<?= BASEURL; ?>/profilPegawai">Profil
+                                                Pegawai</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link spa-load" href="<?= BASEURL; ?>/strukturOrganisasi">Struktur
+                                                Organisasi</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link spa-load" href="<?= BASEURL; ?>/prestasiGuru">Prestasi Guru</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link spa-load" href="<?= BASEURL; ?>/galeriKegiatan">Galeri
+                                                Kegiatan</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </li>
                         <?php endif ?>
 
                         <?php if ($data['user']['role'] == 'admin' && ($data['user']['hak_akses'] == 'all' || $data['user']['hak_akses'] == 'sarpras')) : ?>
-                        <li class="nav-item">
-                            <a class="nav-link" data-toggle="collapse" href="#sarpras" aria-expanded="false"
-                                aria-controls="sarpras">
-                                <i class="icon-grid-2 menu-icon"></i>
-                                <span class="menu-title">SARPRAS</span>
-                                <i class="menu-arrow"></i>
-                            </a>
-                            <div class="collapse" id="sarpras">
-                                <ul class="nav flex-column sub-menu">
-                                    <li class="nav-item"> <a class="nav-link" href="isisarpras.html">kosong</a></li>
-                                </ul>
-                            </div>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="<?= BASEURL ?>/riwayat">
-                                <i class="ti-time menu-icon"></i>
-                                <span class="menu-title">Riwayat</span>
-                            </a>
-                        </li>
+                            <li class="nav-item">
+                                <a class="nav-link" data-toggle="collapse" href="#sarpras" aria-expanded="false" aria-controls="sarpras">
+                                    <i class="icon-grid-2 menu-icon"></i>
+                                    <span class="menu-title">SARPRAS</span>
+                                    <i class="menu-arrow"></i>
+                                </a>
+                                <div class="collapse" id="sarpras">
+                                    <ul class="nav flex-column sub-menu">
+                                        <li class="nav-item"> <a class="nav-link" href="isisarpras.html">kosong</a></li>
+                                    </ul>
+                                </div>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="<?= BASEURL ?>/riwayat">
+                                    <i class="ti-time menu-icon"></i>
+                                    <span class="menu-title">Riwayat</span>
+                                </a>
+                            </li>
                         <?php endif ?>
                     </ul>
                 </nav>
@@ -657,3 +630,5 @@
                         </div>
                     </div>
                 </div>
+
+                <div class="main-panel">
