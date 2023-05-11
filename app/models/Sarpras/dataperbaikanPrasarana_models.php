@@ -7,6 +7,7 @@ use Ramsey\Uuid\Uuid;
 class dataperbaikanPrasarana_models
 {
     private $table = 'data_perbaikan';
+    private $user;
     private $db;
     private $fields = [
         'kode',
@@ -22,6 +23,7 @@ class dataperbaikanPrasarana_models
     public function __construct()
     {
         $this->db = new Database(DB_SARPRAS);
+        $this->user = Cookie::get_jwt()->name;
     }
 
     public function getALLPerbaikanPrasarana()
@@ -93,7 +95,7 @@ class dataperbaikanPrasarana_models
         foreach ($this->fields as $field) {
             $this->db->bind($field, $data[$field]);
         }
-        $this->db->bind('created_by', "Super Admin");
+        $this->db->bind('created_by', $this->user);
 
 
         $this->db->execute();
@@ -113,7 +115,7 @@ class dataperbaikanPrasarana_models
               WHERE id = :id"
         );
 
-        $this->db->bind('deleted_by', "Super Admin");
+        $this->db->bind('deleted_by', $this->user);
         $this->db->bind("id", $id);
 
         $this->db->execute();
@@ -141,7 +143,7 @@ class dataperbaikanPrasarana_models
         foreach ($this->fields as $field) {
             $this->db->bind($field, $data[$field]);
         }
-        $this->db->bind('modified_by', "Super Admin");
+        $this->db->bind('modified_by', $this->user);
         $this->db->bind('id', $data['id']);
 
         $this->db->execute();

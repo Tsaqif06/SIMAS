@@ -6,10 +6,12 @@ class pengajuanJurusan_models
 {
     private $table = 'pengajuan_jurusan';
     private $db;
+    private $user;
 
     public function __construct()
     {
         $this->db = new Database(DB_SARPRAS);
+        $this->user = Cookie::get_jwt()->name;
     }
 
     public function getALLDataPengajuanJurusan()
@@ -49,7 +51,7 @@ class pengajuanJurusan_models
         $this->db->bind('harga_satuan', $_POST['harga_satuan']);
         $this->db->bind('harga_total', $_POST['harga_total']);
         $this->db->bind('digunakan_untuk', $_POST['digunakan_untuk']);
-        $this->db->bind('created_by', "Super Admin");
+        $this->db->bind('created_by', $this->user);
 
 
         $this->db->execute();
@@ -69,7 +71,7 @@ class pengajuanJurusan_models
               WHERE id = :id"
         );
 
-        $this->db->bind('deleted_by', "Super Admin");
+        $this->db->bind('deleted_by', $this->user);
         $this->db->bind("id", $id);
 
         $this->db->execute();
@@ -103,7 +105,7 @@ class pengajuanJurusan_models
         $this->db->bind('harga_satuan', $data['harga_satuan']);
         $this->db->bind('harga_total', $data['harga_total']);
         $this->db->bind('digunakan_untuk', $data['digunakan_untuk']);
-        $this->db->bind('modified_by', "Super Admin");
+        $this->db->bind('modified_by', $this->user);
         $this->db->bind('id', $data['id']);
 
         $this->db->execute();

@@ -12,12 +12,14 @@ class fasilitasSekolah_models
         'jumlah',
         'keterangan'
     ];
+    private $user;
 
     private $db;
 
     public function __construct()
     {
         $this->db = new Database(DB_SARPRAS);
+        $this->user = Cookie::get_jwt()->name;
     }
 
     public function getALLDataFasilitasSekolah()
@@ -90,7 +92,7 @@ class fasilitasSekolah_models
         foreach ($this->fields as $field) {
             $this->db->bind($field, $data[$field]);
         }
-        $this->db->bind('created_by', "Super Admin");
+        $this->db->bind('created_by', $this->user);
 
 
         $this->db->execute();
@@ -124,7 +126,7 @@ class fasilitasSekolah_models
               WHERE id = :id"
         );
 
-        $this->db->bind('deleted_by', "Super Admin");
+        $this->db->bind('deleted_by', $this->user);
         $this->db->bind("id", $id);
 
         $this->db->execute();
@@ -146,7 +148,7 @@ class fasilitasSekolah_models
         foreach ($this->fields as $field) {
             $this->db->bind($field, $data[$field]);
         }
-        $this->db->bind('modified_by', "Super Admin");
+        $this->db->bind('modified_by', $this->user);
         $this->db->bind('id', $data['id']);
 
         $this->db->execute();

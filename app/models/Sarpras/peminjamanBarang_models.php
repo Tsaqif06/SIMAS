@@ -7,6 +7,7 @@ use Ramsey\Uuid\Uuid;
 class peminjamanBarang_models
 {
     private $table = 'peminjaman';
+    private $user;
     private $db;
     private $fields = [
         'tanggal',
@@ -21,6 +22,7 @@ class peminjamanBarang_models
     public function __construct()
     {
         $this->db = new Database(DB_SARPRAS);
+        $this->user = Cookie::get_jwt()->name;
     }
 
     public function getALLDataPeminjamanBarang()
@@ -91,7 +93,7 @@ class peminjamanBarang_models
         foreach ($this->fields as $field) {
             $this->db->bind($field, $data[$field]);
         }
-        $this->db->bind('created_by', "Super Admin");
+        $this->db->bind('created_by', $this->user);
 
         $this->db->execute();
 
@@ -110,7 +112,7 @@ class peminjamanBarang_models
               WHERE id = :id"
         );
 
-        $this->db->bind('deleted_by', "Super Admin");
+        $this->db->bind('deleted_by', $this->user);
         $this->db->bind("id", $id);
 
         $this->db->execute();
@@ -138,7 +140,7 @@ class peminjamanBarang_models
         foreach ($this->fields as $field) {
             $this->db->bind($field, $data[$field]);
         }
-        $this->db->bind('modified_by', "Super Admin");
+        $this->db->bind('modified_by', $this->user);
 
         $this->db->bind('id', $data['id']);
 
