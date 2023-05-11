@@ -49,6 +49,7 @@
 <script src="<?= BASEURL ?>/js/script/profile.js"></script>
 <script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.js"></script>
 
+
 <!-- endinject -->
 <!-- Custom js for this page-->
 <script src="<?= BASEURL ?>/js/dashboard.js"></script>
