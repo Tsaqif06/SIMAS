@@ -11,6 +11,7 @@ class API extends Controller
 
     public function kehadiran($id = null)
     {
+        header('Access-Control-Allow-Origin: *');
         header('Content-Type: application/json');
         ($id == null) ?
             $data = $this->model("Kesiswaan", 'Kehadiran_model')->getAllExistData() :
@@ -51,6 +52,7 @@ class API extends Controller
 
     public function pelanggaran($id = null)
     {
+        header('Access-Control-Allow-Origin: *');
         header('Content-Type: application/json');
         ($id == null) ?
             $data = $this->model("Kesiswaan", 'Pelanggaran_model')->getAllExistData() :
@@ -94,6 +96,7 @@ class API extends Controller
 
     public function Poinpelanggaran($id = null)
     {
+        header('Access-Control-Allow-Origin: *');
         header('Content-Type: application/json');
         ($id == null) ?
             $data = $this->model("Kesiswaan", 'Poinpelanggaran_model')->getAllExistData() :
@@ -134,6 +137,7 @@ class API extends Controller
 
     public function Siswa($id = null)
     {
+        header('Access-Control-Allow-Origin: *');
         header('Content-Type: application/json');
         ($id == null) ?
             $data = $this->model("Master", 'Siswa_model')->getAllExistData() :
