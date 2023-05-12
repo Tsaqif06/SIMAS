@@ -105,16 +105,7 @@ class databarangKeluar_models
         $fileName .= $imageFileType;
         $targetFile = $targetDir . $fileName; // nama file upload
 
-        // cek gambar diupload atau tidak
-        if ($_FILES["foto"]["error"] === 4) {
-            echo
-            '
-            <script>
-                alert("Silahkan Upload Gambar")
-            </script>
-        ';
-            return false;
-        }
+
 
         // validasi ukuran file
         if ($_FILES["foto"]["size"] > 1000000) {
