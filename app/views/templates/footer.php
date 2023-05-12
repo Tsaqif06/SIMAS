@@ -44,6 +44,7 @@
 <script src="<?= BASEURL ?>/js/settings.js"></script>
 <script src="<?= BASEURL ?>/js/todolist.js"></script>
 <script src="<?= BASEURL ?>/js/spa.js"></script>
+<script src="<?= BASEURL ?>/js/script.js"></script>
 <script src="<?= BASEURL ?>/js/bootstrap.js"></script>
 <script src="<?= BASEURL ?>/js/script/profile.js"></script>
 <script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.js"></script>
