@@ -519,16 +519,39 @@
 
                         <?php if ($data['user']['role'] == 'admin' && ($data['user']['hak_akses'] == 'all' || $data['user']['hak_akses'] == 'kurikulum')) : ?>
                             <li class="nav-item">
-                                <a class="nav-link" data-toggle="collapse" href="#kurikulumpage" aria-expanded="false" aria-controls="kurikulum">
+                                <a class="nav-link" data-toggle="collapse" href="#kurikulum" aria-expanded="false" aria-controls="kurikulum">
                                     <i class="icon-grid-2 menu-icon"></i>
                                     <span class="menu-title">Kurikulum</span>
                                     <i class="menu-arrow"></i>
                                 </a>
-                                <div class="collapse" id="kurikulumpage">
+                                <div class="collapse" id="kurikulum">
                                     <ul class="nav flex-column sub-menu">
-                                        <li class="nav-item"> <a class="nav-link" href="isikurikulum.html">kosong</a></li>
+                                        <li class="nav-item"> <a class="nav-link" href="<?= BASEURL; ?>/StrukturKurikulum">Struktur Kurikulum </a></li>
+                                        <li class="nav-item"> <a class="nav-link" href="<?= BASEURL; ?>/KalenderKegiatan">Kalender Kegiatan </a></li>
+                                        <li class="nav-item"> <a class="nav-link" href="<?= BASEURL; ?>/PerangkatAjar">Perangkat Ajar </a></li>
+                                        <li class="nav-item"> <a class="nav-link" href="<?= BASEURL; ?>/PJBL">PJBL</a></li>
+                                        <li class="nav-item"> <a class="nav-link" href="<?= BASEURL; ?>/P5">P5 </a></li>
+                                        <li class="nav-item"> <a class="nav-link" href="<?= BASEURL; ?>/GKP">Gelar Karya
+                                                <br>Pembelajaran </a></li>
+                                        <li class="nav-item"> <a class="nav-link" href="<?= BASEURL; ?>/Rapor">Rapor </a>
+                                        </li>
+                                        <li class="nav-item"> <a class="nav-link" href="<?= BASEURL; ?>/DaftarHadir">Daftar
+                                                Hadir Siswa </a></li>
+                                        <li class="nav-item"> <a class="nav-link" href="<?= BASEURL; ?>/walikelas">Wali
+                                                Kelas </a></li>
+                                        <li class="nav-item"> <a class="nav-link" href="<?= BASEURL; ?>/KonsideranAturan">Konsideran/Aturan</a></li>
+                                        <li class="nav-item"> <a class="nav-link" href="<?= BASEURL; ?>/JadwalPelajaran">Jadwal Pelajaran</a></li>
+                                        <li class="nav-item"> <a class="nav-link" href="<?= BASEURL; ?>/KegiatanGLS">Gerakan
+                                                Literasi<br>Sekolah</a></li>
+                                        <li class="nav-item"> <a class="nav-link" href="<?= BASEURL; ?>/Inbis">Inkubator
+                                                Bisnis </a></li>
+                                        <li class="nav-item"> <a class="nav-link" href="<?= BASEURL; ?>/LMS">Learning
+                                                Manajemen<br>System </a></li>
+                                        <li class="nav-item"> <a class="nav-link" href="<?= BASEURL; ?>/Penilaian">Penilaian
+                                            </a></li>
                                     </ul>
                                 </div>
+                            </li>
                             </li>
                         <?php endif ?>
 
