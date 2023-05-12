@@ -53,28 +53,40 @@
                                         <th>No.</th>
                                         <th>Aksi</th>
                                         <th>Nama Wali Kelas</th>
-                                        <th>Nama Kelas</th>
+                                        <th>NIP</th>
+                                        <th>Gol</th>
+                                        <th>Pangkat</th>
+                                        <th>Jabatan</th>
+                                        <th>Telepon</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     <?php $i = 1 ?>
                                     <?php foreach ($data['walikelas'] as $row) : ?>
-                                        <tr>
-                                            <td><?= $i++ ?></td>
-                                            <td class="font-weight-medium">
-                                                <a href="" class="badge text-bg-success tampilModalUbah" style="cursor: pointer;" data-url="<?= BASEURL ?>/walikelas/ubahData" data-bs-toggle="modal" data-bs-target="#modal" data-id="<?= $row['id'] ?>">
-                                                    <i class="ti ti-pencil"></i>
-                                                </a>
-                                                <a href="<?= BASEURL ?>/walikelas/hapusData/<?= $row['id'] ?>">
-                                                    <div class=" font-weight-medium pt-2">
-                                                        <div class="badge badge-danger delete" onclick="return confirm('Apakah Anda Yakin Mau Menghapus Data?')">
-                                                            <i class="ti ti-trash"></i>
-                                                        </div>
-                                                </a>
-                                            </td>
-                                            <td><?= $row["nama_walikelas"]; ?></td>
-                                            <td><?= $row["nama_kelas"] ?></td>
-                                        </tr>
+                                    <tr>
+                                        <td><?= $i++ ?></td>
+                                        <td class="font-weight-medium">
+                                            <a href="" class="badge text-bg-success tampilModalUbah"
+                                                style="cursor: pointer;" data-url="<?= BASEURL ?>/walikelas/ubahData"
+                                                data-bs-toggle="modal" data-bs-target="#modal"
+                                                data-id="<?= $row['id'] ?>">
+                                                <i class="ti ti-pencil"></i>
+                                            </a>
+                                            <a href="<?= BASEURL ?>/walikelas/hapusData/<?= $row['id'] ?>">
+                                                <div class=" font-weight-medium pt-2">
+                                                    <div class="badge badge-danger delete"
+                                                        onclick="return confirm('Apakah Anda Yakin Mau Menghapus Data?')">
+                                                        <i class="ti ti-trash"></i>
+                                                    </div>
+                                            </a>
+                                        </td>
+                                        <td><?= $row["nama"]; ?></td>
+                                        <td><?= $row["nip"] ?></td>
+                                        <td><?= $row["gol"] ?></td>
+                                        <td><?= $row["pangkat"] ?></td>
+                                        <td><?= $row["jabatan"] ?></td>
+                                        <td><?= $row["telepon"] ?></td>
+                                    </tr>
                                     <?php endforeach; ?>
                                 </tbody>
                             </table>

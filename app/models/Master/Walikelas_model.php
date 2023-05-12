@@ -8,8 +8,12 @@ class Walikelas_model
 {
     private $table = 'masterwalikelas';
     private $fields = [
-        'nama_walikelas',
-        'nama_kelas'
+        'nama',
+        'nip',
+        'gol',
+        'pangkat',
+        'jabatan',
+        'telepon',
     ];
 
     private $user;
@@ -51,7 +55,7 @@ class Walikelas_model
         $this->db->query(
             "INSERT INTO {$this->table}
                 VALUES 
-            (null, :uuid, :nama_walikelas, :nama_kelas, '', CURRENT_TIMESTAMP, :created_by, null, '', null, '', null, '', 0, 0, DEFAULT)"
+            (null, :uuid, :nama, :nip, :gol, :pangkat, :jabatan, :telepon, '', CURRENT_TIMESTAMP, :created_by, null, '', null, '', null, '', 0, 0, DEFAULT)"
         );
 
         $this->db->bind('uuid', Uuid::uuid4()->toString());
@@ -88,8 +92,13 @@ class Walikelas_model
         $this->db->query(
             "UPDATE {$this->table}
                 SET 
-                nama_walikelas = :nama_walikelas,
-                nama_kelas = :nama_kelas,
+                uuid = :uuid
+                nama = :nama,
+                nip = :nip,
+                gol = :gol,
+                pangkat = :pangkat,
+                jabatan = :jabatan,
+                telepon = :telepon,
                 modified_at = CURRENT_TIMESTAMP,
                 modified_by = :modified_by
             WHERE id = :id"
