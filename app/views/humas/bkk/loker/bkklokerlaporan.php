@@ -1,4 +1,3 @@
-<div class="main-panel">
     <div class="content-wrapper">
         <div class="row">
             <div class="col-md-12 grid-margin">
@@ -93,108 +92,108 @@
         </div>
     </footer>
     <!-- partial -->
-</div>
-<!-- main-panel ends -->
-</div>
-<!-- page-body-wrapper ends -->
-</div>
-<!-- container-scroller -->
-
-<div class="modal fade" id="modalImport" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h1 class="modal-title fs-5" id="modalLabel">Import Data/h1>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-            </div>
-            <div class="modal-body">
-                <form action="<?= BASEURL ?>/bkk/importDataloker" method="post" enctype="multipart/form-data">
-                    <div class="mb-3">
-                        <label for="file">Pilih file Excel (.xlsx)</label>
-                        <input type="file" name="file" id="file">
-                    </div>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary batal" data-bs-dismiss="modal">Batal</button>
-                <button type="submit" class="btn btn-primary">Tambah Data</button>
-            </div>
-            </form>
-        </div>
     </div>
-</div>
+    <!-- main-panel ends -->
+    </div>
+    <!-- page-body-wrapper ends -->
+    </div>
+    <!-- container-scroller -->
 
-<!-- Modal -->
-<div class="modal fade" id="formModal" tabindex="-1" role="dialog" aria-labelledby="judulModal" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="formModalLabelLoker">Tambah Data</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-
-            <div class="modal-body">
-                <form action="<?= BASEURL; ?>/bkk/tambahloker" method="post" class="forms-sample"
-                    enctype="multipart/form-data">
-                    <input type="hidden" name="fotoLama" id="fotoLama">
-                    <input type="hidden" name="id" id="id">
-                    <div class="form-group">
-                        <label for="namaperusahaan">Nama Perusahaan</label>
-                        <input type="text" class="form-control" id="namaperusahaan" name="namaperusahaan"
-                            placeholder="Nama Perusahaan">
-                    </div>
-                    <div class="form-group">
-                        <label for="jurusan">Untuk Jurusan</label>
-                        <select class="form-control" aria-label="Default select example" id="untukjurusan"
-                            name="untukjurusan">
-                            <option selected>--Pilih Jurusan--</option>
-                            <option value="Teknik Grafika">Teknik Grafika</option>
-                            <option value="Teknik Komputer Jaringan">Teknik Komputer Jaringan</option>
-                            <option value="Rekayasa Perangkat Lunak">Rekayasa Perangkat Lunak</option>
-                            <option value="Animasi">Animasi</option>
-                            <option value="Desain Komunikasi Visual">Desain Komunikasi Visual</option>
-                            <option value="Logistik">Logistik</option>
-                            <option value="Mekatronika">Mekatronika</option>
-                            <option value="Perhotelan">Perhotelan</option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label for="profesiygdibutuhkan">Profesi yang dibutuhkan</label>
-                        <input type="text" class="form-control" id="profesiygdibutuhkan" name="profesiygdibutuhkan"
-                            placeholder="Profesi yang dibutuhkan">
-                    </div>
-                    <div class="form-group">
-                        <label for="kriteriaprofesi">Kriteria profesi</label>
-                        <input type="text" class="form-control" id="kriteriaprofesi" name="kriteriaprofesi"
-                            placeholder="Masukkan kriteria">
-                    </div>
-                    <div class="form-group">
-                        <label for="kontakperusahaan">Kontak Perusahaan</label>
-                        <input type="text" class="form-control" id="kontakperusahaan" name="kontakperusahaan"
-                            placeholder="Kontak">
-                    </div>
-                    <div class="form-group">
-                        <label>Unggah Loker</label>
-                        <input type="file" class="file-upload-default" name="upfotoloker" id="upfotoloker">
-                        <div class="input-group col-xs-12">
-                            <input type="text" class="form-control file-upload-info" disabled
-                                placeholder="Unggah Loker">
-                            <span class="input-group-append">
-                                <button class="file-upload-browse btn btn-primary" type="button">Unggah</button>
-                            </span>
+    <div class="modal fade" id="modalImport" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="modalLabel">Import Data/h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                </div>
+                <div class="modal-body">
+                    <form action="<?= BASEURL ?>/bkk/importDataloker" method="post" enctype="multipart/form-data">
+                        <div class="mb-3">
+                            <label for="file">Pilih file Excel (.xlsx)</label>
+                            <input type="file" name="file" id="file">
                         </div>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-outline-secondary btn-fw"
-                            data-dismiss="modal">Tutup</button>
-                        <button type="submit" class="btn btn-primary">Simpan Data</button>
-                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary batal" data-bs-dismiss="modal">Batal</button>
+                    <button type="submit" class="btn btn-primary">Tambah Data</button>
+                </div>
                 </form>
             </div>
-
         </div>
     </div>
-</div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="formModal" tabindex="-1" role="dialog" aria-labelledby="judulModal" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="formModalLabelLoker">Tambah Data</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+
+                <div class="modal-body">
+                    <form action="<?= BASEURL; ?>/bkk/tambahloker" method="post" class="forms-sample"
+                        enctype="multipart/form-data">
+                        <input type="hidden" name="fotoLama" id="fotoLama">
+                        <input type="hidden" name="id" id="id">
+                        <div class="form-group">
+                            <label for="namaperusahaan">Nama Perusahaan</label>
+                            <input type="text" class="form-control" id="namaperusahaan" name="namaperusahaan"
+                                placeholder="Nama Perusahaan">
+                        </div>
+                        <div class="form-group">
+                            <label for="jurusan">Untuk Jurusan</label>
+                            <select class="form-control" aria-label="Default select example" id="untukjurusan"
+                                name="untukjurusan">
+                                <option selected>--Pilih Jurusan--</option>
+                                <option value="Teknik Grafika">Teknik Grafika</option>
+                                <option value="Teknik Komputer Jaringan">Teknik Komputer Jaringan</option>
+                                <option value="Rekayasa Perangkat Lunak">Rekayasa Perangkat Lunak</option>
+                                <option value="Animasi">Animasi</option>
+                                <option value="Desain Komunikasi Visual">Desain Komunikasi Visual</option>
+                                <option value="Logistik">Logistik</option>
+                                <option value="Mekatronika">Mekatronika</option>
+                                <option value="Perhotelan">Perhotelan</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="profesiygdibutuhkan">Profesi yang dibutuhkan</label>
+                            <input type="text" class="form-control" id="profesiygdibutuhkan" name="profesiygdibutuhkan"
+                                placeholder="Profesi yang dibutuhkan">
+                        </div>
+                        <div class="form-group">
+                            <label for="kriteriaprofesi">Kriteria profesi</label>
+                            <input type="text" class="form-control" id="kriteriaprofesi" name="kriteriaprofesi"
+                                placeholder="Masukkan kriteria">
+                        </div>
+                        <div class="form-group">
+                            <label for="kontakperusahaan">Kontak Perusahaan</label>
+                            <input type="text" class="form-control" id="kontakperusahaan" name="kontakperusahaan"
+                                placeholder="Kontak">
+                        </div>
+                        <div class="form-group">
+                            <label>Unggah Loker</label>
+                            <input type="file" class="file-upload-default" name="upfotoloker" id="upfotoloker">
+                            <div class="input-group col-xs-12">
+                                <input type="text" class="form-control file-upload-info" disabled
+                                    placeholder="Unggah Loker">
+                                <span class="input-group-append">
+                                    <button class="file-upload-browse btn btn-primary" type="button">Unggah</button>
+                                </span>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-outline-secondary btn-fw"
+                                data-dismiss="modal">Tutup</button>
+                            <button type="submit" class="btn btn-primary">Simpan Data</button>
+                        </div>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </div>

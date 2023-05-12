@@ -1,4 +1,3 @@
-<div class="main-panel">
     <div class="content-wrapper">
         <div class="row">
             <div class="col-md-12 grid-margin">
@@ -21,10 +20,8 @@
         <div class="row">
             <div class="col-md-12 grid-margin">
                 <div class="template-demo">
-                    <button type="button" class="btn btn-primary tombolTambahDataPeminatan" data-toggle="modal"
-                        data-target="#formModal">Tambah Data</button>
-                    <button type="button" class="btn btn-primary my-3 mx-3 tampilModalImport" data-toggle="modal"
-                        data-target="#modalImport">
+                    <button type="button" class="btn btn-primary tombolTambahDataPeminatan" data-toggle="modal" data-target="#formModal">Tambah Data</button>
+                    <button type="button" class="btn btn-primary my-3 mx-3 tampilModalImport" data-toggle="modal" data-target="#modalImport">
                         Import Data Dari Excel
                     </button>
                 </div>
@@ -32,8 +29,7 @@
 
 
             <!-- Modal -->
-            <div class="modal fade" id="formModal" tabindex="-1" role="dialog" aria-labelledby="judulModal"
-                aria-hidden="true">
+            <div class="modal fade" id="formModal" tabindex="-1" role="dialog" aria-labelledby="judulModal" aria-hidden="true">
                 <div class="modal-dialog" role="document">
                     <div class="modal-content">
                         <div class="modal-header">
@@ -47,8 +43,7 @@
                                 <input type="hidden" name="id" id="id">
                                 <div class="form-group">
                                     <label for="nama">Nama Lengkap</label>
-                                    <input type="text" class="form-control" id="nama" name="nama"
-                                        placeholder="Nama Lengkap">
+                                    <input type="text" class="form-control" id="nama" name="nama" placeholder="Nama Lengkap">
                                 </div>
                                 <div class="form-group">
                                     <label for="jeniskelamin">Jenis Kelamin</label>
@@ -64,18 +59,15 @@
                                 </div>
                                 <div class="form-group">
                                     <label for="domisili">Domisili</label>
-                                    <input type="text" class="form-control" id="domisili" name="domisili"
-                                        placeholder="Domisili">
+                                    <input type="text" class="form-control" id="domisili" name="domisili" placeholder="Domisili">
                                 </div>
                                 <div class="form-group">
                                     <label for="alamat">Alamat</label>
-                                    <input type="text" class="form-control" id="alamat" name="alamat"
-                                        placeholder="Alamat">
+                                    <input type="text" class="form-control" id="alamat" name="alamat" placeholder="Alamat">
                                 </div>
                                 <div class="form-group">
                                     <label for="nohp">No. Telp</label>
-                                    <input type="number" class="form-control" id="nohp" name="nohp"
-                                        placeholder="No. Telp">
+                                    <input type="number" class="form-control" id="nohp" name="nohp" placeholder="No. Telp">
                                 </div>
                                 <div class="form-group">
                                     <label for="rencanasetelahlulus">Rencana setelah lulus</label>
@@ -87,8 +79,7 @@
                                     </select>
                                 </div>
                                 <div class="modal-footer">
-                                    <button type="button" class="btn btn-outline-secondary btn-fw"
-                                        data-dismiss="modal">Tutup</button>
+                                    <button type="button" class="btn btn-outline-secondary btn-fw" data-dismiss="modal">Tutup</button>
                                     <button type="submit" class="btn btn-primary">Simpan Data</button>
                                 </div>
                             </form>
@@ -109,8 +100,7 @@
                         </button>
                     </div>
                     <div class="modal-body">
-                        <form action="<?= BASEURL ?>/bkk/importDatapeminatan" method="post"
-                            enctype="multipart/form-data">
+                        <form action="<?= BASEURL ?>/bkk/importDatapeminatan" method="post" enctype="multipart/form-data">
                             <div class="mb-3">
                                 <label for="file">Pilih file Excel (.xlsx)</label>
                                 <input type="file" name="file" id="file">
@@ -146,29 +136,24 @@
                                 </thead>
                                 <tbody>
                                     <?php $i = 1;
-                  foreach ($data['siswa'] as $siswa) : ?>
-                                    <tr>
-                                        <td>
-                                            <!-- <a href = "<?= BASEURL; ?>/bkk/detailpeminatan/<?= $siswa['id']; ?>" class="badge badge-info" style="text-decoration: none;"><i class="mdi mdi-information-variant"></i></a> -->
-                                            <a class="badge badge-success tampilModalEditPeminatan"
-                                                data-url="<?= BASEURL; ?>/bkk/ubahpeminatan/<?= $siswa['id']; ?>"
-                                                data-toggle="modal" data-target="#formModal"
-                                                data-id="<?= $siswa['id']; ?>"><i class="mdi mdi-lead-pencil"></i></a>
-                                            <a href="<?= BASEURL; ?>/bkk/hapuspeminatan/<?= $siswa['id']; ?>"
-                                                class="badge badge-danger" style="text-decoration: none;"><i
-                                                    class="mdi mdi-delete"></i></a>
-                                        </td>
-                                        </td>
-                                        <td><?= $i++; ?></td>
-                                        <td><?= $siswa['nama']; ?></td>
-                                        <td><?= $siswa['jeniskelamin']; ?></td>
-                                        <td><?= $siswa['kelas']; ?></td>
-                                        <td><?= $siswa['domisili']; ?></td>
-                                        <td><?= $siswa['alamat']; ?></td>
-                                        <td><?= $siswa['nohp']; ?></td>
-                                        <td><?= $siswa['rencanasetelahlulus']; ?></td>
+                                    foreach ($data['siswa'] as $siswa) : ?>
+                                        <tr>
+                                            <td>
+                                                <!-- <a href = "<?= BASEURL; ?>/bkk/detailpeminatan/<?= $siswa['id']; ?>" class="badge badge-info" style="text-decoration: none;"><i class="mdi mdi-information-variant"></i></a> -->
+                                                <a class="badge badge-success tampilModalEditPeminatan" data-url="<?= BASEURL; ?>/bkk/ubahpeminatan/<?= $siswa['id']; ?>" data-toggle="modal" data-target="#formModal" data-id="<?= $siswa['id']; ?>"><i class="mdi mdi-lead-pencil"></i></a>
+                                                <a href="<?= BASEURL; ?>/bkk/hapuspeminatan/<?= $siswa['id']; ?>" class="badge badge-danger" style="text-decoration: none;"><i class="mdi mdi-delete"></i></a>
+                                            </td>
+                                            </td>
+                                            <td><?= $i++; ?></td>
+                                            <td><?= $siswa['nama']; ?></td>
+                                            <td><?= $siswa['jeniskelamin']; ?></td>
+                                            <td><?= $siswa['kelas']; ?></td>
+                                            <td><?= $siswa['domisili']; ?></td>
+                                            <td><?= $siswa['alamat']; ?></td>
+                                            <td><?= $siswa['nohp']; ?></td>
+                                            <td><?= $siswa['rencanasetelahlulus']; ?></td>
 
-                                    </tr>
+                                        </tr>
                                     <?php endforeach; ?>
                                 </tbody>
                             </table>
@@ -187,9 +172,9 @@
         </div>
     </footer>
     <!-- partial -->
-</div>
-<!-- main-panel ends -->
-</div>
-<!-- page-body-wrapper ends -->
-</div>
-<!-- container-scroller -->
+    </div>
+    <!-- main-panel ends -->
+    </div>
+    <!-- page-body-wrapper ends -->
+    </div>
+    <!-- container-scroller -->

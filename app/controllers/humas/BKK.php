@@ -9,6 +9,14 @@ class BKK extends Controller
         $data['judul'] = 'Admin BKK';
         $data['subjudul'] = 'BKK';
         $data['user'] = $this->user;
+        $data['jmldas'] = $this->model('Humas', 'BKK_model')->getJmlDatadas()['count'];
+        $data['jmllomba'] = $this->model('Humas', 'BKK_model')->getJmlDatalomba()['count'];
+        $data['jmlloker'] = $this->model('Humas', 'BKK_model')->getJmlDataloker()['count'];
+        $data['jmlmou'] = $this->model('Humas', 'BKK_model')->getJmlDatamou()['count'];
+        $data['jmlpeminatan'] = $this->model('Humas', 'BKK_model')->getJmlDatapeminatan()['count'];
+        // $data['jmlrekrutindustri'] = $this->model('Humas', 'BKK_model')->getJmlDatarekrutindustri()['count'];
+        $data['jmlspw'] = $this->model('Humas', 'BKK_model')->getJmlDataspw()['count'];
+        $data['jmlworkshop'] = $this->model('Humas', 'BKK_model')->getJmlDataworkshop()['count'];
         $akses = ['all', 'humas'];
         if (in_array($data['user']['hak_akses'], $akses)) {
             $this->view('templates/humas/header', $data);

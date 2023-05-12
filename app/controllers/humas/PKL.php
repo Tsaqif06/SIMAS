@@ -23,10 +23,16 @@ class PKL extends Controller
     {
         $data['judul'] = 'Admin - PKL';
         $data['user'] = $this->user;
+        $data['jmlpp'] = $this->model('Humas', 'PKL_model')->getJmlDatapp()['count'];
+        $data['jmliz'] = $this->model('Humas', 'PKL_model')->getJmlDataiz()['count'];
+        $data['jmlind'] = $this->model('Humas', 'PKL_model')->getJmlDataind()['count'];
+        $data['jmldp'] = $this->model('Humas', 'PKL_model')->getJmlDatadp()['count'];
+        $data['jmltable'] = $this->model('Humas', 'PKL_model')->getJmlDatatable()['count'];
+        $data['jmlbm'] = $this->model('Humas', 'PKL_model')->getJmlDatabm()['count'];
         $akses = ['all', 'humas'];
         if (in_array($data['user']['hak_akses'], $akses)) {
             $this->view('templates/humas/header', $data);
-            $this->view('humas/pkl/rekap/home/pklrekapitulasi');
+            $this->view('humas/pkl/rekap/home/pklrekapitulasi', $data);
             $this->view('templates/humas/footer');
         } else if ($data['user']['hak_akses'] == '') {
             header("Location: " . BASEURL);

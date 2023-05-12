@@ -1,4 +1,3 @@
-<div class="main-panel">
     <div class="content-wrapper">
         <div class="row">
             <div class="col-md-12 grid-margin">
@@ -36,31 +35,27 @@
                                 <tbody>
                                     <?php $i = 1 ?>
                                     <?php foreach ($data['riwayat'] as $row) : ?>
-                                    <tr>
-                                        <td><?= $i ?></td>
-                                        <td><a href="">
-                                                <div data-toggle="modal" data-target="#infotabel"
-                                                    class="badge badge-info btnSelengkapnya" data-index="<?= $i - 1 ?>"
-                                                    title="Selengkapnya">
-                                                    <i class="ti ti-info"></i>
-                                                </div>
-                                            </a>
-                                            <a href="<?= BASEURL ?>/riwayat/restoreData/<?= $row['row']['uuid'] ?>/<?= $row['database'] ?>.<?= $row['table'] ?>"
-                                                onclick="return confirm('Yakin Ingin Mengembalikan Data?')">
-                                                <div class=" badge badge-success"><i class="ti ti-loop"></i>
-                                                </div>
-                                            </a>
-                                            <a href="<?= BASEURL ?>/riwayat/deletePermanentData/<?= $row['row']['uuid'] ?>/<?= $row['database'] ?>.<?= $row['table'] ?>"
-                                                onclick="return confirm('Yakin Ingin Menghapus Permanen Data?')">
-                                                <div class="badge badge-danger"><i class="ti ti-trash"></i></div>
-                                            </a>
-                                        </td>
-                                        <td><?= $row['database'] ?></td>
-                                        <td><?= $row['table'] ?></td>
-                                        <td><?= $row['row']['deleted_by'] ?></td>
-                                        <td><?= $row['row']['deleted_at'] ?></td>
-                                    </tr>
-                                    <?php $i++ ?>
+                                        <tr>
+                                            <td><?= $i ?></td>
+                                            <td><a href="">
+                                                    <div data-toggle="modal" data-target="#infotabel" class="badge badge-info btnSelengkapnya" data-index="<?= $i - 1 ?>" title="Selengkapnya">
+                                                        <i class="ti ti-info"></i>
+                                                    </div>
+                                                </a>
+                                                <a href="<?= BASEURL ?>/riwayat/restoreData/<?= $row['row']['uuid'] ?>/<?= $row['database'] ?>.<?= $row['table'] ?>" onclick="return confirm('Yakin Ingin Mengembalikan Data?')">
+                                                    <div class=" badge badge-success"><i class="ti ti-loop"></i>
+                                                    </div>
+                                                </a>
+                                                <a href="<?= BASEURL ?>/riwayat/deletePermanentData/<?= $row['row']['uuid'] ?>/<?= $row['database'] ?>.<?= $row['table'] ?>" onclick="return confirm('Yakin Ingin Menghapus Permanen Data?')">
+                                                    <div class="badge badge-danger"><i class="ti ti-trash"></i></div>
+                                                </a>
+                                            </td>
+                                            <td><?= $row['database'] ?></td>
+                                            <td><?= $row['table'] ?></td>
+                                            <td><?= $row['row']['deleted_by'] ?></td>
+                                            <td><?= $row['row']['deleted_at'] ?></td>
+                                        </tr>
+                                        <?php $i++ ?>
                                     <?php endforeach ?>
                                 </tbody>
                             </table>

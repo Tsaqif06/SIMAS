@@ -36,16 +36,25 @@
 <script src="<?= BASEURL ?>/js/script/loader.js"></script>
 <script src="<?= BASEURL ?>/js/template.js"></script>
 <script src="<?= BASEURL ?>/js/settings.js"></script>
+<script src="<?= BASEURL ?>/js/spa.js"></script>
 <script src="<?= BASEURL ?>/js/todolist.js"></script>
 <script src="<?= BASEURL ?>/js/bootstrap.js"></script>
 <script src="<?= BASEURL ?>/js/script/profile.js"></script>
 <script src="<?= BASEURL ?>/js/script/carousel.js"></script>
 <script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.js"></script>
+<!-- script tambahan  -->
+<script src="https://cdn.datatables.net/buttons/1.7.0/js/dataTables.buttons.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
+<script src="https://cdn.datatables.net/buttons/1.7.0/js/buttons.html5.min.js"></script>
+<script src="https://cdn.datatables.net/buttons/1.7.0/js/buttons.print.min.js"></script>
 
 <!-- endinject -->
 <!-- Custom js for this page-->
 <script src="<?= BASEURL ?>/js/dashboard.js"></script>
-<script src="<?= BASEURL; ?>/vendors/owl-carousel-2/owl.carousel.min.js"></script>
+<script src="<?= BASEURL ?>/vendors/owl-carousel-2/owl.carousel.min.js"></script>
+<script src="<?= BASEURL ?>/js/script.js"></script>
 <script src="<?= BASEURL ?>/js/Chart.roundedBarCharts.js"></script>
 <!-- End custom js for this page-->
 <script src="<?= BASEURL; ?>/js/humas/script.js"></script>

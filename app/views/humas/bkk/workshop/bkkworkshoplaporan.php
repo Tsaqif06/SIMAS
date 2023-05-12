@@ -1,4 +1,3 @@
-<div class="main-panel">
     <div class="content-wrapper">
         <div class="row">
             <div class="col-md-12 grid-margin">
@@ -22,17 +21,14 @@
         <div class="row">
             <div class="col-md-12 grid-margin">
                 <div class="template-demo">
-                    <button type="button" class="btn btn-primary tombolTambahDataWorkshop" data-toggle="modal"
-                        data-target="#formModal">Tambah Data</button>
-                    <button type="button" class="btn btn-primary my-3 mx-3 tampilModalImport" data-toggle="modal"
-                        data-target="#modalImport">
+                    <button type="button" class="btn btn-primary tombolTambahDataWorkshop" data-toggle="modal" data-target="#formModal">Tambah Data</button>
+                    <button type="button" class="btn btn-primary my-3 mx-3 tampilModalImport" data-toggle="modal" data-target="#modalImport">
                         Import Data Dari Excel
                     </button>
                 </div>
             </div>
 
-            <div class="modal fade" id="modalImport" tabindex="-1" aria-labelledby="exampleModalLabel"
-                aria-hidden="true">
+            <div class="modal fade" id="modalImport" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div class="modal-dialog modal-dialog-centered">
                     <div class="modal-content">
                         <div class="modal-header">
@@ -42,8 +38,7 @@
                             </button>
                         </div>
                         <div class="modal-body">
-                            <form action="<?= BASEURL ?>/bkk/importDataworkshop" method="post"
-                                enctype="multipart/form-data">
+                            <form action="<?= BASEURL ?>/bkk/importDataworkshop" method="post" enctype="multipart/form-data">
                                 <div class="mb-3">
                                     <label for="file">Pilih file Excel (.xlsx)</label>
                                     <input type="file" name="file" id="file">
@@ -59,8 +54,7 @@
             </div>
 
             <!-- Modal -->
-            <div class="modal fade" id="formModal" tabindex="-1" role="dialog" aria-labelledby="judulModal"
-                aria-hidden="true">
+            <div class="modal fade" id="formModal" tabindex="-1" role="dialog" aria-labelledby="judulModal" aria-hidden="true">
                 <div class="modal-dialog" role="document">
                     <div class="modal-content">
                         <div class="modal-header">
@@ -74,42 +68,34 @@
                                 <input type="hidden" name="id" id="id">
                                 <div class="form-group">
                                     <label for="penyelenggara">Penyelenggara</label>
-                                    <input type="text" class="form-control" id="penyelenggara" name="penyelenggara"
-                                        placeholder="Penyelenggara">
+                                    <input type="text" class="form-control" id="penyelenggara" name="penyelenggara" placeholder="Penyelenggara">
                                 </div>
                                 <div class="form-group">
                                     <label for="kegiatan">Kegiatan</label>
-                                    <input type="text" class="form-control" id="kegiatan" name="kegiatan"
-                                        placeholder="Kegiatan">
+                                    <input type="text" class="form-control" id="kegiatan" name="kegiatan" placeholder="Kegiatan">
                                 </div>
                                 <div class="form-group">
                                     <label for="tujuan">Tujuan</label>
-                                    <input type="text" class="form-control" id="tujuan" name="tujuan"
-                                        placeholder="Tujuan">
+                                    <input type="text" class="form-control" id="tujuan" name="tujuan" placeholder="Tujuan">
                                 </div>
                                 <div class="form-group">
                                     <label for="peserta">Peserta</label>
-                                    <input type="text" class="form-control" id="peserta" name="peserta"
-                                        placeholder="Peserta">
+                                    <input type="text" class="form-control" id="peserta" name="peserta" placeholder="Peserta">
                                 </div>
                                 <div class="form-group">
                                     <label for="tanggalpersiapan">Tanggal Persiapan</label>
-                                    <input type="date" class="form-control" id="tanggalpersiapan"
-                                        name="tanggalpersiapan">
+                                    <input type="date" class="form-control" id="tanggalpersiapan" name="tanggalpersiapan">
                                 </div>
                                 <div class="form-group">
                                     <label for="tanggaldilakukan">Tanggal Dilakukan</label>
-                                    <input type="date" class="form-control" id="tanggaldilakukan"
-                                        name="tanggaldilakukan">
+                                    <input type="date" class="form-control" id="tanggaldilakukan" name="tanggaldilakukan">
                                 </div>
                                 <div class="form-group">
                                     <label for="tempat">Tempat</label>
-                                    <input type="text" class="form-control" id="tempat" name="tempat"
-                                        placeholder="Tempat">
+                                    <input type="text" class="form-control" id="tempat" name="tempat" placeholder="Tempat">
                                 </div>
                                 <div class="modal-footer">
-                                    <button type="button" class="btn btn-outline-secondary btn-fw"
-                                        data-dismiss="modal">Tutup</button>
+                                    <button type="button" class="btn btn-outline-secondary btn-fw" data-dismiss="modal">Tutup</button>
                                     <button type="submit" class="btn btn-primary">Simpan Data</button>
                                 </div>
                             </form>
@@ -141,28 +127,23 @@
                                 </thead>
                                 <tbody>
                                     <?php $i = 1;
-                        foreach ($data['siswa'] as $siswa): ?>
-                                    <tr>
-                                        <td>
-                                            <!-- <a href = "<?= BASEURL; ?>/bkk/detailworkshop/<?= $siswa['id']; ?>" class="badge badge-info" style="text-decoration: none;"><i class="mdi mdi-information-variant"></i></a> -->
-                                            <a data-url="<?= BASEURL; ?>/bkk/ubahworkshop/<?= $siswa['id']; ?>"
-                                                class="badge badge-success tampilModalEditWorkshop" data-toggle="modal"
-                                                data-target="#formModal" data-id="<?= $siswa['id']; ?>"><i
-                                                    class="mdi mdi-lead-pencil"></i></a>
-                                            <a href="<?= BASEURL; ?>/bkk/hapusworkshop/<?= $siswa['id']; ?>"
-                                                class="badge badge-danger" style="text-decoration: none;"><i
-                                                    class="mdi mdi-delete"></i></a>
-                                        </td>
-                                        </td>
-                                        <td><?= $i++; ?></td>
-                                        <td><?= $siswa['penyelenggara']; ?></td>
-                                        <td><?= $siswa['kegiatan']; ?></td>
-                                        <td><?= $siswa['tujuan']; ?></td>
-                                        <td><?= $siswa['peserta']; ?></td>
-                                        <td><?= $siswa['tanggalpersiapan']; ?></td>
-                                        <td><?= $siswa['tanggaldilakukan']; ?></td>
-                                        <td><?= $siswa['tempat']; ?></td>
-                                    </tr>
+                                    foreach ($data['siswa'] as $siswa) : ?>
+                                        <tr>
+                                            <td>
+                                                <!-- <a href = "<?= BASEURL; ?>/bkk/detailworkshop/<?= $siswa['id']; ?>" class="badge badge-info" style="text-decoration: none;"><i class="mdi mdi-information-variant"></i></a> -->
+                                                <a data-url="<?= BASEURL; ?>/bkk/ubahworkshop/<?= $siswa['id']; ?>" class="badge badge-success tampilModalEditWorkshop" data-toggle="modal" data-target="#formModal" data-id="<?= $siswa['id']; ?>"><i class="mdi mdi-lead-pencil"></i></a>
+                                                <a href="<?= BASEURL; ?>/bkk/hapusworkshop/<?= $siswa['id']; ?>" class="badge badge-danger" style="text-decoration: none;"><i class="mdi mdi-delete"></i></a>
+                                            </td>
+                                            </td>
+                                            <td><?= $i++; ?></td>
+                                            <td><?= $siswa['penyelenggara']; ?></td>
+                                            <td><?= $siswa['kegiatan']; ?></td>
+                                            <td><?= $siswa['tujuan']; ?></td>
+                                            <td><?= $siswa['peserta']; ?></td>
+                                            <td><?= $siswa['tanggalpersiapan']; ?></td>
+                                            <td><?= $siswa['tanggaldilakukan']; ?></td>
+                                            <td><?= $siswa['tempat']; ?></td>
+                                        </tr>
                                     <?php endforeach; ?>
                                 </tbody>
                             </table>
@@ -181,9 +162,9 @@
         </div>
     </footer>
     <!-- partial -->
-</div>
-<!-- main-panel ends -->
-</div>
-<!-- page-body-wrapper ends -->
-</div>
-<!-- container-scroller -->
+    </div>
+    <!-- main-panel ends -->
+    </div>
+    <!-- page-body-wrapper ends -->
+    </div>
+    <!-- container-scroller -->
