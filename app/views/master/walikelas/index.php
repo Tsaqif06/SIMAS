@@ -58,7 +58,11 @@
                                         <th>No.</th>
                                         <th>Aksi</th>
                                         <th>Nama Wali Kelas</th>
-                                        <th>Nama Kelas</th>
+                                        <th>NIP</th>
+                                        <th>Gol</th>
+                                        <th>Pangkat</th>
+                                        <th>Jabatan</th>
+                                        <th>Telepon</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -81,8 +85,12 @@
                                                     </div>
                                             </a>
                                         </td>
-                                        <td><?= $row["nama_walikelas"]; ?></td>
-                                        <td><?= $row["nama_kelas"] ?></td>
+                                        <td><?= $row["nama"]; ?></td>
+                                        <td><?= $row["nip"] ?></td>
+                                        <td><?= $row["gol"] ?></td>
+                                        <td><?= $row["pangkat"] ?></td>
+                                        <td><?= $row["jabatan"] ?></td>
+                                        <td><?= $row["telepon"] ?></td>
                                     </tr>
                                     <?php endforeach; ?>
                                 </tbody>
