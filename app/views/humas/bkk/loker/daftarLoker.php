@@ -11,12 +11,10 @@
 
     <div class="row mb-4 ">
         <div class="col-lg-6">
-            <button type="button" class="btn btn-primary tombolTambahDataLoker" data-bs-toggle="modal"
-                data-bs-target="#formModal">
+            <button type="button" class="btn btn-primary tombolTambahDataLoker" data-bs-toggle="modal" data-bs-target="#formModal">
                 Tambah Lowongan Kerja
             </button>
-            <button type="button" class="btn btn-primary my-3 mx-3 tampilModalImport" data-toggle="modal"
-                data-target="#modalImport">
+            <button type="button" class="btn btn-primary my-3 mx-3 tampilModalImport" data-toggle="modal" data-target="#modalImport">
                 Import Data Dari Excel
             </button>
         </div>
@@ -32,7 +30,7 @@
         </form>
       </div>
     </div> -->
-    <table id="myTable" class="table table-striped" style="width:100%">
+    <table id="table" class="table table-striped" style="width:100%">
 
         <thead>
             <tr>
@@ -48,24 +46,21 @@
         </thead>
         <tbody>
             <?php $i = 1;
-      foreach ($data['siswa'] as $siswa) : ?>
-            <tr>
-                <td>
-                    <a href="<?= BASEURL; ?>/bkk/ubahloker/<?= $siswa['id']; ?>"
-                        class="badge text-bg-warning tampilModalEditLoker" style="text-decoration: none;"
-                        data-bs-toggle="modal" data-bs-target="#formModal" data-id="<?= $siswa['id']; ?>"> Edit</a>
-                    <a href="<?= BASEURL; ?>/bkk/hapusloker/<?= $siswa['id']; ?>" class="badge text-bg-danger"
-                        style="text-decoration: none;" onclick="return confirm('Yakin ingin menghapus?');"> Hapus</a>
-                </td>
-                <td><?= $i++; ?></td>
-                <td><?= $siswa['namaperusahaan']; ?></td>
-                <td><?= $siswa['untukjurusan']; ?></td>
-                <td><?= $siswa['profesiygdibutuhkan']; ?></td>
-                <td><?= $siswa['kriteriaprofesi']; ?></td>
-                <td><?= $siswa['kontakperusahaan']; ?></td>
-                <td><?= $siswa['upfotoloker']; ?></td>
+            foreach ($data['siswa'] as $siswa) : ?>
+                <tr>
+                    <td>
+                        <a href="<?= BASEURL; ?>/bkk/ubahloker/<?= $siswa['id']; ?>" class="badge text-bg-warning tampilModalEditLoker" style="text-decoration: none;" data-bs-toggle="modal" data-bs-target="#formModal" data-id="<?= $siswa['id']; ?>"> Edit</a>
+                        <a href="<?= BASEURL; ?>/bkk/hapusloker/<?= $siswa['id']; ?>" class="badge text-bg-danger" style="text-decoration: none;" onclick="return confirm('Yakin ingin menghapus?');"> Hapus</a>
+                    </td>
+                    <td><?= $i++; ?></td>
+                    <td><?= $siswa['namaperusahaan']; ?></td>
+                    <td><?= $siswa['untukjurusan']; ?></td>
+                    <td><?= $siswa['profesiygdibutuhkan']; ?></td>
+                    <td><?= $siswa['kriteriaprofesi']; ?></td>
+                    <td><?= $siswa['kontakperusahaan']; ?></td>
+                    <td><?= $siswa['upfotoloker']; ?></td>
 
-            </tr>
+                </tr>
             <?php endforeach; ?>
         </tbody>
     </table>
@@ -109,14 +104,12 @@
                     <input type="hidden" name="id" id="id">
                     <div class="mb-3">
                         <label for="namaperusahaan" class="form-label">Nama Perusahaan</label>
-                        <input type="text" class="form-control" id="namaperusahaan" name="namaperusahaan"
-                            placeholder="Masukkan nama" autocomplete="off">
+                        <input type="text" class="form-control" id="namaperusahaan" name="namaperusahaan" placeholder="Masukkan nama" autocomplete="off">
                     </div>
 
                     <div class="mb-3">
                         <label for="untukjurusan" class="form-label">Untuk Jurusan</label>
-                        <select class="form-select" aria-label="Default select example" id="untukjurusan"
-                            name="untukjurusan">
+                        <select class="form-select" aria-label="Default select example" id="untukjurusan" name="untukjurusan">
                             <option selected>--Pilih Jurusan--</option>
                             <option value="Teknik Grafika">Teknik Grafika</option>
                             <option value="Teknik Komputer Jaringan">Teknik Komputer Jaringan</option>
@@ -131,26 +124,22 @@
 
                     <div class="mb-3">
                         <label for="profesiygdibutuhkan" class="form-label">Profesi yang Dibutuhkan</label>
-                        <input type="text" class="form-control" id="profesiygdibutuhkan" name="profesiygdibutuhkan"
-                            placeholder="Masukkan profesi" autocomplete="off">
+                        <input type="text" class="form-control" id="profesiygdibutuhkan" name="profesiygdibutuhkan" placeholder="Masukkan profesi" autocomplete="off">
                     </div>
 
                     <div class="mb-3">
                         <label for="kriteriaprofesi" class="form-label">Kriteria Profesi</label>
-                        <input type="text" class="form-control" id="kriteriaprofesi" name="kriteriaprofesi"
-                            placeholder="Masukkan kriteria" autocomplete="off">
+                        <input type="text" class="form-control" id="kriteriaprofesi" name="kriteriaprofesi" placeholder="Masukkan kriteria" autocomplete="off">
                     </div>
 
                     <div class="mb-3">
                         <label for="kontakperusahaan" class="form-label">Kontak Perusahaan</label>
-                        <input type="text" class="form-control" id="kontakperusahaan" name="kontakperusahaan"
-                            placeholder="Masukkan kontak perusahaan" autocomplete="off">
+                        <input type="text" class="form-control" id="kontakperusahaan" name="kontakperusahaan" placeholder="Masukkan kontak perusahaan" autocomplete="off">
                     </div>
 
                     <div class="mb-3">
                         <label for="upfotoloker" class="form-label">Foto Loker</label>
-                        <input type="text" class="form-control" id="upfotoloker" name="upfotoloker"
-                            placeholder="Masukkan foto loker" autocomplete="off">
+                        <input type="text" class="form-control" id="upfotoloker" name="upfotoloker" placeholder="Masukkan foto loker" autocomplete="off">
                     </div>
 
 

@@ -10,12 +10,10 @@
 
     <div class="row mb-4 ">
         <div class="col-lg-6">
-            <button type="button" class="btn btn-primary tombolTambahDataWorkshop" data-bs-toggle="modal"
-                data-bs-target="#formModal">
+            <button type="button" class="btn btn-primary tombolTambahDataWorkshop" data-bs-toggle="modal" data-bs-target="#formModal">
                 Tambah Data Siswa
             </button>
-            <button type="button" class="btn btn-primary my-3 mx-3 tampilModalImport" data-toggle="modal"
-                data-target="#modalImport">
+            <button type="button" class="btn btn-primary my-3 mx-3 tampilModalImport" data-toggle="modal" data-target="#modalImport">
                 Import Data Dari Excel
             </button>
         </div>
@@ -25,16 +23,14 @@
         <div class="col-lg-6">
             <form action="<?= BASEURL; ?>/bkk/cariworkshop" method="post">
                 <div class="input-group mb-3">
-                    <input type="text" class="form-control" placeholder="Cari siswa berdasarkan penyelenggara"
-                        aria-label="Recipient's username" aria-describedby="button-addon2" id="keyword" name="keyword"
-                        autocomplete="off">
+                    <input type="text" class="form-control" placeholder="Cari siswa berdasarkan penyelenggara" aria-label="Recipient's username" aria-describedby="button-addon2" id="keyword" name="keyword" autocomplete="off">
                     <button class="btn btn-primary" type="submit" id="tombolCariworkshop">Cari</button>
                 </div>
             </form>
         </div>
     </div>
 
-    <table id="myTable" class="table table-striped" style="width:100%">
+    <table id="table" class="table table-striped" style="width:100%">
         <thead>
             <tr>
                 <th>Aksi</th>
@@ -49,23 +45,20 @@
         </thead>
         <tbody>
             <?php $i = 1;
-                foreach ($data['siswa'] as $siswa): ?>
-            <tr>
-                <td>
-                    <a href="<?= BASEURL; ?>/bkk/ubahworkshop/<?= $siswa['id']; ?>"
-                        class="badge text-bg-warning tampilModalEditWorkshop" style="text-decoration: none;"
-                        data-bs-toggle="modal" data-bs-target="#formModal" data-id="<?= $siswa['id']; ?>"> Edit</a>
-                    <a href="<?= BASEURL; ?>/bkk/hapusworkshop/<?= $siswa['id']; ?>" class="badge text-bg-danger"
-                        style="text-decoration: none;" onclick="return confirm('Yakin ingin menghapus?');"> Hapus</a>
-                </td>
-                <td><?= $i++; ?></td>
-                <td><?= $siswa['penyelenggara']; ?></td>
-                <td><?= $siswa['tujuan']; ?></td>
-                <td><?= $siswa['peserta']; ?></td>
-                <td><?= $siswa['tanggalpersiapan']; ?></td>
-                <td><?= $siswa['tanggaldilakukan']; ?></td>
-                <td><?= $siswa['tempat']; ?></td>
-            </tr>
+            foreach ($data['siswa'] as $siswa) : ?>
+                <tr>
+                    <td>
+                        <a href="<?= BASEURL; ?>/bkk/ubahworkshop/<?= $siswa['id']; ?>" class="badge text-bg-warning tampilModalEditWorkshop" style="text-decoration: none;" data-bs-toggle="modal" data-bs-target="#formModal" data-id="<?= $siswa['id']; ?>"> Edit</a>
+                        <a href="<?= BASEURL; ?>/bkk/hapusworkshop/<?= $siswa['id']; ?>" class="badge text-bg-danger" style="text-decoration: none;" onclick="return confirm('Yakin ingin menghapus?');"> Hapus</a>
+                    </td>
+                    <td><?= $i++; ?></td>
+                    <td><?= $siswa['penyelenggara']; ?></td>
+                    <td><?= $siswa['tujuan']; ?></td>
+                    <td><?= $siswa['peserta']; ?></td>
+                    <td><?= $siswa['tanggalpersiapan']; ?></td>
+                    <td><?= $siswa['tanggaldilakukan']; ?></td>
+                    <td><?= $siswa['tempat']; ?></td>
+                </tr>
             <?php endforeach; ?>
         </tbody>
     </table>
@@ -109,38 +102,32 @@
                     <input type="hidden" name="id" id="id">
                     <div class="mb-3">
                         <label for="penyelenggara" class="form-label">Penyelenggara</label>
-                        <input type="text" class="form-control" id="penyelenggara" name="penyelenggara"
-                            placeholder="Masukkan penyelenggara" autocomplete="off">
+                        <input type="text" class="form-control" id="penyelenggara" name="penyelenggara" placeholder="Masukkan penyelenggara" autocomplete="off">
                     </div>
 
                     <div class="mb-3">
                         <label for="tujuan" class="form-label">Tujuan</label>
-                        <input type="text" class="form-control" id="tujuan" name="tujuan" placeholder="Masukkan tujuan"
-                            autocomplete="off">
+                        <input type="text" class="form-control" id="tujuan" name="tujuan" placeholder="Masukkan tujuan" autocomplete="off">
                     </div>
 
                     <div class="mb-3">
                         <label for="peserta" class="form-label">Peserta</label>
-                        <input type="text" class="form-control" id="peserta" name="peserta"
-                            placeholder="Masukkan peserta" autocomplete="off">
+                        <input type="text" class="form-control" id="peserta" name="peserta" placeholder="Masukkan peserta" autocomplete="off">
                     </div>
 
                     <div class="mb-3">
                         <label for="tanggalpersiapan" class="form-label">Tanggal Persiapan</label>
-                        <input type="text" class="form-control" id="tanggalpersiapan" name="tanggalpersiapan"
-                            placeholder="Masukkan tgl persiapan" autocomplete="off">
+                        <input type="text" class="form-control" id="tanggalpersiapan" name="tanggalpersiapan" placeholder="Masukkan tgl persiapan" autocomplete="off">
                     </div>
 
                     <div class="mb-3">
                         <label for="tanggaldilakukan" class="form-label">Tanggal Dilakukan</label>
-                        <input type="text" class="form-control" id="tanggaldilakukan" name="tanggaldilakukan"
-                            placeholder="Masukkan tgl acara" autocomplete="off">
+                        <input type="text" class="form-control" id="tanggaldilakukan" name="tanggaldilakukan" placeholder="Masukkan tgl acara" autocomplete="off">
                     </div>
 
                     <div class="mb-3">
                         <label for="tempat" class="form-label">Tempat</label>
-                        <input type="text" class="form-control" id="tempat" name="tempat" placeholder="Masukkan tempat"
-                            autocomplete="off">
+                        <input type="text" class="form-control" id="tempat" name="tempat" placeholder="Masukkan tempat" autocomplete="off">
                     </div>
 
 

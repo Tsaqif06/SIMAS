@@ -6,7 +6,7 @@ class Logout extends Controller
     {
         if ($this->model("Login", "Login_model")->logout(Cookie::get_jwt()->sub) > 0) {
             Cookie::delete_jwt();
-            Flasher::setFlash('BERHASIL', 'Logout', 'danger');
+            Flasher::setFlash('BERHASIL', 'Logout', 'success');
             header("Location: " . BASEURL . "/login");
             exit;
         } else {

@@ -408,7 +408,7 @@ class PKL extends Controller
     {
         $data['judul'] = 'Admin - PKL';
         $data['user'] = $this->user;
-        $akses = ['all', 'humas'];
+        $akses = ['all', 'humas', 'industri'];
         if (in_array($data['user']['hak_akses'], $akses)) {
             $this->view('templates/humas/header', $data);
             $this->view('humas/pkl/nilai/home/pklnilai', $data);
@@ -422,7 +422,7 @@ class PKL extends Controller
     {
         $data['judul'] = 'Admin - PKL';
         $data['user'] = $this->user;
-        $akses = ['all', 'humas'];
+        $akses = ['all', 'humas', 'industri'];
         if (in_array($data['user']['hak_akses'], $akses)) {
             $this->view('templates/humas/header', $data);
             $this->view('humas/pkl/nilai/tg/pklnillaitga', $data);
@@ -436,7 +436,7 @@ class PKL extends Controller
     {
         $data['judul'] = 'Admin - PKL';
         $data['user'] = $this->user;
-        $akses = ['all', 'humas'];
+        $akses = ['all', 'humas', 'industri'];
         if (in_array($data['user']['hak_akses'], $akses)) {
             $this->view('templates/humas/header', $data);
             $this->view('humas/pkl/nilai/tg/pklnilaidgb');
@@ -450,7 +450,7 @@ class PKL extends Controller
     {
         $data['judul'] = 'Admin - PKL';
         $data['user'] = $this->user;
-        $akses = ['all', 'humas'];
+        $akses = ['all', 'humas', 'industri'];
         if (in_array($data['user']['hak_akses'], $akses)) {
             $this->view('templates/humas/header', $data);
             $this->view('humas/pkl/nilai/tg/pklnilaidgc');
@@ -464,7 +464,7 @@ class PKL extends Controller
     {
         $data['judul'] = 'Admin - PKL';
         $data['user'] = $this->user;
-        $akses = ['all', 'humas'];
+        $akses = ['all', 'humas', 'industri'];
         if (in_array($data['user']['hak_akses'], $akses)) {
             $this->view('templates/humas/header', $data);
             $this->view('humas/pkl/nilai/tg/pklnilaidgd');
@@ -478,7 +478,7 @@ class PKL extends Controller
     {
         $data['judul'] = 'Admin - PKL';
         $data['user'] = $this->user;
-        $akses = ['all', 'humas'];
+        $akses = ['all', 'humas', 'industri'];
         if (in_array($data['user']['hak_akses'], $akses)) {
             $this->view('templates/humas/header', $data);
             $this->view('humas/pkl/nilai/tg/pklnilaipda');
@@ -492,7 +492,7 @@ class PKL extends Controller
     {
         $data['judul'] = 'Admin - PKL';
         $data['user'] = $this->user;
-        $akses = ['all', 'humas'];
+        $akses = ['all', 'humas', 'industri'];
         if (in_array($data['user']['hak_akses'], $akses)) {
             $this->view('templates/humas/header', $data);
             $this->view('humas/pkl/nilai/tg/pklnilaipdb');
@@ -506,7 +506,7 @@ class PKL extends Controller
     {
         $data['judul'] = 'Admin - PKL';
         $data['user'] = $this->user;
-        $akses = ['all', 'humas'];
+        $akses = ['all', 'humas', 'industri'];
         if (in_array($data['user']['hak_akses'], $akses)) {
             $this->view('templates/humas/header', $data);
             $this->view('humas/pkl/nilai/tg/pklnilaipdc');
@@ -520,7 +520,7 @@ class PKL extends Controller
     {
         $data['judul'] = 'Admin - PKL';
         $data['user'] = $this->user;
-        $akses = ['all', 'humas'];
+        $akses = ['all', 'humas', 'industri'];
         if (in_array($data['user']['hak_akses'], $akses)) {
             $this->view('templates/humas/header', $data);
             $this->view('humas/pkl/nilai/tg/pklnilaipdd');
@@ -534,7 +534,7 @@ class PKL extends Controller
     {
         $data['judul'] = 'Admin - PKL';
         $data['user'] = $this->user;
-        $akses = ['all', 'humas'];
+        $akses = ['all', 'humas', 'industri'];
         if (in_array($data['user']['hak_akses'], $akses)) {
             $this->view('templates/humas/header', $data);
             $this->view('humas/pkl/nilai/animasi/pklnilaiania');
@@ -548,7 +548,7 @@ class PKL extends Controller
     {
         $data['judul'] = 'Admin - PKL';
         $data['user'] = $this->user;
-        $akses = ['all', 'humas'];
+        $akses = ['all', 'humas', 'industri'];
         if (in_array($data['user']['hak_akses'], $akses)) {
             $this->view('templates/humas/header', $data);
             $this->view('humas/pkl/nilai/animasi/pklnilaianib');
@@ -562,7 +562,7 @@ class PKL extends Controller
     {
         $data['judul'] = 'Admin - PKL';
         $data['user'] = $this->user;
-        $akses = ['all', 'humas'];
+        $akses = ['all', 'humas', 'industri'];
         if (in_array($data['user']['hak_akses'], $akses)) {
             $this->view('templates/humas/header', $data);
             $this->view('humas/pkl/nilai/animasi/pklnilaianic');
@@ -576,7 +576,7 @@ class PKL extends Controller
     {
         $data['judul'] = 'Admin - PKL';
         $data['user'] = $this->user;
-        $akses = ['all', 'humas'];
+        $akses = ['all', 'humas', 'industri'];
         if (in_array($data['user']['hak_akses'], $akses)) {
             $this->view('templates/humas/header', $data);
             $this->view('humas/pkl/nilai/dkv/pklnilaidkva');
@@ -590,7 +590,7 @@ class PKL extends Controller
     {
         $data['judul'] = 'Admin - PKL';
         $data['user'] = $this->user;
-        $akses = ['all', 'humas'];
+        $akses = ['all', 'humas', 'industri'];
         if (in_array($data['user']['hak_akses'], $akses)) {
             $this->view('templates/humas/header', $data);
             $this->view('humas/pkl/nilai/dkv/pklnilaidkvb');
@@ -604,7 +604,7 @@ class PKL extends Controller
     {
         $data['judul'] = 'Admin - PKL';
         $data['user'] = $this->user;
-        $akses = ['all', 'humas'];
+        $akses = ['all', 'humas', 'industri'];
         if (in_array($data['user']['hak_akses'], $akses)) {
             $this->view('templates/humas/header', $data);
             $this->view('humas/pkl/nilai/dkv/pklnilaidkvc');
@@ -618,7 +618,7 @@ class PKL extends Controller
     {
         $data['judul'] = 'Admin - PKL';
         $data['user'] = $this->user;
-        $akses = ['all', 'humas'];
+        $akses = ['all', 'humas', 'industri'];
         if (in_array($data['user']['hak_akses'], $akses)) {
             $this->view('templates/humas/header', $data);
             $this->view('humas/pkl/nilai/logistik/pklnilaitla');
@@ -632,7 +632,7 @@ class PKL extends Controller
     {
         $data['judul'] = 'Admin - PKL';
         $data['user'] = $this->user;
-        $akses = ['all', 'humas'];
+        $akses = ['all', 'humas', 'industri'];
         if (in_array($data['user']['hak_akses'], $akses)) {
             $this->view('templates/humas/header', $data);
             $this->view('humas/pkl/nilai/logistik/pklnilaitlb');
@@ -646,7 +646,7 @@ class PKL extends Controller
     {
         $data['judul'] = 'Admin - PKL';
         $data['user'] = $this->user;
-        $akses = ['all', 'humas'];
+        $akses = ['all', 'humas', 'industri'];
         if (in_array($data['user']['hak_akses'], $akses)) {
             $this->view('templates/humas/header', $data);
             $this->view('humas/pkl/nilai/mekatronika/pklnilaitma');
@@ -660,7 +660,7 @@ class PKL extends Controller
     {
         $data['judul'] = 'Admin - PKL';
         $data['user'] = $this->user;
-        $akses = ['all', 'humas'];
+        $akses = ['all', 'humas', 'industri'];
         if (in_array($data['user']['hak_akses'], $akses)) {
             $this->view('templates/humas/header', $data);
             $this->view('humas/pkl/nilai/mekatronika/pklnilaitmb');
@@ -674,7 +674,7 @@ class PKL extends Controller
     {
         $data['judul'] = 'Admin - PKL';
         $data['user'] = $this->user;
-        $akses = ['all', 'humas'];
+        $akses = ['all', 'humas', 'industri'];
         if (in_array($data['user']['hak_akses'], $akses)) {
             $this->view('templates/humas/header', $data);
             $this->view('humas/pkl/nilai/perhotelan/pklnilaipha');
@@ -688,7 +688,7 @@ class PKL extends Controller
     {
         $data['judul'] = 'Admin - PKL';
         $data['user'] = $this->user;
-        $akses = ['all', 'humas'];
+        $akses = ['all', 'humas', 'industri'];
         if (in_array($data['user']['hak_akses'], $akses)) {
             $this->view('templates/humas/header', $data);
             $this->view('humas/pkl/nilai/perhotelan/pklnilaiphb');
@@ -702,7 +702,7 @@ class PKL extends Controller
     {
         $data['judul'] = 'Admin - PKL';
         $data['user'] = $this->user;
-        $akses = ['all', 'humas'];
+        $akses = ['all', 'humas', 'industri'];
         if (in_array($data['user']['hak_akses'], $akses)) {
             $this->view('templates/humas/header', $data);
             $this->view('humas/pkl/nilai/rpl/pklnilairpla');
@@ -716,7 +716,7 @@ class PKL extends Controller
     {
         $data['judul'] = 'Admin - PKL';
         $data['user'] = $this->user;
-        $akses = ['all', 'humas'];
+        $akses = ['all', 'humas', 'industri'];
         if (in_array($data['user']['hak_akses'], $akses)) {
             $this->view('templates/humas/header', $data);
             $this->view('humas/pkl/nilai/rpl/pklnilairplb');
@@ -730,7 +730,7 @@ class PKL extends Controller
     {
         $data['judul'] = 'Admin - PKL';
         $data['user'] = $this->user;
-        $akses = ['all', 'humas'];
+        $akses = ['all', 'humas', 'industri'];
         if (in_array($data['user']['hak_akses'], $akses)) {
             $this->view('templates/humas/header', $data);
             $this->view('humas/pkl/nilai/rpl/pklnilairplc');
@@ -744,7 +744,7 @@ class PKL extends Controller
     {
         $data['judul'] = 'Admin - PKL';
         $data['user'] = $this->user;
-        $akses = ['all', 'humas'];
+        $akses = ['all', 'humas', 'industri'];
         if (in_array($data['user']['hak_akses'], $akses)) {
             $this->view('templates/humas/header', $data);
             $this->view('humas/pkl/nilai/tkj/pklnilaitkja');
@@ -758,7 +758,7 @@ class PKL extends Controller
     {
         $data['judul'] = 'Admin - PKL';
         $data['user'] = $this->user;
-        $akses = ['all', 'humas'];
+        $akses = ['all', 'humas', 'industri'];
         if (in_array($data['user']['hak_akses'], $akses)) {
             $this->view('templates/humas/header', $data);
             $this->view('humas/pkl/nilai/tkj/pklnilaitkjb');
@@ -774,14 +774,15 @@ class PKL extends Controller
         $data['judul'] = 'Admin - PKL';
         $data['user'] = $this->user;
         $data['siswa'] = $this->model("$this->model_name", 'PKL_model')->getExistSiswaPS();
-        $akses = ['all', 'humas'];
+        $akses = ['all', 'humas', 'kabeng'];
         if (in_array($data['user']['hak_akses'], $akses)) {
             $this->view('templates/humas/header', $data);
             $this->view('humas/pkl/pemberkasan/pklpemberkasanlaporan', $data);
             $this->view('templates/humas/footer');
         } else if ($data['user']['hak_akses'] == '') {
-            header("Location: " . BASEURL);
-            Flasher::setFlash('GAGAL', 'Anda Tidak Mempunyai Akses Untuk Menuju Halaman Tersebut', 'danger');
+            $this->view('templates/humas/header', $data);
+            $this->view('humas/pkl/pemberkasan/form', $data);
+            $this->view('templates/humas/footer');
         }
     }
 

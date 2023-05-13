@@ -1,35 +1,35 @@
 <div class="collapse" id="form-elements">
-              <ul class="nav flex-column sub-menu">
-              <li class="nav-item"><a class="nav-link" href="<?= BASEURL; ?>/pkl/index">PKL</a></li>
-                <div class="collapse" id="form-elements">
-                  <div class="navsubitem">
-                    <a class="nav-link" href="<?= BASEURL; ?>/pkl/rekap">Rekap PKL</a>
-                    <a class="nav-link" href="<?= BASEURL; ?>/pkl/pembekalan">Pembekalan PKL</a>
-                    <a class="nav-link" href="<?= BASEURL; ?>/pkl/pemberkasan">Pemberkasan</a>
-                    <a class="nav-link" href="<?= BASEURL; ?>/pkl/prakerin">Prakerin</a>
-                    <a class="nav-link" href="<?= BASEURL; ?>/pkl/nilai">Nilai PKL</a>
-                    <a class="nav-link" href="<?= BASEURL; ?>/pkl/dtampung">Daya Tampung</a>
-                  </div>
-                <li class="nav-item"><a class="nav-link" href="<?= BASEURL;?>/bkk/index">BKK</a></li>
-                  <div class="navsubitem">
-                    <a class="nav-link" href="<?= BASEURL;?>/bkk/das">Alumni Sukses</a>
-                    <a class="nav-link" href="<?= BASEURL;?>/bkk/mou">MoU</a>
-                    <a class="nav-link" href="<?= BASEURL;?>/bkk/peminatan">Peminatan</a>
-                    <a class="nav-link" href="<?= BASEURL;?>/bkk/workshop">Workshop</a>
-                    <a class="nav-link" href="<?= BASEURL;?>/bkk/kebekerjaan">Kebekerjaan</a>
-                    <a class="nav-link" href="<?= BASEURL;?>/bkk/spw">SPW</a>
-                    <a class="nav-link" href="<?= BASEURL;?>/bkk/lomba">Lomba</a>
-                    <a class="nav-link" href="<?= BASEURL;?>/bkk/loker">Lowongan Kerja</a>
-                  </div>
-                <li class="nav-item"><a class="nav-link" href="<?= BASEURL; ?>/ict/index">ICT</a></li>
-                <li class="nav-item"><a class="nav-link" href="<?= BASEURL; ?>/stiru/index">Studi Tiru</a></li>
-              </ul>
-            </div>
-            </li>  
-        </ul>
-      </nav> 
+  <ul class="nav flex-column sub-menu">
+    <li class="nav-item"><a class="nav-link" href="<?= BASEURL; ?>/pkl/index">PKL</a></li>
+    <div class="collapse" id="form-elements">
+      <div class="navsubitem">
+        <a class="nav-link" href="<?= BASEURL; ?>/pkl/rekap">Rekap PKL</a>
+        <a class="nav-link" href="<?= BASEURL; ?>/pkl/pembekalan">Pembekalan PKL</a>
+        <a class="nav-link" href="<?= BASEURL; ?>/pkl/pemberkasan">Pemberkasan</a>
+        <a class="nav-link" href="<?= BASEURL; ?>/pkl/prakerin">Prakerin</a>
+        <a class="nav-link" href="<?= BASEURL; ?>/pkl/nilai">Nilai PKL</a>
+        <a class="nav-link" href="<?= BASEURL; ?>/pkl/dtampung">Daya Tampung</a>
+      </div>
+      <li class="nav-item"><a class="nav-link" href="<?= BASEURL; ?>/bkk/index">BKK</a></li>
+      <div class="navsubitem">
+        <a class="nav-link" href="<?= BASEURL; ?>/bkk/das">Alumni Sukses</a>
+        <a class="nav-link" href="<?= BASEURL; ?>/bkk/mou">MoU</a>
+        <a class="nav-link" href="<?= BASEURL; ?>/bkk/peminatan">Peminatan</a>
+        <a class="nav-link" href="<?= BASEURL; ?>/bkk/workshop">Workshop</a>
+        <a class="nav-link" href="<?= BASEURL; ?>/bkk/kebekerjaan">Kebekerjaan</a>
+        <a class="nav-link" href="<?= BASEURL; ?>/bkk/spw">SPW</a>
+        <a class="nav-link" href="<?= BASEURL; ?>/bkk/lomba">Lomba</a>
+        <a class="nav-link" href="<?= BASEURL; ?>/bkk/loker">Lowongan Kerja</a>
+      </div>
+      <li class="nav-item"><a class="nav-link" href="<?= BASEURL; ?>/ict/index">ICT</a></li>
+      <li class="nav-item"><a class="nav-link" href="<?= BASEURL; ?>/stiru/index">Studi Tiru</a></li>
+  </ul>
+</div>
+</li>
+</ul>
+</nav>
 
-      <div class="main-panel">
+<div class="main-panel">
   <div class="content-wrapper">
     <div class="row">
       <div class="col-md-12 grid-margin">
@@ -51,15 +51,13 @@
     <div class="row">
       <div class="col-md-12 grid-margin">
         <div class="template-demo">
-          <button type="button" class="btn btn-primary tomboltambahdata8" data-toggle="modal"
-            data-target="#formmodal">Tambah Data</button>
+          <button type="button" class="btn btn-primary tomboltambahdata8" data-toggle="modal" data-target="#formmodal">Tambah Data</button>
         </div>
       </div>
 
 
 
-      <div class="modal fade" id="formmodal" tabindex="-1" role="dialog" aria-labelledby="judulModal"
-        aria-hidden="true">
+      <div class="modal fade" id="formmodal" tabindex="-1" role="dialog" aria-labelledby="judulModal" aria-hidden="true">
         <div class="modal-dialog" role="document">
           <div class="modal-content">
             <div class="modal-header">
@@ -121,7 +119,7 @@
         <div class="card">
           <div class="card-body">
             <div class="table-responsive ">
-              <table class="table table-hover" id="myTable">
+              <table class="table table-hover" id="table">
                 <thead>
                   <tr>
                     <th>Aksi</th>
@@ -136,16 +134,13 @@
                 </thead>
                 <?php
                 foreach ($data['iz'] as $iz) {
-                  ?>
+                ?>
                   <tr>
 
                     <td>
 
-                      <a class="badge badge-success tampildataubah8"
-                        data-url="<?= BASEURL ?>/PKL/ubahDTAIZ/<?= $iz['id']; ?>" data-toggle="modal"
-                        data-target="#formmodal" data-id="<?= $iz['id'] ?>"><i class="mdi mdi-pencil"></i></a>
-                      <a href="<?= BASEURL; ?>/PKL/HapusDTIZ/<?= $iz['id']; ?>" class="badge badge-danger"
-                        onclick="return confirm('Apakah anda sudah yakin?');"><i class="mdi mdi-delete"></i></a>
+                      <a class="badge badge-success tampildataubah8" data-url="<?= BASEURL ?>/PKL/ubahDTAIZ/<?= $iz['id']; ?>" data-toggle="modal" data-target="#formmodal" data-id="<?= $iz['id'] ?>"><i class="mdi mdi-pencil"></i></a>
+                      <a href="<?= BASEURL; ?>/PKL/HapusDTIZ/<?= $iz['id']; ?>" class="badge badge-danger" onclick="return confirm('Apakah anda sudah yakin?');"><i class="mdi mdi-delete"></i></a>
                     </td>
 
                     <td>
@@ -172,7 +167,7 @@
 
 
                   </tr>
-                  <?php
+                <?php
                 }
                 ?>
                 </tbody>

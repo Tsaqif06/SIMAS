@@ -10,12 +10,10 @@
 
     <div class="row mb-4 ">
         <div class="col-lg-6">
-            <button type="button" class="btn btn-primary tombolTambahDataSpw" data-bs-toggle="modal"
-                data-bs-target="#formModal">
+            <button type="button" class="btn btn-primary tombolTambahDataSpw" data-bs-toggle="modal" data-bs-target="#formModal">
                 Tambah Data Siswa
             </button>
-            <button type="button" class="btn btn-primary my-3 mx-3 tampilModalImport" data-toggle="modal"
-                data-target="#modalImport">
+            <button type="button" class="btn btn-primary my-3 mx-3 tampilModalImport" data-toggle="modal" data-target="#modalImport">
                 Import Data Dari Excel
             </button>
         </div>
@@ -23,7 +21,7 @@
 
 
 
-    <table id="myTable" class="table table-striped" style="width:100%">
+    <table id="table" class="table table-striped" style="width:100%">
         <thead>
             <tr>
                 <th>Aksi</th>
@@ -35,20 +33,17 @@
         </thead>
         <tbody>
             <?php $i = 1;
-                foreach ($data['siswa'] as $siswa): ?>
-            <tr>
-                <td>
-                    <a href="<?= BASEURL; ?>/bkk/ubahspw/<?= $siswa['id']; ?>"
-                        class="badge text-bg-warning tampilModalEditSpw" style="text-decoration: none;"
-                        data-bs-toggle="modal" data-bs-target="#formModal" data-id="<?= $siswa['id']; ?>"> Edit</a>
-                    <a href="<?= BASEURL; ?>/bkk/hapusspw/<?= $siswa['id']; ?>" class="badge text-bg-danger"
-                        style="text-decoration: none;" onclick="return confirm('Yakin ingin menghapus?');"> Hapus</a>
-                </td>
-                <td><?= $i++; ?></td>
-                <td><?= $siswa['nama']; ?></td>
-                <td><?= $siswa['kelas']; ?></td>
-                <td><?= $siswa['keterangan']; ?></td>
-            </tr>
+            foreach ($data['siswa'] as $siswa) : ?>
+                <tr>
+                    <td>
+                        <a href="<?= BASEURL; ?>/bkk/ubahspw/<?= $siswa['id']; ?>" class="badge text-bg-warning tampilModalEditSpw" style="text-decoration: none;" data-bs-toggle="modal" data-bs-target="#formModal" data-id="<?= $siswa['id']; ?>"> Edit</a>
+                        <a href="<?= BASEURL; ?>/bkk/hapusspw/<?= $siswa['id']; ?>" class="badge text-bg-danger" style="text-decoration: none;" onclick="return confirm('Yakin ingin menghapus?');"> Hapus</a>
+                    </td>
+                    <td><?= $i++; ?></td>
+                    <td><?= $siswa['nama']; ?></td>
+                    <td><?= $siswa['kelas']; ?></td>
+                    <td><?= $siswa['keterangan']; ?></td>
+                </tr>
             <?php endforeach; ?>
         </tbody>
     </table>
@@ -91,20 +86,17 @@
                     <input type="hidden" name="id" id="id">
                     <div class="mb-3">
                         <label for="nama" class="form-label">Nama</label>
-                        <input type="text" class="form-control" id="nama" name="nama" placeholder="Masukkan nama"
-                            autocomplete="off">
+                        <input type="text" class="form-control" id="nama" name="nama" placeholder="Masukkan nama" autocomplete="off">
                     </div>
 
                     <div class="mb-3">
                         <label for="kelas" class="form-label">Kelas</label>
-                        <input type="text" class="form-control" id="kelas" name="kelas" placeholder="Masukkan kelas"
-                            autocomplete="off">
+                        <input type="text" class="form-control" id="kelas" name="kelas" placeholder="Masukkan kelas" autocomplete="off">
                     </div>
 
                     <div class="mb-3">
                         <label for="keterangan" class="form-label">Keterangan</label>
-                        <input type="text" class="form-control" id="keterangan" name="keterangan"
-                            placeholder="Masukkan keterangan" autocomplete="off">
+                        <input type="text" class="form-control" id="keterangan" name="keterangan" placeholder="Masukkan keterangan" autocomplete="off">
                     </div>
 
             </div>

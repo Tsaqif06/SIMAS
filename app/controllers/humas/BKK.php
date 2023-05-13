@@ -32,7 +32,7 @@ class BKK extends Controller
     {
         $data['judul'] = 'Admin Lowongan Kerja';
         $data['user'] = $this->user;
-        $akses = ['all', 'humas'];
+        $akses = ['all', 'humas', 'industri'];
         $data['siswa'] = $this->model("$this->model_name", 'BKK_model')->getExistloker();
         if (in_array($data['user']['hak_akses'], $akses)) {
             $this->view('templates/humas/header', $data);
@@ -192,9 +192,12 @@ class BKK extends Controller
         $data['user'] = $this->user;
         $akses = ['all', 'humas'];
         if (in_array($data['user']['hak_akses'], $akses)) {
-        } else if ($data['user']['hak_akses'] == '') {
             $this->view('templates/humas/header', $data);
             $this->view('humas/bkk/peminatan/bkkpeminatanlaporan', $data);
+            $this->view('templates/humas/footer');
+        } else if ($data['user']['hak_akses'] == '') {
+            $this->view('templates/humas/header', $data);
+            $this->view('humas/bkk/peminatan/form', $data);
             $this->view('templates/humas/footer');
         } else {
         }
@@ -221,14 +224,15 @@ class BKK extends Controller
         $data['judul'] = 'Admin SPW';
         $data['siswa'] = $this->model("$this->model_name", 'BKK_model')->getExistspw();
         $data['user'] = $this->user;
-        $akses = ['all', 'humas'];
+        $akses = ['all', 'humas', 'industri'];
         if (in_array($data['user']['hak_akses'], $akses)) {
             $this->view('templates/humas/header', $data);
             $this->view('humas/bkk/spw/bkkspwlaporan', $data);
             $this->view('templates/humas/footer');
         } else if ($data['user']['hak_akses'] == '') {
-            header("Location: " . BASEURL);
-            Flasher::setFlash('GAGAL', 'Anda Tidak Mempunyai Akses Untuk Menuju Halaman Tersebut', 'danger');
+            $this->view('templates/humas/header', $data);
+            $this->view('humas/bkk/spw/form', $data);
+            $this->view('templates/humas/footer');
         }
     }
 

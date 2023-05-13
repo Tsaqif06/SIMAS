@@ -31,6 +31,7 @@
 <script src="../js/hoverable-collapse.js"></script>
 <script src="../js/dataTables.select.min.js"></script>
 <script src="../js/script/form.js"></script>
+<script src="../js/humas/script.js"></script>
 <script src="../js/script/loader.js"></script>
 <script src="../js/template.js"></script>
 <script src="../js/settings.js"></script>

@@ -126,7 +126,7 @@
       <div class="card">
         <div class="card-body">
           <div class="table-responsive ">
-            <table class="table table-hover" id="myTable">
+            <table class="table table-hover" id="table">
               <thead>
                 <tr>
                   <th>Aksi</th>
