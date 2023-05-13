@@ -2,15 +2,19 @@
 
 class DaftarHadir extends Controller
 {
-
     private $model_name = "Kurikulum";
+
     public function index()
     {
         $data['judul'] = 'Daftar Hadir';
+
+        $data['user'] = $this->user;
+
         $data['tbl_gkpdua'] = $this->model("$this->model_name", 'Daftar_Hadir_Siswa_model')->getAllMahasiswa();
+
         $this->view('templates/header', $data);
         $this->view('kurikulum/Daftar Hadir/index', $data);
-        $this->view('templates/footer');
+        $this->view('templates/footerwm');
     }
 
     public function tambah()

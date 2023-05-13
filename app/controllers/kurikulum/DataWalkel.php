@@ -1,14 +1,20 @@
 <?php
+
 class DataWalkel extends Controller
 {
     private $model_name = "Kurikulum";
+
     public function index()
     {
         $data['judul'] = 'Daftar Walkel';
+
+        $data['user'] = $this->user;
+
         $data['tbl_walikelasx'] = $this->model("$this->model_name", 'Data_Walkel_model')->getALLWalkel();
+
         $this->view('templates/header', $data);
         $this->view('kurikulum/Daftar Walkel/index', $data);
-        $this->view('templates/footer');
+        $this->view('templates/footerwm');
     }
 
     public function tambah()

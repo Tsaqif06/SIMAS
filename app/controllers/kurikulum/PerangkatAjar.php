@@ -1,16 +1,20 @@
 <?php
 
-
 class PerangkatAjar extends Controller
 {
     private $model_name = "Kurikulum";
+
     public function index()
     {
         $data['judul'] = 'Perangkat Ajar';
+
+        $data['user'] = $this->user;
+
         $data['tbl_prngktajr'] = $this->model("$this->model_name", 'Perangkat_Ajar_model')->getAllPerangkatAjar();
+
         $this->view('templates/header', $data);
         $this->view('kurikulum/Perangkat Ajar/index', $data);
-        $this->view('templates/footer');
+        $this->view('templates/footerwm');
     }
 
     public function detail($id)
@@ -19,7 +23,7 @@ class PerangkatAjar extends Controller
         $data['mhs'] = $this->model("$this->model_name", 'Perangkat_Ajar_model')->getPerangkatAjarById($id);
         $this->view('templates/header', $data);
         $this->view('kurikulum/mahasiswa/detail', $data);
-        $this->view('templates/footer');
+        $this->view('templates/footerwm');
     }
 
     public function tambahPerangkatAjar()
@@ -72,6 +76,6 @@ class PerangkatAjar extends Controller
         $data['mhs'] = $this->model("$this->model_name", 'Perangkat_Ajar_model')->cariperangkatajar();
         $this->view('templates/header', $data);
         $this->view('mahasiswa/index', $data);
-        $this->view('templates/footer');
+        $this->view('templates/footerwm');
     }
 }

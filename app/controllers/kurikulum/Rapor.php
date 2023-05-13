@@ -3,13 +3,18 @@
 class Rapor extends Controller
 {
     private $model_name = "Kurikulum";
+
     public function index()
     {
         $data['judul'] = 'Rapor';
+        
+        $data['user'] = $this->user;
+
         $data['mhs'] = $this->model("$this->model_name", 'Rapor_model')->getAllMahasiswa();
+
         $this->view('templates/header', $data);
         $this->view('kurikulum/Rapor/index', $data);
-        $this->view('templates/footer');
+        $this->view('templates/footerwm');
     }
 
     public function detail($id)
@@ -18,7 +23,7 @@ class Rapor extends Controller
         $data['mhs'] = $this->model("$this->model_name", 'Rapor_model')->getMahasiswaById($id);
         $this->view('templates/header', $data);
         $this->view('kurikulum/mahasiswa/detail', $data);
-        $this->view('templates/footer');
+        $this->view('templates/footerwm');
     }
 
     public function tambah()
@@ -71,6 +76,6 @@ class Rapor extends Controller
         $data['mhs'] = $this->model("$this->model_name", 'Rapor_model')->cariDataMahasiswa();
         $this->view('templates/header', $data);
         $this->view('mahasiswa/index', $data);
-        $this->view('templates/footer');
+        $this->view('templates/footerwm');
     }
 }

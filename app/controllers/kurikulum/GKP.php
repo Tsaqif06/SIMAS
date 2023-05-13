@@ -3,13 +3,18 @@
 class GKP extends Controller
 {
     private $model_name = "Kurikulum";
+
     public function index()
     {
         $data['judul'] = 'Gelar Karya Pembelajaran';
+
+        $data['user'] = $this->user;
+
         $data['tbl_gkpsatu'] = $this->model("$this->model_name", 'GKP_model')->getAllGKP();
+
         $this->view('templates/header', $data);
         $this->view('kurikulum/GKP/index', $data);
-        $this->view('templates/footer');
+        $this->view('templates/footerwm');
     }
 
     public function detail($id)
@@ -18,7 +23,7 @@ class GKP extends Controller
         $data['mhs'] = $this->model("$this->model_name", 'GKP_model')->getGKPById($id);
         $this->view('templates/header', $data);
         $this->view('kurikulum/GKP/detail', $data);
-        $this->view('templates/footer');
+        $this->view('templates/footerwm');
     }
 
     public function tambah()

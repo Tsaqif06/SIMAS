@@ -3,13 +3,18 @@
 class Walikelas extends Controller
 {
     private $model_name = "Master";
+
     public function index()
     {
         $data['judul'] = 'Wali Kelas';
+
+        $data['user'] = $this->user;
+
         $data['tbl_walikelasx'] = $this->model("$this->model_name", 'Walikelas_model')->getAllExistData();
+
         $this->view('templates/header', $data);
         $this->view('kurikulum/walikelas/index', $data);
-        $this->view('templates/footer');
+        $this->view('templates/footerwm');
     }
 
     public function tambah()

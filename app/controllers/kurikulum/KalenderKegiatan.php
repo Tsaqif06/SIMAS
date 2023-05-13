@@ -3,13 +3,18 @@
 class KalenderKegiatan extends Controller
 {
     private $model_name = "Kurikulum";
+
     public function index()
     {
         $data['judul'] = 'Kalender Kegiatan';
+
+        $data['user'] = $this->user;
+
         $data['schedule_list'] = $this->model("$this->model_name", 'Kalender_Kegiatan_model')->getAllKalender();
+
         $this->view('templates/header', $data);
         $this->view('kurikulum/Kalender Kegiatan/index', $data);
-        $this->view('templates/footer');
+        $this->view('templates/footerwm');
     }
 
     public function saveDataKalender($data)
@@ -62,6 +67,6 @@ class KalenderKegiatan extends Controller
         $data['schedule_list'] = $this->model("$this->model_name", 'Kalender_Kegiatan_model')->cariDataKalender();
         $this->view('templates/header', $data);
         $this->view('kalender/index', $data);
-        $this->view('templates/footer');
+        $this->view('templates/footerwm');
     }
 }

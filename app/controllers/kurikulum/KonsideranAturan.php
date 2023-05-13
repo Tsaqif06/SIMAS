@@ -3,13 +3,18 @@
 class KonsideranAturan extends Controller
 {
     private $model_name = "Kurikulum";
+
     public function index()
     {
         $data['judul'] = 'Konsideran Aturan';
+
+        $data['user'] = $this->user;
+
         $data['tbl_bksiswa'] = $this->model("$this->model_name", 'Konsideran_Aturan_model')->getAllAturan();
+        
         $this->view('templates/header', $data);
         $this->view('kurikulum/KonsideranAturan/index', $data);
-        $this->view('templates/footer');
+        $this->view('templates/footerwm');
     }
 
     public function detail($id)
@@ -18,7 +23,7 @@ class KonsideranAturan extends Controller
         $data['mhs'] = $this->model("$this->model_name", 'GKP_model')->getAturanById($id);
         $this->view('templates/header', $data);
         $this->view('kurikulum/Aturan/detail', $data);
-        $this->view('templates/footer');
+        $this->view('templates/footerwm');
     }
 
     public function tambah()
@@ -71,6 +76,6 @@ class KonsideranAturan extends Controller
         $data['mhs'] = $this->model("$this->model_name", 'GKP_model')->cariDataAturan();
         $this->view('templates/header', $data);
         $this->view('mahasiswa/index', $data);
-        $this->view('templates/footer');
+        $this->view('templates/footerwm');
     }
 }

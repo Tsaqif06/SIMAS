@@ -7,10 +7,14 @@ class Lms extends Controller
     public function index()
     {
         $data['judul'] = 'Learning Management System';
+
+        $data['user'] = $this->user;
+
         $data['tbl_usnpw'] = $this->model("$this->model_name", 'LMS_model')->getAllLms();
+
         $this->view('templates/header', $data);
         $this->view('kurikulum/LMS/index', $data);
-        $this->view('templates/footer');
+        $this->view('templates/footerwm');
     }
 
     public function detail($id)
@@ -19,7 +23,7 @@ class Lms extends Controller
         $data['tbl_usnpw'] = $this->model("$this->model_name", 'LMS_model')->getLmsById($id);
         $this->view('templates/header', $data);
         $this->view('kurikulum/lms/detail', $data);
-        $this->view('templates/footer');
+        $this->view('templates/footerwm');
     }
 
     public function tambah()
@@ -75,6 +79,6 @@ class Lms extends Controller
         $data['mhs'] = $this->model("$this->model_name", 'LMS_model')->cariDataLMS();
         $this->view('templates/header', $data);
         $this->view('mahasiswa/index', $data);
-        $this->view('templates/footer');
+        $this->view('templates/footerwm');
     }
 }
