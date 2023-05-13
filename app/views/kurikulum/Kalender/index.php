@@ -1,10 +1,9 @@
-<?php require_once('db-connect.php') ?>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
 <link rel="stylesheet" href="./fullcalendar/lib/main.min.css">
 <script src="./fullcalendar/lib/main.min.js"></script>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
 
 <div class="main-panel">
         <div class="content-wrapper">
@@ -27,7 +26,7 @@
                     </div>
                     <div class="card-body">
                         <div class="container-fluid">
-                            <form action="save_schedule.php" method="post" id="schedule-form">
+                            <form action="<?= BASEURL ?>/kalender/saveDataKalender" method="post" id="schedule-form">
                                 <input type="hidden" name="id" value="">
                                 <div class="form-group mb-2">
                                     <label for="title" class="control-label">Title</label>
@@ -64,7 +63,7 @@
             <div class="modal-content rounded-0">
                 <div class="modal-header rounded-0">
                     <h5 class="modal-title">Schedule Details</h5>
-                    <button style="border: none; background: none;" data-dismiss="modal">
+                    <button style="border: none; background: none;" data-bs-dismiss="modal">
                         <span class="material-symbols-outlined close"> close </span>
                     </button>
                     
@@ -73,13 +72,13 @@
                     <div class="container-fluid">
                         <dl>
                             <dt class="text-muted">Title</dt>
-                            <dd id="title" class="fw-bold fs-4"></dd>
+                            <dd class="title fw-bold fs-4"></dd>
                             <dt class="text-muted">Description</dt>
-                            <dd id="description" class=""></dd>
+                            <dd class="description"></dd>
                             <dt class="text-muted">Start</dt>
-                            <dd id="start" class=""></dd>
+                            <dd class="start"></dd>
                             <dt class="text-muted">End</dt>
-                            <dd id="end" class=""></dd>
+                            <dd class="end"></dd>
                         </dl>
                     </div>
                 </div>
@@ -87,7 +86,7 @@
                     <div class="text-end">
                         <button type="button" class="btn btn-primary btn-sm rounded-0" id="edit" data-id="">Edit</button>
                         <button type="button" class="btn btn-danger btn-sm rounded-0" id="delete" data-id="">Delete</button>
-                        <button type="button" class="btn btn-secondary btn-sm rounded-0" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-secondary btn-sm rounded-0" data-bs-dismiss="modal">Close</button>
                     </div>
                 </div>
             </div>
@@ -95,19 +94,13 @@
     </div>
     <!-- Event Details Modal -->
 
-<?php 
-$schedules = $conn->query("SELECT * FROM `schedule_list`");
-$sched_res = [];
-foreach($schedules->fetch_all(MYSQLI_ASSOC) as $row){
-    $row['sdate'] = date("F d, Y h:i A",strtotime($row['start_datetime']));
-    $row['edate'] = date("F d, Y h:i A",strtotime($row['end_datetime']));
-    $sched_res[$row['id']] = $row;
-}
-?>
-<?php 
-if(isset($conn)) $conn->close();?>
 <script>
-        var scheds = $.parseJSON('<?= json_encode($sched_res) ?>')
-    </script>
-    <script src="./js/script.js"></script>
-</body>
+    var scheds;
+    try {
+        scheds = $.parseJSON(`<?= json_encode($data['jadwal']) ?>`);
+    } catch(err) {
+        scheds = null;
+        console.error(err.message);
+    }
+</script>
+<script src="./js/script/calendar.js"></script>

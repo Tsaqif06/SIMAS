@@ -17,15 +17,6 @@ class KonsideranAturan extends Controller
         $this->view('templates/footerwm');
     }
 
-    public function detail($id)
-    {
-        $data['judul'] = 'Detail Aturan';
-        $data['mhs'] = $this->model("$this->model_name", 'GKP_model')->getAturanById($id);
-        $this->view('templates/header', $data);
-        $this->view('kurikulum/Aturan/detail', $data);
-        $this->view('templates/footerwm');
-    }
-
     public function tambah()
     {
         if ($this->model("$this->model_name", 'GKP_model')->tambahDataAturan($_POST) > 0) {

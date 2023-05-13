@@ -2,7 +2,7 @@
 
 class LMS_model
 {
-    private $table = 'tbl_inbispembiasaan';
+    private $table = 'tbl_inbis';
     private $db;
 
     public function __construct()
@@ -18,14 +18,14 @@ class LMS_model
 
     public function getLMSById($id)
     {
-        $this->db->query('SELECT * FROM ' . $this->table . ' WHERE id_usnpw =:id_usnpw');
+        $this->db->query("SELECT * FROM {$this->table} WHERE id_usnpw =:id_usnpw");
         $this->db->bind('id_usnpw', $id);
         return $this->db->fetch();
     }
 
     public function tambahLMS($data)
     {
-        $query = "INSERT INTO tbl_inbispembiasaan
+        $query = "INSERT INTO {$this->table}
                     VALUES
                   ('', :Kodeguru, :NamaGuru, :Username, :Password_, :mapel)";
 
@@ -43,7 +43,7 @@ class LMS_model
 
     public function hapusLMS($id)
     {
-        $query = "DELETE FROM tbl_inbispembiasaan WHERE id_usnpw = :id_usnpw";
+        $query = "DELETE FROM {$this->table} WHERE id_usnpw = :id_usnpw";
 
         $this->db->query($query);
         $this->db->bind('id_usnpw', $id);
@@ -56,7 +56,7 @@ class LMS_model
 
     public function ubahLMS($data)
     {
-        $query = "UPDATE tbl_inbispembiasaan SET
+        $query = "UPDATE {$this->table} SET
                     Kodeguru = :Kodeguru,
                     NamaGuru = :NamaGuru,
                     Username = :Username,
@@ -77,7 +77,7 @@ class LMS_model
 
         return $this->db->rowCount();
 
-        // $query = "UPDATE tbl_inbispembiasaan SET
+        // $query = "UPDATE {$this->table} SET
         //             Kodeguru = :Kodeguru,
         //             NamaGuru = :NamaGuru,
         //             Username = :Username,

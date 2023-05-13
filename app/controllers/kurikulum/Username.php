@@ -17,15 +17,6 @@ class Username extends Controller
         $this->view('templates/footerwm');
     }
 
-    public function detail($id)
-    {
-        $data['judul'] = 'Detail Struktur Guru';
-        $data['Username'] = $this->model("$this->model_name", 'Username_model')->getUsernameById($id);
-        $this->view('templates/header', $data);
-        $this->view('kurikulum/Username/detail', $data);
-        $this->view('templates/footerwm');
-    }
-
     public function tambahData()
     {
         if ($this->model("$this->model_name", 'Username_model')->tambahUsername($_POST) > 0) {

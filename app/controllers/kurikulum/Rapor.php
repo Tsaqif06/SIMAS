@@ -17,15 +17,6 @@ class Rapor extends Controller
         $this->view('templates/footerwm');
     }
 
-    public function detail($id)
-    {
-        $data['judul'] = 'Detail Mahasiswa';
-        $data['mhs'] = $this->model("$this->model_name", 'Rapor_model')->getMahasiswaById($id);
-        $this->view('templates/header', $data);
-        $this->view('kurikulum/mahasiswa/detail', $data);
-        $this->view('templates/footerwm');
-    }
-
     public function tambah()
     {
         if ($this->model("$this->model_name", 'Rapor_model')->tambahDataMahasiswa($_POST) > 0) {

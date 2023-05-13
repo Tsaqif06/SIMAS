@@ -17,15 +17,6 @@ class Inbis extends Controller
         $this->view('templates/footerwm');
     }
 
-    public function detail($id)
-    {
-        $data['judul'] = 'Detail Inbis';
-        $data['mhs'] = $this->model("$this->model_name", 'Inbis_model')->getInbisById($id);
-        $this->view('templates/header', $data);
-        $this->view('kurikulum/Inbis/detail', $data);
-        $this->view('templates/footerwm');
-    }
-
     public function tambah()
     {
         if ($this->model("$this->model_name", 'Inbis_model')->tambahInbis($_POST) > 0) {
