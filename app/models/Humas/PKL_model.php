@@ -17,6 +17,7 @@ class pkl_model extends Database
     private $tableps = 'pemberkasanpkl';
     private $tabledp = 'dayatampungpkl';
     private $tablepp = 'perpanjangmasapkl';
+    private $tablenilai = 'nilaipkl';
     private $tableiz = 'perizinanpkl';
     private $tablebm = 'siswabermasalah';
     private $user;
@@ -517,7 +518,584 @@ class pkl_model extends Database
         return $this->db->fetchAll();
     }
 
+    // DATA NILAI
 
+    public function getNilaiDGA()
+    {
+        $this->db->query("SELECT * FROM {$this->tablenilai} WHERE kelas = 'XI DG A'");
+        return $this->db->fetchAll();
+    }
+
+    public function getNilaiExistDGA()
+    {
+        $this->db->query("SELECT * FROM {$this->tablenilai} WHERE kelas = 'XI DG A' AND status = 1");
+        return $this->db->fetchAll();
+    }
+
+    public function getNilaiDGB()
+    {
+        $this->db->query("SELECT * FROM {$this->tablenilai} WHERE kelas = 'XI DG B'");
+        return $this->db->fetchAll();
+    }
+
+    public function getNilaiExistDGB()
+    {
+        $this->db->query("SELECT * FROM {$this->tablenilai} WHERE kelas = 'XI DG B' AND status = 1");
+        return $this->db->fetchAll();
+    }
+
+    public function getNilaiDGC()
+    {
+        $this->db->query("SELECT * FROM {$this->tablenilai} WHERE kelas = 'XI DG C'");
+        return $this->db->fetchAll();
+    }
+
+    public function getNilaiExistDGC()
+    {
+        $this->db->query("SELECT * FROM {$this->tablenilai} WHERE kelas = 'XI DG C' AND status = 1");
+        return $this->db->fetchAll();
+    }
+
+    public function getNilaiDGD()
+    {
+        $this->db->query("SELECT * FROM {$this->tablenilai} WHERE kelas = 'XI DG D'");
+        return $this->db->fetchAll();
+    }
+
+    public function getNilaiExistDGD()
+    {
+        $this->db->query("SELECT * FROM {$this->tablenilai} WHERE kelas = 'XI DG D' AND status = 1");
+        return $this->db->fetchAll();
+    }
+
+    public function getNilaiPDA()
+    {
+        $this->db->query("SELECT * FROM {$this->tablenilai} WHERE kelas = 'XI PD A'");
+        return $this->db->fetchAll();
+    }
+
+    public function getNilaiExistPDA()
+    {
+        $this->db->query("SELECT * FROM {$this->tablenilai} WHERE kelas = 'XI PD A' AND status = 1");
+        return $this->db->fetchAll();
+    }
+
+    public function getNilaiPDB()
+    {
+        $this->db->query("SELECT * FROM {$this->tablenilai} WHERE kelas = 'XI PD B'");
+        return $this->db->fetchAll();
+    }
+
+    public function getNilaiExistPDB()
+    {
+        $this->db->query("SELECT * FROM {$this->tablenilai} WHERE kelas = 'XI PD B' AND status = 1");
+        return $this->db->fetchAll();
+    }
+
+    public function getNilaiPDC()
+    {
+        $this->db->query("SELECT * FROM {$this->tablenilai} WHERE kelas = 'XI PD C'");
+        return $this->db->fetchAll();
+    }
+
+    public function getNilaiExistPDC()
+    {
+        $this->db->query("SELECT * FROM {$this->tablenilai} WHERE kelas = 'XI PD C' AND status = 1");
+        return $this->db->fetchAll();
+    }
+
+    public function getNilaiPDD()
+    {
+        $this->db->query("SELECT * FROM {$this->tablenilai} WHERE kelas = 'XI PD D'");
+        return $this->db->fetchAll();
+    }
+
+    public function getNilaiExistPDD()
+    {
+        $this->db->query("SELECT * FROM {$this->tablenilai} WHERE kelas = 'XI PD D' AND status = 1");
+        return $this->db->fetchAll();
+    }
+
+    public function getNilaiExistTLA()
+    {
+        $this->db->query("SELECT * FROM {$this->tablenilai} WHERE kelas = 'XI TL A' AND status = 1");
+        return $this->db->fetchAll();
+    }
+
+    public function getNilaiExistTLB()
+    {
+        $this->db->query("SELECT * FROM {$this->tablenilai} WHERE kelas = 'XI TL B' AND status = 1");
+        return $this->db->fetchAll();
+    }
+
+    public function getNilaiExistTMA()
+    {
+        $this->db->query("SELECT * FROM {$this->tablenilai} WHERE kelas = 'XI TM A' AND status = 1");
+        return $this->db->fetchAll();
+    }
+
+    public function getNilaiExistTMB()
+    {
+        $this->db->query("SELECT * FROM {$this->tablenilai} WHERE kelas = 'XI TM B' AND status = 1");
+        return $this->db->fetchAll();
+    }
+
+    public function getNilaiExistRPLA()
+    {
+        $this->db->query("SELECT * FROM {$this->tablenilai} WHERE kelas = 'XI RPL A' AND status = 1");
+        return $this->db->fetchAll();
+    }
+
+    public function getNilaiExistRPLB()
+    {
+        $this->db->query("SELECT * FROM {$this->tablenilai} WHERE kelas = 'XI RPL B' AND status = 1");
+        return $this->db->fetchAll();
+    }
+
+    public function getNilaiExistRPLC()
+    {
+        $this->db->query("SELECT * FROM {$this->tablenilai} WHERE kelas = 'XI RPL C' AND status = 1");
+        return $this->db->fetchAll();
+    }
+
+    public function getNilaiExistTKJA()
+    {
+        $this->db->query("SELECT * FROM {$this->tablenilai} WHERE kelas = 'XI TKJ A' AND status = 1");
+        return $this->db->fetchAll();
+    }
+
+    public function getNilaiExistTKJB()
+    {
+        $this->db->query("SELECT * FROM {$this->tablenilai} WHERE kelas = 'XI TKJ B' AND status = 1");
+        return $this->db->fetchAll();
+    }
+
+    public function getNilaiExistDKVA()
+    {
+        $this->db->query("SELECT * FROM {$this->tablenilai} WHERE kelas = 'XI DKV A' AND status = 1");
+        return $this->db->fetchAll();
+    }
+
+    public function getNilaiExistDKVB()
+    {
+        $this->db->query("SELECT * FROM {$this->tablenilai} WHERE kelas = 'XI DKV B' AND status = 1");
+        return $this->db->fetchAll();
+    }
+
+    public function getNilaiExistDKVC()
+    {
+        $this->db->query("SELECT * FROM {$this->tablenilai} WHERE kelas = 'XI DKV C' AND status = 1");
+        return $this->db->fetchAll();
+    }
+
+    public function getNilaiExistPHA()
+    {
+        $this->db->query("SELECT * FROM {$this->tablenilai} WHERE kelas = 'XI PH A' AND status = 1");
+        return $this->db->fetchAll();
+    }
+
+    public function getNilaiExistPHB()
+    {
+        $this->db->query("SELECT * FROM {$this->tablenilai} WHERE kelas = 'XI PH B' AND status = 1");
+        return $this->db->fetchAll();
+    }
+
+    public function getNilaiExistANIA()
+    {
+        $this->db->query("SELECT * FROM {$this->tablenilai} WHERE kelas = 'XI ANI A' AND status = 1");
+        return $this->db->fetchAll();
+    }
+
+    public function getNilaiExistANIB()
+    {
+        $this->db->query("SELECT * FROM {$this->tablenilai} WHERE kelas = 'XI ANI B' AND status = 1");
+        return $this->db->fetchAll();
+    }
+
+    public function getNilaiExistANIC()
+    {
+        $this->db->query("SELECT * FROM {$this->tablenilai} WHERE kelas = 'XI ANI C' AND status = 1");
+        return $this->db->fetchAll();
+    }
+
+    public function getNilaiById($id)
+    {
+        $this->db->query('SELECT * FROM ' . $this->tablenilai . ' WHERE id = :id');
+        $this->db->bind('id', $id);
+        return $this->db->fetch();
+    }
+
+    public function tambahDataNilai($data)
+    {
+        $query = "INSERT INTO nilaipkl
+                VALUES 
+                (null, :nisn, :namasiswa, :kelas, :jeniskelamin, :namaindustri, :nilaisiswa, :keterangannilai, '', CURRENT_TIMESTAMP, :created_by, null, '', null, '', null, '', 0, 0, DEFAULT)";
+
+        $this->db->query($query);
+        $this->db->bind('nisn', $data['nisn']);
+        $this->db->bind('namasiswa', $data['namasiswa']);
+        $this->db->bind('kelas', $data['kelas']);
+        $this->db->bind('jeniskelamin', $data['jeniskelamin']);
+        $this->db->bind('namaindustri', $data['namaindustri']);
+        $this->db->bind('nilaisiswa', $data['nilaisiswa']);
+        $this->db->bind('keterangannilai', $data['keterangannilai']);
+        $this->db->bind('created_by', "Super Admin");
+
+        $this->db->execute();
+
+        return $this->db->rowCount();
+    }
+
+    public function hapusDataNilai($id)
+    {
+        $this->db->query(
+            "UPDATE {$this->tablenilai}
+              SET
+              deleted_at = CURRENT_TIMESTAMP,
+              deleted_by = :deleted_by,
+              is_deleted = 1,
+              is_restored = 0
+            WHERE id = :id"
+        );
+
+        $this->db->bind('deleted_by', "Super Admin");
+        $this->db->bind("id", $id);
+
+        $this->db->execute();
+        return $this->db->rowCount();
+    }
+
+    public function ubahDataNilai($data)
+    {
+        $query = "UPDATE nilaipkl SET 
+                nisn = :nisn, 
+                namasiswa = :namasiswa, 
+                kelas = :kelas,
+                jeniskelamin = :jeniskelamin,
+                namaindustri = :namaindustri,
+                nilaisiswa = :nilaisiswa,
+                keterangannilai = :keterangannilai,
+                modified_at = CURRENT_TIMESTAMP,
+                modified_by = :modified_by
+              WHERE id = :id";
+
+        $this->db->query($query);
+        $this->db->bind('nisn', $data['nisn']);
+        $this->db->bind('namasiswa', $data['namasiswa']);
+        $this->db->bind('kelas', $data['kelas']);
+        $this->db->bind('jeniskelamin', $data['jeniskelamin']);
+        $this->db->bind('namaindustri', $data['namaindustri']);
+        $this->db->bind('nilaisiswa', $data['nilaisiswa']);
+        $this->db->bind('keterangannilai', $data['keterangannilai']);
+        $this->db->bind('modified_by', "Super Admin");
+        $this->db->bind('id', $data['id']);
+
+        $this->db->execute();
+        return $this->db->rowCount();
+    }
+
+
+    //    data tempat pkl
+
+    public function getSiswaDGA()
+    {
+        $this->db->query("SELECT * FROM {$this->tabletp} WHERE kelassiswa = 'XI DG A'");
+        return $this->db->fetchAll();
+    }
+
+    public function getExistDGA()
+    {
+        $this->db->query("SELECT * FROM {$this->tabletp} WHERE kelassiswa = 'XI DG A' AND status = 1");
+        return $this->db->fetchAll();
+    }
+
+    public function getSiswaDGB()
+    {
+        $this->db->query("SELECT * FROM {$this->tabletp} WHERE kelassiswa = 'XI DG B'");
+        return $this->db->fetchAll();
+    }
+
+    public function getExistDGB()
+    {
+        $this->db->query("SELECT * FROM {$this->tabletp} WHERE kelassiswa = 'XI DG B' AND status = 1");
+        return $this->db->fetchAll();
+    }
+
+    public function getSiswaDGC()
+    {
+        $this->db->query("SELECT * FROM {$this->tabletp} WHERE kelassiswa = 'XI DG C'");
+        return $this->db->fetchAll();
+    }
+
+    public function getExistDGC()
+    {
+        $this->db->query("SELECT * FROM {$this->tabletp} WHERE kelassiswa = 'XI DG C' AND status = 1");
+        return $this->db->fetchAll();
+    }
+
+    public function getSiswaDGD()
+    {
+        $this->db->query("SELECT * FROM {$this->tabletp} WHERE kelassiswa = 'XI DG D'");
+        return $this->db->fetchAll();
+    }
+
+    public function getExistDGD()
+    {
+        $this->db->query("SELECT * FROM {$this->tabletp} WHERE kelassiswa = 'XI DG D' AND status = 1");
+        return $this->db->fetchAll();
+    }
+
+    public function getSiswaPDA()
+    {
+        $this->db->query("SELECT * FROM {$this->tabletp} WHERE kelassiswa = 'XI PD A'");
+        return $this->db->fetchAll();
+    }
+
+    public function getExistPDA()
+    {
+        $this->db->query("SELECT * FROM {$this->tabletp} WHERE kelassiswa = 'XI PD A' AND status = 1");
+        return $this->db->fetchAll();
+    }
+
+    public function getSiswaPDB()
+    {
+        $this->db->query("SELECT * FROM {$this->tabletp} WHERE kelassiswa = 'XI PD B'");
+        return $this->db->fetchAll();
+    }
+
+    public function getExistPDB()
+    {
+        $this->db->query("SELECT * FROM {$this->tabletp} WHERE kelassiswa = 'XI PD B' AND status = 1");
+        return $this->db->fetchAll();
+    }
+
+    public function getSiswaPDC()
+    {
+        $this->db->query("SELECT * FROM {$this->tabletp} WHERE kelassiswa = 'XI PD C'");
+        return $this->db->fetchAll();
+    }
+
+    public function getExistPDC()
+    {
+        $this->db->query("SELECT * FROM {$this->tabletp} WHERE kelassiswa = 'XI PD C' AND status = 1");
+        return $this->db->fetchAll();
+    }
+
+    public function getSiswaPDD()
+    {
+        $this->db->query("SELECT * FROM {$this->tabletp} WHERE kelassiswa = 'XI PD D'");
+        return $this->db->fetchAll();
+    }
+
+    public function getExistPDD()
+    {
+        $this->db->query("SELECT * FROM {$this->tabletp} WHERE kelassiswa = 'XI PD D' AND status = 1");
+        return $this->db->fetchAll();
+    }
+
+    public function getSiswaTLA()
+    {
+        $this->db->query("SELECT * FROM {$this->tabletp} WHERE kelassiswa = 'XI TL A'");
+        return $this->db->fetchAll();
+    }
+
+    public function getExistTLA()
+    {
+        $this->db->query("SELECT * FROM {$this->tabletp} WHERE kelassiswa = 'XI TL A' AND status = 1");
+        return $this->db->fetchAll();
+    }
+
+    public function getSiswaTLB()
+    {
+        $this->db->query("SELECT * FROM {$this->tabletp} WHERE kelassiswa = 'XI TL B'");
+        return $this->db->fetchAll();
+    }
+
+    public function getExistTLB()
+    {
+        $this->db->query("SELECT * FROM {$this->tabletp} WHERE kelassiswa = 'XI TL B' AND status = 1");
+        return $this->db->fetchAll();
+    }
+
+    public function getSiswaTMA()
+    {
+        $this->db->query("SELECT * FROM {$this->tabletp} WHERE kelassiswa = 'XI Mekatronika A'");
+        return $this->db->fetchAll();
+    }
+
+    public function getExistTMA()
+    {
+        $this->db->query("SELECT * FROM {$this->tabletp} WHERE kelassiswa = 'XI Mekatronika A' AND status = 1");
+        return $this->db->fetchAll();
+    }
+
+    public function getSiswaTMB()
+    {
+        $this->db->query("SELECT * FROM {$this->tabletp} WHERE kelassiswa = 'XI Mekatronika B'");
+        return $this->db->fetchAll();
+    }
+
+    public function getExistTMB()
+    {
+        $this->db->query("SELECT * FROM {$this->tabletp} WHERE kelassiswa = 'XI Mekatronika B' AND status = 1");
+        return $this->db->fetchAll();
+    }
+
+    public function getSiswaRPLA()
+    {
+        $this->db->query("SELECT * FROM {$this->tabletp} WHERE kelassiswa = 'XI RPL A'");
+        return $this->db->fetchAll();
+    }
+
+    public function getExistRPLA()
+    {
+        $this->db->query("SELECT * FROM {$this->tabletp} WHERE kelassiswa = 'XI RPL A' AND status = 1");
+        return $this->db->fetchAll();
+    }
+
+    public function getSiswaRPLB()
+    {
+        $this->db->query("SELECT * FROM {$this->tabletp} WHERE kelassiswa = 'XI RPL B'");
+        return $this->db->fetchAll();
+    }
+
+    public function getExistRPLB()
+    {
+        $this->db->query("SELECT * FROM {$this->tabletp} WHERE kelassiswa = 'XI RPL B' AND status = 1");
+        return $this->db->fetchAll();
+    }
+
+    public function getSiswaRPLC()
+    {
+        $this->db->query("SELECT * FROM {$this->tabletp} WHERE kelassiswa = 'XI RPL C'");
+        return $this->db->fetchAll();
+    }
+
+    public function getExistRPLC()
+    {
+        $this->db->query("SELECT * FROM {$this->tabletp} WHERE kelassiswa = 'XI RPL C' AND status = 1");
+        return $this->db->fetchAll();
+    }
+
+    public function getSiswaTKJA()
+    {
+        $this->db->query("SELECT * FROM {$this->tabletp} WHERE kelassiswa = 'XI TKJ A'");
+        return $this->db->fetchAll();
+    }
+
+    public function getExistTKJA()
+    {
+        $this->db->query("SELECT * FROM {$this->tabletp} WHERE kelassiswa = 'XI TKJ A' AND status = 1");
+        return $this->db->fetchAll();
+    }
+
+    public function getSiswaTKJB()
+    {
+        $this->db->query("SELECT * FROM {$this->tabletp} WHERE kelassiswa = 'XI TKJ B'");
+        return $this->db->fetchAll();
+    }
+
+    public function getExistTKJB()
+    {
+        $this->db->query("SELECT * FROM {$this->tabletp} WHERE kelassiswa = 'XI TKJ B' AND status = 1");
+        return $this->db->fetchAll();
+    }
+
+    public function getSiswaDKVA()
+    {
+        $this->db->query("SELECT * FROM {$this->tabletp} WHERE kelassiswa = 'XI DKV A'");
+        return $this->db->fetchAll();
+    }
+
+    public function getExistDKVA()
+    {
+        $this->db->query("SELECT * FROM {$this->tabletp} WHERE kelassiswa = 'XI DKV A' AND status = 1");
+        return $this->db->fetchAll();
+    }
+
+    public function getSiswaDKVB()
+    {
+        $this->db->query("SELECT * FROM {$this->tabletp} WHERE kelassiswa = 'XI DKV B'");
+        return $this->db->fetchAll();
+    }
+
+    public function getExistDKVB()
+    {
+        $this->db->query("SELECT * FROM {$this->tabletp} WHERE kelassiswa = 'XI DKV B' AND status = 1");
+        return $this->db->fetchAll();
+    }
+
+    public function getSiswaDKVC()
+    {
+        $this->db->query("SELECT * FROM {$this->tabletp} WHERE kelassiswa = 'XI DKV C'");
+        return $this->db->fetchAll();
+    }
+
+    public function getExistDKVC()
+    {
+        $this->db->query("SELECT * FROM {$this->tabletp} WHERE kelassiswa = 'XI DKV C' AND status = 1");
+        return $this->db->fetchAll();
+    }
+
+    public function getSiswaPHA()
+    {
+        $this->db->query("SELECT * FROM {$this->tabletp} WHERE kelassiswa = 'XI PH A'");
+        return $this->db->fetchAll();
+    }
+
+    public function getExistPHA()
+    {
+        $this->db->query("SELECT * FROM {$this->tabletp} WHERE kelassiswa = 'XI PH A' AND status = 1");
+        return $this->db->fetchAll();
+    }
+
+    public function getSiswaPHB()
+    {
+        $this->db->query("SELECT * FROM {$this->tabletp} WHERE kelassiswa = 'XI PH B'");
+        return $this->db->fetchAll();
+    }
+
+    public function getExistPHB()
+    {
+        $this->db->query("SELECT * FROM {$this->tabletp} WHERE kelassiswa = 'XI PH B' AND status = 1");
+        return $this->db->fetchAll();
+    }
+
+    public function getSiswaANIA()
+    {
+        $this->db->query("SELECT * FROM {$this->tabletp} WHERE kelassiswa = 'XI ANIMASI A'");
+        return $this->db->fetchAll();
+    }
+
+    public function getExistANIA()
+    {
+        $this->db->query("SELECT * FROM {$this->tabletp} WHERE kelassiswa = 'XI ANIMASI A' AND status = 1");
+        return $this->db->fetchAll();
+    }
+
+    public function getSiswaANIB()
+    {
+        $this->db->query("SELECT * FROM {$this->tabletp} WHERE kelassiswa = 'XI ANIMASI B'");
+        return $this->db->fetchAll();
+    }
+
+    public function getExistANIB()
+    {
+        $this->db->query("SELECT * FROM {$this->tabletp} WHERE kelassiswa = 'XI ANIMASI B' AND status = 1");
+        return $this->db->fetchAll();
+    }
+
+    public function getSiswaANIC()
+    {
+        $this->db->query("SELECT * FROM {$this->tabletp} WHERE kelassiswa = 'XI ANIMASI C'");
+        return $this->db->fetchAll();
+    }
+
+    public function getExistANIC()
+    {
+        $this->db->query("SELECT * FROM {$this->tabletp} WHERE kelassiswa = 'XI ANIMASI C' AND status = 1");
+        return $this->db->fetchAll();
+    }
 
     // pemberkasanpkl
 

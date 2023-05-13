@@ -82,7 +82,7 @@ class Styles extends BaseParserClass
         $this->theme = $theme;
     }
 
-    public function setStyleBaseData(?Theme $theme = null, array $styles = [], array $cellStyles = []): void
+    public function setStyleBASEURL(?Theme $theme = null, array $styles = [], array $cellStyles = []): void
     {
         $this->theme = $theme;
         $this->styles = $styles;

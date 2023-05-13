@@ -769,6 +769,2343 @@ class PKL extends Controller
         }
     }
 
+    public function tambahDataPenempatanania()
+    {
+        if ($this->model("$this->model_name", 'pkl_model')->TambahDatatp($_POST) > 0) {
+            Flasher::setFlash('berhasil', 'ditambahkan', 'success');
+            header('Location: ' . BASEURL . '/pkl/penempatanania');
+            exit;
+        } else {
+
+            Flasher::setFlash('gagal', 'ditambahkan', 'danger');
+            header('Location: ' . BASEURL . '/pkl/penempatanania');
+            exit;
+        }
+    }
+
+    public function getUbahPenempatanania()
+    {
+        echo json_encode($this->model("$this->model_name", 'pkl_model')->getDetailtp($_POST['id']));
+    }
+
+    public function ubahDataPenempatanania()
+    {
+        if ($this->model("$this->model_name", 'pkl_model')->ubahDatatp($_POST) > 0) {
+            Flasher::setFlash('berhasil', 'diubah', 'success');
+            header('Location: ' . BASEURL . '/pkl/penempatanania');
+            exit;
+        } else {
+
+            Flasher::setFlash('gagal', 'diubah', 'danger');
+            header('Location: ' . BASEURL . '/pkl/penempatanania');
+            exit;
+        }
+    }
+
+    public function hapusDataPenempatanania($id)
+    {
+        if ($this->model("$this->model_name", 'pkl_model')->HapusDatatp($id) > 0) {
+            Flasher::setFlash('berhasil', 'ditambahkan', 'success');
+            header('Location: ' . BASEURL . '/pkl/penempatanania');
+            exit;
+        } else {
+
+            Flasher::setFlash('gagal', 'ditambahkan', 'danger');
+            header('Location: ' . BASEURL . '/pkl/penempatanania');
+            exit;
+        }
+    }
+
+
+    public function tambahDataPenempatananib()
+    {
+        if ($this->model("$this->model_name", 'pkl_model')->TambahDatatp($_POST) > 0) {
+            Flasher::setFlash('berhasil', 'ditambahkan', 'success');
+            header('Location: ' . BASEURL . '/pkl/penempatananib');
+            exit;
+        } else {
+
+            Flasher::setFlash('gagal', 'ditambahkan', 'danger');
+            header('Location: ' . BASEURL . '/pkl/penempatananib');
+            exit;
+        }
+    }
+
+    public function getUbahPenempatananib()
+    {
+        echo json_encode($this->model("$this->model_name", 'pkl_model')->getDetailtp($_POST['id']));
+    }
+
+    public function ubahDataPenempatananib()
+    {
+        if ($this->model("$this->model_name", 'pkl_model')->ubahDatatp($_POST) > 0) {
+            Flasher::setFlash('berhasil', 'diubah', 'success');
+            header('Location: ' . BASEURL . '/pkl/penempatananib');
+            exit;
+        } else {
+
+            Flasher::setFlash('gagal', 'diubah', 'danger');
+            header('Location: ' . BASEURL . '/pkl/penempatananib');
+            exit;
+        }
+    }
+
+    public function hapusDataPenempatananib($id)
+    {
+        if ($this->model("$this->model_name", 'pkl_model')->HapusDatatp($id) > 0) {
+            Flasher::setFlash('berhasil', 'ditambahkan', 'success');
+            header('Location: ' . BASEURL . '/pkl/penempatananib');
+            exit;
+        } else {
+
+            Flasher::setFlash('gagal', 'ditambahkan', 'danger');
+            header('Location: ' . BASEURL . '/pkl/penempatananib');
+            exit;
+        }
+    }
+
+
+    public function tambahDataPenempatananic()
+    {
+        if ($this->model("$this->model_name", 'pkl_model')->TambahDatatp($_POST) > 0) {
+            Flasher::setFlash('berhasil', 'ditambahkan', 'success');
+            header('Location: ' . BASEURL . '/pkl/penempatananic');
+            exit;
+        } else {
+
+            Flasher::setFlash('gagal', 'ditambahkan', 'danger');
+            header('Location: ' . BASEURL . '/pkl/penempatananic');
+            exit;
+        }
+    }
+
+    public function getUbahPenempatananic()
+    {
+        echo json_encode($this->model("$this->model_name", 'pkl_model')->getDetailtp($_POST['id']));
+    }
+
+    public function ubahDataPenempatananic()
+    {
+        if ($this->model("$this->model_name", 'pkl_model')->ubahDatatp($_POST) > 0) {
+            Flasher::setFlash('berhasil', 'diubah', 'success');
+            header('Location: ' . BASEURL . '/pkl/penempatananic');
+            exit;
+        } else {
+
+            Flasher::setFlash('gagal', 'diubah', 'danger');
+            header('Location: ' . BASEURL . '/pkl/penempatananic');
+            exit;
+        }
+    }
+
+    public function hapusDataPenempatananic($id)
+    {
+        if ($this->model("$this->model_name", 'pkl_model')->HapusDatatp($id) > 0) {
+            Flasher::setFlash('berhasil', 'ditambahkan', 'success');
+            header('Location: ' . BASEURL . '/pkl/penempatananic');
+            exit;
+        } else {
+
+            Flasher::setFlash('gagal', 'ditambahkan', 'danger');
+            header('Location: ' . BASEURL . '/pkl/penempatananic');
+            exit;
+        }
+    }
+
+    public function tambahDataPenempatandkva()
+    {
+        if ($this->model("$this->model_name", 'pkl_model')->TambahDatatp($_POST) > 0) {
+            Flasher::setFlash('berhasil', 'ditambahkan', 'success');
+            header('Location: ' . BASEURL . '/pkl/penempatandkva');
+            exit;
+        } else {
+
+            Flasher::setFlash('gagal', 'ditambahkan', 'danger');
+            header('Location: ' . BASEURL . '/pkl/penempatandkva');
+            exit;
+        }
+    }
+
+    public function getUbahPenempatandkva()
+    {
+        echo json_encode($this->model("$this->model_name", 'pkl_model')->getDetailtp($_POST['id']));
+    }
+
+    public function ubahDataPenempatandkva()
+    {
+        if ($this->model("$this->model_name", 'pkl_model')->ubahDatatp($_POST) > 0) {
+            Flasher::setFlash('berhasil', 'diubah', 'success');
+            header('Location: ' . BASEURL . '/pkl/penempatandkva');
+            exit;
+        } else {
+
+            Flasher::setFlash('gagal', 'diubah', 'danger');
+            header('Location: ' . BASEURL . '/pkl/penempatandkva');
+            exit;
+        }
+    }
+
+    public function hapusDataPenempatandkva($id)
+    {
+        if ($this->model("$this->model_name", 'pkl_model')->HapusDatatp($id) > 0) {
+            Flasher::setFlash('berhasil', 'ditambahkan', 'success');
+            header('Location: ' . BASEURL . '/pkl/penempatandkva');
+            exit;
+        } else {
+
+            Flasher::setFlash('gagal', 'ditambahkan', 'danger');
+            header('Location: ' . BASEURL . '/pkl/penempatandkva');
+            exit;
+        }
+    }
+
+    public function tambahDataPenempatandkvb()
+    {
+        if ($this->model("$this->model_name", 'pkl_model')->TambahDatatp($_POST) > 0) {
+            Flasher::setFlash('berhasil', 'ditambahkan', 'success');
+            header('Location: ' . BASEURL . '/pkl/penempatandkvb');
+            exit;
+        } else {
+
+            Flasher::setFlash('gagal', 'ditambahkan', 'danger');
+            header('Location: ' . BASEURL . '/pkl/penempatandkvb');
+            exit;
+        }
+    }
+
+    public function getUbahPenempatandkvb()
+    {
+        echo json_encode($this->model("$this->model_name", 'pkl_model')->getDetailtp($_POST['id']));
+    }
+
+    public function ubahDataPenempatandkvb()
+    {
+        if ($this->model("$this->model_name", 'pkl_model')->ubahDatatp($_POST) > 0) {
+            Flasher::setFlash('berhasil', 'diubah', 'success');
+            header('Location: ' . BASEURL . '/pkl/penempatandkvb');
+            exit;
+        } else {
+
+            Flasher::setFlash('gagal', 'diubah', 'danger');
+            header('Location: ' . BASEURL . '/pkl/penempatandkvb');
+            exit;
+        }
+    }
+
+    public function hapusDataPenempatandkvb($id)
+    {
+        if ($this->model("$this->model_name", 'pkl_model')->HapusDatatp($id) > 0) {
+            Flasher::setFlash('berhasil', 'ditambahkan', 'success');
+            header('Location: ' . BASEURL . '/pkl/penempatandkvb');
+            exit;
+        } else {
+
+            Flasher::setFlash('gagal', 'ditambahkan', 'danger');
+            header('Location: ' . BASEURL . '/pkl/penempatandkvb');
+            exit;
+        }
+    }
+
+    public function tambahDataPenempatandkvc()
+    {
+        if ($this->model("$this->model_name", 'pkl_model')->TambahDatatp($_POST) > 0) {
+            Flasher::setFlash('berhasil', 'ditambahkan', 'success');
+            header('Location: ' . BASEURL . '/pkl/penempatandkvc');
+            exit;
+        } else {
+
+            Flasher::setFlash('gagal', 'ditambahkan', 'danger');
+            header('Location: ' . BASEURL . '/pkl/penempatandkvc');
+            exit;
+        }
+    }
+
+    public function getUbahPenempatandkvc()
+    {
+        echo json_encode($this->model("$this->model_name", 'pkl_model')->getDetailtp($_POST['id']));
+    }
+
+    public function ubahDataPenempatandkvc()
+    {
+        if ($this->model("$this->model_name", 'pkl_model')->ubahDatatp($_POST) > 0) {
+            Flasher::setFlash('berhasil', 'diubah', 'success');
+            header('Location: ' . BASEURL . '/pkl/penempatandkvc');
+            exit;
+        } else {
+
+            Flasher::setFlash('gagal', 'diubah', 'danger');
+            header('Location: ' . BASEURL . '/pkl/penempatandkvc');
+            exit;
+        }
+    }
+
+    public function hapusDataPenempatandkvc($id)
+    {
+        if ($this->model("$this->model_name", 'pkl_model')->HapusDatatp($id) > 0) {
+            Flasher::setFlash('berhasil', 'ditambahkan', 'success');
+            header('Location: ' . BASEURL . '/pkl/penempatandkvc');
+            exit;
+        } else {
+
+            Flasher::setFlash('gagal', 'ditambahkan', 'danger');
+            header('Location: ' . BASEURL . '/pkl/penempatandkvc');
+            exit;
+        }
+    }
+
+    public function tambahDataPenempatantla()
+    {
+        if ($this->model("$this->model_name", 'pkl_model')->TambahDatatp($_POST) > 0) {
+            Flasher::setFlash('berhasil', 'ditambahkan', 'success');
+            header('Location: ' . BASEURL . '/pkl/penempatantla');
+            exit;
+        } else {
+
+            Flasher::setFlash('gagal', 'ditambahkan', 'danger');
+            header('Location: ' . BASEURL . '/pkl/penempatantla');
+            exit;
+        }
+    }
+
+    public function getUbahPenempatantla()
+    {
+        echo json_encode($this->model("$this->model_name", 'pkl_model')->getDetailtp($_POST['id']));
+    }
+
+    public function ubahDataPenempatantla()
+    {
+        if ($this->model("$this->model_name", 'pkl_model')->ubahDatatp($_POST) > 0) {
+            Flasher::setFlash('berhasil', 'diubah', 'success');
+            header('Location: ' . BASEURL . '/pkl/penempatantla');
+            exit;
+        } else {
+
+            Flasher::setFlash('gagal', 'diubah', 'danger');
+            header('Location: ' . BASEURL . '/pkl/penempatantla');
+            exit;
+        }
+    }
+
+    public function hapusDataPenempatantla($id)
+    {
+        if ($this->model("$this->model_name", 'pkl_model')->HapusDatatp($id) > 0) {
+            Flasher::setFlash('berhasil', 'ditambahkan', 'success');
+            header('Location: ' . BASEURL . '/pkl/penempatantla');
+            exit;
+        } else {
+
+            Flasher::setFlash('gagal', 'ditambahkan', 'danger');
+            header('Location: ' . BASEURL . '/pkl/penempatantla');
+            exit;
+        }
+    }
+
+
+    public function tambahDataPenempatantlb()
+    {
+        if ($this->model("$this->model_name", 'pkl_model')->TambahDatatp($_POST) > 0) {
+            Flasher::setFlash('berhasil', 'ditambahkan', 'success');
+            header('Location: ' . BASEURL . '/pkl/penempatantlb');
+            exit;
+        } else {
+
+            Flasher::setFlash('gagal', 'ditambahkan', 'danger');
+            header('Location: ' . BASEURL . '/pkl/penempatantlb');
+            exit;
+        }
+    }
+
+    public function getUbahPenempatantlb()
+    {
+        echo json_encode($this->model("$this->model_name", 'pkl_model')->getDetailtp($_POST['id']));
+    }
+
+    public function ubahDataPenempatantlb()
+    {
+        if ($this->model("$this->model_name", 'pkl_model')->ubahDatatp($_POST) > 0) {
+            Flasher::setFlash('berhasil', 'diubah', 'success');
+            header('Location: ' . BASEURL . '/pkl/penempatantlb');
+            exit;
+        } else {
+
+            Flasher::setFlash('gagal', 'diubah', 'danger');
+            header('Location: ' . BASEURL . '/pkl/penempatantlb');
+            exit;
+        }
+    }
+
+    public function hapusDataPenempatantlb($id)
+    {
+        if ($this->model("$this->model_name", 'pkl_model')->HapusDatatp($id) > 0) {
+            Flasher::setFlash('berhasil', 'ditambahkan', 'success');
+            header('Location: ' . BASEURL . '/pkl/penempatantlb');
+            exit;
+        } else {
+
+            Flasher::setFlash('gagal', 'ditambahkan', 'danger');
+            header('Location: ' . BASEURL . '/pkl/penempatantlb');
+            exit;
+        }
+    }
+
+    public function tambahDataPenempatanmekaa()
+    {
+        if ($this->model("$this->model_name", 'pkl_model')->TambahDatatp($_POST) > 0) {
+            Flasher::setFlash('berhasil', 'ditambahkan', 'success');
+            header('Location: ' . BASEURL . '/pkl/penempatanmekaa');
+            exit;
+        } else {
+
+            Flasher::setFlash('gagal', 'ditambahkan', 'danger');
+            header('Location: ' . BASEURL . '/pkl/penempatanmekaa');
+            exit;
+        }
+    }
+
+    public function getUbahPenempatanmekaa()
+    {
+        echo json_encode($this->model("$this->model_name", 'pkl_model')->getDetailtp($_POST['id']));
+    }
+
+    public function ubahDataPenempatanmekaa()
+    {
+        if ($this->model("$this->model_name", 'pkl_model')->ubahDatatp($_POST) > 0) {
+            Flasher::setFlash('berhasil', 'diubah', 'success');
+            header('Location: ' . BASEURL . '/pkl/penempatanmekaa');
+            exit;
+        } else {
+
+            Flasher::setFlash('gagal', 'diubah', 'danger');
+            header('Location: ' . BASEURL . '/pkl/penempatanmekaa');
+            exit;
+        }
+    }
+
+    public function tambahDataPenempatanmekab()
+    {
+        if ($this->model("$this->model_name", 'pkl_model')->TambahDatatp($_POST) > 0) {
+            Flasher::setFlash('berhasil', 'ditambahkan', 'success');
+            header('Location: ' . BASEURL . '/pkl/penempatanmekab');
+            exit;
+        } else {
+
+            Flasher::setFlash('gagal', 'ditambahkan', 'danger');
+            header('Location: ' . BASEURL . '/pkl/penempatanmekab');
+            exit;
+        }
+    }
+
+    public function getUbahPenempatanmekab()
+    {
+        echo json_encode($this->model("$this->model_name", 'pkl_model')->getDetailtp($_POST['id']));
+    }
+
+    public function ubahDataPenempatanmekab()
+    {
+        if ($this->model("$this->model_name", 'pkl_model')->ubahDatatp($_POST) > 0) {
+            Flasher::setFlash('berhasil', 'diubah', 'success');
+            header('Location: ' . BASEURL . '/pkl/penempatanmekab');
+            exit;
+        } else {
+
+            Flasher::setFlash('gagal', 'diubah', 'danger');
+            header('Location: ' . BASEURL . '/pkl/penempatanmekab');
+            exit;
+        }
+    }
+
+    public function hapusDataPenempatanmekab($id)
+    {
+        if ($this->model("$this->model_name", 'pkl_model')->HapusDatatp($id) > 0) {
+            Flasher::setFlash('berhasil', 'ditambahkan', 'success');
+            header('Location: ' . BASEURL . '/pkl/penempatanmekab');
+            exit;
+        } else {
+
+            Flasher::setFlash('gagal', 'ditambahkan', 'danger');
+            header('Location: ' . BASEURL . '/pkl/penempatanmekab');
+            exit;
+        }
+    }
+
+    public function tambahDataPenempatanpha()
+    {
+        if ($this->model("$this->model_name", 'pkl_model')->TambahDatatp($_POST) > 0) {
+            Flasher::setFlash('berhasil', 'ditambahkan', 'success');
+            header('Location: ' . BASEURL . '/pkl/penempatanpha');
+            exit;
+        } else {
+
+            Flasher::setFlash('gagal', 'ditambahkan', 'danger');
+            header('Location: ' . BASEURL . '/pkl/penempatanpha');
+            exit;
+        }
+    }
+
+    public function getUbahPenempatanpha()
+    {
+        echo json_encode($this->model("$this->model_name", 'pkl_model')->getDetailtp($_POST['id']));
+    }
+
+    public function ubahDataPenempatanpha()
+    {
+        if ($this->model("$this->model_name", 'pkl_model')->ubahDatatp($_POST) > 0) {
+            Flasher::setFlash('berhasil', 'diubah', 'success');
+            header('Location: ' . BASEURL . '/pkl/penempatanpha');
+            exit;
+        } else {
+
+            Flasher::setFlash('gagal', 'diubah', 'danger');
+            header('Location: ' . BASEURL . '/pkl/penempatanpha');
+            exit;
+        }
+    }
+
+    public function hapusDataPenempatanpha($id)
+    {
+        if ($this->model("$this->model_name", 'pkl_model')->HapusDatatp($id) > 0) {
+            Flasher::setFlash('berhasil', 'ditambahkan', 'success');
+            header('Location: ' . BASEURL . '/pkl/penempatanpha');
+            exit;
+        } else {
+
+            Flasher::setFlash('gagal', 'ditambahkan', 'danger');
+            header('Location: ' . BASEURL . '/pkl/penempatanpha');
+            exit;
+        }
+    }
+
+    public function tambahDataPenempatanphb()
+    {
+        if ($this->model("$this->model_name", 'pkl_model')->TambahDatatp($_POST) > 0) {
+            Flasher::setFlash('berhasil', 'ditambahkan', 'success');
+            header('Location: ' . BASEURL . '/pkl/penempatanphb');
+            exit;
+        } else {
+
+            Flasher::setFlash('gagal', 'ditambahkan', 'danger');
+            header('Location: ' . BASEURL . '/pkl/penempatanphb');
+            exit;
+        }
+    }
+
+    public function getUbahPenempatanphb()
+    {
+        echo json_encode($this->model("$this->model_name", 'pkl_model')->getDetailtp($_POST['id']));
+    }
+
+    public function ubahDataPenempatanphb()
+    {
+        if ($this->model("$this->model_name", 'pkl_model')->ubahDatatp($_POST) > 0) {
+            Flasher::setFlash('berhasil', 'diubah', 'success');
+            header('Location: ' . BASEURL . '/pkl/penempatanphb');
+            exit;
+        } else {
+
+            Flasher::setFlash('gagal', 'diubah', 'danger');
+            header('Location: ' . BASEURL . '/pkl/penempatanphb');
+            exit;
+        }
+    }
+
+    public function hapusDataPenempatanphb($id)
+    {
+        if ($this->model("$this->model_name", 'pkl_model')->HapusDatatp($id) > 0) {
+            Flasher::setFlash('berhasil', 'ditambahkan', 'success');
+            header('Location: ' . BASEURL . '/pkl/penempatanphb');
+            exit;
+        } else {
+
+            Flasher::setFlash('gagal', 'ditambahkan', 'danger');
+            header('Location: ' . BASEURL . '/pkl/penempatanphb');
+            exit;
+        }
+    }
+
+    public function tambahDataPenempatanrpla()
+    {
+        if ($this->model("$this->model_name", 'pkl_model')->TambahDatatp($_POST) > 0) {
+            Flasher::setFlash('berhasil', 'ditambahkan', 'success');
+            header('Location: ' . BASEURL . '/pkl/penempatanrpla');
+            exit;
+        } else {
+
+            Flasher::setFlash('gagal', 'ditambahkan', 'danger');
+            header('Location: ' . BASEURL . '/pkl/penempatanrpla');
+            exit;
+        }
+    }
+
+    public function getUbahPenempatanrpla()
+    {
+        echo json_encode($this->model("$this->model_name", 'pkl_model')->getDetailtp($_POST['id']));
+    }
+
+    public function ubahDataPenempatanrpla()
+    {
+        if ($this->model("$this->model_name", 'pkl_model')->ubahDatatp($_POST) > 0) {
+            Flasher::setFlash('berhasil', 'diubah', 'success');
+            header('Location: ' . BASEURL . '/pkl/penempatanrpla');
+            exit;
+        } else {
+
+            Flasher::setFlash('gagal', 'diubah', 'danger');
+            header('Location: ' . BASEURL . '/pkl/penempatanrpla');
+            exit;
+        }
+    }
+
+    public function hapusDataPenempatanrpla($id)
+    {
+        if ($this->model("$this->model_name", 'pkl_model')->HapusDatatp($id) > 0) {
+            Flasher::setFlash('berhasil', 'ditambahkan', 'success');
+            header('Location: ' . BASEURL . '/pkl/penempatanrpla');
+            exit;
+        } else {
+
+            Flasher::setFlash('gagal', 'ditambahkan', 'danger');
+            header('Location: ' . BASEURL . '/pkl/penempatanrpla');
+            exit;
+        }
+    }
+
+    public function tambahDataPenempatanrplb()
+    {
+        if ($this->model("$this->model_name", 'pkl_model')->TambahDatatp($_POST) > 0) {
+            Flasher::setFlash('berhasil', 'ditambahkan', 'success');
+            header('Location: ' . BASEURL . '/pkl/penempatanrplb');
+            exit;
+        } else {
+
+            Flasher::setFlash('gagal', 'ditambahkan', 'danger');
+            header('Location: ' . BASEURL . '/pkl/penempatanrplb');
+            exit;
+        }
+    }
+
+    public function getUbahPenempatanrplb()
+    {
+        echo json_encode($this->model("$this->model_name", 'pkl_model')->getDetailtp($_POST['id']));
+    }
+
+    public function ubahDataPenempatanrplb()
+    {
+        if ($this->model("$this->model_name", 'pkl_model')->ubahDatatp($_POST) > 0) {
+            Flasher::setFlash('berhasil', 'diubah', 'success');
+            header('Location: ' . BASEURL . '/pkl/penempatanrplb');
+            exit;
+        } else {
+
+            Flasher::setFlash('gagal', 'diubah', 'danger');
+            header('Location: ' . BASEURL . '/pkl/penempatanrplb');
+            exit;
+        }
+    }
+
+    public function hapusDataPenempatanrplb($id)
+    {
+        if ($this->model("$this->model_name", 'pkl_model')->HapusDatatp($id) > 0) {
+            Flasher::setFlash('berhasil', 'ditambahkan', 'success');
+            header('Location: ' . BASEURL . '/pkl/penempatanrplb');
+            exit;
+        } else {
+
+            Flasher::setFlash('gagal', 'ditambahkan', 'danger');
+            header('Location: ' . BASEURL . '/pkl/penempatanrplb');
+            exit;
+        }
+    }
+
+    public function tambahDataPenempatanrplc()
+    {
+        if ($this->model("$this->model_name", 'pkl_model')->TambahDatatp($_POST) > 0) {
+            Flasher::setFlash('berhasil', 'ditambahkan', 'success');
+            header('Location: ' . BASEURL . '/pkl/penempatanrplc');
+            exit;
+        } else {
+
+            Flasher::setFlash('gagal', 'ditambahkan', 'danger');
+            header('Location: ' . BASEURL . '/pkl/penempatanrplc');
+            exit;
+        }
+    }
+
+    public function getUbahPenempatanrplc()
+    {
+        echo json_encode($this->model("$this->model_name", 'pkl_model')->getDetailtp($_POST['id']));
+    }
+
+    public function ubahDataPenempatanrplc()
+    {
+        if ($this->model("$this->model_name", 'pkl_model')->ubahDatatp($_POST) > 0) {
+            Flasher::setFlash('berhasil', 'diubah', 'success');
+            header('Location: ' . BASEURL . '/pkl/penempatanrplc');
+            exit;
+        } else {
+
+            Flasher::setFlash('gagal', 'diubah', 'danger');
+            header('Location: ' . BASEURL . '/pkl/penempatanrplc');
+            exit;
+        }
+    }
+
+    public function hapusDataPenempatanrplc($id)
+    {
+        if ($this->model("$this->model_name", 'pkl_model')->HapusDatatp($id) > 0) {
+            Flasher::setFlash('berhasil', 'ditambahkan', 'success');
+            header('Location: ' . BASEURL . '/pkl/penempatanrplc');
+            exit;
+        } else {
+
+            Flasher::setFlash('gagal', 'ditambahkan', 'danger');
+            header('Location: ' . BASEURL . '/pkl/penempatanrplc');
+            exit;
+        }
+    }
+
+    public function tambahDataPenempatanDGA()
+    {
+        if ($this->model("$this->model_name", 'pkl_model')->TambahDatatp($_POST) > 0) {
+            Flasher::setFlash('berhasil', 'ditambahkan', 'success');
+            header('Location: ' . BASEURL . '/pkl/penempatandga');
+            exit;
+        } else {
+
+            Flasher::setFlash('gagal', 'ditambahkan', 'danger');
+            header('Location: ' . BASEURL . '/pkl/penempatandga');
+            exit;
+        }
+    }
+
+    public function getUbahPenempatanDGA()
+    {
+        echo json_encode($this->model("$this->model_name", 'pkl_model')->getDetailtp($_POST['id']));
+    }
+
+    public function ubahDataPenempatanDGA()
+    {
+        if ($this->model("$this->model_name", 'pkl_model')->ubahDatatp($_POST) > 0) {
+            Flasher::setFlash('berhasil', 'diubah', 'success');
+            header('Location: ' . BASEURL . '/pkl/penempatandga');
+            exit;
+        } else {
+
+            Flasher::setFlash('gagal', 'diubah', 'danger');
+            header('Location: ' . BASEURL . '/pkl/penempatandga');
+            exit;
+        }
+    }
+
+    public function hapusDataPenempatanDGA($id)
+    {
+        if ($this->model("$this->model_name", 'pkl_model')->HapusDatatp($id) > 0) {
+            Flasher::setFlash('berhasil', 'ditambahkan', 'success');
+            header('Location: ' . BASEURL . '/pkl/penempatandga');
+            exit;
+        } else {
+
+            Flasher::setFlash('gagal', 'ditambahkan', 'danger');
+            header('Location: ' . BASEURL . '/pkl/penempatandga');
+            exit;
+        }
+    }
+
+    public function tambahDataPenempatanDGB()
+    {
+        if ($this->model("$this->model_name", 'pkl_model')->TambahDatatp($_POST) > 0) {
+            Flasher::setFlash('berhasil', 'ditambahkan', 'success');
+            header('Location: ' . BASEURL . '/pkl/penempatandgb');
+            exit;
+        } else {
+
+            Flasher::setFlash('gagal', 'ditambahkan', 'danger');
+            header('Location: ' . BASEURL . '/pkl/penempatandgb');
+            exit;
+        }
+    }
+
+    public function getUbahPenempatanDGB()
+    {
+        echo json_encode($this->model("$this->model_name", 'pkl_model')->getDetailtp($_POST['id']));
+    }
+
+    public function ubahDataPenempatanDGB()
+    {
+        if ($this->model("$this->model_name", 'pkl_model')->ubahDatatp($_POST) > 0) {
+            Flasher::setFlash('berhasil', 'ditambahkan', 'success');
+            header('Location: ' . BASEURL . '/pkl/penempatandgb');
+            exit;
+        } else {
+
+            Flasher::setFlash('gagal', 'ditambahkan', 'danger');
+            header('Location: ' . BASEURL . '/pkl/penempatandgb');
+            exit;
+        }
+    }
+
+    public function hapusDataPenempatanDGB($id)
+    {
+        if ($this->model("$this->model_name", 'pkl_model')->HapusDatatp($id) > 0) {
+            Flasher::setFlash('berhasil', 'ditambahkan', 'success');
+            header('Location: ' . BASEURL . '/pkl/penempatandgb');
+            exit;
+        } else {
+
+            Flasher::setFlash('gagal', 'ditambahkan', 'danger');
+            header('Location: ' . BASEURL . '/pkl/penempatandgb');
+            exit;
+        }
+    }
+
+    public function tambahDataPenempatanDGC()
+    {
+        if ($this->model("$this->model_name", 'pkl_model')->TambahDatatp($_POST) > 0) {
+            Flasher::setFlash('berhasil', 'ditambahkan', 'success');
+            header('Location: ' . BASEURL . '/pkl/penempatandgc');
+            exit;
+        } else {
+
+            Flasher::setFlash('gagal', 'ditambahkan', 'danger');
+            header('Location: ' . BASEURL . '/pkl/penempatandgc');
+            exit;
+        }
+    }
+
+    public function getUbahPenempatanDGC()
+    {
+        echo json_encode($this->model("$this->model_name", 'pkl_model')->getDetailtp($_POST['id']));
+    }
+
+    public function ubahDatapenempatandgc()
+    {
+        if ($this->model("$this->model_name", 'pkl_model')->ubahDatatp($_POST) > 0) {
+            Flasher::setFlash('berhasil', 'diubah', 'success');
+            header('Location: ' . BASEURL . '/pkl/penempatandgc');
+            exit;
+        } else {
+
+            Flasher::setFlash('gagal', 'diubah', 'danger');
+            header('Location: ' . BASEURL . '/pkl/penempatandgc');
+            exit;
+        }
+    }
+
+    public function hapusDatapenempatandgc($id)
+    {
+        if ($this->model("$this->model_name", 'pkl_model')->HapusDatatp($id) > 0) {
+            Flasher::setFlash('berhasil', 'dihapus', 'success');
+            header('Location: ' . BASEURL . '/pkl/penempatandgc');
+            exit;
+        } else {
+
+            Flasher::setFlash('gagal', 'dihapus', 'danger');
+            header('Location: ' . BASEURL . '/pkl/penempatandgc');
+            exit;
+        }
+    }
+
+    public function tambahDataPenempatanDGD()
+    {
+        if ($this->model("$this->model_name", 'pkl_model')->TambahDatatp($_POST) > 0) {
+            Flasher::setFlash('berhasil', 'ditambahkan', 'success');
+            header('Location: ' . BASEURL . '/pkl/penempatandgd');
+            exit;
+        } else {
+
+            Flasher::setFlash('gagal', 'ditambahkan', 'danger');
+            header('Location: ' . BASEURL . '/pkl/penempatandgd');
+            exit;
+        }
+    }
+
+    public function getUbahPenempatanDGD()
+    {
+        echo json_encode($this->model("$this->model_name", 'pkl_model')->getDetailtp($_POST['id']));
+    }
+
+    public function ubahDatapenempatandgd()
+    {
+        if ($this->model("$this->model_name", 'pkl_model')->ubahDatatp($_POST) > 0) {
+            Flasher::setFlash('berhasil', 'diubah', 'success');
+            header('Location: ' . BASEURL . '/pkl/penempatandgd');
+            exit;
+        } else {
+
+            Flasher::setFlash('gagal', 'diubah', 'danger');
+            header('Location: ' . BASEURL . '/pkl/penempatandgd');
+            exit;
+        }
+    }
+
+    public function hapusDatapenempatandgd($id)
+    {
+        if ($this->model("$this->model_name", 'pkl_model')->HapusDatatp($id) > 0) {
+            Flasher::setFlash('berhasil', 'dihapus', 'success');
+            header('Location: ' . BASEURL . '/pkl/penempatandgd');
+            exit;
+        } else {
+
+            Flasher::setFlash('gagal', 'dihapus', 'danger');
+            header('Location: ' . BASEURL . '/pkl/penempatandgd');
+            exit;
+        }
+    }
+
+    public function tambahDataPenempatanpda()
+    {
+        if ($this->model("$this->model_name", 'pkl_model')->TambahDatatp($_POST) > 0) {
+            Flasher::setFlash('berhasil', 'ditambahkan', 'success');
+            header('Location: ' . BASEURL . '/pkl/penempatanpda');
+            exit;
+        } else {
+
+            Flasher::setFlash('gagal', 'ditambahkan', 'danger');
+            header('Location: ' . BASEURL . '/pkl/penempatanpda');
+            exit;
+        }
+    }
+
+    public function getUbahPenempatanpda()
+    {
+        echo json_encode($this->model("$this->model_name", 'pkl_model')->getDetailtp($_POST['id']));
+    }
+
+    public function ubahDatapenempatanpda()
+    {
+        if ($this->model("$this->model_name", 'pkl_model')->ubahDatatp($_POST) > 0) {
+            Flasher::setFlash('berhasil', 'diubah', 'success');
+            header('Location: ' . BASEURL . '/pkl/penempatanpda');
+            exit;
+        } else {
+
+            Flasher::setFlash('gagal', 'diubah', 'danger');
+            header('Location: ' . BASEURL . '/pkl/penempatanpda');
+            exit;
+        }
+    }
+
+    public function hapusDatapenempatanpda($id)
+    {
+        if ($this->model("$this->model_name", 'pkl_model')->HapusDatatp($id) > 0) {
+            Flasher::setFlash('berhasil', 'dihapus', 'success');
+            header('Location: ' . BASEURL . '/pkl/penempatanpda');
+            exit;
+        } else {
+
+            Flasher::setFlash('gagal', 'dihapus', 'danger');
+            header('Location: ' . BASEURL . '/pkl/penempatanpda');
+            exit;
+        }
+    }
+
+    public function tambahDataPenempatanpdb()
+    {
+        if ($this->model("$this->model_name", 'pkl_model')->TambahDatatp($_POST) > 0) {
+            Flasher::setFlash('berhasil', 'ditambahkan', 'success');
+            header('Location: ' . BASEURL . '/pkl/penempatanpdb');
+            exit;
+        } else {
+
+            Flasher::setFlash('gagal', 'ditambahkan', 'danger');
+            header('Location: ' . BASEURL . '/pkl/penempatanpdb');
+            exit;
+        }
+    }
+
+    public function getUbahPenempatanpdb()
+    {
+        echo json_encode($this->model("$this->model_name", 'pkl_model')->getDetailtp($_POST['id']));
+    }
+
+    public function ubahDatapenempatanpdb()
+    {
+        if ($this->model("$this->model_name", 'pkl_model')->ubahDatatp($_POST) > 0) {
+            Flasher::setFlash('berhasil', 'diubah', 'success');
+            header('Location: ' . BASEURL . '/pkl/penempatanpdb');
+            exit;
+        } else {
+
+            Flasher::setFlash('gagal', 'diubah', 'danger');
+            header('Location: ' . BASEURL . '/pkl/penempatanpdb');
+            exit;
+        }
+    }
+
+    public function hapusDatapenempatanpdb($id)
+    {
+        if ($this->model("$this->model_name", 'pkl_model')->HapusDatatp($id) > 0) {
+            Flasher::setFlash('berhasil', 'dihapus', 'success');
+            header('Location: ' . BASEURL . '/pkl/penempatanpdb');
+            exit;
+        } else {
+
+            Flasher::setFlash('gagal', 'dihapus', 'danger');
+            header('Location: ' . BASEURL . '/pkl/penempatanpdb');
+            exit;
+        }
+    }
+
+    public function tambahDataPenempatanpdc()
+    {
+        if ($this->model("$this->model_name", 'pkl_model')->TambahDatatp($_POST) > 0) {
+            Flasher::setFlash('berhasil', 'ditambahkan', 'success');
+            header('Location: ' . BASEURL . '/pkl/penempatanpdc');
+            exit;
+        } else {
+
+            Flasher::setFlash('gagal', 'ditambahkan', 'danger');
+            header('Location: ' . BASEURL . '/pkl/penempatanpdc');
+            exit;
+        }
+    }
+
+    public function getUbahPenempatanpdc()
+    {
+        echo json_encode($this->model("$this->model_name", 'pkl_model')->getDetailtp($_POST['id']));
+    }
+
+    public function ubahDatapenempatanpdc()
+    {
+        if ($this->model("$this->model_name", 'pkl_model')->ubahDatatp($_POST) > 0) {
+            Flasher::setFlash('berhasil', 'diubah', 'success');
+            header('Location: ' . BASEURL . '/pkl/penempatanpdc');
+            exit;
+        } else {
+
+            Flasher::setFlash('gagal', 'diubah', 'danger');
+            header('Location: ' . BASEURL . '/pkl/penempatanpdc');
+            exit;
+        }
+    }
+
+    public function hapusDatapenempatanpdc($id)
+    {
+        if ($this->model("$this->model_name", 'pkl_model')->HapusDatatp($id) > 0) {
+            Flasher::setFlash('berhasil', 'dihapus', 'success');
+            header('Location: ' . BASEURL . '/pkl/penempatanpdc');
+            exit;
+        } else {
+
+            Flasher::setFlash('gagal', 'dihapus', 'danger');
+            header('Location: ' . BASEURL . '/pkl/penempatanpdc');
+            exit;
+        }
+    }
+
+    public function tambahDataPenempatanpdd()
+    {
+        if ($this->model("$this->model_name", 'pkl_model')->TambahDatatp($_POST) > 0) {
+            Flasher::setFlash('berhasil', 'ditambahkan', 'success');
+            header('Location: ' . BASEURL . '/pkl/penempatanpdd');
+            exit;
+        } else {
+
+            Flasher::setFlash('gagal', 'ditambahkan', 'danger');
+            header('Location: ' . BASEURL . '/pkl/penempatanpdd');
+            exit;
+        }
+    }
+
+    public function getUbahPenempatanpdd()
+    {
+        echo json_encode($this->model("$this->model_name", 'pkl_model')->getDetailtp($_POST['id']));
+    }
+
+    public function ubahDatapenempatanpdd()
+    {
+        if ($this->model("$this->model_name", 'pkl_model')->ubahDatatp($_POST) > 0) {
+            Flasher::setFlash('berhasil', 'diubah', 'success');
+            header('Location: ' . BASEURL . '/pkl/penempatanpdd');
+            exit;
+        } else {
+
+            Flasher::setFlash('gagal', 'diubah', 'danger');
+            header('Location: ' . BASEURL . '/pkl/penempatanpdd');
+            exit;
+        }
+    }
+
+    public function hapusDatapenempatanpdd($id)
+    {
+        if ($this->model("$this->model_name", 'pkl_model')->HapusDatatp($id) > 0) {
+            Flasher::setFlash('berhasil', 'dihapus', 'success');
+            header('Location: ' . BASEURL . '/pkl/penempatanpdd');
+            exit;
+        } else {
+
+            Flasher::setFlash('gagal', 'dihapus', 'danger');
+            header('Location: ' . BASEURL . '/pkl/penempatanpdd');
+            exit;
+        }
+    }
+
+    public function tambahDataPenempatantkja()
+    {
+        if ($this->model("$this->model_name", 'pkl_model')->TambahDatatp($_POST) > 0) {
+            Flasher::setFlash('berhasil', 'ditambahkan', 'success');
+            header('Location: ' . BASEURL . '/pkl/penempatantkja');
+            exit;
+        } else {
+
+            Flasher::setFlash('gagal', 'ditambahkan', 'danger');
+            header('Location: ' . BASEURL . '/pkl/penempatantkja');
+            exit;
+        }
+    }
+
+    public function getUbahPenempatantkja()
+    {
+        echo json_encode($this->model("$this->model_name", 'pkl_model')->getDetailtp($_POST['id']));
+    }
+
+    public function ubahDataPenempatantkja()
+    {
+        if ($this->model("$this->model_name", 'pkl_model')->ubahDatatp($_POST) > 0) {
+            Flasher::setFlash('berhasil', 'diubah', 'success');
+            header('Location: ' . BASEURL . '/pkl/penempatantkja');
+            exit;
+        } else {
+
+            Flasher::setFlash('gagal', 'diubah', 'danger');
+            header('Location: ' . BASEURL . '/pkl/penempatantkja');
+            exit;
+        }
+    }
+
+    public function hapusDataPenempatantkja($id)
+    {
+        if ($this->model("$this->model_name", 'pkl_model')->HapusDatatp($id) > 0) {
+            Flasher::setFlash('berhasil', 'ditambahkan', 'success');
+            header('Location: ' . BASEURL . '/pkl/penempatantkja');
+            exit;
+        } else {
+
+            Flasher::setFlash('gagal', 'ditambahkan', 'danger');
+            header('Location: ' . BASEURL . '/pkl/penempatantkja');
+            exit;
+        }
+    }
+
+    public function tambahDataPenempatantkjb()
+    {
+        if ($this->model("$this->model_name", 'pkl_model')->TambahDatatp($_POST) > 0) {
+            Flasher::setFlash('berhasil', 'ditambahkan', 'success');
+            header('Location: ' . BASEURL . '/pkl/penempatantkjb');
+            exit;
+        } else {
+
+            Flasher::setFlash('gagal', 'ditambahkan', 'danger');
+            header('Location: ' . BASEURL . '/pkl/penempatantkjb');
+            exit;
+        }
+    }
+
+    public function getUbahPenempatantkjb()
+    {
+        echo json_encode($this->model("$this->model_name", 'pkl_model')->getDetailtp($_POST['id']));
+    }
+
+    public function ubahDataPenempatantkjb()
+    {
+        if ($this->model("$this->model_name", 'pkl_model')->ubahDatatp($_POST) > 0) {
+            Flasher::setFlash('berhasil', 'diubah', 'success');
+            header('Location: ' . BASEURL . '/pkl/penempatantkjb');
+            exit;
+        } else {
+
+            Flasher::setFlash('gagal', 'diubah', 'danger');
+            header('Location: ' . BASEURL . '/pkl/penempatantkjb');
+            exit;
+        }
+    }
+
+    public function hapusDataPenempatantkjb($id)
+    {
+        if ($this->model("$this->model_name", 'pkl_model')->HapusDatatp($id) > 0) {
+            Flasher::setFlash('berhasil', 'ditambahkan', 'success');
+            header('Location: ' . BASEURL . '/pkl/penempatantkjb');
+            exit;
+        } else {
+
+            Flasher::setFlash('gagal', 'ditambahkan', 'danger');
+            header('Location: ' . BASEURL . '/pkl/penempatantkjb');
+            exit;
+        }
+    }
+
+    public function tambahDatanilaidga()
+    {
+        if ($this->model("$this->model_name", 'pkl_model')->tambahDataNilai($_POST) > 0) {
+            Flasher::setFlash('berhasil', 'ditambahkan', 'success');
+            header('Location: ' . BASEURL . '/pkl/nilaidga');
+            exit;
+        } else {
+
+            Flasher::setFlash('gagal', 'ditambahkan', 'danger');
+            header('Location: ' . BASEURL . '/pkl/nilaidga');
+            exit;
+        }
+    }
+
+    public function getUbahnilaidga()
+    {
+        echo json_encode($this->model("$this->model_name", 'pkl_model')->getNilaiById($_POST['id']));
+    }
+
+    public function ubahDatanilaidga()
+    {
+        if ($this->model("$this->model_name", 'pkl_model')->ubahDataNilai($_POST) > 0) {
+            Flasher::setFlash('berhasil', 'diubah', 'success');
+            header('Location: ' . BASEURL . '/pkl/nilaidga');
+            exit;
+        } else {
+
+            Flasher::setFlash('gagal', 'diubah', 'danger');
+            header('Location: ' . BASEURL . '/pkl/nilaidga');
+            exit;
+        }
+    }
+
+    public function hapusDatanilaidga($id)
+    {
+        if ($this->model("$this->model_name", 'pkl_model')->hapusDataNilai($id) > 0) {
+            Flasher::setFlash('berhasil', 'dihapus', 'success');
+            header('Location: ' . BASEURL . '/pkl/nilaidga');
+            exit;
+        } else {
+
+            Flasher::setFlash('gagal', 'dihapus', 'danger');
+            header('Location: ' . BASEURL . '/pkl/nilaidga');
+            exit;
+        }
+    }
+
+    public function tambahDatanilaidgb()
+    {
+        if ($this->model("$this->model_name", 'pkl_model')->tambahDataNilai($_POST) > 0) {
+            Flasher::setFlash('berhasil', 'ditambahkan', 'success');
+            header('Location: ' . BASEURL . '/pkl/nilaidgb');
+            exit;
+        } else {
+
+            Flasher::setFlash('gagal', 'ditambahkan', 'danger');
+            header('Location: ' . BASEURL . '/pkl/nilaidgb');
+            exit;
+        }
+    }
+
+    public function getUbahnilaidgb()
+    {
+        echo json_encode($this->model("$this->model_name", 'pkl_model')->getNilaiById($_POST['id']));
+    }
+
+    public function ubahDatanilaidgb()
+    {
+        if ($this->model("$this->model_name", 'pkl_model')->ubahDataNilai($_POST) > 0) {
+            Flasher::setFlash('berhasil', 'diubah', 'success');
+            header('Location: ' . BASEURL . '/pkl/nilaidgb');
+            exit;
+        } else {
+
+            Flasher::setFlash('gagal', 'diubah', 'danger');
+            header('Location: ' . BASEURL . '/pkl/nilaidgb');
+            exit;
+        }
+    }
+
+    public function hapusDatanilaidgb($id)
+    {
+        if ($this->model("$this->model_name", 'pkl_model')->hapusDataNilai($id) > 0) {
+            Flasher::setFlash('berhasil', 'dihapus', 'success');
+            header('Location: ' . BASEURL . '/pkl/nilaidgb');
+            exit;
+        } else {
+
+            Flasher::setFlash('gagal', 'dihapus', 'danger');
+            header('Location: ' . BASEURL . '/pkl/nilaidgb');
+            exit;
+        }
+    }
+
+    public function tambahDatanilaidgc()
+    {
+        if ($this->model("$this->model_name", 'pkl_model')->tambahDataNilai($_POST) > 0) {
+            Flasher::setFlash('berhasil', 'ditambahkan', 'success');
+            header('Location: ' . BASEURL . '/pkl/nilaidgc');
+            exit;
+        } else {
+
+            Flasher::setFlash('gagal', 'ditambahkan', 'danger');
+            header('Location: ' . BASEURL . '/pkl/nilaidgc');
+            exit;
+        }
+    }
+
+    public function getUbahnilaidgc()
+    {
+        echo json_encode($this->model("$this->model_name", 'pkl_model')->getNilaiById($_POST['id']));
+    }
+
+    public function ubahDatanilaidgc()
+    {
+        if ($this->model("$this->model_name", 'pkl_model')->ubahDataNilai($_POST) > 0) {
+            Flasher::setFlash('berhasil', 'diubah', 'success');
+            header('Location: ' . BASEURL . '/pkl/nilaidgc');
+            exit;
+        } else {
+
+            Flasher::setFlash('gagal', 'diubah', 'danger');
+            header('Location: ' . BASEURL . '/pkl/nilaidgc');
+            exit;
+        }
+    }
+
+    public function hapusDatanilaidgc($id)
+    {
+        if ($this->model("$this->model_name", 'pkl_model')->hapusDataNilai($id) > 0) {
+            Flasher::setFlash('berhasil', 'dihapus', 'success');
+            header('Location: ' . BASEURL . '/pkl/nilaidgc');
+            exit;
+        } else {
+
+            Flasher::setFlash('gagal', 'dihapus', 'danger');
+            header('Location: ' . BASEURL . '/pkl/nilaidgc');
+            exit;
+        }
+    }
+
+    public function tambahDatanilaidgd()
+    {
+        if ($this->model("$this->model_name", 'pkl_model')->tambahDataNilai($_POST) > 0) {
+            Flasher::setFlash('berhasil', 'ditambahkan', 'success');
+            header('Location: ' . BASEURL . '/pkl/nilaidgd');
+            exit;
+        } else {
+
+            Flasher::setFlash('gagal', 'ditambahkan', 'danger');
+            header('Location: ' . BASEURL . '/pkl/nilaidgd');
+            exit;
+        }
+    }
+
+    public function getUbahnilaidgd()
+    {
+        echo json_encode($this->model("$this->model_name", 'pkl_model')->getNilaiById($_POST['id']));
+    }
+
+    public function ubahDatanilaidgd()
+    {
+        if ($this->model("$this->model_name", 'pkl_model')->ubahDataNilai($_POST) > 0) {
+            Flasher::setFlash('berhasil', 'diubah', 'success');
+            header('Location: ' . BASEURL . '/pkl/nilaidgd');
+            exit;
+        } else {
+
+            Flasher::setFlash('gagal', 'diubah', 'danger');
+            header('Location: ' . BASEURL . '/pkl/nilaidgd');
+            exit;
+        }
+    }
+
+    public function hapusDatanilaidgd($id)
+    {
+        if ($this->model("$this->model_name", 'pkl_model')->hapusDataNilai($id) > 0) {
+            Flasher::setFlash('berhasil', 'dihapus', 'success');
+            header('Location: ' . BASEURL . '/pkl/nilaidgd');
+            exit;
+        } else {
+
+            Flasher::setFlash('gagal', 'dihapus', 'danger');
+            header('Location: ' . BASEURL . '/pkl/nilaidgd');
+            exit;
+        }
+    }
+
+    public function tambahDatanilaipda()
+    {
+        if ($this->model("$this->model_name", 'pkl_model')->tambahDataNilai($_POST) > 0) {
+            Flasher::setFlash('berhasil', 'ditambahkan', 'success');
+            header('Location: ' . BASEURL . '/pkl/nilaipda');
+            exit;
+        } else {
+
+            Flasher::setFlash('gagal', 'ditambahkan', 'danger');
+            header('Location: ' . BASEURL . '/pkl/nilaipda');
+            exit;
+        }
+    }
+
+    public function getUbahnilaipda()
+    {
+        echo json_encode($this->model("$this->model_name", 'pkl_model')->getNilaiById($_POST['id']));
+    }
+
+    public function ubahDatanilaipda()
+    {
+        if ($this->model("$this->model_name", 'pkl_model')->ubahDataNilai($_POST) > 0) {
+            Flasher::setFlash('berhasil', 'diubah', 'success');
+            header('Location: ' . BASEURL . '/pkl/nilaipda');
+            exit;
+        } else {
+
+            Flasher::setFlash('gagal', 'diubah', 'danger');
+            header('Location: ' . BASEURL . '/pkl/nilaipda');
+            exit;
+        }
+    }
+
+    public function hapusDatanilaipda($id)
+    {
+        if ($this->model("$this->model_name", 'pkl_model')->hapusDataNilai($id) > 0) {
+            Flasher::setFlash('berhasil', 'dihapus', 'success');
+            header('Location: ' . BASEURL . '/pkl/nilaipda');
+            exit;
+        } else {
+
+            Flasher::setFlash('gagal', 'dihapus', 'danger');
+            header('Location: ' . BASEURL . '/pkl/nilaipda');
+            exit;
+        }
+    }
+
+    public function tambahDatanilaipdb()
+    {
+        if ($this->model("$this->model_name", 'pkl_model')->tambahDataNilai($_POST) > 0) {
+            Flasher::setFlash('berhasil', 'ditambahkan', 'success');
+            header('Location: ' . BASEURL . '/pkl/nilaipdb');
+            exit;
+        } else {
+
+            Flasher::setFlash('gagal', 'ditambahkan', 'danger');
+            header('Location: ' . BASEURL . '/pkl/nilaipdb');
+            exit;
+        }
+    }
+
+    public function getUbahnilaipdb()
+    {
+        echo json_encode($this->model("$this->model_name", 'pkl_model')->getNilaiById($_POST['id']));
+    }
+
+    public function ubahDatanilaipdb()
+    {
+        if ($this->model("$this->model_name", 'pkl_model')->ubahDataNilai($_POST) > 0) {
+            Flasher::setFlash('berhasil', 'diubah', 'success');
+            header('Location: ' . BASEURL . '/pkl/nilaipdb');
+            exit;
+        } else {
+
+            Flasher::setFlash('gagal', 'diubah', 'danger');
+            header('Location: ' . BASEURL . '/pkl/nilaipdb');
+            exit;
+        }
+    }
+
+    public function hapusDatanilaipdb($id)
+    {
+        if ($this->model("$this->model_name", 'pkl_model')->hapusDataNilai($id) > 0) {
+            Flasher::setFlash('berhasil', 'dihapus', 'success');
+            header('Location: ' . BASEURL . '/pkl/nilaipdb');
+            exit;
+        } else {
+
+            Flasher::setFlash('gagal', 'dihapus', 'danger');
+            header('Location: ' . BASEURL . '/pkl/nilaipdb');
+            exit;
+        }
+    }
+
+    public function tambahDatanilaipdc()
+    {
+        if ($this->model("$this->model_name", 'pkl_model')->tambahDataNilai($_POST) > 0) {
+            Flasher::setFlash('berhasil', 'ditambahkan', 'success');
+            header('Location: ' . BASEURL . '/pkl/nilaipdc');
+            exit;
+        } else {
+
+            Flasher::setFlash('gagal', 'ditambahkan', 'danger');
+            header('Location: ' . BASEURL . '/pkl/nilaipdc');
+            exit;
+        }
+    }
+
+    public function getUbahnilaipdc()
+    {
+        echo json_encode($this->model("$this->model_name", 'pkl_model')->getNilaiById($_POST['id']));
+    }
+
+    public function ubahDatanilaipdc()
+    {
+        if ($this->model("$this->model_name", 'pkl_model')->ubahDataNilai($_POST) > 0) {
+            Flasher::setFlash('berhasil', 'diubah', 'success');
+            header('Location: ' . BASEURL . '/pkl/nilaipdc');
+            exit;
+        } else {
+
+            Flasher::setFlash('gagal', 'diubah', 'danger');
+            header('Location: ' . BASEURL . '/pkl/nilaipdc');
+            exit;
+        }
+    }
+
+    public function hapusDatanilaipdc($id)
+    {
+        if ($this->model("$this->model_name", 'pkl_model')->hapusDataNilai($id) > 0) {
+            Flasher::setFlash('berhasil', 'dihapus', 'success');
+            header('Location: ' . BASEURL . '/pkl/nilaipdc');
+            exit;
+        } else {
+
+            Flasher::setFlash('gagal', 'dihapus', 'danger');
+            header('Location: ' . BASEURL . '/pkl/nilaipdc');
+            exit;
+        }
+    }
+
+    public function tambahDatanilaipdd()
+    {
+        if ($this->model("$this->model_name", 'pkl_model')->tambahDataNilai($_POST) > 0) {
+            Flasher::setFlash('berhasil', 'ditambahkan', 'success');
+            header('Location: ' . BASEURL . '/pkl/nilaipdd');
+            exit;
+        } else {
+
+            Flasher::setFlash('gagal', 'ditambahkan', 'danger');
+            header('Location: ' . BASEURL . '/pkl/nilaipdd');
+            exit;
+        }
+    }
+
+    public function getUbahnilaipdd()
+    {
+        echo json_encode($this->model("$this->model_name", 'pkl_model')->getNilaiById($_POST['id']));
+    }
+
+    public function ubahDatanilaipdd()
+    {
+        if ($this->model("$this->model_name", 'pkl_model')->ubahDataNilai($_POST) > 0) {
+            Flasher::setFlash('berhasil', 'diubah', 'success');
+            header('Location: ' . BASEURL . '/pkl/nilaipdd');
+            exit;
+        } else {
+
+            Flasher::setFlash('gagal', 'diubah', 'danger');
+            header('Location: ' . BASEURL . '/pkl/nilaipdd');
+            exit;
+        }
+    }
+
+    public function hapusDatanilaipdd($id)
+    {
+        if ($this->model("$this->model_name", 'pkl_model')->hapusDataNilai($id) > 0) {
+            Flasher::setFlash('berhasil', 'dihapus', 'success');
+            header('Location: ' . BASEURL . '/pkl/nilaipdd');
+            exit;
+        } else {
+
+            Flasher::setFlash('gagal', 'dihapus', 'danger');
+            header('Location: ' . BASEURL . '/pkl/nilaipdd');
+            exit;
+        }
+    }
+
+    public function tambahDatanilaiania()
+    {
+        if ($this->model("$this->model_name", 'pkl_model')->tambahDataNilai($_POST) > 0) {
+            Flasher::setFlash('berhasil', 'ditambahkan', 'success');
+            header('Location: ' . BASEURL . '/pkl/nilaiania');
+            exit;
+        } else {
+
+            Flasher::setFlash('gagal', 'ditambahkan', 'danger');
+            header('Location: ' . BASEURL . '/pkl/nilaiania');
+            exit;
+        }
+    }
+
+    public function getUbahnilaiania()
+    {
+        echo json_encode($this->model("$this->model_name", 'pkl_model')->getNilaiById($_POST['id']));
+    }
+
+    public function ubahDatanilaiania()
+    {
+        if ($this->model("$this->model_name", 'pkl_model')->ubahDataNilai($_POST) > 0) {
+            Flasher::setFlash('berhasil', 'diubah', 'success');
+            header('Location: ' . BASEURL . '/pkl/nilaiania');
+            exit;
+        } else {
+
+            Flasher::setFlash('gagal', 'diubah', 'danger');
+            header('Location: ' . BASEURL . '/pkl/nilaiania');
+            exit;
+        }
+    }
+
+    public function hapusDatanilaiania($id)
+    {
+        if ($this->model("$this->model_name", 'pkl_model')->hapusDataNilai($id) > 0) {
+            Flasher::setFlash('berhasil', 'dihapus', 'success');
+            header('Location: ' . BASEURL . '/pkl/nilaiania');
+            exit;
+        } else {
+
+            Flasher::setFlash('gagal', 'dihapus', 'danger');
+            header('Location: ' . BASEURL . '/pkl/nilaiania');
+            exit;
+        }
+    }
+
+    public function tambahDatanilaianib()
+    {
+        if ($this->model("$this->model_name", 'pkl_model')->tambahDataNilai($_POST) > 0) {
+            Flasher::setFlash('berhasil', 'ditambahkan', 'success');
+            header('Location: ' . BASEURL . '/pkl/nilaianib');
+            exit;
+        } else {
+
+            Flasher::setFlash('gagal', 'ditambahkan', 'danger');
+            header('Location: ' . BASEURL . '/pkl/nilaianib');
+            exit;
+        }
+    }
+
+    public function getUbahnilaianib()
+    {
+        echo json_encode($this->model("$this->model_name", 'pkl_model')->getNilaiById($_POST['id']));
+    }
+
+    public function ubahDatanilaianib()
+    {
+        if ($this->model("$this->model_name", 'pkl_model')->ubahDataNilai($_POST) > 0) {
+            Flasher::setFlash('berhasil', 'diubah', 'success');
+            header('Location: ' . BASEURL . '/pkl/nilaianib');
+            exit;
+        } else {
+
+            Flasher::setFlash('gagal', 'diubah', 'danger');
+            header('Location: ' . BASEURL . '/pkl/nilaianib');
+            exit;
+        }
+    }
+
+    public function hapusDatanilaianib($id)
+    {
+        if ($this->model("$this->model_name", 'pkl_model')->hapusDataNilai($id) > 0) {
+            Flasher::setFlash('berhasil', 'dihapus', 'success');
+            header('Location: ' . BASEURL . '/pkl/nilaianib');
+            exit;
+        } else {
+
+            Flasher::setFlash('gagal', 'dihapus', 'danger');
+            header('Location: ' . BASEURL . '/pkl/nilaianib');
+            exit;
+        }
+    }
+
+    public function tambahDatanilaianic()
+    {
+        if ($this->model("$this->model_name", 'pkl_model')->tambahDataNilai($_POST) > 0) {
+            Flasher::setFlash('berhasil', 'ditambahkan', 'success');
+            header('Location: ' . BASEURL . '/pkl/nilaianic');
+            exit;
+        } else {
+
+            Flasher::setFlash('gagal', 'ditambahkan', 'danger');
+            header('Location: ' . BASEURL . '/pkl/nilaianic');
+            exit;
+        }
+    }
+
+    public function getUbahnilaianic()
+    {
+        echo json_encode($this->model("$this->model_name", 'pkl_model')->getNilaiById($_POST['id']));
+    }
+
+    public function ubahDatanilaianic()
+    {
+        if ($this->model("$this->model_name", 'pkl_model')->ubahDataNilai($_POST) > 0) {
+            Flasher::setFlash('berhasil', 'diubah', 'success');
+            header('Location: ' . BASEURL . '/pkl/nilaianic');
+            exit;
+        } else {
+
+            Flasher::setFlash('gagal', 'diubah', 'danger');
+            header('Location: ' . BASEURL . '/pkl/nilaianic');
+            exit;
+        }
+    }
+
+    public function hapusDatanilaianic($id)
+    {
+        if ($this->model("$this->model_name", 'pkl_model')->hapusDataNilai($id) > 0) {
+            Flasher::setFlash('berhasil', 'dihapus', 'success');
+            header('Location: ' . BASEURL . '/pkl/nilaianic');
+            exit;
+        } else {
+
+            Flasher::setFlash('gagal', 'dihapus', 'danger');
+            header('Location: ' . BASEURL . '/pkl/nilaianic');
+            exit;
+        }
+    }
+    public function tambahDatanilaidkva()
+    {
+        if ($this->model("$this->model_name", 'pkl_model')->tambahDataNilai($_POST) > 0) {
+            Flasher::setFlash('berhasil', 'ditambahkan', 'success');
+            header('Location: ' . BASEURL . '/pkl/nilaidkva');
+            exit;
+        } else {
+
+            Flasher::setFlash('gagal', 'ditambahkan', 'danger');
+            header('Location: ' . BASEURL . '/pkl/nilaidkva');
+            exit;
+        }
+    }
+
+    public function getUbahnilaidkva()
+    {
+        echo json_encode($this->model("$this->model_name", 'pkl_model')->getNilaiById($_POST['id']));
+    }
+
+    public function ubahDatanilaidkva()
+    {
+        if ($this->model("$this->model_name", 'pkl_model')->ubahDataNilai($_POST) > 0) {
+            Flasher::setFlash('berhasil', 'diubah', 'success');
+            header('Location: ' . BASEURL . '/pkl/nilaidkva');
+            exit;
+        } else {
+
+            Flasher::setFlash('gagal', 'diubah', 'danger');
+            header('Location: ' . BASEURL . '/pkl/nilaidkva');
+            exit;
+        }
+    }
+
+    public function hapusDatanilaidkva($id)
+    {
+        if ($this->model("$this->model_name", 'pkl_model')->hapusDataNilai($id) > 0) {
+            Flasher::setFlash('berhasil', 'dihapus', 'success');
+            header('Location: ' . BASEURL . '/pkl/nilaidkva');
+            exit;
+        } else {
+
+            Flasher::setFlash('gagal', 'dihapus', 'danger');
+            header('Location: ' . BASEURL . '/pkl/nilaidkva');
+            exit;
+        }
+    }
+    public function tambahDatanilaidkvb()
+    {
+        if ($this->model("$this->model_name", 'pkl_model')->tambahDataNilai($_POST) > 0) {
+            Flasher::setFlash('berhasil', 'ditambahkan', 'success');
+            header('Location: ' . BASEURL . '/pkl/nilaidkvb');
+            exit;
+        } else {
+
+            Flasher::setFlash('gagal', 'ditambahkan', 'danger');
+            header('Location: ' . BASEURL . '/pkl/nilaidkvb');
+            exit;
+        }
+    }
+
+    public function getUbahnilaidkvb()
+    {
+        echo json_encode($this->model("$this->model_name", 'pkl_model')->getNilaiById($_POST['id']));
+    }
+
+    public function ubahDatanilaidkvb()
+    {
+        if ($this->model("$this->model_name", 'pkl_model')->ubahDataNilai($_POST) > 0) {
+            Flasher::setFlash('berhasil', 'diubah', 'success');
+            header('Location: ' . BASEURL . '/pkl/nilaidkvb');
+            exit;
+        } else {
+
+            Flasher::setFlash('gagal', 'diubah', 'danger');
+            header('Location: ' . BASEURL . '/pkl/nilaidkvb');
+            exit;
+        }
+    }
+
+    public function hapusDatanilaidkvb($id)
+    {
+        if ($this->model("$this->model_name", 'pkl_model')->hapusDataNilai($id) > 0) {
+            Flasher::setFlash('berhasil', 'dihapus', 'success');
+            header('Location: ' . BASEURL . '/pkl/nilaidkvb');
+            exit;
+        } else {
+
+            Flasher::setFlash('gagal', 'dihapus', 'danger');
+            header('Location: ' . BASEURL . '/pkl/nilaidkvb');
+            exit;
+        }
+    }
+
+    public function tambahDatanilaidkvc()
+    {
+        if ($this->model("$this->model_name", 'pkl_model')->tambahDataNilai($_POST) > 0) {
+            Flasher::setFlash('berhasil', 'ditambahkan', 'success');
+            header('Location: ' . BASEURL . '/pkl/nilaidkvc');
+            exit;
+        } else {
+
+            Flasher::setFlash('gagal', 'ditambahkan', 'danger');
+            header('Location: ' . BASEURL . '/pkl/nilaidkvc');
+            exit;
+        }
+    }
+
+    public function getUbahnilaidkvc()
+    {
+        echo json_encode($this->model("$this->model_name", 'pkl_model')->getNilaiById($_POST['id']));
+    }
+
+    public function ubahDatanilaidkvc()
+    {
+        if ($this->model("$this->model_name", 'pkl_model')->ubahDataNilai($_POST) > 0) {
+            Flasher::setFlash('berhasil', 'diubah', 'success');
+            header('Location: ' . BASEURL . '/pkl/nilaidkvc');
+            exit;
+        } else {
+
+            Flasher::setFlash('gagal', 'diubah', 'danger');
+            header('Location: ' . BASEURL . '/pkl/nilaidkvc');
+            exit;
+        }
+    }
+
+    public function hapusDatanilaidkvc($id)
+    {
+        if ($this->model("$this->model_name", 'pkl_model')->hapusDataNilai($id) > 0) {
+            Flasher::setFlash('berhasil', 'dihapus', 'success');
+            header('Location: ' . BASEURL . '/pkl/nilaidkvc');
+            exit;
+        } else {
+
+            Flasher::setFlash('gagal', 'dihapus', 'danger');
+            header('Location: ' . BASEURL . '/pkl/nilaidkvc');
+            exit;
+        }
+    }
+
+    public function tambahDatanilaitla()
+    {
+        if ($this->model("$this->model_name", 'pkl_model')->tambahDataNilai($_POST) > 0) {
+            Flasher::setFlash('berhasil', 'ditambahkan', 'success');
+            header('Location: ' . BASEURL . '/pkl/nilailoga');
+            exit;
+        } else {
+
+            Flasher::setFlash('gagal', 'ditambahkan', 'danger');
+            header('Location: ' . BASEURL . '/pkl/nilailoga');
+            exit;
+        }
+    }
+
+    public function getUbahnilaitla()
+    {
+        echo json_encode($this->model("$this->model_name", 'pkl_model')->getNilaiById($_POST['id']));
+    }
+
+    public function ubahDatanilaitla()
+    {
+        if ($this->model("$this->model_name", 'pkl_model')->ubahDataNilai($_POST) > 0) {
+            Flasher::setFlash('berhasil', 'diubah', 'success');
+            header('Location: ' . BASEURL . '/pkl/nilailoga');
+            exit;
+        } else {
+
+            Flasher::setFlash('gagal', 'diubah', 'danger');
+            header('Location: ' . BASEURL . '/pkl/nilailoga');
+            exit;
+        }
+    }
+
+    public function hapusDatanilaitla($id)
+    {
+        if ($this->model("$this->model_name", 'pkl_model')->hapusDataNilai($id) > 0) {
+            Flasher::setFlash('berhasil', 'dihapus', 'success');
+            header('Location: ' . BASEURL . '/pkl/nilailoga');
+            exit;
+        } else {
+
+            Flasher::setFlash('gagal', 'dihapus', 'danger');
+            header('Location: ' . BASEURL . '/pkl/nilailoga');
+            exit;
+        }
+    }
+
+    public function tambahDatanilaitlb()
+    {
+        if ($this->model("$this->model_name", 'pkl_model')->tambahDataNilai($_POST) > 0) {
+            Flasher::setFlash('berhasil', 'ditambahkan', 'success');
+            header('Location: ' . BASEURL . '/pkl/nilailogb');
+            exit;
+        } else {
+
+            Flasher::setFlash('gagal', 'ditambahkan', 'danger');
+            header('Location: ' . BASEURL . '/pkl/nilailogb');
+            exit;
+        }
+    }
+
+    public function getUbahnilaitlb()
+    {
+        echo json_encode($this->model("$this->model_name", 'pkl_model')->getNilaiById($_POST['id']));
+    }
+
+    public function ubahDatanilaitlb()
+    {
+        if ($this->model("$this->model_name", 'pkl_model')->ubahDataNilai($_POST) > 0) {
+            Flasher::setFlash('berhasil', 'diubah', 'success');
+            header('Location: ' . BASEURL . '/pkl/nilailogb');
+            exit;
+        } else {
+
+            Flasher::setFlash('gagal', 'diubah', 'danger');
+            header('Location: ' . BASEURL . '/pkl/nilailogb');
+            exit;
+        }
+    }
+
+    public function hapusDatanilaitlb($id)
+    {
+        if ($this->model("$this->model_name", 'pkl_model')->hapusDataNilai($id) > 0) {
+            Flasher::setFlash('berhasil', 'dihapus', 'success');
+            header('Location: ' . BASEURL . '/pkl/nilailogb');
+            exit;
+        } else {
+
+            Flasher::setFlash('gagal', 'dihapus', 'danger');
+            header('Location: ' . BASEURL . '/pkl/nilailogb');
+            exit;
+        }
+    }
+
+    public function tambahDatanilaitma()
+    {
+        if ($this->model("$this->model_name", 'pkl_model')->tambahDataNilai($_POST) > 0) {
+            Flasher::setFlash('berhasil', 'ditambahkan', 'success');
+            header('Location: ' . BASEURL . '/pkl/nilaimekaa');
+            exit;
+        } else {
+
+            Flasher::setFlash('gagal', 'ditambahkan', 'danger');
+            header('Location: ' . BASEURL . '/pkl/nilaimekaa');
+            exit;
+        }
+    }
+
+    public function getUbahnilaitma()
+    {
+        echo json_encode($this->model("$this->model_name", 'pkl_model')->getNilaiById($_POST['id']));
+    }
+
+    public function ubahDatanilaitma()
+    {
+        if ($this->model("$this->model_name", 'pkl_model')->ubahDataNilai($_POST) > 0) {
+            Flasher::setFlash('berhasil', 'diubah', 'success');
+            header('Location: ' . BASEURL . '/pkl/nilaimekaa');
+            exit;
+        } else {
+
+            Flasher::setFlash('gagal', 'diubah', 'danger');
+            header('Location: ' . BASEURL . '/pkl/nilaimekaa');
+            exit;
+        }
+    }
+
+    public function hapusDatanilaitma($id)
+    {
+        if ($this->model("$this->model_name", 'pkl_model')->hapusDataNilai($id) > 0) {
+            Flasher::setFlash('berhasil', 'dihapus', 'success');
+            header('Location: ' . BASEURL . '/pkl/nilaimekaa');
+            exit;
+        } else {
+
+            Flasher::setFlash('gagal', 'dihapus', 'danger');
+            header('Location: ' . BASEURL . '/pkl/nilaimekaa');
+            exit;
+        }
+    }
+
+    public function tambahDatanilaitmb()
+    {
+        if ($this->model("$this->model_name", 'pkl_model')->tambahDataNilai($_POST) > 0) {
+            Flasher::setFlash('berhasil', 'ditambahkan', 'success');
+            header('Location: ' . BASEURL . '/pkl/nilaimekab');
+            exit;
+        } else {
+
+            Flasher::setFlash('gagal', 'ditambahkan', 'danger');
+            header('Location: ' . BASEURL . '/pkl/nilaimekab');
+            exit;
+        }
+    }
+
+    public function getUbahnilaitmb()
+    {
+        echo json_encode($this->model("$this->model_name", 'pkl_model')->getNilaiById($_POST['id']));
+    }
+
+    public function ubahDatanilaitmb()
+    {
+        if ($this->model("$this->model_name", 'pkl_model')->ubahDataNilai($_POST) > 0) {
+            Flasher::setFlash('berhasil', 'diubah', 'success');
+            header('Location: ' . BASEURL . '/pkl/nilaimekab');
+            exit;
+        } else {
+
+            Flasher::setFlash('gagal', 'diubah', 'danger');
+            header('Location: ' . BASEURL . '/pkl/nilaimekab');
+            exit;
+        }
+    }
+
+    public function hapusDatanilaitmb($id)
+    {
+        if ($this->model("$this->model_name", 'pkl_model')->hapusDataNilai($id) > 0) {
+            Flasher::setFlash('berhasil', 'dihapus', 'success');
+            header('Location: ' . BASEURL . '/pkl/nilaimekab');
+            exit;
+        } else {
+
+            Flasher::setFlash('gagal', 'dihapus', 'danger');
+            header('Location: ' . BASEURL . '/pkl/nilaimekab');
+            exit;
+        }
+    }
+
+    public function tambahDatanilaipha()
+    {
+        if ($this->model("$this->model_name", 'pkl_model')->tambahDataNilai($_POST) > 0) {
+            Flasher::setFlash('berhasil', 'ditambahkan', 'success');
+            header('Location: ' . BASEURL . '/pkl/nilaipha');
+            exit;
+        } else {
+
+            Flasher::setFlash('gagal', 'ditambahkan', 'danger');
+            header('Location: ' . BASEURL . '/pkl/nilaipha');
+            exit;
+        }
+    }
+
+    public function getUbahnilaipha()
+    {
+        echo json_encode($this->model("$this->model_name", 'pkl_model')->getNilaiById($_POST['id']));
+    }
+
+    public function ubahDatanilaipha()
+    {
+        if ($this->model("$this->model_name", 'pkl_model')->ubahDataNilai($_POST) > 0) {
+            Flasher::setFlash('berhasil', 'diubah', 'success');
+            header('Location: ' . BASEURL . '/pkl/nilaipha');
+            exit;
+        } else {
+
+            Flasher::setFlash('gagal', 'diubah', 'danger');
+            header('Location: ' . BASEURL . '/pkl/nilaipha');
+            exit;
+        }
+    }
+
+    public function hapusDatanilaipha($id)
+    {
+        if ($this->model("$this->model_name", 'pkl_model')->hapusDataNilai($id) > 0) {
+            Flasher::setFlash('berhasil', 'dihapus', 'success');
+            header('Location: ' . BASEURL . '/pkl/nilaipha');
+            exit;
+        } else {
+
+            Flasher::setFlash('gagal', 'dihapus', 'danger');
+            header('Location: ' . BASEURL . '/pkl/nilaipha');
+            exit;
+        }
+    }
+
+    public function tambahDatanilaiphb()
+    {
+        if ($this->model("$this->model_name", 'pkl_model')->tambahDataNilai($_POST) > 0) {
+            Flasher::setFlash('berhasil', 'ditambahkan', 'success');
+            header('Location: ' . BASEURL . '/pkl/nilaiphb');
+            exit;
+        } else {
+
+            Flasher::setFlash('gagal', 'ditambahkan', 'danger');
+            header('Location: ' . BASEURL . '/pkl/nilaiphb');
+            exit;
+        }
+    }
+
+    public function getUbahnilaiphb()
+    {
+        echo json_encode($this->model("$this->model_name", 'pkl_model')->getNilaiById($_POST['id']));
+    }
+
+    public function ubahDatanilaiphb()
+    {
+        if ($this->model("$this->model_name", 'pkl_model')->ubahDataNilai($_POST) > 0) {
+            Flasher::setFlash('berhasil', 'diubah', 'success');
+            header('Location: ' . BASEURL . '/pkl/nilaiphb');
+            exit;
+        } else {
+
+            Flasher::setFlash('gagal', 'diubah', 'danger');
+            header('Location: ' . BASEURL . '/pkl/nilaiphb');
+            exit;
+        }
+    }
+
+    public function hapusDatanilaiphb($id)
+    {
+        if ($this->model("$this->model_name", 'pkl_model')->hapusDataNilai($id) > 0) {
+            Flasher::setFlash('berhasil', 'dihapus', 'success');
+            header('Location: ' . BASEURL . '/pkl/nilaiphb');
+            exit;
+        } else {
+
+            Flasher::setFlash('gagal', 'dihapus', 'danger');
+            header('Location: ' . BASEURL . '/pkl/nilaiphb');
+            exit;
+        }
+    }
+    public function tambahDatanilairpla()
+    {
+        if ($this->model("$this->model_name", 'pkl_model')->tambahDataNilai($_POST) > 0) {
+            Flasher::setFlash('berhasil', 'ditambahkan', 'success');
+            header('Location: ' . BASEURL . '/pkl/nilairpla');
+            exit;
+        } else {
+
+            Flasher::setFlash('gagal', 'ditambahkan', 'danger');
+            header('Location: ' . BASEURL . '/pkl/nilairpla');
+            exit;
+        }
+    }
+
+    public function getUbahnilairpla()
+    {
+        echo json_encode($this->model("$this->model_name", 'pkl_model')->getNilaiById($_POST['id']));
+    }
+
+    public function ubahDatanilairpla()
+    {
+        if ($this->model("$this->model_name", 'pkl_model')->ubahDataNilai($_POST) > 0) {
+            Flasher::setFlash('berhasil', 'diubah', 'success');
+            header('Location: ' . BASEURL . '/pkl/nilairpla');
+            exit;
+        } else {
+
+            Flasher::setFlash('gagal', 'diubah', 'danger');
+            header('Location: ' . BASEURL . '/pkl/nilairpla');
+            exit;
+        }
+    }
+
+    public function hapusDatanilairpla($id)
+    {
+        if ($this->model("$this->model_name", 'pkl_model')->hapusDataNilai($id) > 0) {
+            Flasher::setFlash('berhasil', 'dihapus', 'success');
+            header('Location: ' . BASEURL . '/pkl/nilairpla');
+            exit;
+        } else {
+
+            Flasher::setFlash('gagal', 'dihapus', 'danger');
+            header('Location: ' . BASEURL . '/pkl/nilairpla');
+            exit;
+        }
+    }
+
+    public function tambahDatanilairplb()
+    {
+        if ($this->model("$this->model_name", 'pkl_model')->tambahDataNilai($_POST) > 0) {
+            Flasher::setFlash('berhasil', 'ditambahkan', 'success');
+            header('Location: ' . BASEURL . '/pkl/nilairplb');
+            exit;
+        } else {
+
+            Flasher::setFlash('gagal', 'ditambahkan', 'danger');
+            header('Location: ' . BASEURL . '/pkl/nilairplb');
+            exit;
+        }
+    }
+
+    public function getUbahnilairplb()
+    {
+        echo json_encode($this->model("$this->model_name", 'pkl_model')->getNilaiById($_POST['id']));
+    }
+
+    public function ubahDatanilairplb()
+    {
+        if ($this->model("$this->model_name", 'pkl_model')->ubahDataNilai($_POST) > 0) {
+            Flasher::setFlash('berhasil', 'diubah', 'success');
+            header('Location: ' . BASEURL . '/pkl/nilairplb');
+            exit;
+        } else {
+
+            Flasher::setFlash('gagal', 'diubah', 'danger');
+            header('Location: ' . BASEURL . '/pkl/nilairplb');
+            exit;
+        }
+    }
+
+    public function hapusDatanilairplb($id)
+    {
+        if ($this->model("$this->model_name", 'pkl_model')->hapusDataNilai($id) > 0) {
+            Flasher::setFlash('berhasil', 'dihapus', 'success');
+            header('Location: ' . BASEURL . '/pkl/nilairplb');
+            exit;
+        } else {
+
+            Flasher::setFlash('gagal', 'dihapus', 'danger');
+            header('Location: ' . BASEURL . '/pkl/nilairplb');
+            exit;
+        }
+    }
+
+    public function tambahDatanilairplc()
+    {
+        if ($this->model("$this->model_name", 'pkl_model')->tambahDataNilai($_POST) > 0) {
+            Flasher::setFlash('berhasil', 'ditambahkan', 'success');
+            header('Location: ' . BASEURL . '/pkl/nilairplc');
+            exit;
+        } else {
+
+            Flasher::setFlash('gagal', 'ditambahkan', 'danger');
+            header('Location: ' . BASEURL . '/pkl/nilairplc');
+            exit;
+        }
+    }
+
+    public function getUbahnilairplc()
+    {
+        echo json_encode($this->model("$this->model_name", 'pkl_model')->getNilaiById($_POST['id']));
+    }
+
+    public function ubahDatanilairplc()
+    {
+        if ($this->model("$this->model_name", 'pkl_model')->ubahDataNilai($_POST) > 0) {
+            Flasher::setFlash('berhasil', 'diubah', 'success');
+            header('Location: ' . BASEURL . '/pkl/nilairplc');
+            exit;
+        } else {
+
+            Flasher::setFlash('gagal', 'diubah', 'danger');
+            header('Location: ' . BASEURL . '/pkl/nilairplc');
+            exit;
+        }
+    }
+
+    public function hapusDatanilairplc($id)
+    {
+        if ($this->model("$this->model_name", 'pkl_model')->hapusDataNilai($id) > 0) {
+            Flasher::setFlash('berhasil', 'dihapus', 'success');
+            header('Location: ' . BASEURL . '/pkl/nilairplc');
+            exit;
+        } else {
+
+            Flasher::setFlash('gagal', 'dihapus', 'danger');
+            header('Location: ' . BASEURL . '/pkl/nilairplc');
+            exit;
+        }
+    }
+
+
+    public function tambahDatanilaitkja()
+    {
+        if ($this->model("$this->model_name", 'pkl_model')->tambahDataNilai($_POST) > 0) {
+            Flasher::setFlash('berhasil', 'ditambahkan', 'success');
+            header('Location: ' . BASEURL . '/pkl/nilaitkja');
+            exit;
+        } else {
+
+            Flasher::setFlash('gagal', 'ditambahkan', 'danger');
+            header('Location: ' . BASEURL . '/pkl/nilaitkja');
+            exit;
+        }
+    }
+
+    public function getUbahnilaitkja()
+    {
+        echo json_encode($this->model("$this->model_name", 'pkl_model')->getNilaiById($_POST['id']));
+    }
+
+    public function ubahDatanilaitkja()
+    {
+        if ($this->model("$this->model_name", 'pkl_model')->ubahDataNilai($_POST) > 0) {
+            Flasher::setFlash('berhasil', 'diubah', 'success');
+            header('Location: ' . BASEURL . '/pkl/nilaitkja');
+            exit;
+        } else {
+
+            Flasher::setFlash('gagal', 'diubah', 'danger');
+            header('Location: ' . BASEURL . '/pkl/nilaitkja');
+            exit;
+        }
+    }
+
+    public function hapusDatanilaitkja($id)
+    {
+        if ($this->model("$this->model_name", 'pkl_model')->hapusDataNilai($id) > 0) {
+            Flasher::setFlash('berhasil', 'dihapus', 'success');
+            header('Location: ' . BASEURL . '/pkl/nilaitkja');
+            exit;
+        } else {
+
+            Flasher::setFlash('gagal', 'dihapus', 'danger');
+            header('Location: ' . BASEURL . '/pkl/nilaitkja');
+            exit;
+        }
+    }
+
+    public function tambahDatanilaitkjb()
+    {
+        if ($this->model("$this->model_name", 'pkl_model')->tambahDataNilai($_POST) > 0) {
+            Flasher::setFlash('berhasil', 'ditambahkan', 'success');
+            header('Location: ' . BASEURL . '/pkl/nilaitkjb');
+            exit;
+        } else {
+
+            Flasher::setFlash('gagal', 'ditambahkan', 'danger');
+            header('Location: ' . BASEURL . '/pkl/nilaitkjb');
+            exit;
+        }
+    }
+
+    public function getUbahnilaitkjb()
+    {
+        echo json_encode($this->model("$this->model_name", 'pkl_model')->getNilaiById($_POST['id']));
+    }
+
+    public function ubahDatanilaitkjb()
+    {
+        if ($this->model("$this->model_name", 'pkl_model')->ubahDataNilai($_POST) > 0) {
+            Flasher::setFlash('berhasil', 'diubah', 'success');
+            header('Location: ' . BASEURL . '/pkl/nilaitkjb');
+            exit;
+        } else {
+
+            Flasher::setFlash('gagal', 'diubah', 'danger');
+            header('Location: ' . BASEURL . '/pkl/nilaitkjb');
+            exit;
+        }
+    }
+
+    public function hapusDatanilaitkjb($id)
+    {
+        if ($this->model("$this->model_name", 'pkl_model')->hapusDataNilai($id) > 0) {
+            Flasher::setFlash('berhasil', 'dihapus', 'success');
+            header('Location: ' . BASEURL . '/pkl/nilaitkjb');
+            exit;
+        } else {
+
+            Flasher::setFlash('gagal', 'dihapus', 'danger');
+            header('Location: ' . BASEURL . '/pkl/nilaitkjb');
+            exit;
+        }
+    }
+
     public function pemberkasan()
     {
         $data['judul'] = 'Admin - PKL';

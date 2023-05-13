@@ -586,7 +586,7 @@ class Xlsx extends BaseReader
                     $styles = [];
                     $cellStyles = [];
                     $numFmts = null;
-                    if (/*$xmlStyles && */ $xmlStyles->numFmts[0]) {
+                    if (/*$xmlStyles && */$xmlStyles->numFmts[0]) {
                         $numFmts = $xmlStyles->numFmts[0];
                     }
                     if (isset($numFmts) && ($numFmts !== null)) {
@@ -678,7 +678,7 @@ class Xlsx extends BaseReader
                     }
                     $this->styleReader->setStyleXml($xmlStyles);
                     $this->styleReader->setNamespace($mainNS);
-                    $this->styleReader->setStyleBaseData($theme, $styles, $cellStyles);
+                    $this->styleReader->setStyleBASEURL($theme, $styles, $cellStyles);
                     $dxfs = $this->styleReader->dxfs($this->readDataOnly);
                     $styles = $this->styleReader->styles();
 
@@ -1332,7 +1332,7 @@ class Xlsx extends BaseReader
                                                     if (isset($images[$embedImageKey])) {
                                                         $objDrawing->setPath(
                                                             'zip://' . File::realpath($filename) . '#' .
-                                                            $images[$embedImageKey],
+                                                                $images[$embedImageKey],
                                                             false
                                                         );
                                                     } else {
@@ -1417,7 +1417,7 @@ class Xlsx extends BaseReader
                                                     if (isset($images[$embedImageKey])) {
                                                         $objDrawing->setPath(
                                                             'zip://' . File::realpath($filename) . '#' .
-                                                            $images[$embedImageKey],
+                                                                $images[$embedImageKey],
                                                             false
                                                         );
                                                     } else {

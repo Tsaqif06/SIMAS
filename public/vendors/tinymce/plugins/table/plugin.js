@@ -7356,21 +7356,21 @@
       };
     };
     var getSharedValues = function (data) {
-      var baseData = data[0];
+      var BASEURL = data[0];
       var comparisonData = data.slice(1);
       each(comparisonData, function (items) {
-        each(keys(baseData), function (key) {
+        each(keys(BASEURL), function (key) {
           each$1(items, function (itemValue, itemKey) {
-            var comparisonValue = baseData[key];
+            var comparisonValue = BASEURL[key];
             if (comparisonValue !== '' && key === itemKey) {
               if (comparisonValue !== itemValue) {
-                baseData[key] = '';
+                BASEURL[key] = '';
               }
             }
           });
         });
       });
-      return baseData;
+      return BASEURL;
     };
     var getAdvancedTab = function (dialogName) {
       var advTabItems = [
