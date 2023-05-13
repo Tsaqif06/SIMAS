@@ -10,8 +10,8 @@ class Kehadiran_model
     private $fields = [
         'nisn',
         'nama',
-        'lokasi',
-        'keterangan'
+        'keterangan',
+        'lokasi'
     ];
 
     private $user;
@@ -54,7 +54,7 @@ class Kehadiran_model
         $this->db->query(
             "INSERT INTO {$this->table}
                 VALUES 
-            (null, :uuid, :nama, :nisn, :keterangan, :lokasi, CURRENT_TIMESTAMP, :attend_by, NULL, '', DEFAULT, NULL, '', NULL, '', 0, 0, DEFAULT)"
+            (null, :uuid, :nama, :nisn, :keterangan, :lokasi, null, CURRENT_TIMESTAMP, :attend_by, NULL, '', DEFAULT, NULL, '', NULL, '', 0, 0, DEFAULT)"
         );
         $this->db->bind('uuid', Uuid::uuid4()->toString());
         foreach ($this->fields as $field) {
@@ -117,6 +117,7 @@ class Kehadiran_model
                 nisn = :nisn,
                 nama = :nama,
                 lokasi = :lokasi,
+                imei = :imei,
                 keterangan = :keterangan,
                 modified_at = CURRENT_TIMESTAMP,
                 modified_by = :modified_by
@@ -126,6 +127,7 @@ class Kehadiran_model
         foreach ($this->fields as $field) {
             $this->db->bind($field, $data[$field]);
         }
+        $this->db->bind('imei', $data['imei']);
         $this->db->bind('modified_by', $this->user);
         $this->db->bind('id', $id);
 
@@ -138,7 +140,7 @@ class Kehadiran_model
         // Cek file diupload apa belum
         if (!isset($_FILES['file']['name'])) {
             Flasher::setFlash('Error', 'Harap pilih file Excel terlebih dahulu', 'danger');
-            header('location: ' . BASEURL . '/siswa');
+            header('location: ' . BASEURL . '/kehadiran');
             exit;
         }
 

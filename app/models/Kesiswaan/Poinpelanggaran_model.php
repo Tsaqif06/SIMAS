@@ -130,7 +130,7 @@ class Poinpelanggaran_model
         // Cek file diupload apa belum
         if (!isset($_FILES['file']['name'])) {
             Flasher::setFlash('Error', 'Harap pilih file Excel terlebih dahulu', 'danger');
-            header('location: ' . BASEURL . '/siswa');
+            header('location: ' . BASEURL . '/poinpelanggaran');
             exit;
         }
 
