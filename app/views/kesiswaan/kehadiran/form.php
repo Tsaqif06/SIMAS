@@ -1,5 +1,6 @@
 <form action="<?= BASEURL; ?>/kehadiran/tambahData" method="post">
     <input type="hidden" name="id" id="id">
+    <input type="hidden" name="imei" id="imei">
 
     <div class="form-group">
         <label for="nisn">NISN</label>
