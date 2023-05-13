@@ -16,8 +16,12 @@ class API extends Controller
         ($id == null) ?
             $data = $this->model("Kesiswaan", 'Kehadiran_model')->getAllExistData() :
             $data = $this->model("Kesiswaan", 'Kehadiran_model')->getDataById($id);
-
-        echo json_encode($data);
+        if ($data) {
+            $response = true;
+        } else {
+            $response = false;
+        }
+        echo json_encode(["status" => $response, "data" => $data]);
     }
 
     public function tambahDataKehadiran()
@@ -58,7 +62,12 @@ class API extends Controller
             $data = $this->model("Kesiswaan", 'Pelanggaran_model')->getAllExistData() :
             $data = $this->model("Kesiswaan", 'Pelanggaran_model')->getDataById($id);
 
-        echo json_encode($data);
+        if ($data) {
+            $response = true;
+        } else {
+            $response = false;
+        }
+        echo json_encode(["status" => $response, "data" => $data]);
     }
 
     public function tambahDataPelanggaran()
@@ -102,7 +111,12 @@ class API extends Controller
             $data = $this->model("Kesiswaan", 'Poinpelanggaran_model')->getAllExistData() :
             $data = $this->model("Kesiswaan", 'Poinpelanggaran_model')->getDataById($id);
 
-        echo json_encode($data);
+        if ($data) {
+            $response = true;
+        } else {
+            $response = false;
+        }
+        echo json_encode(["status" => $response, "data" => $data]);
     }
 
     public function tambahDataPoinpelanggaran()
@@ -143,7 +157,12 @@ class API extends Controller
             $data = $this->model("Master", 'Siswa_model')->getAllExistData() :
             $data = $this->model("Master", 'Siswa_model')->getDataById($id);
 
-        echo json_encode($data);
+        if ($data) {
+            $response = true;
+        } else {
+            $response = false;
+        }
+        echo json_encode(["status" => $response, "data" => $data]);
     }
 
     public function tambahDataSiswa()
