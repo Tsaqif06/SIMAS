@@ -11,15 +11,6 @@ class DataWalkel extends Controller
         $this->view('templates/footer');
     }
 
-    public function detail($id)
-    {
-        $data['judul'] = 'Detail Struktur Guru';
-        $data['Username'] = $this->model("$this->model_name", 'Data_Walkel_model')->getWalkelById($id);
-        $this->view('templates/header', $data);
-        $this->view('kurikulum/Username/detail', $data);
-        $this->view('templates/footer');
-    }
-
     public function tambah()
     {
         if ($this->model("$this->model_name", 'Data_Walkel_model')->tambahWalkel($_POST) > 0) {
@@ -62,14 +53,5 @@ class DataWalkel extends Controller
             header('Location: ' . BASEURL . '/DataWalkel');
             exit;
         }
-    }
-
-    public function cari()
-    {
-        $data['judul'] = ' Cari Daftar Username';
-        $data['Username'] = $this->model("$this->model_name", 'Data_Walkel_model')->cariDataUsername();
-        $this->view('templates/header', $data);
-        $this->view('kurikulum/organisasi/index', $data);
-        $this->view('templates/footer');
     }
 }

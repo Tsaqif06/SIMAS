@@ -2,28 +2,19 @@
 
 class Walikelas extends Controller
 {
-    private $model_name = "Kurikulum";
+    private $model_name = "Master";
     public function index()
     {
-        $data['judul'] = ' Wali Kelas';
-        $data['tbl_walikelasx'] = $this->model("$this->model_name", 'Wali_kelas_model')->getAllWalikelas();
+        $data['judul'] = 'Wali Kelas';
+        $data['tbl_walikelasx'] = $this->model("$this->model_name", 'Walikelas_model')->getAllExistData();
         $this->view('templates/header', $data);
         $this->view('kurikulum/walikelas/index', $data);
         $this->view('templates/footer');
     }
 
-    public function detail($id)
-    {
-        $data['judul'] = 'Detail Mahasiswa';
-        $data['tbl_walikelasx'] = $this->model("$this->model_name", 'Wali_Kelas_model')->getMahasiswaById($id);
-        $this->view('templates/header', $data);
-        $this->view('kurikulum/mahasiswa/detail', $data);
-        $this->view('templates/footer');
-    }
-
     public function tambah()
     {
-        if ($this->model("$this->model_name", 'Wali_Kelas_model')->tambahWalikelas($_POST) > 0) {
+        if ($this->model("$this->model_name", 'WaliKelas_model')->tambahData($_POST) > 0) {
             Flasher::setFlash('berhasil', 'ditambahkan', 'success');
             header('Location: ' . BASEURL . '/walikelas');
             exit;
@@ -36,7 +27,7 @@ class Walikelas extends Controller
 
     public function hapus($id)
     {
-        if ($this->model("$this->model_name", 'Wali_Kelas_model')->hapusWalikelas($id) > 0) {
+        if ($this->model("$this->model_name", 'WaliKelas_model')->hapusData($id) > 0) {
             Flasher::setFlash('berhasil', 'dihapus', 'success');
             header('Location: ' . BASEURL . '/walikelas');
             exit;
@@ -49,12 +40,12 @@ class Walikelas extends Controller
 
     public function getubah()
     {
-        echo json_encode($this->model("$this->model_name", 'Wali_Kelas_model')->getWalikelasById($_POST['id']));
+        echo json_encode($this->model("$this->model_name", 'WaliKelas_model')->getDataById($_POST['id']));
     }
 
     public function ubah()
     {
-        if ($this->model("$this->model_name", 'Wali_kelas_model')->ubahWalikelas($_POST) > 0) {
+        if ($this->model("$this->model_name", 'Walikelas_model')->ubahData($_POST) > 0) {
             Flasher::setFlash('berhasil', 'diubah', 'success');
             header('Location: ' . BASEURL . '/mahasiswa');
             exit;
@@ -63,14 +54,5 @@ class Walikelas extends Controller
             header('Location: ' . BASEURL . '/mahasiswa');
             exit;
         }
-    }
-
-    public function cari()
-    {
-        $data['judul'] = 'Daftar Mahasiswa';
-        $data['tbl_walikelasx'] = $this->model("$this->model_name", 'Mahasiswa_model')->cariDataMahasiswa();
-        $this->view('templates/header', $data);
-        $this->view('mahasiswa/index', $data);
-        $this->view('templates/footer');
     }
 }

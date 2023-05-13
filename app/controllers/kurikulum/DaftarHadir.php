@@ -13,15 +13,6 @@ class DaftarHadir extends Controller
         $this->view('templates/footer');
     }
 
-    public function detail($id)
-    {
-        $data['judul'] = 'Detail Mahasiswa';
-        $data['tbl_gkpdua'] = $this->model("$this->model_name", 'Daftar_Hadir_Siswa_model')->getMahasiswaById($id);
-        $this->view('templates/header', $data);
-        $this->view('kurikulum/mahasiswa/detail', $data);
-        $this->view('templates/footer');
-    }
-
     public function tambah()
     {
         if ($this->model("$this->model_name", 'Daftar_Hadir_Siswa_model')->tambahDataMahasiswa($_POST) > 0) {
