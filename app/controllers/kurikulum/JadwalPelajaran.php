@@ -3,13 +3,18 @@
 class JadwalPelajaran extends Controller
 {
     private $model_name = "Kurikulum";
+
     public function index()
     {
         $data['judul'] = 'Jadwal Pelajaran';
+
+        $data['user'] = $this->user;
+
         $data['tbl_jadwal_pelajaran'] = $this->model("$this->model_name", 'Jadwal_Pelajaran_model')->getAllMahasiswa();
+
         $this->view('templates/header', $data);
         $this->view('kurikulum/Jadwal Pelajaran/index', $data);
-        $this->view('templates/footer');
+        $this->view('templates/footerwm');
     }
 
     public function detail($id)
@@ -18,7 +23,7 @@ class JadwalPelajaran extends Controller
         $data['mhs'] = $this->model("$this->model_name", 'Jadwal_Pelajaran_model')->getMahasiswaById($id);
         $this->view('templates/header', $data);
         $this->view('kurikulum/Jadwal Pelajaran/detail', $data);
-        $this->view('templates/footer');
+        $this->view('templates/footerwm');
     }
 
     public function tambah()
@@ -71,6 +76,6 @@ class JadwalPelajaran extends Controller
         $data['mhs'] = $this->model("$this->model_name", 'Jadwal_Pelajaran_model')->cariDataMahasiswa();
         $this->view('templates/header', $data);
         $this->view('mahasiswa/index', $data);
-        $this->view('templates/footer');
+        $this->view('templates/footerwm');
     }
 }

@@ -1,14 +1,20 @@
 <?php
+
 class KegiatanGLS extends Controller
 {
     private $model_name = "Kurikulum";
+    
     public function index()
     {
         $data['judul'] = 'KEGIATAN GLS';
+
+        $data['user'] = $this->user;
+
         $data['tbl_glsunggul'] = $this->model("$this->model_name", 'Kegiatan_GLS_model')->getALLGLS();
+
         $this->view('templates/header', $data);
         $this->view('kurikulum/Literasi/index', $data);
-        $this->view('templates/footer');
+        $this->view('templates/footerwm');
     }
 
     public function detail($id)
@@ -17,7 +23,7 @@ class KegiatanGLS extends Controller
         $data['organisasi'] = $this->model("$this->model_name", 'Kegiatan_GLS_model')->getGLSById($id);
         $this->view('templates/header', $data);
         $this->view('kurikulum/organisasi/detail', $data);
-        $this->view('templates/footer');
+        $this->view('templates/footerwm');
     }
 
     public function tambah()
@@ -70,6 +76,6 @@ class KegiatanGLS extends Controller
         $data['organisasi'] = $this->model("$this->model_name", 'strukturOrganisasi_model')->cariDataOrganisasi();
         $this->view('templates/header', $data);
         $this->view('organisasi/index', $data);
-        $this->view('templates/footer');
+        $this->view('templates/footerwm');
     }
 }

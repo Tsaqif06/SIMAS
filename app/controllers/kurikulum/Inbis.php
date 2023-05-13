@@ -3,13 +3,18 @@
 class Inbis extends Controller
 {
     private $model_name = "Kurikulum";
+
     public function index()
     {
         $data['judul'] = 'Inkubator Bisnis';
+
+        $data['user'] = $this->user;
+
         $data['tbl_inbisunggul'] = $this->model("$this->model_name", 'Inbis_model')->getAllInbis();
+
         $this->view('templates/header', $data);
         $this->view('kurikulum/Inbis/index', $data);
-        $this->view('templates/footer');
+        $this->view('templates/footerwm');
     }
 
     public function detail($id)
@@ -18,7 +23,7 @@ class Inbis extends Controller
         $data['mhs'] = $this->model("$this->model_name", 'Inbis_model')->getInbisById($id);
         $this->view('templates/header', $data);
         $this->view('kurikulum/Inbis/detail', $data);
-        $this->view('templates/footer');
+        $this->view('templates/footerwm');
     }
 
     public function tambah()
@@ -71,6 +76,6 @@ class Inbis extends Controller
         $data['mhs'] = $this->model("$this->model_name", 'Inbis_model')->cariDataInbis();
         $this->view('templates/header', $data);
         $this->view('kurikulum/Inbis/index', $data);
-        $this->view('templates/footer');
+        $this->view('templates/footerwm');
     }
 }

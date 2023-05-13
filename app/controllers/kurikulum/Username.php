@@ -1,14 +1,20 @@
 <?php
+
 class Username extends Controller
 {
     private $model_name = "Kurikulum";
+
     public function index()
     {
         $data['judul'] = 'Username & Password';
+
+        $data['user'] = $this->user;
+
         $data['tbl_usnpw'] = $this->model("$this->model_name", 'Username_model')->getALLUsername();
+
         $this->view('templates/header', $data);
         $this->view('kurikulum/Username/index', $data);
-        $this->view('templates/footer');
+        $this->view('templates/footerwm');
     }
 
     public function detail($id)
@@ -17,7 +23,7 @@ class Username extends Controller
         $data['Username'] = $this->model("$this->model_name", 'Username_model')->getUsernameById($id);
         $this->view('templates/header', $data);
         $this->view('kurikulum/Username/detail', $data);
-        $this->view('templates/footer');
+        $this->view('templates/footerwm');
     }
 
     public function tambahData()
@@ -70,6 +76,6 @@ class Username extends Controller
         $data['Username'] = $this->model("$this->model_name", 'Username_model')->cariDataUsername();
         $this->view('templates/header', $data);
         $this->view('organisasi/index', $data);
-        $this->view('templates/footer');
+        $this->view('templates/footerwm');
     }
 }

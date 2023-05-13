@@ -3,13 +3,18 @@
 class Penilaian extends Controller
 {
     private $model_name = "Kurikulum";
+
     public function index()
     {
         $data['judul'] = 'Penilaian';
+
+        $data['user'] = $this->user;
+
         $data['mhs'] = $this->model("$this->model_name", 'Penilaian_model')->getAllMahasiswa();
+
         $this->view('templates/header', $data);
         $this->view('kurikulum/Penilaian/index', $data);
-        $this->view('templates/footer');
+        $this->view('templates/footerwm');
     }
 
     public function detail($id)
@@ -18,7 +23,7 @@ class Penilaian extends Controller
         $data['mhs'] = $this->model("$this->model_name", 'Penilaian_model')->getMahasiswaById($id);
         $this->view('templates/header', $data);
         $this->view('kurikulum/mahasiswa/detail', $data);
-        $this->view('templates/footer');
+        $this->view('templates/footerwm');
     }
 
     public function tambah()
@@ -71,6 +76,6 @@ class Penilaian extends Controller
         $data['mhs'] = $this->model("$this->model_name", 'Penilaian_model')->cariDataMahasiswa();
         $this->view('templates/header', $data);
         $this->view('mahasiswa/index', $data);
-        $this->view('templates/footer');
+        $this->view('templates/footerwm');
     }
 }

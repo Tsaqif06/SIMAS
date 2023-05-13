@@ -6,10 +6,14 @@ class Kalender extends Controller
     public function index()
     {
         $data['judul'] = 'Kalender Kegiatan';
+
+        $data['user'] = $this->user;
+
         $data['schedule_list'] = $this->model("$this->model_name", 'Kalender_Kegiatan_model')->getAllKalender();
+
         $this->view('templates/header', $data);
         $this->view('kurikulum/kalender/index', $data);
-        $this->view('templates/footer');
+        $this->view('templates/footerwm');
     }
 
 
@@ -63,6 +67,6 @@ class Kalender extends Controller
         $data['schedule_list'] = $this->model("$this->model_name", 'Kalender_Kegiatan_model')->cariDataKalender();
         $this->view('templates/header', $data);
         $this->view('kurikulum/kalender/index', $data);
-        $this->view('templates/footer');
+        $this->view('templates/footerwm');
     }
 }

@@ -3,13 +3,18 @@
 class P5 extends Controller
 {
     private $model_name = "Kurikulum";
+
     public function index()
     {
         $data['judul'] = 'P5';
+
+        $data['user'] = $this->user;
+
         $data['mhs'] = $this->model("$this->model_name", 'P5_model')->getAllMahasiswa();
+
         $this->view('templates/header', $data);
         $this->view('kurikulum/P5/index', $data);
-        $this->view('templates/footer');
+        $this->view('templates/footerwm');
     }
 
     public function detail($id)
@@ -18,7 +23,7 @@ class P5 extends Controller
         $data['mhs'] = $this->model("$this->model_name", 'P5_model')->getMahasiswaById($id);
         $this->view('templates/header', $data);
         $this->view('mahasiswa/detail', $data);
-        $this->view('templates/footer');
+        $this->view('templates/footerwm');
     }
 
     public function tambah()
@@ -71,6 +76,6 @@ class P5 extends Controller
         $data['mhs'] = $this->model("$this->model_name", 'P5_model')->cariDataP5();
         $this->view('templates/header', $data);
         $this->view('mahasiswa/index', $data);
-        $this->view('templates/footer');
+        $this->view('templates/footerwm');
     }
 }
