@@ -23,7 +23,7 @@ $(document).ready(function () {
 			'pageLength', 'copy', 'excel', 'pdf', 'print'
 		],
 		'lengthChange': true,
-  		'lengthMenu': [[10, 25, 50, -1], [10, 25, 50, 'All']],
+		'lengthMenu': [[10, 25, 50, -1], [10, 25, 50, 'All']],
 		drawCallback: function (settings) {
 			$(".tampilModalUbah").click(function () {
 				$("#modal").addClass("edit");
@@ -32,7 +32,7 @@ $(document).ready(function () {
 				$(".modal-body form").attr("action", `${BASEURL}/ubahData`);
 				$(".wrapFotoSekarang").show();
 				$("label.foto").html("Update Foto");
-				
+
 				const data_id = $(this).data("id");
 
 				$.ajax({

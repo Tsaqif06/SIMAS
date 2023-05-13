@@ -9,7 +9,9 @@
                     <div class="col-12 col-xl-4">
                         <div class="justify-content-end d-flex">
                             <div class="dropdown flex-md-grow-1 flex-xl-grow-0">
-                                <button class="btn btn-sm btn-light bg-white dropdown-toggle" type="button" id="dropdownMenuDate2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                                <button class="btn btn-sm btn-light bg-white dropdown-toggle" type="button"
+                                    id="dropdownMenuDate2" data-toggle="dropdown" aria-haspopup="true"
+                                    aria-expanded="true">
                                     <i class="mdi mdi-calendar"></i> Hari ini (11 Mar 2023)
                                 </button>
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuDate2">
@@ -35,17 +37,25 @@
                                     <tr>
                                         <th>No.</th>
                                         <th>Nama Wali Kelas</th>
-                                        <th>Nama Kelas</th>
+                                        <th>NIP</th>
+                                        <th>Gol</th>
+                                        <th>Pangkat</th>
+                                        <th>Jabatan</th>
+                                        <th>Telepon</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     <?php $i = 1 ?>
                                     <?php foreach ($data['walikelas'] as $row) : ?>
-                                        <tr>
-                                            <td><?= $i++ ?></td>
-                                            <td><?= $row["nama_walikelas"]; ?></td>
-                                            <td><?= $row["nama_kelas"] ?></td>
-                                        </tr>
+                                    <tr>
+                                        <td><?= $i++ ?></td>
+                                        <td><?= $row["nama"]; ?></td>
+                                        <td><?= $row["nip"] ?></td>
+                                        <td><?= $row["gol"] ?></td>
+                                        <td><?= $row["pangkat"] ?></td>
+                                        <td><?= $row["jabatan"] ?></td>
+                                        <td><?= $row["telepon"] ?></td>
+                                    </tr>
                                     <?php endforeach; ?>
                                 </tbody>
                             </table>
