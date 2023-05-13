@@ -32,7 +32,7 @@ class BKK extends Controller
     {
         $data['judul'] = 'Admin Lowongan Kerja';
         $data['user'] = $this->user;
-        $akses = ['all', 'humas', 'industri'];
+        $akses = ['all', 'humas'];
         $data['siswa'] = $this->model("$this->model_name", 'BKK_model')->getExistloker();
         if (in_array($data['user']['hak_akses'], $akses)) {
             $this->view('templates/humas/header', $data);
@@ -41,6 +41,10 @@ class BKK extends Controller
         } else if ($data['user']['hak_akses'] == '') {
             header("Location: " . BASEURL);
             Flasher::setFlash('GAGAL', 'Anda Tidak Mempunyai Akses Untuk Menuju Halaman Tersebut', 'danger');
+        } else if ($data['user']['hak_akses'] == 'industri') {
+            $this->view('templates/humas/header', $data);
+            $this->view('humas/bkk/loker/form', $data);
+            $this->view('templates/humas/footer');
         }
     }
     public function kebekerjaan()
@@ -221,7 +225,7 @@ class BKK extends Controller
 
     public function spw()
     {
-        $data['judul'] = 'Admin SPW';
+        $data['judul'] = 'SIMAS - SPW';
         $data['siswa'] = $this->model("$this->model_name", 'BKK_model')->getExistspw();
         $data['user'] = $this->user;
         $akses = ['all', 'humas', 'industri'];
