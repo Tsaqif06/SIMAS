@@ -270,9 +270,10 @@ class pkl_model extends Database
     {
         $query  = "INSERT INTO datatempatpkl
                            VALUES 
-                      (null, :nisn, :namasiswa, :kelassiswa, :namaperusahaan, '', CURRENT_TIMESTAMP, :created_by, null, '', null, '', null, '',0 ,0, DEFAULT)";
+                      (null, :uuid, :nisn, :namasiswa, :kelassiswa, :namaperusahaan, '', CURRENT_TIMESTAMP, :created_by, null, '', null, '', null, '',0 ,0, DEFAULT)";
 
         $this->db->query($query);
+        $this->db->bind('uuid', Uuid::uuid4()->toString());
         $this->db->bind('nisn', $data['nisn']);
         $this->db->bind('namasiswa', $data['namasiswa']);
         $this->db->bind('kelassiswa', $data['kelassiswa']);
@@ -359,9 +360,10 @@ class pkl_model extends Database
     {
         $query  = "INSERT INTO monitoringpkl
                              VALUES 
-                        (null, :namaperusahaan_monitoringpkl, :namaguru_monitoringpkl, :tanggal_monitoringpkl, '', CURRENT_TIMESTAMP, :created_by, null, '', null, '', null, '',0 ,0, DEFAULT)";
+                        (null, :uuid, :namaperusahaan_monitoringpkl, :namaguru_monitoringpkl, :tanggal_monitoringpkl, '', CURRENT_TIMESTAMP, :created_by, null, '', null, '', null, '',0 ,0, DEFAULT)";
 
         $this->db->query($query);
+        $this->db->bind('uuid', Uuid::uuid4()->toString());
         $this->db->bind('namaperusahaan_monitoringpkl', $data['namaperusahaan_monitoringpkl']);
         $this->db->bind('namaguru_monitoringpkl', $data['namaguru_monitoringpkl']);
         $this->db->bind('tanggal_monitoringpkl', $data['tanggal_monitoringpkl']);
@@ -444,9 +446,10 @@ class pkl_model extends Database
     {
         $query  = "INSERT INTO pembekalanpkl
                            VALUES 
-                      (null, :dilakukanoleh, :tanggalpersiapan, :jadwal, :peserta, :tempat, '', CURRENT_TIMESTAMP, :created_by, null, '', null, '', null, '',0 ,0, DEFAULT)";
+                      (null, :uuid, :dilakukanoleh, :tanggalpersiapan, :jadwal, :peserta, :tempat, '', CURRENT_TIMESTAMP, :created_by, null, '', null, '', null, '',0 ,0, DEFAULT)";
 
         $this->db->query($query);
+        $this->db->bind('uuid', Uuid::uuid4()->toString());
         $this->db->bind('dilakukanoleh', $data['dilakukanoleh']);
         $this->db->bind('tanggalpersiapan', $data['tanggalpersiapan']);
         $this->db->bind('jadwal', $data['jadwal']);
@@ -729,9 +732,10 @@ class pkl_model extends Database
     {
         $query = "INSERT INTO nilaipkl
                 VALUES 
-                (null, :nisn, :namasiswa, :kelas, :jeniskelamin, :namaindustri, :nilaisiswa, :keterangannilai, '', CURRENT_TIMESTAMP, :created_by, null, '', null, '', null, '', 0, 0, DEFAULT)";
+                (null, :uuid, :nisn, :namasiswa, :kelas, :jeniskelamin, :namaindustri, :nilaisiswa, :keterangannilai, '', CURRENT_TIMESTAMP, :created_by, null, '', null, '', null, '', 0, 0, DEFAULT)";
 
         $this->db->query($query);
+        $this->db->bind('uuid', Uuid::uuid4()->toString());
         $this->db->bind('nisn', $data['nisn']);
         $this->db->bind('namasiswa', $data['namasiswa']);
         $this->db->bind('kelas', $data['kelas']);
@@ -1272,7 +1276,7 @@ class pkl_model extends Database
     {
         $query  = "INSERT INTO pemberkasanpkl
                            VALUES 
-                      (null, :nisn_pemberkasan, 
+                      (null, :uuid, :nisn_pemberkasan, 
                       :namasiswa_pemberkasan, 
                       :tanggallahir_pemberkasan, 
                       :jurusan_pemberkasan, 
@@ -1308,6 +1312,7 @@ class pkl_model extends Database
         if (!$bukti) {
             return false;
         }
+        $this->db->bind('uuid', Uuid::uuid4()->toString());
         $this->db->bind('nisn_pemberkasan', $data['nisn_pemberkasan']);
         $this->db->bind('namasiswa_pemberkasan', $data['namasiswa_pemberkasan']);
         $this->db->bind('tanggallahir_pemberkasan', $data['tanggallahir_pemberkasan']);
@@ -1707,9 +1712,10 @@ class pkl_model extends Database
     {
         $query  = "INSERT INTO siswabermasalah
                            VALUES 
-                      (null, :nisn, :nama, :kelas, :namaperusahaan, :jenismasalah, :solusi, '', CURRENT_TIMESTAMP, :created_by, null, '', null, '', null, '',0 ,0, DEFAULT)";
+                      (null, :uuid, :nisn, :nama, :kelas, :namaperusahaan, :jenismasalah, :solusi, '', CURRENT_TIMESTAMP, :created_by, null, '', null, '', null, '',0 ,0, DEFAULT)";
 
         $this->db->query($query);
+        $this->db->bind('uuid', Uuid::uuid4()->toString());
         $this->db->bind('nisn', $data['nisn']);
         $this->db->bind('nama', $data['nama']);
         $this->db->bind('kelas', $data['kelas']);

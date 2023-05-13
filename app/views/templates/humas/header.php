@@ -438,7 +438,7 @@
                                         <?php endif ?>
                                         <ul style="list-style-type: none;">
                                             <?php if ($data['user']['role'] == 'admin' && ($data['user']['hak_akses'] == 'all' || $data['user']['hak_akses'] == 'humas')) : ?>
-                                                <li><a class="navsubitem text-white" href="#">Alumni Sukses</a></li>
+                                                <li><a class="navsubitem text-white" href="<?= BASEURL ?>/bkk/das">Alumni Sukses</a></li>
                                                 <li><a class="navsubitem text-white" href="<?= BASEURL; ?>/bkk/mou">MoU</a></li>
                                                 <li><a class="navsubitem text-white" href="<?= BASEURL; ?>/bkk/workshop">Workshop</a></li>
                                                 <li><a class="navsubitem text-white" href="<?= BASEURL; ?>/bkk/kebekerjaan">Kebekerjaan</a></li>
