@@ -135,6 +135,22 @@ class Kehadiran_model
         return $this->db->rowCount();
     }
 
+    public function login($data)
+    {
+        $this->db->query(
+            "SELECT * FROM {$this->table} 
+                WHERE 
+            `nama` = :nama AND
+            `nisn` = :nisn
+        "
+        );
+
+        $this->db->bind("nama", $data['nama']);
+        $this->db->bind("nisn", $data['nisn']);
+
+        return $this->db->fetch();
+    }
+
     public function importData()
     {
         // Cek file diupload apa belum

@@ -7,6 +7,27 @@ class API extends Controller
         echo "Page not found!";
     }
 
+    // LOGIN //
+
+    public function login()
+    {
+        header('Content-Type: application/json');
+        if (isset($_POST['nama']) && isset($_POST['nisn'])) {
+            $data['nama'] = $_POST['nama'];
+            $data['nisn'] = $_POST['nisn'];
+            $user = $this->model("Kesiswaan", "Kehadiran_model")->login($data);
+            if (!$user) {
+                $response = false;
+                $message = "Gagal Login";
+                echo json_encode(["success" => $response, "message" => $message, "data" => $user]);
+            } else {
+                $response = true;
+                $message = "Berhasil Login";
+                echo json_encode(["success" => $response, "message" => $message, "data" => $user]);
+            }
+        }
+    }
+
     // KEHADIRAN //
 
     public function kehadiran($id = null)
