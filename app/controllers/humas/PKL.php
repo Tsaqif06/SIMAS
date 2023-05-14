@@ -431,392 +431,402 @@ class PKL extends Controller
     public function nilai()
     {
         $data['judul'] = 'Admin - PKL';
+
         $data['user'] = $this->user;
+
         $akses = ['all', 'humas', 'industri'];
+
         if (in_array($data['user']['hak_akses'], $akses)) {
             $this->view('templates/humas/header', $data);
-            $this->view('humas/pkl/nilai/home/pklnilai', $data);
+
+            if (isset($_GET['kelas'])) {
+                $data['siswa'] = $this->model("$this->model_name", 'pkl_model')->getAllNilai($_GET['kelas']);
+                $this->view('humas/pkl/nilai/index', $data);
+            } else {
+                $this->view('humas/pkl/nilai/index', $data);
+            }
+
             $this->view('templates/humas/footer');
         } else if ($data['user']['hak_akses'] == '') {
             header("Location: " . BASEURL);
             Flasher::setFlash('GAGAL', 'Anda Tidak Mempunyai Akses Untuk Menuju Halaman Tersebut', 'danger');
         }
     }
-    public function nilaidga()
-    {
-        $data['judul'] = 'Admin - PKL';
-        $data['user'] = $this->user;
-        $data['ndga'] = $this->model("$this->model_name", 'pkl_model')->getNilaiExistDGA();
-        $akses = ['all', 'humas', 'industri'];
-        if (in_array($data['user']['hak_akses'], $akses)) {
-            $this->view('templates/humas/header', $data);
-            $this->view('humas/pkl/nilai/tg/pklnillaitga', $data);
-            $this->view('templates/humas/footer');
-        } else if ($data['user']['hak_akses'] == '') {
-            header("Location: " . BASEURL);
-            Flasher::setFlash('GAGAL', 'Anda Tidak Mempunyai Akses Untuk Menuju Halaman Tersebut', 'danger');
-        }
-    }
-    public function nilaidgb()
-    {
-        $data['judul'] = 'Admin - PKL';
-        $data['user'] = $this->user;
-        $data['ndga'] = $this->model("$this->model_name", 'pkl_model')->getNilaiExistDGB();
-        $akses = ['all', 'humas', 'industri'];
-        if (in_array($data['user']['hak_akses'], $akses)) {
-            $this->view('templates/humas/header', $data);
-            $this->view('humas/pkl/nilai/tg/pklnilaidgb', $data);
-            $this->view('templates/humas/footer');
-        } else if ($data['user']['hak_akses'] == '') {
-            header("Location: " . BASEURL);
-            Flasher::setFlash('GAGAL', 'Anda Tidak Mempunyai Akses Untuk Menuju Halaman Tersebut', 'danger');
-        }
-    }
-    public function nilaidgc()
-    {
-        $data['judul'] = 'Admin - PKL';
-        $data['ndga'] = $this->model("$this->model_name", 'pkl_model')->getNilaiExistDGC();
-        $data['user'] = $this->user;
-        $akses = ['all', 'humas', 'industri'];
-        if (in_array($data['user']['hak_akses'], $akses)) {
-            $this->view('templates/humas/header', $data);
-            $this->view('humas/pkl/nilai/tg/pklnilaidgc', $data);
-            $this->view('templates/humas/footer');
-        } else if ($data['user']['hak_akses'] == '') {
-            header("Location: " . BASEURL);
-            Flasher::setFlash('GAGAL', 'Anda Tidak Mempunyai Akses Untuk Menuju Halaman Tersebut', 'danger');
-        }
-    }
-    public function nilaidgd()
-    {
-        $data['judul'] = 'Admin - PKL';
-        $data['user'] = $this->user;
-        $data['ndga'] = $this->model("$this->model_name", 'pkl_model')->getNilaiExistDGD();
-        $akses = ['all', 'humas', 'industri'];
-        if (in_array($data['user']['hak_akses'], $akses)) {
-            $this->view('templates/humas/header', $data);
-            $this->view('humas/pkl/nilai/tg/pklnilaidgd', $data);
-            $this->view('templates/humas/footer');
-        } else if ($data['user']['hak_akses'] == '') {
-            header("Location: " . BASEURL);
-            Flasher::setFlash('GAGAL', 'Anda Tidak Mempunyai Akses Untuk Menuju Halaman Tersebut', 'danger');
-        }
-    }
-    public function nilaipda()
-    {
-        $data['judul'] = 'Admin - PKL';
-        $data['user'] = $this->user;
-        $data['ndga'] = $this->model("$this->model_name", 'pkl_model')->getNilaiExistPDA();
-        $akses = ['all', 'humas', 'industri'];
-        if (in_array($data['user']['hak_akses'], $akses)) {
-            $this->view('templates/humas/header', $data);
-            $this->view('humas/pkl/nilai/tg/pklnilaipda', $data);
-            $this->view('templates/humas/footer');
-        } else if ($data['user']['hak_akses'] == '') {
-            header("Location: " . BASEURL);
-            Flasher::setFlash('GAGAL', 'Anda Tidak Mempunyai Akses Untuk Menuju Halaman Tersebut', 'danger');
-        }
-    }
-    public function nilaipdb()
-    {
-        $data['judul'] = 'Admin - PKL';
-        $data['user'] = $this->user;
-        $data['ndga'] = $this->model("$this->model_name", 'pkl_model')->getNilaiExistPDB();
-        $akses = ['all', 'humas', 'industri'];
-        if (in_array($data['user']['hak_akses'], $akses)) {
-            $this->view('templates/humas/header', $data);
-            $this->view('humas/pkl/nilai/tg/pklnilaipdb', $data);
-            $this->view('templates/humas/footer');
-        } else if ($data['user']['hak_akses'] == '') {
-            header("Location: " . BASEURL);
-            Flasher::setFlash('GAGAL', 'Anda Tidak Mempunyai Akses Untuk Menuju Halaman Tersebut', 'danger');
-        }
-    }
-    public function nilaipdc()
-    {
-        $data['judul'] = 'Admin - PKL';
-        $data['user'] = $this->user;
-        $data['ndga'] = $this->model("$this->model_name", 'pkl_model')->getNilaiExistPDC();
-        $akses = ['all', 'humas', 'industri'];
-        if (in_array($data['user']['hak_akses'], $akses)) {
-            $this->view('templates/humas/header', $data);
-            $this->view('humas/pkl/nilai/tg/pklnilaipdc', $data);
-            $this->view('templates/humas/footer');
-        } else if ($data['user']['hak_akses'] == '') {
-            header("Location: " . BASEURL);
-            Flasher::setFlash('GAGAL', 'Anda Tidak Mempunyai Akses Untuk Menuju Halaman Tersebut', 'danger');
-        }
-    }
-    public function nilaipdd()
-    {
-        $data['judul'] = 'Admin - PKL';
-        $data['user'] = $this->user;
-        $data['ndga'] = $this->model("$this->model_name", 'pkl_model')->getNilaiExistPDD();
-        $akses = ['all', 'humas', 'industri'];
-        if (in_array($data['user']['hak_akses'], $akses)) {
-            $this->view('templates/humas/header', $data);
-            $this->view('humas/pkl/nilai/tg/pklnilaipdd', $data);
-            $this->view('templates/humas/footer');
-        } else if ($data['user']['hak_akses'] == '') {
-            header("Location: " . BASEURL);
-            Flasher::setFlash('GAGAL', 'Anda Tidak Mempunyai Akses Untuk Menuju Halaman Tersebut', 'danger');
-        }
-    }
-    public function nilaiania()
-    {
-        $data['judul'] = 'Admin - PKL';
-        $data['user'] = $this->user;
-        $data['ndga'] = $this->model("$this->model_name", 'pkl_model')->getNilaiExistANIA();
-        $akses = ['all', 'humas', 'industri'];
-        if (in_array($data['user']['hak_akses'], $akses)) {
-            $this->view('templates/humas/header', $data);
-            $this->view('humas/pkl/nilai/animasi/pklnilaiania', $data);
-            $this->view('templates/humas/footer');
-        } else if ($data['user']['hak_akses'] == '') {
-            header("Location: " . BASEURL);
-            Flasher::setFlash('GAGAL', 'Anda Tidak Mempunyai Akses Untuk Menuju Halaman Tersebut', 'danger');
-        }
-    }
-    public function nilaianib()
-    {
-        $data['judul'] = 'Admin - PKL';
-        $data['user'] = $this->user;
-        $data['ndga'] = $this->model("$this->model_name", 'pkl_model')->getNilaiExistANIB();
-        $akses = ['all', 'humas', 'industri'];
-        if (in_array($data['user']['hak_akses'], $akses)) {
-            $this->view('templates/humas/header', $data);
-            $this->view('humas/pkl/nilai/animasi/pklnilaianib', $data);
-            $this->view('templates/humas/footer');
-        } else if ($data['user']['hak_akses'] == '') {
-            header("Location: " . BASEURL);
-            Flasher::setFlash('GAGAL', 'Anda Tidak Mempunyai Akses Untuk Menuju Halaman Tersebut', 'danger');
-        }
-    }
-    public function nilaianic()
-    {
-        $data['judul'] = 'Admin - PKL';
-        $data['user'] = $this->user;
-        $data['ndga'] = $this->model("$this->model_name", 'pkl_model')->getNilaiExistANIC();
-        $akses = ['all', 'humas', 'industri'];
-        if (in_array($data['user']['hak_akses'], $akses)) {
-            $this->view('templates/humas/header', $data);
-            $this->view('humas/pkl/nilai/animasi/pklnilaianic', $data);
-            $this->view('templates/humas/footer');
-        } else if ($data['user']['hak_akses'] == '') {
-            header("Location: " . BASEURL);
-            Flasher::setFlash('GAGAL', 'Anda Tidak Mempunyai Akses Untuk Menuju Halaman Tersebut', 'danger');
-        }
-    }
-    public function nilaidkva()
-    {
-        $data['judul'] = 'Admin - PKL';
-        $data['user'] = $this->user;
-        $data['ndga'] = $this->model("$this->model_name", 'pkl_model')->getNilaiExistDKVA();
-        $akses = ['all', 'humas', 'industri'];
-        if (in_array($data['user']['hak_akses'], $akses)) {
-            $this->view('templates/humas/header', $data);
-            $this->view('humas/pkl/nilai/dkv/pklnilaidkva', $data);
-            $this->view('templates/humas/footer');
-        } else if ($data['user']['hak_akses'] == '') {
-            header("Location: " . BASEURL);
-            Flasher::setFlash('GAGAL', 'Anda Tidak Mempunyai Akses Untuk Menuju Halaman Tersebut', 'danger');
-        }
-    }
-    public function nilaidkvb()
-    {
-        $data['judul'] = 'Admin - PKL';
-        $data['user'] = $this->user;
-        $data['ndga'] = $this->model("$this->model_name", 'pkl_model')->getNilaiExistDKVB();
-        $akses = ['all', 'humas', 'industri'];
-        if (in_array($data['user']['hak_akses'], $akses)) {
-            $this->view('templates/humas/header', $data);
-            $this->view('humas/pkl/nilai/dkv/pklnilaidkvb', $data);
-            $this->view('templates/humas/footer');
-        } else if ($data['user']['hak_akses'] == '') {
-            header("Location: " . BASEURL);
-            Flasher::setFlash('GAGAL', 'Anda Tidak Mempunyai Akses Untuk Menuju Halaman Tersebut', 'danger');
-        }
-    }
-    public function nilaidkvc()
-    {
-        $data['judul'] = 'Admin - PKL';
-        $data['user'] = $this->user;
-        $data['ndga'] = $this->model("$this->model_name", 'pkl_model')->getNilaiExistDKVC();
-        $akses = ['all', 'humas', 'industri'];
-        if (in_array($data['user']['hak_akses'], $akses)) {
-            $this->view('templates/humas/header', $data);
-            $this->view('humas/pkl/nilai/dkv/pklnilaidkvc', $data);
-            $this->view('templates/humas/footer');
-        } else if ($data['user']['hak_akses'] == '') {
-            header("Location: " . BASEURL);
-            Flasher::setFlash('GAGAL', 'Anda Tidak Mempunyai Akses Untuk Menuju Halaman Tersebut', 'danger');
-        }
-    }
-    public function nilailoga()
-    {
-        $data['judul'] = 'Admin - PKL';
-        $data['user'] = $this->user;
-        $data['ndga'] = $this->model("$this->model_name", 'pkl_model')->getNilaiExistTLA();
-        $akses = ['all', 'humas', 'industri'];
-        if (in_array($data['user']['hak_akses'], $akses)) {
-            $this->view('templates/humas/header', $data);
-            $this->view('humas/pkl/nilai/logistik/pklnilaitla', $data);
-            $this->view('templates/humas/footer');
-        } else if ($data['user']['hak_akses'] == '') {
-            header("Location: " . BASEURL);
-            Flasher::setFlash('GAGAL', 'Anda Tidak Mempunyai Akses Untuk Menuju Halaman Tersebut', 'danger');
-        }
-    }
-    public function nilailogb()
-    {
-        $data['judul'] = 'Admin - PKL';
-        $data['user'] = $this->user;
-        $data['ndga'] = $this->model("$this->model_name", 'pkl_model')->getNilaiExistTLB();
-        $akses = ['all', 'humas', 'industri'];
-        if (in_array($data['user']['hak_akses'], $akses)) {
-            $this->view('templates/humas/header', $data);
-            $this->view('humas/pkl/nilai/logistik/pklnilaitlb', $data);
-            $this->view('templates/humas/footer');
-        } else if ($data['user']['hak_akses'] == '') {
-            header("Location: " . BASEURL);
-            Flasher::setFlash('GAGAL', 'Anda Tidak Mempunyai Akses Untuk Menuju Halaman Tersebut', 'danger');
-        }
-    }
-    public function nilaimekaa()
-    {
-        $data['judul'] = 'Admin - PKL';
-        $data['user'] = $this->user;
-        $data['ndga'] = $this->model("$this->model_name", 'pkl_model')->getNilaiExistTMA();
-        $akses = ['all', 'humas', 'industri'];
-        if (in_array($data['user']['hak_akses'], $akses)) {
-            $this->view('templates/humas/header', $data);
-            $this->view('humas/pkl/nilai/mekatronika/pklnilaitma', $data);
-            $this->view('templates/humas/footer');
-        } else if ($data['user']['hak_akses'] == '') {
-            header("Location: " . BASEURL);
-            Flasher::setFlash('GAGAL', 'Anda Tidak Mempunyai Akses Untuk Menuju Halaman Tersebut', 'danger');
-        }
-    }
-    public function nilaimekab()
-    {
-        $data['judul'] = 'Admin - PKL';
-        $data['user'] = $this->user;
-        $data['ndga'] = $this->model("$this->model_name", 'pkl_model')->getNilaiExistTMB();
-        $akses = ['all', 'humas', 'industri'];
-        if (in_array($data['user']['hak_akses'], $akses)) {
-            $this->view('templates/humas/header', $data);
-            $this->view('humas/pkl/nilai/mekatronika/pklnilaitmb', $data);
-            $this->view('templates/humas/footer');
-        } else if ($data['user']['hak_akses'] == '') {
-            header("Location: " . BASEURL);
-            Flasher::setFlash('GAGAL', 'Anda Tidak Mempunyai Akses Untuk Menuju Halaman Tersebut', 'danger');
-        }
-    }
-    public function nilaipha()
-    {
-        $data['judul'] = 'Admin - PKL';
-        $data['user'] = $this->user;
-        $data['ndga'] = $this->model("$this->model_name", 'pkl_model')->getNilaiExistPHA();
-        $akses = ['all', 'humas', 'industri'];
-        if (in_array($data['user']['hak_akses'], $akses)) {
-            $this->view('templates/humas/header', $data);
-            $this->view('humas/pkl/nilai/perhotelan/pklnilaipha', $data);
-            $this->view('templates/humas/footer');
-        } else if ($data['user']['hak_akses'] == '') {
-            header("Location: " . BASEURL);
-            Flasher::setFlash('GAGAL', 'Anda Tidak Mempunyai Akses Untuk Menuju Halaman Tersebut', 'danger');
-        }
-    }
-    public function nilaiphb()
-    {
-        $data['judul'] = 'Admin - PKL';
-        $data['user'] = $this->user;
-        $data['ndga'] = $this->model("$this->model_name", 'pkl_model')->getNilaiExistPHB();
-        $akses = ['all', 'humas', 'industri'];
-        if (in_array($data['user']['hak_akses'], $akses)) {
-            $this->view('templates/humas/header', $data);
-            $this->view('humas/pkl/nilai/perhotelan/pklnilaiphb', $data);
-            $this->view('templates/humas/footer');
-        } else if ($data['user']['hak_akses'] == '') {
-            header("Location: " . BASEURL);
-            Flasher::setFlash('GAGAL', 'Anda Tidak Mempunyai Akses Untuk Menuju Halaman Tersebut', 'danger');
-        }
-    }
-    public function nilairpla()
-    {
-        $data['judul'] = 'Admin - PKL';
-        $data['user'] = $this->user;
-        $data['ndga'] = $this->model("$this->model_name", 'pkl_model')->getNilaiExistRPLA();
-        $akses = ['all', 'humas', 'industri'];
-        if (in_array($data['user']['hak_akses'], $akses)) {
-            $this->view('templates/humas/header', $data);
-            $this->view('humas/pkl/nilai/rpl/pklnilairpla', $data);
-            $this->view('templates/humas/footer');
-        } else if ($data['user']['hak_akses'] == '') {
-            header("Location: " . BASEURL);
-            Flasher::setFlash('GAGAL', 'Anda Tidak Mempunyai Akses Untuk Menuju Halaman Tersebut', 'danger');
-        }
-    }
-    public function nilairplb()
-    {
-        $data['judul'] = 'Admin - PKL';
-        $data['user'] = $this->user;
-        $data['ndga'] = $this->model("$this->model_name", 'pkl_model')->getNilaiExistRPLB();
-        $akses = ['all', 'humas', 'industri'];
-        if (in_array($data['user']['hak_akses'], $akses)) {
-            $this->view('templates/humas/header', $data);
-            $this->view('humas/pkl/nilai/rpl/pklnilairplb', $data);
-            $this->view('templates/humas/footer');
-        } else if ($data['user']['hak_akses'] == '') {
-            header("Location: " . BASEURL);
-            Flasher::setFlash('GAGAL', 'Anda Tidak Mempunyai Akses Untuk Menuju Halaman Tersebut', 'danger');
-        }
-    }
-    public function nilairplc()
-    {
-        $data['judul'] = 'Admin - PKL';
-        $data['user'] = $this->user;
-        $data['ndga'] = $this->model("$this->model_name", 'pkl_model')->getNilaiExistRPLC();
-        $akses = ['all', 'humas', 'industri'];
-        if (in_array($data['user']['hak_akses'], $akses)) {
-            $this->view('templates/humas/header', $data);
-            $this->view('humas/pkl/nilai/rpl/pklnilairplc', $data);
-            $this->view('templates/humas/footer');
-        } else if ($data['user']['hak_akses'] == '') {
-            header("Location: " . BASEURL);
-            Flasher::setFlash('GAGAL', 'Anda Tidak Mempunyai Akses Untuk Menuju Halaman Tersebut', 'danger');
-        }
-    }
-    public function nilaitkja()
-    {
-        $data['judul'] = 'Admin - PKL';
-        $data['user'] = $this->user;
-        $data['ndga'] = $this->model("$this->model_name", 'pkl_model')->getNilaiExistTKJA();
-        $akses = ['all', 'humas', 'industri'];
-        if (in_array($data['user']['hak_akses'], $akses)) {
-            $this->view('templates/humas/header', $data);
-            $this->view('humas/pkl/nilai/tkj/pklnilaitkja', $data);
-            $this->view('templates/humas/footer');
-        } else if ($data['user']['hak_akses'] == '') {
-            header("Location: " . BASEURL);
-            Flasher::setFlash('GAGAL', 'Anda Tidak Mempunyai Akses Untuk Menuju Halaman Tersebut', 'danger');
-        }
-    }
-    public function nilaitkjb()
-    {
-        $data['judul'] = 'Admin - PKL';
-        $data['user'] = $this->user;
-        $data['ndga'] = $this->model("$this->model_name", 'pkl_model')->getNilaiExistTKJA();
-        $akses = ['all', 'humas', 'industri'];
-        if (in_array($data['user']['hak_akses'], $akses)) {
-            $this->view('templates/humas/header', $data);
-            $this->view('humas/pkl/nilai/tkj/pklnilaitkjb', $data);
-            $this->view('templates/humas/footer');
-        } else if ($data['user']['hak_akses'] == '') {
-            header("Location: " . BASEURL);
-            Flasher::setFlash('GAGAL', 'Anda Tidak Mempunyai Akses Untuk Menuju Halaman Tersebut', 'danger');
-        }
-    }
+    // public function nilaidga()
+    // {
+    //     $data['judul'] = 'Admin - PKL';
+    //     $data['user'] = $this->user;
+    //     $data['ndga'] = $this->model("$this->model_name", 'pkl_model')->getNilaiExistDGA();
+    //     $akses = ['all', 'humas', 'industri'];
+    //     if (in_array($data['user']['hak_akses'], $akses)) {
+    //         $this->view('templates/humas/header', $data);
+    //         $this->view('humas/pkl/nilai/tg/pklnillaitga', $data);
+    //         $this->view('templates/humas/footer');
+    //     } else if ($data['user']['hak_akses'] == '') {
+    //         header("Location: " . BASEURL);
+    //         Flasher::setFlash('GAGAL', 'Anda Tidak Mempunyai Akses Untuk Menuju Halaman Tersebut', 'danger');
+    //     }
+    // }
+    // public function nilaidgb()
+    // {
+    //     $data['judul'] = 'Admin - PKL';
+    //     $data['user'] = $this->user;
+    //     $data['ndga'] = $this->model("$this->model_name", 'pkl_model')->getNilaiExistDGB();
+    //     $akses = ['all', 'humas', 'industri'];
+    //     if (in_array($data['user']['hak_akses'], $akses)) {
+    //         $this->view('templates/humas/header', $data);
+    //         $this->view('humas/pkl/nilai/tg/pklnilaidgb', $data);
+    //         $this->view('templates/humas/footer');
+    //     } else if ($data['user']['hak_akses'] == '') {
+    //         header("Location: " . BASEURL);
+    //         Flasher::setFlash('GAGAL', 'Anda Tidak Mempunyai Akses Untuk Menuju Halaman Tersebut', 'danger');
+    //     }
+    // }
+    // public function nilaidgc()
+    // {
+    //     $data['judul'] = 'Admin - PKL';
+    //     $data['ndga'] = $this->model("$this->model_name", 'pkl_model')->getNilaiExistDGC();
+    //     $data['user'] = $this->user;
+    //     $akses = ['all', 'humas', 'industri'];
+    //     if (in_array($data['user']['hak_akses'], $akses)) {
+    //         $this->view('templates/humas/header', $data);
+    //         $this->view('humas/pkl/nilai/tg/pklnilaidgc', $data);
+    //         $this->view('templates/humas/footer');
+    //     } else if ($data['user']['hak_akses'] == '') {
+    //         header("Location: " . BASEURL);
+    //         Flasher::setFlash('GAGAL', 'Anda Tidak Mempunyai Akses Untuk Menuju Halaman Tersebut', 'danger');
+    //     }
+    // }
+    // public function nilaidgd()
+    // {
+    //     $data['judul'] = 'Admin - PKL';
+    //     $data['user'] = $this->user;
+    //     $data['ndga'] = $this->model("$this->model_name", 'pkl_model')->getNilaiExistDGD();
+    //     $akses = ['all', 'humas', 'industri'];
+    //     if (in_array($data['user']['hak_akses'], $akses)) {
+    //         $this->view('templates/humas/header', $data);
+    //         $this->view('humas/pkl/nilai/tg/pklnilaidgd', $data);
+    //         $this->view('templates/humas/footer');
+    //     } else if ($data['user']['hak_akses'] == '') {
+    //         header("Location: " . BASEURL);
+    //         Flasher::setFlash('GAGAL', 'Anda Tidak Mempunyai Akses Untuk Menuju Halaman Tersebut', 'danger');
+    //     }
+    // }
+    // public function nilaipda()
+    // {
+    //     $data['judul'] = 'Admin - PKL';
+    //     $data['user'] = $this->user;
+    //     $data['ndga'] = $this->model("$this->model_name", 'pkl_model')->getNilaiExistPDA();
+    //     $akses = ['all', 'humas', 'industri'];
+    //     if (in_array($data['user']['hak_akses'], $akses)) {
+    //         $this->view('templates/humas/header', $data);
+    //         $this->view('humas/pkl/nilai/tg/pklnilaipda', $data);
+    //         $this->view('templates/humas/footer');
+    //     } else if ($data['user']['hak_akses'] == '') {
+    //         header("Location: " . BASEURL);
+    //         Flasher::setFlash('GAGAL', 'Anda Tidak Mempunyai Akses Untuk Menuju Halaman Tersebut', 'danger');
+    //     }
+    // }
+    // public function nilaipdb()
+    // {
+    //     $data['judul'] = 'Admin - PKL';
+    //     $data['user'] = $this->user;
+    //     $data['ndga'] = $this->model("$this->model_name", 'pkl_model')->getNilaiExistPDB();
+    //     $akses = ['all', 'humas', 'industri'];
+    //     if (in_array($data['user']['hak_akses'], $akses)) {
+    //         $this->view('templates/humas/header', $data);
+    //         $this->view('humas/pkl/nilai/tg/pklnilaipdb', $data);
+    //         $this->view('templates/humas/footer');
+    //     } else if ($data['user']['hak_akses'] == '') {
+    //         header("Location: " . BASEURL);
+    //         Flasher::setFlash('GAGAL', 'Anda Tidak Mempunyai Akses Untuk Menuju Halaman Tersebut', 'danger');
+    //     }
+    // }
+    // public function nilaipdc()
+    // {
+    //     $data['judul'] = 'Admin - PKL';
+    //     $data['user'] = $this->user;
+    //     $data['ndga'] = $this->model("$this->model_name", 'pkl_model')->getNilaiExistPDC();
+    //     $akses = ['all', 'humas', 'industri'];
+    //     if (in_array($data['user']['hak_akses'], $akses)) {
+    //         $this->view('templates/humas/header', $data);
+    //         $this->view('humas/pkl/nilai/tg/pklnilaipdc', $data);
+    //         $this->view('templates/humas/footer');
+    //     } else if ($data['user']['hak_akses'] == '') {
+    //         header("Location: " . BASEURL);
+    //         Flasher::setFlash('GAGAL', 'Anda Tidak Mempunyai Akses Untuk Menuju Halaman Tersebut', 'danger');
+    //     }
+    // }
+    // public function nilaipdd()
+    // {
+    //     $data['judul'] = 'Admin - PKL';
+    //     $data['user'] = $this->user;
+    //     $data['ndga'] = $this->model("$this->model_name", 'pkl_model')->getNilaiExistPDD();
+    //     $akses = ['all', 'humas', 'industri'];
+    //     if (in_array($data['user']['hak_akses'], $akses)) {
+    //         $this->view('templates/humas/header', $data);
+    //         $this->view('humas/pkl/nilai/tg/pklnilaipdd', $data);
+    //         $this->view('templates/humas/footer');
+    //     } else if ($data['user']['hak_akses'] == '') {
+    //         header("Location: " . BASEURL);
+    //         Flasher::setFlash('GAGAL', 'Anda Tidak Mempunyai Akses Untuk Menuju Halaman Tersebut', 'danger');
+    //     }
+    // }
+    // public function nilaiania()
+    // {
+    //     $data['judul'] = 'Admin - PKL';
+    //     $data['user'] = $this->user;
+    //     $data['ndga'] = $this->model("$this->model_name", 'pkl_model')->getNilaiExistANIA();
+    //     $akses = ['all', 'humas', 'industri'];
+    //     if (in_array($data['user']['hak_akses'], $akses)) {
+    //         $this->view('templates/humas/header', $data);
+    //         $this->view('humas/pkl/nilai/animasi/pklnilaiania', $data);
+    //         $this->view('templates/humas/footer');
+    //     } else if ($data['user']['hak_akses'] == '') {
+    //         header("Location: " . BASEURL);
+    //         Flasher::setFlash('GAGAL', 'Anda Tidak Mempunyai Akses Untuk Menuju Halaman Tersebut', 'danger');
+    //     }
+    // }
+    // public function nilaianib()
+    // {
+    //     $data['judul'] = 'Admin - PKL';
+    //     $data['user'] = $this->user;
+    //     $data['ndga'] = $this->model("$this->model_name", 'pkl_model')->getNilaiExistANIB();
+    //     $akses = ['all', 'humas', 'industri'];
+    //     if (in_array($data['user']['hak_akses'], $akses)) {
+    //         $this->view('templates/humas/header', $data);
+    //         $this->view('humas/pkl/nilai/animasi/pklnilaianib', $data);
+    //         $this->view('templates/humas/footer');
+    //     } else if ($data['user']['hak_akses'] == '') {
+    //         header("Location: " . BASEURL);
+    //         Flasher::setFlash('GAGAL', 'Anda Tidak Mempunyai Akses Untuk Menuju Halaman Tersebut', 'danger');
+    //     }
+    // }
+    // public function nilaianic()
+    // {
+    //     $data['judul'] = 'Admin - PKL';
+    //     $data['user'] = $this->user;
+    //     $data['ndga'] = $this->model("$this->model_name", 'pkl_model')->getNilaiExistANIC();
+    //     $akses = ['all', 'humas', 'industri'];
+    //     if (in_array($data['user']['hak_akses'], $akses)) {
+    //         $this->view('templates/humas/header', $data);
+    //         $this->view('humas/pkl/nilai/animasi/pklnilaianic', $data);
+    //         $this->view('templates/humas/footer');
+    //     } else if ($data['user']['hak_akses'] == '') {
+    //         header("Location: " . BASEURL);
+    //         Flasher::setFlash('GAGAL', 'Anda Tidak Mempunyai Akses Untuk Menuju Halaman Tersebut', 'danger');
+    //     }
+    // }
+    // public function nilaidkva()
+    // {
+    //     $data['judul'] = 'Admin - PKL';
+    //     $data['user'] = $this->user;
+    //     $data['ndga'] = $this->model("$this->model_name", 'pkl_model')->getNilaiExistDKVA();
+    //     $akses = ['all', 'humas', 'industri'];
+    //     if (in_array($data['user']['hak_akses'], $akses)) {
+    //         $this->view('templates/humas/header', $data);
+    //         $this->view('humas/pkl/nilai/dkv/pklnilaidkva', $data);
+    //         $this->view('templates/humas/footer');
+    //     } else if ($data['user']['hak_akses'] == '') {
+    //         header("Location: " . BASEURL);
+    //         Flasher::setFlash('GAGAL', 'Anda Tidak Mempunyai Akses Untuk Menuju Halaman Tersebut', 'danger');
+    //     }
+    // }
+    // public function nilaidkvb()
+    // {
+    //     $data['judul'] = 'Admin - PKL';
+    //     $data['user'] = $this->user;
+    //     $data['ndga'] = $this->model("$this->model_name", 'pkl_model')->getNilaiExistDKVB();
+    //     $akses = ['all', 'humas', 'industri'];
+    //     if (in_array($data['user']['hak_akses'], $akses)) {
+    //         $this->view('templates/humas/header', $data);
+    //         $this->view('humas/pkl/nilai/dkv/pklnilaidkvb', $data);
+    //         $this->view('templates/humas/footer');
+    //     } else if ($data['user']['hak_akses'] == '') {
+    //         header("Location: " . BASEURL);
+    //         Flasher::setFlash('GAGAL', 'Anda Tidak Mempunyai Akses Untuk Menuju Halaman Tersebut', 'danger');
+    //     }
+    // }
+    // public function nilaidkvc()
+    // {
+    //     $data['judul'] = 'Admin - PKL';
+    //     $data['user'] = $this->user;
+    //     $data['ndga'] = $this->model("$this->model_name", 'pkl_model')->getNilaiExistDKVC();
+    //     $akses = ['all', 'humas', 'industri'];
+    //     if (in_array($data['user']['hak_akses'], $akses)) {
+    //         $this->view('templates/humas/header', $data);
+    //         $this->view('humas/pkl/nilai/dkv/pklnilaidkvc', $data);
+    //         $this->view('templates/humas/footer');
+    //     } else if ($data['user']['hak_akses'] == '') {
+    //         header("Location: " . BASEURL);
+    //         Flasher::setFlash('GAGAL', 'Anda Tidak Mempunyai Akses Untuk Menuju Halaman Tersebut', 'danger');
+    //     }
+    // }
+    // public function nilailoga()
+    // {
+    //     $data['judul'] = 'Admin - PKL';
+    //     $data['user'] = $this->user;
+    //     $data['ndga'] = $this->model("$this->model_name", 'pkl_model')->getNilaiExistTLA();
+    //     $akses = ['all', 'humas', 'industri'];
+    //     if (in_array($data['user']['hak_akses'], $akses)) {
+    //         $this->view('templates/humas/header', $data);
+    //         $this->view('humas/pkl/nilai/logistik/pklnilaitla', $data);
+    //         $this->view('templates/humas/footer');
+    //     } else if ($data['user']['hak_akses'] == '') {
+    //         header("Location: " . BASEURL);
+    //         Flasher::setFlash('GAGAL', 'Anda Tidak Mempunyai Akses Untuk Menuju Halaman Tersebut', 'danger');
+    //     }
+    // }
+    // public function nilailogb()
+    // {
+    //     $data['judul'] = 'Admin - PKL';
+    //     $data['user'] = $this->user;
+    //     $data['ndga'] = $this->model("$this->model_name", 'pkl_model')->getNilaiExistTLB();
+    //     $akses = ['all', 'humas', 'industri'];
+    //     if (in_array($data['user']['hak_akses'], $akses)) {
+    //         $this->view('templates/humas/header', $data);
+    //         $this->view('humas/pkl/nilai/logistik/pklnilaitlb', $data);
+    //         $this->view('templates/humas/footer');
+    //     } else if ($data['user']['hak_akses'] == '') {
+    //         header("Location: " . BASEURL);
+    //         Flasher::setFlash('GAGAL', 'Anda Tidak Mempunyai Akses Untuk Menuju Halaman Tersebut', 'danger');
+    //     }
+    // }
+    // public function nilaimekaa()
+    // {
+    //     $data['judul'] = 'Admin - PKL';
+    //     $data['user'] = $this->user;
+    //     $data['ndga'] = $this->model("$this->model_name", 'pkl_model')->getNilaiExistTMA();
+    //     $akses = ['all', 'humas', 'industri'];
+    //     if (in_array($data['user']['hak_akses'], $akses)) {
+    //         $this->view('templates/humas/header', $data);
+    //         $this->view('humas/pkl/nilai/mekatronika/pklnilaitma', $data);
+    //         $this->view('templates/humas/footer');
+    //     } else if ($data['user']['hak_akses'] == '') {
+    //         header("Location: " . BASEURL);
+    //         Flasher::setFlash('GAGAL', 'Anda Tidak Mempunyai Akses Untuk Menuju Halaman Tersebut', 'danger');
+    //     }
+    // }
+    // public function nilaimekab()
+    // {
+    //     $data['judul'] = 'Admin - PKL';
+    //     $data['user'] = $this->user;
+    //     $data['ndga'] = $this->model("$this->model_name", 'pkl_model')->getNilaiExistTMB();
+    //     $akses = ['all', 'humas', 'industri'];
+    //     if (in_array($data['user']['hak_akses'], $akses)) {
+    //         $this->view('templates/humas/header', $data);
+    //         $this->view('humas/pkl/nilai/mekatronika/pklnilaitmb', $data);
+    //         $this->view('templates/humas/footer');
+    //     } else if ($data['user']['hak_akses'] == '') {
+    //         header("Location: " . BASEURL);
+    //         Flasher::setFlash('GAGAL', 'Anda Tidak Mempunyai Akses Untuk Menuju Halaman Tersebut', 'danger');
+    //     }
+    // }
+    // public function nilaipha()
+    // {
+    //     $data['judul'] = 'Admin - PKL';
+    //     $data['user'] = $this->user;
+    //     $data['ndga'] = $this->model("$this->model_name", 'pkl_model')->getNilaiExistPHA();
+    //     $akses = ['all', 'humas', 'industri'];
+    //     if (in_array($data['user']['hak_akses'], $akses)) {
+    //         $this->view('templates/humas/header', $data);
+    //         $this->view('humas/pkl/nilai/perhotelan/pklnilaipha', $data);
+    //         $this->view('templates/humas/footer');
+    //     } else if ($data['user']['hak_akses'] == '') {
+    //         header("Location: " . BASEURL);
+    //         Flasher::setFlash('GAGAL', 'Anda Tidak Mempunyai Akses Untuk Menuju Halaman Tersebut', 'danger');
+    //     }
+    // }
+    // public function nilaiphb()
+    // {
+    //     $data['judul'] = 'Admin - PKL';
+    //     $data['user'] = $this->user;
+    //     $data['ndga'] = $this->model("$this->model_name", 'pkl_model')->getNilaiExistPHB();
+    //     $akses = ['all', 'humas', 'industri'];
+    //     if (in_array($data['user']['hak_akses'], $akses)) {
+    //         $this->view('templates/humas/header', $data);
+    //         $this->view('humas/pkl/nilai/perhotelan/pklnilaiphb', $data);
+    //         $this->view('templates/humas/footer');
+    //     } else if ($data['user']['hak_akses'] == '') {
+    //         header("Location: " . BASEURL);
+    //         Flasher::setFlash('GAGAL', 'Anda Tidak Mempunyai Akses Untuk Menuju Halaman Tersebut', 'danger');
+    //     }
+    // }
+    // public function nilairpla()
+    // {
+    //     $data['judul'] = 'Admin - PKL';
+    //     $data['user'] = $this->user;
+    //     $data['ndga'] = $this->model("$this->model_name", 'pkl_model')->getNilaiExistRPLA();
+    //     $akses = ['all', 'humas', 'industri'];
+    //     if (in_array($data['user']['hak_akses'], $akses)) {
+    //         $this->view('templates/humas/header', $data);
+    //         $this->view('humas/pkl/nilai/rpl/pklnilairpla', $data);
+    //         $this->view('templates/humas/footer');
+    //     } else if ($data['user']['hak_akses'] == '') {
+    //         header("Location: " . BASEURL);
+    //         Flasher::setFlash('GAGAL', 'Anda Tidak Mempunyai Akses Untuk Menuju Halaman Tersebut', 'danger');
+    //     }
+    // }
+    // public function nilairplb()
+    // {
+    //     $data['judul'] = 'Admin - PKL';
+    //     $data['user'] = $this->user;
+    //     $data['ndga'] = $this->model("$this->model_name", 'pkl_model')->getNilaiExistRPLB();
+    //     $akses = ['all', 'humas', 'industri'];
+    //     if (in_array($data['user']['hak_akses'], $akses)) {
+    //         $this->view('templates/humas/header', $data);
+    //         $this->view('humas/pkl/nilai/rpl/pklnilairplb', $data);
+    //         $this->view('templates/humas/footer');
+    //     } else if ($data['user']['hak_akses'] == '') {
+    //         header("Location: " . BASEURL);
+    //         Flasher::setFlash('GAGAL', 'Anda Tidak Mempunyai Akses Untuk Menuju Halaman Tersebut', 'danger');
+    //     }
+    // }
+    // public function nilairplc()
+    // {
+    //     $data['judul'] = 'Admin - PKL';
+    //     $data['user'] = $this->user;
+    //     $data['ndga'] = $this->model("$this->model_name", 'pkl_model')->getNilaiExistRPLC();
+    //     $akses = ['all', 'humas', 'industri'];
+    //     if (in_array($data['user']['hak_akses'], $akses)) {
+    //         $this->view('templates/humas/header', $data);
+    //         $this->view('humas/pkl/nilai/rpl/pklnilairplc', $data);
+    //         $this->view('templates/humas/footer');
+    //     } else if ($data['user']['hak_akses'] == '') {
+    //         header("Location: " . BASEURL);
+    //         Flasher::setFlash('GAGAL', 'Anda Tidak Mempunyai Akses Untuk Menuju Halaman Tersebut', 'danger');
+    //     }
+    // }
+    // public function nilaitkja()
+    // {
+    //     $data['judul'] = 'Admin - PKL';
+    //     $data['user'] = $this->user;
+    //     $data['ndga'] = $this->model("$this->model_name", 'pkl_model')->getNilaiExistTKJA();
+    //     $akses = ['all', 'humas', 'industri'];
+    //     if (in_array($data['user']['hak_akses'], $akses)) {
+    //         $this->view('templates/humas/header', $data);
+    //         $this->view('humas/pkl/nilai/tkj/pklnilaitkja', $data);
+    //         $this->view('templates/humas/footer');
+    //     } else if ($data['user']['hak_akses'] == '') {
+    //         header("Location: " . BASEURL);
+    //         Flasher::setFlash('GAGAL', 'Anda Tidak Mempunyai Akses Untuk Menuju Halaman Tersebut', 'danger');
+    //     }
+    // }
+    // public function nilaitkjb()
+    // {
+    //     $data['judul'] = 'Admin - PKL';
+    //     $data['user'] = $this->user;
+    //     $data['ndga'] = $this->model("$this->model_name", 'pkl_model')->getNilaiExistTKJA();
+    //     $akses = ['all', 'humas', 'industri'];
+    //     if (in_array($data['user']['hak_akses'], $akses)) {
+    //         $this->view('templates/humas/header', $data);
+    //         $this->view('humas/pkl/nilai/tkj/pklnilaitkjb', $data);
+    //         $this->view('templates/humas/footer');
+    //     } else if ($data['user']['hak_akses'] == '') {
+    //         header("Location: " . BASEURL);
+    //         Flasher::setFlash('GAGAL', 'Anda Tidak Mempunyai Akses Untuk Menuju Halaman Tersebut', 'danger');
+    //     }
+    // }
 
     public function tambahDataPenempatanania()
     {
