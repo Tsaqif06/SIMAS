@@ -17,15 +17,6 @@ class StrukturKurikulum extends Controller
         $this->view('templates/footerwm');
     }
 
-    public function detail($id)
-    {
-        $data['judul'] = 'Detail Struktur';
-        $data['mhs'] = $this->model("$this->model_name", 'Struktur_Kurikulum_model')->getStrukturById($id);
-        $this->view('templates/header', $data);
-        $this->view('kurikulum/Struktur/detail', $data);
-        $this->view('templates/footerwm');
-    }
-
     public function tambah()
     {
         if ($this->model("$this->model_name", 'Struktur_Kurikulum_model')->tambahDataStruktur($_POST) > 0) {

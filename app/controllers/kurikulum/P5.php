@@ -17,15 +17,6 @@ class P5 extends Controller
         $this->view('templates/footerwm');
     }
 
-    public function detail($id)
-    {
-        $data['judul'] = 'Detail Mahasiswa';
-        $data['mhs'] = $this->model("$this->model_name", 'P5_model')->getMahasiswaById($id);
-        $this->view('templates/header', $data);
-        $this->view('mahasiswa/detail', $data);
-        $this->view('templates/footerwm');
-    }
-
     public function tambah()
     {
         if ($this->model("$this->model_name", 'P5_model')->tambahDataP5($_POST) > 0) {

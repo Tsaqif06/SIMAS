@@ -17,15 +17,6 @@ class GKP extends Controller
         $this->view('templates/footerwm');
     }
 
-    public function detail($id)
-    {
-        $data['judul'] = 'Detail GKP';
-        $data['mhs'] = $this->model("$this->model_name", 'GKP_model')->getGKPById($id);
-        $this->view('templates/header', $data);
-        $this->view('kurikulum/GKP/detail', $data);
-        $this->view('templates/footerwm');
-    }
-
     public function tambah()
     {
         if ($this->model("$this->model_name", 'GKP_model')->tambahDataGKP($_POST) > 0) {

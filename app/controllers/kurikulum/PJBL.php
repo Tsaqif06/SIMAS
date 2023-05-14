@@ -17,15 +17,6 @@ class PJBL extends Controller
         $this->view('templates/footerwm');
     }
 
-    public function detail($id)
-    {
-        $data['judul'] = 'Detail Mahasiswa';
-        $data['mhs'] = $this->model("$this->model_name", 'PJBL_model')->getMahasiswaById($id);
-        $this->view('templates/header', $data);
-        $this->view('kurikulum/mahasiswa/detail', $data);
-        $this->view('templates/footerwm');
-    }
-
     public function tambah()
     {
         if ($this->model("$this->model_name", 'Perangkat_Ajar_model')->tambahDataPJBL($_POST) > 0) {
