@@ -17,15 +17,6 @@ class KegiatanGLS extends Controller
         $this->view('templates/footerwm');
     }
 
-    public function detail($id)
-    {
-        $data['judul'] = 'Detail Struktur Guru';
-        $data['organisasi'] = $this->model("$this->model_name", 'Kegiatan_GLS_model')->getGLSById($id);
-        $this->view('templates/header', $data);
-        $this->view('kurikulum/organisasi/detail', $data);
-        $this->view('templates/footerwm');
-    }
-
     public function tambah()
     {
         if ($this->model("$this->model_name", 'Kegiatan_GLS_model')->tambahGLS($_POST) > 0) {

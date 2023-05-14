@@ -17,15 +17,6 @@ class Lms extends Controller
         $this->view('templates/footerwm');
     }
 
-    public function detail($id)
-    {
-        $data['judul'] = 'Detail Lms';
-        $data['tbl_usnpw'] = $this->model("$this->model_name", 'LMS_model')->getLmsById($id);
-        $this->view('templates/header', $data);
-        $this->view('kurikulum/lms/detail', $data);
-        $this->view('templates/footerwm');
-    }
-
     public function tambah()
     {
         if ($this->model("$this->model_name", 'LMS_model')->tambahLMS($_POST) > 0) {
