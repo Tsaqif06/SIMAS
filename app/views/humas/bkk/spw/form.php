@@ -27,31 +27,99 @@
     </div>
 
     <div class="row">
-        <form action="<?= BASEURL; ?>/bkk/tambahspw" method="post">
-            <input type="hidden" name="id" id="id">
-            <div class="mb-3">
-                <label for="nama" class="form-label">Nama</label>
-                <input type="text" class="form-control" id="nama" name="nama" placeholder="Masukkan nama"
-                    autocomplete="off">
+            <div class="col-lg-6">
+                <?php Flasher::flash(); ?>
             </div>
+        </div>
 
-            <div class="mb-3">
-                <label for="kelas" class="form-label">Kelas</label>
-                <input type="text" class="form-control" id="kelas" name="kelas" placeholder="Masukkan kelas"
-                    autocomplete="off">
-            </div>
+    <div class="row">
+        <form action="<?= BASEURL; ?>/bkk/tambahspw/" method="post" class="forms-sample"
+                                enctype="multipart/form-data">
 
-            <div class="mb-3">
-                <label for="keterangan" class="form-label">Keterangan</label>
-                <input type="text" class="form-control" id="keterangan" name="keterangan"
-                    placeholder="Masukkan keterangan" autocomplete="off">
-            </div>
+                                <input type="hidden" name="id" id="id">
+                                <input type="hidden" name="fdiriLama" id="fdiriLama">
+                                <input type="hidden" name="fprodukLama" id="fprodukLama">
 
-    </div>
-    <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="submit" class="btn btn-primary">Tambah Data</button>
-        </form>
+                                <div class="form-group">
+                                    <label for="nisn">NISN</label>
+                                    <input type="number" class="form-control" id="nisn" name="nisn" placeholder="NISN">
+                                </div>
+                                <div class="form-group">
+                                    <label for="namalengkap">Nama Lengkap</label>
+                                    <input type="text" class="form-control" id="namalengkap" name="namalengkap"
+                                        placeholder="Nama Lengkap">
+                                </div>
+                                <div class="form-group">
+                                    <label for="jk">Jenis Kelamin</label>
+                                    <select class="form-control" id="jk" name="jk">
+                                        <option selected>--Pilih Jenis Kelamin--</option>
+                                        <option value="Laki-laki">Laki - laki</option>
+                                        <option value="Perempuan">Perempuan</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="kelas">Kelas</label>
+                                    <input type="text" class="form-control" id="kelas" name="kelas" placeholder="Kelas">
+                                </div>
+                                <div class="form-group">
+                                    <label for="notelp">No. Telp.</label>
+                                    <input type="text" class="form-control" id="notelp" name="notelp"
+                                        placeholder="No Telp">
+                                </div>
+                                <div class="form-group">
+                                    <label for="namausaha">Nama Usaha</label>
+                                    <input type="text" class="form-control" id="namausaha" name="namausaha"
+                                        placeholder="Nama Usaha">
+                                </div>
+                                <div class="form-group">
+                                    <label for="alamat">Alamat</label>
+                                    <input type="text" class="form-control" id="alamat" name="alamat"
+                                        placeholder="Alamat">
+                                </div>
+                                <div class="form-group">
+                                    <label for="kepemilikanusaha">Kepemilikan Usaha</label>
+                                    <input type="text" class="form-control" id="kepemilikanusaha"
+                                        name="kepemilikanusaha" placeholder="Kepemilikan Usaha">
+                                </div>
+                                <div class="form-group">
+                                    <label for="sejaktgl">Sejak Tanggal</label>
+                                    <input type="date" class="form-control" id="sejaktgl" name="sejaktgl">
+                                </div>
+                                <div class="form-group">
+                                    <label for="omzet">Omzet Per-Bulan</label>
+                                    <input type="text" class="form-control" id="omzet" name="omzet"
+                                        placeholder="Omzet Per-Bulan">
+                                </div>
+                                <div class="form-group">
+                                    <label for="fotodiri">Foto Diri Sendiri</label>
+                                    <input type="file" class="file-upload-default" id="fotodiri" name="fotodiri">
+                                    <div class="input-group col-xs-12">
+                                        <input type="text" class="form-control file-upload-info" disabled
+                                            placeholder="Unggah Foto Diri Sendiri">
+                                        <span class="input-group-append">
+                                            <button class="file-upload-browse btn btn-primary"
+                                                type="button">Unggah</button>
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="fotousaha">Foto Produk Usaha</label>
+                                    <input type="file" class="file-upload-default" id="fotousaha" name="fotousaha">
+                                    <div class="input-group col-xs-12">
+                                        <input type="text" class="form-control file-upload-info" disabled
+                                            placeholder="Unggah Foto Produk Usaha">
+                                        <span class="input-group-append">
+                                            <button class="file-upload-browse btn btn-primary"
+                                                type="button">Unggah</button>
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-outline-secondary btn-fw"
+                                        data-dismiss="modal">Tutup</button>
+                                    <button type="submit" class="btn btn-primary">Simpan Data</button>
+                                </div>
+                            </form>
     </div>
 
 </div>
