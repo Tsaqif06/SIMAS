@@ -3264,7 +3264,7 @@ class PKL extends Controller
         $data['user'] = $this->user;
         $akses = ['all', 'humas'];
         if (in_array($data['user']['hak_akses'], $akses)) {
-            $data['pg'] = $this->model("$this->model_name", 'pkl_model')->getSiswaPegawai();
+            $data['pg'] = $this->model("$this->model_name", 'pkl_model')->getExistSiswaPegawai();
             $this->view('templates/humas/header', $data);
             $this->view('humas/pkl/rekap/magang/pklpengangkatansiswa', $data);
         } else if ($data['user']['hak_akses'] == '') {
@@ -3333,7 +3333,7 @@ class PKL extends Controller
         $data['judul'] = 'Data industri Siswa';
         $data['user'] = $this->user;
         $akses = ['all', 'humas'];
-        $data['dta'] = $this->model("$this->model_name", 'pkl_model')->getSiswaind();
+        $data['dta'] = $this->model("$this->model_name", 'pkl_model')->getExistSiswaind();
         if (in_array($data['user']['hak_akses'], $akses)) {
             $this->view('templates/humas/header', $data);
             $this->view('humas/pkl/rekap/dataindustri/pkldataindustri', $data);
@@ -3398,7 +3398,7 @@ class PKL extends Controller
 
         $data['judul'] = 'Data Tempat';
         $data['user'] = $this->user;
-        $data['mp'] = $this->model("$this->model_name", 'pkl_model')->getSiswaMON();
+        $data['mp'] = $this->model("$this->model_name", 'pkl_model')->getExistSiswaMON();
         $akses = ['all', 'humas'];
         if (in_array($data['user']['hak_akses'], $akses)) {
             $this->view('templates/humas/header', $data);
@@ -3469,7 +3469,7 @@ class PKL extends Controller
         $data['judul'] = 'Data Pembekalan';
         $data['user'] = $this->user;
         $akses = ['all', 'humas'];
-        $data['pbb'] = $this->model("$this->model_name", 'pkl_model')->getSiswaPB();
+        $data['pbb'] = $this->model("$this->model_name", 'pkl_model')->getExistSiswaPB();
         if (in_array($data['user']['hak_akses'], $akses)) {
             $this->view('templates/humas/header', $data);
             $this->view('humas/pkl/pembekalan/pklpembekalan', $data);
@@ -3536,7 +3536,7 @@ class PKL extends Controller
         $data['judul'] = 'Data Tampung';
         $data['user'] = $this->user;
         $akses = ['all', 'humas'];
-        $data['pd'] = $this->model("$this->model_name", 'pkl_model')->getSiswaDP();
+        $data['pd'] = $this->model("$this->model_name", 'pkl_model')->getExistSiswaDP();
         if (in_array($data['user']['hak_akses'], $akses)) {
             $this->view('templates/humas/header', $data);
             $this->view('humas/pkl/dayatampung/pkldayatampung', $data);
@@ -3600,7 +3600,7 @@ class PKL extends Controller
 
         $data['judul'] = 'Data industri Siswa';
         $data['user'] = $this->user;
-        $data['pp'] = $this->model("$this->model_name", 'pkl_model')->getSiswaPP();
+        $data['pp'] = $this->model("$this->model_name", 'pkl_model')->getExistSiswaPP();
         $akses = ['all', 'humas'];
         if (in_array($data['user']['hak_akses'], $akses)) {
             $this->view('templates/humas/header', $data);
@@ -3671,7 +3671,7 @@ class PKL extends Controller
         $data['judul'] = 'Izin PKL';
         $data['user'] = $this->user;
         $akses = ['all', 'humas'];
-        $data['iz'] = $this->model("$this->model_name", 'pkl_model')->getSiswaIZ();
+        $data['iz'] = $this->model("$this->model_name", 'pkl_model')->getExistSiswaIZ();
         if (in_array($data['user']['hak_akses'], $akses)) {
             $this->view('templates/humas/header', $data);
             $this->view('humas/pkl/rekap/perizinanpkl/pklperizinan', $data);
@@ -3739,7 +3739,7 @@ class PKL extends Controller
         $data['judul'] = 'Data industri Siswa';
         $data['user'] = $this->user;
         $akses = ['all', 'humas'];
-        $data['bm'] = $this->model("$this->model_name", 'pkl_model')->getSiswaBM();
+        $data['bm'] = $this->model("$this->model_name", 'pkl_model')->getExistSiswaBM();
         if (in_array($data['user']['hak_akses'], $akses)) {
             $this->view('templates/humas/header', $data);
             $this->view('humas/pkl/rekap/siswabermasalah/pklsiswabermasalah', $data);

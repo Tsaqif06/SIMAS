@@ -31,7 +31,7 @@ class BKK_model
 
     public function getExistdas()
     {
-        $this->db->query('SELECT * FROM ' . $this->tabledas . '  WHERE `status` = 1 ORDER BY namalengkap ASC');
+        $this->db->query('SELECT * FROM ' . $this->tabledas . '  WHERE `status` = ' . 1  . 'ORDER BY namalengkap ASC');
         return $this->db->fetchAll();
     }
 
@@ -85,38 +85,38 @@ class BKK_model
 
     public function getExistlomba()
     {
-        $this->db->query('SELECT * FROM ' . $this->tablelomba . ' WHERE `status` = 1 ORDER BY penyelenggara ASC');
+        $this->db->query('SELECT * FROM ' . $this->tablelomba . ' WHERE `status` = ' . 1  . 'ORDER BY penyelenggara ASC');
         return $this->db->fetchAll();
     }
 
 
     public function getExistpeminatan()
     {
-        $this->db->query('SELECT * FROM ' . $this->tablepeminatan . ' WHERE `status` = 1 ORDER BY nama ASC');
+        $this->db->query('SELECT * FROM ' . $this->tablepeminatan . ' WHERE `status` = ' . 1  . 'ORDER BY nama ASC');
         return $this->db->fetchAll();
     }
 
     public function getExistworkshop()
     {
-        $this->db->query('SELECT * FROM ' . $this->tableworkshop . ' WHERE `status` = 1 ORDER BY penyelenggara ASC');
+        $this->db->query('SELECT * FROM ' . $this->tableworkshop . ' WHERE `status` = ' . 1  . 'ORDER BY penyelenggara ASC');
         return $this->db->fetchAll();
     }
 
     public function getExistloker()
     {
-        $this->db->query('SELECT * FROM ' . $this->tableloker . ' WHERE `status` = 1 ORDER BY namaperusahaan ASC');
+        $this->db->query('SELECT * FROM ' . $this->tableloker . ' WHERE `status` = ' . 1  . 'ORDER BY namaperusahaan ASC');
         return $this->db->fetchAll();
     }
 
     public function getExistmou()
     {
-        $this->db->query('SELECT * FROM ' . $this->tablemou . ' WHERE `status` = 1 ORDER BY dudika ASC');
+        $this->db->query('SELECT * FROM ' . $this->tablemou . ' WHERE `status` = ' . 1  . 'ORDER BY dudika ASC');
         return $this->db->fetchAll();
     }
 
     public function getExistspw()
     {
-        $this->db->query('SELECT * FROM ' . $this->tablespw . ' WHERE `status` = 1 ORDER BY namalengkap ASC');
+        $this->db->query('SELECT * FROM ' . $this->tablespw . ' WHERE `status` = ' . 1  . 'ORDER BY namalengkap ASC');
         return $this->db->fetchAll();
     }
 
