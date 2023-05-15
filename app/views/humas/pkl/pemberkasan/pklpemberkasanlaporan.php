@@ -52,7 +52,7 @@
       <div class="col-md-12 grid-margin">
         <div class="template-demo">
           <button type="button" class="btn btn-primary tambahpemberkasan" data-toggle="modal" data-target="#formModal">Tambah Data</button>
-          <button type="button" class="btn btn-primary my-3 mx-3 tampilModalImport" data-toggle="modal" data-target="#modalImport">
+          <button type="button" class="btn btn-primary tampilModalImport" data-toggle="modal" data-target="#modalImport">
             Import Data Dari Excel
           </button>
         </div>
@@ -95,25 +95,32 @@
               </button>
             </div>
             <div class="modal-body">
-              <form action="<?= BASEURL; ?>/pkl/tambahpemberkasan" method="POST" enctype="multipart/form-data">
+            <form action="<?= BASEURL; ?>/pkl/tambahpemberkasan" method="POST" enctype="multipart/form-data">
                 <input type="hidden" name="id" id="id">
                 <input type="hidden" name="fotoLama" id="fotoLama">
+                <input type="hidden" name="suratLama" id="suratLama">
+                <input type="hidden" name="kartuPelajarLama" id="kartuPelajarLama">
                 <input type="hidden" name="raportLama" id="raportLama">
-                <input type="hidden" name="buktiLama" id="buktiLama">
-                <div class="form-group">
-                  <label for="nisn_pemberkasan">NISN</label>
-                  <input type="number" class="form-control" id="nisn_pemberkasan" name="nisn_pemberkasan" placeholder="NISN">
-                </div>
-                <div class="form-group">
-                  <label for="namasiswa_pemberkasan">Nama Lengkap</label>
-                  <input type="text" class="form-control" id="namasiswa_pemberkasan" name="namasiswa_pemberkasan" placeholder="Nama Lengkap">
-                </div>
-                <div class="form-group">
-                  <label for="tanggallahir_pemberkasan">Tanggal Lahir</label>
-                  <input type="date" class="form-control" id="tanggallahir_pemberkasan" name="tanggallahir_pemberkasan">
-                </div>
-
-                <div class="form-group">
+                <input type="hidden" name="nilaiLama" id="nilaiLama">
+                <input type="hidden" name="administrasiLama" id="administrasiLama">
+                <input type="hidden" name="perpusLama" id="perpusLama">
+                  <div class="form-group">
+                    <label for="nisn_pemberkasan">NISN</label>
+                    <input type="number" class="form-control" id="nisn_pemberkasan" name="nisn_pemberkasan" placeholder="NISN">
+                  </div>
+                  <div class="form-group">
+                    <label for="nis_pemberkasan">NIS</label>
+                    <input type="number" class="form-control" id="nis_pemberkasan" name="nis_pemberkasan" placeholder="NIS">
+                  </div>
+                  <div class="form-group">
+                    <label for="namasiswa_pemberkasan">Nama Lengkap</label>
+                    <input type="text" class="form-control" id="namasiswa_pemberkasan" name="namasiswa_pemberkasan" placeholder="Nama Lengkap">
+                  </div>
+                  <div class="form-group">
+                    <label for="tanggallahir_pemberkasan">Tanggal Lahir</label>
+                    <input type="date" class="form-control" id="tanggallahir_pemberkasan" name="tanggallahir_pemberkasan">
+                  </div>
+                  <div class="form-group">
                   <label for="jurusan_pemberkasan">Jurusan</label>
                   <select class="form-control" aria-label="Default select example" id="jurusan_pemberkasan" name="jurusan_pemberkasan">
                     <option selected>--Pilih Jurusan--</option>
@@ -127,48 +134,92 @@
                     <option value="Perhotelan">Perhotelan</option>
                   </select>
                 </div>
-                <div class="form-group">
-                  <label for="jeniskelamin_pemberkasan">Jenis Kelamin</label>
-                  <select class="form-control" id="jeniskelamin_pemberkasan" name="jeniskelamin_pemberkasan">
-                    <option selected>--Pilih Jenis Kelamin--</option>
-                    <option value="Laki-laki">Laki-Laki</option>
-                    <option value="Perempuan">Perempuan</option>
-                  </select>
-                </div>
-                <div class="form-group">
-                  <label for="domisili_pemberkasann">Domisili</label>
-                  <input type="text" class="form-control" id="domisili_pemberkasann" name="domisili_pemberkasann" placeholder="Domisili">
-                </div>
-                <div class="form-group">
-                  <label>Foto 3 : 4</label>
-                  <input type="file" class="file-upload-default" name="uploadfoto_pemberkasan" id="uploadfoto_pemberkasan">
-                  <div class="input-group col-xs-12">
-                    <input type="text" class="form-control file-upload-info" disabled placeholder="Unggah Foto 3 : 4">
-                    <span class="input-group-append">
-                      <button class="file-upload-browse btn btn-primary" type="button">Unggah</button>
-                    </span>
+                  <div class="form-group">
+                    <label for="jeniskelamin_pemberkasan">Jenis Kelamin</label>
+                      <select class="form-control" id="jeniskelamin_pemberkasan" name="jeniskelamin_pemberkasan">
+						            <option selected>--Pilih Jenis Kelamin--</option>
+                        <option value="Laki-laki">Laki - Laki</option>
+                        <option value="Perempuan">Perempuan</option>
+                      </select>
                   </div>
-                </div>
-                <div class="form-group">
-                  <label>Rapor Digital</label>
-                  <input type="file" class="file-upload-default" name="uploadebookraport_pemberkasan" id="uploadebookraport_pemberkasan">
-                  <div class="input-group col-xs-12">
-                    <input type="text" class="form-control file-upload-info" disabled placeholder="Unggah Rapor Digital">
-                    <span class="input-group-append">
-                      <button class="file-upload-browse btn btn-primary" type="button">Unggah</button>
-                    </span>
+                  <div class="form-group">
+                    <label for="domisili_pemberkasann">Domisili</label>
+                    <input type="text" class="form-control" id="domisili_pemberkasann" name="domisili_pemberkasann" placeholder="Domisili">
                   </div>
-                </div>
-                <div class="form-group">
-                  <label>Bukti Lunas</label>
-                  <input type="file" class="file-upload-default" name="uploadbuktilunas_pemberkasan" id="uploadbuktilunas_pemberkasan">
-                  <div class="input-group col-xs-12">
-                    <input type="text" class="form-control file-upload-info" disabled placeholder="Unggah Bukti Lunas">
-                    <span class="input-group-append">
-                      <button class="file-upload-browse btn btn-primary" type="button">Unggah</button>
-                    </span>
+                  <div class="form-group">
+                    <label for="pkldimana_pemberkasan">Ingin Prakerin di Kota</label>
+                    <input type="text" class="form-control" id="pkldimana_pemberkasan" name="pkldimana_pemberkasan" placeholder="Kota">
                   </div>
-                </div>
+                  <div class="form-group">
+                    <label>Foto 3 : 4</label>
+                    <input type="file" class="file-upload-default" id="uploadfoto_pemberkasan" name="uploadfoto_pemberkasan">
+                    <div class="input-group col-xs-12">
+                      <input type="text" class="form-control file-upload-info" disabled placeholder="Unggah Foto 3 : 4">
+                      <span class="input-group-append">
+                        <button class="file-upload-browse btn btn-primary" type="button">Unggah</button>
+                      </span>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label>Foto Surat Pernyataan Bermaterai</label>
+                    <input type="file" class="file-upload-default" id="uploadsurat_pemberkasan" name="uploadsurat_pemberkasan">
+                    <div class="input-group col-xs-12">
+                      <input type="text" class="form-control file-upload-info" disabled placeholder="Unggah Foto">
+                      <span class="input-group-append">
+                        <button class="file-upload-browse btn btn-primary" type="button">Unggah</button>
+                      </span>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label>Foto Kartu Pelajar</label>
+                    <input type="file" class="file-upload-default" id="uploadkartupelajar_pemberkasan" name="uploadkartupelajar_pemberkasan">
+                    <div class="input-group col-xs-12">
+                      <input type="text" class="form-control file-upload-info" disabled placeholder="Unggah Foto">
+                      <span class="input-group-append">
+                        <button class="file-upload-browse btn btn-primary" type="button">Unggah</button>
+                      </span>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label>Rapor Digital Semester 1, 2, 3</label>
+                    <input type="file" class="file-upload-default" name="uploadebookraport_pemberkasan" id="uploadebookraport_pemberkasan">
+                    <div class="input-group col-xs-12">
+                      <input type="text" class="form-control file-upload-info" disabled placeholder="Unggah Rapor Digital">
+                      <span class="input-group-append">
+                        <button class="file-upload-browse btn btn-primary" type="button">Unggah</button>
+                      </span>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label>Bukti Lunas Nilai</label>
+                    <input type="file" class="file-upload-default" name="uploadbuktilunasnilai_pemberkasan" id="uploadbuktilunasnilai_pemberkasan">
+                    <div class="input-group col-xs-12">
+                      <input type="text" class="form-control file-upload-info" disabled placeholder="Unggah Bukti Lunas Nilai">
+                      <span class="input-group-append">
+                        <button class="file-upload-browse btn btn-primary" type="button">Unggah</button>
+                      </span>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label>Bukti Lunas Administrasi</label>
+                    <input type="file" class="file-upload-default" name="uploadbuktilunasadministrasi_pemberkasan" id="uploadbuktilunasadministrasi_pemberkasan">
+                    <div class="input-group col-xs-12">
+                      <input type="text" class="form-control file-upload-info" disabled placeholder="Unggah Bukti Lunas Administrasi">
+                      <span class="input-group-append">
+                        <button class="file-upload-browse btn btn-primary" type="button">Unggah</button>
+                      </span>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label>Bukti Lunas Perpustakaan</label>
+                    <input type="file" class="file-upload-default" name="uploadbuktilunasperpus_pemberkasan" id="uploadbuktilunasperpus_pemberkasan">
+                    <div class="input-group col-xs-12">
+                      <input type="text" class="form-control file-upload-info" disabled placeholder="Unggah Bukti Lunas Perpustakaan">
+                      <span class="input-group-append">
+                        <button class="file-upload-browse btn btn-primary" type="button">Unggah</button>
+                      </span>
+                    </div>
+                  </div>
                 <div class="modal-footer">
                   <button type="button" class="btn btn-outline-secondary btn-fw" data-dismiss="modal">Tutup</button>
                   <button type="submit" class="btn btn-primary">Simpan Data</button>
@@ -189,15 +240,22 @@
                 <thead>
                   <tr>
                     <th>Aksi</th>
+                    <th>No</th>
                     <th>NISN</th>
+                    <th>NIS</th>
                     <th>Nama</th>
                     <th>Tanggal Lahir</th>
                     <th>Jurusan</th>
                     <th>Jenis Kelamin</th>
                     <th>Domisili</th>
+                    <th>Ingin Prakerin di Kota</th>
                     <th>Foto 3 : 4</th>
+                    <th>Surat Pernyataan Bermaterai</th>
+                    <th>Kartu Pelajar</th>
                     <th>E- book rapor</th>
-                    <th>Bukti Lunas</th>
+                    <th>Bukti Lunas Nilai</th>
+                    <th>Bukti Lunas Administrasi</th>
+                    <th>Bukti Lunas Perpustakaan</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -208,15 +266,23 @@
                         <a class="badge badge-success tampilModalUbahps" data-url="<?= BASEURL ?>/pkl/ubahpemberkasan/<?= $siswa['id']; ?>" data-toggle="modal" data-target="#formModal" data-id="<?= $siswa['id'] ?>"><i class="mdi mdi-lead-pencil"></i></a>
                         <a href="<?= BASEURL; ?>/pkl/hapuspemberkasan/<?= $siswa['id']; ?>" class="badge badge-danger"><i class="mdi mdi-delete"></i></a>
                       </td>
+                      <td><?= $no++ ?></td>
                       <td><?= $siswa['nisn_pemberkasan']; ?></td>
+                      <td><?= $siswa['nis_pemberkasan']; ?></td>
                       <td><?= $siswa['namasiswa_pemberkasan']; ?></td>
                       <td><?= $siswa['tanggallahir_pemberkasan']; ?></td>
                       <td><?= $siswa['jurusan_pemberkasan']; ?></td>
                       <td><?= $siswa['jeniskelamin_pemberkasan']; ?></td>
                       <td><?= $siswa['domisili_pemberkasann']; ?></td>
+                      <td><?= $siswa['pkldimana_pemberkasan']; ?></td>
                       <td><img src="<?= BASEURL; ?>/images/humas/pkl/pemberkasan/foto/<?= $siswa['uploadfoto_pemberkasan']; ?>" alt="no img" style="width: 65px; height: 65px;"></td>
-                      <td><img src="<?= BASEURL; ?>/images/humas/pkl/pemberkasan/raport/<?= $siswa['uploadebookraport_pemberkasan']; ?>" alt="no img" style="width: 65px; height: 65px;"></td>
-                      <td><img src="<?= BASEURL; ?>/images/humas/pkl/pemberkasan/buktilunas/<?= $siswa['uploadbuktilunas_pemberkasan']; ?>" alt="no img" style="width: 65px; height: 65px;"></td>
+                      <td><img src="<?= BASEURL; ?>/images/humas/pkl/pemberkasan/surat/<?= $siswa['uploadsurat_pemberkasan']; ?>" alt="no img" style="width: 65px; height: 65px;"></td>
+                      <td><img src="<?= BASEURL; ?>/images/humas/pkl/pemberkasan/kartupelajar/<?= $siswa['uploadkartupelajar_pemberkasan']; ?>" alt="no img" style="width: 65px; height: 65px;"></td>
+                      <!-- <td><img src="<?= BASEURL; ?>/images/humas/pkl/pemberkasan/raport/<?= $siswa['uploadebookraport_pemberkasan']; ?>" alt="no img" style="width: 65px; height: 65px;"></td> -->
+                      <td><a href="<?= BASEURL ?>/pkl/raportpemberkasan/<?= $siswa['uploadebookraport_pemberkasan']; ?>" class="badge badge-primary btn-icon-text"><i class="ti-file btn-icon-prepend"></i> Lihat </a></td>
+                      <td><img src="<?= BASEURL; ?>/images/humas/pkl/pemberkasan/buktilunasnilai/<?= $siswa['uploadbuktilunasnilai_pemberkasan']; ?>" alt="no img" style="width: 65px; height: 65px;"></td>
+                      <td><img src="<?= BASEURL; ?>/images/humas/pkl/pemberkasan/buktilunasadm/<?= $siswa['uploadbuktilunasadministrasi_pemberkasan']; ?>" alt="no img" style="width: 65px; height: 65px;"></td>
+                      <td><img src="<?= BASEURL; ?>/images/humas/pkl/pemberkasan/buktilunasperpus/<?= $siswa['uploadbuktilunasperpus_pemberkasan']; ?>" alt="no img" style="width: 65px; height: 65px;"></td>
                     </tr>
                   <?php endforeach; ?>
                 </tbody>
