@@ -71,6 +71,12 @@ class pkl_model extends Database
         return $this->db->fetchAll();
     }
 
+    public function getExistSiswaPegawai()
+    {
+        $this->db->query('SELECT * FROM ' . $this->table . 'WHERE `status` = ' . 1);
+        return $this->db->fetchAll();
+    }
+
     public function getDetailSiswa($id)
     {
         $this->db->query('SELECT * FROM ' . $this->table . ' WHERE id = :id');
@@ -161,6 +167,11 @@ class pkl_model extends Database
     public function getSiswaind()
     {
         $this->db->query('SELECT * FROM ' . $this->tableind);
+        return $this->db->fetchAll();
+    }
+    public function getExistSiswaind()
+    {
+        $this->db->query('SELECT * FROM ' . $this->tableind . 'WHERE `status` = ' . 1);
         return $this->db->fetchAll();
     }
 
@@ -260,6 +271,12 @@ class pkl_model extends Database
         return $this->db->fetchAll();
     }
 
+    public function getExistSiswatp()
+    {
+        $this->db->query('SELECT * FROM ' . $this->tabletp . 'WHERE `status` = ' . 1);
+        return $this->db->fetchAll();
+    }
+
     public function getDetailtp($id)
     {
         $this->db->query('SELECT * FROM ' . $this->tabletp . ' WHERE id = :id');
@@ -349,6 +366,11 @@ class pkl_model extends Database
         $this->db->query('SELECT * FROM ' . $this->tableMON);
         return $this->db->fetchAll();
     }
+    public function getExistSiswaMON()
+    {
+        $this->db->query('SELECT * FROM ' . $this->tableMON . 'WHERE `status` = ' . 1);
+        return $this->db->fetchAll();
+    }
 
     public function getDetailMON($id)
     {
@@ -433,6 +455,11 @@ class pkl_model extends Database
     public function getSiswaPB()
     {
         $this->db->query('SELECT * FROM ' . $this->tablepb);
+        return $this->db->fetchAll();
+    }
+    public function getExistSiswaPB()
+    {
+        $this->db->query('SELECT * FROM ' . $this->tablepb . 'WHERE `status` = ' . 1);
         return $this->db->fetchAll();
     }
 
@@ -1410,6 +1437,11 @@ class pkl_model extends Database
         $this->db->query('SELECT * FROM ' . $this->tabledp);
         return $this->db->fetchAll();
     }
+    public function getExistSiswaDP()
+    {
+        $this->db->query('SELECT * FROM ' . $this->tabledp . 'WHERE `status` = ' . 1);
+        return $this->db->fetchAll();
+    }
 
     public function getDetailDP($id)
     {
@@ -1499,6 +1531,11 @@ class pkl_model extends Database
     public function getSiswaPP()
     {
         $this->db->query('SELECT * FROM ' . $this->tablepp);
+        return $this->db->fetchAll();
+    }
+    public function getExistSiswaPP()
+    {
+        $this->db->query('SELECT * FROM ' . $this->tablepp . 'WHERE `status` = ' . 1);
         return $this->db->fetchAll();
     }
 
@@ -1596,6 +1633,12 @@ class pkl_model extends Database
     public function getSiswaIZ()
     {
         $this->db->query('SELECT * FROM ' . $this->tableiz);
+        return $this->db->fetchAll();
+    }
+
+    public function getExistSiswaIZ()
+    {
+        $this->db->query('SELECT * FROM ' . $this->tableiz . 'WHERE `status` = ' . 1);
         return $this->db->fetchAll();
     }
 

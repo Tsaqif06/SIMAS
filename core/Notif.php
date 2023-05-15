@@ -1,6 +1,7 @@
-<?php 
+<?php
 
-class Notif {
+class Notif
+{
   private static $host = DB_HOST;
   private static $user = DB_USER;
   private static $pass = DB_PASS;
@@ -9,18 +10,18 @@ class Notif {
 
   public static function bind($stmt, $param, $value, $type = null) // data binding untuk terhindar dari sql injection
   {
-    if ( is_null($type) ) {
-      switch(true) {
-        case is_int($value) :
+    if (is_null($type)) {
+      switch (true) {
+        case is_int($value):
           $type = PDO::PARAM_INT;
           break;
-        case is_bool($value) :
+        case is_bool($value):
           $type = PDO::PARAM_BOOL;
           break;
-        case is_null($value) :
+        case is_null($value):
           $type = PDO::PARAM_NULL;
           break;
-        default :
+        default:
           $type = PDO::PARAM_STR;
       }
     }
@@ -50,5 +51,3 @@ class Notif {
     return $stmt->rowCount();
   }
 }
-
-?>
