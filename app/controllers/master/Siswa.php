@@ -14,7 +14,7 @@ class Siswa extends Controller
         $akses = ['all', 'mastertu', 'humas', 'kesiswaan'];
 
         $data['siswa'] = $this->model("$this->model_name", 'Siswa_model')->getAllExistData();
-        $data['kompkeahlian'] = $this->model("$this->model_name", 'Kompkeahlian_model')->getAllData();
+        $data['kompkeahlian'] = $this->model("$this->model_name", 'Kompkeahlian_model')->getAllExistData();
 
         if (in_array($data['user']['hak_akses'], $akses)) {
             $this->view('templates/header', $data);

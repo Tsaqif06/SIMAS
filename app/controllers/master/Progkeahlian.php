@@ -14,6 +14,7 @@ class Progkeahlian extends Controller
         $akses = ['all', 'mastertu', 'kesiswaan'];
 
         $data['progkeahlian'] = $this->model("$this->model_name", 'Progkeahlian_model')->getAllExistData();
+        $data['kompkeahlian'] = $this->model("$this->model_name", 'Kompkeahlian_model')->getAllExistData();
 
         if (in_array($data['user']['hak_akses'], $akses)) {
             $this->view('templates/header', $data);

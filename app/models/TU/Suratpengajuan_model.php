@@ -35,7 +35,7 @@ class Suratpengajuan_model
 
     public function getQueuedData()
     {
-        $this->db->query("SELECT * FROM {$this->table} WHERE is_approved = 0");
+        $this->db->query("SELECT * FROM {$this->table} WHERE is_approved = 0 AND NOT is_declined = 1");
         return $this->db->fetchAll();
     }
 
@@ -52,7 +52,7 @@ class Suratpengajuan_model
             "INSERT INTO {$this->table}
                 VALUES 
             (null, :uuid, :no_surat, :alamat_pengirim, :tanggal, :tanggal_surat, 
-            :perihal, :nomor_petunjuk, CURRENT_TIMESTAMP, :requested_by, null, null, 0, 0)"
+            :perihal, :nomor_petunjuk, CURRENT_TIMESTAMP, :requested_by, null, null, null, null, 0, 0, 0)"
         );
 
         $this->db->bind('uuid', Uuid::uuid4()->toString());
@@ -69,32 +69,6 @@ class Suratpengajuan_model
     {
         $this->db->query("DELETE FROM {$this->table} WHERE id = :id");
         $this->db->bind("id", $id);
-
-        $this->db->execute();
-        return $this->db->rowCount();
-    }
-
-    public function ubahData($data)
-    {
-        $this->db->query(
-            "UPDATE {$this->table}
-                SET 
-                no_surat = :no_surat,
-                alamat_pengirim = :alamat_pengirim,
-                tanggal = :tanggal,
-                tanggal_surat = :tanggal_surat,
-                perihal = :perihal,
-                nomor_petunjuk = :nomor_petunjuk,
-                approved_at = CURRENT_TIMESTAMP,
-                approved_by = :approved_by
-            WHERE id = :id"
-        );
-
-        foreach ($this->fields as $field) {
-            $this->db->bind($field, $data[$field]);
-        }
-        $this->db->bind('approved_by', $this->user);
-        $this->db->bind('id', $data['id']);
 
         $this->db->execute();
         return $this->db->rowCount();
@@ -133,14 +107,16 @@ class Suratpengajuan_model
 
         $from = $this->getDataApprove($id);
         $this->db->query(
-            "INSERT INTO `surat_masuk`(`id`, `nomor_berkas`, `alamat_pengirim`, `tanggal`, `tanggal_surat`, `nomor_surat`, `perihal`, `nomor_petunjuk`, `created_at`, `created_by`) VALUES
-            (null, :nomor_berkas, :alamat_pengirim, :tanggal, :tanggal_surat, :no_surat, :perihal, :nomor_petunjuk, :created_at, :created_by)
+            "INSERT INTO `surat_masuk`(`id`, `uuid`, `nomor_berkas`, `alamat_pengirim`, `tanggal`, `tanggal_surat`, `nomor_surat`, `perihal`, `nomor_petunjuk`, `created_at`, `created_by`) VALUES
+            (null, :uuid, :nomor_berkas, :alamat_pengirim, :tanggal, :tanggal_surat, :no_surat, :perihal, :nomor_petunjuk, :created_at, :created_by)
             "
         );
+
         foreach ($from as $data) {
             foreach ($this->fields as $field) {
                 $this->db->bind($field, $data[$field]);
             }
+            $this->db->bind('uuid', $data['uuid']);
             $this->db->bind("created_at", $data["requested_at"]);
             $this->db->bind("created_by", $data["requested_by"]);
         }
@@ -155,7 +131,8 @@ class Suratpengajuan_model
             SET 
             approved_at = CURRENT_TIMESTAMP,
             approved_by = :approved_by,
-            is_approved = 1
+            is_approved = 1,
+            is_declined = 0
         WHERE id = :id
         ");
         $this->db->bind("approved_by", $this->user);
@@ -169,7 +146,16 @@ class Suratpengajuan_model
 
     public function declineData($id)
     {
-        $this->db->query("UPDATE {$this->table} SET is_approved = 0 WHERE id = :id");
+        $this->db->query("UPDATE {$this->table}
+            SET
+            declined_at = CURRENT_TIMESTAMP,
+            declined_by = :declined_by,
+            is_approved = 0,
+            is_declined = 1
+        WHERE id = :id
+        ");
+
+        $this->db->bind("declined_by", $this->user);
         $this->db->bind("id", $id);
 
         $this->db->execute();
@@ -181,7 +167,7 @@ class Suratpengajuan_model
         // Cek file diupload apa belum
         if (!isset($_FILES['file']['name'])) {
             Flasher::setFlash('Error', 'Harap pilih file Excel terlebih dahulu', 'danger');
-            header('location: ' . BASEURL . '/pengajuan');
+            header('location: ' . BASEURL . '/suratpengajuan');
             exit;
         }
 

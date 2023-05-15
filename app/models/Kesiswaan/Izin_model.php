@@ -51,7 +51,7 @@ class Izin_model
     public function tambahDataIzin($data)
     {                     //nama tabel
         $query = "INSERT INTO keterangan__izins VALUES(
-            null, :uuid, :ID_KEHADIRAN, :KETERANGAN, :STATUSS, '', CURRENT_TIMESTAMP, :created_by, null, '', null, '', null, '', 0, 0, DEFAULT)";
+            null, :uuid, :ID_KEHADIRAN, :KETERANGAN, :STATUSS, :note, CURRENT_TIMESTAMP, :created_by, null, '', null, '', null, '', 0, 0, DEFAULT)";
 
         $this->db->query($query);
         $this->db->bind('uuid', Uuid::uuid4()->toString());

@@ -30,7 +30,8 @@
     </div>
     <div class="mb-3">
         <label for="tanggal_lahir" class="form-label">Tanggal Lahir</label>
-        <input type="date" placeholder="dd/mm/yyyy" class="form-control" name="tanggal_lahir" id="tanggal_lahir" required>
+        <input type="date" placeholder="dd/mm/yyyy" class="form-control" name="tanggal_lahir" id="tanggal_lahir"
+            required>
     </div>
     <div class="mb-3">
         <label for="alamat_lengkap" class="form-label">Alamat Lengkap</label>
@@ -42,7 +43,8 @@
     </div>
     <div class="mb-3">
         <label for="jurusan_pendidikan_terakhir" class="form-label">Jurusan Pendidikan Terakhir</label>
-        <input type="text" class="form-control" name="jurusan_pendidikan_terakhir" id="jurusan_pendidikan_terakhir" required>
+        <input type="text" class="form-control" name="jurusan_pendidikan_terakhir" id="jurusan_pendidikan_terakhir"
+            required>
     </div>
     <div class="mb-3">
         <label for="nomor_hp" class="form-label">Nomor HP</label>

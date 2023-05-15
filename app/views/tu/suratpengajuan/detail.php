@@ -57,12 +57,12 @@
                                     <tr>
                                         <td><?= $i++ ?></td>
                                         <td class="font-weight-medium">
-                                            <a href="<?= BASEURL ?>/pengajuan/approveData/<?= $row['id'] ?>"
+                                            <a href="<?= BASEURL ?>/suratpengajuan/approveData/<?= $row['id'] ?>"
                                                 class="badge text-bg-success"
                                                 onclick="return confirm('Yakin Ingin Menerima Pengajuan?')">
                                                 <i class="ti ti-check"></i>
                                             </a>
-                                            <a href="<?= BASEURL ?>/pengajuan/declineData/<?= $row['id'] ?>">
+                                            <a href="<?= BASEURL ?>/suratpengajuan/declineData/<?= $row['id'] ?>">
                                                 <div class=" font-weight-medium pt-2">
                                                     <div class="badge badge-danger delete"
                                                         onclick="return confirm('Yakin Ingin Menolak Pengajuan?')">
