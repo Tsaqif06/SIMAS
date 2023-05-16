@@ -36,7 +36,7 @@
           <div class="row">
       <div class="col-md-12 grid-margin">
         <div class="template-demo">
-          <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#formmodal">Tambah
+          <button type="button" class="btn btn-primary tombolTambahData" data-toggle="modal" data-target="#exampleModal  ">Tambah
             Data</button>
           <button type="button" class="btn btn-primary tampilModalImport" data-toggle="modal" data-target="#modalImport">
             Import Data Dari Excel
@@ -72,11 +72,11 @@
 
 
             <!-- Modal -->
-            <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="judulModal" aria-hidden="true">
               <div class="modal-dialog" role="document">
                 <div class="modal-content">
                   <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Tambah Data</h5>
+                    <h5 class="modal-title modalLabel" id="modalLabel">Tambah Data</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                       <span aria-hidden="true">&times;</span>
                     </button>
@@ -132,15 +132,11 @@
                         <?php foreach ($data['ppanib'] as $ppdga) : ?>
                           <tr>
                             <td>
-                              <a href="<?= BASEURL; ?>/PKL/ubahDataPenempatanANIB/<?= $ppdga['id']; ?>" class="ppanib" data-bs-toggle="modal" data-bs-target="#exampleModal" data-id=<?= $ppdga['id']; ?>>
-                                <label class="badge badge-success">
+                              <a href="<?= BASEURL; ?>/PKL/ubahDataPenempatanANIB/<?= $ppdga['id']; ?>" class="ppanib badge badge-success" data-toggle="modal" data-target="#exampleModal" data-id=<?= $ppdga['id']; ?>>
                                   <i class="mdi mdi-lead-pencil"></i>
-                                </label>
                               </a>
-                              <a href="<?= BASEURL; ?>/PKL/hapusDataPenempatanANIB/<?= $ppdga['id']; ?>" onclick="return confirm('Apakah anda sudah yakin?');">
-                                <label class="badge badge-danger">
+                              <a href="<?= BASEURL; ?>/PKL/hapusDataPenempatanANIB/<?= $ppdga['id']; ?>" class="badge badge-danger" onclick="return confirm('Apakah anda sudah yakin?');">                               
                                   <i class="mdi mdi-delete"></i>
-                                </label>
                               </a>
                             </td>
                             <td><?= $ppdga['nisn'] ?></td>
@@ -160,38 +156,25 @@
 
         </div>
         <!-- content-wrapper ends -->
-        <!-- partial:partials/_footer.html -->
-        <footer class="footer">
-          <div class="d-sm-flex justify-content-center justify-content-sm-between">
-            <span class="text-muted text-center text-sm-left d-block d-sm-inline-block">Copyright © 2023. SIMAS. All rights reserved.</span>
-          </div>
-        </footer>
-        <!-- partial -->
-      </div>
-      <!-- main-panel ends -->
-      </div>
-      <!-- page-body-wrapper ends -->
-      </div>
-      <!-- container-scroller -->
+
 
       <script>
         $(function() {
           // const BASEURL = window.location;
           // console.log(BASEURL)
           $('.tombolTambahData').on('click', function() {
-            $('formModalLabel').html('Tambah Data Struktur Organisasi')
+            $('.modalLabel').html('Tambah Data Siswa')
             $('.modal-footer button[type=submit]').html('Tambah Data');
 
           });
 
           $(".ppanib").click(function() {
             $("#modal").addClass("edit");
-            $("#modalLabel").html("Ubah Data Industri");
+            $(".modalLabel").html('Ubah Data Siswa');
             $(".modal-footer button[type=submit]").html("Ubah Data");
             $(".modal-body form").attr("action", `http://localhost/SIMAS/public/pkl/ubahDataPenempatanANIB`);
 
             const id = $(this).data("id");
-            console.log(id);
 
             $.ajax({
               url: `http://localhost/SIMAS/public/pkl/getUbahPenempatanANIB`,

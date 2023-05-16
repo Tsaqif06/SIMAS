@@ -1,3 +1,4 @@
+<div class="main-panel">
     <div class="content-wrapper">
         <div class="row">
             <div class="col-md-12 grid-margin">
@@ -27,7 +28,7 @@
           <div class="row">
             <div class="col-md-12 grid-margin">
             <div class="template-demo"> -->
-                    <button type="button" class="btn btn-primary my-3 mx-3 tampilModalImport" data-toggle="modal"
+                    <button type="button" class="btn btn-primary tampilModalImport" data-toggle="modal"
                         data-target="#modalImport">
                         Import Data Dari Excel
                     </button>
@@ -35,77 +36,7 @@
             </div>
         </div>
 
-        <div class="row">
-            <div class="col-lg-12 grid-margin stretch-card">
-                <div class="card">
-                    <div class="card-body">
-                        <div class="table-responsive ">
-                            <table id="table" class="table table-hover table-main">
-                                <thead>
-                                    <tr>
-                                        <th>Aksi</th>
-                                        <th>No</th>
-                                        <th>Nama Lengkap</th>
-                                        <th>Jurusan</th>
-                                        <th>Jenis Kelamin</th>
-                                        <th>No. Telp.</th>
-                                        <th>Nama Perusahaan</th>
-                                        <th>Jabatan saat ini</th>
-                                        <th>Foto Terbaru</th>
-                                        <th>CV Terbaru</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <?php $no = 1;
-                                    foreach ($data['siswa'] as $siswa) : ?>
-                                    <tr>
-                                        <td>
-                                            <!-- <a href="<?= BASEURL; ?>/bkk/detaildas/<?= $siswa['id']; ?>" class="badge badge-info" ><i class="mdi mdi-information-variant"></i></a> -->
-                                            <a class="badge badge-success tampilModalUbahdas"
-                                                data-url="<?= BASEURL ?>/bkk/ubahdas/<?= $siswa['id']; ?>"
-                                                data-toggle="modal" data-target="#formModaldas"
-                                                data-id="<?= $siswa['id'] ?>"><i class="mdi mdi-lead-pencil"></i></a>
-                                            <a href="<?= BASEURL; ?>/bkk/hapusdas/<?= $siswa['id']; ?>"
-                                                class="badge badge-danger"><i class="mdi mdi-delete"></i></a>
-                                        </td>
-                                        <td><?= $no++; ?></td>
-                                        <td><?= $siswa['namalengkap']; ?></td>
-                                        <td><?= $siswa['jurusan']; ?></td>
-                                        <td><?= $siswa['jk']; ?></td>
-                                        <td><?= $siswa['notelpwa']; ?></td>
-                                        <td><?= $siswa['namaperusahaansaatini']; ?></td>
-                                        <td><?= $siswa['jabatansaatini']; ?></td>
-                                        <td><img src="<?= BASEURL; ?>/images/humas/bkk/das/<?= $siswa['uploadfototerbaru']; ?>"
-                                                alt="no img" style="width: 65px; height: 65px;"></td>
-                                        <td><img src="<?= BASEURL; ?>/images/humas/bkk/das/<?= $siswa['uploadcvterbaru']; ?>"
-                                                alt="no img" style="width: 65px; height: 65px;"></td>
-                                    </tr>
-                                    <?php endforeach; ?>
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-    </div>
-    <!-- content-wrapper ends -->
-    <!-- partial:partials/_footer.html -->
-    <footer class="footer">
-        <div class="d-sm-flex justify-content-center justify-content-sm-between">
-            <span class="text-muted text-center text-sm-left d-block d-sm-inline-block">Copyright © 2023. SIMAS. All
-                rights reserved.</span>
-        </div>
-    </footer>
-    <!-- partial -->
-    </div>
-    <!-- main-panel ends -->
-    </div>
-    <!-- page-body-wrapper ends -->
-    </div>
-
-    <!-- Modal -->
+         <!-- Modal -->
     <div class="modal fade" id="formModaldas" tabindex="-1" role="dialog" aria-labelledby="judulModaldas"
         aria-hidden="true">
         <div class="modal-dialog" role="document">
@@ -219,4 +150,60 @@
                 </form>
             </div>
         </div>
+    </div>
+
+    <div class="row">
+      <div class="col-lg-12 grid-margin stretch-card">
+        <div class="card">
+          <div class="card-body">
+            <div class="table-responsive ">
+              <table id="table" class="table table-hover table-main">
+                                <thead>
+                                    <tr>
+                                        <th>Aksi</th>
+                                        <th>No</th>
+                                        <th>Nama Lengkap</th>
+                                        <th>Jurusan</th>
+                                        <th>Jenis Kelamin</th>
+                                        <th>No. Telp.</th>
+                                        <th>Nama Perusahaan</th>
+                                        <th>Jabatan saat ini</th>
+                                        <th>Foto Terbaru</th>
+                                        <th>CV Terbaru</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <?php $no = 1;
+                                    foreach ($data['siswa'] as $siswa) : ?>
+                                    <tr>
+                                        <td>
+                                            <!-- <a href="<?= BASEURL; ?>/bkk/detaildas/<?= $siswa['id']; ?>" class="badge badge-info" ><i class="mdi mdi-information-variant"></i></a> -->
+                                            <a class="badge badge-success tampilModalUbahdas"
+                                                data-url="<?= BASEURL ?>/bkk/ubahdas/<?= $siswa['id']; ?>"
+                                                data-toggle="modal" data-target="#formModaldas"
+                                                data-id="<?= $siswa['id'] ?>"><i class="mdi mdi-lead-pencil"></i></a>
+                                            <a href="<?= BASEURL; ?>/bkk/hapusdas/<?= $siswa['id']; ?>"
+                                                class="badge badge-danger"><i class="mdi mdi-delete"></i></a>
+                                        </td>
+                                        <td><?= $no++; ?></td>
+                                        <td><?= $siswa['namalengkap']; ?></td>
+                                        <td><?= $siswa['jurusan']; ?></td>
+                                        <td><?= $siswa['jk']; ?></td>
+                                        <td><?= $siswa['notelpwa']; ?></td>
+                                        <td><?= $siswa['namaperusahaansaatini']; ?></td>
+                                        <td><?= $siswa['jabatansaatini']; ?></td>
+                                        <td><img src="<?= BASEURL; ?>/images/humas/bkk/das/<?= $siswa['uploadfototerbaru']; ?>"
+                                                alt="no img" style="width: 65px; height: 65px;"></td>
+                                        <td><img src="<?= BASEURL; ?>/images/humas/bkk/das/<?= $siswa['uploadcvterbaru']; ?>"
+                                                alt="no img" style="width: 65px; height: 65px;"></td>
+                                    </tr>
+                                    <?php endforeach; ?>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
     </div>

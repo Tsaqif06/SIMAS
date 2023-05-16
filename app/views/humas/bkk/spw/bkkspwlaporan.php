@@ -1,3 +1,4 @@
+<div class="main-panel">
     <div class="content-wrapper">
         <div class="row">
             <div class="col-md-12 grid-margin">
@@ -22,7 +23,7 @@
                 <div class="template-demo">
                     <button type="button " class="btn btn-primary tombolTambahDataSpw" data-toggle="modal"
                         data-target="#formModal">Tambah Data</button>
-                    <button type="button" class="btn btn-primary my-3 mx-3 tampilModalImport" data-toggle="modal"
+                    <button type="button" class="btn btn-primary tampilModalImport" data-toggle="modal"
                         data-target="#modalImport">
                         Import Data Dari Excel
                     </button>

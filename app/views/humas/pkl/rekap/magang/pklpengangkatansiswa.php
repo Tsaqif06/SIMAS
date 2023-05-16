@@ -1,39 +1,4 @@
-<div class="collapse" id="form-elements">
-    <ul class="nav flex-column sub-menu">
-        <li class="nav-item"><a class="nav-link" href="<?= BASEURL; ?>/pkl/index">PKL</a></li>
-        <div class="collapse" id="form-elements">
-            <div class="navsubitem">
-                <a class="nav-link" href="<?= BASEURL; ?>/pkl/rekap">Rekap PKL</a>
-                <a class="nav-link" href="<?= BASEURL; ?>/pkl/pembekalan">Pembekalan PKL</a>
-                <a class="nav-link" href="<?= BASEURL; ?>/pkl/pemberkasan">Pemberkasan</a>
-                <a class="nav-link" href="<?= BASEURL; ?>/pkl/prakerin">Prakerin</a>
-                <a class="nav-link" href="<?= BASEURL; ?>/pkl/nilai">Nilai PKL</a>
-                <a class="nav-link" href="<?= BASEURL; ?>/pkl/dtampung">Daya Tampung</a>
-            </div>
-            <li class="nav-item"><a class="nav-link" href="<?= BASEURL; ?>/bkk/index">BKK</a></li>
-            <div class="navsubitem">
-                <a class="nav-link" href="<?= BASEURL; ?>/bkk/das">Alumni Sukses</a>
-                <a class="nav-link" href="<?= BASEURL; ?>/bkk/mou">MoU</a>
-                <a class="nav-link" href="<?= BASEURL; ?>/bkk/peminatan">Peminatan</a>
-                <a class="nav-link" href="<?= BASEURL; ?>/bkk/workshop">Workshop</a>
-                <a class="nav-link" href="<?= BASEURL; ?>/bkk/kebekerjaan">Kebekerjaan</a>
-                <a class="nav-link" href="<?= BASEURL; ?>/bkk/spw">SPW</a>
-                <a class="nav-link" href="<?= BASEURL; ?>/bkk/lomba">Lomba</a>
-                <a class="nav-link" href="<?= BASEURL; ?>/bkk/loker">Lowongan Kerja</a>
-            </div>
-            <li class="nav-item"><a class="nav-link" href="<?= BASEURL; ?>/ict/index">ICT</a></li>
-            <li class="nav-item"><a class="nav-link" href="<?= BASEURL; ?>/stiru/index">Studi Tiru</a></li>
-    </ul>
-</div>
-</li>
-</ul>
-</nav>
 
-
-
-
-<!--  -->
-<!-- partial -->
 <div class="main-panel">
     <div class="content-wrapper">
         <div class="row">
@@ -41,7 +6,7 @@
                 <div class="row">
                     <div class="col-12 col-xl-8 mb-4 mb-xl-0">
                         <h3 class="font-weight-bold">DATA MAGANG KARYAWAN</h3>
-                        <h6 class="font-weight-normal mb-0"><a class="text-dark" href="<?= BASEURL; ?>/pkl"> Laman
+                        <h6 class="font-weight-normal mb-0"><a class="text-dark" href="<?= BASEURL; ?>/pkl/index"> Laman
                                 PKL</a> | <a class="text-dark" href="<?= BASEURL; ?>/pkl/rekap"> Rekapitulasi </a> |
                             <span class="text-primary"> Magang Karyawan </span></h6>
                     </div>
@@ -60,11 +25,12 @@
                 <div class="template-demo">
                     <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#formmodal">Tambah
                         Data</button>
-                    <button type="button" class="btn btn-primary my-3 mx-3 tampilModalImport" data-toggle="modal"
+                    <button type="button" class="btn btn-primary  tampilModalImport" data-toggle="modal"
                         data-target="#modalImport">
                         Import Data Dari Excel
                     </button>
                 </div>
+            </div>
             </div>
 
 
@@ -96,7 +62,7 @@
                                     <input type="text" class="form-control" id="namasiswa" name="namasiswa">
                                 </div>
 
-                                <div class="mt-3"></div>
+                                
 
                                 <div class="form-group">
                                     <label for="kelas">Kelas</label>
@@ -112,14 +78,14 @@
                                         <option value="<?= $row['kode_kompkeahlian'] ?>">
                                             <?= $row['kode_kompkeahlian'] ?></option>
                                         <?php endforeach ?>
-                                        <div>
+
 
 
                                     </select>
                                     <div class="form-group mt-3" style="margin-top : 10px">
                                         <label for="namaperusahaan">Nama Perusahaan</label>
                                         <input type="text" class="form-control" id="namaperusahaan"
-                                            name="namaperusahaan" </div>
+                                            name="namaperusahaan"> 
                                     </div>
                                 </div>
 
@@ -128,8 +94,8 @@
                                     <button type="button" class="btn btn-secondary"
                                         data-bs-dismiss="modal">Keluar</button>
                                     <button type="submit" class="btn btn-primary">Simpan</button>
+                                </div>
                             </form>
-                        </div>
                     </div>
                 </div>
             </div>
@@ -157,7 +123,7 @@
                                 <tr>
 
                                     <td>
-                                        <div class="mt-3">
+                                        
                                             <a class="badge badge-success tampildataubah"
                                                 data-url="<?= BASEURL ?>/PKL/ubah/<?= $row['id']; ?>"
                                                 data-toggle="modal" data-target="#formmodal"
@@ -168,9 +134,8 @@
                                                     class="mdi mdi-delete"></i>
                                             </a>
                                     </td></i>
-                        </div>
-
-                        <td>
+                                    
+                                    <td>
                             <?= $row['nisn'] ?>
                         </td>
                         <td>
@@ -192,10 +157,11 @@
           ?>
                         </table>
                     </div>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
+        </div>
 
 
-</div>
+
