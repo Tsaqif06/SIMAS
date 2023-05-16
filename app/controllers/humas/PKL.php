@@ -3256,12 +3256,13 @@ class PKL extends Controller
             Flasher::setFlash('GAGAL', 'Anda Tidak Mempunyai Akses Untuk Menuju Halaman Tersebut', 'danger');
         }
     }
-    //     // siswapegawai
+    // siswapegawai
     public function pengangkatan()
     {
 
         $data['judul'] = 'Siswa Pegawai';
         $data['user'] = $this->user;
+        $data['kompkeahlian'] = $this->model("Master", 'Kompkeahlian_model')->getAllExistData();
         $akses = ['all', 'humas'];
         if (in_array($data['user']['hak_akses'], $akses)) {
             $data['pg'] = $this->model("$this->model_name", 'pkl_model')->getExistSiswaPegawai();
@@ -3535,6 +3536,7 @@ class PKL extends Controller
 
         $data['judul'] = 'Data Tampung';
         $data['user'] = $this->user;
+        $data['kompkeahlian'] = $this->model("Master", 'Kompkeahlian_model')->getAllExistData();
         $akses = ['all', 'humas'];
         $data['pd'] = $this->model("$this->model_name", 'pkl_model')->getExistSiswaDP();
         if (in_array($data['user']['hak_akses'], $akses)) {
@@ -3551,12 +3553,12 @@ class PKL extends Controller
     {
         if ($this->model("$this->model_name", 'pkl_model')->TambahDataDP($_POST) > 0) {
             Flasher::setFlash('Berhasil ', 'Ditambahkan', 'success');
-            header('Location: ' . BASEURL . '/pkl/dayatampung');
+            header('Location: ' . BASEURL . '/pkl/dtampung');
             exit;
         } else {
 
             Flasher::setFlash('gagal ', 'Ditambahkan', 'danger');
-            header('Location: ' . BASEURL . '/pkl/dayatampung');
+            header('Location: ' . BASEURL . '/pkl/dtampung');
             exit;
         }
     }

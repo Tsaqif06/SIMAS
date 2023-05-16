@@ -78,7 +78,7 @@ class pkl_model extends Database
 
     public function getExistSiswaPegawai()
     {
-        $this->db->query('SELECT * FROM ' . $this->table . 'WHERE `status` = ' . 1);
+        $this->db->query('SELECT * FROM ' . $this->table . ' WHERE `status` = ' . 1);
         return $this->db->fetchAll();
     }
 
@@ -176,7 +176,7 @@ class pkl_model extends Database
     }
     public function getExistSiswaind()
     {
-        $this->db->query('SELECT * FROM ' . $this->tableind . 'WHERE `status` = ' . 1);
+        $this->db->query('SELECT * FROM ' . $this->tableind . ' WHERE `status` = ' . 1);
         return $this->db->fetchAll();
     }
 
@@ -278,7 +278,7 @@ class pkl_model extends Database
 
     public function getExistSiswatp()
     {
-        $this->db->query('SELECT * FROM ' . $this->tabletp . 'WHERE `status` = ' . 1);
+        $this->db->query('SELECT * FROM ' . $this->tabletp . ' WHERE `status` = ' . 1);
         return $this->db->fetchAll();
     }
 
@@ -373,7 +373,7 @@ class pkl_model extends Database
     }
     public function getExistSiswaMON()
     {
-        $this->db->query('SELECT * FROM ' . $this->tableMON . 'WHERE `status` = ' . 1);
+        $this->db->query('SELECT * FROM ' . $this->tableMON . ' WHERE `status` = ' . 1);
         return $this->db->fetchAll();
     }
 
@@ -464,7 +464,7 @@ class pkl_model extends Database
     }
     public function getExistSiswaPB()
     {
-        $this->db->query('SELECT * FROM ' . $this->tablepb . 'WHERE `status` = ' . 1);
+        $this->db->query('SELECT * FROM ' . $this->tablepb . ' WHERE `status` = ' . 1);
         return $this->db->fetchAll();
     }
 
@@ -1706,7 +1706,7 @@ class pkl_model extends Database
     }
     public function getExistSiswaDP()
     {
-        $this->db->query('SELECT * FROM ' . $this->tabledp . 'WHERE `status` = ' . 1);
+        $this->db->query('SELECT * FROM ' . $this->tabledp . ' WHERE `status` = ' . 1);
         return $this->db->fetchAll();
     }
 
@@ -1802,7 +1802,7 @@ class pkl_model extends Database
     }
     public function getExistSiswaPP()
     {
-        $this->db->query('SELECT * FROM ' . $this->tablepp . 'WHERE `status` = ' . 1);
+        $this->db->query('SELECT * FROM ' . $this->tablepp . ' WHERE `status` = ' . 1);
         return $this->db->fetchAll();
     }
 
@@ -1905,7 +1905,7 @@ class pkl_model extends Database
 
     public function getExistSiswaIZ()
     {
-        $this->db->query('SELECT * FROM ' . $this->tableiz . 'WHERE `status` = ' . 1);
+        $this->db->query('SELECT * FROM ' . $this->tableiz . ' WHERE `status` = ' . 1);
         return $this->db->fetchAll();
     }
 
