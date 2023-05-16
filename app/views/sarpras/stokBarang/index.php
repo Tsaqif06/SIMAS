@@ -29,7 +29,7 @@
                     Import Data Dari Excel
                 </button>
             </div>
-        </div>
+        <!-- </div>
           <div class="row">
           <div class="col-lg-6 grid-margin stretch-card">
               <div class="card">
@@ -38,8 +38,8 @@
                   <canvas id="kategoriStokBarang"></canvas>
                 </div>
               </div>
-            </div>
-          </div>
+            </div> -->
+          </div> 
           <div id="exampleModalLong" class="modal fade" role="dialog" data-backdrop="static" >
             <div class="modal-dialog">
               <div class="modal-content">
@@ -171,16 +171,10 @@
               </div>
             </div>
           </div>
-        </div>
-      </div>
+        <!-- </div> -->
+      <!-- </div>
+                        </div> -->
 
-        
-        <footer class="footer">
-          <div class="d-sm-flex justify-content-center justify-content-sm-between">
-            <span class="text-muted text-center text-sm-left d-block d-sm-inline-block">Copyright © 2021.  Premium <a href="https://www.bootstrapdash.com/" target="_blank">Bootstrap admin template</a> from BootstrapDash. All rights reserved.</span>
-            <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center">Hand-crafted & made with <i class="ti-heart text-danger ml-1"></i></span>
-          </div>
-        </footer>
         <script src="<?=BASEURL;?>/js/stokBarang.js"></script>
   <script>
     $(document).ready(function() {
@@ -245,3 +239,4 @@
   }
     });
   </script>
+		  
