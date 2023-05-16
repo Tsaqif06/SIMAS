@@ -13,7 +13,7 @@ class stokBarang extends Controller
             $this->view('stokBarang/index', $data);
         } else {
             $this->view('templates/header', $data);
-            $this->view('stokBarang/index', $data);
+            $this->view('sarpras/stokBarang/index', $data);
             $this->view('templates/footerwm');
         }
 
