@@ -7,7 +7,7 @@
     font-weight: bold;
     border-radius: 10px;
     color: #4B49AC;
-    width: 50%;
+    /* width: 50%; */
   }
 
   .button-arounder:hover,
@@ -21,7 +21,7 @@
     border-bottom-right-radius: var(--radius);
     color: white;
     border-radius: 10px;
-    width: 50%;
+    /* width: 50%; */
   }
 
   td {
@@ -156,6 +156,7 @@
   </div>
 </div>
 </div>
+                </div>
 
 <script>
   $(function() {
