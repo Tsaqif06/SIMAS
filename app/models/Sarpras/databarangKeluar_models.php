@@ -14,12 +14,12 @@ class databarangKeluar_models
     private $db;
     private $fields = [
         'namabarang',
-        'foto',
+        // 'foto',
         'spesifikasi',
         'jumlah',
         'satuan',
-        'pemasok',
-        'baranguntuk'
+        'baranguntuk',
+        'pemasok'
     ];
 
     public function __construct()
@@ -105,7 +105,16 @@ class databarangKeluar_models
         $fileName .= $imageFileType;
         $targetFile = $targetDir . $fileName; // nama file upload
 
-
+        // cek gambar diupload atau tidak
+        if ($_FILES["foto"]["error"] === 4) {
+            echo
+            '
+            <script>
+                alert("Silahkan Upload Gambar")
+            </script>
+        ';
+            return false;
+        }
 
         // validasi ukuran file
         if ($_FILES["foto"]["size"] > 1000000) {
@@ -133,7 +142,7 @@ class databarangKeluar_models
     {
         $query = "INSERT INTO barang_keluar
                     VALUES
-                  (NULL, :uuid, :namabarang, :foto, :spesifikasi, :jumlah, :satuan, :pemasok, :baranguntuk, '', CURRENT_TIMESTAMP, :created_by, null, '', null, '', null, '', 0, 0, DEFAULT)";
+                  (NULL, :uuid, :namabarang, :foto, :spesifikasi, :jumlah, :satuan, :baranguntuk, :pemasok, '', CURRENT_TIMESTAMP, :created_by, null, '', null, '', null, '', 0, 0, DEFAULT)";
 
         $foto = $this->uploadFoto();
         if (!$foto) {
