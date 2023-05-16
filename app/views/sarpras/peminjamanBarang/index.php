@@ -17,7 +17,7 @@
           </div>
           <div class="row">
             <div class="col">
-              <a id="example" class="btn btn-primary" role="button" data-toggle="modal" data-target="#exampleModalLong">ISI FORM PEMINJAMAN</a>
+              <!-- <a id="example" class="btn btn-primary" role="button" data-toggle="modal" data-target="#exampleModalLong">ISI FORM PEMINJAMAN</a> -->
             
           <button type="button" class="btn btn-primary my-3 mx-3 tampilModalImport"
                     data-url="<?= BASEURL ?>/peminjamanBarang" data-bs-toggle="modal" data-bs-target="#modalImport">
@@ -25,11 +25,10 @@
                 </button>
             </div>
         </div>
-          <div id="exampleModalLong" class="modal fade" role="dialog" data-backdrop="static">
+          <!-- <div id="exampleModalLong" class="modal fade" role="dialog" data-backdrop="static">
           
             <div class="modal-dialog">
   
-              <!-- Modal content-->
               <div class="modal-content">
                 <div class="modal-header">
                   <h3 id="modalLabel">Tambah Data Peminjaman Barang</h3>
@@ -84,7 +83,7 @@
               </form>
               </div>
             </div>
-          </div>
+          </div> -->
   </div>
   <div class="modal fade" id="modalImport" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered">
@@ -161,14 +160,16 @@
           </div>
         </div>
       </div>
+                    </div>
 
         
-        <footer class="footer">
+        <!-- <footer class="footer">
           <div class="d-sm-flex justify-content-center justify-content-sm-between">
             <span class="text-muted text-center text-sm-left d-block d-sm-inline-block">Copyright © 2021.  Premium <a href="https://www.bootstrapdash.com/" target="_blank">Bootstrap admin template</a> from BootstrapDash. All rights reserved.</span>
             <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center">Hand-crafted & made with <i class="ti-heart text-danger ml-1"></i></span>
           </div>
-        </footer>
+
+        </footer> -->
         <!-- <script src="<?=BASEURL;?>/js/peminjamanBarang.js"></script> -->
   <script>
     $(document).ready(function() {
