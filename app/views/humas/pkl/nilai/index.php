@@ -31,7 +31,7 @@
             </div>
             <div class="card-body">
               <div class="row">
-                <a href="<?= BASEURL; ?>/pkl/nilaidga"><button type="button" class="btn btn-inverse-primary btn-fw btn-block">Masuk ke laman ini</button></a>
+                <a href="<?= BASEURL; ?>/pkl/nilai&kelas=XI_DG_A"><button type="button" class="btn btn-inverse-primary btn-fw btn-block">Masuk ke laman ini</button></a>
               </div>
             </div>
           </div>
@@ -52,7 +52,7 @@
             </div>
             <div class="card-body">
               <div class="row">
-                <a href="<?= BASEURL; ?>/pkl/nilailoga"><button type="button" class="btn btn-inverse-primary btn-fw btn-block">Masuk ke laman ini</button></a>
+                <a href="<?= BASEURL; ?>/pkl/nilai&kelas=XI_TL_A"><button type="button" class="btn btn-inverse-primary btn-fw btn-block">Masuk ke laman ini</button></a>
               </div>
             </div>
           </div>
@@ -73,7 +73,7 @@
             </div>
             <div class="card-body">
               <div class="row">
-                <a href="<?= BASEURL; ?>/pkl/nilaimekaa"><button type="button" class="btn btn-inverse-primary btn-fw btn-block">Masuk ke laman ini</button></a>
+                <a href="<?= BASEURL; ?>/pkl/nilai&kelas=XI_MEKA_A"><button type="button" class="btn btn-inverse-primary btn-fw btn-block">Masuk ke laman ini</button></a>
               </div>
             </div>
           </div>
@@ -95,7 +95,7 @@
             </div>
             <div class="card-body">
               <div class="row">
-                <a href="<?= BASEURL; ?>/pkl/nilairpla"><button type="button" class="btn btn-inverse-primary btn-fw btn-block">Masuk ke laman ini</button></a>
+                <a href="<?= BASEURL; ?>/pkl/nilai&kelas=XI_RPL_A"><button type="button" class="btn btn-inverse-primary btn-fw btn-block">Masuk ke laman ini</button></a>
               </div>
             </div>
           </div>
@@ -116,7 +116,7 @@
             </div>
             <div class="card-body">
               <div class="row">
-                <a href="<?= BASEURL; ?>/pkl/nilaitkja"><button type="button" class="btn btn-inverse-primary btn-fw btn-block">Masuk ke laman ini</button></a>
+                <a href="<?= BASEURL; ?>/pkl/nilai&kelas=XI_TKJ_A"><button type="button" class="btn btn-inverse-primary btn-fw btn-block">Masuk ke laman ini</button></a>
               </div>
             </div>
           </div>
@@ -137,7 +137,7 @@
             </div>
             <div class="card-body">
               <div class="row">
-                <a href="<?= BASEURL; ?>/pkl/nilaidkva"><button type="button" class="btn btn-inverse-primary btn-fw btn-block">Masuk ke laman ini</button></a>
+                <a href="<?= BASEURL; ?>/pkl/nilai&kelas=XI_DKV_A"><button type="button" class="btn btn-inverse-primary btn-fw btn-block">Masuk ke laman ini</button></a>
               </div>
             </div>
           </div>
@@ -158,7 +158,7 @@
             </div>
             <div class="card-body">
               <div class="row">
-                <a href="<?= BASEURL; ?>/pkl/nilaipha"><button type="button" class="btn btn-inverse-primary btn-fw btn-block">Masuk ke laman ini</button></a>
+                <a href="<?= BASEURL; ?>/pkl/nilai&kelas=XI_PH_A"><button type="button" class="btn btn-inverse-primary btn-fw btn-block">Masuk ke laman ini</button></a>
               </div>
             </div>
           </div>
@@ -179,7 +179,7 @@
             </div>
             <div class="card-body">
               <div class="row">
-                <a href="<?= BASEURL; ?>/pkl/nilaiania"><button type="button" class="btn btn-inverse-primary btn-fw btn-block">Masuk ke laman ini</button></a>
+                <a href="<?= BASEURL; ?>/pkl/nilai&kelas=XI_ANI_A"><button type="button" class="btn btn-inverse-primary btn-fw btn-block">Masuk ke laman ini</button></a>
               </div>
             </div>
           </div>
