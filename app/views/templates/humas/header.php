@@ -615,7 +615,7 @@
                             </li>
                         <?php endif ?>
 
-                        <?php if ($data['user']['role'] == 'admin' && ($data['user']['hak_akses'] == 'all' || $data['user']['hak_akses'] == 'sarpras')) : ?>
+                        <?php if ($data['user']['role'] == 'admin' || ($data['user']['role'] == 'user' && ($data['user']['hak_akses'] == '' || $data['user']['hak_akses'] == 'industri' || $data['user']['hak_akses'] == 'sarpras'))) : ?>
                             <li class="nav-item">
                                 <a class="nav-link" data-toggle="collapse" href="#tables" aria-expanded="false" aria-controls="tables">
                                     <i class="icon-grid-2 menu-icon"></i>
@@ -624,15 +624,26 @@
                                 </a>
                                 <div class="collapse" id="tables">
                                     <ul class="nav flex-column sub-menu">
+                                        <?php if ($data['user']['role'] == 'admin' && ($data['user']['hak_akses'] == 'all' || $data['user']['hak_akses'] == 'sarpras')) : ?>
                                         <li class="nav-item"> <a class="nav-link spa-load" href="<?= BASEURL; ?>/fasilitas">Fasilitas</a></li>
+                                        <?php endif ?>
+                                        
+                                        <?php if ($data['user']['role'] == 'admin' || ($data['user']['role'] == 'user' && $data['user']['hak_akses'] == '')) : ?>
                                         <li class="nav-item"> <a class="nav-link spa-load" href="<?= BASEURL; ?>/peminjamanBarang">Peminjaman Barang</a></li>
                                         <li class="nav-item"> <a class="nav-link spa-load" href="<?= BASEURL; ?>/pengajuanBarang">Pengajuan Barang</a></li>
+                                        <?php endif ?>
+                                        
+                                        <?php if ($data['user']['role'] == 'admin' && ($data['user']['hak_akses'] == 'all' || $data['user']['hak_akses'] == 'sarpras')) : ?>
                                         <li class="nav-item"> <a class="nav-link spa-load" href="<?= BASEURL; ?>/barangMasuk">Barang Masuk</a></li>
                                         <li class="nav-item"> <a class="nav-link spa-load" href="<?= BASEURL; ?>/barangKeluar">Barang Keluar</a></li>
                                         <li class="nav-item"><a class="nav-link spa-load" href="<?= BASEURL; ?>/barangAset">Stok Barang Aset</a></li>
                                         <li class="nav-item"><a class="nav-link spa-load" href="<?= BASEURL; ?>/stokBarang">Stok Barang</a></li>
                                         <li class="nav-item"><a class="nav-link spa-load" href="<?= BASEURL; ?>/dataRuang">Data Ruang</a></li>
                                         <li class="nav-item"><a class="nav-link spa-load" href="<?= BASEURL; ?>/perbaikan">Perbaikan</a></li>
+                                        <?php endif ?>
+                                    </ul>
+                                    <ul>
+                                    
                                     </ul>
                                 </div>
                             </li>
