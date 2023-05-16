@@ -101,7 +101,7 @@ class pkl_model extends Database
                 keterangannilai = :keterangannilai,
                 modified_at = CURRENT_TIMESTAMP,
                 modified_by = :modified_by
-              WHERE id = :id"
+            WHERE id = :id"
         );
 
         $this->db->bind('nisn', $data['nisn']);
@@ -116,6 +116,48 @@ class pkl_model extends Database
 
         $this->db->execute();
         return $this->db->rowCount();
+    }
+
+    public function importDataNilai()
+    {
+        $fields = [
+            "nisn", 
+            "namasiswa",
+            "kelas",
+            "jeniskelamin",
+            "namaindustri",
+            "nilaisiswa",
+            "keterangannilai",
+        ];
+
+        // Baca file Excel menggunakan PhpSpreadsheet
+        $inputFileName = $_FILES['file']['tmp_name'];
+        $spreadsheet = IOFactory::load($inputFileName);
+
+        // Ambil data dari sheet pertama
+        $worksheet = $spreadsheet->getActiveSheet();
+        $highestRow = $worksheet->getHighestRow();
+        $highestColumn = $worksheet->getHighestColumn();
+        $maxColumnIndex = Coordinate::columnIndexFromString($highestColumn);
+
+        // Daftar kolom yang akan diambil dari file Excel dan disimpan ke database
+        $columns = $fields;
+
+        // Looping untuk membaca setiap baris data
+        for ($row = 2; $row <= $highestRow; $row++) {
+            $data = [];
+
+            // Looping untuk membaca setiap kolom data
+            for ($col = 2; $col <= count($columns) + 1; $col++) {
+                $columnLetter = Coordinate::stringFromColumnIndex($col);
+                $cellValue = $worksheet->getCell($columnLetter . $row)->getValue();
+                $data[$columns[$col - 2]] = $cellValue;
+            }
+
+            // Simpan data ke database
+            $response = $this->tambahDataNilai($data);
+        }
+        return $response;
     }
 
 
@@ -211,13 +253,6 @@ class pkl_model extends Database
             'kelassiswa',
             'namaperusahaan'
         ];
-
-        // Cek file diupload apa belum
-        if (!isset($_FILES['file']['name'])) {
-            Flasher::setFlash('Error', 'Harap pilih file Excel terlebih dahulu', 'danger');
-            header('location: ' . BASEURL . '/pkl/pengangkatan'); // genakno duu iki ne header location, nggak ngerti ngarah nandi aku
-            exit;
-        }
 
         // Baca file Excel menggunakan PhpSpreadsheet
         $inputFileName = $_FILES['file']['tmp_name'];
@@ -420,13 +455,13 @@ class pkl_model extends Database
     public function HapusDataind($id)
     {
         $this->db->query(
-            "UPDATE dataindustripkl
-                    SET
-                    deleted_at = CURRENT_TIMESTAMP,
-                    deleted_by = :deleted_by,
-                    is_deleted = 1,
-                    is_restored = 0
-                  WHERE id = :id"
+            "UPDATE `dataindustripkl`
+                SET
+                deleted_at = CURRENT_TIMESTAMP,
+                deleted_by = :deleted_by,
+                is_deleted = 1,
+                is_restored = 0
+            WHERE id = :id"
         );
 
         $this->db->bind('deleted_by', $this->user);
@@ -440,16 +475,18 @@ class pkl_model extends Database
 
     public function ubahDataind($data)
     {
-        $query = "UPDATE dataindustripkl SET 
-                         kompetensikeahlian = :kompetensikeahlian, 
-                         namaperusahaan = :namaperusahaan, 
-                         alamat = :alamat,
-                         kota = :kota, 
-                      modified_at = CURRENT_TIMESTAMP, 
-                      modified_by = :modified_by 
-                       WHERE id = :id";
+        $this->db->query(
+            "UPDATE `dataindustripkl`
+                SET 
+                kompetensikeahlian = :kompetensikeahlian, 
+                namaperusahaan = :namaperusahaan, 
+                alamat = :alamat,
+                kota = :kota, 
+                modified_at = CURRENT_TIMESTAMP, 
+                modified_by = :modified_by 
+            WHERE id = :id"
+        );
 
-        $this->db->query($query);
         $this->db->bind('kompetensikeahlian', $data['kompetensikeahlian']);
         $this->db->bind('namaperusahaan', $data['namaperusahaan']);
         $this->db->bind('alamat', $data['alamat']);
@@ -463,7 +500,6 @@ class pkl_model extends Database
         return $this->db->rowCount();
     }
 
-
     public function caridataind()
     {
         $keyword = $_POST['keyword'];
@@ -473,7 +509,8 @@ class pkl_model extends Database
         return $this->db->fetchAll();
     }
 
-    //    data monitoring pkl
+
+    // MONITORING PKL
 
     public function getSiswaMON()
     {
@@ -487,20 +524,20 @@ class pkl_model extends Database
         $this->db->bind('id', $id);
         return $this->db->fetch();
     }
+
     public function TambahDataMON($data)
     {
-        $query  = "INSERT INTO monitoringpkl
-                             VALUES 
-                        (null, :uuid, :namaperusahaan_monitoringpkl, :namaguru_monitoringpkl, :tanggal_monitoringpkl, '', CURRENT_TIMESTAMP, :created_by, null, '', null, '', null, '',0 ,0, DEFAULT)";
-
-        $this->db->query($query);
+        $this->db->query(
+            "INSERT INTO `monitoringpkl`
+                VALUES 
+            (null, :uuid, :namaperusahaan_monitoringpkl, :namaguru_monitoringpkl, :tanggal_monitoringpkl,
+            '', CURRENT_TIMESTAMP, :created_by, null, '', null, '', null, '',0 ,0, DEFAULT)"
+        );
         $this->db->bind('uuid', Uuid::uuid4()->toString());
         $this->db->bind('namaperusahaan_monitoringpkl', $data['namaperusahaan_monitoringpkl']);
         $this->db->bind('namaguru_monitoringpkl', $data['namaguru_monitoringpkl']);
         $this->db->bind('tanggal_monitoringpkl', $data['tanggal_monitoringpkl']);
         $this->db->bind('created_by', $this->user);
-
-
 
         $this->db->execute();
 
@@ -510,13 +547,13 @@ class pkl_model extends Database
     public function HapusDataMON($id)
     {
         $this->db->query(
-            "UPDATE monitoringpkl
-                    SET
-                    deleted_at = CURRENT_TIMESTAMP,
-                    deleted_by = :deleted_by,
-                    is_deleted = 1,
-                    is_restored = 0
-                  WHERE id = :id"
+            "UPDATE `monitoringpkl`
+                SET
+                deleted_at = CURRENT_TIMESTAMP,
+                deleted_by = :deleted_by,
+                is_deleted = 1,
+                is_restored = 0
+            WHERE id = :id"
         );
 
         $this->db->bind('deleted_by', $this->user);
@@ -527,18 +564,19 @@ class pkl_model extends Database
         return $this->db->rowCount();
     }
 
-
     public function ubahDataMON($data)
     {
-        $query = "UPDATE monitoringpkl SET 
-                        namaperusahaan_monitoringpkl = :namaperusahaan_monitoringpkl, 
-                        namaguru_monitoringpkl = :namaguru_monitoringpkl, 
-                        tanggal_monitoringpkl = :tanggal_monitoringpkl, 
-                      modified_at = CURRENT_TIMESTAMP, 
-                      modified_by = :modified_by
-                      WHERE id = :id";
+        $this->db->query(
+            "UPDATE `monitoringpkl`
+                SET 
+                namaperusahaan_monitoringpkl = :namaperusahaan_monitoringpkl, 
+                namaguru_monitoringpkl = :namaguru_monitoringpkl, 
+                tanggal_monitoringpkl = :tanggal_monitoringpkl, 
+                modified_at = CURRENT_TIMESTAMP, 
+                modified_by = :modified_by
+            WHERE id = :id"
+        );
 
-        $this->db->query($query);
         $this->db->bind('namaperusahaan_monitoringpkl', $data['namaperusahaan_monitoringpkl']);
         $this->db->bind('namaguru_monitoringpkl', $data['namaguru_monitoringpkl']);
         $this->db->bind('tanggal_monitoringpkl', $data['tanggal_monitoringpkl']);
@@ -554,13 +592,14 @@ class pkl_model extends Database
     public function caridataMON()
     {
         $keyword = $_POST['keyword'];
-        $query  =   "SELECT * FROM monitoringpkl WHERE namaperusahaan_monitoringpkl LIKE :keyword";
-        $this->db->query($query);
+        $this->db->query("SELECT * FROM monitoringpkl WHERE namaperusahaan_monitoringpkl LIKE :keyword");
         $this->db->bind('keyword', "%$keyword%");
         return $this->db->fetchAll();
     }
 
-    //   pembekalannpkl
+
+    //   PEMBEKALAN PKL
+
     public function getSiswaPB()
     {
         $this->db->query('SELECT * FROM ' . $this->tablepb);
@@ -573,13 +612,16 @@ class pkl_model extends Database
         $this->db->bind('id', $id);
         return $this->db->fetch();
     }
+
     public function TambahDataPB($data)
     {
-        $query  = "INSERT INTO pembekalanpkl
-                           VALUES 
-                      (null, :uuid, :dilakukanoleh, :tanggalpersiapan, :jadwal, :peserta, :tempat, '', CURRENT_TIMESTAMP, :created_by, null, '', null, '', null, '',0 ,0, DEFAULT)";
+        $this->db->query(
+            "INSERT INTO `pembekalanpkl`
+                VALUES 
+            (null, :uuid, :dilakukanoleh, :tanggalpersiapan, :jadwal, :peserta, :tempat,
+            '', CURRENT_TIMESTAMP, :created_by, null, '', null, '', null, '',0 ,0, DEFAULT)"
+        );
 
-        $this->db->query($query);
         $this->db->bind('uuid', Uuid::uuid4()->toString());
         $this->db->bind('dilakukanoleh', $data['dilakukanoleh']);
         $this->db->bind('tanggalpersiapan', $data['tanggalpersiapan']);
@@ -587,8 +629,6 @@ class pkl_model extends Database
         $this->db->bind('peserta', $data['peserta']);
         $this->db->bind('tempat', $data['tempat']);
         $this->db->bind('created_by', $this->user);
-
-
 
         $this->db->execute();
 
@@ -614,7 +654,6 @@ class pkl_model extends Database
 
         return $this->db->rowCount();
     }
-
 
     public function ubahDataPB($data)
     {
@@ -652,7 +691,7 @@ class pkl_model extends Database
         return $this->db->fetchAll();
     }
 
-    // pemberkasanpkl
+    // PEMBERKASAN PKL
 
     public function getSiswaPS()
     {
@@ -722,6 +761,7 @@ class pkl_model extends Database
 
         return $fileName;
     }
+
     public function uploadRaportPemberkasan()
     {
         $targetDir = 'images/humas/pkl/pemberkasan/raport/'; // direktori tempat menyimpan file upload
@@ -772,6 +812,7 @@ class pkl_model extends Database
 
         return $fileName;
     }
+
     public function uploadBuktiLunasPemberkasan()
     {
         $targetDir = 'images/humas/pkl/pemberkasan/buktilunas/'; // direktori tempat menyimpan file upload
@@ -825,32 +866,15 @@ class pkl_model extends Database
 
     public function tambahDataPemberkasan($data)
     {
-        $query  = "INSERT INTO pemberkasanpkl
-                           VALUES 
-                      (null, :uuid, :nisn_pemberkasan, 
-                      :namasiswa_pemberkasan, 
-                      :tanggallahir_pemberkasan, 
-                      :jurusan_pemberkasan, 
-                      :jeniskelamin_pemberkasan, 
-                      :domisili_pemberkasann, 
-                      :uploadfoto_pemberkasan, 
-                      :uploadebookraport_pemberkasan, 
-                      :uploadbuktilunas_pemberkasan, 
-                      '', 
-                      CURRENT_TIMESTAMP, 
-                      :created_by, 
-                      null, 
-                      '', 
-                      null, 
-                      '', 
-                      null, 
-                      '', 
-                      0, 
-                      0, 
-                      DEFAULT
-                      )";
+        $this->db->query(
+            "INSERT INTO `pemberkasanpkl`
+                VALUES 
+            (null, :uuid, :nisn_pemberkasan, :namasiswa_pemberkasan, :tanggallahir_pemberkasan,
+            :jurusan_pemberkasan, :jeniskelamin_pemberkasan, :domisili_pemberkasann, :uploadfoto_pemberkasan,
+            :uploadebookraport_pemberkasan, :uploadbuktilunas_pemberkasan,
+            '', CURRENT_TIMESTAMP, :created_by, null, '', null, '', null, '', 0, 0, DEFAULT)"
+        );
 
-        $this->db->query($query);
         $foto = $this->uploadFotoPemberkasan();
         if (!$foto) {
             return false;
@@ -884,12 +908,12 @@ class pkl_model extends Database
     {
         $this->db->query(
             "UPDATE {$this->tableps}
-                      SET
-                      deleted_at = CURRENT_TIMESTAMP,
-                      deleted_by = :deleted_by,
-                      is_deleted = 1,
-                      is_restored = 0
-                    WHERE id = :id"
+                SET
+                deleted_at = CURRENT_TIMESTAMP,
+                deleted_by = :deleted_by,
+                is_deleted = 1,
+                is_restored = 0
+            WHERE id = :id"
         );
 
         $this->db->bind('deleted_by', $this->user);
@@ -902,21 +926,23 @@ class pkl_model extends Database
 
     public function ubahDataPS($data)
     {
-        $query = "UPDATE pemberkasanpkl SET  
-                      nisn_pemberkasan = :nisn_pemberkasan, 
-                      namasiswa_pemberkasan = :namasiswa_pemberkasan,
-                      tanggallahir_pemberkasan = :tanggallahir_pemberkasan,
-                      jurusan_pemberkasan = :jurusan_pemberkasan,
-                      jeniskelamin_pemberkasan = :jeniskelamin_pemberkasan,
-                      domisili_pemberkasann = :domisili_pemberkasann,
-                      uploadfoto_pemberkasan = :uploadfoto_pemberkasan,
-                      uploadebookraport_pemberkasan = :uploadebookraport_pemberkasan,
-                      uploadbuktilunas_pemberkasan = :uploadbuktilunas_pemberkasan, 
-                      modified_at = CURRENT_TIMESTAMP, 
-                      modified_by = :modified_by 
-                    WHERE id = :id";
+        $this->db->query(
+            "UPDATE `pemberkasanpkl`
+                SET  
+                nisn_pemberkasan = :nisn_pemberkasan, 
+                namasiswa_pemberkasan = :namasiswa_pemberkasan,
+                tanggallahir_pemberkasan = :tanggallahir_pemberkasan,
+                jurusan_pemberkasan = :jurusan_pemberkasan,
+                jeniskelamin_pemberkasan = :jeniskelamin_pemberkasan,
+                domisili_pemberkasann = :domisili_pemberkasann,
+                uploadfoto_pemberkasan = :uploadfoto_pemberkasan,
+                uploadebookraport_pemberkasan = :uploadebookraport_pemberkasan,
+                uploadbuktilunas_pemberkasan = :uploadbuktilunas_pemberkasan, 
+                modified_at = CURRENT_TIMESTAMP, 
+                modified_by = :modified_by 
+            WHERE id = :id"
+        );
 
-        $this->db->query($query);
         if ($_FILES["uploadfoto_pemberkasan"]["error"] === 4) {
             $foto = $data['fotoLama'];
         } else {
@@ -948,26 +974,66 @@ class pkl_model extends Database
         return $this->db->rowCount();
     }
 
-    //    DAYA TAMPUNG
+    public function importDatapemberkasan()
+    {
+        $fields = [
+            'nisn_pemberkasan',
+            'namasiswa_pemberkasan',
+            'tanggallahir_pemberkasan',
+            'jurusan_pemberkasan',
+            'jeniskelamin_pemberkasan',
+            'domisili_pemberkasan'
+        ];
+
+        // Baca file Excel menggunakan PhpSpreadsheet
+        $inputFileName = $_FILES['file']['tmp_name'];
+        $spreadsheet = IOFactory::load($inputFileName);
+
+        // Ambil data dari sheet pertama
+        $worksheet = $spreadsheet->getActiveSheet();
+        $highestRow = $worksheet->getHighestRow();
+        $highestColumn = $worksheet->getHighestColumn();
+        $maxColumnIndex = Coordinate::columnIndexFromString($highestColumn);
+
+        // Daftar kolom yang akan diambil dari file Excel dan disimpan ke database
+        $columns = $fields;
+
+        // Looping untuk membaca setiap baris data
+        for ($row = 2; $row <= $highestRow; $row++) {
+            $data = [];
+
+            // Looping untuk membaca setiap kolom data
+            for ($col = 2; $col <= count($columns) + 1; $col++) {
+                $columnLetter = Coordinate::stringFromColumnIndex($col);
+                $cellValue = $worksheet->getCell($columnLetter . $row)->getValue();
+                $data[$columns[$col - 2]] = $cellValue;
+            }
+
+            // Simpan data ke database
+            $response = $this->tambahDataPemberkasan($data);
+        }
+        return $response;
+    }
 
 
+    //  DAYA TAMPUNG
 
     public function getSiswaDP()
     {
-        $this->db->query("SELECT * FROM `dayatampungpkl` WHERE `status` = 1");
+        $this->db->query("SELECT * FROM `{$this->tabledp}` WHERE `status` = 1");
         return $this->db->fetchAll();
     }
 
     public function getDetailDP($id)
     {
-        $this->db->query("SELECT * FROM `dayatampungpkl` WHERE id = :id");
+        $this->db->query("SELECT * FROM `{$this->tabledp}` WHERE id = :id");
         $this->db->bind('id', $id);
         return $this->db->fetch();
     }
     public function TambahDataDP($data)
     {
         $this->db->query(
-            "INSERT INTO `dayatampungpkl`
+            "INSERT INTO `{$this->tabledp}`
                 VALUES 
             (null, :uuid, :namaperusahaan, :jurusan, :jeniskelamin, :jumlah,
             '', CURRENT_TIMESTAMP, :created_by, null, '', null, '', null, '',0 ,0, DEFAULT)"
@@ -988,13 +1054,13 @@ class pkl_model extends Database
     public function HapusDataDP($id)
     {
         $this->db->query(
-            "UPDATE dayatampungpkl
-                    SET
-                    deleted_at = CURRENT_TIMESTAMP,
-                    deleted_by = :deleted_by,
-                    is_deleted = 1,
-                    is_restored = 0
-                  WHERE id = :id"
+            "UPDATE `{$this->tabledp}`
+                SET
+                deleted_at = CURRENT_TIMESTAMP,
+                deleted_by = :deleted_by,
+                is_deleted = 1,
+                is_restored = 0
+            WHERE id = :id"
         );
 
         $this->db->bind('deleted_by', $this->user);
@@ -1008,16 +1074,18 @@ class pkl_model extends Database
 
     public function ubahDataDP($data)
     {
-        $query = "UPDATE dayatampungpkl SET 
-                         namaperusahaan = :namaperusahaan, 
-                         jurusan = :jurusan, 
-                         jeniskelamin = :jeniskelamin,
-                         jumlah = :jumlah, 
-                      modified_at = CURRENT_TIMESTAMP, 
-                      modified_by = :modified_by 
-                       WHERE id = :id";
+        $this->db->query(
+            "UPDATE `{$this->tabledp}`
+                SET 
+                namaperusahaan = :namaperusahaan, 
+                jurusan = :jurusan, 
+                jeniskelamin = :jeniskelamin,
+                jumlah = :jumlah, 
+                modified_at = CURRENT_TIMESTAMP, 
+                modified_by = :modified_by 
+            WHERE id = :id"
+        );
 
-        $this->db->query($query);
         $this->db->bind('namaperusahaan', $data['namaperusahaan']);
         $this->db->bind('jurusan', $data['jurusan']);
         $this->db->bind('jeniskelamin', $data['jeniskelamin']);
@@ -1034,14 +1102,13 @@ class pkl_model extends Database
     public function caridataDP()
     {
         $keyword = $_POST['keyword'];
-        $query  =   "SELECT * FROM dayatampungpkl WHERE jurusan LIKE :keyword";
-        $this->db->query($query);
+        $this->db->query("SELECT * FROM `{$this->tabledp}` WHERE jurusan LIKE :keyword");
         $this->db->bind('keyword', "%$keyword%");
         return $this->db->fetchAll();
     }
 
 
-    //    perpanjangpkl
+    // PERPANJANGAN PKL
 
     public function getSiswaPP()
     {
@@ -1057,11 +1124,13 @@ class pkl_model extends Database
     }
     public function TambahDataPP($data)
     {
-        $query  = "INSERT INTO perpanjangmasapkl
-                              VALUES 
-                         (null, :uuid, :ppnama, :ppkelas, :nisn, :namaperusahaan, :tanggalperpanjangpkl, '', CURRENT_TIMESTAMP, :created_by, null, '', null, '', null, '',0 ,0, DEFAULT)";
+        $this->db->query(
+            "INSERT INTO `perpanjangmasapkl`
+                VALUES 
+            (null, :uuid, :ppnama, :ppkelas, :nisn, :namaperusahaan, :tanggalperpanjangpkl,
+            '', CURRENT_TIMESTAMP, :created_by, null, '', null, '', null, '',0 ,0, DEFAULT)"
+        );
 
-        $this->db->query($query);
         $this->db->bind('uuid', Uuid::uuid4()->toString());
         $this->db->bind('ppnama', $data['ppnama']);
         $this->db->bind('ppkelas', $data['ppkelas']);
@@ -1069,8 +1138,6 @@ class pkl_model extends Database
         $this->db->bind('namaperusahaan', $data['namaperusahaan']);
         $this->db->bind('tanggalperpanjangpkl', $data['tanggalperpanjangpkl']);
         $this->db->bind('created_by', $this->user);
-
-
 
         $this->db->execute();
 
@@ -1081,12 +1148,12 @@ class pkl_model extends Database
     {
         $this->db->query(
             "UPDATE perpanjangmasapkl
-                    SET
-                    deleted_at = CURRENT_TIMESTAMP,
-                    deleted_by = :deleted_by,
-                    is_deleted = 1,
-                    is_restored = 0
-                  WHERE id = :id"
+                SET
+                deleted_at = CURRENT_TIMESTAMP,
+                deleted_by = :deleted_by,
+                is_deleted = 1,
+                is_restored = 0
+            WHERE id = :id"
         );
 
         $this->db->bind('deleted_by', $this->user);
@@ -1100,17 +1167,18 @@ class pkl_model extends Database
 
     public function ubahDataPP($data)
     {
-        $query = "UPDATE perpanjangmasapkl SET 
-                         ppnama = :ppnama, 
-                         ppkelas = :ppkelas, 
-                         nisn = :nisn,
-                         namaperusahaan = :namaperusahaan,
-                         tanggalperpanjangpkl = :tanggalperpanjangpkl, 
-                      modified_at = CURRENT_TIMESTAMP, 
-                      modified_by = :modified_by 
-                       WHERE id = :id";
+        $this->db->query(
+            "UPDATE perpanjangmasapkl SET 
+                ppnama = :ppnama, 
+                ppkelas = :ppkelas, 
+                nisn = :nisn,
+                namaperusahaan = :namaperusahaan,
+                tanggalperpanjangpkl = :tanggalperpanjangpkl, 
+                modified_at = CURRENT_TIMESTAMP, 
+                modified_by = :modified_by 
+            WHERE id = :id"
+        );
 
-        $this->db->query($query);
         $this->db->bind('ppnama', $data['ppnama']);
         $this->db->bind('ppkelas', $data['ppkelas']);
         $this->db->bind('nisn', $data['nisn']);
@@ -1124,7 +1192,6 @@ class pkl_model extends Database
         return $this->db->rowCount();
     }
 
-
     public function caridataPP()
     {
         $keyword = $_POST['keyword'];
@@ -1135,10 +1202,7 @@ class pkl_model extends Database
     }
 
 
-
-
-
-    //  izinpkl
+    //  IZIN PKL
 
     public function getSiswaIZ()
     {
@@ -1154,11 +1218,13 @@ class pkl_model extends Database
     }
     public function TambahDataIZ($data)
     {
-        $query  = "INSERT INTO perizinanpkl
-                              VALUES 
-                         (null, :uuid, :nisn, :nama, :kelas, :namaperusahaan, :halizin, :drtanggal, :hgtanggal, '', CURRENT_TIMESTAMP, :created_by, null, '', null, '', null, '',0 ,0, DEFAULT)";
+        $this->db->query(
+            "INSERT INTO `perizinanpkl`
+                VALUES 
+            (null, :uuid, :nisn, :nama, :kelas, :namaperusahaan, :halizin, :drtanggal, :hgtanggal,
+            '', CURRENT_TIMESTAMP, :created_by, null, '', null, '', null, '',0 ,0, DEFAULT)"
+        );
 
-        $this->db->query($query);
         $this->db->bind('uuid', Uuid::uuid4()->toString());
         $this->db->bind('nisn', $data['nisn']);
         $this->db->bind('nama', $data['nama']);
@@ -1168,8 +1234,6 @@ class pkl_model extends Database
         $this->db->bind('drtanggal', $data['drtanggal']);
         $this->db->bind('hgtanggal', $data['hgtanggal']);
         $this->db->bind('created_by', $this->user);
-
-
 
         $this->db->execute();
 
@@ -1231,17 +1295,13 @@ class pkl_model extends Database
     public function caridataIZ()
     {
         $keyword = $_POST['keyword'];
-        $query  =   "SELECT * FROM perizinanpkl WHERE kelas LIKE :keyword";
-        $this->db->query($query);
+        $this->db->query("SELECT * FROM perizinanpkl WHERE kelas LIKE :keyword");
         $this->db->bind('keyword', "%$keyword%");
         return $this->db->fetchAll();
     }
 
 
-
-
-
-    //    Siswa Bermasalah
+    //    SISWA BERMASALAH
 
     public function getSiswaBM()
     {
@@ -1257,11 +1317,13 @@ class pkl_model extends Database
     }
     public function TambahDataBM($data)
     {
-        $query  = "INSERT INTO siswabermasalah
-                           VALUES 
-                      (null, :uuid, :nisn, :nama, :kelas, :namaperusahaan, :jenismasalah, :solusi, '', CURRENT_TIMESTAMP, :created_by, null, '', null, '', null, '',0 ,0, DEFAULT)";
+        $this->db->query(
+            "INSERT INTO siswabermasalah
+                VALUES 
+            (null, :uuid, :nisn, :nama, :kelas, :namaperusahaan, :jenismasalah, :solusi,
+            '', CURRENT_TIMESTAMP, :created_by, null, '', null, '', null, '',0 ,0, DEFAULT)"
+        );
 
-        $this->db->query($query);
         $this->db->bind('uuid', Uuid::uuid4()->toString());
         $this->db->bind('nisn', $data['nisn']);
         $this->db->bind('nama', $data['nama']);
@@ -1270,8 +1332,6 @@ class pkl_model extends Database
         $this->db->bind('jenismasalah', $data['jenismasalah']);
         $this->db->bind('solusi', $data['solusi']);
         $this->db->bind('created_by', $this->user);
-
-
 
         $this->db->execute();
 
@@ -1301,20 +1361,20 @@ class pkl_model extends Database
 
     public function ubahDataBM($data)
     {
-        $query = "UPDATE siswabermasalah SET 
-                      nisn = :nisn, 
-                      nama = :nama, 
-                      kelas = :kelas,
-                      namaperusahaan = :namaperusahaan,
-                      jenismasalah = :jenismasalah,
-                      solusi = :solusi, 
-                      modified_at = CURRENT_TIMESTAMP, 
-                      modified_by = :modified_by
-              
+        $this->db->query(
+            "UPDATE siswabermasalah
+                SET 
+                nisn = :nisn, 
+                nama = :nama, 
+                kelas = :kelas,
+                namaperusahaan = :namaperusahaan,
+                jenismasalah = :jenismasalah,
+                solusi = :solusi, 
+                modified_at = CURRENT_TIMESTAMP, 
+                modified_by = :modified_by
+            WHERE id = :id"
+        );
 
-                    WHERE id = :id";
-
-        $this->db->query($query);
         $this->db->bind('nisn', $data['nisn']);
         $this->db->bind('nama', $data['nama']);
         $this->db->bind('kelas', $data['kelas']);
@@ -1330,7 +1390,7 @@ class pkl_model extends Database
         return $this->db->rowCount();
     }
 
-    //IMPORT
+    //  IMPORT
     
     public function importDatasiswa()
     {
@@ -1341,13 +1401,6 @@ class pkl_model extends Database
             'jurusan',
             'namaperusahaan'
         ];
-
-        // Cek file diupload apa belum
-        if (!isset($_FILES['file']['name'])) {
-            Flasher::setFlash('Error', 'Harap pilih file Excel terlebih dahulu', 'danger');
-            header('location: ' . BASEURL . '/pkl/pengangkatan');
-            exit;
-        }
 
         // Baca file Excel menggunakan PhpSpreadsheet
         $inputFileName = $_FILES['file']['tmp_name'];
@@ -1388,13 +1441,6 @@ class pkl_model extends Database
             'kota'
         ];
 
-        // Cek file diupload apa belum
-        if (!isset($_FILES['file']['name'])) {
-            Flasher::setFlash('Error', 'Harap pilih file Excel terlebih dahulu', 'danger');
-            header('location: ' . BASEURL . '/pkl/dataindustri');
-            exit;
-        }
-
         // Baca file Excel menggunakan PhpSpreadsheet
         $inputFileName = $_FILES['file']['tmp_name'];
         $spreadsheet = IOFactory::load($inputFileName);
@@ -1432,13 +1478,6 @@ class pkl_model extends Database
             'namaguru_monitoringpkl',
             'tanggalmonitoringpkl'
         ];
-
-        // Cek file diupload apa belum
-        if (!isset($_FILES['file']['name'])) {
-            Flasher::setFlash('Error', 'Harap pilih file Excel terlebih dahulu', 'danger');
-            header('location: ' . BASEURL . '/pkl/monitoring'); // genakno duu iki ne header location, nggak ngerti ngarah nandi aku
-            exit;
-        }
 
         // Baca file Excel menggunakan PhpSpreadsheet
         $inputFileName = $_FILES['file']['tmp_name'];
@@ -1480,13 +1519,6 @@ class pkl_model extends Database
             'tempat'
         ];
 
-        // Cek file diupload apa belum
-        if (!isset($_FILES['file']['name'])) {
-            Flasher::setFlash('Error', 'Harap pilih file Excel terlebih dahulu', 'danger');
-            header('location: ' . BASEURL . '/pkl/pklpembekalan'); // genakno duu iki ne header location, nggak ngerti ngarah nandi aku
-            exit;
-        }
-
         // Baca file Excel menggunakan PhpSpreadsheet
         $inputFileName = $_FILES['file']['tmp_name'];
         $spreadsheet = IOFactory::load($inputFileName);
@@ -1517,54 +1549,6 @@ class pkl_model extends Database
         return $response;
     }
 
-    public function importDatapemberkasan()
-    {
-        $fields = [
-            'nisn_pemberkasan',
-            'namasiswa_pemberkasan',
-            'tanggallahir_pemberkasan',
-            'jurusan_pemberkasan',
-            'jeniskelamin_pemberkasan',
-            'domisili_pemberkasan'
-        ];
-
-        // Cek file diupload apa belum
-        if (!isset($_FILES['file']['name'])) {
-            Flasher::setFlash('Error', 'Harap pilih file Excel terlebih dahulu', 'danger');
-            header('location: ' . BASEURL . '/pkl/pemberkasan'); // genakno duu iki ne header location, nggak ngerti ngarah nandi aku
-            exit;
-        }
-
-        // Baca file Excel menggunakan PhpSpreadsheet
-        $inputFileName = $_FILES['file']['tmp_name'];
-        $spreadsheet = IOFactory::load($inputFileName);
-
-        // Ambil data dari sheet pertama
-        $worksheet = $spreadsheet->getActiveSheet();
-        $highestRow = $worksheet->getHighestRow();
-        $highestColumn = $worksheet->getHighestColumn();
-        $maxColumnIndex = Coordinate::columnIndexFromString($highestColumn);
-
-        // Daftar kolom yang akan diambil dari file Excel dan disimpan ke database
-        $columns = $fields;
-
-        // Looping untuk membaca setiap baris data
-        for ($row = 2; $row <= $highestRow; $row++) {
-            $data = [];
-
-            // Looping untuk membaca setiap kolom data
-            for ($col = 2; $col <= count($columns) + 1; $col++) {
-                $columnLetter = Coordinate::stringFromColumnIndex($col);
-                $cellValue = $worksheet->getCell($columnLetter . $row)->getValue();
-                $data[$columns[$col - 2]] = $cellValue;
-            }
-
-            // Simpan data ke database
-            $response = $this->tambahDataPemberkasan($data);
-        }
-        return $response;
-    }
-
     public function importDatadp()
     {
         $fields = [
@@ -1573,13 +1557,6 @@ class pkl_model extends Database
             'jeniskelamin',
             'jumlah'
         ];
-
-        // Cek file diupload apa belum
-        if (!isset($_FILES['file']['name'])) {
-            Flasher::setFlash('Error', 'Harap pilih file Excel terlebih dahulu', 'danger');
-            header('location: ' . BASEURL . '/pkl/penempatan'); // genakno duu iki ne header location, nggak ngerti ngarah nandi aku
-            exit;
-        }
 
         // Baca file Excel menggunakan PhpSpreadsheet
         $inputFileName = $_FILES['file']['tmp_name'];
@@ -1620,13 +1597,6 @@ class pkl_model extends Database
             'namaperusahaan',
             'tanggalperpanjangpkl'
         ];
-
-        // Cek file diupload apa belum
-        if (!isset($_FILES['file']['name'])) {
-            Flasher::setFlash('Error', 'Harap pilih file Excel terlebih dahulu', 'danger');
-            header('location: ' . BASEURL . '/pkl/dataindustri'); // genakno duu iki ne header location, nggak ngerti ngarah nandi aku
-            exit;
-        }
 
         // Baca file Excel menggunakan PhpSpreadsheet
         $inputFileName = $_FILES['file']['tmp_name'];
@@ -1670,13 +1640,6 @@ class pkl_model extends Database
             'hgtanggal'
         ];
 
-        // Cek file diupload apa belum
-        if (!isset($_FILES['file']['name'])) {
-            Flasher::setFlash('Error', 'Harap pilih file Excel terlebih dahulu', 'danger');
-            header('location: ' . BASEURL . '/pkl/perizinan'); // genakno duu iki ne header location, nggak ngerti ngarah nandi aku
-            exit;
-        }
-
         // Baca file Excel menggunakan PhpSpreadsheet
         $inputFileName = $_FILES['file']['tmp_name'];
         $spreadsheet = IOFactory::load($inputFileName);
@@ -1717,13 +1680,6 @@ class pkl_model extends Database
             'jenismasalah',
             'solusi'
         ];
-
-        // Cek file diupload apa belum
-        if (!isset($_FILES['file']['name'])) {
-            Flasher::setFlash('Error', 'Harap pilih file Excel terlebih dahulu', 'danger');
-            header('location: ' . BASEURL . '/pkl/siswabermasalah'); // genakno duu iki ne header location, nggak ngerti ngarah nandi aku
-            exit;
-        }
 
         // Baca file Excel menggunakan PhpSpreadsheet
         $inputFileName = $_FILES['file']['tmp_name'];

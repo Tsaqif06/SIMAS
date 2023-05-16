@@ -20,10 +20,11 @@ foreach ($kelas as $key => $list) {
 }
 ?>
 
-<script>
-  if ('<?= $jurusan ?>' === '')
+<?php if ($jurusan == '') : ?>
+  <script>
     location.replace("http://localhost/SIMAS/public/NotFound");
-</script>
+  </script>
+<?php endif; ?>
 
 <!-- partial -->
 <div class="main-panel">
@@ -80,7 +81,7 @@ foreach ($kelas as $key => $list) {
               </button>
             </div>
             <div class="modal-body">
-              <form action="<?= BASEURL ?>/pkl/importDatadt" method="post" enctype="multipart/form-data">
+              <form action="<?= BASEURL ?>/pkl/importDataPenempatan&kelas=<?= $_GET['kelas'] ?>" method="post" enctype="multipart/form-data">
               <div class="mb-3">
                 <label for="file">Pilih file Excel (.xlsx)</label>
                 <input type="file" name="file" id="file">
