@@ -16,7 +16,7 @@ class pkl_model extends Database
     private $tablepb = 'pembekalanpkl';
     private $tableps = 'pemberkasanpkl';
     private $tabledp = 'dayatampungpkl';
-    private $tablepp = 'perpanjangmasapkl';
+    private $tablepp = 'perpanjangmasapkl'; 
     private $tablenilai = 'nilaipkl';
     private $tableiz = 'perizinanpkl';
     private $tablebm = 'siswabermasalah';
@@ -68,6 +68,26 @@ class pkl_model extends Database
     public function getJmlDatatp()
     {
         $this->db->query("SELECT COUNT(*) AS count FROM {$this->tabletp} WHERE `status` = 1");
+        return $this->db->fetch();
+    }
+    public function getJmlDatamon()
+    {
+        $this->db->query("SELECT COUNT(*) AS count FROM {$this->tableMON} WHERE `status` = 1");
+        return $this->db->fetch();
+    }
+    public function getJmlDataps()
+    {
+        $this->db->query("SELECT COUNT(*) AS count FROM {$this->tableps} WHERE `status` = 1");
+        return $this->db->fetch();
+    }
+    public function getJmlDatapb()
+    {
+        $this->db->query("SELECT COUNT(*) AS count FROM {$this->tablepb} WHERE `status` = 1");
+        return $this->db->fetch();
+    }
+    public function getJmlDatanilai()
+    {
+        $this->db->query("SELECT COUNT(*) AS count FROM {$this->tablenilai} WHERE `status` = 1");
         return $this->db->fetch();
     }
     public function getSiswaPegawai()
@@ -2006,9 +2026,9 @@ class pkl_model extends Database
 
     //    Siswa Bermasalah
 
-    public function getSiswaBM()
+    public function getExistSiswaBM()
     {
-        $this->db->query('SELECT * FROM ' . $this->tablebm);
+        $this->db->query('SELECT * FROM ' . $this->tablebm . ' WHERE `status` = ' . 1);
         return $this->db->fetchAll();
     }
 

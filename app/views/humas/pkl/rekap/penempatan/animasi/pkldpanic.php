@@ -36,7 +36,7 @@
     <div class="row">
       <div class="col-md-12 grid-margin">
         <div class="template-demo">
-          <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#formmodal">Tambah
+          <button type="button" class="btn btn-primary tombolTambahData" data-toggle="modal" data-target="#formmodal">Tambah
             Data</button>
           <button type="button" class="btn btn-primary tampilModalImport" data-toggle="modal" data-target="#modalImport">
             Import Data Dari Excel
@@ -72,11 +72,11 @@
 
 
       <!-- Modal -->
-      <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal fade" id="formmodal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
           <div class="modal-content">
             <div class="modal-header">
-              <h5 class="modal-title" id="exampleModalLabel">Tambah Data</h5>
+              <h5 class="modal-title formModalLabel" id="formModalLabel">Tambah Data</h5>
               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
               </button>
@@ -159,32 +159,21 @@
 
 
   </div>
-  <footer class="footer">
-    <div class="d-sm-flex justify-content-center justify-content-sm-between">
-      <span class="text-muted text-center text-sm-left d-block d-sm-inline-block">Copyright © 2023. SIMAS. All rights reserved.</span>
-    </div>
-  </footer>
-  <!-- partial -->
-</div>
-<!-- main-panel ends -->
-</div>
-<!-- page-body-wrapper ends -->
-</div>
-<!-- container-scroller -->
+ 
 
 <script>
   $(function() {
     // const BASEURL = window.location;
     // console.log(BASEURL)
     $('.tombolTambahData').on('click', function() {
-      $('formModalLabel').html('Tambah Data Struktur Organisasi')
+      $('.formModalLabel').html('Tambah Data Siswa')
       $('.modal-footer button[type=submit]').html('Tambah Data');
 
     });
 
     $(".ppanic").click(function() {
       $("#modal").addClass("edit");
-      $("#modalLabel").html("Ubah Data Industri");
+      $(".formModalLabel").html("Ubah Data Siswa");
       $(".modal-footer button[type=submit]").html("Ubah Data");
       $(".modal-body form").attr("action", `http://localhost/SIMAS/public/pkl/ubahDataPenempatanANIC`);
 

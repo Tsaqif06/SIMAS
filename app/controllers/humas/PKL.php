@@ -8,6 +8,11 @@ class PKL extends Controller
     {
         $data['judul'] = 'Admin - PKL';
         $data['user'] = $this->user;
+        $data['jmlmon'] = $this->model('Humas', 'PKL_model')->getJmlDatamon()['count'];
+        $data['jmlps'] = $this->model('Humas', 'PKL_model')->getJmlDataps()['count'];
+        $data['jmlpb'] = $this->model('Humas', 'PKL_model')->getJmlDatapb()['count'];
+        $data['jmlnilai'] = $this->model('Humas', 'PKL_model')->getJmlDatanilai()['count'];
+        $data['jmldp'] = $this->model('Humas', 'PKL_model')->getJmlDatadp()['count'];
         $akses = ['all', 'humas'];
         if (in_array($data['user']['hak_akses'], $akses)) {
             $this->view('templates/humas/header', $data);
@@ -26,7 +31,6 @@ class PKL extends Controller
         $data['jmlpp'] = $this->model('Humas', 'PKL_model')->getJmlDatapp()['count'];
         $data['jmliz'] = $this->model('Humas', 'PKL_model')->getJmlDataiz()['count'];
         $data['jmlind'] = $this->model('Humas', 'PKL_model')->getJmlDataind()['count'];
-        $data['jmldp'] = $this->model('Humas', 'PKL_model')->getJmlDatadp()['count'];
         $data['jmltable'] = $this->model('Humas', 'PKL_model')->getJmlDatatable()['count'];
         $data['jmlbm'] = $this->model('Humas', 'PKL_model')->getJmlDatabm()['count'];
         $data['jmltp'] = $this->model('Humas', 'PKL_model')->getJmlDatatp()['count'];
@@ -74,10 +78,11 @@ class PKL extends Controller
     {
         $data['judul'] = 'Admin - PKL';
         $data['user'] = $this->user;
+        $data['ppanib'] = $this->model("$this->model_name", 'pkl_model')->getExistANIB();
         $akses = ['all', 'humas'];
         if (in_array($data['user']['hak_akses'], $akses)) {
             $this->view('templates/humas/header', $data);
-            $this->view('humas/pkl/rekap/penempatan/animasi/pkldpanib');
+            $this->view('humas/pkl/rekap/penempatan/animasi/pkldpanib', $data);
             $this->view('templates/humas/footer');
         } else if ($data['user']['hak_akses'] == '') {
             header("Location: " . BASEURL);
@@ -3268,11 +3273,11 @@ class PKL extends Controller
             $data['pg'] = $this->model("$this->model_name", 'pkl_model')->getExistSiswaPegawai();
             $this->view('templates/humas/header', $data);
             $this->view('humas/pkl/rekap/magang/pklpengangkatansiswa', $data);
+            $this->view('templates/humas/footer');
         } else if ($data['user']['hak_akses'] == '') {
             header("Location: " . BASEURL);
             Flasher::setFlash('GAGAL', 'Anda Tidak Mempunyai Akses Untuk Menuju Halaman Tersebut', 'danger');
         }
-        $this->view('templates/humas/footer');
     }
 
     public function tambahdata()
