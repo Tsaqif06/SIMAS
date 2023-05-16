@@ -1,6 +1,6 @@
 <?php
   include('connect.php');
-  $kategori = mysqli_query($connect, "SELECT nama FROM fasilitas GROUP BY nama");
+  $kategori = mysqli_query($connect, "SELECT nama FROM fasilitas WHERE status = 1 GROUP BY nama");
   $jumlah = mysqli_query($connect, "SELECT SUM(jumlah) AS jumlah FROM fasilitas GROUP BY nama");
 ?>
 
@@ -23,7 +23,7 @@
           </div>
           <div class="row">
             <div class="col">
-              <a id="example" class="btn btn-primary " role="button" data-toggle="modal" data-target="#exampleModalLong">Tambah Data Fasilitas</a>
+              <a class="btn btn-primary" role="button" data-toggle="modal" data-target="#exampleModalLong">Tambah Data Fasilitas</a>
               <button type="button" class="btn btn-primary my-3 mx-3 tampilModalImport" data-url="<?= BASEURL ?>/fasilitas" data-bs-toggle="modal" data-bs-target="#modalImport"> Import Data Dari Excel </button>
             </div>
         </div>
@@ -102,7 +102,7 @@
             <div class="card rounded shadow border-0" style="width: fit-content;">
               <div class="card-body p-10 bg-white rounded">
                 <div class="table-responsive"> 
-                  <table id="print" id="table" class="table table-striped table-bordered">
+                  <table id="print" class="table table-striped table-bordered">
                     <thead>
                       <tr>
                         <th>#</th>
@@ -144,12 +144,12 @@
       </div>
 
         
-        <footer class="footer">
+        <!-- <footer class="footer">
           <div class="d-sm-flex justify-content-center justify-content-sm-between">
             <span class="text-muted text-center text-sm-left d-block d-sm-inline-block">Copyright © 2021.  Premium <a href="https://www.bootstrapdash.com/" target="_blank">Bootstrap admin template</a> from BootstrapDash. All rights reserved.</span>
             <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center">Hand-crafted & made with <i class="ti-heart text-danger ml-1"></i></span>
           </div>
-        </footer>
+        </footer> -->
         <!-- <script src="<?=BASEURL;?>/js/pengajuanJurusan.js"></script> -->
   <script>
     $(document).ready(function() {
