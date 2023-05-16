@@ -16,8 +16,8 @@
                   TL A
                 </button>
                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuDate2">
-                  <a class="dropdown-item" href="<?= BASEURL; ?>/pkl/penempatantla">TL A</a>
-                  <a class="dropdown-item" href="<?= BASEURL; ?>/pkl/penempatantlb">TL B</a>
+                  <a class="dropdown-item" href="<?= BASEURL; ?>/pkl/penempatanloga">TL A</a>
+                  <a class="dropdown-item" href="<?= BASEURL; ?>/pkl/penempatanlogb">TL B</a>
                 </div>
               </div>
             </div>

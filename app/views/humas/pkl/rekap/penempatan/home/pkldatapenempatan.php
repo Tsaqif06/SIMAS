@@ -48,7 +48,7 @@
                   </div>
                   <div class="card-body">
                     <div class="row">
-                      <a href="<?= BASEURL; ?>/pkl/penempatantla"><button type="button" class="btn btn-inverse-primary btn-fw btn-block">Masuk ke laman ini</button></a>
+                      <a href="<?= BASEURL; ?>/pkl/penempatanloga"><button type="button" class="btn btn-inverse-primary btn-fw btn-block">Masuk ke laman ini</button></a>
                     </div>
                   </div>
                 </div>
