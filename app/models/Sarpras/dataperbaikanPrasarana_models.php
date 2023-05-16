@@ -16,7 +16,7 @@ class dataperbaikanPrasarana_models
         'tindakan',
         'kondisi_awal',
         'kondisi_akhir',
-        'statusperbaikan',
+        // 'statusperbaikan',
         'teknisi'
     ];
 
@@ -88,7 +88,7 @@ class dataperbaikanPrasarana_models
     {
         $query = "INSERT INTO data_perbaikan
                     VALUES
-                  (null, :uuid, :kode, :barang, :pengajuan, :tindakan, :kondisi_awal, :kondisi_akhir, :statusperbaikan, :teknisi, '', CURRENT_TIMESTAMP, :created_by, null, '', null, '', null, '', 0, 0, DEFAULT)";
+                  (null, :uuid, :kode, :barang, :pengajuan, :tindakan, :kondisi_awal, :kondisi_akhir, NULL, :teknisi, '', CURRENT_TIMESTAMP, :created_by, null, '', null, '', null, '', 0, 0, DEFAULT)";
 
         $this->db->query($query);
         $this->db->bind('uuid', Uuid::uuid4()->toString());
