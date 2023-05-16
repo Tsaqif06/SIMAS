@@ -1,5 +1,10 @@
 <?php
-include('connect.php');
+$db = 'psdm';
+$host = 'localhost';  
+$user = 'root';
+$pass = '';
+
+$connect = mysqli_connect($host, $user, $pass, $db);
 $kategori = mysqli_query($connect, "SELECT tahun FROM prestasi_guru GROUP BY tahun");
 $jumlah = mysqli_query($connect, "SELECT COUNT(tahun) AS jumlah FROM prestasi_guru GROUP BY tahun");
 $juara = mysqli_query($connect, "SELECT juara FROM prestasi_guru GROUP BY juara");
@@ -15,7 +20,7 @@ $jumlahJuara = mysqli_query($connect, "SELECT COUNT(juara) AS jumlahJuara FROM p
     font-weight: bold;
     border-radius: 10px;
     color: #4B49AC;
-    width: 50%;
+    /* width: 50%; */
   }
 
   .button-arounder:hover,
@@ -29,7 +34,7 @@ $jumlahJuara = mysqli_query($connect, "SELECT COUNT(juara) AS jumlahJuara FROM p
     border-bottom-right-radius: var(--radius);
     color: white;
     border-radius: 10px;
-    width: 50%;
+    /* width: 50%; */
   }
 
   td {
@@ -202,6 +207,7 @@ $jumlahJuara = mysqli_query($connect, "SELECT COUNT(juara) AS jumlahJuara FROM p
   </div>
 </div>
 </div>
+                </div>
 
 
 <script src="<?= BASEURL; ?>/js/script.js"></script>
