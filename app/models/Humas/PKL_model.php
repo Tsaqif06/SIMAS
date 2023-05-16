@@ -20,19 +20,6 @@ class pkl_model extends Database
     private $table_nilai = 'nilaipkl';
     private $tableiz = 'perizinanpkl';
     private $tablebm = 'siswabermasalah';
-    private $tables = [
-        'daftarsiswapegawai' => ['nisn', 'namasiswa', 'kelas', 'jurusan', 'namaperusahaan'],
-        'dataindustripkl' => ['kompetensikeahlian', 'namaperusahaan', 'alamat', 'kota'],
-        'datatempatpkl' => ['nisn', 'namasiswa', 'kelassiswa', 'namaperusahaan'],
-        'monitoringpkl' => ['namaperusahaan_monitoringpkl', 'namaguru_monitoringpkl', 'tanggal_monitoringpkl'],
-        'pembekalanpkl' => ['dilakukanoleh', 'tanggalpersiapan', 'jadwal', 'peserta', 'tempat'],
-        'pemberkasanpkl' => ['nisn_pemberkasan', 'namasiswa_pemberkasan', 'tanggallahir_pemberkasan', 'jurusan_pemberkasan', 'jeniskelamin_pemberkasan', 'domisili_pemberkasan', 'uploadfoto_pemberkasan', 'uploadebookraport_pemberkasan', 'uploadbuktilunas_pemberkasan'],
-        'dayatampungpkl' => ['namaperusahaan', 'jurusan', 'jeniskelamin', 'jumlah'],
-        'perpanjangmasapkl' => ['ppnama', 'ppkelas', 'nisn', 'namaperusahaan', 'tanggalperpanjangan'],
-        'nilaipkl' => ['nisn', 'namasiswa', 'kelas', 'jeniskelamin', 'namaindustri', 'nilaisiswa', 'keterangannilai'],
-        'perizinanpkl' => ['nama', 'kelas', 'namaperusahaan', 'halizin', 'drtanggal', 'hgtanggal'],
-        'siswabermasalah' => ['nisn', 'nama', 'kelas', 'namaperusahaan', 'jenismasalah', 'solusi']
-    ];
     private $user;
     private $db;
 
@@ -41,60 +28,6 @@ class pkl_model extends Database
         $this->db = new Database(DB_HUMAS);
         $this->user = Cookie::get_jwt()->name;
     }
-
-    // Concatenate all field into string for query
-    public function concat($table, $is_param = false) {
-        $result = '';
-
-        if ($is_param) {
-            $result = ':';
-            for ($i = 0; $i < count($table)-1; $i++) {
-                $result .= $table[$i] . ', :';
-            }
-        } else {
-            for ($i = 0; $i < count($table)-1; $i++) {
-                $result .= $table[$i] . ', ';
-            }
-        }
-        $result .= end($table);
-
-        return $result;
-    }
-
-    // IMPORT DATA
-
-    public function importData($table)
-    {
-        // Baca file Excel menggunakan PhpSpreadsheet
-        $inputFileName = $_FILES['file']['tmp_name'];
-        $spreadsheet = IOFactory::load($inputFileName);
-
-        // Ambil data dari sheet pertama
-        $worksheet = $spreadsheet->getActiveSheet();
-        $highestRow = $worksheet->getHighestRow();
-        $highestColumn = $worksheet->getHighestColumn();
-        $maxColumnIndex = Coordinate::columnIndexFromString($highestColumn);
-
-        // Daftar kolom yang akan diambil dari file Excel dan disimpan ke database
-        $columns = $this->tables[$table];
-
-        // Looping untuk membaca setiap baris data
-        for ($row = 2; $row <= $highestRow; $row++) {
-            $data = [];
-
-            // Looping untuk membaca setiap kolom data
-            for ($col = 2; $col <= count($columns) + 1; $col++) {
-                $columnLetter = Coordinate::stringFromColumnIndex($col);
-                $cellValue = $worksheet->getCell($columnLetter . $row)->getValue();
-                $data[$columns[$col - 2]] = $cellValue;
-            }
-
-            // Simpan data ke database
-            $response = $this->tambahDataDP($data);
-        }
-        return $response;
-    }
-
 
     // NILAI //
 
@@ -268,6 +201,52 @@ class pkl_model extends Database
 
         $this->db->execute();
         return $this->db->rowCount();
+    }
+
+    public function importDataPenempatan()
+    {
+        $fields = [
+            'nisn',
+            'namasiswa',
+            'kelassiswa',
+            'namaperusahaan'
+        ];
+
+        // Cek file diupload apa belum
+        if (!isset($_FILES['file']['name'])) {
+            Flasher::setFlash('Error', 'Harap pilih file Excel terlebih dahulu', 'danger');
+            header('location: ' . BASEURL . '/pkl/pengangkatan'); // genakno duu iki ne header location, nggak ngerti ngarah nandi aku
+            exit;
+        }
+
+        // Baca file Excel menggunakan PhpSpreadsheet
+        $inputFileName = $_FILES['file']['tmp_name'];
+        $spreadsheet = IOFactory::load($inputFileName);
+
+        // Ambil data dari sheet pertama
+        $worksheet = $spreadsheet->getActiveSheet();
+        $highestRow = $worksheet->getHighestRow();
+        $highestColumn = $worksheet->getHighestColumn();
+        $maxColumnIndex = Coordinate::columnIndexFromString($highestColumn);
+
+        // Daftar kolom yang akan diambil dari file Excel dan disimpan ke database
+        $columns = $fields;
+
+        // Looping untuk membaca setiap baris data
+        for ($row = 2; $row <= $highestRow; $row++) {
+            $data = [];
+
+            // Looping untuk membaca setiap kolom data
+            for ($col = 2; $col <= count($columns) + 1; $col++) {
+                $columnLetter = Coordinate::stringFromColumnIndex($col);
+                $cellValue = $worksheet->getCell($columnLetter . $row)->getValue();
+                $data[$columns[$col - 2]] = $cellValue;
+            }
+
+            // Simpan data ke database
+            $response = $this->tambahDataPenempatan($data);
+        }
+        return $response;
     }
 
 
