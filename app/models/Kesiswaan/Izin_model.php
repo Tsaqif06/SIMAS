@@ -58,6 +58,11 @@ class Izin_model
         foreach ($this->fields as $field) {
             $this->db->bind($field, $data[$field]);
         }
+        if ($data['note'] != '') {
+            $this->db->bind('note', $data['note']);
+        } else {
+            $this->db->bind('note', '');
+        }
 
         $this->db->bind('created_by', $this->user);
         $this->db->execute();

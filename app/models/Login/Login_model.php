@@ -10,25 +10,57 @@ class Login_model
         $this->db = new Database(DB_USERS);
     }
 
-    // Method untuk lupa sandi //
+    // Method untuk login //
 
-    public function login($data)
+    public function loginAdmin($data)
     {
         $this->db->query(
             "SELECT * FROM {$this->table} 
                 WHERE 
             `username` = :username AND
-            `email` = :email AND
             `password` = :password_field
         "
         );
 
         $this->db->bind("username", $data['username']);
-        $this->db->bind("email", $data['email']);
         $this->db->bind("password_field", $data['password']);
 
         return $this->db->fetch();
     }
+
+    public function loginSiswa($data)
+    {
+        $this->db->query(
+            "SELECT * FROM masterdata.mastersiswa
+                WHERE 
+            `nama_siswa` = :username AND
+            `nis` = :password_field
+        "
+        );
+
+        $this->db->bind("username", $data['username']);
+        $this->db->bind("password_field", $data['password']);
+
+        return $this->db->fetch();
+    }
+
+
+    public function loginGuru($data)
+    {
+        $this->db->query(
+            "SELECT * FROM masterdata.masterguru
+                WHERE
+            `nama_lengkap` = :username AND
+            `nip` = :password_field
+        "
+        );
+
+        $this->db->bind("username", $data['username']);
+        $this->db->bind("password_field", $data['password']);
+
+        return $this->db->fetch();
+    }
+
 
     public function log($id)
     {

@@ -36,19 +36,47 @@ class API extends Controller
         ($id == null) ?
             $data = $this->model("Kesiswaan", 'Kehadiran_model')->getAllExistData() :
             $data = $this->model("Kesiswaan", 'Kehadiran_model')->getDataById($id);
+        foreach ($data as $item) {
+            $response[$item['nisn']] = $item;
+        }
         ($data) ?
-            $response = true :
-            $response = false;
-        echo json_encode(["status" => $response, "data" => $data]);
+            $success = true :
+            $success = false;
+        echo json_encode(['success' => $success, 'data' => $response]);
     }
 
     public function tambahDataKehadiran()
     {
         header('Content-Type: application/json');
         if ($this->model("Kesiswaan", "Kehadiran_model")->tambahData($_POST) > 0) {
-            echo json_encode(["status" => "success", "message" => "Data Kehadiran berhasil ditambahkan"]);
+            echo json_encode(["success" => true, "message" => "Data Kehadiran berhasil ditambahkan"]);
         } else {
-            echo json_encode(["status" => "error", "message" => "Data Kehadiran gagal dihapus"]);
+            echo json_encode(["success" => false, "message" => "Data Kehadiran gagal dihapus"]);
+        }
+    }
+
+    // IZIN //
+
+    public function izin($id = null)
+    {
+        header('Access-Control-Allow-Origin: *');
+        header('Content-Type: application/json');
+        ($id == null) ?
+            $data = $this->model("Kesiswaan", 'Izin_model')->getAllExistData() :
+            $data = $this->model("Kesiswaan", 'Izin_model')->getDataById($id);
+        ($data) ?
+            $response = true :
+            $response = false;
+        echo json_encode(["success" => $response, "data" => $data]);
+    }
+
+    public function tambahDataIzin()
+    {
+        header('Content-Type: application/json');
+        if ($this->model("Kesiswaan", "Izin_model")->tambahDataIzin($_POST) > 0) {
+            echo json_encode(["success" => true, "message" => "Data Izin berhasil ditambahkan"]);
+        } else {
+            echo json_encode(["success" => false, "message" => "Data Izin gagal dihapus"]);
         }
     }
 
