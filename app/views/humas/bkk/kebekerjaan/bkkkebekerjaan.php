@@ -19,7 +19,7 @@
                         <div class="card data-icon-card-primary">
                             <div class="card-body">
                                 <div class="row">
-                                    <img src="<?= BASEURL; ?>/images/bkkkeberkejaan/lembarkerjakebekerjaan.jpg"
+                                    <img src="<?= BASEURL; ?>/assets/bkkkebekerjaan/lembarkerjakebekerjaan.jpg"
                                         alt="image small" class="card images-modul">
                                 </div>
                             </div>
@@ -49,7 +49,7 @@
                         <div class="card data-icon-card-primary">
                             <div class="card-body">
                                 <div class="row">
-                                    <img src="<?= BASEURL; ?>/images/bkkkeberkejaan/rundownpsikhotest.jpg"
+                                    <img src="<?= BASEURL; ?>/assets/bkkkebekerjaan/rundownpsikhotest.jpg"
                                         alt="image small" class="card images-modul">
                                 </div>
                             </div>
@@ -78,7 +78,7 @@
                         <div class="card data-icon-card-primary">
                             <div class="card-body">
                                 <div class="row">
-                                    <img src="<?= BASEURL; ?>/images/bkkkeberkejaan/psikhotest 001.jpg"
+                                    <img src="<?= BASEURL; ?>/assets/bkkkebekerjaan/psikhotest 001.jpg"
                                         alt="image small" class="card images-modul">
                                 </div>
                             </div>
@@ -107,7 +107,7 @@
                         <div class="card data-icon-card-primary">
                             <div class="card-body">
                                 <div class="row">
-                                    <img src="<?= BASEURL; ?>/images/bkkkeberkejaan/papiskotick.jpg" alt="image small"
+                                    <img src="<?= BASEURL; ?>/assets/bkkkebekerjaan/papiskotick.jpg" alt="image small"
                                         class="card images-modul">
                                 </div>
                             </div>
@@ -136,7 +136,7 @@
                         <div class="card data-icon-card-primary">
                             <div class="card-body">
                                 <div class="row">
-                                    <img src="<?= BASEURL; ?>/images/bkkkeberkejaan/papiskotick003.jpg"
+                                    <img src="<?= BASEURL; ?>/assets/bkkkebekerjaan/papiskotick003.jpg"
                                         alt="image small" class="card images-modul">
                                 </div>
                             </div>
@@ -165,7 +165,7 @@
                         <div class="card data-icon-card-primary">
                             <div class="card-body">
                                 <div class="row">
-                                    <img src="<?= BASEURL; ?>/images/bkkkeberkejaan/gambarnskrepline.jpg"
+                                    <img src="<?= BASEURL; ?>/assets/bkkkebekerjaan/gambarnskrepline.jpg"
                                         alt="image small" class="card images-modul">
                                 </div>
                             </div>
@@ -194,7 +194,7 @@
                         <div class="card data-icon-card-primary">
                             <div class="card-body">
                                 <div class="row">
-                                    <img src="<?= BASEURL; ?>/images/bkkkeberkejaan/testwawancara.jpg" alt="image small"
+                                    <img src="<?= BASEURL; ?>/assets/bkkkebekerjaan/testwawancara.jpg" alt="image small"
                                         class="card images-modul">
                                 </div>
                             </div>
@@ -222,7 +222,7 @@
                         <div class="card data-icon-card-primary">
                             <div class="card-body">
                                 <div class="row">
-                                    <img src="<?= BASEURL; ?>/images/bkkkeberkejaan/soaltiu.jpg" alt="image small"
+                                    <img src="<?= BASEURL; ?>/assets/bkkkebekerjaan/soaltiu.jpg" alt="image small"
                                         class="card images-modul">
                                 </div>
                             </div>
@@ -252,7 +252,7 @@
                         <div class="card data-icon-card-primary">
                             <div class="card-body">
                                 <div class="row">
-                                    <img src="<?= BASEURL; ?>/images/bkkkeberkejaan/laporanp5kebekerjaan.jpg"
+                                    <img src="<?= BASEURL; ?>/assets/bkkkebekerjaan/laporanp5kebekerjaan.jpg"
                                         alt="image small" class="card images-modul">
                                 </div>
                             </div>
@@ -279,18 +279,4 @@
         </div>
 
 
-    </div>
-    <!-- content-wrapper ends -->
-    <!-- partial:partials/_footer.html -->
-    <footer class="footer">
-        <div class="d-sm-flex justify-content-center justify-content-sm-between">
-            <span class="text-muted text-center text-sm-left d-block d-sm-inline-block">Copyright © 2023. SIMAS. All
-                rights reserved.</span>
-        </div>
-    </footer>
-    <!-- partial -->
-    </div>
-    <!-- main-panel ends -->
-    </div>
-    <!-- page-body-wrapper ends -->
     </div>

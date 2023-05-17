@@ -16,9 +16,8 @@
 
         <div class="row">
             <div class="col-md-12 grid-margin stretch-card">
-                <object
-                    data="<?= BASEURL; ?>/images/bkkkeberkejaan/Ika Fitri Mustikasari_Laporan P5 Kebekerjaan_XI DG C & XI DG D.pdf"
-                    width="100%" height="800"></object>
+            <iframe src="https://drive.google.com/file/u/0/d/1rePxuNyVBMOeUtdmOdfs5CHsghb2GdrH/preview?usp=embed_googleplus" style="width: 100%; height: 600px;" frameborder="0"></iframe>
+
             </div>
         </div>
 
