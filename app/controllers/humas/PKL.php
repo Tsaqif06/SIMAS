@@ -8,6 +8,11 @@ class PKL extends Controller
     {
         $data['judul'] = 'Admin - PKL';
         $data['user'] = $this->user;
+        $data['jmlmon'] = $this->model('Humas', 'PKL_model')->getJmlDatamon()['count'];
+        $data['jmlps'] = $this->model('Humas', 'PKL_model')->getJmlDataps()['count'];
+        $data['jmlpb'] = $this->model('Humas', 'PKL_model')->getJmlDatapb()['count'];
+        $data['jmlnilai'] = $this->model('Humas', 'PKL_model')->getJmlDatanilai()['count'];
+        $data['jmldp'] = $this->model('Humas', 'PKL_model')->getJmlDatadp()['count'];
         $akses = ['all', 'humas'];
         if (in_array($data['user']['hak_akses'], $akses)) {
             $this->view('templates/humas/header', $data);
@@ -26,9 +31,9 @@ class PKL extends Controller
         $data['jmlpp'] = $this->model('Humas', 'PKL_model')->getJmlDatapp()['count'];
         $data['jmliz'] = $this->model('Humas', 'PKL_model')->getJmlDataiz()['count'];
         $data['jmlind'] = $this->model('Humas', 'PKL_model')->getJmlDataind()['count'];
-        $data['jmldp'] = $this->model('Humas', 'PKL_model')->getJmlDatadp()['count'];
         $data['jmltable'] = $this->model('Humas', 'PKL_model')->getJmlDatatable()['count'];
         $data['jmlbm'] = $this->model('Humas', 'PKL_model')->getJmlDatabm()['count'];
+        $data['jmltp'] = $this->model('Humas', 'PKL_model')->getJmlDatatp()['count'];
         $akses = ['all', 'humas'];
         if (in_array($data['user']['hak_akses'], $akses)) {
             $this->view('templates/humas/header', $data);
@@ -329,23 +334,21 @@ class PKL extends Controller
         }
     }
 
-
-    // SISWA PEGAWAI
-
     public function pengangkatan()
     {
         $data['judul'] = 'Siswa Pegawai';
         $data['user'] = $this->user;
+        $data['kompkeahlian'] = $this->model("Master", 'Kompkeahlian_model')->getAllExistData();
         $akses = ['all', 'humas'];
         if (in_array($data['user']['hak_akses'], $akses)) {
-            $data['pg'] = $this->model("$this->model_name", 'pkl_model')->getSiswaPegawai();
+            $data['pg'] = $this->model("$this->model_name", 'pkl_model')->getExistSiswaPegawai();
             $this->view('templates/humas/header', $data);
             $this->view('humas/pkl/rekap/magang/pklpengangkatansiswa', $data);
+            $this->view('templates/humas/footer');
         } else if ($data['user']['hak_akses'] == '') {
             header("Location: " . BASEURL);
             Flasher::setFlash('GAGAL', 'Anda Tidak Mempunyai Akses Untuk Menuju Halaman Tersebut', 'danger');
         }
-        $this->view('templates/humas/footer');
     }
 
     public function tambahdata()
@@ -404,7 +407,7 @@ class PKL extends Controller
         $data['judul'] = 'Data industri Siswa';
         $data['user'] = $this->user;
         $akses = ['all', 'humas'];
-        $data['dta'] = $this->model("$this->model_name", 'pkl_model')->getSiswaind();
+        $data['dta'] = $this->model("$this->model_name", 'pkl_model')->getExistSiswaind();
         if (in_array($data['user']['hak_akses'], $akses)) {
             $this->view('templates/humas/header', $data);
             $this->view('humas/pkl/rekap/dataindustri/pkldataindustri', $data);
@@ -467,7 +470,7 @@ class PKL extends Controller
 
         $data['judul'] = 'Data Tempat';
         $data['user'] = $this->user;
-        $data['mp'] = $this->model("$this->model_name", 'pkl_model')->getSiswaMON();
+        $data['mp'] = $this->model("$this->model_name", 'pkl_model')->getExistSiswaMON();
         $akses = ['all', 'humas'];
         if (in_array($data['user']['hak_akses'], $akses)) {
             $this->view('templates/humas/header', $data);
@@ -534,10 +537,10 @@ class PKL extends Controller
     public function pembekalan()
     {
 
-        $data['judul'] = 'Data Tempat';
+        $data['judul'] = 'Data Pembekalan';
         $data['user'] = $this->user;
         $akses = ['all', 'humas'];
-        $data['pbb'] = $this->model("$this->model_name", 'pkl_model')->getSiswaPB();
+        $data['pbb'] = $this->model("$this->model_name", 'pkl_model')->getExistSiswaPB();
         if (in_array($data['user']['hak_akses'], $akses)) {
             $this->view('templates/humas/header', $data);
             $this->view('humas/pkl/pembekalan/pklpembekalan', $data);
@@ -603,8 +606,9 @@ class PKL extends Controller
 
         $data['judul'] = 'Data Tampung';
         $data['user'] = $this->user;
+        $data['kompkeahlian'] = $this->model("Master", 'Kompkeahlian_model')->getAllExistData();
         $akses = ['all', 'humas'];
-        $data['pd'] = $this->model("$this->model_name", 'pkl_model')->getSiswaDP();
+        $data['pd'] = $this->model("$this->model_name", 'pkl_model')->getExistSiswaDP();
         if (in_array($data['user']['hak_akses'], $akses)) {
             $this->view('templates/humas/header', $data);
             $this->view('humas/pkl/dayatampung/pkldayatampung', $data);
@@ -619,12 +623,12 @@ class PKL extends Controller
     {
         if ($this->model("$this->model_name", 'pkl_model')->TambahDataDP($_POST) > 0) {
             Flasher::setFlash('Berhasil ', 'Ditambahkan', 'success');
-            header('Location: ' . BASEURL . '/pkl/dayatampung');
+            header('Location: ' . BASEURL . '/pkl/dtampung');
             exit;
         } else {
 
             Flasher::setFlash('gagal ', 'Ditambahkan', 'danger');
-            header('Location: ' . BASEURL . '/pkl/dayatampung');
+            header('Location: ' . BASEURL . '/pkl/dtampung');
             exit;
         }
     }
@@ -668,7 +672,7 @@ class PKL extends Controller
 
         $data['judul'] = 'Data industri Siswa';
         $data['user'] = $this->user;
-        $data['pp'] = $this->model("$this->model_name", 'pkl_model')->getSiswaPP();
+        $data['pp'] = $this->model("$this->model_name", 'pkl_model')->getExistSiswaPP();
         $akses = ['all', 'humas'];
         if (in_array($data['user']['hak_akses'], $akses)) {
             $this->view('templates/humas/header', $data);
@@ -739,7 +743,7 @@ class PKL extends Controller
         $data['judul'] = 'Izin PKL';
         $data['user'] = $this->user;
         $akses = ['all', 'humas'];
-        $data['iz'] = $this->model("$this->model_name", 'pkl_model')->getSiswaIZ();
+        $data['iz'] = $this->model("$this->model_name", 'pkl_model')->getExistSiswaIZ();
         if (in_array($data['user']['hak_akses'], $akses)) {
             $this->view('templates/humas/header', $data);
             $this->view('humas/pkl/rekap/perizinanpkl/pklperizinan', $data);
@@ -806,7 +810,7 @@ class PKL extends Controller
         $data['judul'] = 'Data industri Siswa';
         $data['user'] = $this->user;
         $akses = ['all', 'humas'];
-        $data['bm'] = $this->model("$this->model_name", 'pkl_model')->getSiswaBM();
+        $data['bm'] = $this->model("$this->model_name", 'pkl_model')->getExistSiswaBM();
         if (in_array($data['user']['hak_akses'], $akses)) {
             $this->view('templates/humas/header', $data);
             $this->view('humas/pkl/rekap/siswabermasalah/pklsiswabermasalah', $data);
@@ -866,7 +870,7 @@ class PKL extends Controller
         }
     }
 
-    
+
     // IMPORT DATA
 
     public function importDatasiswa()
@@ -1005,6 +1009,508 @@ class PKL extends Controller
             Flasher::setFlash('Error', 'Harap pilih file Excel terlebih dahulu', 'danger');
         }
         header("Location: " . BASEURL . "/pkl/siswabermasalah");
+        exit;
+    }
+
+    public function importDataania()
+    {
+        if ($this->model("$this->model_name", "PKL_model")->importDataania($_POST) > 0) {
+            Flasher::setFlash('BERHASIL', 'Diimport', 'success');
+        } else {
+            Flasher::setFlash('GAGAL', 'Diimport', 'danger');
+        }
+        header("Location: " . BASEURL . "/pkl/pklnilaiania");
+        exit;
+    }
+    public function importDataanib()
+    {
+        if ($this->model("$this->model_name", "PKL_model")->importDataanib($_POST) > 0) {
+            Flasher::setFlash('BERHASIL', 'Diimport', 'success');
+        } else {
+            Flasher::setFlash('GAGAL', 'Diimport', 'danger');
+        }
+        header("Location: " . BASEURL . "/pkl/pklnilaianib");
+        exit;
+    }
+    public function importDataanic()
+    {
+        if ($this->model("$this->model_name", "PKL_model")->importDataanic($_POST) > 0) {
+            Flasher::setFlash('BERHASIL', 'Diimport', 'success');
+        } else {
+            Flasher::setFlash('GAGAL', 'Diimport', 'danger');
+        }
+        header("Location: " . BASEURL . "/pkl/pklnilaianic");
+        exit;
+    }
+    public function importDatadkva()
+    {
+        if ($this->model("$this->model_name", "PKL_model")->importDatadkva($_POST) > 0) {
+            Flasher::setFlash('BERHASIL', 'Diimport', 'success');
+        } else {
+            Flasher::setFlash('GAGAL', 'Diimport', 'danger');
+        }
+        header("Location: " . BASEURL . "/pkl/nilai/pklnilaidkva");
+        exit;
+    }
+    public function importDatadkvb()
+    {
+        if ($this->model("$this->model_name", "PKL_model")->importDatadkvb($_POST) > 0) {
+            Flasher::setFlash('BERHASIL', 'Diimport', 'success');
+        } else {
+            Flasher::setFlash('GAGAL', 'Diimport', 'danger');
+        }
+        header("Location: " . BASEURL . "/pkl/pklnilaidkvb");
+        exit;
+    }
+    public function importDatadkvc()
+    {
+        if ($this->model("$this->model_name", "PKL_model")->importDatadkvc($_POST) > 0) {
+            Flasher::setFlash('BERHASIL', 'Diimport', 'success');
+        } else {
+            Flasher::setFlash('GAGAL', 'Diimport', 'danger');
+        }
+        header("Location: " . BASEURL . "/pkl/pklnilaidkvc");
+        exit;
+    }
+    public function importDatatla()
+    {
+        if ($this->model("$this->model_name", "PKL_model")->importDatatla($_POST) > 0) {
+            Flasher::setFlash('BERHASIL', 'Diimport', 'success');
+        } else {
+            Flasher::setFlash('GAGAL', 'Diimport', 'danger');
+        }
+        header("Location: " . BASEURL . "/pkl/pklnilaitla");
+        exit;
+    }
+    public function importDatatlb()
+    {
+        if ($this->model("$this->model_name", "PKL_model")->importDatatlb($_POST) > 0) {
+            Flasher::setFlash('BERHASIL', 'Diimport', 'success');
+        } else {
+            Flasher::setFlash('GAGAL', 'Diimport', 'danger');
+        }
+        header("Location: " . BASEURL . "/pkl/pklnilaitlb");
+        exit;
+    }
+    public function importDatatma()
+    {
+        if ($this->model("$this->model_name", "PKL_model")->importDatatma($_POST) > 0) {
+            Flasher::setFlash('BERHASIL', 'Diimport', 'success');
+        } else {
+            Flasher::setFlash('GAGAL', 'Diimport', 'danger');
+        }
+        header("Location: " . BASEURL . "/pkl/pklnilaitma");
+        exit;
+    }
+    public function importDatatmb()
+    {
+        if ($this->model("$this->model_name", "PKL_model")->importDatatmb($_POST) > 0) {
+            Flasher::setFlash('BERHASIL', 'Diimport', 'success');
+        } else {
+            Flasher::setFlash('GAGAL', 'Diimport', 'danger');
+        }
+        header("Location: " . BASEURL . "/pkl/pklnilaitmb");
+        exit;
+    }
+    public function importDatarpla()
+    {
+        if ($this->model("$this->model_name", "PKL_model")->importDatarpla($_POST) > 0) {
+            Flasher::setFlash('BERHASIL', 'Diimport', 'success');
+        } else {
+            Flasher::setFlash('GAGAL', 'Diimport', 'danger');
+        }
+        header("Location: " . BASEURL . "/pkl/pklnilairpla");
+        exit;
+    }
+    public function importDatarplb()
+    {
+        if ($this->model("$this->model_name", "PKL_model")->importDatarplb($_POST) > 0) {
+            Flasher::setFlash('BERHASIL', 'Diimport', 'success');
+        } else {
+            Flasher::setFlash('GAGAL', 'Diimport', 'danger');
+        }
+        header("Location: " . BASEURL . "/pkl/pklnilairplb");
+        exit;
+    }
+    public function importDatarplc()
+    {
+        if ($this->model("$this->model_name", "PKL_model")->importDatarplc($_POST) > 0) {
+            Flasher::setFlash('BERHASIL', 'Diimport', 'success');
+        } else {
+            Flasher::setFlash('GAGAL', 'Diimport', 'danger');
+        }
+        header("Location: " . BASEURL . "/pkl/pklnilairplc");
+        exit;
+    }
+    public function importDatadgb()
+    {
+        if ($this->model("$this->model_name", "PKL_model")->importDatadgb($_POST) > 0) {
+            Flasher::setFlash('BERHASIL', 'Diimport', 'success');
+        } else {
+            Flasher::setFlash('GAGAL', 'Diimport', 'danger');
+        }
+        header("Location: " . BASEURL . "/pkl/pklnilaidgb");
+        exit;
+    }
+    public function importDatadgc()
+    {
+        if ($this->model("$this->model_name", "PKL_model")->importDatadgc($_POST) > 0) {
+            Flasher::setFlash('BERHASIL', 'Diimport', 'success');
+        } else {
+            Flasher::setFlash('GAGAL', 'Diimport', 'danger');
+        }
+        header("Location: " . BASEURL . "/pkl/pklnilaidgc");
+        exit;
+    }
+    public function importDatadgd()
+    {
+        if ($this->model("$this->model_name", "PKL_model")->importDatadgd($_POST) > 0) {
+            Flasher::setFlash('BERHASIL', 'Diimport', 'success');
+        } else {
+            Flasher::setFlash('GAGAL', 'Diimport', 'danger');
+        }
+        header("Location: " . BASEURL . "/pkl/pklnilaidgd");
+        exit;
+    }
+    public function importDatapda()
+    {
+        if ($this->model("$this->model_name", "PKL_model")->importDatapda($_POST) > 0) {
+            Flasher::setFlash('BERHASIL', 'Diimport', 'success');
+        } else {
+            Flasher::setFlash('GAGAL', 'Diimport', 'danger');
+        }
+        header("Location: " . BASEURL . "/pkl/pklnilaipda");
+        exit;
+    }
+    public function importDatapdb()
+    {
+        if ($this->model("$this->model_name", "PKL_model")->importDatapdb($_POST) > 0) {
+            Flasher::setFlash('BERHASIL', 'Diimport', 'success');
+        } else {
+            Flasher::setFlash('GAGAL', 'Diimport', 'danger');
+        }
+        header("Location: " . BASEURL . "/pkl/pklnilaipdb");
+        exit;
+    }
+    public function importDatapdc()
+    {
+        if ($this->model("$this->model_name", "PKL_model")->importDatapdc($_POST) > 0) {
+            Flasher::setFlash('BERHASIL', 'Diimport', 'success');
+        } else {
+            Flasher::setFlash('GAGAL', 'Diimport', 'danger');
+        }
+        header("Location: " . BASEURL . "/pkl/pklnilaipdc");
+        exit;
+    }
+    public function importDatapdd()
+    {
+        if ($this->model("$this->model_name", "PKL_model")->importDatapdd($_POST) > 0) {
+            Flasher::setFlash('BERHASIL', 'Diimport', 'success');
+        } else {
+            Flasher::setFlash('GAGAL', 'Diimport', 'danger');
+        }
+        header("Location: " . BASEURL . "/pkl/pklnilaipdd");
+        exit;
+    }
+    public function importDatatga()
+    {
+        if ($this->model("$this->model_name", "PKL_model")->importDatatga($_POST) > 0) {
+            Flasher::setFlash('BERHASIL', 'Diimport', 'success');
+        } else {
+            Flasher::setFlash('GAGAL', 'Diimport', 'danger');
+        }
+        header("Location: " . BASEURL . "/pkl/pklnilaitga");
+        exit;
+    }
+    public function importDatatkja()
+    {
+        if ($this->model("$this->model_name", "PKL_model")->importDatatkjb($_POST) > 0) {
+            Flasher::setFlash('BERHASIL', 'Diimport', 'success');
+        } else {
+            Flasher::setFlash('GAGAL', 'Diimport', 'danger');
+        }
+        header("Location: " . BASEURL . "/pkl/pklnilaitkja");
+        exit;
+    }
+    public function importDatatkjb()
+    {
+        if ($this->model("$this->model_name", "PKL_model")->importDatatkjb($_POST) > 0) {
+            Flasher::setFlash('BERHASIL', 'Diimport', 'success');
+        } else {
+            Flasher::setFlash('GAGAL', 'Diimport', 'danger');
+        }
+        header("Location: " . BASEURL . "/pkl/pklnilaitkjb");
+        exit;
+    }
+    public function importDatapha()
+    {
+        if ($this->model("$this->model_name", "PKL_model")->importDatapha($_POST) > 0) {
+            Flasher::setFlash('BERHASIL', 'Diimport', 'success');
+        } else {
+            Flasher::setFlash('GAGAL', 'Diimport', 'danger');
+        }
+        header("Location: " . BASEURL . "/pkl/pklnilaipha");
+        exit;
+    }
+    public function importDataphb()
+    {
+        if ($this->model("$this->model_name", "PKL_model")->importDataphb($_POST) > 0) {
+            Flasher::setFlash('BERHASIL', 'Diimport', 'success');
+        } else {
+            Flasher::setFlash('GAGAL', 'Diimport', 'danger');
+        }
+        header("Location: " . BASEURL . "/pkl/pklnilaiphb");
+        exit;
+    }
+
+    public function importDataPNDGA()
+    {
+        if ($this->model("$this->model_name", "PKL_model")->importDataPenempatan($_POST) > 0) {
+            Flasher::setFlash('BERHASIL', 'Diimport', 'success');
+        } else {
+            Flasher::setFlash('GAGAL', 'Diimport', 'danger');
+        }
+        header("Location: " . BASEURL . "/pkl/penempatandga");
+        exit;
+    }
+    public function importDataPNDGB()
+    {
+        if ($this->model("$this->model_name", "PKL_model")->importDataPenempatan($_POST) > 0) {
+            Flasher::setFlash('BERHASIL', 'Diimport', 'success');
+        } else {
+            Flasher::setFlash('GAGAL', 'Diimport', 'danger');
+        }
+        header("Location: " . BASEURL . "/pkl/penempatadgb");
+        exit;
+    }
+    public function importDataPNDGC()
+    {
+        if ($this->model("$this->model_name", "PKL_model")->importDataPenempatan($_POST) > 0) {
+            Flasher::setFlash('BERHASIL', 'Diimport', 'success');
+        } else {
+            Flasher::setFlash('GAGAL', 'Diimport', 'danger');
+        }
+        header("Location: " . BASEURL . "/pkl/penempatandgc");
+        exit;
+    }
+    public function importDataPNDGD()
+    {
+        if ($this->model("$this->model_name", "PKL_model")->importDataPenempatan($_POST) > 0) {
+            Flasher::setFlash('BERHASIL', 'Diimport', 'success');
+        } else {
+            Flasher::setFlash('GAGAL', 'Diimport', 'danger');
+        }
+        header("Location: " . BASEURL . "/pkl/penempatandgd");
+        exit;
+    }
+    public function importDataPNPDA()
+    {
+        if ($this->model("$this->model_name", "PKL_model")->importDataPenempatan($_POST) > 0) {
+            Flasher::setFlash('BERHASIL', 'Diimport', 'success');
+        } else {
+            Flasher::setFlash('GAGAL', 'Diimport', 'danger');
+        }
+        header("Location: " . BASEURL . "/pkl/penempatanpda");
+        exit;
+    }
+    public function importDataPNPDB()
+    {
+        if ($this->model("$this->model_name", "PKL_model")->importDataPenempatan($_POST) > 0) {
+            Flasher::setFlash('BERHASIL', 'Diimport', 'success');
+        } else {
+            Flasher::setFlash('GAGAL', 'Diimport', 'danger');
+        }
+        header("Location: " . BASEURL . "/pkl/penempatanpdb");
+        exit;
+    }
+    public function importDataPNPDC()
+    {
+        if ($this->model("$this->model_name", "PKL_model")->importDataPenempatan($_POST) > 0) {
+            Flasher::setFlash('BERHASIL', 'Diimport', 'success');
+        } else {
+            Flasher::setFlash('GAGAL', 'Diimport', 'danger');
+        }
+        header("Location: " . BASEURL . "/pkl/penempatanpdc");
+        exit;
+    }
+    public function importDataPNPDD()
+    {
+        if ($this->model("$this->model_name", "PKL_model")->importDataPenempatan($_POST) > 0) {
+            Flasher::setFlash('BERHASIL', 'Diimport', 'success');
+        } else {
+            Flasher::setFlash('GAGAL', 'Diimport', 'danger');
+        }
+        header("Location: " . BASEURL . "/pkl/penempatanpdd");
+        exit;
+    }
+    public function importDataPNTKJA()
+    {
+        if ($this->model("$this->model_name", "PKL_model")->importDataPenempatan($_POST) > 0) {
+            Flasher::setFlash('BERHASIL', 'Diimport', 'success');
+        } else {
+            Flasher::setFlash('GAGAL', 'Diimport', 'danger');
+        }
+        header("Location: " . BASEURL . "/pkl/penempatantkja");
+        exit;
+    }
+    public function importDataPNTKJB()
+    {
+        if ($this->model("$this->model_name", "PKL_model")->importDataPenempatan($_POST) > 0) {
+            Flasher::setFlash('BERHASIL', 'Diimport', 'success');
+        } else {
+            Flasher::setFlash('GAGAL', 'Diimport', 'danger');
+        }
+        header("Location: " . BASEURL . "/pkl/penempatantkjb");
+        exit;
+    }
+    public function importDataPNANIA()
+    {
+        if ($this->model("$this->model_name", "PKL_model")->importDataPenempatan($_POST) > 0) {
+            Flasher::setFlash('BERHASIL', 'Diimport', 'success');
+        } else {
+            Flasher::setFlash('GAGAL', 'Diimport', 'danger');
+        }
+        header("Location: " . BASEURL . "/pkl/penempatanania");
+        exit;
+    }
+    public function importDataPNANIB()
+    {
+        if ($this->model("$this->model_name", "PKL_model")->importDataPenempatan($_POST) > 0) {
+            Flasher::setFlash('BERHASIL', 'Diimport', 'success');
+        } else {
+            Flasher::setFlash('GAGAL', 'Diimport', 'danger');
+        }
+        header("Location: " . BASEURL . "/pkl/penempatananib");
+        exit;
+    }
+    public function importDataPNANIC()
+    {
+        if ($this->model("$this->model_name", "PKL_model")->importDataPenempatan($_POST) > 0) {
+            Flasher::setFlash('BERHASIL', 'Diimport', 'success');
+        } else {
+            Flasher::setFlash('GAGAL', 'Diimport', 'danger');
+        }
+        header("Location: " . BASEURL . "/pkl/penempatananic");
+        exit;
+    }
+    public function importDataPNDKVA()
+    {
+        if ($this->model("$this->model_name", "PKL_model")->importDataPenempatan($_POST) > 0) {
+            Flasher::setFlash('BERHASIL', 'Diimport', 'success');
+        } else {
+            Flasher::setFlash('GAGAL', 'Diimport', 'danger');
+        }
+        header("Location: " . BASEURL . "/pkl/penempatandkva");
+        exit;
+    }
+    public function importDataPNDKVB()
+    {
+        if ($this->model("$this->model_name", "PKL_model")->importDataPenempatan($_POST) > 0) {
+            Flasher::setFlash('BERHASIL', 'Diimport', 'success');
+        } else {
+            Flasher::setFlash('GAGAL', 'Diimport', 'danger');
+        }
+        header("Location: " . BASEURL . "/pkl/penempatandkvb");
+        exit;
+    }
+    public function importDataPNDKVC()
+    {
+        if ($this->model("$this->model_name", "PKL_model")->importDataPenempatan($_POST) > 0) {
+            Flasher::setFlash('BERHASIL', 'Diimport', 'success');
+        } else {
+            Flasher::setFlash('GAGAL', 'Diimport', 'danger');
+        }
+        header("Location: " . BASEURL . "/pkl/penempatandkvc");
+        exit;
+    }
+    public function importDataPNTLA()
+    {
+        if ($this->model("$this->model_name", "PKL_model")->importDataPenempatan($_POST) > 0) {
+            Flasher::setFlash('BERHASIL', 'Diimport', 'success');
+        } else {
+            Flasher::setFlash('GAGAL', 'Diimport', 'danger');
+        }
+        header("Location: " . BASEURL . "/pkl/penempatantla");
+        exit;
+    }
+    public function importDataPNTLB()
+    {
+        if ($this->model("$this->model_name", "PKL_model")->importDataPenempatan($_POST) > 0) {
+            Flasher::setFlash('BERHASIL', 'Diimport', 'success');
+        } else {
+            Flasher::setFlash('GAGAL', 'Diimport', 'danger');
+        }
+        header("Location: " . BASEURL . "/pkl/penempatantlb");
+        exit;
+    }
+    public function importDataPNMEKAA()
+    {
+        if ($this->model("$this->model_name", "PKL_model")->importDataPenempatan($_POST) > 0) {
+            Flasher::setFlash('BERHASIL', 'Diimport', 'success');
+        } else {
+            Flasher::setFlash('GAGAL', 'Diimport', 'danger');
+        }
+        header("Location: " . BASEURL . "/pkl/penempatantma");
+        exit;
+    }
+    public function importDataPNMEKAB()
+    {
+        if ($this->model("$this->model_name", "PKL_model")->importDataPenempatan($_POST) > 0) {
+            Flasher::setFlash('BERHASIL', 'Diimport', 'success');
+        } else {
+            Flasher::setFlash('GAGAL', 'Diimport', 'danger');
+        }
+        header("Location: " . BASEURL . "/pkl/penempatanptmb");
+        exit;
+    }
+    public function importDataPNPHA()
+    {
+        if ($this->model("$this->model_name", "PKL_model")->importDataPenempatan($_POST) > 0) {
+            Flasher::setFlash('BERHASIL', 'Diimport', 'success');
+        } else {
+            Flasher::setFlash('GAGAL', 'Diimport', 'danger');
+        }
+        header("Location: " . BASEURL . "/pkl/penempatanpha");
+        exit;
+    }
+    public function importDataPNPHB()
+    {
+        if ($this->model("$this->model_name", "PKL_model")->importDataPenempatan($_POST) > 0) {
+            Flasher::setFlash('BERHASIL', 'Diimport', 'success');
+        } else {
+            Flasher::setFlash('GAGAL', 'Diimport', 'danger');
+        }
+        header("Location: " . BASEURL . "/pkl/penempatanphb");
+        exit;
+    }
+    public function importDataPNRPLA()
+    {
+        if ($this->model("$this->model_name", "PKL_model")->importDataPenempatan($_POST) > 0) {
+            Flasher::setFlash('BERHASIL', 'Diimport', 'success');
+        } else {
+            Flasher::setFlash('GAGAL', 'Diimport', 'danger');
+        }
+        header("Location: " . BASEURL . "/pkl/penempatanrpla");
+        exit;
+    }
+    public function importDataPNRPLB()
+    {
+        if ($this->model("$this->model_name", "PKL_model")->importDataPenempatan($_POST) > 0) {
+            Flasher::setFlash('BERHASIL', 'Diimport', 'success');
+        } else {
+            Flasher::setFlash('GAGAL', 'Diimport', 'danger');
+        }
+        header("Location: " . BASEURL . "/pkl/penempatanprplb");
+        exit;
+    }
+    public function importDataPNRPLC()
+    {
+        if ($this->model("$this->model_name", "PKL_model")->importDataPenempatan($_POST) > 0) {
+            Flasher::setFlash('BERHASIL', 'Diimport', 'success');
+        } else {
+            Flasher::setFlash('GAGAL', 'Diimport', 'danger');
+        }
+        header("Location: " . BASEURL . "/pkl/penempatanrplc");
         exit;
     }
 }

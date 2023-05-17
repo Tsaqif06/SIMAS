@@ -9,7 +9,9 @@
                     <div class="col-12 col-xl-4">
                         <div class="justify-content-end d-flex">
                             <div class="dropdown flex-md-grow-1 flex-xl-grow-0">
-                                <button class="btn btn-sm btn-light bg-white dropdown-toggle" type="button" id="dropdownMenuDate2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                                <button class="btn btn-sm btn-light bg-white dropdown-toggle" type="button"
+                                    id="dropdownMenuDate2" data-toggle="dropdown" aria-haspopup="true"
+                                    aria-expanded="true">
                                     <i class="mdi mdi-calendar"></i> Hari ini (11 Mar 2023)
                                 </button>
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuDate2">
@@ -24,7 +26,8 @@
                 </div>
                 <div class="row mt-5">
                     <div class="col-12 col-xl-8 mb-4 mb-xl-0">
-                        <a href="../assets/LAMPIRAN_Permendagri_NO_78_Th_2012.pdf"><button class="btn btn-primary font-weight-bold">Bantuan Kode Nomor Petunjuk</button></a>
+                        <a href="../assets/LAMPIRAN_Permendagri_NO_78_Th_2012.pdf"><button
+                                class="btn btn-primary font-weight-bold">Bantuan Kode Nomor Petunjuk</button></a>
                     </div>
                 </div>
             </div>
@@ -34,21 +37,26 @@
             <form action="<?= BASEURL ?>/suratpengajuan/tambahData" method="post">
                 <div class="form-content">
                     <div class="col-lg-8 col-12 form-body">
+                        <input type="hidden" class="form-control" name="id" id="id" required>
+                        <input type="hidden" class="form-control" name="uuid" id="uuid" required>
                         <div class="mb-3">
                             <label for="no_surat" class="form-label">Nomor Surat</label>
                             <input type="text" class="form-control" name="no_surat" id="no_surat" required>
                         </div>
                         <div class="mb-3">
                             <label for="alamat_pengirim" class="form-label">Alamat Pengirim</label>
-                            <input type="text" class="form-control" name="alamat_pengirim" id="alamat_pengirim" required>
+                            <input type="text" class="form-control" name="alamat_pengirim" id="alamat_pengirim"
+                                required>
                         </div>
                         <div class="mb-3">
                             <label for="tanggal" class="form-label">Tanggal</label>
-                            <input type="date" placeholder="dd/mm/yyyy" class="form-control" name="tanggal" id="tanggal" required>
+                            <input type="date" placeholder="dd/mm/yyyy" class="form-control" name="tanggal" id="tanggal"
+                                required>
                         </div>
                         <div class="mb-3">
                             <label for="tanggal_surat" class="form-label">Tanggal Surat</label>
-                            <input type="date" placeholder="dd/mm/yyyy" class="form-control" name="tanggal_surat" id="tanggal_surat" required>
+                            <input type="date" placeholder="dd/mm/yyyy" class="form-control" name="tanggal_surat"
+                                id="tanggal_surat" required>
                         </div>
                         <div class="mb-3">
                             <label for="perihal" class="form-label">Perihal</label>
@@ -64,7 +72,8 @@
                     </div>
                     <div class="modal-footer justify-content-start">
                         <button type="submit" class="btn btn-primary">Ajukan</button>
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" onclick="form.reset()">Reset</button>
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"
+                            onclick="form.reset()">Reset</button>
                     </div>
                 </div>
             </form>

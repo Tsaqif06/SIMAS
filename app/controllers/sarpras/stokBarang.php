@@ -10,11 +10,11 @@ class stokBarang extends Controller
         $akses = ['all', 'sarpras'];
         $data['stok'] = $this->model("$this->model_name", 'stokBarang_models')->getAllExistData();
         if (isset($_POST["contentOnly"])) {
-            $this->view('stokBarang/index', $data);
+            $this->view('sarpras/stokBarang/index', $data);
         } else {
             $this->view('templates/header', $data);
-            $this->view('stokBarang/index', $data);
-            $this->view('templates/footerwm');
+            $this->view('sarpras/stokBarang/index', $data);
+            $this->view('templates/footer');
         }
 
         if (in_array($data['user']['hak_akses'], $akses)) {

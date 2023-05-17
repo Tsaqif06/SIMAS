@@ -48,7 +48,11 @@
                   </div>
                   <div class="card-body">
                     <div class="row">
+<<<<<<< HEAD:app/views/humas/pkl/rekap/penempatan/index.php
                       <a href="<?= BASEURL; ?>/pkl/penempatan&kelas=XI_TL_A"><button type="button" class="btn btn-inverse-primary btn-fw btn-block">Masuk ke laman ini</button></a>
+=======
+                      <a href="<?= BASEURL; ?>/pkl/penempatanloga"><button type="button" class="btn btn-inverse-primary btn-fw btn-block">Masuk ke laman ini</button></a>
+>>>>>>> main:app/views/humas/pkl/rekap/penempatan/home/pkldatapenempatan.php
                     </div>
                   </div>
                 </div>

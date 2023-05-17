@@ -16,7 +16,7 @@ class pengajuanBidang extends Controller
             } else {
                 $this->view('templates/header', $data);
                 $this->view('sarpras/pengajuanBarang/bidang', $data);
-                $this->view('templates/footerwm');
+                $this->view('templates/footer');
             }
         } else if ($data['user']['hak_akses'] == '') {
             header("Location: " . BASEURL);

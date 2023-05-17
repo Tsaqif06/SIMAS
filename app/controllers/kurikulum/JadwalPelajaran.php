@@ -17,15 +17,6 @@ class JadwalPelajaran extends Controller
         $this->view('templates/footerwm');
     }
 
-    public function detail($id)
-    {
-        $data['judul'] = 'Detail Mahasiswa';
-        $data['mhs'] = $this->model("$this->model_name", 'Jadwal_Pelajaran_model')->getMahasiswaById($id);
-        $this->view('templates/header', $data);
-        $this->view('kurikulum/Jadwal Pelajaran/detail', $data);
-        $this->view('templates/footerwm');
-    }
-
     public function tambah()
     {
         if ($this->model("$this->model_name", 'Jadwal_Pelajaran_model')->tambahDataMahasiswa($_POST) > 0) {

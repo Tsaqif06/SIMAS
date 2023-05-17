@@ -64,6 +64,7 @@ foreach ($kelas as $key => $list) {
     <div class="row">
       <div class="col-md-12 grid-margin">
         <div class="template-demo">
+<<<<<<< HEAD:app/views/humas/pkl/nilai/detail.php
           <button type="button" class="tombolTambahData btn btn-primary" data-bs-toggle="modal" data-bs-target="#formModal">Tambah Data</button>
           <button type="button" class="btn btn-primary tampilModalImport" data-bs-toggle="modal" data-bs-target="#modalImport">
             Import Data Dari Excel
@@ -74,6 +75,46 @@ foreach ($kelas as $key => $list) {
       <!-- Import Modal -->
       <div class="modal fade" id="modalImport" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
+=======
+          <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">Tambah Data</button>
+          <button type="button" class="btn btn-primary  tampilModalImport" data-toggle="modal" data-target="#modalImport">
+                Import Data Dari Excel
+            </button>
+        </div>
+      </div>
+
+      
+    <div class="modal fade" id="modalImport" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="modalLabel">Import Data</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form action="<?= BASEURL ?>/pkl/importDataphb" method="post" enctype="multipart/form-data">
+                    <div class="mb-3">
+                        <label for="file">Pilih file Excel (.xlsx)</label>
+                        <input type="file" name="file" id="file">
+                    </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary batal" data-bs-dismiss="modal">Batal</button>
+                <button type="submit" class="btn btn-primary">Tambah Data</button>
+            </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+
+      <!-- Modal -->
+      <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+>>>>>>> main:app/views/humas/pkl/nilai/perhotelan/pklnilaiphb.php
           <div class="modal-content">
             <div class="modal-header">
               <h1 class="modal-title fs-5" id="modalLabel">Import Data</h1>

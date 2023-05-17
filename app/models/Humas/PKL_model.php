@@ -121,7 +121,7 @@ class pkl_model extends Database
     public function importDataNilai()
     {
         $fields = [
-            "nisn", 
+            "nisn",
             "namasiswa",
             "kelas",
             "jeniskelamin",
@@ -323,12 +323,41 @@ class pkl_model extends Database
         return $this->db->fetch();
     }
 
-
-    // SISWA PEGAWAI
+    public function getJmlDatatp()
+    {
+        $this->db->query("SELECT COUNT(*) AS count FROM {$this->table_penempatan} WHERE `status` = 1");
+        return $this->db->fetch();
+    }
+    public function getJmlDatamon()
+    {
+        $this->db->query("SELECT COUNT(*) AS count FROM {$this->tableMON} WHERE `status` = 1");
+        return $this->db->fetch();
+    }
+    public function getJmlDataps()
+    {
+        $this->db->query("SELECT COUNT(*) AS count FROM {$this->tableps} WHERE `status` = 1");
+        return $this->db->fetch();
+    }
+    public function getJmlDatapb()
+    {
+        $this->db->query("SELECT COUNT(*) AS count FROM {$this->tablepb} WHERE `status` = 1");
+        return $this->db->fetch();
+    }
+    public function getJmlDatanilai()
+    {
+        $this->db->query("SELECT COUNT(*) AS count FROM {$this->table_nilai} WHERE `status` = 1");
+        return $this->db->fetch();
+    }
 
     public function getSiswaPegawai()
     {
         $this->db->query('SELECT * FROM ' . $this->table);
+        return $this->db->fetchAll();
+    }
+
+    public function getExistSiswaPegawai()
+    {
+        $this->db->query('SELECT * FROM ' . $this->table . ' WHERE `status` = ' . 1);
         return $this->db->fetchAll();
     }
 
@@ -424,6 +453,11 @@ class pkl_model extends Database
         $this->db->query('SELECT * FROM ' . $this->tableind);
         return $this->db->fetchAll();
     }
+    public function getExistSiswaind()
+    {
+        $this->db->query('SELECT * FROM ' . $this->tableind . ' WHERE `status` = ' . 1);
+        return $this->db->fetchAll();
+    }
 
     public function getDetailind($id)
     {
@@ -510,11 +544,113 @@ class pkl_model extends Database
     }
 
 
-    // MONITORING PKL
+
+    //    data tempat pkl
+
+    public function getSiswatp()
+    {
+        $this->db->query('SELECT * FROM ' . $this->table_penempatan);
+        return $this->db->fetchAll();
+    }
+
+    public function getExistSiswatp()
+    {
+        $this->db->query('SELECT * FROM ' . $this->table_penempatan . ' WHERE `status` = ' . 1);
+        return $this->db->fetchAll();
+    }
+
+    public function getDetailtp($id)
+    {
+        $this->db->query('SELECT * FROM ' . $this->table_penempatan . ' WHERE id = :id');
+        $this->db->bind('id', $id);
+        return $this->db->fetch();
+    }
+    public function TambahDatatp($data)
+    {
+        $query  = "INSERT INTO datatempatpkl
+                           VALUES 
+                      (null, :uuid, :nisn, :namasiswa, :kelassiswa, :namaperusahaan, '', CURRENT_TIMESTAMP, :created_by, null, '', null, '', null, '',0 ,0, DEFAULT)";
+
+        $this->db->query($query);
+        $this->db->bind('uuid', Uuid::uuid4()->toString());
+        $this->db->bind('nisn', $data['nisn']);
+        $this->db->bind('namasiswa', $data['namasiswa']);
+        $this->db->bind('kelassiswa', $data['kelassiswa']);
+        $this->db->bind('namaperusahaan', $data['namaperusahaan']);
+        $this->db->bind('created_by', $this->user);
+
+
+
+        $this->db->execute();
+
+        return $this->db->rowCount();
+    }
+
+    public function HapusDatatp($id)
+    {
+        $this->db->query(
+            "UPDATE datatempatpkl
+                SET
+                deleted_at = CURRENT_TIMESTAMP,
+                deleted_by = :deleted_by,
+                is_deleted = 1,
+                is_restored = 0
+              WHERE id = :id"
+        );
+
+        $this->db->bind('deleted_by', $this->user);
+        $this->db->bind("id", $id);
+
+        $this->db->execute();
+
+        return $this->db->rowCount();
+    }
+
+
+    public function ubahDatatp($data)
+    {
+        $query = "UPDATE datatempatpkl SET 
+                      nisn = :nisn, 
+                      namasiswa = :namasiswa, 
+                      kelassiswa = :kelassiswa,
+                      namaperusahaan = :namaperusahaan, 
+                      modified_at = CURRENT_TIMESTAMP, 
+                      modified_by = :modified_by 
+                    WHERE id = :id";
+
+        $this->db->query($query);
+        $this->db->bind('nisn', $data['nisn']);
+        $this->db->bind('namasiswa', $data['namasiswa']);
+        $this->db->bind('kelassiswa', $data['kelassiswa']);
+        $this->db->bind('namaperusahaan', $data['namaperusahaan']);
+        $this->db->bind('modified_by', $this->user);
+
+        $this->db->bind('id', $data['id']);
+
+        $this->db->execute();
+        return $this->db->rowCount();
+    }
+
+
+    public function caridatatp()
+    {
+        $keyword = $_POST['keyword'];
+        $query  =   "SELECT * FROM datatempatpkl WHERE kelassiswa LIKE :keyword";
+        $this->db->query($query);
+        $this->db->bind('keyword', "%$keyword%");
+        return $this->db->fetchAll();
+    }
+
+    //    data monitoring pkl
 
     public function getSiswaMON()
     {
         $this->db->query('SELECT * FROM ' . $this->tableMON);
+        return $this->db->fetchAll();
+    }
+    public function getExistSiswaMON()
+    {
+        $this->db->query('SELECT * FROM ' . $this->tableMON . ' WHERE `status` = ' . 1);
         return $this->db->fetchAll();
     }
 
@@ -603,6 +739,11 @@ class pkl_model extends Database
     public function getSiswaPB()
     {
         $this->db->query('SELECT * FROM ' . $this->tablepb);
+        return $this->db->fetchAll();
+    }
+    public function getExistSiswaPB()
+    {
+        $this->db->query('SELECT * FROM ' . $this->tablepb . ' WHERE `status` = ' . 1);
         return $this->db->fetchAll();
     }
 
@@ -762,10 +903,10 @@ class pkl_model extends Database
         return $fileName;
     }
 
-    public function uploadRaportPemberkasan()
+    public function uploadSuratPemberkasan()
     {
-        $targetDir = 'images/humas/pkl/pemberkasan/raport/'; // direktori tempat menyimpan file upload
-        $temp = $_FILES['uploadebookraport_pemberkasan']['name'];
+        $targetDir = 'images/humas/pkl/pemberkasan/surat/'; // direktori tempat menyimpan file upload
+        $temp = $_FILES['uploadsurat_pemberkasan']['name'];
         $imageFileType = explode('.', $temp);
         $imageFileType = strtolower(end($imageFileType));
 
@@ -782,7 +923,7 @@ class pkl_model extends Database
         $targetFile = $targetDir . $fileName; // nama file upload
 
         // cek gambar diupload atau tidak
-        if ($_FILES["uploadebookraport_pemberkasan"]["error"] === 4) {
+        if ($_FILES["uploadsurat_pemberkasan"]["error"] === 4) {
             echo
             '
               <script>
@@ -793,7 +934,107 @@ class pkl_model extends Database
         }
 
         // validasi ukuran file
-        if ($_FILES["uploadebookraport_pemberkasan"]["size"] > 1000000) {
+        if ($_FILES["uploadfoto_pemberkasan"]["size"] > 1000000) {
+            echo
+            '
+                  <script>
+                      alert("Ukuran File Terlalu Besar")
+                  </script>
+              ';
+            return false;
+        }
+
+        try {
+            // simpan file upload ke direktori
+            move_uploaded_file($_FILES['uploadsurat_pemberkasan']['tmp_name'], $targetFile);
+        } catch (IOExceptionInterface $e) {
+            echo $e->getMessage();
+        }
+
+        return $fileName;
+    }
+    public function uploadKartuPelajarPemberkasan()
+    {
+        $targetDir = 'images/humas/pkl/pemberkasan/kartupelajar/'; // direktori tempat menyimpan file upload
+        $temp = $_FILES['uploadkartupelajar_pemberkasan']['name'];
+        $imageFileType = explode('.', $temp);
+        $imageFileType = strtolower(end($imageFileType));
+
+        // validasi ekstensi file
+        // $imageFileType = strtolower(pathinfo($targetFile, PATHINFO_EXTENSION));
+        if ($imageFileType != "jpg" && $imageFileType != "jpeg" && $imageFileType != "png" && $imageFileType != "gif") {
+            echo "Sorry, only JPG, JPEG, PNG & GIF files are allowed.";
+            exit;
+        }
+
+        $fileName = uniqid();
+        $fileName .= '.';
+        $fileName .= $imageFileType;
+        $targetFile = $targetDir . $fileName; // nama file upload
+
+        // cek gambar diupload atau tidak
+        if ($_FILES["uploadkartupelajar_pemberkasan"]["error"] === 4) {
+            echo
+            '
+              <script>
+                  alert("Silahkan Upload Gambar")
+              </script>
+          ';
+            return false;
+        }
+
+        // validasi ukuran file
+        if ($_FILES["uploadfoto_pemberkasan"]["size"] > 1000000) {
+            echo
+            '
+                  <script>
+                      alert("Ukuran File Terlalu Besar")
+                  </script>
+              ';
+            return false;
+        }
+
+        try {
+            // simpan file upload ke direktori
+            move_uploaded_file($_FILES['uploadkartupelajar_pemberkasan']['tmp_name'], $targetFile);
+        } catch (IOExceptionInterface $e) {
+            echo $e->getMessage();
+        }
+
+        return $fileName;
+    }
+    public function uploadRaportPemberkasan()
+    {
+        $targetDir = 'images/humas/pkl/pemberkasan/raport/'; // direktori tempat menyimpan file upload
+        $temp = $_FILES['uploadebookraport_pemberkasan']['name'];
+        $imageFileType = explode('.', $temp);
+        $imageFileType = strtolower(end($imageFileType));
+
+        // validasi ekstensi file
+        // $imageFileType = strtolower(pathinfo($targetFile, PATHINFO_EXTENSION));
+        // if ($imageFileType != "pdf") {
+        //     echo "Sorry, only PDF files are allowed.";
+        //     exit;
+        // }
+
+        $fileName = uniqid();
+        $fileName .= '.';
+        $fileName .= $imageFileType;
+        $targetFile = $targetDir . $fileName; // nama file upload
+
+        // cek gambar diupload atau tidak
+        if ($_FILES["uploadebookraport_pemberkasan"]["error"] === 4) {
+            echo
+            '
+              <script>
+                  alert("Silahkan Upload Raport")
+              </script>
+          ';
+            return false;
+        }
+
+        // validasi ukuran file
+        if ($_FILES["uploadebookraport_pemberkasan"]["size"] > 5000000) {
             echo
             '
                   <script>
@@ -813,10 +1054,10 @@ class pkl_model extends Database
         return $fileName;
     }
 
-    public function uploadBuktiLunasPemberkasan()
+    public function uploadBuktiLunasNilaiPemberkasan()
     {
-        $targetDir = 'images/humas/pkl/pemberkasan/buktilunas/'; // direktori tempat menyimpan file upload
-        $temp = $_FILES['uploadbuktilunas_pemberkasan']['name'];
+        $targetDir = 'images/humas/pkl/pemberkasan/buktilunasnilai/'; // direktori tempat menyimpan file upload
+        $temp = $_FILES['uploadbuktilunasnilai_pemberkasan']['name'];
         $imageFileType = explode('.', $temp);
         $imageFileType = strtolower(end($imageFileType));
 
@@ -833,7 +1074,7 @@ class pkl_model extends Database
         $targetFile = $targetDir . $fileName; // nama file upload
 
         // cek gambar diupload atau tidak
-        if ($_FILES["uploadbuktilunas_pemberkasan"]["error"] === 4) {
+        if ($_FILES["uploadbuktilunasnilai_pemberkasan"]["error"] === 4) {
             echo
             '
               <script>
@@ -844,7 +1085,7 @@ class pkl_model extends Database
         }
 
         // validasi ukuran file
-        if ($_FILES["uploadbuktilunas_pemberkasan"]["size"] > 1000000) {
+        if ($_FILES["uploadbuktilunasnilai_pemberkasan"]["size"] > 1000000) {
             echo
             '
                   <script>
@@ -856,7 +1097,107 @@ class pkl_model extends Database
 
         try {
             // simpan file upload ke direktori
-            move_uploaded_file($_FILES['uploadbuktilunas_pemberkasan']['tmp_name'], $targetFile);
+            move_uploaded_file($_FILES['uploadbuktilunasnilai_pemberkasan']['tmp_name'], $targetFile);
+        } catch (IOExceptionInterface $e) {
+            echo $e->getMessage();
+        }
+
+        return $fileName;
+    }
+    public function uploadBuktiLunasAdministrasiPemberkasan()
+    {
+        $targetDir = 'images/humas/pkl/pemberkasan/buktilunasadm/'; // direktori tempat menyimpan file upload
+        $temp = $_FILES['uploadbuktilunasadministrasi_pemberkasan']['name'];
+        $imageFileType = explode('.', $temp);
+        $imageFileType = strtolower(end($imageFileType));
+
+        // validasi ekstensi file
+        // $imageFileType = strtolower(pathinfo($targetFile, PATHINFO_EXTENSION));
+        if ($imageFileType != "jpg" && $imageFileType != "jpeg" && $imageFileType != "png" && $imageFileType != "gif") {
+            echo "Sorry, only JPG, JPEG, PNG & GIF files are allowed.";
+            exit;
+        }
+
+        $fileName = uniqid();
+        $fileName .= '.';
+        $fileName .= $imageFileType;
+        $targetFile = $targetDir . $fileName; // nama file upload
+
+        // cek gambar diupload atau tidak
+        if ($_FILES["uploadbuktilunasadministrasi_pemberkasan"]["error"] === 4) {
+            echo
+            '
+              <script>
+                  alert("Silahkan Upload Gambar")
+              </script>
+          ';
+            return false;
+        }
+
+        // validasi ukuran file
+        if ($_FILES["uploadbuktilunasadministrasi_pemberkasan"]["size"] > 1000000) {
+            echo
+            '
+                  <script>
+                      alert("Ukuran File Terlalu Besar")
+                  </script>
+              ';
+            return false;
+        }
+
+        try {
+            // simpan file upload ke direktori
+            move_uploaded_file($_FILES['uploadbuktilunasadministrasi_pemberkasan']['tmp_name'], $targetFile);
+        } catch (IOExceptionInterface $e) {
+            echo $e->getMessage();
+        }
+
+        return $fileName;
+    }
+    public function uploadBuktiLunasPerpusPemberkasan()
+    {
+        $targetDir = 'images/humas/pkl/pemberkasan/buktilunasperpus/'; // direktori tempat menyimpan file upload
+        $temp = $_FILES['uploadbuktilunasperpus_pemberkasan']['name'];
+        $imageFileType = explode('.', $temp);
+        $imageFileType = strtolower(end($imageFileType));
+
+        // validasi ekstensi file
+        // $imageFileType = strtolower(pathinfo($targetFile, PATHINFO_EXTENSION));
+        if ($imageFileType != "jpg" && $imageFileType != "jpeg" && $imageFileType != "png" && $imageFileType != "gif") {
+            echo "Sorry, only JPG, JPEG, PNG & GIF files are allowed.";
+            exit;
+        }
+
+        $fileName = uniqid();
+        $fileName .= '.';
+        $fileName .= $imageFileType;
+        $targetFile = $targetDir . $fileName; // nama file upload
+
+        // cek gambar diupload atau tidak
+        if ($_FILES["uploadbuktilunasperpus_pemberkasan"]["error"] === 4) {
+            echo
+            '
+              <script>
+                  alert("Silahkan Upload Gambar")
+              </script>
+          ';
+            return false;
+        }
+
+        // validasi ukuran file
+        if ($_FILES["uploadbuktilunasperpus_pemberkasan"]["size"] > 1000000) {
+            echo
+            '
+                  <script>
+                      alert("Ukuran File Terlalu Besar")
+                  </script>
+              ';
+            return false;
+        }
+
+        try {
+            // simpan file upload ke direktori
+            move_uploaded_file($_FILES['uploadbuktilunasperpus_pemberkasan']['tmp_name'], $targetFile);
         } catch (IOExceptionInterface $e) {
             echo $e->getMessage();
         }
@@ -879,24 +1220,46 @@ class pkl_model extends Database
         if (!$foto) {
             return false;
         }
+        $surat = $this->uploadSuratPemberkasan();
+        if (!$surat) {
+            return false;
+        }
+        $kartu = $this->uploadKartuPelajarPemberkasan();
+        if (!$kartu) {
+            return false;
+        }
         $raport = $this->uploadRaportPemberkasan();
         if (!$raport) {
             return false;
         }
-        $bukti = $this->uploadBuktiLunasPemberkasan();
-        if (!$bukti) {
+        $nilai = $this->uploadBuktiLunasNilaiPemberkasan();
+        if (!$nilai) {
+            return false;
+        }
+        $administrasi = $this->uploadBuktiLunasAdministrasiPemberkasan();
+        if (!$administrasi) {
+            return false;
+        }
+        $perpus = $this->uploadBuktiLunasPerpusPemberkasan();
+        if (!$perpus) {
             return false;
         }
         $this->db->bind('uuid', Uuid::uuid4()->toString());
         $this->db->bind('nisn_pemberkasan', $data['nisn_pemberkasan']);
+        $this->db->bind('nis_pemberkasan', $data['nis_pemberkasan']);
         $this->db->bind('namasiswa_pemberkasan', $data['namasiswa_pemberkasan']);
         $this->db->bind('tanggallahir_pemberkasan', $data['tanggallahir_pemberkasan']);
         $this->db->bind('jurusan_pemberkasan', $data['jurusan_pemberkasan']);
         $this->db->bind('jeniskelamin_pemberkasan', $data['jeniskelamin_pemberkasan']);
         $this->db->bind('domisili_pemberkasann', $data['domisili_pemberkasann']);
+        $this->db->bind('pkldimana_pemberkasan', $data['pkldimana_pemberkasan']);
         $this->db->bind('uploadfoto_pemberkasan', $foto);
+        $this->db->bind('uploadsurat_pemberkasan', $surat);
+        $this->db->bind('uploadkartupelajar_pemberkasan', $kartu);
         $this->db->bind('uploadebookraport_pemberkasan', $raport);
-        $this->db->bind('uploadbuktilunas_pemberkasan', $bukti);
+        $this->db->bind('uploadbuktilunasnilai_pemberkasan', $nilai);
+        $this->db->bind('uploadbuktilunasadministrasi_pemberkasan', $administrasi);
+        $this->db->bind('uploadbuktilunasperpus_pemberkasan', $perpus);
         $this->db->bind('created_by', $this->user);
 
 
@@ -948,25 +1311,51 @@ class pkl_model extends Database
         } else {
             $foto = $this->uploadFotoPemberkasan();
         }
+        if ($_FILES["uploadsurat_pemberkasan"]["error"] === 4) {
+            $surat = $data['suratLama'];
+        } else {
+            $surat = $this->uploadSuratPemberkasan();
+        }
+        if ($_FILES["uploadkartupelajar_pemberkasan"]["error"] === 4) {
+            $kartu = $data['kartuPelajarLama'];
+        } else {
+            $kartu = $this->uploadKartuPelajarPemberkasan();
+        }
         if ($_FILES["uploadebookraport_pemberkasan"]["error"] === 4) {
             $raport = $data['raportLama'];
         } else {
             $raport = $this->uploadRaportPemberkasan();
         }
-        if ($_FILES["uploadbuktilunas_pemberkasan"]["error"] === 4) {
-            $bukti = $data['buktiLama'];
+        if ($_FILES["uploadbuktilunasnilai_pemberkasan"]["error"] === 4) {
+            $nilai = $data['nilaiLama'];
         } else {
-            $bukti = $this->uploadBuktiLunasPemberkasan();
+            $nilai = $this->uploadBuktiLunasNilaiPemberkasan();
+        }
+        if ($_FILES["uploadbuktilunasadministrasi_pemberkasan"]["error"] === 4) {
+            $administrasi = $data['administrasiLama'];
+        } else {
+            $administrasi = $this->uploadBuktiLunasAdministrasiPemberkasan();
+        }
+        if ($_FILES["uploadbuktilunasperpus_pemberkasan"]["error"] === 4) {
+            $perpus = $data['perpusLama'];
+        } else {
+            $perpus = $this->uploadBuktiLunasPerpusPemberkasan();
         }
         $this->db->bind('nisn_pemberkasan', $data['nisn_pemberkasan']);
+        $this->db->bind('nis_pemberkasan', $data['nis_pemberkasan']);
         $this->db->bind('namasiswa_pemberkasan', $data['namasiswa_pemberkasan']);
         $this->db->bind('tanggallahir_pemberkasan', $data['tanggallahir_pemberkasan']);
         $this->db->bind('jurusan_pemberkasan', $data['jurusan_pemberkasan']);
         $this->db->bind('jeniskelamin_pemberkasan', $data['jeniskelamin_pemberkasan']);
         $this->db->bind('domisili_pemberkasann', $data['domisili_pemberkasann']);
+        $this->db->bind('pkldimana_pemberkasan', $data['pkldimana_pemberkasan']);
         $this->db->bind('uploadfoto_pemberkasan', $foto);
+        $this->db->bind('uploadsurat_pemberkasan', $surat);
+        $this->db->bind('uploadkartupelajar_pemberkasan', $kartu);
         $this->db->bind('uploadebookraport_pemberkasan', $raport);
-        $this->db->bind('uploadbuktilunas_pemberkasan', $bukti);
+        $this->db->bind('uploadbuktilunasnilai_pemberkasan', $nilai);
+        $this->db->bind('uploadbuktilunasadministrasi_pemberkasan', $administrasi);
+        $this->db->bind('uploadbuktilunasperpus_pemberkasan', $perpus);
         $this->db->bind('modified_by', $this->user);
         $this->db->bind('id', $data['id']);
 
@@ -1021,6 +1410,11 @@ class pkl_model extends Database
     public function getSiswaDP()
     {
         $this->db->query("SELECT * FROM `{$this->tabledp}` WHERE `status` = 1");
+        return $this->db->fetchAll();
+    }
+    public function getExistSiswaDP()
+    {
+        $this->db->query('SELECT * FROM ' . $this->tabledp . ' WHERE `status` = ' . 1);
         return $this->db->fetchAll();
     }
 
@@ -1113,6 +1507,11 @@ class pkl_model extends Database
     public function getSiswaPP()
     {
         $this->db->query('SELECT * FROM ' . $this->tablepp);
+        return $this->db->fetchAll();
+    }
+    public function getExistSiswaPP()
+    {
+        $this->db->query('SELECT * FROM ' . $this->tablepp . ' WHERE `status` = ' . 1);
         return $this->db->fetchAll();
     }
 
@@ -1210,6 +1609,12 @@ class pkl_model extends Database
         return $this->db->fetchAll();
     }
 
+    public function getExistSiswaIZ()
+    {
+        $this->db->query('SELECT * FROM ' . $this->tableiz . ' WHERE `status` = ' . 1);
+        return $this->db->fetchAll();
+    }
+
     public function getDetailIZ($id)
     {
         $this->db->query('SELECT * FROM ' . $this->tableiz . ' WHERE id = :id');
@@ -1303,9 +1708,9 @@ class pkl_model extends Database
 
     //    SISWA BERMASALAH
 
-    public function getSiswaBM()
+    public function getExistSiswaBM()
     {
-        $this->db->query('SELECT * FROM ' . $this->tablebm);
+        $this->db->query('SELECT * FROM ' . $this->tablebm . ' WHERE `status` = ' . 1);
         return $this->db->fetchAll();
     }
 
@@ -1391,7 +1796,7 @@ class pkl_model extends Database
     }
 
     //  IMPORT
-    
+
     public function importDatasiswa()
     {
         $fields = [

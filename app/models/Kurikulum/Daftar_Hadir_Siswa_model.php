@@ -2,7 +2,7 @@
 
 class Daftar_Hadir_Siswa_Model
 {
-    private $table = 'tbl_gkpdua';
+    private $table = 'tbl_daftarhadir';
     private $db;
 
     public function __construct()

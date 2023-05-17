@@ -1,3 +1,32 @@
+<style>
+  .button-arounder {
+    background: white;
+    font-size: 4px;
+    border: solid 2px #4B49AC;
+    padding: .375em 1.125em;
+    font-weight: bold;
+    border-radius: 10px;
+    color: #4B49AC;
+    // width: 50%;
+  }
+  
+  .button-arounder:hover,
+  .button-arounder:focus {
+    box-shadow: 0 4px 8px hsla(190deg, 15%, 5%, .2);
+    transform: translateY(-4px);
+    background:#4B49AC;
+    border-top-left-radius: var(--radius);
+    border-top-right-radius: var(--radius);
+    border-bottom-left-radius: var(--radius);
+    border-bottom-right-radius: var(--radius);
+    color:white;
+    border-radius: 10px;
+    // width: 50%;
+  }
+  a:hover {
+    text-decoration: none;
+  }
+</style>
 <!-- <div class="main-panel"> -->
 <div class="content-wrapper">
   <div class="row">
@@ -150,11 +179,11 @@
 </div>
 
 
-<footer class="footer">
+<!-- <footer class="footer">
   <div class="d-sm-flex justify-content-center justify-content-sm-between">
     <span class="text-muted text-center text-sm-left d-block d-sm-inline-block">Copyright © 2021. Premium <a href="https://www.bootstrapdash.com/" target="_blank">Bootstrap admin template</a> from BootstrapDash. All rights reserved.</span>
     <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center">Hand-crafted & made with <i class="ti-heart text-danger ml-1"></i></span>
-  </div>
+  </div> -->
 </footer>
 <!-- <script src="<?= BASEURL; ?>/js/pengajuanMapel.js"></script> -->
 <script>

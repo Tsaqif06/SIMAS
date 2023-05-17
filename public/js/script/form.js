@@ -41,6 +41,7 @@ $(document).ready(function () {
 					method: "post",
 					dataType: "json",
 					success: function (data) {
+						console.log(data);
 						$("#fotoSekarang").attr("src", `images/datafoto/${data.foto}`);
 						$("#fotoLama").val(data.foto);
 						for (let key of Object.keys(data)) {

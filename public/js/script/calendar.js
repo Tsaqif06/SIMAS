@@ -1,11 +1,18 @@
 var calendar;
 var Calendar = FullCalendar.Calendar;
 var events = [];
-$(function() {
+$(document).ready(function() {
     if (!!scheds) {
-        Object.keys(scheds).map(k => {
-            var row = scheds[k]
-            events.push({ id: row.id, title: row.title, start: row.start_datetime, end: row.end_datetime });
+        Object.keys(scheds).map(i => {
+            var row = scheds[i];
+            events.push(
+                { 
+                    id: i,
+                    title: row.title,
+                    start: row.start_datetime,
+                    end: row.end_datetime 
+                }
+            );
         })
     }
     var date = new Date()
@@ -24,15 +31,15 @@ $(function() {
         //Random default events
         events: events,
         eventClick: function(info) {
-            var _details = $('#event-details-modal')
-            var id = info.event.id
+            var id = info.event.id;
             if (!!scheds[id]) {
-                _details.find('#title').text(scheds[id].title)
-                _details.find('#description').text(scheds[id].description)
-                _details.find('#start').text(scheds[id].sdate)
-                _details.find('#end').text(scheds[id].edate)
-                _details.find('#edit,#delete').attr('data-id', id)
-                _details.modal('show')
+                $('#event-details-modal .title').text(scheds[id].title);
+                $('#event-details-modal .description').text(scheds[id].description);
+                $('#event-details-modal .start').text(scheds[id].start_datetime);
+                $('#event-details-modal .end').text(scheds[id].end_datetime);
+                $('#edit').attr('data-id', id);
+                $('#delete').attr('data-id', id);
+                $('#event-details-modal').modal('show');
             } else {
                 alert("Event is undefined");
             }
@@ -57,7 +64,7 @@ $(function() {
         if (!!scheds[id]) {
             var _form = $('#schedule-form')
             console.log(String(scheds[id].start_datetime), String(scheds[id].start_datetime).replace(" ", "\\t"))
-            _form.find('[name="id"]').val(id)
+            _form.find('[name="id"]').val(scheds[id].id)
             _form.find('[name="title"]').val(scheds[id].title)
             _form.find('[name="description"]').val(scheds[id].description)
             _form.find('[name="start_datetime"]').val(String(scheds[id].start_datetime).replace(" ", "T"))
@@ -71,11 +78,10 @@ $(function() {
 
     // Delete Button / Deleting an Event
     $('#delete').click(function() {
-        var id = $(this).attr('data-id')
+        var id = $(this).attr('data-id');
         if (!!scheds[id]) {
-            var _conf = confirm("Are you sure to delete this scheduled event?");
-            if (_conf === true) {
-                location.href = "./delete_schedule.php?id=" + id;
+            if (confirm("Are you sure to delete this scheduled event?")) {
+                location.href = "./Kalender/hapusDataKalender/" + scheds[id].id;
             }
         } else {
             alert("Event is undefined");

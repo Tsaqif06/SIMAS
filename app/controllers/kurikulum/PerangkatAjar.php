@@ -17,15 +17,6 @@ class PerangkatAjar extends Controller
         $this->view('templates/footerwm');
     }
 
-    public function detail($id)
-    {
-        $data['judul'] = 'Detail Mahasiswa';
-        $data['mhs'] = $this->model("$this->model_name", 'Perangkat_Ajar_model')->getPerangkatAjarById($id);
-        $this->view('templates/header', $data);
-        $this->view('kurikulum/mahasiswa/detail', $data);
-        $this->view('templates/footerwm');
-    }
-
     public function tambahPerangkatAjar()
     {
         if ($this->model("$this->model_name", 'Perangkat_Ajar_model')->tambahPerangkatAjar($_POST) > 0) {

@@ -54,12 +54,18 @@ class Kehadiran_model
         $this->db->query(
             "INSERT INTO {$this->table}
                 VALUES 
-            (null, :uuid, :nama, :nisn, :keterangan, :lokasi, null, CURRENT_TIMESTAMP, :attend_by, NULL, '', DEFAULT, NULL, '', NULL, '', 0, 0, DEFAULT)"
+            (null, :uuid, :nama, :nisn, :keterangan, :lokasi, :note, CURRENT_TIMESTAMP, :attend_by, NULL, '', DEFAULT, NULL, '', NULL, '', 0, 0, DEFAULT)"
         );
         $this->db->bind('uuid', Uuid::uuid4()->toString());
         foreach ($this->fields as $field) {
             $this->db->bind($field, $data[$field]);
         }
+        if ($data['note'] != '') {
+            $this->db->bind('note', $data['note']);
+        } else {
+            $this->db->bind('note', '');
+        }
+
         $this->db->bind('attend_by', $this->user);
 
         $this->db->execute();
@@ -133,6 +139,20 @@ class Kehadiran_model
 
         $this->db->execute();
         return $this->db->rowCount();
+    }
+
+    public function login($data)
+    {
+        $this->db->query(
+            "SELECT * FROM {$this->table} 
+                WHERE 
+            `nisn` = :nisn
+        "
+        );
+
+        $this->db->bind("nisn", $data['nisn']);
+
+        return $this->db->fetch();
     }
 
     public function importData()

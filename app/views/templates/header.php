@@ -2,6 +2,35 @@
 <html lang="en">
 
 <head>
+    <style>
+    .button-arounder {
+        background: white;
+        font-size: 4px;
+        border: solid 2px #4B49AC;
+        padding: .375em 1.125em;
+        font-weight: bold;
+        border-radius: 10px;
+        color: #4B49AC;
+        // width: 50%;
+    }
+    
+    .button-arounder:hover,
+    .button-arounder:focus {
+        box-shadow: 0 4px 8px hsla(190deg, 15%, 5%, .2);
+        transform: translateY(-4px);
+        background:#4B49AC;
+        border-top-left-radius: var(--radius);
+        border-top-right-radius: var(--radius);
+        border-bottom-left-radius: var(--radius);
+        border-bottom-right-radius: var(--radius);
+        color:white;
+        border-radius: 10px;
+        // width: 50%;
+    }
+    a:hover {
+        text-decoration: none;
+    }
+    </style>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -41,7 +70,7 @@
     <link rel="stylesheet" href="<?= BASEURL ?>/css/scroll.css">
     <link rel="stylesheet" href="<?= BASEURL ?>/css/vertical-layout-light/style.css">
     <!-- endinject -->
-    <link rel="shortcut icon" href="images/favicon.png" />
+    <link rel="shortcut icon" href="../images/favicon.png" />
 </head>
 
 <body>
@@ -620,7 +649,7 @@
                             </li>
                         <?php endif ?>
 
-                        <?php if ($data['user']['role'] == 'admin' && ($data['user']['hak_akses'] == 'all' || $data['user']['hak_akses'] == 'sarpras')) : ?>
+                        <?php if ($data['user']['role'] == 'admin' || ($data['user']['role'] == 'user' && ($data['user']['hak_akses'] == '' || $data['user']['hak_akses'] == 'industri' || $data['user']['hak_akses'] == 'sarpras'))) : ?>
                             <li class="nav-item">
                                 <a class="nav-link" data-toggle="collapse" href="#tables" aria-expanded="false" aria-controls="tables">
                                     <i class="icon-grid-2 menu-icon"></i>
@@ -629,15 +658,26 @@
                                 </a>
                                 <div class="collapse" id="tables">
                                     <ul class="nav flex-column sub-menu">
+                                        <?php if ($data['user']['role'] == 'admin' && ($data['user']['hak_akses'] == 'all' || $data['user']['hak_akses'] == 'sarpras')) : ?>
                                         <li class="nav-item"> <a class="nav-link spa-load" href="<?= BASEURL; ?>/fasilitas">Fasilitas</a></li>
+                                        <?php endif ?>
+                                        
+                                        <?php if ($data['user']['role'] == 'admin' || ($data['user']['role'] == 'user' && $data['user']['hak_akses'] == '')) : ?>
                                         <li class="nav-item"> <a class="nav-link spa-load" href="<?= BASEURL; ?>/peminjamanBarang">Peminjaman Barang</a></li>
                                         <li class="nav-item"> <a class="nav-link spa-load" href="<?= BASEURL; ?>/pengajuanBarang">Pengajuan Barang</a></li>
+                                        <?php endif ?>
+                                        
+                                        <?php if ($data['user']['role'] == 'admin' && ($data['user']['hak_akses'] == 'all' || $data['user']['hak_akses'] == 'sarpras')) : ?>
                                         <li class="nav-item"> <a class="nav-link spa-load" href="<?= BASEURL; ?>/barangMasuk">Barang Masuk</a></li>
                                         <li class="nav-item"> <a class="nav-link spa-load" href="<?= BASEURL; ?>/barangKeluar">Barang Keluar</a></li>
                                         <li class="nav-item"><a class="nav-link spa-load" href="<?= BASEURL; ?>/barangAset">Stok Barang Aset</a></li>
                                         <li class="nav-item"><a class="nav-link spa-load" href="<?= BASEURL; ?>/stokBarang">Stok Barang</a></li>
                                         <li class="nav-item"><a class="nav-link spa-load" href="<?= BASEURL; ?>/dataRuang">Data Ruang</a></li>
                                         <li class="nav-item"><a class="nav-link spa-load" href="<?= BASEURL; ?>/perbaikan">Perbaikan</a></li>
+                                        <?php endif ?>
+                                    </ul>
+                                    <ul>
+                                    
                                     </ul>
                                 </div>
                             </li>

@@ -6,6 +6,10 @@
         <input type="text" class="form-control" name="nisn" id="nisn" required>
     </div>
     <div class="mb-3">
+        <label for="nis" class="form-label">NIS</label>
+        <input type="text" class="form-control" name="nis" id="nis" required>
+    </div>
+    <div class="mb-3">
         <label for="nama_siswa" class="form-label">Nama Siswa</label>
         <input type="text" class="form-control" name="nama_siswa" id="nama_siswa" required>
     </div>
@@ -24,7 +28,7 @@
         <select class="form-select" name="jurusan" id="jurusan" required>
             <option selected disabled>Open this select menu</option>
             <?php foreach ($data['kompkeahlian'] as $row) : ?>
-            <option value="<?= $row['kode_kompkeahlian'] ?>"><?= $row['kode_kompkeahlian'] ?></option>
+                <option value="<?= $row['kode_kompkeahlian'] ?>"><?= $row['kode_kompkeahlian'] ?></option>
             <?php endforeach ?>
         </select>
     </div>
@@ -34,8 +38,7 @@
     </div>
     <div class="mb-3">
         <label for="tanggal_lahir" class="form-label">Tanggal Lahir</label>
-        <input type="date" placeholder="dd/mm/yyyy" class="form-control" name="tanggal_lahir" id="tanggal_lahir"
-            required>
+        <input type="date" placeholder="dd/mm/yyyy" class="form-control" name="tanggal_lahir" id="tanggal_lahir" required>
     </div>
     <div class="mb-3">
         <label for="tempat_lahir" class="form-label">Tempat Lahir</label>
@@ -91,7 +94,12 @@
     </div>
     <div class="mb-3">
         <label for="kelas" class="form-label">Kelas</label>
-        <input type="text" class="form-control" name="kelas" id="kelas" required>
+        <select class="form-select" name="kelas" id="kelas" required>
+            <option selected disabled>Open this select menu</option>
+            <option value="X">X</option>
+            <option value="XI">XI</option>
+            <option value="XII">XII</option>
+            <option value="XIII">XIII</option>
     </div>
     <div class="mb-3">
         <input type="hidden" class="form-control" name="usia_sekarang" id="usia_sekarang" required>

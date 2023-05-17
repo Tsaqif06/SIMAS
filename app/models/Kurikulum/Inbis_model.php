@@ -1,13 +1,17 @@
 <?php
 
+use Ramsey\Uuid\Uuid;
+
 class Inbis_model
 {
     private $table = 'tbl_inbisunggul';
     private $db;
+    private $user;
 
     public function __construct()
     {
         $this->db = new Database(DB_KURIKULUM);
+        $this->user = Cookie::get_jwt()->name;
     }
 
     public function getAllInbis()
@@ -25,11 +29,14 @@ class Inbis_model
 
     public function tambahInbis($data)
     {
-        $query = "INSERT INTO tbl_inbisunggul
-                    VALUES
-                  (NULL, :jeniskegiatan, :Tujuan, :Strategi, :Indikator, :Pelaksanaan, :Waktu, :Target_)";
+        $this->db->query(
+            "INSERT INTO {$this->table}
+                VALUES
+            (NULL, :uuid, :jeniskegiatan, :Tujuan, :Strategi, :Indikator, :Pelaksanaan, :Waktu, :Target_,
+            '', CURRENT_TIMESTAMP, :created_by, null, '', null, '', null, '', 0, 0, DEFAULT)"
+        );
 
-        $this->db->query($query);
+        $this->db->bind('uuid', Uuid::uuid4()->toString());
         $this->db->bind('jeniskegiatan', $data['jeniskegiatan']);
         $this->db->bind('Tujuan', $data['Tujuan']);
         $this->db->bind('Strategi', $data['Strategi']);
@@ -37,6 +44,7 @@ class Inbis_model
         $this->db->bind('Pelaksanaan', $data['Pelaksanaan']);
         $this->db->bind('Waktu', $data['Waktu']);
         $this->db->bind('Target_', $data['Target_']);
+        $this->db->bind('created_by', $this->user);
 
         $this->db->execute();
 
@@ -45,7 +53,7 @@ class Inbis_model
 
     public function hapusInbis($id)
     {
-        $query = "DELETE FROM tbl_inbisunggul WHERE id = :id";
+        $query = "DELETE FROM {$this->table} WHERE id = :id";
 
         $this->db->query($query);
         $this->db->bind('id', $id);
@@ -58,17 +66,20 @@ class Inbis_model
 
     public function ubahInbis($data)
     {
-        $query = "UPDATE tbl_inbisunggul SET
-                    jeniskegiatan = :jeniskegiatan,
-                    Tujuan = :Tujuan,
-                    Strategi = :Strategi,
-                    Indikator = :Indikator,
-                    Pelaksanaan = :Pelaksanaan,
-                    Waktu = :Waktu,
-                    Target_ = :Target_
-                  WHERE id = :id";
+        $this->db->query(
+            "UPDATE {$this->table} SET
+                jeniskegiatan = :jeniskegiatan,
+                Tujuan = :Tujuan,
+                Strategi = :Strategi,
+                Indikator = :Indikator,
+                Pelaksanaan = :Pelaksanaan,
+                Waktu = :Waktu,
+                Target_ = :Target_,
+                modified_at = CURRENT_TIMESTAMP,
+                modified_by = :modified_by
+            WHERE id = :id"
+        );
 
-        $this->db->query($query);
         $this->db->bind('jeniskegiatan', $data['jeniskegiatan']);
         $this->db->bind('Tujuan', $data['Tujuan']);
         $this->db->bind('Strategi', $data['Strategi']);
@@ -76,6 +87,7 @@ class Inbis_model
         $this->db->bind('Pelaksanaan', $data['Pelaksanaan']);
         $this->db->bind('Waktu', $data['Waktu']);
         $this->db->bind('Target_', $data['Target_']);
+        $this->db->bind('modified_by', $this->user);
         $this->db->bind('id', $data['id']);
 
 
