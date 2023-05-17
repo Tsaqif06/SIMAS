@@ -27,7 +27,7 @@
                   </div>
                   <div class="card-body">
                     <div class="row">
-                      <a href="<?= BASEURL; ?>/pkl/penempatandga"><button type="button" class="btn btn-inverse-primary btn-fw btn-block">Masuk ke laman ini</button></a>
+                      <a href="<?= BASEURL; ?>/pkl/penempatan&kelas=XI_DG_A"><button type="button" class="btn btn-inverse-primary btn-fw btn-block">Masuk ke laman ini</button></a>
                     </div>
                   </div>
                 </div>
@@ -48,7 +48,11 @@
                   </div>
                   <div class="card-body">
                     <div class="row">
+<<<<<<< HEAD:app/views/humas/pkl/rekap/penempatan/index.php
+                      <a href="<?= BASEURL; ?>/pkl/penempatan&kelas=XI_TL_A"><button type="button" class="btn btn-inverse-primary btn-fw btn-block">Masuk ke laman ini</button></a>
+=======
                       <a href="<?= BASEURL; ?>/pkl/penempatanloga"><button type="button" class="btn btn-inverse-primary btn-fw btn-block">Masuk ke laman ini</button></a>
+>>>>>>> main:app/views/humas/pkl/rekap/penempatan/home/pkldatapenempatan.php
                     </div>
                   </div>
                 </div>
@@ -69,7 +73,7 @@
                   </div>
                   <div class="card-body">
                     <div class="row">
-                      <a href="<?= BASEURL; ?>/pkl/penempatanmekaa"><button type="button" class="btn btn-inverse-primary btn-fw btn-block">Masuk ke laman ini</button></a>
+                      <a href="<?= BASEURL; ?>/pkl/penempatan&kelas=XI_MEKA_A"><button type="button" class="btn btn-inverse-primary btn-fw btn-block">Masuk ke laman ini</button></a>
                     </div>
                   </div>
                 </div>
@@ -90,7 +94,7 @@
                   </div>
                   <div class="card-body">
                     <div class="row">
-                      <a href="<?= BASEURL; ?>/pkl/penempatanrpla"><button type="button" class="btn btn-inverse-primary btn-fw btn-block">Masuk ke laman ini</button></a>
+                      <a href="<?= BASEURL; ?>/pkl/penempatan&kelas=XI_RPL_A"><button type="button" class="btn btn-inverse-primary btn-fw btn-block">Masuk ke laman ini</button></a>
                     </div>
                   </div>
                 </div>
@@ -111,7 +115,7 @@
                   </div>
                   <div class="card-body">
                     <div class="row">
-                      <a href="<?= BASEURL; ?>/pkl/penempatantkja"><button type="button" class="btn btn-inverse-primary btn-fw btn-block">Masuk ke laman ini</button></a>
+                      <a href="<?= BASEURL; ?>/pkl/penempatan&kelas=XI_TKJ_A"><button type="button" class="btn btn-inverse-primary btn-fw btn-block">Masuk ke laman ini</button></a>
                     </div>
                   </div>
                 </div>
@@ -132,7 +136,7 @@
                   </div>
                   <div class="card-body">
                     <div class="row">
-                      <a href="<?= BASEURL; ?>/pkl/penempatandkva"><button type="button" class="btn btn-inverse-primary btn-fw btn-block">Masuk ke laman ini</button></a>
+                      <a href="<?= BASEURL; ?>/pkl/penempatan&kelas=XI_DKV_A"><button type="button" class="btn btn-inverse-primary btn-fw btn-block">Masuk ke laman ini</button></a>
                     </div>
                   </div>
                 </div>
@@ -153,7 +157,7 @@
                   </div>
                   <div class="card-body">
                     <div class="row">
-                      <a href="<?= BASEURL; ?>/pkl/penempatanpha"><button type="button" class="btn btn-inverse-primary btn-fw btn-block">Masuk ke laman ini</button></a>
+                      <a href="<?= BASEURL; ?>/pkl/penempatan&kelas=XI_PH_A"><button type="button" class="btn btn-inverse-primary btn-fw btn-block">Masuk ke laman ini</button></a>
                     </div>
                   </div>
                 </div>
@@ -174,7 +178,7 @@
                   </div>
                   <div class="card-body">
                     <div class="row">
-                      <a href="<?= BASEURL; ?>/pkl/penempatanania"><button type="button" class="btn btn-inverse-primary btn-fw btn-block">Masuk ke laman ini</button></a>
+                      <a href="<?= BASEURL; ?>/pkl/penempatan&kelas=XI_ANI_A"><button type="button" class="btn btn-inverse-primary btn-fw btn-block">Masuk ke laman ini</button></a>
                     </div>
                   </div>
                 </div>
