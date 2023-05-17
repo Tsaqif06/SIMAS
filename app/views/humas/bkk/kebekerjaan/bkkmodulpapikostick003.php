@@ -15,10 +15,9 @@
 
         <div class="row">
             <div class="col-md-12 grid-margin stretch-card">
-                <object data="<?= BASEURL; ?>/images/bkkkeberkejaan/003 soal PAPI KOSTICK TEST_manbail.pdf" width="100%" height="800"></object>
+            <iframe src="https://drive.google.com/file/u/0/d/1GW9xCjJp4Vtc4LxCmm6c3eQ_dhwe1BzD/preview?usp=embed_googleplus" style="width: 100%; height: 600px;" frameborder="0"></iframe>
             </div>
         </div>
-
     </div>
 
 
