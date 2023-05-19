@@ -38,17 +38,17 @@
     <title><?= $data['judul'] ?></title>
     <!-- plugins:css -->
     <script src="js/jquery.min.js"></script>
-    <link rel="stylesheet" href="<?= BASEURL ?>/css/bootstrap.css">
-    <link rel="stylesheet" href="<?= BASEURL ?>/vendors/feather/feather.css">
-    <link rel="stylesheet" href="<?= BASEURL ?>/vendors/ti-icons/css/themify-icons.css">
-    <link rel="stylesheet" href="<?= BASEURL ?>/vendors/css/vendor.bundle.base.css">
-    <link rel="stylesheet" href="<?= BASEURL ?>/vendors/mdi/css/materialdesignicons.min.css">
-    <link rel="stylesheet" href="<?= BASEURL ?>/vendors/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="../css/bootstrap.css">
+    <link rel="stylesheet" href="../vendors/feather/feather.css">
+    <link rel="stylesheet" href="../vendors/ti-icons/css/themify-icons.css">
+    <link rel="stylesheet" href="../vendors/css/vendor.bundle.base.css">
+    <link rel="stylesheet" href="../vendors/mdi/css/materialdesignicons.min.css">
+    <link rel="stylesheet" href="../vendors/font-awesome/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/cd-themify-icons/index.min.css">
-    <link rel="stylesheet" type="text/css" href="<?= BASEURL ?>/js/select.dataTables.min.css">
+    <link rel="stylesheet" type="text/css" href="../js/select.dataTables.min.css">
     <!-- endinject -->
     <!-- Plugin css for this page -->
-    <link rel="stylesheet" href="<?= BASEURL ?>/vendors/datatables.net-bs4/dataTables.bootstrap4.css">
+    <link rel="stylesheet" href="../vendors/datatables.net-bs4/dataTables.bootstrap4.css">
     <link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/jquery.dataTables.css" />
     <link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/dataTables.bootstrap5.min.css">
     <link rel="stylesheet"
@@ -76,9 +76,9 @@
     </script>
     <!-- End plugin css for this page -->
     <!-- inject:css -->
-    <link rel="stylesheet" href="<?= BASEURL ?>/css/style.css">
-    <link rel="stylesheet" href="<?= BASEURL ?>/css/scroll.css">
-    <link rel="stylesheet" href="<?= BASEURL ?>/css/vertical-layout-light/style.css">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/scroll.css">
+    <link rel="stylesheet" href="../css/vertical-layout-light/style.css">
     <!-- endinject -->
     <link rel="shortcut icon" href="../images/favicon.png" />
 </head>
@@ -480,18 +480,18 @@
                                                 Tampung</a></li>
                                         <?php endif ?>
 
-                                        <?php if ($data['user']['hak_akses'] == '' || $data['user']['hak_akses'] == 'kabeng') : ?>
+                                        <?php if ($data['user']['role'] == 'admin' || $data['user']['hak_akses'] == '' || $data['user']['hak_akses'] == 'kabeng') : ?>
                                         <li><a class="navsubitem text-white"
                                                 href="<?= BASEURL; ?>/pkl/pemberkasan">Pemberkasan</a></li>
                                         <?php endif ?>
 
-                                        <?php if ($data['user']['hak_akses'] == 'industri') : ?>
+                                        <?php if ($data['user']['role'] == 'admin' || $data['user']['hak_akses'] == 'industri') : ?>
                                         <li><a class="navsubitem text-white" href="<?= BASEURL; ?>/pkl/nilai">Nilai
                                                 PKL</a></li>
                                         <?php endif ?>
                                     </ul>
 
-                                    <?php if ($data['user']['hak_akses'] == '' || $data['user']['hak_akses'] == 'industri') : ?>
+                                    <?php if ($data['user']['role'] == 'admin' || $data['user']['hak_akses'] == '' || $data['user']['hak_akses'] == 'industri') : ?>
                                     <li class="nav-item">
                                         <a class="nav-link" href="<?= BASEURL; ?>/bkk/index">BKK</a>
                                     </li>
@@ -509,12 +509,12 @@
                                         </li>
                                         <?php endif ?>
 
-                                        <?php if ($data['user']['hak_akses'] == 'industri') : ?>
+                                        <?php if ($data['user']['role'] == 'admin' || $data['user']['hak_akses'] == 'industri') : ?>
                                         <li><a class="navsubitem text-white" href="<?= BASEURL; ?>/bkk/loker">Lowongan
                                                 Kerja</a></li>
                                         <?php endif ?>
 
-                                        <?php if ($data['user']['hak_akses'] == '') : ?>
+                                        <?php if ($data['user']['role'] == 'admin' || $data['user']['hak_akses'] == '') : ?>
                                         <li><a class="navsubitem text-white"
                                                 href="<?= BASEURL; ?>/bkk/peminatan">Peminatan</a></li>
                                         <li><a class="navsubitem text-white" href="<?= BASEURL; ?>/bkk/spw">SPW</a></li>
@@ -531,73 +531,6 @@
                                 </ul>
                             </div>
                         </li>
-
-                        <?php if ($data['user']['role'] == 'admin' && ($data['user']['hak_akses'] == 'all' || $data['user']['hak_akses'] == 'kesiswaan')) : ?>
-                        <li class="nav-item">
-                            <a class="nav-link" data-toggle="collapse" href="#kesiswaan" aria-expanded="false"
-                                aria-controls="kesiswaan">
-                                <i class="ti-user menu-icon"></i>
-                                <span class="menu-title">Kesiswaan</span>
-                                <i class="menu-arrow"></i>
-                            </a>
-                            <div class="collapse" id="kesiswaan">
-                                <ul class="nav flex-column sub-menu">
-                                    <li class="nav-item">
-                                        <a class="nav-link">Data</a>
-                                    </li>
-                                    <ul style="list-style-type: none;">
-                                        <li><a class="navsubitem text-white" href="<?= BASEURL ?>/siswa">Siswa</a></li>
-                                        <li><a class="navsubitem text-white"
-                                                href="<?= BASEURL ?>/kompkeahlian">Kompetensi Keahlian</a></li>
-                                        <li><a class="navsubitem text-white" href="<?= BASEURL ?>/progkeahlian">Program
-                                                Keahlian</a></li>
-                                        <li><a class="navsubitem text-white" href="<?= BASEURL ?>/kelas">Kelas</a></li>
-                                    </ul>
-                                    <li class="nav-item">
-                                        <a class="nav-link">Absensi</a>
-                                    </li>
-                                    <ul style="list-style-type: none;">
-                                        <li><a class="navsubitem text-white"
-                                                href="<?= BASEURL ?>/kehadiran">Kehadiran</a></li>
-                                        <li><a class="navsubitem text-white" href="<?= BASEURL ?>/izin">Izin</a></li>
-                                    </ul>
-                                    <li class="nav-item">
-                                        <a class="nav-link">Pelanggaran</a>
-                                    </li>
-                                    <ul style="list-style-type: none;">
-                                        <li><a class="navsubitem text-white"
-                                                href="<?= BASEURL ?>/pelanggaran">Pelanggaran</a></li>
-                                        <li><a class="navsubitem text-white"
-                                                href="<?= BASEURL ?>/poinpelanggaran">Poin</a></li>
-                                    </ul>
-                                    <li class="nav-item">
-                                        <a class="nav-link">Asuransi</a>
-                                    </li>
-                                    <ul style="list-style-type: none;">
-                                        <li><a class="navsubitem text-white" href="<?= BASEURL ?>/asuransi">Asuransi</a>
-                                        </li>
-                                        <li><a class="navsubitem text-white" href="<?= BASEURL ?>/kecelakaan">Asuransi
-                                                Kecelakaan</a></li>
-                                        <li><a class="navsubitem text-white"
-                                                href="<?= BASEURL ?>/ortumeninggal">Asuransi Ortu Meninggal</a></li>
-                                    </ul>
-                                    <li class="nav-item">
-                                        <a class="nav-link">Informasi</a>
-                                    </li>
-                                    <ul style="list-style-type: none;">
-                                        <li><a class="navsubitem text-white"
-                                                href="<?= BASEURL ?>/infokesiswaan">Informasi Kesiswaan</a></li>
-                                        <li><a class="navsubitem text-white" href="<?= BASEURL ?>/kegiatanosis">Kegiatan
-                                                Osis</a></li>
-                                    </ul>
-                                    <ul style="list-style-type: none;">
-                                        <li><a class="navsubitem text-white" href="<?= BASEURL ?>/waguru">Whatsapp
-                                                Guru</a></li>
-                                    </ul>
-                                </ul>
-                            </div>
-                        </li>
-                        <?php endif ?>
 
                         <?php if ($data['user']['role'] == 'admin' && ($data['user']['hak_akses'] == 'all' || $data['user']['hak_akses'] == 'kurikulum')) : ?>
                         <li class="nav-item">
@@ -677,7 +610,7 @@
                         </li>
                         <?php endif ?>
 
-                        <?php if ($data['user']['hak_akses'] == '' || $data['user']['hak_akses'] == 'industri' || $data['user']['hak_akses'] == 'sarpras') : ?>
+                        <?php if ($data['user']['role'] == 'admin' || $data['user']['hak_akses'] == '' || $data['user']['hak_akses'] == 'industri' || $data['user']['hak_akses'] == 'sarpras') : ?>
                         <li class="nav-item">
                             <a class="nav-link" data-toggle="collapse" href="#tables" aria-expanded="false"
                                 aria-controls="tables">
@@ -692,12 +625,10 @@
                                             href="<?= BASEURL; ?>/fasilitas">Fasilitas</a></li>
                                     <?php endif ?>
 
-                                    <?php if ($data['user']['role'] == 'admin' || ($data['user']['role'] == 'user' && $data['user']['hak_akses'] == '')) : ?>
                                     <li class="nav-item"> <a class="nav-link spa-load"
                                             href="<?= BASEURL; ?>/peminjamanBarang">Peminjaman Barang</a></li>
                                     <li class="nav-item"> <a class="nav-link spa-load"
                                             href="<?= BASEURL; ?>/pengajuanBarang">Pengajuan Barang</a></li>
-                                    <?php endif ?>
 
                                     <?php if ($data['user']['role'] == 'admin' && ($data['user']['hak_akses'] == 'all' || $data['user']['hak_akses'] == 'sarpras')) : ?>
                                     <li class="nav-item"> <a class="nav-link spa-load"

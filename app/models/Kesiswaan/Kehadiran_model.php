@@ -141,19 +141,6 @@ class Kehadiran_model
         return $this->db->rowCount();
     }
 
-    public function login($data)
-    {
-        $this->db->query(
-            "SELECT * FROM {$this->table} 
-                WHERE 
-            `nisn` = :nisn
-        "
-        );
-
-        $this->db->bind("nisn", $data['nisn']);
-
-        return $this->db->fetch();
-    }
 
     public function importData()
     {

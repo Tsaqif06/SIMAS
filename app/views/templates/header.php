@@ -3,34 +3,34 @@
 
 <head>
     <style>
-        .button-arounder {
-            background: white;
-            font-size: 4px;
-            border: solid 2px #4B49AC;
-            padding: .375em 1.125em;
-            font-weight: bold;
-            border-radius: 10px;
-            color: #4B49AC;
-            width: 50%;
-        }
+    .button-arounder {
+        background: white;
+        font-size: 4px;
+        border: solid 2px #4B49AC;
+        padding: .375em 1.125em;
+        font-weight: bold;
+        border-radius: 10px;
+        color: #4B49AC;
+        width: 50%;
+    }
 
-        .button-arounder:hover,
-        .button-arounder:focus {
-            box-shadow: 0 4px 8px hsla(190deg, 15%, 5%, .2);
-            transform: translateY(-4px);
-            background: #4B49AC;
-            border-top-left-radius: var(--radius);
-            border-top-right-radius: var(--radius);
-            border-bottom-left-radius: var(--radius);
-            border-bottom-right-radius: var(--radius);
-            color: white;
-            border-radius: 10px;
-            width: 50%;
-        }
+    .button-arounder:hover,
+    .button-arounder:focus {
+        box-shadow: 0 4px 8px hsla(190deg, 15%, 5%, .2);
+        transform: translateY(-4px);
+        background: #4B49AC;
+        border-top-left-radius: var(--radius);
+        border-top-right-radius: var(--radius);
+        border-bottom-left-radius: var(--radius);
+        border-bottom-right-radius: var(--radius);
+        color: white;
+        border-radius: 10px;
+        width: 50%;
+    }
 
-        a:hover {
-            text-decoration: none;
-        }
+    a:hover {
+        text-decoration: none;
+    }
     </style>
     <!-- Required meta tags -->
     <meta charset="utf-8">
@@ -597,8 +597,22 @@
                                                     Guru</a></li>
                                         </ul>
                                     </ul>
-                                </div>
-                            </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link">Informasi</a>
+                                    </li>
+                                    <ul style="list-style-type: none;">
+                                        <li><a class="navsubitem text-white"
+                                                href="<?= BASEURL ?>/infokesiswaan">Informasi Kesiswaan</a></li>
+                                        <li><a class="navsubitem text-white" href="<?= BASEURL ?>/kegiatanosis">Kegiatan
+                                                Osis</a></li>
+                                    </ul>
+                                    <ul style="list-style-type: none;">
+                                        <li><a class="navsubitem text-white" href="<?= BASEURL ?>/waguru">Whatsapp
+                                                Guru</a></li>
+                                    </ul>
+                                </ul>
+                            </div>
+                        </li>
                         <?php endif ?>
 
                         <?php if ($data['user']['role'] == 'admin' && ($data['user']['hak_akses'] == 'all' || $data['user']['hak_akses'] == 'kurikulum')): ?>
@@ -716,11 +730,9 @@
                                                     href="<?= BASEURL; ?>/perbaikan">Perbaikan</a></li>
                                         <?php endif ?>
                                     </ul>
-                                    <ul>
-
-                                    </ul>
-                                </div>
-                            </li>
+                                </ul>
+                            </div>
+                        </li>
                         <?php endif ?>
 
                         <?php if ($data['user']['role'] == 'admin'): ?>
