@@ -16,7 +16,6 @@ class dataperbaikanPrasarana_models
         'tindakan',
         'kondisi_awal',
         'kondisi_akhir',
-        // 'statusperbaikan',
         'teknisi'
     ];
 
@@ -133,7 +132,6 @@ class dataperbaikanPrasarana_models
             tindakan = :tindakan,
             kondisi_awal = :kondisi_awal,
             kondisi_akhir = :kondisi_akhir,
-            statusperbaikan = :statusperbaikan,
             teknisi = :teknisi,
             modified_at = CURRENT_TIMESTAMP,
             modified_by = :modified_by
