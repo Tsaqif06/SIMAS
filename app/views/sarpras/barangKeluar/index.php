@@ -34,17 +34,10 @@
           <div class="modal-body">
             <form enctype="multipart/form-data" action="<?= BASEURL; ?>/barangKeluar/tambah" method="post">
               <input type="hidden" name="id" id="id">
-              <input type="hidden" name="fotoLama" id="fotoLama">
-
 
               <div class="form-group">
                 <label for="exampleInputEmail1">Nama Barang</label>
                 <input type="text" class="form-control" id="namabarang" name="namabarang" placeholder="" required />
-              </div>
-
-              <div class="form-group">
-                <label for="formFile" class="form-label">Foto Barang</label>
-                <input class="form-control" type="file" id="foto" name="foto">
               </div>
 
               <div class="form-group">
@@ -115,7 +108,6 @@
                 <tr>
                   <th>#</th>
                   <th>Nama Barang</th>
-                  <th>Foto Barang</th>
                   <th>Spesifikasi</th>
                   <th>Jumlah</th>
                   <th>Satuan</th>
@@ -130,7 +122,6 @@
                   <tr>
                     <td><?= $i++; ?></td>
                     <td><?= $keluar['namabarang'] ?></td>
-                    <td><img src="<?= BASEURL ?>/images/datafoto/<?= $keluar['foto'] ?>" style="border-radius: 0px; width: 100%; height: auto;"></td>
                     <td><?= $keluar['spesifikasi'] ?></td>
                     <td><?= $keluar['jumlah'] ?></td>
                     <td><?= $keluar['satuan'] ?></td>
@@ -160,14 +151,6 @@
                 </div>
 </div>
 
-<!-- 
-<footer class="footer">
-  <div class="d-sm-flex justify-content-center justify-content-sm-between">
-    <span class="text-muted text-center text-sm-left d-block d-sm-inline-block">Copyright © 2021. Premium <a href="https://www.bootstrapdash.com/" target="_blank">Bootstrap admin template</a> from BootstrapDash. All rights reserved.</span>
-    <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center">Hand-crafted & made with <i class="ti-heart text-danger ml-1"></i></span>
-  </div>
-</footer> -->
-<!-- <script src="<?= BASEURL; ?>/js/keluarMapel.js"></script> -->
 <script>
   $(document).ready(function() {
     $('#print').DataTable({
@@ -206,7 +189,6 @@
         dataType: "json",
         success: function(data) {
           $('#namabarang').val(data.namabarang);
-          $('#fotoLama').val(data.foto);
           $('#baranguntuk').val(data.baranguntuk);
           $('#spesifikasi').val(data.spesifikasi);
           $('#jumlah').val(data.jumlah);

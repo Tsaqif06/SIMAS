@@ -92,6 +92,8 @@
             </div>
         </div>
     </div>
+</div>
+</div>
     <!-- Event Details Modal -->
 
 <script>
