@@ -37,23 +37,7 @@ class Lupasandi extends Controller
                     }
                 </script>';
             } else {
-                // generate token by binaryhexa 
-                // $token = bin2hex(random_bytes(50));
                 $otp = rand(100000, 999999);
-
-                //session_start ();
-
-                // $_SESSION['token'] = $token;
-
-                // Set waktu kadaluarsa dalam detik (300 detik = 5 menit)
-                // $expiration_time = 300; 
-
-                // Hitung waktu kadaluarsa dalam waktu UNIX timestamp
-                // $expiration_timestamp = time() + $expiration_time; 
-
-                // Set waktu kadaluarsa di PHPMailer
-                // $mail->setExpiration($expiration_timestamp);
-
 
                 $mail = new PHPMailer;
 

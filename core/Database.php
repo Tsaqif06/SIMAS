@@ -55,16 +55,16 @@ class Database
         $this->stmt->execute();
     }
 
-    public function fetch() // mengambil satu data
+    public function fetch($mode = PDO::FETCH_ASSOC) // mengambil satu data
     {
         $this->execute();
-        return $this->stmt->fetch(PDO::FETCH_ASSOC);
+        return $this->stmt->fetch($mode);
     }
 
-    public function fetchAll() // mengambil banyak data
+    public function fetchAll($mode = PDO::FETCH_ASSOC) // mengambil banyak data
     {
         $this->execute();
-        return $this->stmt->fetchAll(PDO::FETCH_ASSOC);
+        return $this->stmt->fetchAll($mode);
     }
 
     public function rowCount()

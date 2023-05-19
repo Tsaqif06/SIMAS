@@ -32,7 +32,6 @@ class Login extends Controller
             $guru = $this->model("$this->model_name", "Login_model")->loginGuru($data);
             if ($admin) {
                 if ($this->model("$this->model_name", "Login_model")->log($admin['id']) > 0) {
-                    Flasher::setFlash('BERHASIL', 'Login', 'success');
                     // Jika validasi berhasil, buat token JWT
                     $payload = [
                         'sub' => $admin['id'],
@@ -44,36 +43,38 @@ class Login extends Controller
                     ];
                     Cookie::create_jwt($payload, $payload['exp']);
                     // Kirim token JWT sebagai respons
+                    Flasher::setFlash('BERHASIL', 'Login', 'success');
                     header("Location: " . BASEURL);
                 }
             } else if ($siswa) {
-                Flasher::setFlash('BERHASIL', 'Login', 'success');
                 // Jika validasi berhasil, buat token JWT
                 $payload = [
                     'sub' => $siswa['id'],
                     'name' => $siswa['nama_siswa'],
-                    'role' => 'user',
+                    'role' => 'siswa',
                     'akses' => '',
                     'iat' => time(),
                     'exp' =>  time() + (7 * 24 * 60 * 60) // Token berlaku selama 1 hari
                 ];
                 Cookie::create_jwt($payload, $payload['exp']);
                 // Kirim token JWT sebagai respons
+                Flasher::setFlash('BERHASIL', 'Login', 'success');
                 header("Location: " . BASEURL);
             } else if ($guru) {
-                Flasher::setFlash('BERHASIL', 'Login', 'success');
                 // Jika validasi berhasil, buat token JWT
                 $payload = [
                     'sub' => $guru['id'],
                     'name' => $guru['nama_lengkap'],
-                    'role' => 'user',
+                    'role' => 'guru',
                     'akses' => '',
                     'iat' => time(),
                     'exp' =>  time() + (7 * 24 * 60 * 60) // Token berlaku selama 1 hari
                 ];
                 Cookie::create_jwt($payload, $payload['exp']);
                 // Kirim token JWT sebagai respons
+                Flasher::setFlash('BERHASIL', 'Login', 'success');
                 header("Location: " . BASEURL);
+                
             } else {
                 Flasher::setFlash('GAGAL', 'Login', 'danger');
                 header("Location: " . BASEURL . "/login");
