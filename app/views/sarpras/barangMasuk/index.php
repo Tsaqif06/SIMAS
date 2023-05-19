@@ -46,7 +46,7 @@
   </div>
   <div class="row mb-4">
     <div class="col">
-      <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModalLong">ISI FORM PENGAJUAN</button>
+      <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModalLong">TAMBAH DATA BARANG MASUK</button>
       <button type="button" class="btn btn-primary my-3 mx-3 tampilModalImport" data-url="<?= BASEURL ?>/barangMasuk" data-bs-toggle="modal" data-bs-target="#modalImport">
         Import Data Dari Excel
       </button>

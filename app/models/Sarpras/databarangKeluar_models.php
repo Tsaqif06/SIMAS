@@ -142,18 +142,10 @@ class databarangKeluar_models
     {
         $query = "INSERT INTO barang_keluar
                     VALUES
-                  (NULL, :uuid, :namabarang, :foto, :spesifikasi, :jumlah, :satuan, :baranguntuk, :pemasok, '', CURRENT_TIMESTAMP, :created_by, null, '', null, '', null, '', 0, 0, DEFAULT)";
-
-        $foto = $this->uploadFoto();
-        if (!$foto) {
-            return false;
-        };
-        // var_dump($foto); die;
-
+                  (NULL, :uuid, :namabarang, null, :spesifikasi, :jumlah, :satuan, :baranguntuk, :pemasok, '', CURRENT_TIMESTAMP, :created_by, null, '', null, '', null, '', 0, 0, DEFAULT)";
 
         $this->db->query($query);
         $this->db->bind('namabarang', $data['namabarang']);
-        $this->db->bind('foto', $foto);
         $this->db->bind('uuid', Uuid::uuid4()->toString());
         foreach ($this->fields as $field) {
             $this->db->bind($field, $data[$field]);
@@ -191,7 +183,6 @@ class databarangKeluar_models
     {
         $query = "UPDATE barang_keluar SET
         namabarang = :namabarang,
-        foto = :foto,
         spesifikasi = :spesifikasi,
         jumlah = :jumlah,
         satuan = :satuan,
@@ -200,19 +191,6 @@ class databarangKeluar_models
         modified_at = CURRENT_TIMESTAMP,
         modified_by = :modified_by
     WHERE id = :id";
-
-
-
-        if ($_FILES["foto"]["error"] === 4) {
-            $foto = $data['fotoLama'];
-        } else {
-            $foto = $this->uploadFoto();
-        }
-
-        // $this->db->bind('foto', $foto);
-        // foreach ($this->fields as $field) {
-        //     $this->db->bind($field, $data[$field]);
-        // }
 
         $this->db->query($query);
         foreach ($this->fields as $field) {

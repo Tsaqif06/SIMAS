@@ -137,7 +137,6 @@
                           <th>#</th>
                           <th>Kode</th>
                           <th>Nama Barang</th>
-                          <th>Satuan</th>
                           <th>Stok</th>
                           <th>Aksi</th>
                       </tr>
@@ -149,7 +148,6 @@
                           <td><?= $i++ ?></td>
                           <td><?=$stok['kode']?></td>
                           <td><?=$stok['barang']?></td>
-                          <td><?=$stok['satuan']?></td>
                           <td><?=$stok['stok']?></td>
                           <td>
                               <a href="<?= BASEURL;?>/stokBarang/ubah/<?=$stok['id']?>" data-bs-toggle="modal" data-bs-target="#exampleModalLong" class="tampilModalUbah" data-id="<?= $stok['id'];?>">
