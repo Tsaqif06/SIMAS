@@ -59,10 +59,11 @@ class API extends Controller
     public function getHistoryKehadiran()
     {
         header('Content-Type: application/json');
-        if ($this->model("Kesiswaan", "Kehadiran_model")->getHistory($_POST['nisn']) > 0) {
-            echo json_encode(["success" => true, "message" => "Data Kehadiran berhasil ditambahkan"]);
+        $data = $this->model("Kesiswaan", "Kehadiran_model")->getHistory($_POST['nisn']);
+        if ($data > 0) {
+            echo json_encode(["success" => true, "data" => $data]);
         } else {
-            echo json_encode(["success" => false, "message" => "Data Kehadiran gagal dihapus"]);
+            echo json_encode(["success" => false, "data" => $data]);
         }
     }
 
@@ -94,10 +95,11 @@ class API extends Controller
     public function getHistoryIzin()
     {
         header('Content-Type: application/json');
-        if ($this->model("Kesiswaan", "Izin_model")->getHistory($_POST['nisn']) > 0) {
-            echo json_encode(["success" => true, "message" => "Data Kehadiran berhasil ditambahkan"]);
+        $data = $this->model("Kesiswaan", "Izin_model")->getHistory($_POST['nisn']);
+        if ($data > 0) {
+            echo json_encode(["success" => true, "data" => $data]);
         } else {
-            echo json_encode(["success" => false, "message" => "Data Kehadiran gagal dihapus"]);
+            echo json_encode(["success" => false, "data" => $data]);
         }
     }
 
