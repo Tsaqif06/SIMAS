@@ -9,7 +9,7 @@ class stokBarangAset_models
     private $table = 'stok_aset';
     private $db;
     private $fields = [
-        'namabarang',
+        'namabarang', 
         'nomor',
         'sumberdana',
         'jumlah',
@@ -34,7 +34,7 @@ class stokBarangAset_models
 
     function getAllExistData()
     {
-        $this->db->query('SELECT * FROM ' . $this->table . ' WHERE `status` = 1');
+        $this->db->query('SELECT * FROM ' . $this->table . ' WHERE status = 1');
         return $this->db->fetchAll();
     }
 
@@ -88,7 +88,7 @@ class stokBarangAset_models
     {
         $query = "INSERT INTO stok_aset
                     VALUES
-                  (null, :uuid, :namabarang, :nomor, :sumberdana, :jumlah, :tempat, :waktu, :penerima, '', CURRENT_TIMESTAMP, :created_by, null, '', null, '', null, '', 0, 0, DEFAULT)";
+                  (null, :uuid, :namabarang, :nomor, :sumberdana, :jumlah, :tempat, :waktu, :penerima, CURRENT_TIMESTAMP, :created_by, null, '', null, '', null, '', 0, 0, DEFAULT)";
 
 
         $this->db->query($query);
@@ -112,7 +112,8 @@ class stokBarangAset_models
                 deleted_at = CURRENT_TIMESTAMP,
                 deleted_by = :deleted_by,
                 is_deleted = 1,
-                is_restored = 0
+                is_restored = 0,
+                status = 0
               WHERE id = :id"
         );
 

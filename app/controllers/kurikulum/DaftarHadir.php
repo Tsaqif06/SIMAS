@@ -12,7 +12,7 @@ class DaftarHadir extends Controller
 
         $this->view('templates/header', $data);
         $this->view('kurikulum/Daftar Hadir/index', $data);
-        $this->view('templates/footerwm');
+        $this->view('templates/footer');
     }
 
     public function tambah()

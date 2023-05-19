@@ -14,7 +14,7 @@ class P5 extends Controller
 
         $this->view('templates/header', $data);
         $this->view('kurikulum/P5/index', $data);
-        $this->view('templates/footerwm');
+        $this->view('templates/footer');
     }
 
     public function tambah()

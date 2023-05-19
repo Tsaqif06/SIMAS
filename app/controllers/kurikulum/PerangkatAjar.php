@@ -14,7 +14,7 @@ class PerangkatAjar extends Controller
 
         $this->view('templates/header', $data);
         $this->view('kurikulum/Perangkat Ajar/index', $data);
-        $this->view('templates/footerwm');
+        $this->view('templates/footer');
     }
 
     public function tambahPerangkatAjar()

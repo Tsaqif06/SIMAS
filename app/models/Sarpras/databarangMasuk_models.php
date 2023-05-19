@@ -210,13 +210,10 @@ class databarangMasuk_models
             $foto = $this->upload();
         }
 
-        // $this->db->bind('foto', $foto);
-        // foreach ($this->fields as $field) {
-        //     $this->db->bind($field, $data[$field]);
-        // }
-
+        
         $this->db->query($query);
         foreach ($this->fields as $field) {
+            $this->db->bind('foto', $foto);
             $this->db->bind($field, $data[$field]);
         }
         $this->db->bind('modified_by', $this->user);

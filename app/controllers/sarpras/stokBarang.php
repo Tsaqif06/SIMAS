@@ -1,5 +1,6 @@
 <?php
 class stokBarang extends Controller
+
 {
     public $model_name = "Sarpras";
 
@@ -9,13 +10,6 @@ class stokBarang extends Controller
         $data['user'] = $this->user;
         $akses = ['all', 'sarpras'];
         $data['stok'] = $this->model("$this->model_name", 'stokBarang_models')->getAllExistData();
-        if (isset($_POST["contentOnly"])) {
-            $this->view('sarpras/stokBarang/index', $data);
-        } else {
-            $this->view('templates/header', $data);
-            $this->view('sarpras/stokBarang/index', $data);
-            $this->view('templates/footer');
-        }
 
         if (in_array($data['user']['hak_akses'], $akses)) {
             if (isset($_POST["contentOnly"])) {
@@ -30,15 +24,7 @@ class stokBarang extends Controller
             Flasher::setFlash('GAGAL', 'Anda Tidak Mempunyai Akses Untuk Menuju Halaman Tersebut', 'danger');
         }
     }
-
-    // public function detail($id){
-    //     $data['judul'] = 'Detail Barang Masuk';
-    //     $data['kegiatan'] = $this->model("$this->model_name",'galeriKegiatan_models')->getKegiatanById($id);
-    //     $this->view('templates/header', $data);
-    //     // $this->view('kegiatan/detail', $data);
-    //     // $this->view('templates/footerwm');
-    // }
-
+    
     public function tambah()
     {
         if ($this->model("$this->model_name", 'stokBarang_models')->tambahDataStokBarang($_POST) > 0) {

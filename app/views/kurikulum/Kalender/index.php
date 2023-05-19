@@ -5,7 +5,7 @@
 <link rel="stylesheet" href="./fullcalendar/lib/main.min.css">
 <script src="./fullcalendar/lib/main.min.js"></script>
 
-<div class="main-panel">
+<!-- <div class="main-panel"> -->
         <div class="content-wrapper">
           <div class="row">
             <div class="col-md-12 grid-margin">
@@ -92,6 +92,7 @@
             </div>
         </div>
     </div>
+</div>
 </div>
 </div>
     <!-- Event Details Modal -->

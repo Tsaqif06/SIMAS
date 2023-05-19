@@ -186,6 +186,49 @@
 
       <script src="<?= BASEURL; ?>/vendors/chart.js/chart.min.js"></script>
       <script>
+    $(function() {
+    const BASEURL = window.location.href;
+    console.log(BASEURL)
+    $('.tombolTambahData').on('click', function(){
+        $('formModalLabel').html('Tambah Data Prestasi')
+        $('.modal-footer button[type=submit]').html('Tambah Data');
+
+    });
+
+			$(".tampilModalUbah").click(function () {
+				$("#modal").addClass("edit");
+				$("#modalLabel").html("Ubah Data Perbaikan");
+				$(".modal-footer button[type=submit]").html("Ubah Data");
+				$(".modal-body form").attr("action", `${BASEURL}/ubah`);
+
+				const id = $(this).data("id");
+                console.log(id)
+
+				$.ajax({
+					url: `${BASEURL}/getubah`,
+					data: { id: id },
+					method: "post",
+					dataType: "json",
+					success: function (data) {
+						$('#nama').val(data.nama);
+                        $('#kode').val(data.kode);
+                        $('#barang').val(data.barang);
+                        $('#pengajuan').val(data.pengajuan);
+                        $('#tindakan').val(data.tindakan);
+                        $('#kondisi_awal').val(data.kondisi_awal);
+                        $('#kondisi_akhir').val(data.kondisi_akhir);
+                        $('#statusperbaikan').val(data.statusperbaikan);
+                        $('#teknisi').val(data.teknisi);
+                        $('#note').val(data.note);
+                        $('#id').val(data.id);
+                        console.log(data);
+					},
+				})
+            })
+		}
+	);
+      </script>
+      <script>
       $(document).ready(function () {
         $('#demo').DataTable();
       });
