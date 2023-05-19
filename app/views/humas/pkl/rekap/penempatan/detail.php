@@ -27,14 +27,14 @@ foreach ($kelas as $key => $list) {
 <?php endif; ?>
 
 <!-- partial -->
-<div class="main-panel">
   <div class="content-wrapper">
     <div class="row">
       <div class="col-md-12 grid-margin">
         <div class="row">
           <div class="col-12 col-xl-8 mb-4 mb-xl-0">
             <h3 class="font-weight-bold">DATA PENEMPATAN <?= strtoupper($jurusan) ?></h3>
-            <h6 class="font-weight-normal mb-0">Laman Data Penempatan <?= ucwords(strtolower($jurusan)) ?> | <span class="text-primary">SIMAS</span></h6>
+            <!-- <h6 class="font-weight-normal mb-0">Laman Data Penempatan | <a href=""><?= ucwords(strtolower($jurusan)) ?></a> | <span class="text-primary">SIMAS</span></h6> -->
+            <h6 class="font-weight-normal mb-0"><a class="text-dark" href="<?= BASEURL; ?>/pkl/index"> Laman PKL</a> | <a class="text-dark" href="<?= BASEURL; ?>/pkl/rekap"> Rekapitulasi </a> | <a class="text-dark" href="<?= BASEURL; ?>/pkl/penempatan"> Data Penempatan </a> | <span class="text-primary"> <?= ucwords(strtolower($jurusan)) ?> </span></h6>
           </div>
           <div class="col-12 col-xl-4">
             <div class="justify-content-end d-flex">

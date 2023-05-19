@@ -1,6 +1,5 @@
 
       <!-- partial -->
-      <div class="main-panel">
         <div class="content-wrapper">
             
           <div class="col-12 grid-margin stretch-card">

@@ -1,35 +1,4 @@
-<div class="collapse" id="form-elements">
-    <ul class="nav flex-column sub-menu">
-        <li class="nav-item"><a class="nav-link" href="<?= BASEURL; ?>/pkl/index">PKL</a></li>
-        <div class="collapse" id="form-elements">
-            <div class="navsubitem">
-                <a class="nav-link" href="<?= BASEURL; ?>/pkl/rekap">Rekap PKL</a>
-                <a class="nav-link" href="<?= BASEURL; ?>/pkl/pembekalan">Pembekalan PKL</a>
-                <a class="nav-link" href="<?= BASEURL; ?>/pkl/pemberkasan">Pemberkasan</a>
-                <a class="nav-link" href="<?= BASEURL; ?>/pkl/prakerin">Prakerin</a>
-                <a class="nav-link" href="<?= BASEURL; ?>/pkl/nilai">Nilai PKL</a>
-                <a class="nav-link" href="<?= BASEURL; ?>/pkl/dtampung">Daya Tampung</a>
-            </div>
-            <li class="nav-item"><a class="nav-link" href="<?= BASEURL; ?>/bkk/index">BKK</a></li>
-            <div class="navsubitem">
-                <a class="nav-link" href="<?= BASEURL; ?>/bkk/das">Alumni Sukses</a>
-                <a class="nav-link" href="<?= BASEURL; ?>/bkk/mou">MoU</a>
-                <a class="nav-link" href="<?= BASEURL; ?>/bkk/peminatan">Peminatan</a>
-                <a class="nav-link" href="<?= BASEURL; ?>/bkk/workshop">Workshop</a>
-                <a class="nav-link" href="<?= BASEURL; ?>/bkk/kebekerjaan">Kebekerjaan</a>
-                <a class="nav-link" href="<?= BASEURL; ?>/bkk/spw">SPW</a>
-                <a class="nav-link" href="<?= BASEURL; ?>/bkk/lomba">Lomba</a>
-                <a class="nav-link" href="<?= BASEURL; ?>/bkk/loker">Lowongan Kerja</a>
-            </div>
-            <li class="nav-item"><a class="nav-link" href="<?= BASEURL; ?>/ict/index">ICT</a></li>
-            <li class="nav-item"><a class="nav-link" href="<?= BASEURL; ?>/stiru/index">Studi Tiru</a></li>
-    </ul>
-</div>
-</li>
-</ul>
-</nav>
 
-<div class="main-panel">
     <div class="content-wrapper">
         <div class="row">
             <div class="col-md-12 grid-margin">
@@ -159,18 +128,18 @@
                                 <tr>
 
                                     <td>
-                                        <div class="mt-3">
-
-                                            <a class="badge badge-success tampildataubah3"
+                                        
+                                    <a class="badge badge-success tampildataubah3"
                                                 data-url="<?= BASEURL ?>/PKL/ubahDTAMonitoring/<?= $mp['id']; ?>"
                                                 data-toggle="modal" data-target="#formmodal"
-                                                data-id="<?= $mp['id'] ?>">Edit</a>
-                                            <div class="mt-3">
-                                                <a href="<?= BASEURL; ?>/pkl/hapusdatamonitoring/<?= $mp['id']; ?>"
-                                                    class="btn btn-danger"
-                                                    onclick="return confirm('Apakah anda sudah yakin?');">Hapus</a>
+                                                data-id="<?= $mp['id'] ?>"><i class="mdi mdi-lead-pencil"></i></a>
+
+                                            <a href="<?= BASEURL; ?>/pkl/hapusdatamonitoring/<?= $mp['id']; ?> " onclick="return confirm('Apakah anda sudah yakin?');"
+                                                class="badge badge-danger"><i class="mdi mdi-delete"></i></a>
+
+                                    
                                     </td>
-                        </div>
+                        
 
                         <td>
                             <?= $mp['namaperusahaan_monitoringpkl'] ?>
@@ -192,4 +161,5 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div>    
+</div>

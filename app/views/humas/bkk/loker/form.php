@@ -68,11 +68,11 @@
                                 placeholder="Kontak">
                         </div>
                         <div class="form-group">
-                            <label>Unggah Loker</label>
+                            <label>Unggah Foto Loker</label>
                             <input type="file" class="file-upload-default" name="upfotoloker" id="upfotoloker">
                             <div class="input-group col-xs-12">
                                 <input type="text" class="form-control file-upload-info" disabled
-                                    placeholder="Unggah Loker">
+                                    placeholder="Unggah Foto Loker">
                                 <span class="input-group-append">
                                     <button class="file-upload-browse btn btn-primary" type="button">Unggah</button>
                                 </span>
@@ -86,5 +86,4 @@
                     </form>
     </div>
 
-</div>
 </div>
