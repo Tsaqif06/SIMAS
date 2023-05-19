@@ -47,17 +47,49 @@ class Login_model
     public function loginSiswaNisn($data)
     {
         $this->db->query(
-            "SELECT * FROM masterdata.mastersiswa
+            "SELECT `imei` FROM masterdata.mastersiswa
                 WHERE 
             `nama_siswa` = :username AND
-            `nisn` = :password_field
-        "
+            `nisn` = :password_field"
         );
 
         $this->db->bind("username", $data['username']);
         $this->db->bind("password_field", $data['password']);
 
-        return $this->db->fetchAll();
+        $imei = $this->db->fetch(PDO::FETCH_COLUMN);
+
+        if (empty($imei) && is_bool($imei)) {
+            return $imei;
+        } else {
+            if (empty($imei) && is_string($imei)) {
+                $this->db->query(
+                    "UPDATE masterdata.mastersiswa SET `imei` = :imei
+                        WHERE
+                    `nama_siswa` = :username AND
+                    `nisn` = :password_field"
+                );
+
+                $this->db->bind("username", $data['username']);
+                $this->db->bind("password_field", $data['password']);
+                $this->db->bind("imei", $data['imei']);
+
+                $this->db->execute();
+            }
+
+            $this->db->query(
+                "SELECT * FROM masterdata.mastersiswa
+                    WHERE 
+                `nama_siswa` = :username AND
+                `nisn` = :password_field AND
+                `imei` = :imei"
+            );
+
+            $this->db->bind("username", $data['username']);
+            $this->db->bind("password_field", $data['password']);
+            $this->db->bind("imei", $data['imei']);
+
+            return $this->db->fetch();
+        }
     }
 
 

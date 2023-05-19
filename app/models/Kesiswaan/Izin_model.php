@@ -126,6 +126,23 @@ class Izin_model
         return $this->db->fetchAll();
     }
 
+    public function check($nisn)
+    {
+        // Mendapatkan rentang waktu untuk satu hari (mulai dan akhir hari saat ini)
+        $now = date('Y-m-d H:i:s');
+        $startOfDay = date('Y-m-d 00:00:00', strtotime($now));
+        $endOfDay = date('Y-m-d 23:59:59', strtotime($now));
+
+        // Mengecek apakah ada data dengan NISN yang sama dalam rentang waktu sehari
+        $this->db->query("SELECT COUNT(*) FROM {$this->table} WHERE ID_KEHADIRAN = :nisn AND created_at BETWEEN :startOfDay AND :endOfDay");
+        $this->db->bind('nisn', $nisn);
+        $this->db->bind('startOfDay', $startOfDay);
+        $this->db->bind('endOfDay', $endOfDay);
+
+        $this->db->execute();
+        return $this->db->rowCount();
+    }
+
     public function importData()
     {
         // Cek file diupload apa belum

@@ -15,6 +15,7 @@ class API extends Controller
         if (isset($_POST['nama']) && isset($_POST['nisn'])) {
             $data['username'] = $_POST['nama'];
             $data['password'] = $_POST['nisn'];
+            $data['imei'] = $_POST['imei'];
             $user = $this->model("Login", "Login_model")->loginSiswaNisn($data);
             if (!$user) {
                 $response = false;
@@ -49,10 +50,14 @@ class API extends Controller
     public function tambahDataKehadiran()
     {
         header('Content-Type: application/json');
-        if ($this->model("Kesiswaan", "Kehadiran_model")->tambahData($_POST) > 0) {
-            echo json_encode(["success" => true, "message" => "Data Kehadiran berhasil ditambahkan"]);
+        if ($this->model("Kesiswaan", "Kehadiran_model")->check($_POST) > 0) {
+            echo json_encode(["success" => false, "message" => "Data sudah mengisi kehadiran hari ini!"]);
         } else {
-            echo json_encode(["success" => false, "message" => "Data Kehadiran gagal dihapus"]);
+            if ($this->model("Kesiswaan", "Kehadiran_model")->tambahData($_POST) > 0) {
+                echo json_encode(["success" => true, "message" => "Data Kehadiran berhasil ditambahkan"]);
+            } else {
+                echo json_encode(["success" => false, "message" => "Data Kehadiran gagal dihapus"]);
+            }
         }
     }
 
@@ -85,10 +90,14 @@ class API extends Controller
     public function tambahDataIzin()
     {
         header('Content-Type: application/json');
-        if ($this->model("Kesiswaan", "Izin_model")->tambahDataIzin($_POST) > 0) {
-            echo json_encode(["success" => true, "message" => "Data Izin berhasil ditambahkan"]);
+        if ($this->model("Kesiswaan", "Izin_model")->check($_POST) > 0) {
+            echo json_encode(["success" => false, "message" => "Data izin sudah ditambahkan hari ini!"]);
         } else {
-            echo json_encode(["success" => false, "message" => "Data Izin gagal dihapus"]);
+            if ($this->model("Kesiswaan", "Izin_model")->tambahDataIzin($_POST) > 0) {
+                echo json_encode(["success" => true, "message" => "Data Izin berhasil ditambahkan"]);
+            } else {
+                echo json_encode(["success" => false, "message" => "Data Izin gagal dihapus"]);
+            }
         }
     }
 
