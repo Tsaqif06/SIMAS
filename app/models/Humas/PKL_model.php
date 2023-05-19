@@ -851,6 +851,12 @@ class pkl_model extends Database
         $this->db->bind('id', $id);
         return $this->db->fetch();
     }
+    public function getSiswaPemberkasan($id)
+    {
+        $this->db->query('SELECT * FROM ' . $this->tableps . ' WHERE namasiswa_pemberkasan = :namasiswa_pemberkasan WHERE id = :id');
+        $this->db->bind('id', $id);
+        return $this->db->fetch();
+    }
 
     public function uploadFotoPemberkasan()
     {
@@ -1012,10 +1018,10 @@ class pkl_model extends Database
 
         // validasi ekstensi file
         // $imageFileType = strtolower(pathinfo($targetFile, PATHINFO_EXTENSION));
-        // if ($imageFileType != "pdf") {
-        //     echo "Sorry, only PDF files are allowed.";
-        //     exit;
-        // }
+        if ($imageFileType != "pdf") {
+            echo "Sorry, only PDF files are allowed.";
+            exit;
+        }
 
         $fileName = uniqid();
         $fileName .= '.';
@@ -1207,15 +1213,40 @@ class pkl_model extends Database
 
     public function tambahDataPemberkasan($data)
     {
-        $this->db->query(
-            "INSERT INTO `pemberkasanpkl`
-                VALUES 
-            (null, :uuid, :nisn_pemberkasan, :namasiswa_pemberkasan, :tanggallahir_pemberkasan,
-            :jurusan_pemberkasan, :jeniskelamin_pemberkasan, :domisili_pemberkasann, :uploadfoto_pemberkasan,
-            :uploadebookraport_pemberkasan, :uploadbuktilunas_pemberkasan,
-            '', CURRENT_TIMESTAMP, :created_by, null, '', null, '', null, '', 0, 0, DEFAULT)"
-        );
+        $query  = "INSERT INTO pemberkasanpkl
+                           VALUES 
+                      (null, 
+                      :uuid, 
+                      :nisn_pemberkasan, 
+                      :nis_pemberkasan, 
+                      :namasiswa_pemberkasan, 
+                      :tanggallahir_pemberkasan, 
+                      :jurusan_pemberkasan, 
+                      :jeniskelamin_pemberkasan, 
+                      :domisili_pemberkasann, 
+                      :pkldimana_pemberkasan, 
+                      :uploadfoto_pemberkasan, 
+                      :uploadsurat_pemberkasan, 
+                      :uploadkartupelajar_pemberkasan, 
+                      :uploadebookraport_pemberkasan, 
+                      :uploadbuktilunasnilai_pemberkasan, 
+                      :uploadbuktilunasadministrasi_pemberkasan, 
+                      :uploadbuktilunasperpus_pemberkasan, 
+                      '', 
+                      CURRENT_TIMESTAMP, 
+                      :created_by, 
+                      null, 
+                      '', 
+                      null, 
+                      '', 
+                      null, 
+                      '', 
+                      0, 
+                      0, 
+                      DEFAULT
+                      )";
 
+        $this->db->query($query);
         $foto = $this->uploadFotoPemberkasan();
         if (!$foto) {
             return false;
@@ -1289,23 +1320,27 @@ class pkl_model extends Database
 
     public function ubahDataPS($data)
     {
-        $this->db->query(
-            "UPDATE `pemberkasanpkl`
-                SET  
-                nisn_pemberkasan = :nisn_pemberkasan, 
-                namasiswa_pemberkasan = :namasiswa_pemberkasan,
-                tanggallahir_pemberkasan = :tanggallahir_pemberkasan,
-                jurusan_pemberkasan = :jurusan_pemberkasan,
-                jeniskelamin_pemberkasan = :jeniskelamin_pemberkasan,
-                domisili_pemberkasann = :domisili_pemberkasann,
-                uploadfoto_pemberkasan = :uploadfoto_pemberkasan,
-                uploadebookraport_pemberkasan = :uploadebookraport_pemberkasan,
-                uploadbuktilunas_pemberkasan = :uploadbuktilunas_pemberkasan, 
-                modified_at = CURRENT_TIMESTAMP, 
-                modified_by = :modified_by 
-            WHERE id = :id"
-        );
+        $query = "UPDATE pemberkasanpkl SET  
+                      nisn_pemberkasan = :nisn_pemberkasan, 
+                      nis_pemberkasan = :nis_pemberkasan, 
+                      namasiswa_pemberkasan = :namasiswa_pemberkasan,
+                      tanggallahir_pemberkasan = :tanggallahir_pemberkasan,
+                      jurusan_pemberkasan = :jurusan_pemberkasan,
+                      jeniskelamin_pemberkasan = :jeniskelamin_pemberkasan,
+                      domisili_pemberkasann = :domisili_pemberkasann, 
+                      pkldimana_pemberkasan = :pkldimana_pemberkasan, 
+                      uploadfoto_pemberkasan = :uploadfoto_pemberkasan, 
+                      uploadsurat_pemberkasan = :uploadsurat_pemberkasan, 
+                      uploadkartupelajar_pemberkasan = :uploadkartupelajar_pemberkasan, 
+                      uploadebookraport_pemberkasan = :uploadebookraport_pemberkasan,
+                      uploadbuktilunasnilai_pemberkasan = :uploadbuktilunasnilai_pemberkasan, 
+                      uploadbuktilunasadministrasi_pemberkasan = :uploadbuktilunasadministrasi_pemberkasan, 
+                      uploadbuktilunasperpus_pemberkasan = :uploadbuktilunasperpus_pemberkasan, 
+                      modified_at = CURRENT_TIMESTAMP, 
+                      modified_by = :modified_by 
+                    WHERE id = :id";
 
+        $this->db->query($query);
         if ($_FILES["uploadfoto_pemberkasan"]["error"] === 4) {
             $foto = $data['fotoLama'];
         } else {
