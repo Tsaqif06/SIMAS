@@ -27,16 +27,16 @@ location.replace("http://localhost/SIMAS/public/NotFound");
 <?php endif; ?>
 
 <!-- partial -->
-<div class="main-panel">
+<!-- <div class="main-panel"> -->
     <div class="content-wrapper">
         <div class="row">
             <div class="col-md-12 grid-margin">
                 <div class="row">
                     <div class="col-12 col-xl-8 mb-4 mb-xl-0">
                         <h3 class="font-weight-bold">DATA NILAI PKL <?= strtoupper($jurusan) ?></h3>
-                        <h6 class="font-weight-normal mb-0"><a class="text-dark" href="<?= BASEURL; ?>/pkl"> Laman
+                        <h6 class="font-weight-normal mb-0"><a class="text-dark" href="<?= BASEURL; ?>/pkl/index"> Laman
                                 PKL</a> | <a class="text-dark" href="<?= BASEURL; ?>/pkl/nilai"> Nilai </a> | <span
-                                class="text-primary"> <?= $jurusan ?> </span></h6>
+                                class="text-primary"> <?= strtoupper($jurusan) ?> </span></h6>
                     </div>
 
                     <div class="col-12 col-xl-4">
@@ -221,22 +221,10 @@ location.replace("http://localhost/SIMAS/public/NotFound");
                 </div>
             </div>
         </div>
-
-
-    </div>
-    <footer class="footer">
-        <div class="d-sm-flex justify-content-center justify-content-sm-between">
-            <span class="text-muted text-center text-sm-left d-block d-sm-inline-block">Copyright © 2023. SIMAS. All
-                rights reserved.</span>
         </div>
-    </footer>
-    <!-- partial -->
-</div>
-<!-- main-panel ends -->
-</div>
-<!-- page-body-wrapper ends -->
-</div>
-<!-- container-scroller -->
+
+
+   
 
 <script>
 $(function() {
