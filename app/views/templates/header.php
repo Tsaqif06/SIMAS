@@ -131,32 +131,6 @@
                             <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list"
                                 aria-labelledby="notificationDropdown">
                                 <p class="mb-0 font-weight-normal float-left dropdown-header">Notifications</p>
-                                <!-- <a class="dropdown-item preview-item">
-                                    <div class="preview-thumbnail">
-                                        <div class="preview-icon bg-success">
-                                            <i class="ti-info-alt mx-0"></i>
-                                        </div>
-                                    </div>
-                                    <div class="preview-item-content">
-                                        <h6 class="preview-subject font-weight-normal">Application Error</h6>
-                                        <p class="font-weight-light small-text mb-0 text-muted">
-                                            Just now
-                                        </p>
-                                    </div>
-                                </a>
-                                <a class="dropdown-item preview-item">
-                                    <div class="preview-thumbnail">
-                                        <div class="preview-icon bg-warning">
-                                            <i class="ti-settings mx-0"></i>
-                                        </div>
-                                    </div>
-                                    <div class="preview-item-content">
-                                        <h6 class="preview-subject font-weight-normal">Settings</h6>
-                                        <p class="font-weight-light small-text mb-0 text-muted">
-                                            Private message
-                                        </p>
-                                    </div>
-                                </a> -->
                                 <a class="dropdown-item preview-item">
                                     <div class="preview-thumbnail">
                                         <div class="preview-icon bg-info">
@@ -529,6 +503,78 @@
                                     </li>
                                     <?php endif ?>
                                 </ul>
+                            </div>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link" data-toggle="collapse" href="#kesiswaan" aria-expanded="false"
+                                aria-controls="kesiswaan">
+                                <i class="ti-user menu-icon"></i>
+                                <span class="menu-title">Kesiswaan</span>
+                                <i class="menu-arrow"></i>
+                            </a>
+                            <div class="collapse" id="kesiswaan">
+                                <ul class="nav flex-column sub-menu">
+                                    <li class="nav-item">
+                                        <a class="nav-link">
+                                            Data
+                                        </a>
+                                    </li>
+                                    <ul style="list-style-type: none;">
+                                        <li><a class="navsubitem" href="<?= BASEURL ?>/siswa">Siswa</a></li>
+                                        <li><a class="navsubitem" href="<?= BASEURL ?>/kompkeahlian">Kompetensi
+                                                Keahlian</a>
+                                        </li>
+                                        <li><a class="navsubitem" href="<?= BASEURL ?>/progkeahlian">Program
+                                                Keahlian</a>
+                                        </li>
+                                        <li><a class="navsubitem" href="<?= BASEURL ?>/kelas">Kelas</a></li>
+                                    </ul>
+                                    <li class="nav-item">
+                                        <a class="nav-link">
+                                            Absensi
+                                        </a>
+                                    </li>
+                                    <ul style="list-style-type: none;">
+                                        <li><a class="navsubitem" href="<?= BASEURL ?>/kehadiran">Kehadiran</a></li>
+                                        <li><a class="navsubitem" href="<?= BASEURL ?>/izin">Izin</a></li>
+                                    </ul>
+                                    <li class="nav-item">
+                                        <a class="nav-link">
+                                            Pelanggaran
+                                        </a>
+                                    </li>
+                                    <ul style="list-style-type: none;">
+                                        <li><a class="navsubitem" href="<?= BASEURL ?>/pelanggaran">Pelanggaran</a></li>
+                                        <li><a class="navsubitem" href="<?= BASEURL ?>/poinpelanggaran">Poin</a></li>
+                                    </ul>
+                                    <li class="nav-item">
+                                        <a class="nav-link">
+                                            Asuransi
+                                        </a>
+                                    </li>
+                                    <ul style="list-style-type: none;">
+                                        <li><a class="navsubitem" href="<?= BASEURL ?>/asuransi">Asuransi</a></li>
+                                        <li><a class="navsubitem" href="<?= BASEURL ?>/kecelakaan">Asuransi
+                                                Kecelakaan</a>
+                                        </li>
+                                        <li><a class="navsubitem" href="<?= BASEURL ?>/ortumeninggal">Asuransi Ortu
+                                                Meninggal</a></li>
+                                    </ul>
+                                    <li class="nav-item">
+                                        <a class="nav-link">
+                                            Informasi
+                                        </a>
+                                    </li>
+                                    <ul style="list-style-type: none;">
+                                        <li><a class="navsubitem" href="<?= BASEURL ?>/infokesiswaan">Informasi
+                                                Kesiswaan</a></li>
+                                        <li><a class="navsubitem" href="<?= BASEURL ?>/kegiatanosis">Kegiatan Osis</a>
+                                        </li>
+                                    </ul>
+                                    <ul style="list-style-type: none;">
+                                        <li><a class="navsubitem" href="<?= BASEURL ?>/waguru">Whatsapp Guru</a></li>
+                                    </ul>
                             </div>
                         </li>
 
