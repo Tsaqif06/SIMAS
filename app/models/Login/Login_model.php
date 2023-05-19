@@ -44,6 +44,22 @@ class Login_model
         return $this->db->fetch();
     }
 
+    public function loginSiswaNisn($data)
+    {
+        $this->db->query(
+            "SELECT * FROM masterdata.mastersiswa
+                WHERE 
+            `nama_siswa` = :username AND
+            `nisn` = :password_field
+        "
+        );
+
+        $this->db->bind("username", $data['username']);
+        $this->db->bind("password_field", $data['password']);
+
+        return $this->db->fetch();
+    }
+
 
     public function loginGuru($data)
     {

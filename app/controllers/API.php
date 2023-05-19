@@ -15,7 +15,7 @@ class API extends Controller
         if (isset($_POST['nama']) && isset($_POST['nisn'])) {
             $data['username'] = $_POST['nama'];
             $data['password'] = $_POST['nisn'];
-            $user = $this->model("Login", "Login_model")->loginSiswa($data);
+            $user = $this->model("Login", "Login_model")->loginSiswaNisn($data);
             if (!$user) {
                 $response = false;
                 $message = "Gagal Login";
@@ -56,6 +56,16 @@ class API extends Controller
         }
     }
 
+    public function getHistoryKehadiran()
+    {
+        header('Content-Type: application/json');
+        if ($this->model("Kesiswaan", "Kehadiran_model")->getHistory($_POST['nisn']) > 0) {
+            echo json_encode(["success" => true, "message" => "Data Kehadiran berhasil ditambahkan"]);
+        } else {
+            echo json_encode(["success" => false, "message" => "Data Kehadiran gagal dihapus"]);
+        }
+    }
+
     // IZIN //
 
     public function izin($id = null)
@@ -78,6 +88,16 @@ class API extends Controller
             echo json_encode(["success" => true, "message" => "Data Izin berhasil ditambahkan"]);
         } else {
             echo json_encode(["success" => false, "message" => "Data Izin gagal dihapus"]);
+        }
+    }
+
+    public function getHistoryIzin()
+    {
+        header('Content-Type: application/json');
+        if ($this->model("Kesiswaan", "Izin_model")->getHistory($_POST['nisn']) > 0) {
+            echo json_encode(["success" => true, "message" => "Data Kehadiran berhasil ditambahkan"]);
+        } else {
+            echo json_encode(["success" => false, "message" => "Data Kehadiran gagal dihapus"]);
         }
     }
 

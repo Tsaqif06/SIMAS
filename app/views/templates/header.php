@@ -80,7 +80,7 @@
     <link rel="stylesheet" href="<?= BASEURL ?>/css/scroll.css">
     <link rel="stylesheet" href="<?= BASEURL ?>/css/vertical-layout-light/style.css">
     <!-- endinject -->
-    <link rel="shortcut icon" href="../images/favicon.png" />
+    <link rel="shortcut icon" href="<?= BASEURL ?>/images/favicon.png" />
 </head>
 
 <body>

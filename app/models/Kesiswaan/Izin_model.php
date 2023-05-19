@@ -112,6 +112,20 @@ class Izin_model
         return $this->db->rowCount();
     }
 
+    public function getHistory($nisn)
+    {
+        $this->db->query(
+            "SELECT * FROM {$this->table}
+                WHERE 
+            `ID_KEHADIRAN` = :nisn
+        "
+        );
+
+        $this->db->bind("nisn", $nisn);
+
+        return $this->db->fetch();
+    }
+
     public function importData()
     {
         // Cek file diupload apa belum
