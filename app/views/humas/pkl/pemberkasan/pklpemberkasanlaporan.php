@@ -297,7 +297,7 @@
                                         <!-- <td><img src="<?= BASEURL; ?>/images/humas/pkl/pemberkasan/raport/<?= $siswa['uploadebookraport_pemberkasan']; ?>" alt="no img" style="width: 65px; height: 65px;"></td> -->
                                         <td><a href="<?= BASEURL ?>/pkl/raportpemberkasan/<?= $siswa['uploadebookraport_pemberkasan']; ?>"
                                                 class="badge badge-primary btn-icon-text"><i
-                                                    class="ti-file btn-icon-prepend"></i> Lihat </a></td>
+                                                    class="ti-download btn-icon-prepend"></i> Unduh Raport </a></td>
                                         <td><img src="<?= BASEURL; ?>/images/humas/pkl/pemberkasan/buktilunasnilai/<?= $siswa['uploadbuktilunasnilai_pemberkasan']; ?>"
                                                 alt="no img" style="width: 65px; height: 65px;"></td>
                                         <td><img src="<?= BASEURL; ?>/images/humas/pkl/pemberkasan/buktilunasadm/<?= $siswa['uploadbuktilunasadministrasi_pemberkasan']; ?>"
