@@ -12,9 +12,10 @@ class API extends Controller
     public function login()
     {
         header('Content-Type: application/json');
-        if (isset($_POST['nisn'])) {
-            $data['nisn'] = $_POST['nisn'];
-            $user = $this->model("Kesiswaan", "Kehadiran_model")->login($data);
+        if (isset($_POST['nama']) && isset($_POST['nisn'])) {
+            $data['username'] = $_POST['nama'];
+            $data['password'] = $_POST['nisn'];
+            $user = $this->model("Login", "Login_model")->loginSiswa($data);
             if (!$user) {
                 $response = false;
                 $message = "Gagal Login";

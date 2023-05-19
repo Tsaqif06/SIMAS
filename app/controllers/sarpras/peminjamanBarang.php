@@ -18,7 +18,7 @@ class peminjamanBarang extends Controller
                 $this->view('sarpras/peminjamanBarang/index', $data);
                 $this->view('templates/footerwm');
             }
-        } else if ($data['user']['username'] == 'Siswa') {
+        } else if ($data['user']['hak_akses'] == '') {
             if (isset($_POST["contentOnly"])) {
                 $this->view('sarpras/peminjamanBarang/form', $data);
             } else {
@@ -26,9 +26,6 @@ class peminjamanBarang extends Controller
                 $this->view('sarpras/peminjamanBarang/form', $data);
                 $this->view('templates/footerwm');
             }
-        } else if ($data['user']['hak_akses'] == '') {
-            header("Location: " . BASEURL);
-            Flasher::setFlash('GAGAL', 'Anda Tidak Mempunyai Akses Untuk Menuju Halaman Tersebut', 'danger');
         }
     }
 
