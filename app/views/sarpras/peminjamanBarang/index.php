@@ -1,5 +1,5 @@
 <!-- <div class="main-panel"> -->
-        <div class="content-wrapper">
+<div class="content-wrapper">
           <div class="row">
             <div class="col-md-12 grid-margin">
               <div class="row">
@@ -20,7 +20,7 @@
                 <button type="button" class="btn btn-primary my-3 mx-3 tampilModalImport"
                           data-url="<?= BASEURL ?>/peminjamanBarang" data-bs-toggle="modal" data-bs-target="#modalImport">
                           Import Data Dari Excel
-                </button>
+                      </button>
             </div>
         </div>
         <div id="exampleModalLong" class="modal fade" role="dialog" data-backdrop="static">

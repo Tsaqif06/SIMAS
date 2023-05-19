@@ -26,54 +26,64 @@
     </div>
 
     <div class="row">
-        <form action="<?= BASEURL; ?>/bkk/tambahloker" method="post">
-            <input type="hidden" name="id" id="id">
-            <div class="mb-3">
-                <label for="namaperusahaan" class="form-label">Nama Perusahaan</label>
-                <input type="text" class="form-control" id="namaperusahaan" name="namaperusahaan" placeholder="Masukkan nama" autocomplete="off">
+            <div class="col-lg-6">
+                <?php Flasher::flash(); ?>
             </div>
+        </div>
 
-            <div class="mb-3">
-                <label for="untukjurusan" class="form-label">Untuk Jurusan</label>
-                <select class="form-select" aria-label="Default select example" id="untukjurusan" name="untukjurusan">
-                    <option selected>--Pilih Jurusan--</option>
-                    <option value="Teknik Grafika">Teknik Grafika</option>
-                    <option value="Teknik Komputer Jaringan">Teknik Komputer Jaringan</option>
-                    <option value="Rekayasa Perangkat Lunak">Rekayasa Perangkat Lunak</option>
-                    <option value="Animasi">Animasi</option>
-                    <option value="Desain Komunikasi Visual">Desain Komunikasi Visual</option>
-                    <option value="Logistik">Logistik</option>
-                    <option value="Mekatronika">Mekatronika</option>
-                    <option value="Perhotelan">Perhotelan</option>
-                </select>
-            </div>
-
-            <div class="mb-3">
-                <label for="profesiygdibutuhkan" class="form-label">Profesi yang Dibutuhkan</label>
-                <input type="text" class="form-control" id="profesiygdibutuhkan" name="profesiygdibutuhkan" placeholder="Masukkan profesi" autocomplete="off">
-            </div>
-
-            <div class="mb-3">
-                <label for="kriteriaprofesi" class="form-label">Kriteria Profesi</label>
-                <input type="text" class="form-control" id="kriteriaprofesi" name="kriteriaprofesi" placeholder="Masukkan kriteria" autocomplete="off">
-            </div>
-
-            <div class="mb-3">
-                <label for="kontakperusahaan" class="form-label">Kontak Perusahaan</label>
-                <input type="text" class="form-control" id="kontakperusahaan" name="kontakperusahaan" placeholder="Masukkan kontak perusahaan" autocomplete="off">
-            </div>
-
-            <div class="mb-3">
-                <label for="upfotoloker" class="form-label">Foto Loker</label>
-                <input type="text" class="form-control" id="upfotoloker" name="upfotoloker" placeholder="Masukkan foto loker" autocomplete="off">
-            </div>
-
-
-    </div>
-    <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="submit" class="btn btn-primary">Tambah Data</button>
-        </form>
+    <div class="row">
+    <form action="<?= BASEURL; ?>/bkk/tambahloker" method="post" class="forms-sample"
+                        enctype="multipart/form-data">
+                        <input type="hidden" name="fotoLama" id="fotoLama">
+                        <input type="hidden" name="id" id="id">
+                        <div class="form-group">
+                            <label for="namaperusahaan">Nama Perusahaan</label>
+                            <input type="text" class="form-control" id="namaperusahaan" name="namaperusahaan"
+                                placeholder="Nama Perusahaan">
+                        </div>
+                        <div class="form-group">
+                            <label for="jurusan">Untuk Jurusan</label>
+                            <select class="form-control" aria-label="Default select example" id="untukjurusan"
+                                name="untukjurusan">
+                                <option selected>--Pilih Jurusan--</option>
+                                <?php foreach ($data['kompkeahlian'] as $row) : ?>
+                                <option value="<?= $row['kode_kompkeahlian'] ?>"><?= $row['kode_kompkeahlian'] ?>
+                                </option>
+                                <?php endforeach ?>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="profesiygdibutuhkan">Profesi yang dibutuhkan</label>
+                            <input type="text" class="form-control" id="profesiygdibutuhkan" name="profesiygdibutuhkan"
+                                placeholder="Profesi yang dibutuhkan">
+                        </div>
+                        <div class="form-group">
+                            <label for="kriteriaprofesi">Kriteria profesi</label>
+                            <input type="text" class="form-control" id="kriteriaprofesi" name="kriteriaprofesi"
+                                placeholder="Masukkan kriteria">
+                        </div>
+                        <div class="form-group">
+                            <label for="kontakperusahaan">Kontak Perusahaan</label>
+                            <input type="text" class="form-control" id="kontakperusahaan" name="kontakperusahaan"
+                                placeholder="Kontak">
+                        </div>
+                        <div class="form-group">
+                            <label>Unggah Loker</label>
+                            <input type="file" class="file-upload-default" name="upfotoloker" id="upfotoloker">
+                            <div class="input-group col-xs-12">
+                                <input type="text" class="form-control file-upload-info" disabled
+                                    placeholder="Unggah Loker">
+                                <span class="input-group-append">
+                                    <button class="file-upload-browse btn btn-primary" type="button">Unggah</button>
+                                </span>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-outline-secondary btn-fw"
+                                data-dismiss="modal">Tutup</button>
+                            <button type="submit" class="btn btn-primary">Simpan Data</button>
+                        </div>
+                    </form>
     </div>
 
 </div>
