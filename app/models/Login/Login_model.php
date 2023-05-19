@@ -57,7 +57,7 @@ class Login_model
         $this->db->bind("username", $data['username']);
         $this->db->bind("password_field", $data['password']);
 
-        return $this->db->fetch();
+        return $this->db->fetchAll();
     }
 
 

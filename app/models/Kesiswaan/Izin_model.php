@@ -123,7 +123,7 @@ class Izin_model
 
         $this->db->bind("nisn", $nisn);
 
-        return $this->db->fetch();
+        return $this->db->fetchAll();
     }
 
     public function importData()
