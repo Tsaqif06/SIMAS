@@ -14,7 +14,7 @@ class Inbis extends Controller
 
         $this->view('templates/header', $data);
         $this->view('kurikulum/Inbis/index', $data);
-        $this->view('templates/footerwm');
+        $this->view('templates/footer');
     }
 
     public function tambah()

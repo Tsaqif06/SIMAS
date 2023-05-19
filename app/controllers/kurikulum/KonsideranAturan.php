@@ -14,7 +14,7 @@ class KonsideranAturan extends Controller
         
         $this->view('templates/header', $data);
         $this->view('kurikulum/KonsideranAturan/index', $data);
-        $this->view('templates/footerwm');
+        $this->view('templates/footer');
     }
 
     public function tambah()
