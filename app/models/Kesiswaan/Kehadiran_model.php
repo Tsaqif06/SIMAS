@@ -169,7 +169,8 @@ class Kehadiran_model
         $this->db->bind('endOfDay', $endOfDay);
 
         $this->db->execute();
-        return $this->db->rowCount();
+        $count = $this->db->fetch()['COUNT(*)'];
+        return $count;
     }
 
 

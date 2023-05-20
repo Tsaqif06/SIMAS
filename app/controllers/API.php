@@ -50,7 +50,7 @@ class API extends Controller
     public function tambahDataKehadiran()
     {
         header('Content-Type: application/json');
-        if ($this->model("Kesiswaan", "Kehadiran_model")->check($_POST) > 0) {
+        if ($this->model("Kesiswaan", "Kehadiran_model")->check($_POST['nisn']) > 0) {
             echo json_encode(["success" => false, "message" => "Data sudah mengisi kehadiran hari ini!"]);
         } else {
             if ($this->model("Kesiswaan", "Kehadiran_model")->tambahData($_POST) > 0) {
@@ -90,7 +90,7 @@ class API extends Controller
     public function tambahDataIzin()
     {
         header('Content-Type: application/json');
-        if ($this->model("Kesiswaan", "Izin_model")->check($_POST) > 0) {
+        if ($this->model("Kesiswaan", "Izin_model")->check($_POST['ID_KEHADIRAN']) > 0) {
             echo json_encode(["success" => false, "message" => "Data izin sudah ditambahkan hari ini!"]);
         } else {
             if ($this->model("Kesiswaan", "Izin_model")->tambahDataIzin($_POST) > 0) {
@@ -104,7 +104,7 @@ class API extends Controller
     public function getHistoryIzin()
     {
         header('Content-Type: application/json');
-        $data = $this->model("Kesiswaan", "Izin_model")->getHistory($_POST['nisn']);
+        $data = $this->model("Kesiswaan", "Izin_model")->getHistory($_POST['ID_KEHADIRAN']);
         if ($data > 0) {
             echo json_encode(["success" => true, "data" => $data]);
         } else {
