@@ -36,7 +36,7 @@ class pengajuanMapel_models
     {
         $query = "INSERT INTO pengajuan_mapel
                     VALUES
-                  (null, :uuid, :mapel, :barang, :spesifikasi, :bulan, :jumlah, :satuan, :harga_satuan, :harga_total, :digunakan_untuk, :dtatus, '', CURRENT_TIMESTAMP, :created_by, null, '', null, '', null, '', 0, 0, DEFAULT)";
+                  (null, :uuid, :mapel, :barang, :spesifikasi, :bulan, :jumlah, :satuan, :harga_satuan, :harga_total, :digunakan_untuk, 0, '', CURRENT_TIMESTAMP, :created_by, null, '', null, '', null, '', 0, 0, DEFAULT)";
 
         $this->db->query($query);
         $this->db->bind('uuid', Uuid::uuid4()->toString());
@@ -49,7 +49,6 @@ class pengajuanMapel_models
         $this->db->bind('harga_satuan', $_POST['harga_satuan']);
         $this->db->bind('harga_total', $_POST['harga_total']);
         $this->db->bind('digunakan_untuk', $_POST['digunakan_untuk']);
-        $this->db->bind('dtatus', $_POST['dtatus']);
         $this->db->bind('created_by', $this->user);
 
         $this->db->execute();

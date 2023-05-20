@@ -1,37 +1,37 @@
 <div class="content-wrapper">
-    <div class="row">
-        <div class="col-md-12 grid-margin">
-            <div class="row">
+          <div class="row">
+            <div class="col-md-12 grid-margin">
+              <div class="row">
                 <div class="col-12 col-xl-8 mb-4 mb-xl-0">
-                    <h3 class="font-weight-bold">PENGAJUAN JURUSAN</h3>
-                    <h6 class="font-weight-normal mb-0">WEB DEV | SIMAS</h6>
+                  <h3 class="font-weight-bold">DATA PENGAJUAN BIDANG</h3>
+                  <h6 class="font-weight-normal mb-0">WEB DEV | SIMAS</span></h6>
                 </div>
+              </div>
             </div>
-        </div>
+          </div>
 
-        <div class="row">
+          <div class="row">
             <div class="col-lg-6">
                 <?php Flasher ::flash(); ?>
             </div>
           </div>
 
-        <div class="modal-body">
-                  <form action="<?= BASEURL; ?>/pengajuanJurusan/tambah" method="post">
+          <div class="modal-body">
+                  <form action="<?= BASEURL; ?>/pengajuanBidang/tambah" method="post">
                       <input type="hidden" name="id" id="id">
 
                     <div class="form-group">
-                      <label for="exampleInputEmail1">Jurusan</label>
-                      <select class="form-control" id="jurusan" name="jurusan">
-                        <option value="Teknik Grafika">Teknik Grafika</option>
-                        <option value="Multimedia/DKV">Multimedia/DKV</option>
-                        <option value="RPL">RPL</option>
-                        <option value="TKJ">TKJ</option>
-                        <option value="Animasi">Animasi</option>
-                        <option value="Mekatronika">Mekatronika</option>
-                        <option value="Logistik">Logistik</option>
-                        <option value="Perhotelan">Perhotelan</option>
-                        <option value="Desain Grafika">Design Grafika</option>
-                        <option value="Produksi Grafika">Produksi Grafika</option>
+                    <label for="exampleInputEmail1">Bidang</label>
+                      <select id="bidang" name="bidang" class="form-control">
+                        <option value="Bank">Bank</option>
+                        <option value="BK">BK</option>
+                        <option value="Inbis">Inbis</option>
+                        <option value="Masjid">Masjid</option>
+                        <option value="Ekstrakurikuler"> Ekstrakurikuler</option>
+                        <option value="Kopsis"> Kopsis</option>
+                        <option value="Perpustakaan"> Perpustakaan</option>
+                        <option value="CS"> CS</option>
+                        <option value="M&R"> M&R</option>
                       </select>
                     </div>
 
@@ -46,8 +46,9 @@
                     </div>
 
                     <div class="form-group">
-                      <label for="exampleInputEmail1">Kebutuhan Bulan</label>
+                      <label for="exampleInputEmail1">Kebutuhan Bulan Ke-</label>
                       <input type="text" class="form-control" id="bulan" name="bulan" placeholder="" required/>
+                      </select>
                     </div>
 
                     <div class="form-group">
@@ -61,24 +62,22 @@
                     </div>
 
                     <div class="form-group">
-                      <label for="exampleInputEmail1">Harga Satuan (Termasuk Pajak)</label>
-                      <div class="input-group mb-3">
-                      <span class="input-group-text">Rp</span>
+                      <label for="exampleInputEmail1">Perkiraan Harga Satuan (Termasuk Pajak)</label>
                       <input type="text" class="form-control" id="harga_satuan" name="harga_satuan" placeholder="" required/>
-                    </div>
                     </div>
 
                     <div class="form-group">
-                      <label for="exampleInputEmail1">Total Harga</label>
-                      <div class="input-group mb-3">
-                      <span class="input-group-text">Rp</span>
+                      <label for="exampleInputEmail1">Perkiraan Total Harga</label>
                       <input type="text" class="form-control" id="harga_total" name="harga_total" placeholder="" required/>
-                    </div>
                     </div>
 
                     <div class="form-group">
                       <label for="exampleInputEmail1">Digunakan Untuk</label>
-                      <input type="text" class="form-control" id="digunakan_untuk" name="digunakan_untuk" placeholder="" />
+                      <input type="text" class="form-control" id="digunakan_untuk" name="digunakan_untuk" placeholder="" required/>
+                    </div>
+                    <div class="form-group">
+                      <label for="exampleInputEmail1">Keterangan</label>
+                      <input type="text" class="form-control" id="keterangan" name="keterangan" placeholder="" />
                     </div>
                 </div>
                 <div class="modal-footer">
@@ -88,5 +87,4 @@
               </form>
               </div>
             </div>
-        </div>
-    </div>
+            </div>

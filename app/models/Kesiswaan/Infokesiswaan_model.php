@@ -13,7 +13,7 @@ class Infokesiswaan_model
     private $fields = [
         'kegiatan_infoKesiswaan',
         'deskripsi_infoKesiswaan',
-        'foto',
+        // 'foto',
         'tanggal_infoKesiswaan'
     ];
 
@@ -149,7 +149,7 @@ class Infokesiswaan_model
 
         $this->db->query($query);
         if ($_FILES["foto"]["error"] === 4) {
-            $foto = $data['foto'];
+            $foto =$data['fotoLama'];
         } else {
             $foto = $this->uploadImage();
         }

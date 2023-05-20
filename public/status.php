@@ -3,7 +3,7 @@
 include('connect.php');
 
 // const BASEURL = window.location.href;
-define('BASEURL', 'http://localhost/simas_sarprass/public');
+define('BASEURL', 'http://localhost/simas/public');
 
 $id = $_GET['id'];
 $status = $_GET['statuspengajuan'];

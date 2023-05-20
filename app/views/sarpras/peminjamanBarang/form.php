@@ -10,6 +10,12 @@
         </div>
 
         <div class="row">
+            <div class="col-lg-6">
+                <?php Flasher ::flash(); ?>
+            </div>
+          </div>
+
+        <div class="row">
             <form action="<?= BASEURL; ?>/peminjamanBarang/tambah" method="POST" enctype="multipart/form-data">
                 <input type="hidden" name="id" id="id">
                 <!-- <input type="hidden" name="fotoLama" id="fotoLama">
