@@ -23,7 +23,7 @@
           </div>
           <div class="row">
             <div class="col">
-              <a id="example" class="btn btn-primary" role="button" data-toggle="modal" data-target="#exampleModalLong">Tambah Data Perbaikan</a>
+              <a class="btn btn-primary" role="button" data-toggle="modal" data-target="#exampleModalLong">Tambah Data Perbaikan</a>
               <button type="button" class="btn btn-primary my-3 mx-3 tampilModalImport"
                     data-url="<?= BASEURL ?>/perbaikan" data-bs-toggle="modal" data-bs-target="#modalImport">
                     Import Data Dari Excel
@@ -51,6 +51,7 @@
                 <div class="modal-body">
                   <form action="<?= BASEURL; ?>/perbaikan/tambah" method="post">
                       <input type="hidden" name="id" id="id">
+                      <input type="hidden" name="statusperbaikan" id="statusperbaikan">
 
                       <div class="form-group">
                       <label for="exampleInputEmail1">Kode Inventaris</label>
@@ -80,11 +81,6 @@
                     <div class="form-group">
                       <label for="exampleInputEmail1">Kondisi Akhir</label>
                       <input type="text" class="form-control" id="kondisi_akhir" name="kondisi_akhir" placeholder="" required/>
-                    </div>
-
-                    <div class="form-group">
-                      <label for="exampleInputEmail1">Status</label>
-                      <input type="text" class="form-control" id="statusperbaikan" name="statusperbaikan" placeholder="" required/>
                     </div>
 
                     <div class="form-group">
@@ -188,21 +184,50 @@
         </div>
       </div>
 
-        
+      <script src="<?= BASEURL; ?>/vendors/chart.js/chart.min.js"></script>
+      <script>
+    $(function() {
+    const BASEURL = window.location.href;
+    console.log(BASEURL)
+    $('.tombolTambahData').on('click', function(){
+        $('formModalLabel').html('Tambah Data Prestasi')
+        $('.modal-footer button[type=submit]').html('Tambah Data');
 
-      <!-- tabel -->
+    });
 
-        <!-- content-wrapper ends -->
-        <!-- partial:../../partials/_footer.html -->
-        <footer class="footer">
-          <div class="d-sm-flex justify-content-center justify-content-sm-between">
-            <span class="text-muted text-center text-sm-left d-block d-sm-inline-block">Copyright © 2021.  Premium <a href="https://www.bootstrapdash.com/" target="_blank">Bootstrap admin template</a> from BootstrapDash. All rights reserved.</span>
-            <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center">Hand-crafted & made with <i class="ti-heart text-danger ml-1"></i></span>
-          </div>
-        </footer>
+			$(".tampilModalUbah").click(function () {
+				$("#modal").addClass("edit");
+				$("#modalLabel").html("Ubah Data Perbaikan");
+				$(".modal-footer button[type=submit]").html("Ubah Data");
+				$(".modal-body form").attr("action", `${BASEURL}/ubah`);
 
-        <script src="<?=BASEURL;?>/js/perbaikan.js"></script>
-        <script src="<?= BASEURL; ?>/vendors/chart.js/chart.min.js"></script>
+				const id = $(this).data("id");
+                console.log(id)
+
+				$.ajax({
+					url: `${BASEURL}/getubah`,
+					data: { id: id },
+					method: "post",
+					dataType: "json",
+					success: function (data) {
+						$('#nama').val(data.nama);
+                        $('#kode').val(data.kode);
+                        $('#barang').val(data.barang);
+                        $('#pengajuan').val(data.pengajuan);
+                        $('#tindakan').val(data.tindakan);
+                        $('#kondisi_awal').val(data.kondisi_awal);
+                        $('#kondisi_akhir').val(data.kondisi_akhir);
+                        $('#statusperbaikan').val(data.statusperbaikan);
+                        $('#teknisi').val(data.teknisi);
+                        $('#note').val(data.note);
+                        $('#id').val(data.id);
+                        console.log(data);
+					},
+				})
+            })
+		}
+	);
+      </script>
       <script>
       $(document).ready(function () {
         $('#demo').DataTable();
@@ -313,4 +338,48 @@
 
   };
     });
+  </script>
+
+<script>
+    $(function() {
+    const BASEURL = window.location.href;
+    console.log(BASEURL)
+    $('.tombolTambahData').on('click', function(){
+        $('formModalLabel').html('Tambah Data Prestasi')
+        $('.modal-footer button[type=submit]').html('Tambah Data');
+
+    });
+
+			$(".tampilModalUbah").click(function () {
+				$("#modal").addClass("edit");
+				$("#modalLabel").html("Ubah Data Perbaikan");
+				$(".modal-footer button[type=submit]").html("Ubah Data");
+				$(".modal-body form").attr("action", `${BASEURL}/ubah`);
+
+				const id = $(this).data("id");
+                console.log(id)
+
+				$.ajax({
+					url: `${BASEURL}/getubah`,
+					data: { id: id },
+					method: "post",
+					dataType: "json",
+					success: function (data) {
+						$('#nama').val(data.nama);
+                        $('#kode').val(data.kode);
+                        $('#barang').val(data.barang);
+                        $('#pengajuan').val(data.pengajuan);
+                        $('#tindakan').val(data.tindakan);
+                        $('#kondisi_awal').val(data.kondisi_awal);
+                        $('#kondisi_akhir').val(data.kondisi_akhir);
+                        $('#statusperbaikan').val(data.statusperbaikan);
+                        $('#teknisi').val(data.teknisi);
+                        $('#note').val(data.note);
+                        $('#id').val(data.id);
+                        console.log(data);
+					},
+				})
+            })
+		}
+	);
   </script>

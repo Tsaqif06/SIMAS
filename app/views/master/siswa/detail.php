@@ -35,6 +35,7 @@
                                     <tr>
                                         <th>No.</th>
                                         <th>NISN</th>
+                                        <th>NIS</th>
                                         <th>Nama Siswa</th>
                                         <th>Jalur</th>
                                         <th>Jurusan</th>
@@ -60,6 +61,7 @@
                                         <tr>
                                             <td><?= $i++ ?></td>
                                             <td><?= $row["nisn"] ?></td>
+                                            <td><?= $row["nis"] ?></td>
                                             <td><?= $row["nama_siswa"] ?></td>
                                             <td><?= $row["jalur"] ?></td>
                                             <td><?= $row["jurusan"] ?></td>

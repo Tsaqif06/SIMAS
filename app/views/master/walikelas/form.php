@@ -2,10 +2,6 @@
     <input type="hidden" name="id" id="id">
     <input type="hidden" name="uuid" id="uuid">
     <div class="mb-3">
-        <label for="uuid" class="form-label">UUID</label>
-        <input type="text" class="form-control" name="uuid" id="uuid" required>
-    </div>
-    <div class="mb-3">
         <label for="nama" class="form-label">Nama</label>
         <input type="text" class="form-control" name="nama" id="nama" required>
     </div>

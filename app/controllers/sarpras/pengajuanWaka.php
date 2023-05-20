@@ -19,8 +19,13 @@ class pengajuanWaka extends Controller
                 $this->view('templates/footerwm');
             }
         } else if ($data['user']['hak_akses'] == '') {
-            header("Location: " . BASEURL);
-            Flasher::setFlash('GAGAL', 'Anda Tidak Mempunyai Akses Untuk Menuju Halaman Tersebut', 'danger');
+            if (isset($_POST["contentOnly"])) {
+                $this->view('sarpras/pengajuanBarang/form/formwaka', $data);
+            } else {
+                $this->view('templates/header', $data);
+                $this->view('sarpras/pengajuanBarang/form/formwaka', $data);
+                $this->view('templates/footerwm');
+            }
         }
     }
     public function tambah()

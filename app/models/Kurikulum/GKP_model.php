@@ -2,7 +2,7 @@
 
 class GKP_model
 {
-    private $table = 'tbl_gkpsatu';
+    private $table = 'tbl_gkp';
     private $db;
 
     public function __construct()

@@ -3,6 +3,7 @@
 use Ramsey\Uuid\Uuid;
 use PhpOffice\PhpSpreadsheet\IOFactory;
 use PhpOffice\PhpSpreadsheet\Cell\Coordinate;
+
 class Jabatan_model
 {
     private $table = 'masterjabatan';

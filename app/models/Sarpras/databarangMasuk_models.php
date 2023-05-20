@@ -14,7 +14,7 @@ class databarangMasuk_models
     private $db;
     private $fields = [
         'tgl',
-        'foto',
+        // 'foto',
         'uraian',
         'jumlah',
         'satuan',
@@ -92,6 +92,8 @@ class databarangMasuk_models
         $imageFileType = explode('.', $temp);
         $imageFileType = strtolower(end($imageFileType));
 
+        // var_dump($_FILES); die;
+
         // validasi ekstensi file
         // $imageFileType = strtolower(pathinfo($targetFile, PATHINFO_EXTENSION));
         if ($imageFileType != "jpg" && $imageFileType != "jpeg" && $imageFileType != "png" && $imageFileType != "gif") {
@@ -104,7 +106,18 @@ class databarangMasuk_models
         $fileName .= $imageFileType;
         $targetFile = $targetDir . $fileName; // nama file upload
 
+        // var_dump($fileName); die;
 
+        // cek gambar diupload atau tidak
+        if ($_FILES["foto"]["error"] === 4) {
+            echo
+            '
+            <script>
+                alert("Silahkan Upload Gambar")
+            </script>
+        ';
+            return false;
+        }
 
         // validasi ukuran file
         if ($_FILES["foto"]["size"] > 1000000) {
@@ -197,13 +210,10 @@ class databarangMasuk_models
             $foto = $this->upload();
         }
 
-        // $this->db->bind('foto', $foto);
-        // foreach ($this->fields as $field) {
-        //     $this->db->bind($field, $data[$field]);
-        // }
-
+        
         $this->db->query($query);
         foreach ($this->fields as $field) {
+            $this->db->bind('foto', $foto);
             $this->db->bind($field, $data[$field]);
         }
         $this->db->bind('modified_by', $this->user);

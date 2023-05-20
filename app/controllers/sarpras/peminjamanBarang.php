@@ -19,8 +19,13 @@ class peminjamanBarang extends Controller
                 $this->view('templates/footerwm');
             }
         } else if ($data['user']['hak_akses'] == '') {
-            header("Location: " . BASEURL);
-            Flasher::setFlash('GAGAL', 'Anda Tidak Mempunyai Akses Untuk Menuju Halaman Tersebut', 'danger');
+            if (isset($_POST["contentOnly"])) {
+                $this->view('sarpras/peminjamanBarang/form', $data);
+            } else {
+                $this->view('templates/header', $data);
+                $this->view('sarpras/peminjamanBarang/form', $data);
+                $this->view('templates/footerwm');
+            }
         }
     }
 
@@ -94,4 +99,21 @@ class peminjamanBarang extends Controller
         $this->view('peminjamanBarang/index', $data);
         $this->view('templates/footerwm');
     }
+
+    // public function peminjamanBarang()
+    // {
+    //     $data['judul'] = 'Peminjaman Barang';
+    //     $data['user'] = $this->user;
+    //     $data['siswa'] = $this->model("$this->model_name", 'peminjamanBarang')->getExistData();
+    //     $akses = ['all', 'sarpras'];
+    //     if (in_array($data['user']['hak_akses'], $akses)) {
+    //         $this->view('templates/header', $data);
+    //         $this->view('sarpras/peminjamanBarang', $data);
+    //         $this->view('templates/footer');
+    //     } else if ($data['user']['hak_akses'] == '') {
+    //         $this->view('templates/header', $data);
+    //         $this->view('sarpras/peminjamanBarang/form', $data);
+    //         $this->view('templates/footer');
+    //     }
+    // }
 }

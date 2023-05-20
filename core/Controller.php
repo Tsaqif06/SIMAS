@@ -20,12 +20,7 @@ class Controller
                 header("Location: " . BASEURL . "/login");
                 exit;
             } else {
-                $data["id"] = $jwt->sub;
-                $data["username"] = $jwt->name;
-                $data["role"] = $jwt->role;
-                $data["hak_akses"] = $jwt->akses;
-    
-                $this->user = $this->model("Login", "Login_model")->authentication($data);
+                $this->user = $this->model("Login", "Login_model")->authentication($jwt);
             }
         }
         

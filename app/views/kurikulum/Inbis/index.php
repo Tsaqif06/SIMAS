@@ -1,41 +1,10 @@
-<style>
-  .button-arounder {
-    background: white;
-    font-size: 4px;
-    border: solid 2px #4B49AC;
-    padding: .375em 1.125em;
-    font-weight: bold;
-    border-radius: 10px;
-    color: #4B49AC;
-    width: 50%;
-  }
-
-  .button-arounder:hover,
-  .button-arounder:focus {
-    box-shadow: 0 4px 8px hsla(190deg, 15%, 5%, .2);
-    transform: translateY(-4px);
-    background: #4B49AC;
-    border-top-left-radius: var(--radius);
-    border-top-right-radius: var(--radius);
-    border-bottom-left-radius: var(--radius);
-    border-bottom-right-radius: var(--radius);
-    color: white;
-    border-radius: 10px;
-    width: 50%;
-  }
-
-  td {
-    word-break: break-all;
-    width: 100px;
-  }
-</style>
 <div class="content-wrapper">
   <div class="row">
     <div class="col-md-12 grid-margin">
       <div class="row">
         <div class="col-12 col-xl-8 mb-4 mb-xl-0">
           <h3 class="font-weight-bold">DATA KEGIATAN INKUBATOR BISNIS</h3>
-          <h6 class="font-weight-normal mb-0"> SMKN 4 MALANG</span></h6>
+          <h6 class="font-weight-normal mb-0"> Kurikulum | <span class="text-primary">SIMAS</span></h6>
         </div>
       </div>
     </div>

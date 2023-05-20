@@ -7,6 +7,28 @@ class API extends Controller
         echo "Page not found!";
     }
 
+    // LOGIN //
+
+    public function login()
+    {
+        header('Content-Type: application/json');
+        if (isset($_POST['nama']) && isset($_POST['nisn'])) {
+            $data['username'] = $_POST['nama'];
+            $data['password'] = $_POST['nisn'];
+            $data['imei'] = $_POST['imei'];
+            $user = $this->model("Login", "Login_model")->loginSiswaNisn($data);
+            if (!$user) {
+                $response = false;
+                $message = "Gagal Login";
+                echo json_encode(["success" => $response, "message" => $message, "data" => $user]);
+            } else {
+                $response = true;
+                $message = "Berhasil Login";
+                echo json_encode(["success" => $response, "message" => $message, "data" => $user]);
+            }
+        }
+    }
+
     // KEHADIRAN //
 
     public function kehadiran($id = null)
@@ -16,41 +38,81 @@ class API extends Controller
         ($id == null) ?
             $data = $this->model("Kesiswaan", 'Kehadiran_model')->getAllExistData() :
             $data = $this->model("Kesiswaan", 'Kehadiran_model')->getDataById($id);
+        foreach ($data as $item) {
+            $response[$item['nisn']] = $item;
+        }
         ($data) ?
-            $response = true :
-            $response = false;
-        echo json_encode(["status" => $response, "data" => $data]);
+            $success = true :
+            $success = false;
+        echo json_encode(['success' => $success, 'data' => $response]);
     }
 
     public function tambahDataKehadiran()
     {
-        if ($this->model("Kesiswaan", "Kehadiran_model")->tambahData($_POST) > 0) {
-            echo json_encode(["status" => "success", "message" => "Data Kehadiran berhasil ditambahkan"]);
+        header('Content-Type: application/json');
+        if ($this->model("Kesiswaan", "Kehadiran_model")->check($_POST['nisn']) > 0) {
+            echo json_encode(["success" => false, "message" => "Data sudah mengisi kehadiran hari ini!"]);
         } else {
-            echo json_encode(["status" => "success", "message" => "Data Kehadiran gagal dihapus"]);
+            if ($this->model("Kesiswaan", "Kehadiran_model")->tambahData($_POST) > 0) {
+                echo json_encode(["success" => true, "message" => "Data Kehadiran berhasil ditambahkan"]);
+            } else {
+                echo json_encode(["success" => false, "message" => "Data Kehadiran gagal dihapus"]);
+            }
         }
     }
 
-    public function hapusDataKehadiran($id)
+    public function getHistoryKehadiran()
     {
-        if ($this->model("Kesiswaan", "Kehadiran_model")->hapusData($id) > 0) {
-            echo json_encode(["status" => "success", "message" => "Data Kehadiran berhasil dihapus"]);
+        header('Content-Type: application/json');
+        $data = $this->model("Kesiswaan", "Kehadiran_model")->getHistory($_POST['nisn']);
+        if ($data > 0) {
+            echo json_encode(["success" => true, "data" => $data]);
         } else {
-            echo json_encode(["status" => "success", "message" => "Data Kehadiran gagal dihapus"]);
+            echo json_encode(["success" => false, "data" => $data]);
         }
     }
 
-    public function ubahDataKehadiran($id)
+    // IZIN //
+
+    public function izin($id = null)
     {
-        if ($this->model("Kesiswaan", "Kehadiran_model")->ubahDataAPI($id, $_POST) > 0) {
-            echo json_encode(["status" => "success", "message" => "Data Kehadiran berhasil diubah"]);
+        header('Access-Control-Allow-Origin: *');
+        header('Content-Type: application/json');
+        ($id == null) ?
+            $data = $this->model("Kesiswaan", 'Izin_model')->getAllExistData() :
+            $data = $this->model("Kesiswaan", 'Izin_model')->getDataById($id);
+        ($data) ?
+            $response = true :
+            $response = false;
+        echo json_encode(["success" => $response, "data" => $data]);
+    }
+
+    public function tambahDataIzin()
+    {
+        header('Content-Type: application/json');
+        if ($this->model("Kesiswaan", "Izin_model")->check($_POST['ID_KEHADIRAN']) > 0) {
+            echo json_encode(["success" => false, "message" => "Data izin sudah ditambahkan hari ini!"]);
         } else {
-            echo json_encode(["status" => "success", "message" => "Data Kehadiran gagal ditambahkan"]);
+            if ($this->model("Kesiswaan", "Izin_model")->tambahDataIzin($_POST) > 0) {
+                echo json_encode(["success" => true, "message" => "Data Izin berhasil ditambahkan"]);
+            } else {
+                echo json_encode(["success" => false, "message" => "Data Izin gagal dihapus"]);
+            }
+        }
+    }
+
+    public function getHistoryIzin()
+    {
+        header('Content-Type: application/json');
+        $data = $this->model("Kesiswaan", "Izin_model")->getHistory($_POST['ID_KEHADIRAN']);
+        if ($data > 0) {
+            echo json_encode(["success" => true, "data" => $data]);
+        } else {
+            echo json_encode(["success" => false, "data" => $data]);
         }
     }
 
     // PELANGGARAN //
-
 
     public function pelanggaran($id = null)
     {
@@ -66,40 +128,9 @@ class API extends Controller
         echo json_encode(["status" => $response, "data" => $data]);
     }
 
-    public function tambahDataPelanggaran()
-    {
-        if ($this->model("Kesiswaan", "Pelanggaran_model")->tambahData($_POST) > 0) {
-            echo json_encode(["status" => "success", "message" => "Data Pelanggaran berhasil ditambahkan"]);
-        } else {
-            echo json_encode(["status" => "success", "message" => "Data Pelanggaran gagal dihapus"]);
-        }
-    }
-
-    public function hapusDataPelanggaran($id)
-    {
-        if ($this->model("Kesiswaan", "Pelanggaran_model")->hapusData($id) > 0) {
-            echo json_encode(["status" => "success", "message" => "Data Pelanggaran berhasil dihapus"]);
-        } else {
-            echo json_encode(["status" => "success", "message" => "Data Pelanggaran gagal dihapus"]);
-        }
-    }
-
-    public function ubahDataPelanggaran($id)
-    {
-        if ($this->model("Kesiswaan", "Pelanggaran_model")->ubahDataAPI($id, $_POST) > 0) {
-            echo json_encode(["status" => "success", "message" => "Data Pelanggaran berhasil diubah"]);
-        } else {
-            echo json_encode(["status" => "success", "message" => "Data Pelanggaran gagal ditambahkan"]);
-        }
-    }
-
-
 
     // POIN PELANGGARAN //
-
-
-
-    public function Poinpelanggaran($id = null)
+    public function poinpelanggaran($id = null)
     {
         header('Access-Control-Allow-Origin: *');
         header('Content-Type: application/json');
@@ -113,37 +144,9 @@ class API extends Controller
         echo json_encode(["status" => $response, "data" => $data]);
     }
 
-    public function tambahDataPoinpelanggaran()
-    {
-        if ($this->model("Kesiswaan", "Poinpelanggaran_model")->tambahData($_POST) > 0) {
-            echo json_encode(["status" => "success", "message" => "Data Poin Pelanggaran berhasil ditambahkan"]);
-        } else {
-            echo json_encode(["status" => "success", "message" => "Data Poin Pelanggaran gagal dihapus"]);
-        }
-    }
-
-    public function hapusDataPoinpelanggaran($id)
-    {
-        if ($this->model("Kesiswaan", "Poinpelanggaran_model")->hapusData($id) > 0) {
-            echo json_encode(["status" => "success", "message" => "Data Poin Pelanggaran berhasil dihapus"]);
-        } else {
-            echo json_encode(["status" => "success", "message" => "Data Poin Pelanggaran gagal dihapus"]);
-        }
-    }
-
-    public function ubahDataPoinpelanggaran($id)
-    {
-        if ($this->model("Kesiswaan", "Poinpelanggaran_model")->ubahDataAPI($id, $_POST) > 0) {
-            echo json_encode(["status" => "success", "message" => "Data Poin Pelanggaran berhasil diubah"]);
-        } else {
-            echo json_encode(["status" => "success", "message" => "Data Poin Pelanggaran gagal ditambahkan"]);
-        }
-    }
-
-
     //  SISWA  //
 
-    public function Siswa($id = null)
+    public function siswa($id = null)
     {
         header('Access-Control-Allow-Origin: *');
         header('Content-Type: application/json');
@@ -155,32 +158,5 @@ class API extends Controller
             $response = true :
             $response = false;
         echo json_encode(["status" => $response, "data" => $data]);
-    }
-
-    public function tambahDataSiswa()
-    {
-        if ($this->model("Master", "Siswa_model")->tambahData($_POST) > 0) {
-            echo json_encode(["status" => "success", "message" => "Data Siswa berhasil ditambahkan"]);
-        } else {
-            echo json_encode(["status" => "success", "message" => "Data Siswa gagal dihapus"]);
-        }
-    }
-
-    public function hapusDataSiswa($id)
-    {
-        if ($this->model("Master", "Siswa_model")->hapusData($id) > 0) {
-            echo json_encode(["status" => "success", "message" => "Data Siswa berhasil dihapus"]);
-        } else {
-            echo json_encode(["status" => "success", "message" => "Data Siswa gagal dihapus"]);
-        }
-    }
-
-    public function ubahDataSiswa($id)
-    {
-        if ($this->model("Master", "Siswa_model")->ubahDataAPI($id, $_POST) > 0) {
-            echo json_encode(["status" => "success", "message" => "Data Siswa berhasil diubah"]);
-        } else {
-            echo json_encode(["status" => "success", "message" => "Data Siswa gagal ditambahkan"]);
-        }
     }
 }

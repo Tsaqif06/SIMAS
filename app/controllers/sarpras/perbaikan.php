@@ -17,13 +17,14 @@ class perbaikan extends Controller
             } else {
                 $this->view('templates/header', $data);
                 $this->view('sarpras/perbaikan/index', $data);
-                $this->view('templates/footerwm');
+                $this->view('templates/footer');
             }
         } else if ($data['user']['hak_akses'] == '') {
             header("Location: " . BASEURL);
             Flasher::setFlash('GAGAL', 'Anda Tidak Mempunyai Akses Untuk Menuju Halaman Tersebut', 'danger');
         }
     }
+    
     public function importData()
     {
         if ($this->model("$this->model_name", "dataperbaikanPrasarana_models")->importData($_POST) > 0) {
@@ -34,15 +35,6 @@ class perbaikan extends Controller
         header("Location: " . BASEURL . "/perbaikan");
         exit;
     }
-
-
-    // public function detail($id){
-    //     $data['judul'] = 'Detail Barang Masuk';
-    //     $data['kegiatan'] = $this->model("$this->model_name",'galeriKegiatan_models')->getKegiatanById($id);
-    //     $this->view('templates/header', $data);
-    //     // $this->view('kegiatan/detail', $data);
-    //     // $this->view('templates/footerwm');
-    // }
 
     public function tambah()
     {

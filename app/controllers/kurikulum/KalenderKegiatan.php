@@ -12,7 +12,7 @@ class KalenderKegiatan extends Controller
 
         $this->view('templates/header', $data);
         $this->view('kurikulum/Kalender Kegiatan/index');
-        $this->view('templates/footerwm');
+        $this->view('templates/footer');
     }
 
     // public function saveDataKalender($data)

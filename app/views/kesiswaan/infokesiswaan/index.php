@@ -309,7 +309,7 @@
           $('#deskripsi_infoKesiswaan').val(data.deskripsi_infoKesiswaan);
           $('#tanggal_infoKesiswaan').val(data.tanggal_infoKesiswaan);
           // $("#fotoSekarang").attr("src", `datafoto/${data.fotokegiatan}`);
-          $("#foto").val(data.foto);
+          $("#fotoLama").val(data.foto);
           // for (let key of Object.keys(data)) {
           //   if (key == "foto") {
           //     continue;

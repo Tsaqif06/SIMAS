@@ -1,36 +1,4 @@
-<div class="collapse" id="form-elements">
-              <ul class="nav flex-column sub-menu">
-              <li class="nav-item"><a class="nav-link" href="#">PKL</a></li>
-                  <div class="navsubitem">
-                    <a class="nav-link" href="<?= BASEURL; ?>/pkl/rekap">Rekap PKL</a>
-                    <a class="nav-link" href="<?= BASEURL; ?>/pkl/pembekalan">Pembekalan PKL</a>
-                    <a class="nav-link" href="<?= BASEURL; ?>/pkl/pemberkasan">Pemberkasan</a>
-                    <a class="nav-link" href="<?= BASEURL; ?>/pkl/prakerin">Prakerin</a>
-                    <a class="nav-link" href="<?= BASEURL; ?>/pkl/nilai">Nilai PKL</a>
-                    <a class="nav-link" href="<?= BASEURL; ?>/pkl/dtampung">Daya Tampung</a>
-                  </div>
-                <li class="nav-item"><a class="nav-link" href="<?= BASEURL; ?>/bkk/index">BKK</a></li>
-                  <div class="navsubitem">
-                    <a class="nav-link" href="<?= BASEURL; ?>/bkk/das">Alumni Sukses</a>
-                    <a class="nav-link" href="<?= BASEURL; ?>/bkk/mou">MoU</a>
-                    <a class="nav-link" href="<?= BASEURL; ?>/bkk/peminatan">Peminatan</a>
-                    <a class="nav-link" href="<?= BASEURL; ?>/bkk/workshop">Workshop</a>
-                    <a class="nav-link" href="<?= BASEURL; ?>/bkk/kebekerjaan">Kebekerjaan</a>
-                    <a class="nav-link" href="<?= BASEURL; ?>/bkk/spw">SPW</a>
-                    <a class="nav-link" href="<?= BASEURL; ?>/bkk/lomba">Lomba</a>
-                    <a class="nav-link" href="<?= BASEURL; ?>/bkk/loker">Lowongan Kerja</a>
-                  </div>
-                <li class="nav-item"><a class="nav-link" href="<?= BASEURL; ?>/ict/index">ICT</a></li>
-                <li class="nav-item"><a class="nav-link" href="<?= BASEURL; ?>/stiru/index">Studi Tiru</a></li>
-              </ul>
-            </div>
-            </li>  
-        </ul>
-      </nav>   
-      <!-- partial -->
-      
-
-          <div class="main-panel">
+          <!-- <div class="main-panel"> -->
         <div class="content-wrapper">
             <div class="row">
               <div class="col-md-12 grid-margin">
@@ -50,130 +18,195 @@
             <div class="row">
               <div class="col-md-4 stretch-card grid-margin">
                 <div class="card">
-                  <div class="card-body">
-                    <div class="card data-icon-card-primary">
-                      <div class="card-body">                      
-                        <div class="row">
-                          <div class="col-12 text-white">
-                            <h3>Rekapitulasi PKL</h3> 
-                          </div> 
-                        </div>
-                      </div>
-                    </div>
                     <div class="card-body">
-                      <div class="row">
-                        <a href="<?= BASEURL; ?>/pkl/rekap"><button type="button" class="btn btn-inverse-primary btn-fw btn-block">Masuk Laman Ini</button></a>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              
-              <div class="col-md-4 stretch-card grid-margin">
-                <div class="card">
-                  <div class="card-body">
-                    <div class="card data-icon-card-primary">
-                      <div class="card-body">                      
-                        <div class="row">
-                          <div class="col-12 text-white">
-                            <h3>Pembekalanpkl PKL</h3> 
-                          </div> 
+                        <div class="card data-icon-card-primary">
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-12 text-white">
+                                        <div class="col-12 text-white">
+                                            <h3>Rekapitulasi PKL</h3>
+                                        </div>
+                                        <!-- <div class="col-md-12 stretch-card">
+                                            <div class="col-4">
+                                                <i class="ti-bar-chart-alt text-pink icon-lg"></i>
+                                            </div>
+                                            <div class="col-8">
+                                                <h4 class="text-lightpurple">Jumlah Data :</h4>
+                                                <h3 class="text-yellow"><?= $data['jmldas'] ?></h3>
+                                            </div>
+                                        </div> -->
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-                      </div>
-                    </div>
-                    <div class="card-body">
-                      <div class="row">
-                        <a href="<?= BASEURL; ?>/pkl/pembekalan"><button type="button" class="btn btn-inverse-primary btn-fw btn-block">Masuk Laman Ini</button></a>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="col-md-4 stretch-card grid-margin">
-                <div class="card">
-                  <div class="card-body">
-                    <div class="card data-icon-card-primary">
-                      <div class="card-body">                      
-                        <div class="row">
-                          <div class="col-12 text-white">
-                            <h3>Pemberkasan PKL</h3> 
-                          </div> 
+                        <div class="card-body">
+                            <div class="row">
+                                <a href="<?= BASEURL; ?>/pkl/rekap"><button type="button" class="btn btn-inverse-primary btn-fw btn-block">Masuk Laman Ini</button></a>
+                            </div>
                         </div>
-                      </div>
                     </div>
-                    <div class="card-body">
-                      <div class="row">
-                        <a href="<?= BASEURL; ?>/pkl/pemberkasan"><button type="button" class="btn btn-inverse-primary btn-fw btn-block">Masuk Laman Ini</button></a>
-                      </div>
-                    </div>
-                  </div>
                 </div>
-              </div>
-
-              <div class="col-md-4 stretch-card grid-margin">
-                <div class="card">
-                  <div class="card-body">
-                    <div class="card data-icon-card-primary">
-                      <div class="card-body">                      
-                        <div class="row">
-                          <div class="col-12 text-white">
-                            <h3>Masa Prakerin</h3> 
-                          </div> 
-                        </div>
-                      </div>
-                    </div>
-                    <div class="card-body">
-                      <div class="row">
-                        <a href="<?= BASEURL; ?>/pkl/prakerin"><button type="button" class="btn btn-inverse-primary btn-fw btn-block">Masuk Laman Ini</button></a>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <div class="col-md-4 stretch-card grid-margin">
-                <div class="card">
-                  <div class="card-body">
-                    <div class="card data-icon-card-primary">
-                      <div class="card-body">                      
-                        <div class="row">
-                          <div class="col-12 text-white">
-                            <h3>Nilai PKL</h3> 
-                          </div> 
-                        </div>
-                      </div>
-                    </div>
-                    <div class="card-body">
-                      <div class="row">
-                        <a href="<?= BASEURL; ?>/pkl/nilai"><button type="button" class="btn btn-inverse-primary btn-fw btn-block">Masuk Laman Ini</button></a>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <div class="col-md-4 stretch-card grid-margin">
-                <div class="card">
-                  <div class="card-body">
-                    <div class="card data-icon-card-primary">
-                      <div class="card-body">                      
-                        <div class="row">
-                          <div class="col-12 text-white">
-                            <h3>Daya Tampung</h3> 
-                          </div> 
-                        </div>
-                      </div>
-                    </div>
-                    <div class="card-body">
-                      <div class="row">
-                        <a href="<?= BASEURL; ?>/pkl/dtampung"><button type="button" class="btn btn-inverse-primary btn-fw btn-block">Masuk Laman Ini</button></a>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
             </div>
-              
 
+              <div class="col-md-4 stretch-card grid-margin">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="card data-icon-card-primary">
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-12 text-white">
+                                        <div class="col-12 text-white">
+                                            <h3>Pembekalan PKL</h3>
+                                        </div>
+                                        <div class="col-md-12 stretch-card">
+                                            <div class="col-4">
+                                                <i class="ti-bar-chart-alt text-pink icon-lg"></i>
+                                            </div>
+                                            <div class="col-8">
+                                                <h4 class="text-lightpurple">Jumlah Data :</h4>
+                                                <h3 class="text-yellow"><?= $data['jmlpb'] ?></h3>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <div class="row">
+                                <a href="<?= BASEURL; ?>/pkl/pembekalan"><button type="button" class="btn btn-inverse-primary btn-fw btn-block">Masuk Laman Ini</button></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4 stretch-card grid-margin">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="card data-icon-card-primary">
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-12 text-white">
+                                        <div class="col-12 text-white">
+                                            <h3>Pemberkasan PKL</h3>
+                                        </div>
+                                        <div class="col-md-12 stretch-card">
+                                            <div class="col-4">
+                                                <i class="ti-bar-chart-alt text-pink icon-lg"></i>
+                                            </div>
+                                            <div class="col-8">
+                                                <h4 class="text-lightpurple">Jumlah Data :</h4>
+                                                <h3 class="text-yellow"><?= $data['jmlps'] ?></h3>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <div class="row">
+                                <a href="<?= BASEURL; ?>/pkl/pemberkasan"><button type="button" class="btn btn-inverse-primary btn-fw btn-block">Masuk Laman Ini</button></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4 stretch-card grid-margin">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="card data-icon-card-primary">
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-12 text-white">
+                                        <div class="col-12 text-white">
+                                            <h3>Masa Prakerin</h3>
+                                        </div>
+                                        <!-- <div class="col-md-12 stretch-card">
+                                            <div class="col-4">
+                                                <i class="ti-bar-chart-alt text-pink icon-lg"></i>
+                                            </div>
+                                            <div class="col-8">
+                                                <h4 class="text-lightpurple">Jumlah Data :</h4>
+                                                <h3 class="text-yellow"><?= $data['jmlpb'] ?></h3>
+                                            </div>
+                                        </div> -->
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <div class="row">
+                                <a href="<?= BASEURL; ?>/pkl/prakerin"><button type="button" class="btn btn-inverse-primary btn-fw btn-block">Masuk Laman Ini</button></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4 stretch-card grid-margin">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="card data-icon-card-primary">
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-12 text-white">
+                                        <div class="col-12 text-white">
+                                            <h3>Nilai PKL</h3>
+                                        </div>
+                                        <div class="col-md-12 stretch-card">
+                                            <div class="col-4">
+                                                <i class="ti-bar-chart-alt text-pink icon-lg"></i>
+                                            </div>
+                                            <div class="col-8">
+                                                <h4 class="text-lightpurple">Jumlah Data :</h4>
+                                                <h3 class="text-yellow"><?= $data['jmlnilai'] ?></h3>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <div class="row">
+                                <a href="<?= BASEURL; ?>/pkl/nilai"><button type="button" class="btn btn-inverse-primary btn-fw btn-block">Masuk Laman Ini</button></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4 stretch-card grid-margin">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="card data-icon-card-primary">
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-12 text-white">
+                                        <div class="col-12 text-white">
+                                            <h3>Daya Tampung</h3>
+                                        </div>
+                                        <div class="col-md-12 stretch-card">
+                                            <div class="col-4">
+                                                <i class="ti-bar-chart-alt text-pink icon-lg"></i>
+                                            </div>
+                                            <div class="col-8">
+                                                <h4 class="text-lightpurple">Jumlah Data :</h4>
+                                                <h3 class="text-yellow"><?= $data['jmldp'] ?></h3>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <div class="row">
+                                <a href="<?= BASEURL; ?>/pkl/dtampung"><button type="button" class="btn btn-inverse-primary btn-fw btn-block">Masuk Laman Ini</button></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            </div>
           </div>
       

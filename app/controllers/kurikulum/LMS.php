@@ -14,7 +14,7 @@ class Lms extends Controller
 
         $this->view('templates/header', $data);
         $this->view('kurikulum/LMS/index', $data);
-        $this->view('templates/footerwm');
+        $this->view('templates/footer');
     }
 
     public function tambah()

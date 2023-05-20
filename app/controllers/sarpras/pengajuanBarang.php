@@ -13,17 +13,31 @@ class pengajuanBarang extends Controller
         $data['pengajuan_barang'] = $this->model("$this->model_name", 'pengajuanBidang_models')->getALLDataPengajuanBidang();
         $data['pengajuan_barang'] = $this->model("$this->model_name", 'pengajuanWaka_models')->getALLDataPengajuanWaka();
 
-        if (in_array($data['user']['hak_akses'], $akses)) {
-            if (isset($_POST["contentOnly"])) {
-                $this->view('sarpras/pengajuanBarang/index', $data);
-            } else {
-                $this->view('templates/header', $data);
-                $this->view('sarpras/pengajuanBarang/index', $data);
-                $this->view('templates/footerwm');
-            }
-        } else if ($data['user']['hak_akses'] == '') {
-            header("Location: " . BASEURL);
-            Flasher::setFlash('GAGAL', 'Anda Tidak Mempunyai Akses Untuk Menuju Halaman Tersebut', 'danger');
+        // if (in_array($data['user']['hak_akses'], $akses)) {
+        //     if (isset($_POST["contentOnly"])) {
+        //         $this->view('sarpras/pengajuanBarang/index', $data);
+        //     } else {
+        //         $this->view('templates/header', $data);
+        //         $this->view('sarpras/pengajuanBarang/index', $data);
+        //         $this->view('templates/footerwm');
+        //     }
+        // } else if ($data['user']['hak_akses'] == '') {
+        //     if (isset($_POST["contentOnly"])) {
+        //         $this->view('sarpras/pengajuanBarang/form', $data);
+        //     } else {
+        //         $this->view('templates/header', $data);
+        //         $this->view('sarpras/pengajuanBarang/form', $data);
+        //         $this->view('templates/footerwm');
+        //     }
+        // }
+
+
+        if (isset($_POST["contentOnly"])) {
+            $this->view('sarpras/pengajuanBarang/index', $data);
+        } else {
+            $this->view('templates/header', $data);
+            $this->view('sarpras/pengajuanBarang/index', $data);
+            $this->view('templates/footerwm');
         }
     }
 

@@ -9,6 +9,7 @@ class Siswa_model
     private $table = 'mastersiswa';
     private $fields = [
         'nisn',
+        'nis',
         'nama_siswa',
         'jalur',
         'jurusan',
@@ -91,9 +92,9 @@ class Siswa_model
         $this->db->query(
             "INSERT INTO {$this->table}
                 VALUES 
-            (null, :uuid, :nisn, :nama_siswa, :jalur, :jurusan, :alamat, :nomor_hp_siswa, :ayah, :ibu,
+            (null, :uuid, :nisn, :nis, :nama_siswa, :jalur, :jurusan, :alamat, :nomor_hp_siswa, :ayah, :ibu,
             :nomor_hp_orangtua, :wali, :nomor_hp_wali, :tahun_diterima, :agama, :jenis_kelamin,
-            :tempat_lahir, :kelas, :tanggal_lahir, :usia_sekarang, '', CURRENT_TIMESTAMP, :created_by, null, '', null, '', null, '', 0, 0, DEFAULT)"
+            :tempat_lahir, :kelas, :tanggal_lahir, :usia_sekarang, '', CURRENT_TIMESTAMP, :created_by, null, '', null, '', null, '', 0, 0, DEFAULT, '')"
         );
 
         $this->db->bind('uuid', Uuid::uuid4()->toString());
@@ -135,6 +136,7 @@ class Siswa_model
             "UPDATE {$this->table}
                 SET 
                 nisn = :nisn,
+                nis = :nis,
                 nama_siswa = :nama_siswa,
                 jalur = :jalur,
                 jurusan = :jurusan,

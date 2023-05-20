@@ -1,12 +1,3 @@
-</div>
-<div class="modal-footer">
-    <button type="button" class="btn btn-secondary batal" data-bs-dismiss="modal">Batal</button>
-    <button type="submit" class="btn btn-primary">Tambah Data</button>
-</div>
-</form>
-</div>
-</div>
-</div>
 <!-- partial:partials/_footer.html -->
 <footer class="footer">
     <div class="d-sm-flex justify-content-center justify-content-sm-between">

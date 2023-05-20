@@ -3,7 +3,6 @@ $(document).ready(function () {
     $('#riwayatTable').DataTable({
         "columnDefs": [
             {
-                "type": "moment", // tipe pengurutan "moment.js"
                 "render": function(data, type, row, meta) {
                     return moment(data).unix(); // pengaturan waktu UNIX
                 }
@@ -12,12 +11,6 @@ $(document).ready(function () {
         "order": [
             [5, "asc"] // kolom ke-5 atau indeks kolom "deleted_at" diurutkan secara descending
         ],
-        dom: 'Bfrtip',
-		buttons: [
-			'pageLength', 'copy', 'excel', 'pdf', 'print'
-		],
-		'lengthChange': true,
-  		'lengthMenu': [[10, 25, 50, -1], [10, 25, 50, 'All']],
         drawCallback: function (settings) {
 			$(".btnSelengkapnya").click(function (e) {
                 e.preventDefault();

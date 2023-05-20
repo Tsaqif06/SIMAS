@@ -1,3 +1,4 @@
+
     <div class="content-wrapper">
         <div class="row">
             <div class="col-md-12 grid-margin">
@@ -14,27 +15,11 @@
 
         <div class="row">
             <div class="col-md-12 grid-margin stretch-card">
-                <object data="<?= BASEURL; ?>/images/bkkkeberkejaan/soal tiu 5 SMKN 4.pdf" width="100%"
-                    height="800"></object>
+            <iframe src="https://drive.google.com/file/u/0/d/1vGwGrjv9MgssXbD3vBlomhNy9LHl9qVA/preview?usp=embed_googleplus" style="width: 100%; height: 600px;" frameborder="0"></iframe>
+
             </div>
         </div>
 
     </div>
 
 
-
-    <!-- content-wrapper ends -->
-    <!-- partial:partials/_footer.html -->
-    <footer class="footer">
-        <div class="d-sm-flex justify-content-center justify-content-sm-between">
-            <span class="text-muted text-center text-sm-left d-block d-sm-inline-block">Copyright © 2023. SIMAS. All
-                rights reserved.</span>
-        </div>
-    </footer>
-    <!-- partial -->
-    </div>
-    <!-- main-panel ends -->
-    </div>
-    <!-- page-body-wrapper ends -->
-    </div>
-    <!-- container-scroller -->

@@ -14,7 +14,7 @@ class Username extends Controller
 
         $this->view('templates/header', $data);
         $this->view('kurikulum/Username/index', $data);
-        $this->view('templates/footerwm');
+        $this->view('templates/footer');
     }
 
     public function tambahData()

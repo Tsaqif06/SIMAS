@@ -54,12 +54,18 @@ class Kehadiran_model
         $this->db->query(
             "INSERT INTO {$this->table}
                 VALUES 
-            (null, :uuid, :nama, :nisn, :keterangan, :lokasi, null, CURRENT_TIMESTAMP, :attend_by, NULL, '', DEFAULT, NULL, '', NULL, '', 0, 0, DEFAULT)"
+            (null, :uuid, :nama, :nisn, :keterangan, :lokasi, :note, CURRENT_TIMESTAMP, :attend_by, NULL, '', DEFAULT, NULL, '', NULL, '', 0, 0, DEFAULT)"
         );
         $this->db->bind('uuid', Uuid::uuid4()->toString());
         foreach ($this->fields as $field) {
             $this->db->bind($field, $data[$field]);
         }
+        if ($data['note'] != '') {
+            $this->db->bind('note', $data['note']);
+        } else {
+            $this->db->bind('note', '');
+        }
+
         $this->db->bind('attend_by', $this->user);
 
         $this->db->execute();
@@ -134,6 +140,39 @@ class Kehadiran_model
         $this->db->execute();
         return $this->db->rowCount();
     }
+
+    public function getHistory($nisn)
+    {
+        $this->db->query(
+            "SELECT * FROM {$this->table}
+                WHERE 
+            `nisn` = :nisn
+        "
+        );
+
+        $this->db->bind("nisn", $nisn);
+
+        return $this->db->fetchAll();
+    }
+
+    public function check($nisn)
+    {
+        // Mendapatkan rentang waktu untuk satu hari (mulai dan akhir hari saat ini)
+        $now = date('Y-m-d H:i:s');
+        $startOfDay = date('Y-m-d 00:00:00', strtotime($now));
+        $endOfDay = date('Y-m-d 23:59:59', strtotime($now));
+
+        // Mengecek apakah ada data dengan NISN yang sama dalam rentang waktu sehari
+        $this->db->query("SELECT COUNT(*) FROM {$this->table} WHERE nisn = :nisn AND attend_at BETWEEN :startOfDay AND :endOfDay");
+        $this->db->bind('nisn', $nisn);
+        $this->db->bind('startOfDay', $startOfDay);
+        $this->db->bind('endOfDay', $endOfDay);
+
+        $this->db->execute();
+        $count = $this->db->fetch()['COUNT(*)'];
+        return $count;
+    }
+
 
     public function importData()
     {

@@ -1,3 +1,5 @@
+<div class="content-wrapper">
+
 <div class="container mt-5">
 
     <div class="row">
@@ -72,12 +74,11 @@
                     <tr>
 
                         <td>
-                            <div class="mt-3">
                                 <a href="<?= BASEURL; ?>/pkl/ubahDTAMonitoring/<?= $mp['id']; ?>" class="btn btn-warning float-right tampildataubah3" data-bs-toggle="modal" data-bs-target="#formModal" data-id=<?= $mp['id']; ?>>Ubah</a>
-                                <div class="mt-3">
+                                
                                     <a href="<?= BASEURL; ?>/pkl/hapusdatamonitoring/<?= $mp['id']; ?>" class="btn btn-danger" onclick="return confirm('Apakah anda sudah yakin?');">Hapus</a>
                         </td>
-        </div>
+        
 
         <td>
             <?= $mp['namaperusahaan_monitoringpkl'] ?>
@@ -94,6 +95,7 @@
                 }
     ?>
     </table>
+    </div>
 
     <div class="modal fade" id="formModal" tabindex="-1" aria-labelledby="judulModal" aria-hidden="true">
         <div class="modal-dialog">
@@ -138,3 +140,9 @@
                 </div>
             </div>
         </div>
+            </div> 
+                   </div> 
+         </div>
+             </div>
+                     </div>
+</div>
