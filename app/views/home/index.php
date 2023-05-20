@@ -12,7 +12,8 @@
             <div class="row">
                 <div class="col-12 col-xl-8 mb-4 mb-xl-0">
                     <h3 class="font-weight-bold">Selamat Datang, <?= $data['user']['username'] ?>!</h3>
-                    <h6 class="font-weight-normal mb-0">Web Admin SMKN 4 Malang | <span class="text-primary">SIMAS</span></h6>
+                    <h6 class="font-weight-normal mb-0">Web Admin SMKN 4 Malang | <span
+                            class="text-primary">SIMAS</span></h6>
                 </div>
             </div>
         </div>
@@ -175,217 +176,213 @@
                         <div class="table-responsive">
                             <table id="print" class="table table-striped table-borderless table-hover">
                                 <thead>
-                                <tr>
-                                <th>#</th>
-                                <th style="width: 30%;">Nama</th>
-                                <th style="width: 28%;">Jabatan</th>
-                                <th style="width: 15%;">NIP</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <?php $i = 1 ?>
-                                <?php foreach ($data['struktur_organisasi'] as $struktur): ?>
-                                        <tr>
-                                            <td>
-                                                <?= $i++; ?>
-                                            </td>
-                                            <td>
-                                                <?= $struktur['nama'] ?>
-                                            </td>
-                                            <td>
-                                                <?= $struktur['jabatan'] ?>
-                                            </td>
-                                            <td>
-                                                <?= $struktur['nip'] ?>
-                                            </td>
-                                            
-                                        </tr>
-                                        <?php endforeach; ?>
-                                    </tbody>
-                                </table>
-                            </div>
+                                    <tr>
+                                        <th style="width: 5%;">#</th>
+                                        <th style="width: 30%;">Nama</th>
+                                        <th style="width: 28%;">Jabatan</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <?php $i = 1 ?>
+                                    <?php foreach ($data['struktur_organisasi'] as $struktur): ?>
+                                    <tr>
+                                        <td>
+                                            <?= $i++; ?>
+                                        </td>
+                                        <td>
+                                            <?= $struktur['nama'] ?>
+                                        </td>
+                                        <td>
+                                            <?= $struktur['jabatan'] ?>
+                                        </td>
+                                    </tr>
+                                    <?php endforeach; ?>
+                                </tbody>
+                            </table>
                         </div>
                     </div>
                 </div>
+            </div>
 
-        <!--CAROUSEL GALERI-->
-        <div class="slider">
-            <div class="slide active">
-                <img src="<?= BASEURL ?>/images/foto_galeri/workshop.jpeg" alt="Workshop Pemanfaatan Energizer Dalam Proses Pembelajaran">
-                <div class="info">
-                    <h4><b>Kegiatan</b></h4>
-                    <h5>Workshop Pemanfaatan Energizer Dalam Proses Pembelajaran</h5>
+            <!--CAROUSEL GALERI-->
+            <div class="slider">
+                <div class="slide active">
+                    <img src="<?= BASEURL ?>/images/foto_galeri/workshop.jpeg"
+                        alt="Workshop Pemanfaatan Energizer Dalam Proses Pembelajaran">
+                    <div class="info">
+                        <h4><b>Kegiatan</b></h4>
+                        <h5>Workshop Pemanfaatan Energizer Dalam Proses Pembelajaran</h5>
+                    </div>
+                </div>
+                <div class="slide">
+                    <img src="<?= BASEURL ?>/images/foto_galeri/rapat.jpeg" alt="Rapat Dinas Dan Sosialisasi E-Kinerja">
+                    <div class="info">
+                        <h4><b>Kegiatan</b></h4>
+                        <h5>Rapat Dinas Dan Sosialisasi E-Kinerja</h5>
+                    </div>
+                </div>
+                <div class="slide">
+                    <img src="<?= BASEURL ?>/images/foto_galeri/sagusaya.jpeg" alt="Sagusaya (Satu Guru Satu Karya)">
+                    <div class="info">
+                        <h4><b>Kegiatan</b></h4>
+                        <h5>Sagusaya (Satu Guru Satu Karya)</h5>
+                    </div>
+                </div>
+                <div class="slide">
+                    <img src="<?= BASEURL ?>/images/foto_galeri/softskill.jpeg" alt="Softskil Guru">
+                    <div class="info">
+                        <h4><b>Kegiatan</b></h4>
+                        <h5>Softskil Bapak/Ibu Guru</h5>
+                    </div>
+                </div>
+                <div class="navigation">
+                    <i class="fas fa-chevron-left prev-btn"></i>
+                    <i class="fas fa-chevron-right next-btn"></i>
+                </div>
+                <div class="navigation-visibility">
+                    <div class="slide-icon active"></div>
+                    <div class="slide-icon"></div>
+                    <div class="slide-icon"></div>
+                    <div class="slide-icon"></div>
                 </div>
             </div>
-            <div class="slide">
-                <img src="<?= BASEURL ?>/images/foto_galeri/rapat.jpeg" alt="Rapat Dinas Dan Sosialisasi E-Kinerja">
-                <div class="info">
-                    <h4><b>Kegiatan</b></h4>
-                    <h5>Rapat Dinas Dan Sosialisasi E-Kinerja</h5>
+
+
+            <!--SOSMED ICT-->
+            <div class="row">
+                <div class="col-md-3 grid-margin">
+                    <a href="https://smkn4malang.sch.id" target="_blank">
+                        <div class="card d-flex align-items-center">
+                            <div class="card-body">
+                                <div class="d-flex flex-row align-items-center">
+                                    <i class='fa-solid fa-code fa-2x text-black'></i>
+                                    <div class="col-12">
+                                        <h6 class="text-black">Website</h6>
+                                        <p class="mt-2 text-muted card-text">SMKN 4 Malang</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+
+                <div class="col-md-3 grid-margin">
+                    <a href="https://www.youtube.com/c/SMKN4MalangOfficial" target="_blank">
+                        <div class="card d-flex align-items-center">
+                            <div class="card-body">
+                                <div class="d-flex flex-row align-items-center">
+                                    <i class="ti-youtube text-youtube icon-md"></i>
+                                    <div class="col-12">
+                                        <h6 class="text-youtube">Youtube</h6>
+                                        <p class="mt-2 text-muted card-text">SMKN 4 Malang</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+
+                <div class="col-md-3 grid-margin">
+                    <a href="https://www.instagram.com/smkn4malang.official" target="_blank">
+                        <div class="card d-flex align-items-center">
+                            <div class="card-body">
+                                <div class="d-flex flex-row align-items-center">
+                                    <i class="ti-instagram text-instagram icon-md"></i>
+                                    <div class="col-12">
+                                        <h6 class="text-instagram1">Instagram</h6>
+                                        <p class="mt-2 text-muted card-text">SMKN 4 Malang</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+
+                <div class="col-md-3 grid-margin">
+                    <a href="https://www.instagram.com/bkksmkn4malang" target="_blank">
+                        <div class="card d-flex align-items-center">
+                            <div class="card-body">
+                                <div class="d-flex flex-row align-items-center">
+                                    <i class="ti-instagram text-instagram icon-md"></i>
+                                    <div class="col-12">
+                                        <h6 class="text-instagram1">Instagram BKK</h6>
+                                        <p class="mt-2 text-muted card-text">SMKN 4 Malang</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+
+                <div class="col-md-3 grid-margin">
+                    <a href="https://twitter.com/smkn4malang" target="_blank">
+                        <div class="card d-flex align-items-center">
+                            <div class="card-body">
+                                <div class="d-flex flex-row align-items-center">
+                                    <i class="ti-twitter-alt text-twitter icon-md"></i>
+                                    <div class="col-12">
+                                        <h6 class="text-twitter">Twitter</h6>
+                                        <p class="mt-2 text-muted card-text">SMKN 4 Malang</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+
+                <div class="col-md-3 grid-margin">
+                    <a href="https://www.facebook.com/smknegeri4malang" target="_blank">
+                        <div class="card d-flex align-items-center">
+                            <div class="card-body">
+                                <div class="d-flex flex-row align-items-center">
+                                    <i class="ti-facebook text-facebook icon-md"></i>
+                                    <div class="col-12">
+                                        <h6 class="text-facebook">Facebook</h6>
+                                        <p class="mt-2 text-muted card-text">SMKN 4 Malang</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+
+                <div class="col-md-3 grid-margin">
+                    <a href="https://www.tiktok.com/@smkn4malang.official" target="_blank">
+                        <div class="card d-flex align-items-center">
+                            <div class="card-body">
+                                <div class="d-flex flex-row align-items-center">
+                                    <i class='fab fa-tiktok fa-2x text-black'></i>
+                                    <div class="col-12">
+                                        <h6 class="text-black">Tiktok</h6>
+                                        <p class="mt-2 text-muted card-text">SMKN 4 Malang</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+
+                <div class="col-md-3 grid-margin">
+                    <a href="https://t.me/bkksmkn4malang" target="_blank">
+                        <div class="card d-flex align-items-center">
+                            <div class="card-body">
+                                <div class="d-flex flex-row align-items-center">
+                                    <i class='fab fa-telegram fa-2x text-telegram'></i>
+                                    <div class="col-12">
+                                        <h6 class="text-telegram">Telegram</h6>
+                                        <p class="mt-2 text-muted card-text">SMKN 4 Malang</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
                 </div>
             </div>
-            <div class="slide">
-                <img src="<?= BASEURL ?>/images/foto_galeri/sagusaya.jpeg" alt="Sagusaya (Satu Guru Satu Karya)">
-                <div class="info">
-                    <h4><b>Kegiatan</b></h4>
-                    <h5>Sagusaya (Satu Guru Satu Karya)</h5>
-                </div>
-            </div>
-            <div class="slide">
-                <img src="<?= BASEURL ?>/images/foto_galeri/softskill.jpeg" alt="Softskil Guru">
-                <div class="info">
-                    <h4><b>Kegiatan</b></h4>
-                    <h5>Softskil Bapak/Ibu Guru</h5>
-                </div>
-            </div>
-            <div class="navigation">
-                <i class="fas fa-chevron-left prev-btn"></i>
-                <i class="fas fa-chevron-right next-btn"></i>
-            </div>
-            <div class="navigation-visibility">
-                <div class="slide-icon active"></div>
-                <div class="slide-icon"></div>
-                <div class="slide-icon"></div>
-                <div class="slide-icon"></div>
-            </div>
-        </div>
 
+            <script>
+            $(document).ready(function() {
+                $('#print').DataTable({
 
-        <!--SOSMED ICT-->
-        <div class="row">
-            <div class="col-md-3 grid-margin">
-                <a href="https://smkn4malang.sch.id" target="_blank">
-                    <div class="card d-flex align-items-center">
-                        <div class="card-body">
-                            <div class="d-flex flex-row align-items-center">
-                                <i class='fa-solid fa-code fa-2x text-black'></i>
-                                <div class="col-12">
-                                    <h6 class="text-black">Website</h6>
-                                    <p class="mt-2 text-muted card-text">SMKN 4 Malang</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </a>
-            </div>
-
-            <div class="col-md-3 grid-margin">
-                <a href="https://www.youtube.com/c/SMKN4MalangOfficial" target="_blank">
-                    <div class="card d-flex align-items-center">
-                        <div class="card-body">
-                            <div class="d-flex flex-row align-items-center">
-                                <i class="ti-youtube text-youtube icon-md"></i>
-                                <div class="col-12">
-                                    <h6 class="text-youtube">Youtube</h6>
-                                    <p class="mt-2 text-muted card-text">SMKN 4 Malang</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </a>
-            </div>
-
-            <div class="col-md-3 grid-margin">
-                <a href="https://www.instagram.com/smkn4malang.official" target="_blank">
-                    <div class="card d-flex align-items-center">
-                        <div class="card-body">
-                            <div class="d-flex flex-row align-items-center">
-                                <i class="ti-instagram text-instagram icon-md"></i>
-                                <div class="col-12">
-                                    <h6 class="text-instagram1">Instagram</h6>
-                                    <p class="mt-2 text-muted card-text">SMKN 4 Malang</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </a>
-            </div>
-
-            <div class="col-md-3 grid-margin">
-                <a href="https://www.instagram.com/bkksmkn4malang" target="_blank">
-                    <div class="card d-flex align-items-center">
-                        <div class="card-body">
-                            <div class="d-flex flex-row align-items-center">
-                                <i class="ti-instagram text-instagram icon-md"></i>
-                                <div class="col-12">
-                                    <h6 class="text-instagram1">Instagram BKK</h6>
-                                    <p class="mt-2 text-muted card-text">SMKN 4 Malang</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </a>
-            </div>
-
-            <div class="col-md-3 grid-margin">
-                <a href="https://twitter.com/smkn4malang" target="_blank">
-                    <div class="card d-flex align-items-center">
-                        <div class="card-body">
-                            <div class="d-flex flex-row align-items-center">
-                                <i class="ti-twitter-alt text-twitter icon-md"></i>
-                                <div class="col-12">
-                                    <h6 class="text-twitter">Twitter</h6>
-                                    <p class="mt-2 text-muted card-text">SMKN 4 Malang</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </a>
-            </div>
-
-            <div class="col-md-3 grid-margin">
-                <a href="https://www.facebook.com/smknegeri4malang" target="_blank">
-                    <div class="card d-flex align-items-center">
-                        <div class="card-body">
-                            <div class="d-flex flex-row align-items-center">
-                                <i class="ti-facebook text-facebook icon-md"></i>
-                                <div class="col-12">
-                                    <h6 class="text-facebook">Facebook</h6>
-                                    <p class="mt-2 text-muted card-text">SMKN 4 Malang</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </a>
-            </div>
-
-            <div class="col-md-3 grid-margin">
-                <a href="https://www.tiktok.com/@smkn4malang.official" target="_blank">
-                    <div class="card d-flex align-items-center">
-                        <div class="card-body">
-                            <div class="d-flex flex-row align-items-center">
-                                <i class='fab fa-tiktok fa-2x text-black'></i>
-                                <div class="col-12">
-                                    <h6 class="text-black">Tiktok</h6>
-                                    <p class="mt-2 text-muted card-text">SMKN 4 Malang</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </a>
-            </div>
-
-            <div class="col-md-3 grid-margin">
-                <a href="https://t.me/bkksmkn4malang" target="_blank">
-                    <div class="card d-flex align-items-center">
-                        <div class="card-body">
-                            <div class="d-flex flex-row align-items-center">
-                                <i class='fab fa-telegram fa-2x text-telegram'></i>
-                                <div class="col-12">
-                                    <h6 class="text-telegram">Telegram</h6>
-                                    <p class="mt-2 text-muted card-text">SMKN 4 Malang</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </a>
-            </div>
-        </div>
-
-        <script>
-        $(document).ready(function () {
-            $('#print').DataTable({
-           
+                });
             });
-          });
-        </script>
+            </script>

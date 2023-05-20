@@ -12,10 +12,16 @@ class Ortumeninggal extends Controller
 
         $data['ortumeninggal'] = $this->model("$this->model_name", 'Ortumeninggal_model')->getAllExistData();
 
-        $this->view('templates/header', $data);
-        $this->view('kesiswaan/ortumeninggal/index', $data);
-        $this->view('kesiswaan/ortumeninggal/form', $data);
-        $this->view('templates/footer');
+        $akses = ['all', 'kesiswaan'];
+        if (in_array($data['user']['hak_akses'], $akses)) {
+            $this->view('templates/header', $data);
+            $this->view('kesiswaan/ortumeninggal/index', $data);
+            $this->view('kesiswaan/ortumeninggal/form', $data);
+            $this->view('templates/footer');
+        } else if ($data['user']['hak_akses'] == '') {
+            header("Location: " . BASEURL);
+            Flasher::setFlash('GAGAL', 'Anda Tidak Mempunyai Akses Untuk Menuju Halaman Tersebut', 'danger');
+        }
     }
 
     public function tambahData()

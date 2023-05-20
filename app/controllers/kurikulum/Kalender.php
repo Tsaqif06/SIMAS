@@ -11,11 +11,16 @@ class Kalender extends Controller
         $data['user'] = $this->user;
 
         $data['jadwal'] = $this->model("$this->model_name", 'Kalender_model')->getAllKalender();
-        // echo json_encode($data['jadwal']); die;
 
-        $this->view('templates/header', $data);
-        $this->view('kurikulum/kalender/index', $data);
-        $this->view('templates/footer');
+        $akses = ['all', 'kurikulum'];
+        if (in_array($data['user']['hak_akses'], $akses)) {
+            $this->view('templates/header', $data);
+            $this->view('kurikulum/kalender/index', $data);
+            $this->view('templates/footer');
+        } else if ($data['user']['hak_akses'] == '') {
+            header("Location: " . BASEURL);
+            Flasher::setFlash('GAGAL', 'Anda Tidak Mempunyai Akses Untuk Menuju Halaman Tersebut', 'danger');
+        }
     }
 
 

@@ -33,8 +33,8 @@ class BKK extends Controller
         $data['judul'] = 'Admin Lowongan Kerja';
         $data['user'] = $this->user;
         $data['kompkeahlian'] = $this->model("Master", 'Kompkeahlian_model')->getAllExistData();
-        $akses = ['all', 'humas'];
         $data['siswa'] = $this->model("$this->model_name", 'BKK_model')->getExistloker();
+        $akses = ['all', 'humas'];
         if (in_array($data['user']['hak_akses'], $akses)) {
             $this->view('templates/humas/header', $data);
             $this->view('humas/bkk/loker/bkklokerlaporan', $data);

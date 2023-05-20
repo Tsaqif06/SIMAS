@@ -7,14 +7,21 @@ class Rapor extends Controller
     public function index()
     {
         $data['judul'] = 'Rapor';
-        
+
         $data['user'] = $this->user;
 
         $data['mhs'] = $this->model("$this->model_name", 'Rapor_model')->getAllMahasiswa();
 
-        $this->view('templates/header', $data);
-        $this->view('kurikulum/Rapor/index', $data);
-        $this->view('templates/footer');
+
+        $akses = ['all', 'kurikulum'];
+        if (in_array($data['user']['hak_akses'], $akses)) {
+            $this->view('templates/header', $data);
+            $this->view('kurikulum/Rapor/index', $data);
+            $this->view('templates/footer');
+        } else if ($data['user']['hak_akses'] == '') {
+            header("Location: " . BASEURL);
+            Flasher::setFlash('GAGAL', 'Anda Tidak Mempunyai Akses Untuk Menuju Halaman Tersebut', 'danger');
+        }
     }
 
     public function tambah()

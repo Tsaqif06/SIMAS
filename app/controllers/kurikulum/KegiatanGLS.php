@@ -3,7 +3,7 @@
 class KegiatanGLS extends Controller
 {
     private $model_name = "Kurikulum";
-    
+
     public function index()
     {
         $data['judul'] = 'KEGIATAN GLS';
@@ -12,9 +12,15 @@ class KegiatanGLS extends Controller
 
         $data['tbl_glsunggul'] = $this->model("$this->model_name", 'Kegiatan_GLS_model')->getALLGLS();
 
-        $this->view('templates/header', $data);
-        $this->view('kurikulum/Literasi/index', $data);
-        $this->view('templates/footer');
+        $akses = ['all', 'kurikulum'];
+        if (in_array($data['user']['hak_akses'], $akses)) {
+            $this->view('templates/header', $data);
+            $this->view('kurikulum/Literasi/index', $data);
+            $this->view('templates/footer');
+        } else if ($data['user']['hak_akses'] == '') {
+            header("Location: " . BASEURL);
+            Flasher::setFlash('GAGAL', 'Anda Tidak Mempunyai Akses Untuk Menuju Halaman Tersebut', 'danger');
+        }
     }
 
     public function tambah()

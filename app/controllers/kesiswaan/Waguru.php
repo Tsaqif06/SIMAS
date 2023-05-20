@@ -12,10 +12,16 @@ class Waguru extends Controller
 
         $data['waguru'] = $this->model("$this->model_name", 'Waguru_model')->getAllExistData();
 
-        $this->view('templates/header', $data);
-        $this->view('kesiswaan/waguru/index', $data);
-        $this->view('kesiswaan/waguru/form', $data);
-        $this->view('templates/footer');
+        $akses = ['all', 'kesiswaan'];
+        if (in_array($data['user']['hak_akses'], $akses)) {
+            $this->view('templates/header', $data);
+            $this->view('kesiswaan/waguru/index', $data);
+            $this->view('kesiswaan/waguru/form', $data);
+            $this->view('templates/footer');
+        } else if ($data['user']['hak_akses'] == '') {
+            header("Location: " . BASEURL);
+            Flasher::setFlash('GAGAL', 'Anda Tidak Mempunyai Akses Untuk Menuju Halaman Tersebut', 'danger');
+        }
     }
 
     public function tambahData()

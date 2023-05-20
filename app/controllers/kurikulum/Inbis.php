@@ -12,9 +12,15 @@ class Inbis extends Controller
 
         $data['tbl_inbisunggul'] = $this->model("$this->model_name", 'Inbis_model')->getAllInbis();
 
-        $this->view('templates/header', $data);
-        $this->view('kurikulum/Inbis/index', $data);
-        $this->view('templates/footer');
+        $akses = ['all', 'kurikulum'];
+        if (in_array($data['user']['hak_akses'], $akses)) {
+            $this->view('templates/header', $data);
+            $this->view('kurikulum/Inbis/index', $data);
+            $this->view('templates/footer');
+        } else if ($data['user']['hak_akses'] == '') {
+            header("Location: " . BASEURL);
+            Flasher::setFlash('GAGAL', 'Anda Tidak Mempunyai Akses Untuk Menuju Halaman Tersebut', 'danger');
+        }
     }
 
     public function tambah()

@@ -11,10 +11,17 @@ class Poinpelanggaran extends Controller
         $data['user'] = $this->user;
 
         $data['poinpelanggaran'] = $this->model("$this->model_name", 'Poinpelanggaran_model')->getAllExistData();
-        $this->view('templates/header', $data);
-        $this->view('kesiswaan/poinpelanggaran/index', $data);
-        $this->view('kesiswaan/poinpelanggaran/form', $data);
-        $this->view('templates/footer');
+
+        $akses = ['all', 'kesiswaan'];
+        if (in_array($data['user']['hak_akses'], $akses)) {
+            $this->view('templates/header', $data);
+            $this->view('kesiswaan/poinpelanggaran/index', $data);
+            $this->view('kesiswaan/poinpelanggaran/form', $data);
+            $this->view('templates/footer');
+        } else if ($data['user']['hak_akses'] == '') {
+            header("Location: " . BASEURL);
+            Flasher::setFlash('GAGAL', 'Anda Tidak Mempunyai Akses Untuk Menuju Halaman Tersebut', 'danger');
+        }
     }
 
     public function tambahData()
