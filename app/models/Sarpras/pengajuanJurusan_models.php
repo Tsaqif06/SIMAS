@@ -37,7 +37,7 @@ class pengajuanJurusan_models
     {
         $query = "INSERT INTO pengajuan_jurusan
                     VALUES
-                  (null, :uuid, :jurusan, :barang, :spesifikasi, :bulan, :jumlah, :satuan, :harga_satuan, :harga_total, :digunakan_untuk, '', CURRENT_TIMESTAMP, :created_by, null, '', null, '', null, '', 0, 0, DEFAULT)";
+                  (null, :uuid, :jurusan, :barang, :spesifikasi, :bulan, :jumlah, :satuan, :harga_satuan, :harga_total, :digunakan_untuk, 0, '', CURRENT_TIMESTAMP, :created_by, null, '', null, '', null, '', 0, 0, DEFAULT)";
 
 
         $this->db->query($query);

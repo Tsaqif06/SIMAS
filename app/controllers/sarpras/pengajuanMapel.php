@@ -16,11 +16,16 @@ class pengajuanMapel extends Controller
             } else {
                 $this->view('templates/header', $data);
                 $this->view('sarpras/pengajuanBarang/mapel', $data);
-                $this->view('templates/footer');
+                $this->view('templates/footerwm');
             }
         } else if ($data['user']['hak_akses'] == '') {
-            header("Location: " . BASEURL);
-            Flasher::setFlash('GAGAL', 'Anda Tidak Mempunyai Akses Untuk Menuju Halaman Tersebut', 'danger');
+            if (isset($_POST["contentOnly"])) {
+                $this->view('sarpras/pengajuanBarang/form/formmapel', $data);
+            } else {
+                $this->view('templates/header', $data);
+                $this->view('sarpras/pengajuanBarang/form/formmapel', $data);
+                $this->view('templates/footerwm');
+            }
         }
     }
     public function tambah()
