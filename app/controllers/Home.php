@@ -11,6 +11,7 @@ class Home extends Controller
         $data['jmlSiswa'] = $this->model('Master', 'Siswa_model')->getJmlData()['count'];
         $data['jmlGuru'] = $this->model('Master', 'Guru_model')->getJmlData()['count'];
         $data['jmlKaryawan'] = $this->model('Master', 'Karyawan_model')->getJmlData()['count'];
+        $data['struktur_organisasi'] = $this->model('PSDM', 'strukturOrganisasi_model')->getAllExistData();
 
         $this->view('templates/header', $data);
         $this->view('home/index', $data);

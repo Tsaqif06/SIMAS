@@ -10180,6 +10180,10 @@ pre code {
   border-bottom-width: 2px;
 }
 
+.table-borderless {
+  height: 180px;
+}
+
 .table-borderless th,
 .table-borderless td,
 .table-borderless thead th,
@@ -22084,40 +22088,32 @@ code {
   font-size: .75rem;
 }
 
+/* Card Style */
 .card.card-tale {
-  background: #7DA0FA;
-  color: #ffffff;
+  background: linear-gradient(150deg, #39ef74, #4600f1 100%) !important;
+  color: #ffffff !important;
 }
 
-.card.card-tale:hover {
-  background: #96b2fb;
+.card.card-tale:hover, .card-tale:focus {
+  background: linear-gradient(170deg, #39ef74, #4600f1 100%) !important;
 }
 
 .card.card-dark-blue {
-  background: #4747A1;
-  color: #ffffff;
+  background: linear-gradient(150deg, #f731db, #4600f1 100%) !important;
+  color: #ffffff !important;
 }
 
-.card.card-dark-blue:hover {
-  background: #5050b2;
+.card.card-dark-blue:hover, .card-dark-blue:focus {
+  background: linear-gradient(360deg, #f731db, #4600f1 100%) !important;
 }
 
 .card.card-light-blue {
-  background: #7978E9;
-  color: #ffffff;
+  background: linear-gradient(to left, #80ffdb, #5390d9) !important;
+  color: #ffffff !important;
 }
 
-.card.card-light-blue:hover {
-  background: #8f8eed;
-}
-
-.card.card-light-danger {
-  background: #F3797E;
-  color: #ffffff;
-}
-
-.card.card-light-danger:hover {
-  background: #f59095;
+.card.card-light-blue:hover, .card-light-blue:focus {
+  background: linear-gradient(to right, #80ffdb, #5390d9) !important;
 }
 
 .card-inverse-primary {
@@ -28838,7 +28834,6 @@ div.tagsinput span.tag a {
 }
 
 .navbar .navbar-brand-wrapper .brand-logo-mini img {
-  width: calc(70px - 30px);
   max-width: 100%;
   margin: auto;
 }
@@ -30598,6 +30593,17 @@ div.tagsinput span.tag a {
   #settings-trigger {
     display: none;
   }
+}
+.text-instagram {
+  background: -webkit-linear-gradient(blue, purple, red, yellow);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.text-instagram1 {
+  background: -webkit-linear-gradient(blue, purple, red, orange);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
 /*# sourceMappingURL=../maps/vertical-layout-light/style.css.map */
