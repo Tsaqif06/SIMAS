@@ -9,9 +9,9 @@
         <div class="container-fluid py-4 mb-0">
           <div class="col-md-25 grid-margin transparent">
             <div class="row">
-              <div class="col-md-3 mb-0 stretch-card transparent">
+              <div class="col-md-4 mb-0 stretch-card transparent">
                 <div class="card card-tale" data-toggle="modal" data-target="#modalTambah">
-                  <div class="card-body"><a class="small text-white stretched-link"
+                  <div class="card-body"><a class="small text-white stretched-link" target="blank"
                       href="https://drive.google.com/drive/folders/1m7zs7clq60R0fk_zA8RKZX3OSf4mk9yc?usp=sharing"></a>
                     <p class="mb-4">SMKN 4 MALANG</p>
                     <p class="fs-30 mb-2">Jadwal</p>
@@ -25,3 +25,4 @@
       </div>
     </div>
   </div>
+</div>

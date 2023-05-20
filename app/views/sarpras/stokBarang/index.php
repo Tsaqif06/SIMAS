@@ -129,12 +129,21 @@
                 <?php $i = 1 ?>
                 <?php foreach ($data['stok'] as $stok): ?>
                   <tr>
-                          <td><?= $i++ ?></td>
-                          <td><?=$stok['kode']?></td>
-                          <td><?=$stok['barang']?></td>
-                          <td><?=$stok['stok']?></td>
                     <td>
-                              <a href="<?= BASEURL;?>/stokBarang/ubah/<?=$stok['id']?>" data-bs-toggle="modal" data-bs-target="#exampleModalLong" class="tampilModalUbah" data-id="<?= $stok['id'];?>">
+                      <?= $i++ ?>
+                    </td>
+                    <td>
+                      <?= $stok['kode'] ?>
+                    </td>
+                    <td>
+                      <?= $stok['barang'] ?>
+                    </td>
+                    <td>
+                      <?= $stok['stok'] ?>
+                    </td>
+                    <td>
+                      <a href="<?= BASEURL; ?>/stokBarang/ubah/<?= $stok['id'] ?>" data-bs-toggle="modal"
+                        data-bs-target="#exampleModalLong" class="tampilModalUbah" data-id="<?= $stok['id']; ?>">
                         <button class="button-arounder">
                           <span class="material-symbols-outlined"> edit </span>
                         </button>
@@ -154,23 +163,19 @@
         </div>
       </div>
     </div>
-        <!-- <script src="<?=BASEURL;?>/js/stokBarang.js"></script> -->
+
     <script>
-    $(document).ready(function() {
-    $('#print').DataTable( {
+      $(document).ready(function () {
+        $('#print').DataTable({
           dom: 'Bfrtip',
           buttons: [
             'copy', 'excel', 'pdf', 'print'
           ]
-    } );
-  } );
+        });
+      });
     </script>
     <script>
       $(function () {
-        /* ChartJS
-         * -------
-         * Data and config for chartjs
-         */
         'use strict';
         var stokBarangKategori = {
           labels: [<?php while ($row = mysqli_fetch_array($kategori)) {
