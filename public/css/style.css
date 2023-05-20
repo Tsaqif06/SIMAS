@@ -66,7 +66,7 @@
 }
 
 .card.card-tale:hover {
-  background: #5050b2 !important;
+  background: linear-gradient(360deg, #39ef74, #4600f1 100%) !important;
 }
 
 .card.card-dark-blue {
@@ -75,7 +75,7 @@
 }
 
 .card.card-dark-blue:hover {
-  background: #5050b2 !important;
+  background: linear-gradient(1360deg, #f731db, #4600f1 100%) !important;
 }
 
 .card.card-light-blue {
@@ -84,7 +84,7 @@
 }
 
 .card.card-light-blue:hover {
-  background: #5050b2 !important;
+  background: linear-gradient(to right, #80ffdb, #5390d9) !important;
 }
 
 /* Carousel STyle */

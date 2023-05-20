@@ -139,52 +139,53 @@
       </div>
     </div>
   </div>
+</div>
 
-  <script>
-    $(function () {
-      const BASEURL = window.location.href;
-      console.log(BASEURL)
-      $('.tombolTambahData').on('click', function () {
-        $('#modalLabel').html('Tambah Data GLS')
-        $('.modal-footer button[type=submit]').html('Tambah Data');
+<script>
+  $(function () {
+    const BASEURL = window.location.href;
+    console.log(BASEURL)
+    $('.tombolTambahData').on('click', function () {
+      $('#modalLabel').html('Tambah Data GLS')
+      $('.modal-footer button[type=submit]').html('Tambah Data');
 
-        $('#jeniskegiatan').val('');
-        $('#Tujuan').val('');
-        $('#Strategi').val('');
-        $('#Indikator').val('');
-        $('#Pelaksanaan').val('');
-        $('#Waktu').val('');
-        $('#Target_').val('');
-        $('#id').val('');
-      });
-
-      $(".tampilModalUbahh").click(function () {
-        $("#modal").addClass("edit");
-        $("#modalLabel").html("Ubah Data GLS");
-        $(".modal-footer button[type=submit]").html("Ubah Data");
-        $(".modal-body form").attr("action", `${BASEURL}/ubahData`);
-
-        const id = $(this).data("id");
-        console.log(id)
-
-        $.ajax({
-          url: `${BASEURL}/getUbahData`,
-          data: {
-            id: id
-          },
-          method: "post",
-          dataType: "json",
-          success: function (data) {
-            $('#jeniskegiatan').val(data.jeniskegiatan);
-            $('#Tujuan').val(data.Tujuan);
-            $('#Strategi').val(data.Strategi);
-            $('#Indikator').val(data.Indikator);
-            $('#Pelaksanaan').val(data.Pelaksanaan);
-            $('#Waktu').val(data.Waktu);
-            $('#Target_').val(data.Target_);
-            $('#id').val(data.id);
-          },
-        })
-      })
+      $('#jeniskegiatan').val('');
+      $('#Tujuan').val('');
+      $('#Strategi').val('');
+      $('#Indikator').val('');
+      $('#Pelaksanaan').val('');
+      $('#Waktu').val('');
+      $('#Target_').val('');
+      $('#id').val('');
     });
-  </script>
+
+    $(".tampilModalUbahh").click(function () {
+      $("#modal").addClass("edit");
+      $("#modalLabel").html("Ubah Data GLS");
+      $(".modal-footer button[type=submit]").html("Ubah Data");
+      $(".modal-body form").attr("action", `${BASEURL}/ubahData`);
+
+      const id = $(this).data("id");
+      console.log(id)
+
+      $.ajax({
+        url: `${BASEURL}/getUbahData`,
+        data: {
+          id: id
+        },
+        method: "post",
+        dataType: "json",
+        success: function (data) {
+          $('#jeniskegiatan').val(data.jeniskegiatan);
+          $('#Tujuan').val(data.Tujuan);
+          $('#Strategi').val(data.Strategi);
+          $('#Indikator').val(data.Indikator);
+          $('#Pelaksanaan').val(data.Pelaksanaan);
+          $('#Waktu').val(data.Waktu);
+          $('#Target_').val(data.Target_);
+          $('#id').val(data.id);
+        },
+      })
+    })
+  });
+</script>
