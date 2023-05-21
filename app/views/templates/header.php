@@ -425,7 +425,7 @@
                                         <?php endif ?>
                                     </ul>
 
-                                    <?php if ($data['user']['role'] != 'guru' && $data['user']['hak_akses'] == '' || $data['user']['hak_akses'] == 'industri') : ?>
+                                    <?php if (($data['user']['role'] == 'admin' || $data['user']['hak_akses'] == '' || $data['user']['hak_akses'] == 'industri') || $data['user']['role'] == 'siswa') : ?>
                                         <li class="nav-item">
                                             <a class="nav-link" href="<?= BASEURL; ?>/bkk/index">BKK</a>
                                         </li>
