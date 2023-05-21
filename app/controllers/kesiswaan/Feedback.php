@@ -17,7 +17,7 @@ class Feedback extends Controller
             $this->view('kesiswaan/feedback/index', $data);
             $this->view('kesiswaan/feedback/form', $data);
             $this->view('templates/footer');
-        } else if ($data['user']['hak_akses'] == '') {
+        } else {
             header("Location: " . BASEURL);
             Flasher::setFlash('GAGAL', 'Anda Tidak Mempunyai Akses Untuk Menuju Halaman Tersebut', 'danger');
         }

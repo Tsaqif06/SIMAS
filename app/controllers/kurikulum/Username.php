@@ -17,7 +17,7 @@ class Username extends Controller
             $this->view('templates/header', $data);
             $this->view('kurikulum/Username/index', $data);
             $this->view('templates/footerwm');
-        } else if ($data['user']['hak_akses'] == '') {
+        } else {
             header("Location: " . BASEURL);
             Flasher::setFlash('GAGAL', 'Anda Tidak Mempunyai Akses Untuk Menuju Halaman Tersebut', 'danger');
         }

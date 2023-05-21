@@ -18,7 +18,7 @@ class Waguru extends Controller
             $this->view('kesiswaan/waguru/index', $data);
             $this->view('kesiswaan/waguru/form', $data);
             $this->view('templates/footer');
-        } else if ($data['user']['hak_akses'] == '') {
+        } else {
             header("Location: " . BASEURL);
             Flasher::setFlash('GAGAL', 'Anda Tidak Mempunyai Akses Untuk Menuju Halaman Tersebut', 'danger');
         }

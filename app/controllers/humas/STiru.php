@@ -25,9 +25,10 @@ class STiru extends Controller
             $this->view('templates/humas/header', $data);
             $this->view('humas/stiru/studitirulaporan', $data);
             $this->view('templates/humas/footer');
-        } else if ($data['user']['hak_akses'] == '') {
-            header("Location: " . BASEURL);
-            Flasher::setFlash('GAGAL', 'Anda Tidak Mempunyai Akses Untuk Menuju Halaman Tersebut', 'danger');
+        } else {
+            $this->view('templates/humas/header', $data);
+            $this->view('humas/stiru/studitiruform', $data);
+            $this->view('templates/humas/footer');
         }
     }
     public function laporanstiru()
@@ -50,15 +51,9 @@ class STiru extends Controller
         $data['judul'] = 'Studi Tiru';
         $data['user'] = $this->user;
         $data['stiru'] = $this->model("$this->model_name", 'Stiru_model')->getAllStiru();
-        $akses = ['all', 'humas'];
-        if (in_array($data['user']['hak_akses'], $akses)) {
-            $this->view('templates/humas/header', $data);
-            $this->view('humas/stiru/studitiruform', $data);
-            $this->view('templates/humas/footer');
-        } else if ($data['user']['hak_akses'] == '') {
-            header("Location: " . BASEURL);
-            Flasher::setFlash('GAGAL', 'Anda Tidak Mempunyai Akses Untuk Menuju Halaman Tersebut', 'danger');
-        }
+        $this->view('templates/humas/header', $data);
+        $this->view('humas/stiru/studitiruform', $data);
+        $this->view('templates/humas/footer');
     }
     public function tambahstiru()
     {

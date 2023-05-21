@@ -18,7 +18,7 @@ class Kehadiran extends Controller
             $this->view('kesiswaan/kehadiran/index', $data);
             $this->view('kesiswaan/kehadiran/form', $data);
             $this->view('templates/footer');
-        } else if ($data['user']['hak_akses'] == '') {
+        } else {
             header("Location: " . BASEURL);
             Flasher::setFlash('GAGAL', 'Anda Tidak Mempunyai Akses Untuk Menuju Halaman Tersebut', 'danger');
         }
