@@ -1,3 +1,4 @@
+
     <div class="content-wrapper">
         <div class="row">
             <div class="col-md-12 grid-margin">
@@ -6,103 +7,117 @@
                         <h3 class="font-weight-bold">DATA IZIN</h3>
                         <h6 class="font-weight-normal mb-0">WEB DEV | SIMAS</h6>
                     </div>
-
                 </div>
             </div>
         </div>
+    </div>
 
-        <div class="row">
-            <div class="col-lg-6">
-                <?php Flasher::flash(); ?>
-            </div>
+    <div class="row">
+        <div class="col-lg-6">
+            <?php Flasher::flash(); ?>
         </div>
+    </div>
 
-        <div class="row">
-            <div class="col-lg-6">
-                <button type="button" class="btn btn-primary my-3 tampilModalTambah" data-url="<?= BASEURL ?>/izin/tambahData" data-bs-toggle="modal" data-bs-target="#modal">
-                    Tambah Data Izin
-                </button>
-                <button type="button" class="btn btn-primary my-3 mx-3 tampilModalImport" data-bs-toggle="modal" data-bs-target="#modalImport">
-                    Import Data Dari Excel
-                </button>
-            </div>
+    <div class="row">
+        <div class="col-lg-6">
+            <button type="button" class="btn btn-primary my-3 tampilModalTambah"
+                data-url="<?= BASEURL ?>/izin/tambahData" data-bs-toggle="modal" data-bs-target="#modal">
+                Tambah Data Izin
+            </button>
+            <button type="button" class="btn btn-primary my-3 mx-3 tampilModalImport" data-bs-toggle="modal"
+                data-bs-target="#modalImport">
+                Import Data Dari Excel
+            </button>
         </div>
+    </div>
 
-        <div class="row">
-            <div class="col-md-12 grid-margin stretch-card">
-                <div class="card">
-                    <div class="card-body">
-                        <div class="table-responsive">
-                            <table id="table" class="table table-striped table-bordered">
-                                <thead>
+    <div class="row">
+        <div class="col-md-12 grid-margin stretch-card">
+            <div class="card">
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table id="table" class="table table-striped table-bordered">
+                            <thead>
+                                <tr>
+                                    <th>No.</th>
+                                    <th>Aksi</th>
+                                    <th>ID Kehadiran</th>
+                                    <th>Keterangan</th>
+                                    <th>Status</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <?php $i = 1 ?>
+                                <?php foreach ($data['izin'] as $row): ?>
                                     <tr>
-                                        <th>No.</th>
-                                        <th>Aksi</th>
-                                        <th>ID Kehadiran</th>
-                                        <th>Keterangan</th>
-                                        <th>Status</th>
+                                        <td>
+                                            <?= $i++ ?>
+                                        </td>
+                                        <td class="font-weight-medium">
+                                            <a href="" class="tampilModalUbah" style="cursor: pointer;"
+                                                data-url="<?= BASEURL ?>/izin/ubahData" data-bs-toggle="modal"
+                                                data-bs-target="#modal" data-id="<?= $row['id'] ?>">
+                                                <button class="button-arounder">
+                                                    <span class="material-symbols-outlined"> edit </span>
+                                                </button>
+                                            </a>
+                                            <a href="<?= BASEURL ?>/izin/hapusData/<?= $row['id'] ?>">
+                                                <div class=" font-weight-medium pt-2">
+                                                    <button class="button-arounder">
+                                                        <span class="material-symbols-outlined"> delete </span>
+                                                    </button>
+                                            </a>
+                                        </td>
+                                        <td>
+                                            <?= $row['ID_KEHADIRAN']; ?>
+                                        </td>
+                                        <td>
+                                            <?= $row['KETERANGAN']; ?>
+                                        </td>
+                                        <td>
+                                            <?= $row['STATUSS']; ?>
+                                        </td>
                                     </tr>
-                                </thead>
-                                <tbody>
-                                    <?php $i = 1 ?>
-                                    <?php foreach ($data['izin'] as $row) : ?>
-                                        <tr>
-                                            <td><?= $i++ ?></td>
-                                            <td class="font-weight-medium">
-                                                <a href="" class="badge text-bg-success tampilModalUbah" style="cursor: pointer;" data-url="<?= BASEURL ?>/izin/ubahData" data-bs-toggle="modal" data-bs-target="#modal" data-id="<?= $row['id'] ?>">
-                                                    <i class="ti ti-pencil"></i>
-                                                </a>
-                                                <a href="<?= BASEURL ?>/izin/hapusData/<?= $row['id'] ?>">
-                                                    <div class=" font-weight-medium pt-2">
-                                                        <div class="badge badge-danger delete" onclick="return confirm('Apakah Anda Yakin Mau Menghapus Data?')">
-                                                            <i class="ti ti-trash"></i>
-                                                        </div>
-                                                </a>
-                                            </td>
-                                            <td><?= $row['ID_KEHADIRAN']; ?></td>
-                                            <td><?= $row['KETERANGAN']; ?></td>
-                                            <td><?= $row['STATUSS']; ?></td>
-                                        </tr>
-                                    <?php endforeach; ?>
-                                </tbody>
-                            </table>
+                                <?php endforeach; ?>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="modalImport" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="modalLabel">Import Data</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form action="<?= BASEURL ?>/izin/importData" method="post" enctype="multipart/form-data">
+                        <div class="mb-3">
+                            <label for="file">Pilih file Excel (.xlsx)</label>
+                            <input type="file" name="file" id="file">
                         </div>
-                    </div>
                 </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary batal" data-bs-dismiss="modal">Batal</button>
+                    <button type="submit" class="btn btn-primary">Tambah Data</button>
+                </div>
+                </form>
             </div>
         </div>
+    </div>
 
-        <div class="modal fade" id="modalImport" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h1 class="modal-title fs-5" id="modalLabel">Import Data</h1>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                    <div class="modal-body">
-                        <form action="<?= BASEURL ?>/izin/importData" method="post" enctype="multipart/form-data">
-                            <div class="mb-3">
-                                <label for="file">Pilih file Excel (.xlsx)</label>
-                                <input type="file" name="file" id="file">
-                            </div>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary batal" data-bs-dismiss="modal">Batal</button>
-                        <button type="submit" class="btn btn-primary">Tambah Data</button>
-                    </div>
-                    </form>
+
+
+    <!-- Modal -->
+    <div class="modal fade" id="modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="modalLabel">Tambah Data</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-            </div>
-        </div>
-
-
-
-        <!-- Modal -->
-        <div class="modal fade" id="modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h1 class="modal-title fs-5" id="modalLabel">Tambah Data</h1>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                    <div class="modal-body">
+                <div class="modal-body">

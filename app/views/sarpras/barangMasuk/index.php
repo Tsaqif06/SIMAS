@@ -120,7 +120,7 @@
                   <tr>
                     <td><?= $i++; ?></td>
                     <td><?= $masuk['tgl'] ?></td>
-                    <td><img src="<?= BASEURL ?>/images/datafoto/<?= $masuk['foto'] ?>" style="border-radius: 0px; width: 100%; height: auto;"></td>
+                    <td width="175px"><img src="<?= BASEURL ?>/images/datafoto/<?= $masuk['foto'] ?>" style="border-radius: 0px; width: 100%; height: auto;"></td>
                     <td><?= $masuk['uraian'] ?></td>
                     <td><?= $masuk['jumlah'] ?></td>
                     <td><?= $masuk['satuan'] ?></td>

@@ -56,13 +56,15 @@
                                             <td><?= $i++ ?></td>
                                             <td class="font-weight-medium">
                                                 <a href="" class="badge text-bg-success tampilModalUbah" style="cursor: pointer;" data-url="<?= BASEURL ?>/asuransi/ubahData" data-bs-toggle="modal" data-bs-target="#modal" data-id="<?= $row['id'] ?>">
-                                                    <i class="ti ti-pencil"></i>
+                                                <button class="button-arounder">
+                          <span class="material-symbols-outlined"> edit </span>
+                        </button>
                                                 </a>
                                                 <a href="<?= BASEURL ?>/asuransi/hapusData/<?= $row['id'] ?>">
                                                     <div class=" font-weight-medium pt-2">
-                                                        <div class="badge badge-danger delete" onclick="return confirm('Apakah Anda Yakin Mau Menghapus Data?')">
-                                                            <i class="ti ti-trash"></i>
-                                                        </div>
+                                                    <button class="button-arounder">
+                          <span class="material-symbols-outlined"> delete </span>
+                        </button>
                                                 </a>
                                             </td>
                                             <td><?= $row['email']; ?></td>
