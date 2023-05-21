@@ -405,16 +405,17 @@
                                         <a class="nav-link" href="<?= BASEURL; ?>/pkl/index">PKL</a>
                                     </li>
                                     <ul style="list-style-type: none;">
+                                        <?php if (($data['user']['role'] == 'admin' && ($data['user']['hak_akses'] == 'all' || $data['user']['hak_akses'] == 'humas')) || $data['user']['role'] == 'guru') : ?>
+                                            <li><a class="navsubitem text-white" href="<?= BASEURL; ?>/pkl/rekap">Rekap PKL</a></li>
+                                        <?php endif ?>
                                         <?php if ($data['user']['role'] == 'admin' && ($data['user']['hak_akses'] == 'all' || $data['user']['hak_akses'] == 'humas')) : ?>
-                                            <li><a class="navsubitem text-white" href="<?= BASEURL; ?>/pkl/rekap">Rekap
-                                                    PKL</a></li>
                                             <li><a class="navsubitem text-white" href="<?= BASEURL; ?>/pkl/pembekalan">Pembekalan PKL</a></li>
                                             <li><a class="navsubitem text-white" href="<?= BASEURL; ?>/pkl/prakerin">Prakerin</a></li>
                                             <li><a class="navsubitem text-white" href="<?= BASEURL; ?>/pkl/dtampung">Daya
                                                     Tampung</a></li>
                                         <?php endif ?>
 
-                                        <?php if ($data['user']['role'] == 'admin' || $data['user']['hak_akses'] == '' || $data['user']['hak_akses'] == 'kabeng') : ?>
+                                        <?php if ($data['user']['role'] != 'guru' && $data['user']['hak_akses'] == '' || $data['user']['hak_akses'] == 'kabeng') : ?>
                                             <li><a class="navsubitem text-white" href="<?= BASEURL; ?>/pkl/pemberkasan">Pemberkasan</a></li>
                                         <?php endif ?>
 
@@ -424,7 +425,7 @@
                                         <?php endif ?>
                                     </ul>
 
-                                    <?php if ($data['user']['role'] == 'admin' || $data['user']['hak_akses'] == '' || $data['user']['hak_akses'] == 'industri') : ?>
+                                    <?php if ($data['user']['role'] != 'guru' && $data['user']['hak_akses'] == '' || $data['user']['hak_akses'] == 'industri') : ?>
                                         <li class="nav-item">
                                             <a class="nav-link" href="<?= BASEURL; ?>/bkk/index">BKK</a>
                                         </li>
@@ -445,7 +446,7 @@
                                                     Kerja</a></li>
                                         <?php endif ?>
 
-                                        <?php if ($data['user']['role'] == 'admin' || $data['user']['hak_akses'] == '') : ?>
+                                        <?php if ($data['user']['role'] != 'guru' && $data['user']['hak_akses'] == '') : ?>
                                             <li><a class="navsubitem text-white" href="<?= BASEURL; ?>/bkk/peminatan">Peminatan</a></li>
                                             <li><a class="navsubitem text-white" href="<?= BASEURL; ?>/bkk/spw">SPW</a></li>
                                         <?php endif ?>
@@ -622,7 +623,9 @@
                                         <?php endif ?>
 
                                         <li class="nav-item"> <a class="nav-link spa-load" href="<?= BASEURL; ?>/peminjamanBarang">Peminjaman Barang</a></li>
+                                        <?php if ($data['user']['role'] == 'guru') : ?>
                                         <li class="nav-item"> <a class="nav-link spa-load" href="<?= BASEURL; ?>/pengajuanBarang">Pengajuan Barang</a></li>
+                                        <?php endif ?>
 
                                         <?php if ($data['user']['role'] == 'admin' && ($data['user']['hak_akses'] == 'all' || $data['user']['hak_akses'] == 'sarpras')) : ?>
                                             <li class="nav-item"> <a class="nav-link spa-load" href="<?= BASEURL; ?>/barangMasuk">Barang Masuk</a></li>
