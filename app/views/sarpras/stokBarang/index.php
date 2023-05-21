@@ -46,38 +46,13 @@
             </div>
 
             <div class="form-group">
+              <label for="exampleInputEmail1">Satuan</label>
+              <input type="text" class="form-control" id="satuan" name="satuan" placeholder="" required />
+            </div>
+
+            <div class="form-group">
               <label for="exampleInputEmail1">Stok</label>
               <input type="number" class="form-control" id="stok" name="stok" placeholder="" required />
-            </div>
-
-            <div class="form-group">
-              <label for="exampleInputEmail1">Harga Jual</label>
-              <div class="input-group">
-                <span class="input-group-text">Rp</span>
-                <input type="text" class="form-control" id="harga" name="harga" placeholder="10000" required />
-              </div>
-            </div>
-
-            <div class="form-group">
-              <label for="exampleInputEmail1">Kategori</label>
-              <select class="form-control" id="kategori" name="kategori" placeholder="" required>
-                <option value="Alat Kebersihan">Alat Kebersihan</option>
-                <option value="Alat Listrik">Alat Listrik</option>
-                <option value="Alat Praktek">Alat Praktek</option>
-                <option value="ATK">ATK</option>
-                <option value="Barang Praktik">Barang Praktik</option>
-                <option value="Barang Modal">Barang Modal</option>
-                <option value="Buku Agenda Tamu">Buku Agenda Tamu</option>
-                <option value="Komputer">Komputer</option>
-                <option value="Lain-lain">Lain-lain</option>
-                <option value="LAN">LAN</option>
-                <option value="Tukang">Tukang</option>
-              </select>
-            </div>
-
-            <div class="form-group">
-              <label for="exampleInputEmail1">UPC</label>
-              <input type="text" class="form-control" id="upc" name="upc" placeholder="" required />
             </div>
         </div>
         <div class="modal-footer">
@@ -143,7 +118,7 @@
                     </td>
                     <td>
                       <a href="<?= BASEURL; ?>/stokBarang/ubah/<?= $stok['id'] ?>" data-bs-toggle="modal"
-                        data-bs-target="#exampleModalLong" class="tampilModalUbah" data-id="<?= $stok['id']; ?>">
+                        data-bs-target="#exampleModalLong" class="hai" data-id="<?= $stok['id']; ?>">
                         <button class="button-arounder">
                           <span class="material-symbols-outlined"> edit </span>
                         </button>
@@ -178,40 +153,39 @@
 </script>
 
 <script>
-  $(function() {
+  $(function () {
     const BASEURL = window.location.href;
     console.log(BASEURL)
-    $('.tombolTambahData').on('click', function(){
-        $('formModalLabel').html('Tambah Data Stok Barang')
-        $('.modal-footer button[type=submit]').html('Tambah Data');
+    $('.tombolTambahData').on('click', function () {
+      $('formModalLabel').html('Tambah Data Stok Barang')
+      $('.modal-footer button[type=submit]').html('Tambah Data');
 
     });
 
-    $(".tampilModalUbah").click(function () {
-				$("#modal").addClass("edit");
-				$("#modalLabel").html("Ubah Data Stok Barang");
-				$(".modal-footer button[type=submit]").html("Ubah Data");
-				$(".modal-body form").attr("action", `${BASEURL}/ubah`);
+    $(".hai").click(function () {
+      $("#modal").addClass("edit");
+      $("#modalLabel").html("Ubah Data Stok Barang");
+      $(".modal-footer button[type=submit]").html("Ubah Data");
+      $(".modal-body form").attr("action", `${BASEURL}/ubah`);
 
-				const id = $(this).data("id");
-                console.log(id)
+      const id = $(this).data("id");
+      console.log(id)
 
-				$.ajax({
-					url: `${BASEURL}/getubah`,
-					data: { id: id },
-					method: "post",
-					dataType: "json",
-					success: function (data) {
-						$('#kode').val(data.kode);
-						$('#barang').val(data.barang);
-                        $('#stok').val(data.stok);
-                        $('#harga').val(data.harga);
-                        $('#kategori').val(data.kategori);
-                        $('#upc').val(data.upc);
-                        $('#id').val(data.id);
-                        console.log(data);
-					},
-				})
-            })
-});
+      $.ajax({
+        url: `${BASEURL}/getubah`,
+        data: { id: id },
+        method: "post",
+        dataType: "json",
+        success: function (data) {
+          $('#kode').val(data.kode);
+          $('#barang').val(data.barang);
+          $('#satuan').val(data.satuan);
+          $('#stok').val(data.stok);
+          $('#harga').val(data.harga);
+          $('#id').val(data.id);
+          console.log(data);
+        },
+      })
+    })
+  });
 </script>
