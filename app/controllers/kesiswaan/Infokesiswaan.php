@@ -17,7 +17,7 @@ class Infokesiswaan extends Controller
             $this->view('templates/header', $data);
             $this->view('kesiswaan/infokesiswaan/index', $data);
             $this->view('kesiswaan/infokesiswaan/form', $data);
-            $this->view('templates/footer');
+            $this->view('templates/footerwm');
         } else {
             header("Location: " . BASEURL);
             Flasher::setFlash('GAGAL', 'Anda Tidak Mempunyai Akses Untuk Menuju Halaman Tersebut', 'danger');
