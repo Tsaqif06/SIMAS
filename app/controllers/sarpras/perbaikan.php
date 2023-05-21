@@ -17,7 +17,7 @@ class perbaikan extends Controller
             } else {
                 $this->view('templates/header', $data);
                 $this->view('sarpras/perbaikan/index', $data);
-                $this->view('templates/footer');
+                $this->view('templates/footerwm');
             }
         } else if ($data['user']['hak_akses'] == '') {
             header("Location: " . BASEURL);

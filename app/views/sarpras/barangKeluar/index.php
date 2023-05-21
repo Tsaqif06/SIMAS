@@ -1,5 +1,3 @@
-<!-- <div class="main-panel"> -->
-</div>
 <div class="content-wrapper">
   <div class="row">
     <div class="col-md-12 grid-margin">
@@ -44,11 +42,6 @@
                 <label for="exampleInputEmail1">Nama Barang</label>
                 <input type="text" class="form-control" id="namabarang" name="namabarang" placeholder="" required />
               </div>
-
-              <!-- <div class="form-group">
-                <label for="formFile" class="form-label">Foto Barang</label>
-                <input class="form-control" type="file" id="foto" name="foto">
-              </div> -->
 
               <div class="form-group">
                 <label for="exampleInputEmail1">Spesifikasi</label>
@@ -177,14 +170,6 @@
   </div>
 </div>
 
-<!-- 
-<footer class="footer">
-  <div class="d-sm-flex justify-content-center justify-content-sm-between">
-    <span class="text-muted text-center text-sm-left d-block d-sm-inline-block">Copyright © 2021. Premium <a href="https://www.bootstrapdash.com/" target="_blank">Bootstrap admin template</a> from BootstrapDash. All rights reserved.</span>
-    <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center">Hand-crafted & made with <i class="ti-heart text-danger ml-1"></i></span>
-  </div>
-</footer> -->
-<!-- <script src="<?= BASEURL; ?>/js/keluarMapel.js"></script> -->
 <script>
   $(document).ready(function () {
     $('#print').DataTable({

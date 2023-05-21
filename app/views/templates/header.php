@@ -11,7 +11,6 @@
             font-weight: bold;
             border-radius: 10px;
             color: #4B49AC;
-            width: 50%;
         }
 
         .button-arounder:hover,
@@ -25,7 +24,6 @@
             border-bottom-right-radius: var(--radius);
             color: white;
             border-radius: 10px;
-            width: 50%;
         }
 
         a:hover {
@@ -585,22 +583,22 @@
                                 <div class="collapse" id="charts">
                                     <ul class="nav flex-column sub-menu">
                                         <li class="nav-item">
-                                            <a class="nav-link spa-load" href="<?= BASEURL; ?>/profilGuru">Profil Guru</a>
+                                            <a class="nav-link" href="<?= BASEURL; ?>/profilGuru">Profil Guru</a>
                                         </li>
                                         <li class="nav-item">
-                                            <a class="nav-link spa-load" href="<?= BASEURL; ?>/profilPegawai">Profil
+                                            <a class="nav-link" href="<?= BASEURL; ?>/profilPegawai">Profil
                                                 Pegawai</a>
                                         </li>
                                         <li class="nav-item">
-                                            <a class="nav-link spa-load" href="<?= BASEURL; ?>/strukturOrganisasi">Struktur
+                                            <a class="nav-link" href="<?= BASEURL; ?>/strukturOrganisasi">Struktur
                                                 Organisasi</a>
                                         </li>
                                         <li class="nav-item">
-                                            <a class="nav-link spa-load" href="<?= BASEURL; ?>/prestasiGuru">Prestasi
+                                            <a class="nav-link" href="<?= BASEURL; ?>/prestasiGuru">Prestasi
                                                 Guru</a>
                                         </li>
                                         <li class="nav-item">
-                                            <a class="nav-link spa-load" href="<?= BASEURL; ?>/galeriKegiatan">Galeri
+                                            <a class="nav-link" href="<?= BASEURL; ?>/galeriKegiatan">Galeri
                                                 Kegiatan</a>
                                         </li>
                                     </ul>
@@ -618,20 +616,20 @@
                                 <div class="collapse" id="tables">
                                     <ul class="nav flex-column sub-menu">
                                         <?php if ($data['user']['role'] == 'admin' && ($data['user']['hak_akses'] == 'all' || $data['user']['hak_akses'] == 'sarpras')) : ?>
-                                            <li class="nav-item"> <a class="nav-link spa-load" href="<?= BASEURL; ?>/fasilitas">Fasilitas</a></li>
+                                            <li class="nav-item"> <a class="nav-link" href="<?= BASEURL; ?>/fasilitas">Fasilitas</a></li>
                                         <?php endif ?>
 
-                                        <li class="nav-item"> <a class="nav-link spa-load" href="<?= BASEURL; ?>/peminjamanBarang">Peminjaman Barang</a></li>
-                                        <li class="nav-item"> <a class="nav-link spa-load" href="<?= BASEURL; ?>/pengajuanBarang">Pengajuan Barang</a></li>
+                                        <li class="nav-item"> <a class="nav-link" href="<?= BASEURL; ?>/peminjamanBarang">Peminjaman Barang</a></li>
+                                        <li class="nav-item"> <a class="nav-link" href="<?= BASEURL; ?>/pengajuanBarang">Pengajuan Barang</a></li>
 
                                         <?php if ($data['user']['role'] == 'admin' && ($data['user']['hak_akses'] == 'all' || $data['user']['hak_akses'] == 'sarpras')) : ?>
-                                            <li class="nav-item"> <a class="nav-link spa-load" href="<?= BASEURL; ?>/barangMasuk">Barang Masuk</a></li>
-                                            <li class="nav-item"> <a class="nav-link spa-load" href="<?= BASEURL; ?>/barangKeluar">Barang Keluar</a></li>
-                                            <li class="nav-item"><a class="nav-link spa-load" href="<?= BASEURL; ?>/barangAset">Stok Barang Aset</a></li>
-                                            <li class="nav-item"><a class="nav-link " href="<?= BASEURL; ?>/stokBarang">Stok
+                                            <li class="nav-item"> <a class="nav-link" href="<?= BASEURL; ?>/barangMasuk">Barang Masuk</a></li>
+                                            <li class="nav-item"> <a class="nav-link" href="<?= BASEURL; ?>/barangKeluar">Barang Keluar</a></li>
+                                            <li class="nav-item"><a class="nav-link" href="<?= BASEURL; ?>/barangAset">Stok Barang Aset</a></li>
+                                            <li class="nav-item"><a class="nav-link" href="<?= BASEURL; ?>/stokBarang">Stok
                                                     Barang</a></li>
-                                            <li class="nav-item"><a class="nav-link spa-load" href="<?= BASEURL; ?>/dataRuang">Data Ruang</a></li>
-                                            <li class="nav-item"><a class="nav-link spa-load" href="<?= BASEURL; ?>/perbaikan">Perbaikan</a></li>
+                                            <li class="nav-item"><a class="nav-link" href="<?= BASEURL; ?>/dataRuang">Data Ruang</a></li>
+                                            <li class="nav-item"><a class="nav-link" href="<?= BASEURL; ?>/perbaikan">Perbaikan</a></li>
                                         <?php endif ?>
                                     </ul>
                                     <ul>
