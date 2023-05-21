@@ -171,7 +171,6 @@ class PKL extends Controller
     {
         if ($this->model("$this->model_name", 'pkl_model')->tambahDataNilai($_POST) > 0) {
             Flasher::setFlash('berhasil', 'ditambahkan', 'success');
-            exit;
         } else {
             Flasher::setFlash('gagal', 'ditambahkan', 'danger');
         }
@@ -227,6 +226,22 @@ class PKL extends Controller
             $this->view('templates/humas/header', $data);
             $this->view('humas/pkl/pemberkasan/form', $data);
             $this->view('templates/humas/footer');
+        }
+    }
+
+    public function raportpemberkasan($id){
+        $data['judul'] = 'Admin - PKL';
+        $data['user'] = $this->user;
+        $data['siswa'] = $this->model("$this->model_name", 'PKL_model')->getPemberkasanById($id);
+        $akses = ['all', 'humas', 'kabeng'];
+        if (in_array($data['user']['hak_akses'], $akses)) {
+            $this->view('templates/humas/header', $data);
+            $this->view('humas/pkl/pemberkasan/raporpemberkasan', $data);
+            $this->view('templates/humas/footer');
+        }
+        else if ($data['user']['hak_akses'] == '') {
+            header("Location: " . BASEURL);
+            Flasher::setFlash('GAGAL', 'Anda Tidak Mempunyai Akses Untuk Menuju Halaman Tersebut', 'danger');
         }
     }
 

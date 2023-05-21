@@ -38,49 +38,40 @@
     <title><?= $data['judul'] ?></title>
     <!-- plugins:css -->
     <script src="js/jquery.min.js"></script>
-    <link rel="stylesheet" href="../css/bootstrap.css">
-    <link rel="stylesheet" href="../vendors/feather/feather.css">
-    <link rel="stylesheet" href="../vendors/ti-icons/css/themify-icons.css">
-    <link rel="stylesheet" href="../vendors/css/vendor.bundle.base.css">
-    <link rel="stylesheet" href="../vendors/mdi/css/materialdesignicons.min.css">
-    <link rel="stylesheet" href="../vendors/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="<?= BASEURL ?>/css/bootstrap.css">
+    <link rel="stylesheet" href="<?= BASEURL ?>/vendors/feather/feather.css">
+    <link rel="stylesheet" href="<?= BASEURL ?>/vendors/ti-icons/css/themify-icons.css">
+    <link rel="stylesheet" href="<?= BASEURL ?>/vendors/css/vendor.bundle.base.css">
+    <link rel="stylesheet" href="<?= BASEURL ?>/vendors/mdi/css/materialdesignicons.min.css">
+    <link rel="stylesheet" href="<?= BASEURL ?>/vendors/font-awesome/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/cd-themify-icons/index.min.css">
-    <link rel="stylesheet" type="text/css" href="../js/select.dataTables.min.css">
+    <link rel="stylesheet" type="text/css" href="<?= BASEURL ?>/js/select.dataTables.min.css">
     <!-- endinject -->
     <!-- Plugin css for this page -->
-    <link rel="stylesheet" href="../vendors/datatables.net-bs4/dataTables.bootstrap4.css">
+    <link rel="stylesheet" href="<?= BASEURL ?>/vendors/datatables.net-bs4/dataTables.bootstrap4.css">
     <link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/jquery.dataTables.css" />
     <link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/dataTables.bootstrap5.min.css">
-    <link rel="stylesheet"
-        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
-    <script src="https://code.jquery.com/jquery-3.6.4.js"
-        integrity="sha256-a9jBBRygX1Bh5lt8GZjXDzyOB+bWve9EiO7tROUtj/E=" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <script src="https://code.jquery.com/jquery-3.6.4.js" integrity="sha256-a9jBBRygX1Bh5lt8GZjXDzyOB+bWve9EiO7tROUtj/E=" crossorigin="anonymous"></script>
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.13.4/css/jquery.dataTables.min.css">
-    <link rel="stylesheet" type="text/css"
-        href="https://cdn.datatables.net/buttons/2.3.6/css/buttons.dataTables.min.css">
-    <link rel="stylesheet"
-        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
-    <link rel="stylesheet"
-        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
-    <link rel="stylesheet"
-        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/buttons/2.3.6/css/buttons.dataTables.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
     <!-- Editor -->
-    <link href="https://editor.datatables.net/extensions/Editor/css/editor.dataTables.min.css" rel="stylesheet"
-        type="text/css" />
+    <link href="https://editor.datatables.net/extensions/Editor/css/editor.dataTables.min.css" rel="stylesheet" type="text/css" />
     <script src="https://editor.datatables.net/extensions/Editor/js/dataTables.editor.min.js"></script>
     <!-- Buttons -->
-    <link
-        href="https://nightly.datatables.net/buttons/css/buttons.dataTables.css?_=c6b24f8a56e04fcee6105a02f4027462.css"
-        rel="stylesheet" type="text/css" />
+    <link href="https://nightly.datatables.net/buttons/css/buttons.dataTables.css?_=c6b24f8a56e04fcee6105a02f4027462.css" rel="stylesheet" type="text/css" />
     <script src="https://nightly.datatables.net/buttons/js/dataTables.buttons.js?_=c6b24f8a56e04fcee6105a02f4027462">
     </script>
     <!-- End plugin css for this page -->
     <!-- inject:css -->
-    <link rel="stylesheet" href="../css/style.css">
-    <link rel="stylesheet" href="../css/scroll.css">
-    <link rel="stylesheet" href="../css/vertical-layout-light/style.css">
+    <link rel="stylesheet" href="<?= BASEURL ?>/css/style.css">
+    <link rel="stylesheet" href="<?= BASEURL ?>/css/scroll.css">
+    <link rel="stylesheet" href="<?= BASEURL ?>/css/vertical-layout-light/style.css">
     <!-- endinject -->
-    <link rel="shortcut icon" href="../images/favicon.png" />
+    <link rel="shortcut icon" href="<?= BASEURL ?>/images/logosaja.png" />
 </head>
 
 <body>
