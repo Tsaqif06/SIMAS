@@ -163,67 +163,55 @@
         </div>
       </div>
     </div>
+  </div>
+</div>
 
-    <script>
-      $(document).ready(function () {
-        $('#print').DataTable({
-          dom: 'Bfrtip',
-          buttons: [
-            'copy', 'excel', 'pdf', 'print'
-          ]
-        });
-      });
-    </script>
-    <script>
-      $(function () {
-        'use strict';
-        var stokBarangKategori = {
-          labels: [<?php while ($row = mysqli_fetch_array($kategori)) {
-            echo '"' . $row['kategori'] . '",';
-          } ?>],
-          datasets: [{
-            label: '# of Votes',
-            data: [<?php while ($row = mysqli_fetch_array($jumlah)) {
-              echo '"' . $row['jumlah'] . '",';
-            } ?>],
-            backgroundColor: [
-              'rgba(255, 99, 132, 0.2)',
-              'rgba(54, 162, 235, 0.2)',
-              'rgba(255, 206, 86, 0.2)',
-              'rgba(75, 192, 192, 0.2)',
-              'rgba(153, 102, 255, 0.2)',
-              'rgba(255, 159, 64, 0.2)'
-            ],
-            borderColor: [
-              'rgba(255,99,132,1)',
-              'rgba(54, 162, 235, 1)',
-              'rgba(255, 206, 86, 1)',
-              'rgba(75, 192, 192, 1)',
-              'rgba(153, 102, 255, 1)',
-              'rgba(255, 159, 64, 1)'
-            ],
-            borderWidth: 1,
-            fill: false
-          }]
-        };
+<script>
+  $(document).ready(function () {
+    $('#print').DataTable({
+      dom: 'Bfrtip',
+      buttons: [
+        'copy', 'excel', 'pdf', 'print'
+      ]
+    });
+  });
+</script>
 
-        // Get context with jQuery - using jQuery's .get() method.
-        if ($("#kategoriStokBarang").length) {
-          var barChartCanvas = $("#kategoriStokBarang").get(0).getContext("2d");
-          // This will get the first returned node in the jQuery collection.
-          var barChart = new Chart(barChartCanvas, {
-            type: 'bar',
-            data: stokBarangKategori,
-            options: {
-              scales: {
-                yAxes: [{
-                  ticks: {
-                    beginAtZero: true
-                  }
-                }]
-              }
-            }
-          });
-        }
-      });
-    </script>
+<script>
+  $(function() {
+    const BASEURL = window.location.href;
+    console.log(BASEURL)
+    $('.tombolTambahData').on('click', function(){
+        $('formModalLabel').html('Tambah Data Stok Barang')
+        $('.modal-footer button[type=submit]').html('Tambah Data');
+
+    });
+
+    $(".tampilModalUbah").click(function () {
+				$("#modal").addClass("edit");
+				$("#modalLabel").html("Ubah Data Stok Barang");
+				$(".modal-footer button[type=submit]").html("Ubah Data");
+				$(".modal-body form").attr("action", `${BASEURL}/ubah`);
+
+				const id = $(this).data("id");
+                console.log(id)
+
+				$.ajax({
+					url: `${BASEURL}/getubah`,
+					data: { id: id },
+					method: "post",
+					dataType: "json",
+					success: function (data) {
+						$('#kode').val(data.kode);
+						$('#barang').val(data.barang);
+                        $('#stok').val(data.stok);
+                        $('#harga').val(data.harga);
+                        $('#kategori').val(data.kategori);
+                        $('#upc').val(data.upc);
+                        $('#id').val(data.id);
+                        console.log(data);
+					},
+				})
+            })
+});
+</script>

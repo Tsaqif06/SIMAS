@@ -9,11 +9,13 @@
       </div>
     </div>
   </div>
+
   <div class="row">
     <div class="col-lg-6">
       <?php Flasher::flash(); ?>
     </div>
   </div>
+
   <div class="row">
     <div class="col">
       <a class="btn btn-primary " role="button" data-toggle="modal" data-target="#exampleModalLong">Tambah Data Barang
@@ -24,84 +26,7 @@
       </button>
     </div>
   </div>
-  <div id="exampleModalLong" class="modal fade" role="dialog" data-backdrop="static">
-    <div class="modal-dialog">
-      <!-- Modal content-->
-      <div class="modal-content">
-        <div class="modal-header">
-          <h3 id="modalLabel"> Tambah Data Barang Aset</h3>
-          <button type="button" class="close" data-dismiss="modal">&times;</button>
-        </div>
-        <div class="modal-body">
-          <form action="<?= BASEURL; ?>/barangAset/tambah" method="post">
-            <input type="hidden" name="id" id="id">
 
-            <div class="form-group">
-              <label for="exampleInputEmail1">Nama Barang</label>
-              <input type="text" class="form-control" id="namabarang" name="namabarang" placeholder="" required />
-            </div>
-
-            <div class="form-group">
-              <label for="exampleInputEmail1">NO. Aset</label>
-              <input type="text" class="form-control" id="nomor" name="nomor" placeholder="" required />
-            </div>
-
-            <div class="form-group">
-              <label for="exampleInputEmail1">Jumlah</label>
-              <input type="number" class="form-control" id="jumlah" name="jumlah" placeholder="" required />
-            </div>
-
-            <div class="form-group">
-              <label for="exampleInputEmail1">Sumber Dana</label>
-              <input type="text" class="form-control" id="sumberdana" name="sumberdana" placeholder="" required />
-            </div>
-
-            <div class="form-group">
-              <label for="exampleInputEmail1">Tempat</label>
-              <input type="text" class="form-control" id="tempat" name="tempat" placeholder="" required />
-            </div>
-
-            <div class="form-group">
-              <label for="exampleInputEmail1">Waktu Penyerahan</label>
-              <input type="date" class="form-control" id="waktu" name="waktu" placeholder="" required />
-            </div>
-
-            <div class="form-group">
-              <label for="exampleInputEmail1">Penerima</label>
-              <input type="text" class="form-control" id="penerima" name="penerima" placeholder="" required />
-            </div>
-
-        </div>
-        <div class="modal-footer">
-          <button type="submit" class="btn btn-primary">Tambah Data</button>
-          <button type="button" class="btn btn-default" data-bs-dismiss="modal" aria-label="Close">Tutup</button>
-        </div>
-        </form>
-      </div>
-    </div>
-  </div>
-  <div class="modal fade" id="modalImport" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h1 class="modal-title fs-5" id="modalLabel">Import Data Barang Aset</h1>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body">
-          <form action="<?= BASEURL ?>/barangAset/importData" method="post" enctype="multipart/form-data">
-            <div class="mb-3">
-              <label for="file">Pilih file Excel (.xlsx)</label>
-              <input type="file" name="file" id="file">
-            </div>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary batal" data-bs-dismiss="modal">Batal</button>
-          <button type="submit" class="btn btn-primary">Tambah Data</button>
-        </div>
-        </form>
-      </div>
-    </div>
-  </div>
   <div class="row py-10">
     <div class="col-md-12 grid-margin stretch-card">
       <div class="card rounded shadow border-0" style="width: fit-content;">
@@ -176,21 +101,86 @@
 </div>
 </div>
 
+<div id="exampleModalLong" class="modal fade" role="dialog" data-backdrop="static">
+  <div class="modal-dialog">
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3 id="modalLabel"> Tambah Data Barang Aset</h3>
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+      </div>
+      <div class="modal-body">
+        <form action="<?= BASEURL; ?>/barangAset/tambah" method="post">
+          <input type="hidden" name="id" id="id">
 
-<!-- tabel -->
-
-<!-- content-wrapper ends -->
-<!-- partial:../../partials/_footer.html -->
-<!-- <footer class="footer">
-          <div class="d-sm-flex justify-content-center justify-content-sm-between">
-            <span class="text-muted text-center text-sm-left d-block d-sm-inline-block">Copyright © 2021.  Premium <a href="https://www.bootstrapdash.com/" target="_blank">Bootstrap admin template</a> from BootstrapDash. All rights reserved.</span>
-            <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center">Hand-crafted & made with <i class="ti-heart text-danger ml-1"></i></span>
+          <div class="form-group">
+            <label for="exampleInputEmail1">Nama Barang</label>
+            <input type="text" class="form-control" id="namabarang" name="namabarang" placeholder="" required />
           </div>
-        </footer> -->
-<!-- partial -->
+
+          <div class="form-group">
+            <label for="exampleInputEmail1">NO. Aset</label>
+            <input type="text" class="form-control" id="nomor" name="nomor" placeholder="" required />
+          </div>
+
+          <div class="form-group">
+            <label for="exampleInputEmail1">Jumlah</label>
+            <input type="number" class="form-control" id="jumlah" name="jumlah" placeholder="" required />
+          </div>
+
+          <div class="form-group">
+            <label for="exampleInputEmail1">Sumber Dana</label>
+            <input type="text" class="form-control" id="sumberdana" name="sumberdana" placeholder="" required />
+          </div>
+
+          <div class="form-group">
+            <label for="exampleInputEmail1">Tempat</label>
+            <input type="text" class="form-control" id="tempat" name="tempat" placeholder="" required />
+          </div>
+
+          <div class="form-group">
+            <label for="exampleInputEmail1">Waktu Penyerahan</label>
+            <input type="date" class="form-control" id="waktu" name="waktu" placeholder="" required />
+          </div>
+
+          <div class="form-group">
+            <label for="exampleInputEmail1">Penerima</label>
+            <input type="text" class="form-control" id="penerima" name="penerima" placeholder="" required />
+          </div>
+
+      </div>
+      <div class="modal-footer">
+        <button type="submit" class="btn btn-primary">Tambah Data</button>
+        <button type="button" class="btn btn-default" data-bs-dismiss="modal" aria-label="Close">Tutup</button>
+      </div>
+      </form>
+    </div>
+  </div>
 </div>
 
-<!-- <script src="<?= BASEURL; ?>/js/barangAset.js"></script> -->
+<div class="modal fade" id="modalImport" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="modalLabel">Import Data Barang Aset</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form action="<?= BASEURL ?>/barangAset/importData" method="post" enctype="multipart/form-data">
+          <div class="mb-3">
+            <label for="file">Pilih file Excel (.xlsx)</label>
+            <input type="file" name="file" id="file">
+          </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary batal" data-bs-dismiss="modal">Batal</button>
+        <button type="submit" class="btn btn-primary">Tambah Data</button>
+      </div>
+      </form>
+    </div>
+  </div>
+</div>
+
 <script>
   $(document).ready(function () {
     $('#demo').DataTable();

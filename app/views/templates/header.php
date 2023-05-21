@@ -11,7 +11,6 @@
             font-weight: bold;
             border-radius: 10px;
             color: #4B49AC;
-            width: 50%;
         }
 
         .button-arounder:hover,
@@ -25,7 +24,6 @@
             border-bottom-right-radius: var(--radius);
             color: white;
             border-radius: 10px;
-            width: 50%;
         }
 
         a:hover {
@@ -628,7 +626,7 @@
                                             <li class="nav-item"> <a class="nav-link spa-load" href="<?= BASEURL; ?>/barangMasuk">Barang Masuk</a></li>
                                             <li class="nav-item"> <a class="nav-link spa-load" href="<?= BASEURL; ?>/barangKeluar">Barang Keluar</a></li>
                                             <li class="nav-item"><a class="nav-link spa-load" href="<?= BASEURL; ?>/barangAset">Stok Barang Aset</a></li>
-                                            <li class="nav-item"><a class="nav-link " href="<?= BASEURL; ?>/stokBarang">Stok
+                                            <li class="nav-item"><a class="nav-link spa-load" href="<?= BASEURL; ?>/stokBarang">Stok
                                                     Barang</a></li>
                                             <li class="nav-item"><a class="nav-link spa-load" href="<?= BASEURL; ?>/dataRuang">Data Ruang</a></li>
                                             <li class="nav-item"><a class="nav-link spa-load" href="<?= BASEURL; ?>/perbaikan">Perbaikan</a></li>
