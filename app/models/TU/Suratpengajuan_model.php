@@ -76,14 +76,14 @@ class Suratpengajuan_model
 
     public function getReqData()
     {
-        $this->db->query("SELECT * FROM {$this->table} WHERE `status` = 0");
+        $this->db->query("SELECT * FROM {$this->table} WHERE `read_status` = 0");
         $this->db->execute();
         return $this->db->rowCount();
     }
 
     public function readReqData()
     {
-        $this->db->query("UPDATE {$this->table} SET `status` = 1 WHERE `status` = 0");
+        $this->db->query("UPDATE {$this->table} SET `read_status` = 1 WHERE `read_status` = 0");
         $this->db->execute();
         return $this->db->rowCount();
     }

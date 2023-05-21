@@ -13,6 +13,12 @@
             <form action="<?= BASEURL; ?>/peminjamanBarang/tambah" method="POST" enctype="multipart/form-data">
                 <input type="hidden" name="id" id="id">
                 <div class="form-group">
+                    <label for="tanggal">Tanggal Peminjaman</label>
+                    <input type="date" class="form-control" id="tanggal"
+                        name="tanggal" required>
+                </div>
+
+                <div class="form-group">
                     <label for="nama">Nama Lengkap</label>
                     <input type="text" class="form-control" id="nama" name="nama"
                         placeholder="Nama Lengkap" required>
@@ -37,21 +43,19 @@
                     <input type="number" class="form-control" id="jumlahbarang"
                         name="jumlahbarang" required>
                 </div>
-                <div class="form-group">
-                    <label for="tanggal">Tanggal Peminjaman</label>
-                    <input type="date" class="form-control" id="tanggal"
-                        name="tanggal" required>
-                </div>
+                
                 <div class="form-group">
                     <label for="tglpengembalian">Tanggal Pengembalian</label>
                     <input type="date" class="form-control" id="tglpengembalian"
                         name="tglpengembalian" required>
                 </div>
+                
                 <div class="form-group">
                     <label for="keterangan">Keterangan</label>
                     <input type="text" class="form-control" id="keterangan"
                         name="keterangan" required>
                 </div>
+
                 <div class="col-lg-6">
                         <?php Flasher::flash(); ?>
                     </div>

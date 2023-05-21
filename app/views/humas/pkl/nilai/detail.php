@@ -150,13 +150,6 @@ location.replace("http://localhost/SIMAS/public/NotFound");
                                     <label for="nilai" class="col-form-label">Nilai</label>
                                     <input type="text" class="form-control" id="nilaisiswa" name="nilaisiswa">
                                 </div>
-                                <div class="form-group">
-                                    <label for="ketnilai">Keterangan Nilai</label>
-                                    <select class="form-control" id="keterangannilai" name="keterangannilai">
-                                        <option value="Lulus">Lulus</option>
-                                        <option value="Belum Lulus">Belum Lulus</option>
-                                    </select>
-                                </div>
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-outline-secondary btn-fw"

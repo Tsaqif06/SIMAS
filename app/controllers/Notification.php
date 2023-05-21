@@ -5,9 +5,25 @@ class Notification extends Controller {
   public function index() {
     $data['user'] = $this->user;
     
-    if ($_POST['method'] == 'get_pengajuan') {
+    if (isset($_POST['get_notification'])) {
       if ($data['user']['role'] == 'admin') {
-        echo json_encode($this->model('TU', 'Suratpengajuan_model')->getReqData());
+        $surat = $this->model('TU', 'Suratpengajuan_model')->getReqData();
+        $barang = $this->model("Sarpras", 'peminjamanBarang_models')->getReqData();
+        echo json_encode([
+          [
+            $surat,
+            "Pengajuan Surat Baru",
+            "{$surat} surat sedang diajukan", 
+            "http://localhost/SIMAS/public/suratpengajuan",
+            ["bg-info", "ti-email"]],
+          [
+            $barang,
+            "Pengajuan Barang Baru",
+            "{$barang} barang sedang diajukan",
+            "http://localhost/SIMAS/public/peminjamanBarang",
+            ["bg-warning", "ti-archive"]
+          ]
+        ]);
       } else {
         header("Location: " . BASEURL . "/Notfound");
       }

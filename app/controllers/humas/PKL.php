@@ -171,7 +171,6 @@ class PKL extends Controller
     {
         if ($this->model("$this->model_name", 'pkl_model')->tambahDataNilai($_POST) > 0) {
             Flasher::setFlash('berhasil', 'ditambahkan', 'success');
-            exit;
         } else {
             Flasher::setFlash('gagal', 'ditambahkan', 'danger');
         }

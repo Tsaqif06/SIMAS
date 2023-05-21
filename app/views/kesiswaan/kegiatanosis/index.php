@@ -197,7 +197,7 @@
       <div class="modal-content">
         <div class="modal-header">
           <h3 id="modalLabel"> Tambah Data </h3>
-          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <button type="button" class="close" data-bs-dismiss="modal">&times;</button>
         </div>
         <div class="modal-body">
           <form enctype="multipart/form-data" action="<?= BASEURL; ?>/kegiatanosis/tambahData" method="post">
