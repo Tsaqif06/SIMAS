@@ -145,17 +145,6 @@
 
 <script>
   $(document).ready(function () {
-    $('#print').DataTable({
-      dom: 'Bfrtip',
-      buttons: [
-        'copy', 'excel', 'pdf', 'print'
-      ]
-    });
-  });
-</script>
-
-<script>
-  $(document).ready(function () {
     const BASEURL = window.location.href;
     console.log(BASEURL)
     $('.tombolTambahData').on('click', function () {
@@ -195,6 +184,13 @@
           console.log(data);
         },
       })
-    })
+    });
+
+    $('#print').DataTable({
+      dom: 'Bfrtip',
+      buttons: [
+        'copy', 'excel', 'pdf', 'print'
+      ]
+    });
   });
 </script>
