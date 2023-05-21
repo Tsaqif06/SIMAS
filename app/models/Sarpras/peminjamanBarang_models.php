@@ -14,7 +14,7 @@ class peminjamanBarang_models
         'nama',
         'kelas',
         'namabarang',
-        'jangkawaktu',
+        'jumlahbarang',
         'tglpengembalian',
         'keterangan'
     ];
@@ -86,7 +86,7 @@ class peminjamanBarang_models
     {
         $query = "INSERT INTO peminjaman
                     VALUES
-                  (null, :uuid, :tanggal, :nama, :kelas, :namabarang, :jangkawaktu, :tglpengembalian, :keterangan, '', CURRENT_TIMESTAMP, :created_by, null, '', null, '', null, '', 0, 0, DEFAULT)";
+                  (null, :uuid, :tanggal, :nama, :kelas, :namabarang, :jumlahbarang, :tglpengembalian, :keterangan, '', CURRENT_TIMESTAMP, :created_by, null, '', null, '', null, '', 0, 0, DEFAULT)";
 
         $this->db->query($query);
         $this->db->bind('uuid', Uuid::uuid4()->toString());
@@ -127,7 +127,7 @@ class peminjamanBarang_models
                     kelas = :kelas,
                     namabarang = :namabarang,
                     tanggal = :tanggal,
-                    jangkawaktu = :jangkawaktu,
+                    jumlahbarang = :jumlahbarang,
                     tglpengembalian = :tglpengembalian,
                     keterangan = :keterangan,
                     modified_at = CURRENT_TIMESTAMP,

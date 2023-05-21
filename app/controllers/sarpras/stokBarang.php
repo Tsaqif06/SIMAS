@@ -12,16 +12,16 @@ class stokBarang extends Controller
         $data['stok'] = $this->model("$this->model_name", 'stokBarang_models')->getAllExistData();
 
         if (in_array($data['user']['hak_akses'], $akses)) {
-            $this->view('templates/header', $data);
+            if (isset($_POST["contentOnly"])) {
                 $this->view('sarpras/stokBarang/index', $data);
-                $this->view('templates/footer');
+            } else {
+                $this->view('templates/header', $data);
+                $this->view('sarpras/stokBarang/index', $data);
+                $this->view('templates/footerwm');
+            }
         } else if ($data['user']['hak_akses'] == '') {
             header("Location: " . BASEURL);
             Flasher::setFlash('GAGAL', 'Anda Tidak Mempunyai Akses Untuk Menuju Halaman Tersebut', 'danger');
-        } else {
-            $this->view('templates/header', $data);
-                $this->view('sarpras/stokBarang/index', $data);
-                $this->view('templates/footer');
         }
     }
     

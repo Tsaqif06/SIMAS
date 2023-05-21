@@ -1,33 +1,3 @@
-<style>
-  .button-arounder {
-    background: white;
-    font-size: 4px;
-    border: solid 2px #4B49AC;
-    padding: .375em 1.125em;
-    font-weight: bold;
-    border-radius: 10px;
-    color: #4B49AC;
-    // width: 50%;
-  }
-  
-  .button-arounder:hover,
-  .button-arounder:focus {
-    box-shadow: 0 4px 8px hsla(190deg, 15%, 5%, .2);
-    transform: translateY(-4px);
-    background:#4B49AC;
-    border-top-left-radius: var(--radius);
-    border-top-right-radius: var(--radius);
-    border-bottom-left-radius: var(--radius);
-    border-bottom-right-radius: var(--radius);
-    color:white;
-    border-radius: 10px;
-    // width: 50%;
-  }
-  a:hover {
-    text-decoration: none;
-  }
-</style>
-<!-- <div class="main-panel"> -->
 <div class="content-wrapper">
   <div class="row">
     <div class="col-md-12 grid-margin">
@@ -150,7 +120,7 @@
                   <tr>
                     <td><?= $i++; ?></td>
                     <td><?= $masuk['tgl'] ?></td>
-                    <td><img src="<?= BASEURL ?>/images/datafoto/<?= $masuk['foto'] ?>" style="border-radius: 0px; width: 100%; height: auto;"></td>
+                    <td width="175px"><img src="<?= BASEURL ?>/images/datafoto/<?= $masuk['foto'] ?>" style="border-radius: 0px; width: 100%; height: auto;"></td>
                     <td><?= $masuk['uraian'] ?></td>
                     <td><?= $masuk['jumlah'] ?></td>
                     <td><?= $masuk['satuan'] ?></td>

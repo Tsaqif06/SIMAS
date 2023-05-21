@@ -110,13 +110,13 @@
                   <table id="print" id="table" class="table table-striped table-bordered">
                     <thead>
                       <tr>
-                        <th>#</th>
+                        <th>No</th>
                         <th>Nama</th>
                         <th>Kelas</th>
                         <th>Nama Barang</th>
+                        <th>Jumlah Barang</th>
                         <th>Tanggal Pinjam</th>
                         <th>Tanggal Pengembalian</th>
-                        <th>Jangka Waktu</th>
                         <th>Keterangan</th>
                         <th>Aksi</th>
                       </tr>
@@ -129,9 +129,9 @@
                       <td><?=$peminjaman['nama']?></td>
                       <td><?=$peminjaman['kelas']?></td>
                       <td><?=$peminjaman['namabarang']?></td>
+                      <td><?=$peminjaman['jumlahbarang']?></td>
                       <td><?=$peminjaman['tanggal']?></td>
                       <td><?=$peminjaman['tglpengembalian']?></td>
-                      <td><?=$peminjaman['jangkawaktu']?></td>
                       <td><?=$peminjaman['keterangan']?></td>
                       <td>
                         <a href="<?= BASEURL;?>/peminjamanBarang/ubah/<?=$peminjaman['id']?>" data-bs-toggle="modal" data-bs-target="#exampleModalLong" class="tampilModalUbah" data-id="<?= $peminjaman['id'];?>">
