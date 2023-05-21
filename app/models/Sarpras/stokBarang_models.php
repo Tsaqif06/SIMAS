@@ -18,10 +18,8 @@ class stokBarang_models
     private $fields = [
         'kode',
         'barang',
-        'stok',
-        'harga',
-        'kategori',
-        'upc'
+        'satuan',
+        'stok'
     ];
     private $host;
     private $user;
@@ -96,7 +94,7 @@ class stokBarang_models
     {
         $query = "INSERT INTO stok_barang
                     VALUES
-                  (null, :uuid, :kode, :barang, :stok, :harga, :kategori, :upc, '', CURRENT_TIMESTAMP, :created_by, null, '', null, '', null, '', 0, 0, DEFAULT)";
+                  (null, :uuid, :kode, :barang, :satuan, :stok, '', CURRENT_TIMESTAMP, :created_by, null, '', null, '', null, '', 0, 0, DEFAULT)";
 
         $this->db->query($query);
         $this->db->bind('uuid', Uuid::uuid4()->toString());
@@ -119,6 +117,7 @@ class stokBarang_models
                 deleted_at = CURRENT_TIMESTAMP,
                 deleted_by = :deleted_by,
                 is_deleted = 1,
+                status = 0,
                 is_restored = 0
               WHERE id = :id"
         );
@@ -136,10 +135,8 @@ class stokBarang_models
         $query = "UPDATE stok_barang SET
                     kode = :kode,
                     barang = :barang,
+                    satuan = :satuan,
                     stok = :stok,
-                    harga = :harga,
-                    kategori = :kategori,
-                    upc = :upc,
                     modified_at = CURRENT_TIMESTAMP,
                     modified_by = :modified_by
                 WHERE id = :id";

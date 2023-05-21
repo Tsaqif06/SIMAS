@@ -9,23 +9,19 @@ class peminjamanBarang extends Controller
         $data['user'] = $this->user;
         $akses = ['all', 'sarpras'];
         $data['peminjaman'] = $this->model("$this->model_name", 'peminjamanBarang_models')->getAllExistData();
+        $data['stokBarang'] = $this->model("$this->model_name", 'stokBarang_models')->getAllExistData();
+
+        // echo '<pre>';
+        // print_r($data['stokBarang']); die;
 
         if (in_array($data['user']['hak_akses'], $akses)) {
-            if (isset($_POST["contentOnly"])) {
-                $this->view('sarpras/peminjamanBarang/index', $data);
-            } else {
-                $this->view('templates/header', $data);
-                $this->view('sarpras/peminjamanBarang/index', $data);
-                $this->view('templates/footerwm');
-            }
+            $this->view('templates/header', $data);
+            $this->view('sarpras/peminjamanBarang/index', $data);
+            $this->view('templates/footerwm');
         } else if ($data['user']['hak_akses'] == '') {
-            if (isset($_POST["contentOnly"])) {
-                $this->view('sarpras/peminjamanBarang/form', $data);
-            } else {
-                $this->view('templates/header', $data);
-                $this->view('sarpras/peminjamanBarang/form', $data);
-                $this->view('templates/footerwm');
-            }
+            $this->view('templates/header', $data);
+            $this->view('sarpras/peminjamanBarang/form', $data);
+            $this->view('templates/footerwm');
         }
     }
 

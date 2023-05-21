@@ -22,11 +22,16 @@
                     <input type="text" class="form-control" id="kelas" name="kelas"
                         placeholder="Kelas" required>
                 </div>
+
                 <div class="form-group">
                     <label for="namabarang">Nama Barang</label>
-                    <input type="text" class="form-control" id="namabarang"
-                        name="namabarang" required>
+                    <select class="form-control" id="namabarang" name="namabarang" required>
+                        <?php foreach ($data['stokBarang'] as $namaBarang) : ?>
+                            <option value="<?= $namaBarang['barang'] ?>"><?= $namaBarang['barang'] ?></option>
+                        <?php endforeach ?>
+                    </select>
                 </div>
+
                 <div class="form-group">
                     <label for="jumlahbarang">Jumlah Barang</label>
                     <input type="number" class="form-control" id="jumlahbarang"

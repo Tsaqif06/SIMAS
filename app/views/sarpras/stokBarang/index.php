@@ -16,7 +16,7 @@
   </div>
   <div class="row">
     <div class="col">
-      <a class="btn btn-primary" role="button" data-toggle="modal" data-target="#exampleModalLong">ISI FORM
+      <a class="btn btn-primary tombolTambahData" role="button" data-toggle="modal" data-target="#modal">ISI FORM
         PENGAJUAN</a>
       <button type="button" class="btn btn-primary my-3 mx-3 tampilModalImport" data-url="<?= BASEURL ?>/stokBarang"
         data-bs-toggle="modal" data-bs-target="#modalImport">
@@ -24,7 +24,8 @@
       </button>
     </div>
   </div>
-  <div id="exampleModalLong" class="modal fade" role="dialog" data-backdrop="static">
+
+  <div id="modal" class="modal fade" role="dialog" data-backdrop="static">
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
@@ -46,48 +47,24 @@
             </div>
 
             <div class="form-group">
+              <label for="exampleInputEmail1">Satuan</label>
+              <input type="text" class="form-control" id="satuan" name="satuan" placeholder="" required />
+            </div>
+
+            <div class="form-group">
               <label for="exampleInputEmail1">Stok</label>
               <input type="number" class="form-control" id="stok" name="stok" placeholder="" required />
-            </div>
-
-            <div class="form-group">
-              <label for="exampleInputEmail1">Harga Jual</label>
-              <div class="input-group">
-                <span class="input-group-text">Rp</span>
-                <input type="text" class="form-control" id="harga" name="harga" placeholder="10000" required />
-              </div>
-            </div>
-
-            <div class="form-group">
-              <label for="exampleInputEmail1">Kategori</label>
-              <select class="form-control" id="kategori" name="kategori" placeholder="" required>
-                <option value="Alat Kebersihan">Alat Kebersihan</option>
-                <option value="Alat Listrik">Alat Listrik</option>
-                <option value="Alat Praktek">Alat Praktek</option>
-                <option value="ATK">ATK</option>
-                <option value="Barang Praktik">Barang Praktik</option>
-                <option value="Barang Modal">Barang Modal</option>
-                <option value="Buku Agenda Tamu">Buku Agenda Tamu</option>
-                <option value="Komputer">Komputer</option>
-                <option value="Lain-lain">Lain-lain</option>
-                <option value="LAN">LAN</option>
-                <option value="Tukang">Tukang</option>
-              </select>
-            </div>
-
-            <div class="form-group">
-              <label for="exampleInputEmail1">UPC</label>
-              <input type="text" class="form-control" id="upc" name="upc" placeholder="" required />
             </div>
         </div>
         <div class="modal-footer">
           <button type="submit" class="btn btn-primary">Tambah Data</button>
-          <button type="button" class="btn btn-default" data-bs-dismiss="modal" aria-label="Close">Tutup</button>
+          <button type="button" class="btn btn-default" data-dismiss="modal" aria-label="Close">Tutup</button>
         </div>
         </form>
       </div>
     </div>
   </div>
+
   <div class="modal fade" id="modalImport" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
       <div class="modal-content">
@@ -110,6 +87,7 @@
       </div>
     </div>
   </div>
+
   <div class="row py-10">
     <div class="col-md-12 grid-margin stretch-card">
       <div class="card rounded shadow border-0" style="width: fit-content;">
@@ -142,8 +120,7 @@
                       <?= $stok['stok'] ?>
                     </td>
                     <td>
-                      <a href="<?= BASEURL; ?>/stokBarang/ubah/<?= $stok['id'] ?>" data-bs-toggle="modal"
-                        data-bs-target="#exampleModalLong" class="tampilModalUbah" data-id="<?= $stok['id']; ?>">
+                      <a href="<?= BASEURL; ?>/stokBarang/ubah/<?= $stok['id'] ?>" data-toggle="modal" data-target="#modal" class="hai" data-id="<?= $stok['id']; ?>">
                         <button class="button-arounder">
                           <span class="material-symbols-outlined"> edit </span>
                         </button>
@@ -163,67 +140,61 @@
         </div>
       </div>
     </div>
+  </div>
+</div>
 
-    <script>
-      $(document).ready(function () {
-        $('#print').DataTable({
-          dom: 'Bfrtip',
-          buttons: [
-            'copy', 'excel', 'pdf', 'print'
-          ]
-        });
-      });
-    </script>
-    <script>
-      $(function () {
-        'use strict';
-        var stokBarangKategori = {
-          labels: [<?php while ($row = mysqli_fetch_array($kategori)) {
-            echo '"' . $row['kategori'] . '",';
-          } ?>],
-          datasets: [{
-            label: '# of Votes',
-            data: [<?php while ($row = mysqli_fetch_array($jumlah)) {
-              echo '"' . $row['jumlah'] . '",';
-            } ?>],
-            backgroundColor: [
-              'rgba(255, 99, 132, 0.2)',
-              'rgba(54, 162, 235, 0.2)',
-              'rgba(255, 206, 86, 0.2)',
-              'rgba(75, 192, 192, 0.2)',
-              'rgba(153, 102, 255, 0.2)',
-              'rgba(255, 159, 64, 0.2)'
-            ],
-            borderColor: [
-              'rgba(255,99,132,1)',
-              'rgba(54, 162, 235, 1)',
-              'rgba(255, 206, 86, 1)',
-              'rgba(75, 192, 192, 1)',
-              'rgba(153, 102, 255, 1)',
-              'rgba(255, 159, 64, 1)'
-            ],
-            borderWidth: 1,
-            fill: false
-          }]
-        };
+<script>
+  $(document).ready(function () {
+    $('#print').DataTable({
+      dom: 'Bfrtip',
+      buttons: [
+        'copy', 'excel', 'pdf', 'print'
+      ]
+    });
+  });
+</script>
 
-        // Get context with jQuery - using jQuery's .get() method.
-        if ($("#kategoriStokBarang").length) {
-          var barChartCanvas = $("#kategoriStokBarang").get(0).getContext("2d");
-          // This will get the first returned node in the jQuery collection.
-          var barChart = new Chart(barChartCanvas, {
-            type: 'bar',
-            data: stokBarangKategori,
-            options: {
-              scales: {
-                yAxes: [{
-                  ticks: {
-                    beginAtZero: true
-                  }
-                }]
-              }
-            }
-          });
-        }
-      });
-    </script>
+<script>
+  $(document).ready(function () {
+    const BASEURL = window.location.href;
+    console.log(BASEURL)
+    $('.tombolTambahData').on('click', function () {
+      $('#modalLabel').html('Tambah Data Stok Barang')
+      $('.modal-footer button[type=submit]').html('Tambah Data');
+
+      $('#kode').val('');
+      $('#barang').val('');
+      $('#satuan').val('');
+      $('#stok').val('');
+      $('#harga').val('');
+      $('#id').val('');
+
+    });
+
+    $(".hai").click(function () {
+      $("#modal").addClass("edit");
+      $("#modalLabel").html("Ubah Data Stok Barang");
+      $(".modal-footer button[type=submit]").html("Ubah Data");
+      $(".modal-body form").attr("action", `${BASEURL}/ubah`);
+
+      const id = $(this).data("id");
+      console.log(id)
+
+      $.ajax({
+        url: `${BASEURL}/getubah`,
+        data: { id: id },
+        method: "post",
+        dataType: "json",
+        success: function (data) {
+          $('#kode').val(data.kode);
+          $('#barang').val(data.barang);
+          $('#satuan').val(data.satuan);
+          $('#stok').val(data.stok);
+          $('#harga').val(data.harga);
+          $('#id').val(data.id);
+          console.log(data);
+        },
+      })
+    })
+  });
+</script>
