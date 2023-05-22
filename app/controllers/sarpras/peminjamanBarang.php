@@ -15,11 +15,11 @@ class peminjamanBarang extends Controller
             $this->model("$this->model_name", 'peminjamanBarang_models')->readReqData();
             $this->view('templates/header', $data);
             $this->view('sarpras/peminjamanBarang/index', $data);
-            $this->view('templates/footerwm');
+            $this->view('templates/footer');
         } else if ($data['user']['hak_akses'] == '') {
             $this->view('templates/header', $data);
             $this->view('sarpras/peminjamanBarang/form', $data);
-            $this->view('templates/footerwm');
+            $this->view('templates/footer');
         }
     }
 

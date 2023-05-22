@@ -16,7 +16,7 @@ class fasilitas extends Controller
             } else {
                 $this->view('templates/header', $data);
                 $this->view('sarpras/fasilitas/index', $data);
-                $this->view('templates/footerwm');
+                $this->view('templates/footer');
             }
         } else if ($data['user']['hak_akses'] == '') {
             header("Location: " . BASEURL);
@@ -29,7 +29,7 @@ class fasilitas extends Controller
     //     $data['kegiatan'] = $this->model("$this->model_name",'galeriKegiatan_models')->getKegiatanById($id);
     //     $this->view('templates/header', $data);
     //     // $this->view('kegiatan/detail', $data);
-    //     // $this->view('templates/footerwm');
+    //     // $this->view('templates/footer');
     // }
 
     public function tambah()
@@ -92,6 +92,6 @@ class fasilitas extends Controller
         $data['fasiitasSekolah'] = $this->model("$this->model_name", 'fasilitasSekolah_models')->cariDataFasilitasSekolah();
         $this->view('templates/header', $data);
         $this->view('fasilitas/index', $data);
-        $this->view('templates/footerwm');
+        $this->view('templates/footer');
     }
 }

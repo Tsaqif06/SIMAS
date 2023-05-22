@@ -16,7 +16,7 @@ class Username extends Controller
         if (in_array($data['user']['hak_akses'], $akses)) {
             $this->view('templates/header', $data);
             $this->view('kurikulum/Username/index', $data);
-            $this->view('templates/footerwm');
+            $this->view('templates/footer');
         } else if ($data['user']['hak_akses'] == '') {
             header("Location: " . BASEURL);
             Flasher::setFlash('GAGAL', 'Anda Tidak Mempunyai Akses Untuk Menuju Halaman Tersebut', 'danger');
@@ -73,6 +73,6 @@ class Username extends Controller
         $data['Username'] = $this->model("$this->model_name", 'Username_model')->cariDataUsername();
         $this->view('templates/header', $data);
         $this->view('organisasi/index', $data);
-        $this->view('templates/footerwm');
+        $this->view('templates/footer');
     }
 }

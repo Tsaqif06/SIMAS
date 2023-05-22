@@ -16,7 +16,7 @@ class KegiatanGLS extends Controller
         if (in_array($data['user']['hak_akses'], $akses)) {
             $this->view('templates/header', $data);
             $this->view('kurikulum/Literasi/index', $data);
-            $this->view('templates/footerwm');
+            $this->view('templates/footer');
         } else if ($data['user']['hak_akses'] == '') {
             header("Location: " . BASEURL);
             Flasher::setFlash('GAGAL', 'Anda Tidak Mempunyai Akses Untuk Menuju Halaman Tersebut', 'danger');
@@ -73,6 +73,6 @@ class KegiatanGLS extends Controller
         $data['organisasi'] = $this->model("$this->model_name", 'strukturOrganisasi_model')->cariDataOrganisasi();
         $this->view('templates/header', $data);
         $this->view('organisasi/index', $data);
-        $this->view('templates/footerwm');
+        $this->view('templates/footer');
     }
 }

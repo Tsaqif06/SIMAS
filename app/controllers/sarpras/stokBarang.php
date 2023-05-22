@@ -13,14 +13,14 @@ class stokBarang extends Controller
 
         if (in_array($data['user']['hak_akses'], $akses)) {
             $this->view('templates/header', $data);
-                $this->view('sarpras/stokBarang/index', $data);
-                $this->view('templates/footerwm');
+            $this->view('sarpras/stokBarang/index', $data);
+            $this->view('templates/footer');
         } else if ($data['user']['hak_akses'] == '') {
             header("Location: " . BASEURL);
             Flasher::setFlash('GAGAL', 'Anda Tidak Mempunyai Akses Untuk Menuju Halaman Tersebut', 'danger');
         }
     }
-    
+
     public function tambah()
     {
         if ($this->model("$this->model_name", 'stokBarang_models')->tambahDataStokBarang($_POST) > 0) {
@@ -81,6 +81,6 @@ class stokBarang extends Controller
         $data['stokBarang'] = $this->model("$this->model_name", 'stokBarang_models')->cariDataStokBarang();
         $this->view('templates/header', $data);
         $this->view('stokBarang/index', $data);
-        $this->view('templates/footerwm');
+        $this->view('templates/footer');
     }
 }

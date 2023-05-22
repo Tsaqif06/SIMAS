@@ -15,7 +15,7 @@ class barangAset extends Controller
             } else {
                 $this->view('templates/header', $data);
                 $this->view('sarpras/barangAset/index', $data);
-                $this->view('templates/footerwm');
+                $this->view('templates/footer');
             }
         } else if ($data['user']['hak_akses'] == '') {
             header("Location: " . BASEURL);
@@ -28,7 +28,7 @@ class barangAset extends Controller
     //     $data['kegiatan'] = $this->model("$this->model_name",'galeriKegiatan_models')->getKegiatanById($id);
     //     $this->view('templates/header', $data);
     //     // $this->view('kegiatan/detail', $data);
-    //     // $this->view('templates/footerwm');
+    //     // $this->view('templates/footer');
     // }
     public function importData()
     {
@@ -90,6 +90,6 @@ class barangAset extends Controller
         $data['stokBarangAset'] = $this->model("$this->model_name", 'stokBarangAset_models')->cariDataStokBarangAset();
         $this->view('templates/header', $data);
         $this->view('barangAset/index', $data);
-        $this->view('templates/footerwm');
+        $this->view('templates/footer');
     }
 }

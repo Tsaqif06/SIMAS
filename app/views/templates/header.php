@@ -450,7 +450,7 @@
                                                 Tampung</a></li>
                                         <?php endif ?>
 
-                                        <?php if ($data['user']['role'] != 'guru' && $data['user']['hak_akses'] == '' || $data['user']['hak_akses'] == 'kabeng') : ?>
+                                        <?php if ($data['user']['role'] != 'guru' && $data['user']['hak_akses'] == '' || $data['user']['hak_akses'] == 'kabeng' || $data['user']['hak_akses'] == 'humas') : ?>
                                         <li><a class="navsubitem text-white"
                                                 href="<?= BASEURL; ?>/pkl/pemberkasan">Pemberkasan</a></li>
                                         <?php endif ?>
@@ -461,7 +461,7 @@
                                         <?php endif ?>
                                     </ul>
 
-                                    <?php if (($data['user']['role'] == 'admin' || $data['user']['hak_akses'] == '' || $data['user']['hak_akses'] == 'industri') || $data['user']['role'] == 'siswa') : ?>
+                                    <?php if (($data['user']['role'] == 'admin' || $data['user']['hak_akses'] == '' || $data['user']['hak_akses'] == 'humas' || $data['user']['hak_akses'] == 'industri') || $data['user']['role'] == 'siswa') : ?>
                                     <li class="nav-item">
                                         <a class="nav-link" href="<?= BASEURL; ?>/bkk/index">BKK</a>
                                     </li>
@@ -479,7 +479,7 @@
                                         </li>
                                         <?php endif ?>
 
-                                        <?php if ($data['user']['role'] == 'admin' || $data['user']['hak_akses'] == 'industri') : ?>
+                                        <?php if ($data['user']['role'] == 'admin' || $data['user']['hak_akses'] == 'industri' || $data['user']['hak_akses'] == 'humas') : ?>
                                         <li><a class="navsubitem text-white" href="<?= BASEURL; ?>/bkk/loker">Lowongan
                                                 Kerja</a></li>
                                         <?php endif ?>

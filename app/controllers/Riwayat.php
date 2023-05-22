@@ -21,12 +21,12 @@ class Riwayat extends Controller
             $this->view('templates/header', $data);
             $this->view('riwayat/index', $data);
             $this->view('riwayat/info', $data);
-            $this->view('templates/footerwm');
+            $this->view('templates/footer');
         } else {
             $this->view('templates/header', $data);
             $this->view('riwayat/detail', $data);
             $this->view('riwayat/info', $data);
-            $this->view('templates/footerwm');
+            $this->view('templates/footer');
         }
     }
 

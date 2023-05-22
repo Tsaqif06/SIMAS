@@ -19,7 +19,7 @@ class pengajuanBarang extends Controller
         //     } else {
         //         $this->view('templates/header', $data);
         //         $this->view('sarpras/pengajuanBarang/index', $data);
-        //         $this->view('templates/footerwm');
+        //         $this->view('templates/footer');
         //     }
         // } else if ($data['user']['hak_akses'] == '') {
         //     if (isset($_POST["contentOnly"])) {
@@ -27,7 +27,7 @@ class pengajuanBarang extends Controller
         //     } else {
         //         $this->view('templates/header', $data);
         //         $this->view('sarpras/pengajuanBarang/form', $data);
-        //         $this->view('templates/footerwm');
+        //         $this->view('templates/footer');
         //     }
         // }
 
@@ -37,7 +37,7 @@ class pengajuanBarang extends Controller
         } else {
             $this->view('templates/header', $data);
             $this->view('sarpras/pengajuanBarang/index', $data);
-            $this->view('templates/footerwm');
+            $this->view('templates/footer');
         }
     }
 
@@ -47,7 +47,7 @@ class pengajuanBarang extends Controller
         $data['pengajuan_barang'] = $this->model("$this->model_name", 'pengajuanBidang_models')->getKegiatanById($id);
         $this->view('templates/header', $data);
         $this->view('pengajuanBarang/jurusan', $data);
-        $this->view('templates/footerwm');
+        $this->view('templates/footer');
     }
 
     public function tambah()
@@ -100,7 +100,7 @@ class pengajuanBarang extends Controller
         $data['pengajuanBidang'] = $this->model("$this->model_name", 'pengajuanBidang_models')->cariDataPengajuanBidang();
         $this->view('templates/header', $data);
         $this->view('pengajuanBidang/index', $data);
-        $this->view('templates/footerwm');
+        $this->view('templates/footer');
     }
 
     //controller pengajuan jurusan
@@ -154,7 +154,7 @@ class pengajuanBarang extends Controller
         $data['pengajuanJurusan'] = $this->model("$this->model_name", 'pengajuanJurusan_models')->cariDataPengajuanJurusan();
         $this->view('templates/header', $data);
         $this->view('pengajuanJurusan/index', $data);
-        $this->view('templates/footerwm');
+        $this->view('templates/footer');
     }
 
     //controller pengajuan mapel
@@ -208,7 +208,7 @@ class pengajuanBarang extends Controller
         $data['pengajuanMapel'] = $this->model("$this->model_name", 'pengajuanMapel_models')->cariDataPengajuanMapel();
         $this->view('templates/header', $data);
         $this->view('pengajuanMapel/index', $data);
-        $this->view('templates/footerwm');
+        $this->view('templates/footer');
     }
 
     //controllers pengajuan waka
@@ -262,6 +262,6 @@ class pengajuanBarang extends Controller
         $data['pengajuanWaka'] = $this->model("$this->model_name", 'pengajuanWaka_models')->cariDataPengajuanWaka();
         $this->view('templates/header', $data);
         $this->view('pengajuanWaka/index', $data);
-        $this->view('templates/footerwm');
+        $this->view('templates/footer');
     }
 }

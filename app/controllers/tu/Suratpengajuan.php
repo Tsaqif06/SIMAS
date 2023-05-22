@@ -17,12 +17,12 @@ class Suratpengajuan extends Controller
         if ($data['user']['role'] == 'admin') {
             $this->view('templates/header', $data);
             $this->view('tu/suratpengajuan/detail', $data);
-            $this->view('templates/footerwm');
+            $this->view('templates/footer');
             $this->model("$this->model_name", 'Suratpengajuan_model')->readReqData();
         } else {
             $this->view('templates/header', $data);
             $this->view('tu/suratpengajuan/index', $data);
-            $this->view('templates/footerwm');
+            $this->view('templates/footer');
         }
     }
 

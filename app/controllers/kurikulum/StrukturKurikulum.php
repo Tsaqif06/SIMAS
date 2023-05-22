@@ -16,7 +16,7 @@ class StrukturKurikulum extends Controller
         if (in_array($data['user']['hak_akses'], $akses)) {
             $this->view('templates/header', $data);
             $this->view('kurikulum/Struktur Kurikulum/index', $data);
-            $this->view('templates/footerwm');
+            $this->view('templates/footer');
         } else if ($data['user']['hak_akses'] == '') {
             header("Location: " . BASEURL);
             Flasher::setFlash('GAGAL', 'Anda Tidak Mempunyai Akses Untuk Menuju Halaman Tersebut', 'danger');
@@ -73,6 +73,6 @@ class StrukturKurikulum extends Controller
         $data['mhs'] = $this->model("$this->model_name", 'Struktur_Kurikulum_model')->cariDataStruktur();
         $this->view('templates/header', $data);
         $this->view('mahasiswa/index', $data);
-        $this->view('templates/footerwm');
+        $this->view('templates/footer');
     }
 }

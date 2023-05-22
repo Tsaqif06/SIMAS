@@ -16,7 +16,7 @@ class JadwalPelajaran extends Controller
         if (in_array($data['user']['hak_akses'], $akses)) {
             $this->view('templates/header', $data);
             $this->view('kurikulum/Jadwal Pelajaran/index', $data);
-            $this->view('templates/footerwm');
+            $this->view('templates/footer');
         } else if ($data['user']['hak_akses'] == '') {
             header("Location: " . BASEURL);
             Flasher::setFlash('GAGAL', 'Anda Tidak Mempunyai Akses Untuk Menuju Halaman Tersebut', 'danger');
@@ -73,6 +73,6 @@ class JadwalPelajaran extends Controller
         $data['mhs'] = $this->model("$this->model_name", 'Jadwal_Pelajaran_model')->cariDataMahasiswa();
         $this->view('templates/header', $data);
         $this->view('mahasiswa/index', $data);
-        $this->view('templates/footerwm');
+        $this->view('templates/footer');
     }
 }

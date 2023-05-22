@@ -19,14 +19,14 @@ class Kelas extends Controller
             $this->view('templates/header', $data);
             $this->view('master/kelas/index', $data);
             $this->view('master/kelas/form', $data);
-            $this->view('templates/footerwm');
+            $this->view('templates/footer');
         } else if ($data['user']['hak_akses'] == '') {
             header("Location: " . BASEURL);
             Flasher::setFlash('GAGAL', 'Anda Tidak Mempunyai Akses Untuk Menuju Halaman Tersebut', 'danger');
         } else {
             $this->view('templates/header', $data);
             $this->view('master/kelas/detail', $data);
-            $this->view('templates/footerwm');
+            $this->view('templates/footer');
         }
     }
 

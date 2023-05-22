@@ -16,7 +16,7 @@ class pengajuanWaka extends Controller
             } else {
                 $this->view('templates/header', $data);
                 $this->view('sarpras/pengajuanBarang/waka', $data);
-                $this->view('templates/footerwm');
+                $this->view('templates/footer');
             }
         } else if ($data['user']['hak_akses'] == '') {
             if (isset($_POST["contentOnly"])) {
@@ -24,7 +24,7 @@ class pengajuanWaka extends Controller
             } else {
                 $this->view('templates/header', $data);
                 $this->view('sarpras/pengajuanBarang/form/formwaka', $data);
-                $this->view('templates/footerwm');
+                $this->view('templates/footer');
             }
         }
     }
@@ -78,6 +78,6 @@ class pengajuanWaka extends Controller
         $data['pengajuanWaka'] = $this->model("$this->model_name", 'pengajuanWaka_models')->cariDataPengajuanBidang();
         $this->view('templates/header', $data);
         $this->view('pengajuanBidang/index', $data);
-        $this->view('templates/footerwm');
+        $this->view('templates/footer');
     }
 }

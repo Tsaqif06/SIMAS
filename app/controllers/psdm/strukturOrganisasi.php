@@ -16,7 +16,7 @@ class strukturOrganisasi extends Controller
             } else {
                 $this->view('templates/header', $data);
                 $this->view('psdm/strukturOrganisasi/index', $data);
-                $this->view('templates/footerwm');
+                $this->view('templates/footer');
             }
         } else if ($data['user']['hak_akses'] == '') {
             header("Location: " . BASEURL);
@@ -30,7 +30,7 @@ class strukturOrganisasi extends Controller
         $data['organisasi'] = $this->model("$this->model_name", 'strukturOrganisasi_model')->getOrganisasiById($id);
         $this->view('templates/header', $data);
         $this->view('organisasi/detail', $data);
-        $this->view('templates/footerwm');
+        $this->view('templates/footer');
     }
 
     public function tambah()

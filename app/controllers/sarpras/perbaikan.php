@@ -17,7 +17,7 @@ class perbaikan extends Controller
             } else {
                 $this->view('templates/header', $data);
                 $this->view('sarpras/perbaikan/index', $data);
-                $this->view('templates/footerwm');
+                $this->view('templates/footer');
             }
         } else if ($data['user']['hak_akses'] == '') {
             header("Location: " . BASEURL);
@@ -86,6 +86,6 @@ class perbaikan extends Controller
         $data['perbaikanPrasarana'] = $this->model("$this->model_name", 'dataperbaikanPrasarana_models')->cariDataPerbaikanPrasarana();
         $this->view('templates/header', $data);
         $this->view('perbaikan/index', $data);
-        $this->view('templates/footerwm');
+        $this->view('templates/footer');
     }
 }

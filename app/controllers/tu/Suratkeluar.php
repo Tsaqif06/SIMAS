@@ -19,7 +19,7 @@ class Suratkeluar extends Controller
             $this->view('templates/header', $data);
             $this->view('tu/suratkeluar/index', $data);
             $this->view('tu/suratkeluar/form', $data);
-            $this->view('templates/footerwm');
+            $this->view('templates/footer');
         } else {
             header("Location: " . BASEURL);
             Flasher::setFlash('GAGAL', 'Anda Tidak Mempunyai Akses Untuk Menuju Halaman Tersebut', 'danger');

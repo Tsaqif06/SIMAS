@@ -17,7 +17,7 @@ class PerangkatAjar extends Controller
         if (in_array($data['user']['hak_akses'], $akses)) {
             $this->view('templates/header', $data);
             $this->view('kurikulum/Perangkat Ajar/index', $data);
-            $this->view('templates/footerwm');
+            $this->view('templates/footer');
         } else if ($data['user']['hak_akses'] == '') {
             header("Location: " . BASEURL);
             Flasher::setFlash('GAGAL', 'Anda Tidak Mempunyai Akses Untuk Menuju Halaman Tersebut', 'danger');
@@ -74,6 +74,6 @@ class PerangkatAjar extends Controller
         $data['mhs'] = $this->model("$this->model_name", 'Perangkat_Ajar_model')->cariperangkatajar();
         $this->view('templates/header', $data);
         $this->view('mahasiswa/index', $data);
-        $this->view('templates/footerwm');
+        $this->view('templates/footer');
     }
 }

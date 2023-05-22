@@ -16,7 +16,7 @@ class pengajuanJurusan extends Controller
             } else {
                 $this->view('templates/header', $data);
                 $this->view('sarpras/pengajuanBarang/jurusan', $data);
-                $this->view('templates/footerwm');
+                $this->view('templates/footer');
             }
         } else if ($data['user']['hak_akses'] == '') {
             if (isset($_POST["contentOnly"])) {
@@ -24,7 +24,7 @@ class pengajuanJurusan extends Controller
             } else {
                 $this->view('templates/header', $data);
                 $this->view('sarpras/pengajuanBarang/form/formjurusan', $data);
-                $this->view('templates/footerwm');
+                $this->view('templates/footer');
             }
         }
     }
@@ -78,6 +78,6 @@ class pengajuanJurusan extends Controller
         $data['pengajuanBidang'] = $this->model("$this->model_name", 'pengajuanBidang_models')->cariDataPengajuanJurusan();
         $this->view('templates/header', $data);
         $this->view('pengajuanBidang/index', $data);
-        $this->view('templates/footerwm');
+        $this->view('templates/footer');
     }
 }

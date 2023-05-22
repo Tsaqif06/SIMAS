@@ -16,7 +16,7 @@ class pengajuanMapel extends Controller
             } else {
                 $this->view('templates/header', $data);
                 $this->view('sarpras/pengajuanBarang/mapel', $data);
-                $this->view('templates/footerwm');
+                $this->view('templates/footer');
             }
         } else if ($data['user']['hak_akses'] == '') {
             if (isset($_POST["contentOnly"])) {
@@ -24,7 +24,7 @@ class pengajuanMapel extends Controller
             } else {
                 $this->view('templates/header', $data);
                 $this->view('sarpras/pengajuanBarang/form/formmapel', $data);
-                $this->view('templates/footerwm');
+                $this->view('templates/footer');
             }
         }
     }
@@ -78,6 +78,6 @@ class pengajuanMapel extends Controller
         $data['pengajuanMapel'] = $this->model("$this->model_name", 'pengajuanMapel_models')->cariDataPengajuanBidang();
         $this->view('templates/header', $data);
         $this->view('pengajuanBidang/index', $data);
-        $this->view('templates/footerwm');
+        $this->view('templates/footer');
     }
 }

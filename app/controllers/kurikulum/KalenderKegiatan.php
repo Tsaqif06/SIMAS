@@ -14,7 +14,7 @@ class KalenderKegiatan extends Controller
         if (in_array($data['user']['hak_akses'], $akses)) {
             $this->view('templates/header', $data);
             $this->view('kurikulum/Kalender Kegiatan/index');
-            $this->view('templates/footerwm');
+            $this->view('templates/footer');
         } else if ($data['user']['hak_akses'] == '') {
             header("Location: " . BASEURL);
             Flasher::setFlash('GAGAL', 'Anda Tidak Mempunyai Akses Untuk Menuju Halaman Tersebut', 'danger');
@@ -71,6 +71,6 @@ class KalenderKegiatan extends Controller
     //     $data['schedule_list'] = $this->model("$this->model_name", 'Kalender_Kegiatan_model')->cariDataKalender();
     //     $this->view('templates/header', $data);
     //     $this->view('kalender/index', $data);
-    //     $this->view('templates/footerwm');
+    //     $this->view('templates/footer');
     // }
 }

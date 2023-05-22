@@ -19,7 +19,7 @@ class Suratmasuk extends Controller
             $this->view('templates/header', $data);
             $this->view('tu/suratmasuk/index', $data);
             $this->view('tu/suratmasuk/form', $data);
-            $this->view('templates/footerwm');
+            $this->view('templates/footer');
         } else {
             header("Location: " . BASEURL);
             Flasher::setFlash('GAGAL', 'Anda Tidak Mempunyai Akses Untuk Menuju Halaman Tersebut', 'danger');

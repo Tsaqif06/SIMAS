@@ -20,14 +20,14 @@ class Siswa extends Controller
             $this->view('templates/header', $data);
             $this->view('master/siswa/index', $data);
             $this->view('master/siswa/form', $data);
-            $this->view('templates/footerwm');
+            $this->view('templates/footer');
         } else if ($data['user']['hak_akses'] == '') {
             header("Location: " . BASEURL);
             Flasher::setFlash('GAGAL', 'Anda Tidak Mempunyai Akses Untuk Menuju Halaman Tersebut', 'danger');
         } else {
             $this->view('templates/header', $data);
             $this->view('master/siswa/detail', $data);
-            $this->view('templates/footerwm');
+            $this->view('templates/footer');
         }
     }
 

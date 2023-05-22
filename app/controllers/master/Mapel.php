@@ -19,14 +19,14 @@ class Mapel extends Controller
             $this->view('templates/header', $data);
             $this->view('master/mapel/index', $data);
             $this->view('master/mapel/form', $data);
-            $this->view('templates/footerwm');
+            $this->view('templates/footer');
         } else if ($data['user']['hak_akses'] == '') {
             header("Location: " . BASEURL);
             Flasher::setFlash('GAGAL', 'Anda Tidak Mempunyai Akses Untuk Menuju Halaman Tersebut', 'danger');
         } else {
             $this->view('templates/header', $data);
             $this->view('master/mapel/detail', $data);
-            $this->view('templates/footerwm');
+            $this->view('templates/footer');
         }
     }
 

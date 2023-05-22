@@ -16,7 +16,7 @@ class barangMasuk extends Controller
             } else {
                 $this->view('templates/header', $data);
                 $this->view('sarpras/barangMasuk/index', $data);
-                $this->view('templates/footerwm');
+                $this->view('templates/footer');
             }
         } else if ($data['user']['hak_akses'] == '') {
             header("Location: " . BASEURL);
@@ -29,7 +29,7 @@ class barangMasuk extends Controller
     //     $data['kegiatan'] = $this->model("$this->model_name",'galeriKegiatan_models')->getKegiatanById($id);
     //     $this->view('templates/header', $data);
     //     // $this->view('kegiatan/detail', $data);
-    //     // $this->view('templates/footerwm');
+    //     // $this->view('templates/footer');
     // }
 
     public function tambah()
@@ -91,6 +91,6 @@ class barangMasuk extends Controller
         $data['barangMasuk'] = $this->model("$this->model_name", 'databarangMasuk_models')->cariDataBarangMasuk();
         $this->view('templates/header', $data);
         $this->view('barangMasuk/index', $data);
-        $this->view('templates/footerwm');
+        $this->view('templates/footer');
     }
 }
