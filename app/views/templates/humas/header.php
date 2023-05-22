@@ -289,7 +289,7 @@
                                                 href="<?= BASEURL; ?>/pkl/prakerin">Prakerin</a></li>
                                         <li><a class="navsubitem text-white" href="<?= BASEURL; ?>/pkl/dtampung">Daya
                                                 Tampung</a></li>
-                                        <?php endif ?>\
+                                        <?php endif ?>
 
                                         <?php if ($data['user']['role'] != 'guru' && $data['user']['hak_akses'] == 'all' || $data['user']['hak_akses'] == '' || $data['user']['hak_akses'] == 'kabeng' || $data['user']['hak_akses'] == 'humas') : ?>
                                         <li><a class="navsubitem text-white"
