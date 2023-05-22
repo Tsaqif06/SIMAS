@@ -732,7 +732,7 @@ class BKK_model
     public function hapusDataBKKspw($id)
     {
         $this->db->query(
-            "UPDATE {$this->tablemou}
+            "UPDATE {$this->tablespw}
                 SET
                 deleted_at = CURRENT_TIMESTAMP,
                 deleted_by = :deleted_by,

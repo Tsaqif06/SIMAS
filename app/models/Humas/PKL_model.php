@@ -1015,7 +1015,7 @@ class pkl_model extends Database
     }
     public function uploadRaportPemberkasan()
     {
-        $targetDir = 'images/humas/pkl/pemberkasan/raport/'; // direktori tempat menyimpan file upload
+        $targetDir = 'assets/raport/'; // direktori tempat menyimpan file upload
         $temp = $_FILES['uploadebookraport_pemberkasan']['name'];
         $imageFileType = explode('.', $temp);
         $imageFileType = strtolower(end($imageFileType));

@@ -17,7 +17,7 @@ class Stiru_model
     }
     public function getAllStiru()
     {
-        $this->db->query('SELECT * FROM ' . $this->table . ' ORDER BY instansi ASC');
+        $this->db->query('SELECT * FROM ' . $this->table .  ' WHERE `status` = ' . 1  . ' ORDER BY instansi ASC');
         return $this->db->fetchAll();
     }
     public function getStiruById($id)
@@ -51,8 +51,8 @@ class Stiru_model
                 SET
                 deleted_at = CURRENT_TIMESTAMP,
                 deleted_by = :deleted_by,
-                is_deleted = 1,
-                is_restored = 0
+                is_deleted = 1, 
+                is_restored = 0 
               WHERE id = :id"
         );
         $this->db->bind('deleted_by', $this->user);
