@@ -70,7 +70,7 @@ class pkl_model extends Database
         $this->db->query(
             "INSERT INTO {$this->table_nilai}
                 VALUES 
-            (null, :uuid, :nisn, :namasiswa, :kelas, :jeniskelamin, :namaindustri, :nilaisiswa, :keterangannilai,
+            (null, :uuid, :nisn, :namasiswa, :kelas, :jeniskelamin, :namaindustri, :nilaisiswa, DEFAULT, 
             '', CURRENT_TIMESTAMP, :created_by, null, '', null, '', null, '', 0, 0, DEFAULT)"
         );
         $this->db->bind('uuid', Uuid::uuid4()->toString());
@@ -80,7 +80,6 @@ class pkl_model extends Database
         $this->db->bind('jeniskelamin', $data['jeniskelamin']);
         $this->db->bind('namaindustri', $data['namaindustri']);
         $this->db->bind('nilaisiswa', $data['nilaisiswa']);
-        $this->db->bind('keterangannilai', $data['keterangannilai']);
         $this->db->bind('created_by', $this->user);
 
         $this->db->execute();
@@ -98,7 +97,6 @@ class pkl_model extends Database
                 jeniskelamin = :jeniskelamin,
                 namaindustri = :namaindustri,
                 nilaisiswa = :nilaisiswa,
-                keterangannilai = :keterangannilai,
                 modified_at = CURRENT_TIMESTAMP,
                 modified_by = :modified_by
             WHERE id = :id"
@@ -110,7 +108,6 @@ class pkl_model extends Database
         $this->db->bind('jeniskelamin', $data['jeniskelamin']);
         $this->db->bind('namaindustri', $data['namaindustri']);
         $this->db->bind('nilaisiswa', $data['nilaisiswa']);
-        $this->db->bind('keterangannilai', $data['keterangannilai']);
         $this->db->bind('modified_by', $this->user);
         $this->db->bind('id', $data['id']);
 
@@ -657,6 +654,13 @@ class pkl_model extends Database
     public function getDetailMON($id)
     {
         $this->db->query('SELECT * FROM ' . $this->tableMON . ' WHERE id = :id');
+        $this->db->bind('id', $id);
+        return $this->db->fetch();
+    }
+
+    public function getPemberkasanById($id)
+    {
+        $this->db->query("SELECT * FROM {$this->tableps} WHERE id = :id");
         $this->db->bind('id', $id);
         return $this->db->fetch();
     }
