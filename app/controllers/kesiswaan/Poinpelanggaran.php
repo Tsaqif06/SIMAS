@@ -17,7 +17,7 @@ class Poinpelanggaran extends Controller
             $this->view('templates/header', $data);
             $this->view('kesiswaan/poinpelanggaran/index', $data);
             $this->view('kesiswaan/poinpelanggaran/form', $data);
-            $this->view('templates/footerwm');
+            $this->view('templates/footer');
         } else if ($data['user']['hak_akses'] == '') {
             header("Location: " . BASEURL);
             Flasher::setFlash('GAGAL', 'Anda Tidak Mempunyai Akses Untuk Menuju Halaman Tersebut', 'danger');
