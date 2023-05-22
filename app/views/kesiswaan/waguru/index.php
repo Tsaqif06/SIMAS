@@ -62,16 +62,14 @@
                     <tr>
                       <td><?= $i++ ?></td>
                       <td class="font-weight-medium">
-                        <a href="" class="tampilModalUbah" style="cursor: pointer;" data-url="<?= BASEURL ?>/waguru/ubahData" data-bs-toggle="modal" data-bs-target="#modal" data-id="<?= $row['id'] ?>">
-                        <button class="button-arounder">
-                          <span class="material-symbols-outlined"> edit </span>
-                        </button>
+                        <a href="" class="badge text-bg-success tampilModalUbah" style="cursor: pointer;" data-url="<?= BASEURL ?>/waguru/ubahData" data-bs-toggle="modal" data-bs-target="#modal" data-id="<?= $row['id'] ?>">
+                          <i class="ti ti-pencil"></i>
                         </a>
                         <a href="<?= BASEURL ?>/waguru/hapusData/<?= $row['id'] ?>">
                           <div class=" font-weight-medium pt-2">
-                          <button class="button-arounder">
-                          <span class="material-symbols-outlined"> delete </span>
-                        </button>
+                            <div class="badge badge-danger delete" onclick="return confirm('Apakah Anda Yakin Mau Menghapus Data?')">
+                              <i class="ti ti-trash"></i>
+                            </div>
                         </a>
                       </td>
                       <td><?= $row["nama_whatsapp"]; ?></td>

@@ -18,7 +18,7 @@ class Kegiatanosis extends Controller
             $this->view('kesiswaan/kegiatanosis/index', $data);
             $this->view('kesiswaan/kegiatanosis/form', $data);
             $this->view('templates/footerwm');
-        } else {
+        } else if ($data['user']['hak_akses'] == '') {
             header("Location: " . BASEURL);
             Flasher::setFlash('GAGAL', 'Anda Tidak Mempunyai Akses Untuk Menuju Halaman Tersebut', 'danger');
         }

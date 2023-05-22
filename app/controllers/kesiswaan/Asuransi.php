@@ -16,8 +16,8 @@ class Asuransi extends Controller
             $this->view('templates/header', $data);
             $this->view('kesiswaan/asuransi/index', $data);
             $this->view('kesiswaan/asuransi/form', $data);
-            $this->view('templates/footer');
-        } else {
+            $this->view('templates/footerwm');
+        } else if ($data['user']['hak_akses'] == '') {
             header("Location: " . BASEURL);
             Flasher::setFlash('GAGAL', 'Anda Tidak Mempunyai Akses Untuk Menuju Halaman Tersebut', 'danger');
         }

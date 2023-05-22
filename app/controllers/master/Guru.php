@@ -19,14 +19,14 @@ class Guru extends Controller
             $this->view('templates/header', $data);
             $this->view('master/guru/index', $data);
             $this->view('master/guru/form', $data);
-            $this->view('templates/footer');
+            $this->view('templates/footerwm');
         } else if ($data['user']['hak_akses'] == '') {
             header("Location: " . BASEURL);
             Flasher::setFlash('GAGAL', 'Anda Tidak Mempunyai Akses Untuk Menuju Halaman Tersebut', 'danger');
         } else {
             $this->view('templates/header', $data);
             $this->view('master/guru/detail', $data);
-            $this->view('templates/footer');
+            $this->view('templates/footerwm');
         }
     }
 

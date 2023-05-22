@@ -10,19 +10,21 @@
       </div>
     </div>
   </div>
+
   <div class="row">
     <div class="col-lg-6">
       <?php Flasher::flash(); ?>
     </div>
   </div>
+
   <div class="row">
     <div class="col-6">
-      <button type="button" class="btn btn-primary my-3 mx-3 tampilModalImport"
-        data-url="<?= BASEURL ?>/peminjamanBarang" data-bs-toggle="modal" data-bs-target="#modalImport">
+      <button type="button" class="btn btn-primary my-3 mx-3 tampilModalImport" data-url="<?= BASEURL ?>/peminjamanBarang" data-bs-toggle="modal" data-bs-target="#modalImport">
         Import Data Dari Excel
       </button>
     </div>
   </div>
+
   <div id="exampleModalLong" class="modal fade" role="dialog" data-backdrop="static">
     <div class="modal-dialog">
       <!-- Modal content-->
@@ -34,7 +36,6 @@
         <div class="modal-body">
           <form action="<?= BASEURL; ?>/peminjamanBarang/tambah" method="post">
             <input type="hidden" name="id" id="id">
-
             <div class="form-group">
               <label for="nama">Nama Lengkap</label>
               <input type="text" class="form-control" id="nama" name="nama" placeholder="Nama Lengkap">
@@ -73,6 +74,7 @@
       </div>
     </div>
   </div>
+
   <div class="modal fade" id="modalImport" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
       <div class="modal-content">
@@ -95,6 +97,7 @@
       </div>
     </div>
   </div>
+
   <div class="row py-10">
     <div class="col-md-12 grid-margin stretch-card">
       <div class="card rounded shadow border-0" style="width: fit-content;">
@@ -104,53 +107,45 @@
               <thead>
                 <tr>
                   <th>#</th>
+                  <th>Status</th>
+                  <th>Tanggal</th>
                   <th>Nama</th>
                   <th>Kelas</th>
                   <th>Nama Barang</th>
-                  <th>Tanggal Pinjam</th>
+                  <th>Jumlah</th>
                   <th>Tanggal Pengembalian</th>
-                  <th>Jangka Waktu</th>
                   <th>Keterangan</th>
                   <th>Aksi</th>
                 </tr>
               </thead>
               <tbody>
                 <?php $i = 1; ?>
-                <?php foreach ($data['peminjaman'] as $peminjaman): ?>
+                <?php foreach ($data['peminjaman'] as $peminjaman) : ?>
                   <tr>
+                    <td><?= $i++; ?></td>
                     <td>
-                      <?= $i++; ?>
+                      <?php if ($peminjaman['statuspinjam'] == 0) : ?>
+                        <a class="badge badge-warning fw-bold mx-auto" href="<?= BASEURL; ?>/peminjamanBarang/ubahStatusPinjam/1/<?= $peminjaman['id'] ?>" onclick="confirm(`Ubah status menjadi 'dipinjam'?`)">Diajukan</a>
+                      <?php elseif ($peminjaman['statuspinjam'] == 1) : ?>
+                        <a class="badge badge-success fw-bold mx-auto" href="<?= BASEURL; ?>/peminjamanBarang/ubahStatusPinjam/2/<?= $peminjaman['id'] ?>" onclick="confirm(`Ubah status menjadi 'dikembalikan'?`)">Dipinjam</a>
+                      <?php else : ?>
+                        <a class="badge badge-secondary fw-bold mx-auto" href="<?= BASEURL; ?>/peminjamanBarang/ubahStatusPinjam/0/<?= $peminjaman['id'] ?>" onclick="confirm(`Ubah status menjadi semula? ('dipinjam')`)">Dikembalikan</a>
+                      <?php endif ?>
                     </td>
+                    <td><?= $peminjaman['tanggal'] ?></td>
+                    <td><?= $peminjaman['nama'] ?></td>
+                    <td><?= $peminjaman['kelas'] ?></td>
+                    <td><?= $peminjaman['namabarang'] ?></td>
+                    <td><?= $peminjaman['jumlahbarang'] ?></td>
+                    <td><?= $peminjaman['tglpengembalian'] ?></td>
+                    <td><?= $peminjaman['keterangan'] ?></td>
                     <td>
-                      <?= $peminjaman['nama'] ?>
-                    </td>
-                    <td>
-                      <?= $peminjaman['kelas'] ?>
-                    </td>
-                    <td>
-                      <?= $peminjaman['namabarang'] ?>
-                    </td>
-                    <td>
-                      <?= $peminjaman['tanggal'] ?>
-                    </td>
-                    <td>
-                      <?= $peminjaman['tglpengembalian'] ?>
-                    </td>
-                    <td>
-                      <?= $peminjaman['jangkawaktu'] ?>
-                    </td>
-                    <td>
-                      <?= $peminjaman['keterangan'] ?>
-                    </td>
-                    <td>
-                      <a href="<?= BASEURL; ?>/peminjamanBarang/ubah/<?= $peminjaman['id'] ?>" data-bs-toggle="modal"
-                        data-bs-target="#exampleModalLong" class="tampilModalUbah" data-id="<?= $peminjaman['id']; ?>">
+                      <a href="<?= BASEURL; ?>/peminjamanBarang/ubah/<?= $peminjaman['id'] ?>" data-bs-toggle="modal" data-bs-target="#exampleModalLong" class="tampilModalUbah" data-id="<?= $peminjaman['id']; ?>">
                         <button class="button-arounder">
                           <span class="material-symbols-outlined"> edit </span>
                         </button>
                       </a>
-                      <a href="<?= BASEURL; ?>/peminjamanBarang/hapus/<?= $peminjaman['id'] ?>"
-                        onclick="return confirm ('Hapus data?') ">
+                      <a href="<?= BASEURL; ?>/peminjamanBarang/hapus/<?= $peminjaman['id'] ?>" onclick="return confirm ('Hapus data?') ">
                         <button class="button-arounder">
                           <span class="material-symbols-outlined"> delete </span>
                         </button>
@@ -168,28 +163,18 @@
 </div>
 </div>
 </div>
-
+</div>
 <script>
-  $(document).ready(function () {
-    $('#print').DataTable({
-      dom: 'Bfrtip',
-      buttons: [
-        'copy', 'excel', 'pdf', 'print'
-      ]
-    });
-  });
-</script>
-<script>
-  $(function () {
+  $(function() {
     const BASEURL = window.location.href;
     console.log(BASEURL)
-    $('.tombolTambahData').on('click', function () {
+    $('.tombolTambahData').on('click', function() {
       $('formModalLabel').html('Tambah Data Prestasi')
       $('.modal-footer button[type=submit]').html('Tambah Data');
 
     });
 
-    $(".tampilModalUbah").click(function () {
+    $(".tampilModalUbah").click(function() {
       $("#modal").addClass("edit");
       $("#modalLabel").html("Ubah Data Peminjaman Barang");
       $(".modal-footer button[type=submit]").html("Ubah Data");
@@ -200,10 +185,12 @@
 
       $.ajax({
         url: `${BASEURL}/getubah`,
-        data: { id: id },
+        data: {
+          id: id
+        },
         method: "post",
         dataType: "json",
-        success: function (data) {
+        success: function(data) {
           $('#nama').val(data.nama);
           $('#kelas').val(data.kelas);
           $('#namabarang').val(data.namabarang);
@@ -214,8 +201,15 @@
           $('#id').val(data.id);
           console.log(data);
         },
-      })
-    })
-  }
-  );
+      });
+    });
+
+    $('#print').DataTable({
+      dom: 'Bfrtip',
+      buttons: [
+        'copy', 'excel', 'pdf', 'print'
+      ]
+    });
+
+  });
 </script>

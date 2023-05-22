@@ -17,8 +17,8 @@ class Kecelakaan extends Controller
             $this->view('templates/header', $data);
             $this->view('kesiswaan/kecelakaan/index', $data);
             $this->view('kesiswaan/kecelakaan/form', $data);
-            $this->view('templates/footer');
-        } else {
+            $this->view('templates/footerwm');
+        } else if ($data['user']['hak_akses'] == '') {
             header("Location: " . BASEURL);
             Flasher::setFlash('GAGAL', 'Anda Tidak Mempunyai Akses Untuk Menuju Halaman Tersebut', 'danger');
         }

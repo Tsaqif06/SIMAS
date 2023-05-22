@@ -9,45 +9,29 @@ class peminjamanBarang extends Controller
         $data['user'] = $this->user;
         $akses = ['all', 'sarpras'];
         $data['peminjaman'] = $this->model("$this->model_name", 'peminjamanBarang_models')->getAllExistData();
+        $data['stokBarang'] = $this->model("$this->model_name", 'stokBarang_models')->getAllExistData();
 
         if (in_array($data['user']['hak_akses'], $akses)) {
-            if (isset($_POST["contentOnly"])) {
-                $this->view('sarpras/peminjamanBarang/index', $data);
-            } else {
-                $this->view('templates/header', $data);
-                $this->view('sarpras/peminjamanBarang/index', $data);
-                $this->view('templates/footerwm');
-            }
+            $this->model("$this->model_name", 'peminjamanBarang_models')->readReqData();
+            $this->view('templates/header', $data);
+            $this->view('sarpras/peminjamanBarang/index', $data);
+            $this->view('templates/footerwm');
         } else if ($data['user']['hak_akses'] == '') {
-            if (isset($_POST["contentOnly"])) {
-                $this->view('sarpras/peminjamanBarang/form', $data);
-            } else {
-                $this->view('templates/header', $data);
-                $this->view('sarpras/peminjamanBarang/form', $data);
-                $this->view('templates/footerwm');
-            }
+            $this->view('templates/header', $data);
+            $this->view('sarpras/peminjamanBarang/form', $data);
+            $this->view('templates/footerwm');
         }
     }
-
-    // public function detail($id){
-    //     $data['judul'] = 'Detail Barang Masuk';
-    //     $data['kegiatan'] = $this->model("$this->model_name",'galeriKegiatan_models')->getKegiatanById($id);
-    //     $this->view('templates/header', $data);
-    //     // $this->view('kegiatan/detail', $data);
-    //     // $this->view('templates/footerwm');
-    // }
 
     public function tambah()
     {
         if ($this->model("$this->model_name", 'peminjamanBarang_models')->tambahDataPeminjamanBarang($_POST) > 0) {
             Flasher::setFlash('berhasil', 'ditambahkan', 'success');
-            header('Location: ' . BASEURL . '/peminjamanBarang');
-            exit;
         } else {
             Flasher::setFlash('gagal', 'ditambahkan', 'danger');
-            header('Location: ' . BASEURL . '/peminjamanBarang');
-            exit;
         }
+        header('Location: ' . BASEURL . '/peminjamanBarang');
+        exit;
     }
     public function importData()
     {
@@ -64,13 +48,11 @@ class peminjamanBarang extends Controller
     {
         if ($this->model("$this->model_name", 'peminjamanBarang_models')->hapusDataPeminjamanBarang($id) > 0) {
             Flasher::setFlash('berhasil', 'dihapus', 'success');
-            header('Location: ' . BASEURL . '/peminjamanBarang');
-            exit;
         } else {
             Flasher::setFlash('gagal', 'dihapus', 'danger');
-            header('Location: ' . BASEURL . '/peminjamanBarang');
-            exit;
         }
+        header('Location: ' . BASEURL . '/peminjamanBarang');
+        exit;
     }
 
     public function getubah()
@@ -82,38 +64,21 @@ class peminjamanBarang extends Controller
     {
         if ($this->model("$this->model_name", 'peminjamanBarang_models')->ubahDataPeminjamanBarang($_POST) > 0) {
             Flasher::setFlash('berhasil', 'diubah', 'success');
-            header('Location: ' . BASEURL . '/peminjamanBarang');
-            exit;
         } else {
             Flasher::setFlash('gagal', 'diubah', 'danger');
-            header('Location: ' . BASEURL . '/peminjamanBarang');
-            exit;
         }
+        header('Location: ' . BASEURL . '/peminjamanBarang');
+        exit;
     }
 
-    public function cari()
+    public function ubahStatusPinjam($ubahKe, $id)
     {
-        $data['judul'] = 'Cari Daftar Peminjaman Barang';
-        $data['PeminjamanBarang'] = $this->model("$this->model_name", 'peminjamanBarang_models')->cariDataPeminjamanBarang();
-        $this->view('templates/header', $data);
-        $this->view('peminjamanBarang/index', $data);
-        $this->view('templates/footerwm');
+        if ($this->model("$this->model_name", 'peminjamanBarang_models')->ubahStatusPinjam($ubahKe, $id) > 0) {
+            Flasher::setFlash('berhasil', 'diubah', 'success');
+        } else {
+            Flasher::setFlash('gagal', 'diubah', 'danger');
+        }
+        header('Location: ' . BASEURL . '/peminjamanBarang');
+        exit;
     }
-
-    // public function peminjamanBarang()
-    // {
-    //     $data['judul'] = 'Peminjaman Barang';
-    //     $data['user'] = $this->user;
-    //     $data['siswa'] = $this->model("$this->model_name", 'peminjamanBarang')->getExistData();
-    //     $akses = ['all', 'sarpras'];
-    //     if (in_array($data['user']['hak_akses'], $akses)) {
-    //         $this->view('templates/header', $data);
-    //         $this->view('sarpras/peminjamanBarang', $data);
-    //         $this->view('templates/footer');
-    //     } else if ($data['user']['hak_akses'] == '') {
-    //         $this->view('templates/header', $data);
-    //         $this->view('sarpras/peminjamanBarang/form', $data);
-    //         $this->view('templates/footer');
-    //     }
-    // }
 }

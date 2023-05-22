@@ -30,7 +30,7 @@ class strukturOrganisasi extends Controller
         $data['organisasi'] = $this->model("$this->model_name", 'strukturOrganisasi_model')->getOrganisasiById($id);
         $this->view('templates/header', $data);
         $this->view('organisasi/detail', $data);
-        $this->view('templates/footer');
+        $this->view('templates/footerwm');
     }
 
     public function tambah()

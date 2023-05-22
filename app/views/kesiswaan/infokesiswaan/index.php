@@ -234,7 +234,7 @@
   </div>
 
   <div class="row">
-    <div class="col-lg-12">
+    <div class="col-lg-8">
       <div class="slider" style="width: 100%; height: auto;">
         <?php foreach ($data['infokesiswaan'] as $infokesiswaan) : ?>
           <div class="slide active">

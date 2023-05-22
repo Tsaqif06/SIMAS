@@ -6,7 +6,7 @@
                         <h3 class="font-weight-bold">DATA KOMPETENSI KEAHLIAN</h3>
                         <h6 class="font-weight-normal mb-0">WEB DEV | SIMAS</h6>
                     </div>
-
+                    
                 </div>
             </div>
         </div>

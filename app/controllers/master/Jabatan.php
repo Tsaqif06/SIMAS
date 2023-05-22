@@ -19,14 +19,14 @@ class Jabatan extends Controller
             $this->view('templates/header', $data);
             $this->view('master/jabatan/index', $data);
             $this->view('master/jabatan/form', $data);
-            $this->view('templates/footer');
+            $this->view('templates/footerwm');
         } else if ($data['user']['hak_akses'] == '') {
             header("Location: " . BASEURL);
             Flasher::setFlash('GAGAL', 'Anda Tidak Mempunyai Akses Untuk Menuju Halaman Tersebut', 'danger');
         } else {
             $this->view('templates/header', $data);
             $this->view('master/jabatan/detail', $data);
-            $this->view('templates/footer');
+            $this->view('templates/footerwm');
         }
     }
 

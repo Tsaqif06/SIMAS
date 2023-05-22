@@ -24,7 +24,7 @@ class perbaikan extends Controller
             Flasher::setFlash('GAGAL', 'Anda Tidak Mempunyai Akses Untuk Menuju Halaman Tersebut', 'danger');
         }
     }
-    
+
     public function importData()
     {
         if ($this->model("$this->model_name", "dataperbaikanPrasarana_models")->importData($_POST) > 0) {

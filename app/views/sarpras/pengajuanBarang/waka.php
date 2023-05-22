@@ -103,8 +103,7 @@ include('connect.php');
 
             <div class="form-group">
               <label for="exampleInputEmail1">Digunakan Untuk</label>
-              <input type="text" class="form-control" id="digunakan_untuk" name="digunakan_untuk" placeholder=""
-                required />
+              <input type="text" class="form-control" id="digunakan_untuk" name="digunakan_untuk" placeholder="" required />
             </div>
         </div>
         <div class="modal-footer">
@@ -139,11 +138,9 @@ include('connect.php');
               </thead>
               <tbody>
                 <?php $i = 1; ?>
-                <?php foreach ($data['pengajuan_waka'] as $pengajuan): ?>
+                <?php foreach ($data['pengajuan_waka'] as $pengajuan) : ?>
                   <tr>
-                    <td>
-                      <?= $i++; ?>
-                    </td>
+                    <td><?= $i++; ?></td>
                     <td>
                       <?php
                       if ($pengajuan['statuspengajuan'] == 1) {
@@ -155,42 +152,22 @@ include('connect.php');
                       }
                       ?>
                     </td>
+                    <td><?= $pengajuan['waka'] ?></td>
+                    <td><?= $pengajuan['barang'] ?></td>
+                    <td><?= $pengajuan['spesifikasi'] ?></td>
+                    <td><?= $pengajuan['bulan'] ?></td>
+                    <td><?= $pengajuan['jumlah'] ?></td>
+                    <td><?= $pengajuan['satuan'] ?></td>
+                    <td><?= $pengajuan['harga_satuan'] ?></td>
+                    <td><?= $pengajuan['harga_total'] ?></td>
+                    <td><?= $pengajuan['digunakan_untuk'] ?></td>
                     <td>
-                      <?= $pengajuan['waka'] ?>
-                    </td>
-                    <td>
-                      <?= $pengajuan['barang'] ?>
-                    </td>
-                    <td>
-                      <?= $pengajuan['spesifikasi'] ?>
-                    </td>
-                    <td>
-                      <?= $pengajuan['bulan'] ?>
-                    </td>
-                    <td>
-                      <?= $pengajuan['jumlah'] ?>
-                    </td>
-                    <td>
-                      <?= $pengajuan['satuan'] ?>
-                    </td>
-                    <td>
-                      <?= $pengajuan['harga_satuan'] ?>
-                    </td>
-                    <td>
-                      <?= $pengajuan['harga_total'] ?>
-                    </td>
-                    <td>
-                      <?= $pengajuan['digunakan_untuk'] ?>
-                    </td>
-                    <td>
-                      <a href="<?= BASEURL; ?>/pengajuanWaka/ubah/<?= $pengajuan['id'] ?>" data-bs-toggle="modal"
-                        data-bs-target="#exampleModalLong" class="tampilModalUbah" data-id="<?= $pengajuan['id']; ?>">
+                      <a href="<?= BASEURL; ?>/pengajuanWaka/ubah/<?= $pengajuan['id'] ?>" data-bs-toggle="modal" data-bs-target="#exampleModalLong" class="tampilModalUbah" data-id="<?= $pengajuan['id']; ?>">
                         <button class="button-arounder">
                           <span class="material-symbols-outlined"> edit </span>
                         </button>
                       </a>
-                      <a href="<?= BASEURL; ?>/pengajuanWaka/hapus/<?= $pengajuan['id'] ?>"
-                        onclick="return confirm ('Hapus data?') ">
+                      <a href="<?= BASEURL; ?>/pengajuanWaka/hapus/<?= $pengajuan['id'] ?>" onclick="return confirm ('Hapus data?') ">
                         <button class="button-arounder">
                           <span class="material-symbols-outlined"> delete </span>
                         </button>
@@ -207,10 +184,17 @@ include('connect.php');
   </div>
 </div>
 
+
+<footer class="footer">
+  <div class="d-sm-flex justify-content-center justify-content-sm-between">
+    <span class="text-muted text-center text-sm-left d-block d-sm-inline-block">Copyright © 2021. Premium <a href="https://www.bootstrapdash.com/" target="_blank">Bootstrap admin template</a> from BootstrapDash. All rights reserved.</span>
+    <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center">Hand-crafted & made with <i class="ti-heart text-danger ml-1"></i></span>
+  </div>
+</footer>
 <script src="<?= BASEURL; ?>/js/pengajuanWaka.js"></script>
 <script src="<?= BASEURL; ?>/vendors/chart.js/chart.min.js"></script>
 <script>
-  $(document).ready(function () {
+  $(document).ready(function() {
     $('#print').DataTable({
       dom: 'Bfrtip',
       buttons: [
@@ -220,16 +204,16 @@ include('connect.php');
   });
 </script>
 <script>
-  $(function () {
+  $(function() {
     const BASEURL = window.location.href;
     // console.log(BASEURL)
-    $('.tombolTambahData').on('click', function () {
+    $('.tombolTambahData').on('click', function() {
       $('formModalLabel').html('Tambah Data Pengajuan')
       $('.modal-footer button[type=submit]').html('Tambah Data');
 
     });
 
-    $(".tampilModalUbah").click(function () {
+    $(".tampilModalUbah").click(function() {
       $("#modal").addClass("edit");
       $("#modalLabel").html("Ubah Data Pengajuan");
       $(".modal-footer button[type=submit]").html("Ubah Data");
@@ -245,7 +229,7 @@ include('connect.php');
         },
         method: "post",
         dataType: "json",
-        success: function (data) {
+        success: function(data) {
           $('#waka').val(data.waka);
           $('#barang').val(data.barang);
           $('#spesifikasi').val(data.spesifikasi);

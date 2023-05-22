@@ -6,7 +6,7 @@
                         <h3 class="font-weight-bold">DATA JABATAN</h3>
                         <h6 class="font-weight-normal mb-0">WEB DEV | SIMAS</h6>
                     </div>
-
+                    
                 </div>
             </div>
         </div>
@@ -33,7 +33,7 @@
                 <div class="card">
                     <div class="card-body">
                         <div class="table-responsive">
-                            <table id="table" class="table table-striped">
+                            <table id="table" class="table table-striped table-main">
                                 <thead>
                                     <tr>
                                         <th>No.</th>

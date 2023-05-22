@@ -17,7 +17,7 @@ class P5 extends Controller
             $this->view('templates/header', $data);
             $this->view('kurikulum/P5/index', $data);
             $this->view('templates/footerwm');
-        } else {
+        } else if ($data['user']['hak_akses'] == '') {
             header("Location: " . BASEURL);
             Flasher::setFlash('GAGAL', 'Anda Tidak Mempunyai Akses Untuk Menuju Halaman Tersebut', 'danger');
         }

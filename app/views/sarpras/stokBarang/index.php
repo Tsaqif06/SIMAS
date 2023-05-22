@@ -16,7 +16,7 @@
   </div>
   <div class="row">
     <div class="col">
-      <a class="btn btn-primary" role="button" data-toggle="modal" data-target="#exampleModalLong">ISI FORM
+      <a class="btn btn-primary tombolTambahData" role="button" data-toggle="modal" data-target="#modal">ISI FORM
         PENGAJUAN</a>
       <button type="button" class="btn btn-primary my-3 mx-3 tampilModalImport" data-url="<?= BASEURL ?>/stokBarang"
         data-bs-toggle="modal" data-bs-target="#modalImport">
@@ -24,7 +24,8 @@
       </button>
     </div>
   </div>
-  <div id="exampleModalLong" class="modal fade" role="dialog" data-backdrop="static">
+
+  <div id="modal" class="modal fade" role="dialog" data-backdrop="static">
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
@@ -57,12 +58,13 @@
         </div>
         <div class="modal-footer">
           <button type="submit" class="btn btn-primary">Tambah Data</button>
-          <button type="button" class="btn btn-default" data-bs-dismiss="modal" aria-label="Close">Tutup</button>
+          <button type="button" class="btn btn-default" data-dismiss="modal" aria-label="Close">Tutup</button>
         </div>
         </form>
       </div>
     </div>
   </div>
+
   <div class="modal fade" id="modalImport" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
       <div class="modal-content">
@@ -85,6 +87,7 @@
       </div>
     </div>
   </div>
+
   <div class="row py-10">
     <div class="col-md-12 grid-margin stretch-card">
       <div class="card rounded shadow border-0" style="width: fit-content;">
@@ -117,8 +120,7 @@
                       <?= $stok['stok'] ?>
                     </td>
                     <td>
-                      <a href="<?= BASEURL; ?>/stokBarang/ubah/<?= $stok['id'] ?>" data-bs-toggle="modal"
-                        data-bs-target="#exampleModalLong" class="hai" data-id="<?= $stok['id']; ?>">
+                      <a href="<?= BASEURL; ?>/stokBarang/ubah/<?= $stok['id'] ?>" data-toggle="modal" data-target="#modal" class="hai" data-id="<?= $stok['id']; ?>">
                         <button class="button-arounder">
                           <span class="material-symbols-outlined"> edit </span>
                         </button>
@@ -143,22 +145,18 @@
 
 <script>
   $(document).ready(function () {
-    $('#print').DataTable({
-      dom: 'Bfrtip',
-      buttons: [
-        'copy', 'excel', 'pdf', 'print'
-      ]
-    });
-  });
-</script>
-
-<script>
-  $(function () {
     const BASEURL = window.location.href;
     console.log(BASEURL)
     $('.tombolTambahData').on('click', function () {
-      $('formModalLabel').html('Tambah Data Stok Barang')
+      $('#modalLabel').html('Tambah Data Stok Barang')
       $('.modal-footer button[type=submit]').html('Tambah Data');
+
+      $('#kode').val('');
+      $('#barang').val('');
+      $('#satuan').val('');
+      $('#stok').val('');
+      $('#harga').val('');
+      $('#id').val('');
 
     });
 
@@ -186,6 +184,13 @@
           console.log(data);
         },
       })
-    })
+    });
+
+    $('#print').DataTable({
+      dom: 'Bfrtip',
+      buttons: [
+        'copy', 'excel', 'pdf', 'print'
+      ]
+    });
   });
 </script>

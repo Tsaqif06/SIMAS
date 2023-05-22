@@ -15,7 +15,7 @@ class DaftarHadir extends Controller
             $this->view('templates/header', $data);
             $this->view('kurikulum/Daftar Hadir/index', $data);
             $this->view('templates/footerwm');
-        } else {
+        } else if ($data['user']['hak_akses'] == '') {
             header("Location: " . BASEURL);
             Flasher::setFlash('GAGAL', 'Anda Tidak Mempunyai Akses Untuk Menuju Halaman Tersebut', 'danger');
         }

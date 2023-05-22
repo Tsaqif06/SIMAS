@@ -30,7 +30,7 @@ class galeriKegiatan extends Controller
         $data['kegiatan'] = $this->model("$this->model_name", 'galeriKegiatan_model')->getKegiatanById($id);
         $this->view('templates/header', $data);
         $this->view('kegiatan/detail', $data);
-        $this->view('templates/footer');
+        $this->view('templates/footerwm');
     }
 
     public function tambah()

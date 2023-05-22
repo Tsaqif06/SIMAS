@@ -97,9 +97,7 @@ class databarangMasuk_models
         // validasi ekstensi file
         // $imageFileType = strtolower(pathinfo($targetFile, PATHINFO_EXTENSION));
         if ($imageFileType != "jpg" && $imageFileType != "jpeg" && $imageFileType != "png" && $imageFileType != "gif") {
-            echo '<script>
-                    alert("Sorry, only JPG, JPEG, PNG & GIF files are allowed.")
-                  </script> ';
+            echo "Sorry, only JPG, JPEG, PNG & GIF files are allowed.";
             exit;
         }
 

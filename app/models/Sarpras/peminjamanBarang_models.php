@@ -14,7 +14,7 @@ class peminjamanBarang_models
         'nama',
         'kelas',
         'namabarang',
-        'jangkawaktu',
+        'jumlahbarang',
         'tglpengembalian',
         'keterangan'
     ];
@@ -36,6 +36,20 @@ class peminjamanBarang_models
         $this->db->query('SELECT * FROM ' . $this->table . ' WHERE `status` = 1');
         return $this->db->fetchAll();
     }
+    
+    public function getReqData()
+    {
+        $this->db->query("SELECT * FROM {$this->table} WHERE `read_status` = 0");
+        $this->db->execute();
+        return $this->db->rowCount();
+    }
+
+    public function readReqData()
+    {
+        $this->db->query("UPDATE {$this->table} SET `read_status` = 1 WHERE `read_status` = 0");
+        $this->db->execute();
+        return $this->db->rowCount();
+    }
 
     public function getDataPeminjamanBarangById($id)
     {
@@ -43,6 +57,94 @@ class peminjamanBarang_models
         $this->db->bind('id', $id);
         return $this->db->fetch();
     }
+
+    public function tambahDataPeminjamanBarang($data)
+    {
+        $this->db->query(
+            "INSERT INTO `peminjaman`
+                VALUES
+            (null, :uuid, :tanggal, :nama, :kelas, :namabarang, :jumlahbarang, :tglpengembalian, :keterangan, 0,
+            '', CURRENT_TIMESTAMP, :created_by, null, '', null, '', null, '', 0, 0, DEFAULT, 0)"
+        );
+
+        foreach ($this->fields as $field) {
+            $this->db->bind($field, $data[$field]);
+        }
+
+        $this->db->bind('uuid', Uuid::uuid4()->toString());
+        $this->db->bind('created_by', $this->user);
+
+        $this->db->execute();
+
+        return $this->db->rowCount();
+    }
+
+    public function hapusDataPeminjamanBarang($id)
+    {
+        $this->db->query(
+            "UPDATE {$this->table}
+                SET
+                deleted_at = CURRENT_TIMESTAMP,
+                deleted_by = :deleted_by,
+                is_deleted = 1,
+                is_restored = 0
+              WHERE id = :id"
+        );
+
+        $this->db->bind('deleted_by', $this->user);
+        $this->db->bind("id", $id);
+
+        $this->db->execute();
+        return $this->db->rowCount();
+    }
+
+    public function ubahStatusPinjam($status, $id)
+    {
+        $this->db->query(
+            "UPDATE `peminjaman` SET
+                statuspinjam = :statuspinjam,
+                modified_at = CURRENT_TIMESTAMP,
+                modified_by = :modified_by
+            WHERE id = :id"
+        );
+
+        $this->db->bind('id', $id);
+        $this->db->bind('statuspinjam', $status);
+        $this->db->bind('modified_by', $this->user);
+
+        $this->db->execute();
+
+        return $this->db->rowCount();
+    }
+
+    public function ubahDataPeminjamanBarang($data)
+    {
+        $this->db->query(
+            "UPDATE `peminjaman` SET
+                nama = :nama,
+                kelas = :kelas,
+                namabarang = :namabarang,
+                tanggal = :tanggal,
+                jangkawaktu = :jangkawaktu,
+                tglpengembalian = :tglpengembalian,
+                keterangan = :keterangan,
+                modified_at = CURRENT_TIMESTAMP,
+                modified_by = :modified_by
+            WHERE id = :id"
+        );
+
+        foreach ($this->fields as $field) {
+            $this->db->bind($field, $data[$field]);
+        }
+
+        $this->db->bind('modified_by', $this->user);
+        $this->db->bind('id', $data['id']);
+
+        $this->db->execute();
+
+        return $this->db->rowCount();
+    }
+
     public function importData()
     {
         // Cek file diupload apa belum
@@ -80,82 +182,5 @@ class peminjamanBarang_models
             $response = $this->tambahDataPeminjamanBarang($data);
         }
         return $response;
-    }
-
-    public function tambahDataPeminjamanBarang($data)
-    {
-        $query = "INSERT INTO peminjaman
-                    VALUES
-                  (null, :uuid, :tanggal, :nama, :kelas, :namabarang, :jangkawaktu, :tglpengembalian, :keterangan, '', CURRENT_TIMESTAMP, :created_by, null, '', null, '', null, '', 0, 0, DEFAULT)";
-
-        $this->db->query($query);
-        $this->db->bind('uuid', Uuid::uuid4()->toString());
-        foreach ($this->fields as $field) {
-            $this->db->bind($field, $data[$field]);
-        }
-        $this->db->bind('created_by', $this->user);
-
-        $this->db->execute();
-
-        return $this->db->rowCount();
-    }
-
-    public function hapusDataPeminjamanBarang($id)
-    {
-        $this->db->query(
-            "UPDATE {$this->table}
-                SET
-                deleted_at = CURRENT_TIMESTAMP,
-                deleted_by = :deleted_by,
-                is_deleted = 1,
-                is_restored = 0
-              WHERE id = :id"
-        );
-
-        $this->db->bind('deleted_by', $this->user);
-        $this->db->bind("id", $id);
-
-        $this->db->execute();
-        return $this->db->rowCount();
-    }
-
-
-    public function ubahDataPeminjamanBarang($data)
-    {
-        $query = "UPDATE peminjaman SET
-                    nama = :nama,
-                    kelas = :kelas,
-                    namabarang = :namabarang,
-                    tanggal = :tanggal,
-                    jangkawaktu = :jangkawaktu,
-                    tglpengembalian = :tglpengembalian,
-                    keterangan = :keterangan,
-                    modified_at = CURRENT_TIMESTAMP,
-                    modified_by = :modified_by
-                WHERE id = :id";
-
-        $this->db->query($query);
-
-
-        foreach ($this->fields as $field) {
-            $this->db->bind($field, $data[$field]);
-        }
-        $this->db->bind('modified_by', $this->user);
-
-        $this->db->bind('id', $data['id']);
-
-        $this->db->execute();
-
-        return $this->db->rowCount();
-    }
-
-
-    public function cariDataPeminjaman()
-    {
-        $keyword = $_POST['keyword'];
-        $query = "SELECT * FROM peminjaman WHERE tanggal LIKE :keyword";
-        $this->db->query($query);
-        $this->db->bind('keyword', "%$keyword%");
-        return $this->db->fetchAll();
     }
 }

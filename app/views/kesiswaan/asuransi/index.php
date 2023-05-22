@@ -6,7 +6,7 @@
                         <h3 class="font-weight-bold">DATA ASURANSI</h3>
                         <h6 class="font-weight-normal mb-0">WEB DEV | SIMAS</h6>
                     </div>
-
+                    
                 </div>
             </div>
         </div>
@@ -56,15 +56,13 @@
                                             <td><?= $i++ ?></td>
                                             <td class="font-weight-medium">
                                                 <a href="" class="badge text-bg-success tampilModalUbah" style="cursor: pointer;" data-url="<?= BASEURL ?>/asuransi/ubahData" data-bs-toggle="modal" data-bs-target="#modal" data-id="<?= $row['id'] ?>">
-                                                <button class="button-arounder">
-                          <span class="material-symbols-outlined"> edit </span>
-                        </button>
+                                                    <i class="ti ti-pencil"></i>
                                                 </a>
                                                 <a href="<?= BASEURL ?>/asuransi/hapusData/<?= $row['id'] ?>">
                                                     <div class=" font-weight-medium pt-2">
-                                                    <button class="button-arounder">
-                          <span class="material-symbols-outlined"> delete </span>
-                        </button>
+                                                        <div class="badge badge-danger delete" onclick="return confirm('Apakah Anda Yakin Mau Menghapus Data?')">
+                                                            <i class="ti ti-trash"></i>
+                                                        </div>
                                                 </a>
                                             </td>
                                             <td><?= $row['email']; ?></td>
