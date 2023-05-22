@@ -74,7 +74,7 @@
                             <?php $no = 1;
                             foreach ($data['stiru'] as $stiru) : ?>
                               <tr>
-                                <td><a href="<?= BASEURL; ?>/stiru/detailstiru/<?= $stiru['id']; ?>" class="badge badge-info" style="text-decoration: none;"><i class="mdi mdi-information-variant"></i></a>
+                                <td>
                                   <a class="badge badge-success tampilModalEditstiru" data-url="<?= BASEURL; ?>/stiru/ubahstiru/<?= $stiru['id']; ?>" data-toggle="modal" data-target="#formModal" data-id="<?= $stiru['id']; ?>"><i class="mdi mdi-lead-pencil"></i></a>
                                   <a href="<?= BASEURL; ?>/stiru/hapusstiru/<?= $stiru['id']; ?>" class="badge badge-danger" style="text-decoration: none;"><i class="mdi mdi-delete"></i></a>
                                 </td>
