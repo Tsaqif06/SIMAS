@@ -10,6 +10,6 @@ class Notfound extends Controller
 
         $this->view('templates/header', $data);
         $this->view('notfound/index', $data);
-        $this->view('templates/footer');
+        $this->view('templates/footerwm');
     }
 }
