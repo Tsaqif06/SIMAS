@@ -7,12 +7,12 @@ $(document).ready(function () {
 			document.querySelector("#modal form").reset();
 		}
 		$(".wrapFotoSekarang").hide();
-		$("#modalLabel").html("Tambah Data");
+		$("#formModalLabel").html("Tambah Data");
 		$("button[type=submit]").html("Tambah Data");
 		$(".modal-body form").attr("action", `${BASEURL}/tambahData`);
 	});
 
-	// Menghancurkan tabel DataTable yang sudah ada
+	// Menghancurkan tabel DataTable yang s1udah ada
 	if ($.fn.DataTable.isDataTable('#table')) {
 		$('#table').DataTable().destroy();
 	}
@@ -27,7 +27,7 @@ $(document).ready(function () {
 		drawCallback: function (settings) {
 			$(".tampilModalUbah").click(function () {
 				$("#modal").addClass("edit");
-				$("#modalLabel").html("Edit Data");
+				$("#formModalLabel").html("Edit Data");
 				$(".modal-footer button[type=submit]").html("Ubah Data");
 				$(".modal-body form").attr("action", `${BASEURL}/ubahData`);
 				$(".wrapFotoSekarang").show();

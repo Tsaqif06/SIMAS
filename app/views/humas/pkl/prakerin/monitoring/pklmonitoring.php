@@ -24,7 +24,7 @@
                 <div class="template-demo">
                     <button type="button" class="btn btn-primary tomboltambahdata3" data-toggle="modal"
                         data-target="#formmodal">Tambah Data</button>
-                    <button type="button" class="btn btn-primary my-3 mx-3 tampilModalImport" data-toggle="modal"
+                    <button type="button" class="btn btn-primary tampilModalImport" data-toggle="modal"
                         data-target="#modalImport">
                         Import Data Dari Excel
                     </button>
