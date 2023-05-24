@@ -217,6 +217,7 @@ class PKL extends Controller
         $data['judul'] = 'Admin - PKL';
         $data['user'] = $this->user;
         $data['siswa'] = $this->model("$this->model_name", 'PKL_model')->getExistSiswaPS();
+        $data['kompkeahlian'] = $this->model("Master", 'Kompkeahlian_model')->getAllExistData();
         $akses = ['all', 'humas', 'kabeng'];
         if (in_array($data['user']['hak_akses'], $akses)) {
             $this->view('templates/humas/header', $data);
