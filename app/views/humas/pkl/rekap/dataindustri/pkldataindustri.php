@@ -46,18 +46,18 @@
 
 
 
-              <div class="form-group mb-3">
-                <label for="kompetensikeahlian">Kompetensi Keahlian</label>
-                <select class="form-control" id="kompetensikeahlian" name="kompetensikeahlian">
-                  <option value="Tekhnik Grafika">Tekhnik Grafika</option>
-                  <option value="Rekayasa Perangkat Lunak">Rekayasa Perangkat Lunak</option>
-                  <option value="Logistik">Logistik</option>
-                  <option value="Perhotelan">Perhotelan</option>
-                  <option value="Mekatronika">Mekatronika</option>
-                  <option value="Desain Komunikasi Visual">DKV</option>
-                  <option value="Tekhnik Komputer Jaringan">TKJ</option>
-                </select>
-                </div>
+              <div class="form-group">
+                            <label for="kompetensikeahlian">Jurusan</label>
+                            <select class="form-control" aria-label="Default select example" id="kompetensikeahlian"
+                                name="kompetensikeahlian">
+                                <option selected>--Pilih Jurusan--</option>
+                                <?php foreach ($data['kompkeahlian'] as $row) : ?>
+                                <option value="<?= $row['kode_kompkeahlian'] ?>"><?= $row['kode_kompkeahlian'] ?>
+                                </option>
+                                <?php endforeach ?>
+
+                            </select>
+                        </div>
 
 
                 <div class="form-group">

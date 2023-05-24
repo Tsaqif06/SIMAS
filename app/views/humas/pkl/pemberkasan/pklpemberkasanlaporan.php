@@ -102,20 +102,17 @@
                                         name="tanggallahir_pemberkasan">
                                 </div>
                                 <div class="form-group">
-                                    <label for="jurusan_pemberkasan">Jurusan</label>
-                                    <select class="form-control" aria-label="Default select example"
-                                        id="jurusan_pemberkasan" name="jurusan_pemberkasan">
-                                        <option selected>--Pilih Jurusan--</option>
-                                        <option value="Teknik Grafika">Teknik Grafika</option>
-                                        <option value="Teknik Komputer Jaringan">Teknik Komputer Jaringan</option>
-                                        <option value="Rekayasa Perangkat Lunak">Rekayasa Perangkat Lunak</option>
-                                        <option value="Animasi">Animasi</option>
-                                        <option value="Desain Komunikasi Visual">Desain Komunikasi Visual</option>
-                                        <option value="Logistik">Logistik</option>
-                                        <option value="Mekatronika">Mekatronika</option>
-                                        <option value="Perhotelan">Perhotelan</option>
-                                    </select>
-                                </div>
+                            <label for="jurusan_pemberkasan">Jurusan</label>
+                            <select class="form-control" aria-label="Default select example" id="jurusan_pemberkasan"
+                                name="jurusan_pemberkasan">
+                                <option selected>--Pilih Jurusan--</option>
+                                <?php foreach ($data['kompkeahlian'] as $row) : ?>
+                                <option value="<?= $row['kode_kompkeahlian'] ?>"><?= $row['kode_kompkeahlian'] ?>
+                                </option>
+                                <?php endforeach ?>
+
+                            </select>
+                        </div>
                                 <div class="form-group">
                                     <label for="jeniskelamin_pemberkasan">Jenis Kelamin</label>
                                     <select class="form-control" id="jeniskelamin_pemberkasan"
