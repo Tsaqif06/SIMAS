@@ -6,17 +6,6 @@ class STiru extends Controller
 
     public function index()
     {
-        // $data['judul'] = 'Studi Tiru';
-        // $data['user'] = $this->user;
-        // $akses = ['all', 'humas'];
-        // if (in_array($data['user']['hak_akses'], $akses)) {
-        //     $this->view('templates/humas/header', $data);
-        //     $this->view('humas/stiru/studitiru');
-        //     $this->view('templates/humas/footer');
-        // } else if ($data['user']['hak_akses'] == '') {
-        //     header("Location: " . BASEURL);
-        //     Flasher::setFlash('GAGAL', 'Anda Tidak Mempunyai Akses Untuk Menuju Halaman Tersebut', 'danger');
-        // }
         $data['judul'] = 'Studi Tiru';
         $data['user'] = $this->user;
         $data['stiru'] = $this->model("$this->model_name", 'Stiru_model')->getAllStiru();
@@ -24,6 +13,10 @@ class STiru extends Controller
         if (in_array($data['user']['hak_akses'], $akses)) {
             $this->view('templates/humas/header', $data);
             $this->view('humas/stiru/studitirulaporan', $data);
+            $this->view('templates/humas/footer');
+        } else if ($data['user']['role'] == 'guru') {
+            $this->view('templates/humas/header', $data);
+            $this->view('humas/guru/stiru/studitirulaporan', $data);
             $this->view('templates/humas/footer');
         } else {
             $this->view('templates/humas/header', $data);
@@ -40,6 +33,10 @@ class STiru extends Controller
         if (in_array($data['user']['hak_akses'], $akses)) {
             $this->view('templates/humas/header', $data);
             $this->view('humas/stiru/studitirulaporan', $data);
+            $this->view('templates/humas/footer');
+        } else if ($data['user']['role'] == 'guru') {
+            $this->view('templates/humas/header', $data);
+            $this->view('humas/guru/stiru/studitirulaporan', $data);
             $this->view('templates/humas/footer');
         } else if ($data['user']['hak_akses'] == '') {
             header("Location: " . BASEURL);
