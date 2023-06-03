@@ -245,10 +245,41 @@ class PKL extends Controller
     public function pemberkasan()
     {
         $data['judul'] = 'Admin - PKL';
+
         $data['user'] = $this->user;
-        $data['siswa'] = $this->model("$this->model_name", 'PKL_model')->getExistSiswaPS();
-        $data['kompkeahlian'] = $this->model("Master", 'Kompkeahlian_model')->getAllExistData();
         $akses = ['all', 'humas', 'kabeng'];
+
+        $data['jurusan'] = "";
+        switch ($data['user']['username']) {
+            case 'Kabeng TG':
+                $data['jurusan'] = 'TEKNIK GRAFIKA';
+                break;
+            case 'Kabeng TL':
+                $data['jurusan'] = 'LOGISTIK';
+                break;
+            case 'Kabeng MEKA':
+                $data['jurusan'] = 'MEKATRONIKA';
+                break;
+            case 'Kabeng PH':
+                $data['jurusan'] = 'PERHOTELAN';
+                break;
+            case 'Kabeng ANI':
+                $data['jurusan'] = 'ANIMASI';
+                break;
+            case 'Kabeng DKV':
+                $data['jurusan'] = 'DESAIN KOMUNIKASI VISUAL';
+                break;
+            case 'Kabeng TKJ':
+                $data['jurusan'] = 'TEKNIK KOMPUTER DAN JARINGAN';
+                break;
+            case 'Kabeng RPL':
+                $data['jurusan'] = 'REKAYASA PERANGKAT LUNAK';
+        }
+        $data['siswa'] = $this->model("$this->model_name", 'PKL_model')->getExistSiswaPS();
+
+        // echo '<pre>';
+        // print_r($data['user']); die;
+
         if (in_array($data['user']['hak_akses'], $akses)) {
             $this->view('templates/humas/header', $data);
             $this->view('humas/pkl/pemberkasan/pklpemberkasanlaporan', $data);
@@ -286,6 +317,8 @@ class PKL extends Controller
 
     public function tambahpemberkasan()
     {
+        // $this->model("$this->model_name", 'PKL_model')->tambahDataPemberkasan($_POST);
+
         if ($this->model("$this->model_name", 'PKL_model')->tambahDataPemberkasan($_POST) > 0) {
             Flasher::setFlash('berhasil ', 'ditambahkan', 'success');
             header('Location: ' . BASEURL . '/pkl/pemberkasan');
@@ -311,7 +344,7 @@ class PKL extends Controller
     }
     public function ubahpemberkasan()
     {
-        if ($this->model("$this->model_name", 'PKL_model')->ubahDataPS($_POST) > 0) {
+        if ($this->model("$this->model_name", 'PKL_model')->ubahDataPemberkasan($_POST) > 0) {
             Flasher::setFlash('berhasil ', 'diubah', 'success');
         } else {
             Flasher::setFlash('gagal ', 'diubah', 'danger');

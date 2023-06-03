@@ -15,6 +15,12 @@
      </div>
    </div>
 
+   <div class="row">
+     <div class="col-lg-6">
+       <?php Flasher::flash(); ?>
+     </div>
+   </div>
+
    <div class="row justify-content">
      <div class="col-md-12 grid-margin stretch-card">
        <div class="card animate-gradient">
@@ -127,19 +133,19 @@
              <span aria-hidden="true">&times;</span>
            </button>
          </div>
-         <form>
+         <form action="<?= BASEURL ?>/pkl/tambahpemberkasan" method="post" enctype="multipart/form-data">
            <div class="row justify-content-md-center">
              <div class="col-md-6">
                <div class="modal-body">
-                 <h4 class="modal-title" id="exampleModalLabel">Data Diri</h4>
+                 <h4 class="modal-title">Data Diri</h4>
                  <div class="form-group">
-                   <label for="kelas">Kelas</label>
-                   <input class="form-control" id="nis_pemberkasan" name="kelas" placeholder="Kelas">
+                   <label for="kelas_pemberkasan">Kelas</label>
+                   <input class="form-control" id="kelas_pemberkasan" name="kelas_pemberkasan" placeholder="Kelas" required>
                  </div>
 
                  <div class="form-group">
                    <label for="jurusan_pemberkasan">Jurusan</label>
-                   <select class="form-control" aria-label="Default select example" id="jurusan_pemberkasan" name="jurusan_pemberkasan">
+                   <select class="form-control" aria-label="Default select example" id="jurusan_pemberkasan" name="jurusan_pemberkasan" required>
                      <option selected>--Pilih Jurusan--</option>
                      <option value="Teknik Grafika">Teknik Grafika</option>
                      <option value="Teknik Komputer Jaringan">Teknik Komputer Jaringan</option>
@@ -154,78 +160,79 @@
 
                  <div class="form-group">
                    <label for="namasiswa_pemberkasan">Nama Lengkap</label>
-                   <input type="text" class="form-control" id="namasiswa_pemberkasan" name="namasiswa_pemberkasan" placeholder="Nama Lengkap">
+                   <input type="text" class="form-control" id="namasiswa_pemberkasan" name="namasiswa_pemberkasan" placeholder="Nama Lengkap" required>
                  </div>
 
                  <div class="form-group">
                    <label for="nis_pemberkasan">NIS</label>
-                   <input type="number" class="form-control" id="nis_pemberkasan" name="nis_pemberkasan" placeholder="NIS">
+                   <input type="number" class="form-control" id="nis_pemberkasan" name="nis_pemberkasan" placeholder="NIS" required>
                  </div>
 
                  <div class="form-group">
                    <label for="nisn_pemberkasan">NISN</label>
-                   <input type="number" class="form-control" id="nisn_pemberkasan" name="nisn_pemberkasan" placeholder="NISN">
+                   <input type="number" class="form-control" id="nisn_pemberkasan" name="nisn_pemberkasan" placeholder="NISN" required>
                  </div>
 
                  <div class="form-group">
                    <label for="tanggallahir_pemberkasan">Tanggal Lahir</label>
-                   <input type="date" class="form-control" id="tanggallahir_pemberkasan" name="tanggallahir_pemberkasan">
+                   <input type="date" class="form-control" id="tanggallahir_pemberkasan" name="tanggallahir_pemberkasan" required>
                  </div>
 
                  <div class="form-group">
                    <label for="jeniskelamin_pemberkasan" class="col-form-label">Jenis Kelamin</label>
                    <div class="form-check">
                      <label for="jeniskelamin_pemberkasan" class="form-check-label">
-                       <input type="radio" class="form-check-input" name="jeniskelamin_pemberkasan" id="lakilaki" value="" checked>
+                       <input type="radio" class="form-check-input" name="jeniskelamin_pemberkasan" id="lakilaki" value="Laki-laki" checked>
                        Laki - laki
                      </label>
                    </div>
                    <div class="form-check">
                      <label for="jeniskelamin_pemberkasan" class="form-check-label">
-                       <input type="radio" class="form-check-input" name="jeniskelamin_pemberkasan" id="perempuan" value="option2">
+                       <input type="radio" class="form-check-input" name="jeniskelamin_pemberkasan" id="perempuan" value="Perempuan">
                        Perempuan
                      </label>
                    </div>
                  </div>
 
                  <div class="form-group">
-                   <label for="agama">Agama</label>
-                   <input type="text" class="form-control" id="agama" name="agama" placeholder="Agama">
+                   <label for="agama_pemberkasan">Agama</label>
+                   <input type="text" class="form-control" id="agama_pemberkasan" name="agama_pemberkasan" placeholder="Agama" required>
                  </div>
 
                  <div class="form-group">
-                   <label for="domisili_pemberkasann">Domisili</label>
-                   <input type="text" class="form-control" id="domisili_pemberkasann" name="domisili_pemberkasann" placeholder="Domisili">
+                   <label for="domisili_pemberkasan">Domisili</label>
+                   <input type="text" class="form-control" id="domisili_pemberkasan" name="domisili_pemberkasan" placeholder="Domisili" required>
                  </div>
 
                  <div class="form-group">
-                   <label for="alamat">Alamat Rumah</label>
-                   <input type="text" class="form-control" id="alamat" name="alamat" placeholder="Alamat Rumah">
+                   <label for="alamat_pemberkasan">Alamat Rumah</label>
+                   <input type="text" class="form-control" id="alamat_pemberkasan" name="alamat_pemberkasan" placeholder="Alamat Rumah" required>
                  </div>
 
                  <div class="form-group">
-                   <label for="nohp">No. Telp. / HP</label>
-                   <input type="number" class="form-control" id="nohp" name="nohp" placeholder="No. Telp. / HP">
+                   <label for="notelp_pemberkasan">No. Telp. / HP</label>
+                   <input type="number" class="form-control" id="notelp_pemberkasan" name="notelp_pemberkasan" placeholder="No. Telp. / HP" required>
                  </div>
                </div>
 
              </div>
              <div class="col-md-6">
                <div class="modal-body">
-                 <h4 class="modal-title" id="exampleModalLabel">Kontak Orang Tua / Wali Murid</h4>
+                 <h4 class="modal-title">Kontak Orang Tua / Wali Murid</h4>
                  <div class="form-group">
-                   <label for="nohport">No. Telp. / HP (Orang Tua / Wali Murid)</label>
-                   <input type="number" class="form-control" id="nohport" name="nohport" placeholder="No. Telp. / HP">
+                   <label for="notelportu_pemberkasan">No. Telp. / HP (Orang Tua / Wali Murid)</label>
+                   <input type="number" class="form-control" id="notelportu_pemberkasan" name="notelportu_pemberkasan" placeholder="No. Telp. / HP" required>
                  </div>
                </div>
 
                <div class="modal-body">
-                 <h4 class="modal-title" id="exampleModalLabel">Lampiran</h4>
+                 <h4 class="modal-title">Lampiran</h4>
+
                  <div class="form-group">
                    <label>Foto 3 : 4</label>
                    <input type="file" class="file-upload-default" id="uploadfoto_pemberkasan" name="uploadfoto_pemberkasan">
                    <div class="input-group col-xs-12">
-                     <input type="text" class="form-control file-upload-info" disabled placeholder="Unggah Foto 3 : 4">
+                     <input type="text" class="form-control file-upload-info" disabled onclick="alert(`test`)" placeholder="Unggah Foto 3 : 4">
                      <span class="input-group-append">
                        <button class="file-upload-browse btn btn-primary" type="button">Unggah</button>
                      </span>
@@ -302,16 +309,16 @@
            </div>
            <div class="modal-footer">
              <div class="modal-body">
-               <h4 class="modal-title" id="exampleModalLabel">Pemilihan Kota</h4>
+               <h4 class="modal-title">Pemilihan Kota</h4>
                <div class="form-group">
-                 <label for="pkldimana_pemberkasan">Ingin Prakerin di Kota</label>
-                 <input type="text" class="form-control" id="pkldimana_pemberkasan" name="pkldimana_pemberkasan" placeholder="Kota 1">
+                 <label for="kota1_pemberkasan">Ingin Prakerin di Kota</label>
+                 <input type="text" class="form-control" id="kota1_pemberkasan" name="kota1_pemberkasan" placeholder="Kota 1" required>
                </div>
                <div class="form-group">
-                 <input type="text" class="form-control" id="pkldimana_pemberkasan" name="pkldimana_pemberkasan" placeholder="Kota 2">
+                 <input type="text" class="form-control" id="kota2_pemberkasan" name="kota2_pemberkasan" placeholder="Kota 2" required>
                </div>
                <div class="form-group">
-                 <input type="text" class="form-control" id="pkldimana_pemberkasan" name="pkldimana_pemberkasan" placeholder="Kota 3">
+                 <input type="text" class="form-control" id="kota3_pemberkasan" name="kota3_pemberkasan" placeholder="Kota 3" required>
                </div>
              </div>
            </div>

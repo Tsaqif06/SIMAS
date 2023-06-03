@@ -7,7 +7,7 @@
                 <div class="col-12 col-xl-8 mb-4 mb-xl-0">
                     <div class="row">
                         <div class="col-lg-12">
-                            <h3 class="font-weight-bold">PEMBERKASAN "XXX"</h3> <!--xxx = jurusan-->
+                            <h3 class="font-weight-bold">PEMBERKASAN <?= $data['jurusan'] ?></h3> <!--xxx = jurusan-->
                             <h6 class="font-weight-normal mb-0"> Laman Pemberkasan Kabeng | <span class="text-primary"> SIMAS </span></h6>
                         </div>
                     </div>
@@ -16,6 +16,11 @@
         </div>
     </div>
 
+    <div class="row">
+        <div class="col-lg-6">
+            <?php Flasher::flash(); ?>
+        </div>
+    </div>
 
     <div class="row">
         <div class="col-lg-12 grid-margin stretch-card">
