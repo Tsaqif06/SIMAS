@@ -1,4 +1,5 @@
 <?php
+
 class peminjamanBarang extends Controller
 {
     public $model_name = "Sarpras";

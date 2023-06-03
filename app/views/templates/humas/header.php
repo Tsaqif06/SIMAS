@@ -3,6 +3,27 @@
 
 <head>
     <style>
+    .animate-gradient {
+        background: linear-gradient(-45deg, #74efff, #9c27b0);
+        background-size: 400% 400%;
+        animation: gradient-bg 20s ease infinite;
+    }
+
+    @keyframes gradient-bg {
+        0% {
+            background-position: 0% 25%;
+        }
+        25% {
+            background-position: 50% 25%;
+        }
+        50% {
+            background-position: 100% 50%;
+        }
+        100% {
+            background-position: 0% 50%;
+        }
+    }
+
     .button-arounder {
         background: white;
         font-size: 4px;

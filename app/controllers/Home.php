@@ -18,6 +18,6 @@ class Home extends Controller
 
         $this->view('templates/header', $data);
         $this->view('home/index', $data);
-        $this->view('templates/footer');
+        $this->view('templates/footerwm');
     }
 }

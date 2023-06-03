@@ -253,13 +253,13 @@ class PKL extends Controller
             $this->view('templates/humas/header', $data);
             $this->view('humas/pkl/pemberkasan/pklpemberkasanlaporan', $data);
             $this->view('templates/humas/footer');
-        } else if ($data['user']['role'] == 'guru' || $data['user']['hak_akses'] == 'kabeng') {
+        } else if ($data['user']['role'] == 'guru') {
             $this->view('templates/humas/header', $data);
             $this->view('humas/guru/pkl/pemberkasan/pklpemberkasanlaporan', $data);
             $this->view('templates/humas/footer');
-        } else {
+        } else if ($data['user']['role'] == 'siswa') {
             $this->view('templates/humas/header', $data);
-            $this->view('humas/pkl/pemberkasan/form', $data);
+            $this->view('humas/pkl/pemberkasan/pklpemberkasan', $data);
             $this->view('templates/humas/footer');
         }
     }

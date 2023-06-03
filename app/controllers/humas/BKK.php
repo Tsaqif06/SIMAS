@@ -251,7 +251,7 @@ class BKK extends Controller
             $this->view('templates/humas/footer');
         } else if ($data['user']['hak_akses'] == '') {
             $this->view('templates/humas/header', $data);
-            $this->view('humas/bkk/peminatan/bkkpeminatanlaporan', $data);
+            $this->view('humas/bkk/peminatan/bkkpeminatanform', $data);
             $this->view('templates/humas/footer');
         }
     }

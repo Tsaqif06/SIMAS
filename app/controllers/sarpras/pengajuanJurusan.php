@@ -1,4 +1,5 @@
 <?php
+
 class pengajuanJurusan extends Controller
 {
     public $model_name = "Sarpras";
