@@ -18,7 +18,7 @@ class PKL extends Controller
             $this->view('templates/humas/header', $data);
             $this->view('humas/pkl/home/pkl', $data);
             $this->view('templates/humas/footer');
-        } else if ($data['user']['role'] == 'guru') {
+        } else if ($data['user']['role'] == 'guru' || $data['user']['hak_akses'] == 'kabeng') {
             $this->view('templates/humas/header', $data);
             $this->view('humas/guru/pkl/home/pkl', $data);
             $this->view('templates/humas/footer');
@@ -43,7 +43,7 @@ class PKL extends Controller
             $this->view('templates/humas/header', $data);
             $this->view('humas/pkl/rekap/home/pklrekapitulasi', $data);
             $this->view('templates/humas/footer');
-        } else if ($data['user']['role'] == 'guru') {
+        } else if ($data['user']['role'] == 'guru' || $data['user']['hak_akses'] == 'kabeng') {
             $this->view('templates/humas/header', $data);
             $this->view('humas/guru/pkl/rekap/home/pklrekapitulasi', $data);
             $this->view('templates/humas/footer');
@@ -76,7 +76,7 @@ class PKL extends Controller
             }
 
             $this->view('templates/humas/footer');
-        } else if ($data['user']['role'] == 'guru') {
+        } else if ($data['user']['role'] == 'guru' || $data['user']['hak_akses'] == 'kabeng') {
             $this->view('templates/humas/header', $data);
             if (isset($_GET['kelas'])) {
                 $data['kelas'] = str_replace("_", " ", strtoupper($_GET['kelas']));
@@ -168,7 +168,7 @@ class PKL extends Controller
             }
 
             $this->view('templates/humas/footer');
-        } else if ($data['user']['role'] == 'guru') {
+        } else if ($data['user']['role'] == 'guru' || $data['user']['hak_akses'] == 'kabeng') {
             $this->view('templates/humas/header', $data);
 
             if (isset($_GET['kelas'])) {
@@ -253,7 +253,7 @@ class PKL extends Controller
             $this->view('templates/humas/header', $data);
             $this->view('humas/pkl/pemberkasan/pklpemberkasanlaporan', $data);
             $this->view('templates/humas/footer');
-        } else if ($data['user']['role'] == 'guru') {
+        } else if ($data['user']['role'] == 'guru' || $data['user']['hak_akses'] == 'kabeng') {
             $this->view('templates/humas/header', $data);
             $this->view('humas/guru/pkl/pemberkasan/pklpemberkasanlaporan', $data);
             $this->view('templates/humas/footer');
@@ -274,7 +274,7 @@ class PKL extends Controller
             $this->view('templates/humas/header', $data);
             $this->view('humas/pkl/pemberkasan/raporpemberkasan', $data);
             $this->view('templates/humas/footer');
-        } else if ($data['user']['role'] == 'guru') {
+        } else if ($data['user']['role'] == 'guru' || $data['user']['hak_akses'] == 'kabeng') {
             $this->view('templates/humas/header', $data);
             $this->view('humas/guru/pkl/pemberkasan/raporpemberkasan', $data);
             $this->view('templates/humas/footer');
@@ -352,7 +352,7 @@ class PKL extends Controller
             $this->view('templates/humas/header', $data);
             $this->view('humas/pkl/prakerin/pklprakerin', $data);
             $this->view('templates/humas/footer');
-        } else if ($data['user']['role'] == 'guru') {
+        } else if ($data['user']['role'] == 'guru' || $data['user']['hak_akses'] == 'kabeng') {
             $this->view('templates/humas/header', $data);
             $this->view('humas/guru/pkl/prakerin/pklprakerin', $data);
             $this->view('templates/humas/footer');
@@ -371,7 +371,7 @@ class PKL extends Controller
             $this->view('templates/humas/header', $data);
             $this->view('humas/pkl/prakerin/pemberangkatan/pklpemberangkatan', $data);
             $this->view('templates/humas/footer');
-        } else if ($data['user']['role'] == 'guru') {
+        } else if ($data['user']['role'] == 'guru' || $data['user']['hak_akses'] == 'kabeng') {
             $this->view('templates/humas/header', $data);
             $this->view('humas/guru/bkk/loker/bkklokerlaporan', $data);
             $this->view('templates/humas/footer');
@@ -390,7 +390,7 @@ class PKL extends Controller
             $this->view('templates/humas/header', $data);
             $this->view('humas/pkl/prakerin/penjemputan/pklpenjemputan', $data);
             $this->view('templates/humas/footer');
-        } else if ($data['user']['role'] == 'guru') {
+        } else if ($data['user']['role'] == 'guru' || $data['user']['hak_akses'] == 'kabeng') {
             $this->view('templates/humas/header', $data);
             $this->view('humas/guru/pkl/prakerin/penjemputan/pklpenjemputan', $data);
             $this->view('templates/humas/footer');
@@ -411,7 +411,7 @@ class PKL extends Controller
             $this->view('templates/humas/header', $data);
             $this->view('humas/pkl/rekap/magang/pklpengangkatansiswa', $data);
             $this->view('templates/humas/footer');
-        } else if ($data['user']['role'] == 'guru') {
+        } else if ($data['user']['role'] == 'guru' || $data['user']['hak_akses'] == 'kabeng') {
             $this->view('templates/humas/header', $data);
             $this->view('humas/guru/pkl/rekap/magang/pklpengangkatansiswa', $data);
             $this->view('templates/humas/footer');
@@ -482,7 +482,7 @@ class PKL extends Controller
             $this->view('templates/humas/header', $data);
             $this->view('humas/pkl/rekap/dataindustri/pkldataindustri', $data);
             $this->view('templates/humas/footer');
-        } else if ($data['user']['role'] == 'guru') {
+        } else if ($data['user']['role'] == 'guru' || $data['user']['hak_akses'] == 'kabeng') {
             $this->view('templates/humas/header', $data);
             $this->view('humas/guru/pkl/rekap/dataindustri/pkldataindustri', $data);
             $this->view('templates/humas/footer');
@@ -550,7 +550,7 @@ class PKL extends Controller
             $this->view('templates/humas/header', $data);
             $this->view('humas/pkl/prakerin/monitoring/pklmonitoring', $data);
             $this->view('templates/humas/footer');
-        } else if ($data['user']['role'] == 'guru') {
+        } else if ($data['user']['role'] == 'guru' || $data['user']['hak_akses'] == 'kabeng') {
             $this->view('templates/humas/header', $data);
             $this->view('humas/guru/pkl/prakerin/monitoring/pklmonitoring', $data);
             $this->view('templates/humas/footer');
@@ -623,7 +623,7 @@ class PKL extends Controller
             $this->view('templates/humas/header', $data);
             $this->view('humas/pkl/pembekalan/pklpembekalan', $data);
             $this->view('templates/humas/footer');
-        } else if ($data['user']['role'] == 'guru') {
+        } else if ($data['user']['role'] == 'guru' || $data['user']['hak_akses'] == 'kabeng') {
             $this->view('templates/humas/header', $data);
             $this->view('humas/guru/pkl/pembekalan/pklpembekalan', $data);
             $this->view('templates/humas/footer');
@@ -695,7 +695,7 @@ class PKL extends Controller
             $this->view('templates/humas/header', $data);
             $this->view('humas/pkl/dayatampung/pkldayatampung', $data);
             $this->view('templates/humas/footer');
-        } else if ($data['user']['role'] == 'guru') {
+        } else if ($data['user']['role'] == 'guru' || $data['user']['hak_akses'] == 'kabeng') {
             $this->view('templates/humas/header', $data);
             $this->view('humas/guru/pkl/dayatampung/pkldayatampung', $data);
             $this->view('templates/humas/footer');
@@ -764,7 +764,7 @@ class PKL extends Controller
             $this->view('templates/humas/header', $data);
             $this->view('humas/pkl/rekap/perpanjang/pklperpanjangmasa', $data);
             $this->view('templates/humas/footer');
-        } else if ($data['user']['role'] == 'guru') {
+        } else if ($data['user']['role'] == 'guru' || $data['user']['hak_akses'] == 'kabeng') {
             $this->view('templates/humas/header', $data);
             $this->view('humas/guru/pkl/rekap/perpanjang/pklperpanjangmasa', $data);
             $this->view('templates/humas/footer');
@@ -838,7 +838,7 @@ class PKL extends Controller
             $this->view('templates/humas/header', $data);
             $this->view('humas/pkl/rekap/perizinanpkl/pklperizinan', $data);
             $this->view('templates/humas/footer');
-        } else if ($data['user']['role'] == 'guru') {
+        } else if ($data['user']['role'] == 'guru' || $data['user']['hak_akses'] == 'kabeng') {
             $this->view('templates/humas/header', $data);
             $this->view('humas/guru/pkl/rekap/perizinanpkl/pklperizinan', $data);
             $this->view('templates/humas/footer');
@@ -909,7 +909,7 @@ class PKL extends Controller
             $this->view('templates/humas/header', $data);
             $this->view('humas/pkl/rekap/siswabermasalah/pklsiswabermasalah', $data);
             $this->view('templates/humas/footer');
-        } else if ($data['user']['role'] == 'guru') {
+        } else if ($data['user']['role'] == 'guru' || $data['user']['hak_akses'] == 'kabeng') {
             $this->view('templates/humas/header', $data);
             $this->view('humas/guru/pkl/rekap/siswabermasalah/pklsiswabermasalah', $data);
             $this->view('templates/humas/footer');

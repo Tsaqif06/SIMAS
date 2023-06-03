@@ -8,24 +8,19 @@ class pengajuanBidang extends Controller
         $data['judul'] = 'Pengajuan Barang Bidang';
         $data['user'] = $this->user;
         $akses = ['all', 'sarpras'];
-        $data['pengajuan_bidang'] = $this->model("$this->model_name", 'pengajuanBidang_models')->getAllExistData();
-
+        
         if (in_array($data['user']['hak_akses'], $akses)) {
-            if (isset($_POST["contentOnly"])) {
-                $this->view('sarpras/pengajuanBarang/bidang', $data);
-            } else {
-                $this->view('templates/header', $data);
-                $this->view('sarpras/pengajuanBarang/bidang', $data);
-                $this->view('templates/footer');
-            }
-        } else if ($data['user']['hak_akses'] == '') {
-            if (isset($_POST["contentOnly"])) {
-                $this->view('sarpras/pengajuanBarang/form/formbidang', $data);
-            } else {
-                $this->view('templates/header', $data);
-                $this->view('sarpras/pengajuanBarang/form/formbidang', $data);
-                $this->view('templates/footer');
-            }
+            $data['pengajuan_bidang'] = $this->model("$this->model_name", 'pengajuanBidang_models')->getAllExistData();
+            $this->view('templates/header', $data);
+            $this->view('sarpras/pengajuanBarang/bidang', $data);
+            $this->view('templates/footer');
+        } else if ($data['user']['hak_akses'] == '' || $data['user']['hak_akses'] == 'kabeng' || $data['user']['role'] == 'guru') {
+            $this->view('templates/header', $data);
+            $this->view('sarpras/pengajuanBarang/form/formbidang', $data);
+            $this->view('templates/footerwm');
+        } else {
+            header("Location: " . BASEURL);
+            Flasher::setFlash('GAGAL', 'Anda Tidak Mempunyai Akses Untuk Menuju Halaman Tersebut', 'danger');
         }
     }
     public function tambah()

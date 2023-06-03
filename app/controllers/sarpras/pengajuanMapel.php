@@ -8,24 +8,19 @@ class pengajuanMapel extends Controller
         $data['judul'] = 'Pengajuan Barang Mapel';
         $data['user'] = $this->user;
         $akses = ['all', 'sarpras'];
-        $data['pengajuan_mapel'] = $this->model("$this->model_name", 'pengajuanMapel_models')->getAllExistData();
-
+        
         if (in_array($data['user']['hak_akses'], $akses)) {
-            if (isset($_POST["contentOnly"])) {
-                $this->view('sarpras/pengajuanBarang/mapel', $data);
-            } else {
-                $this->view('templates/header', $data);
-                $this->view('sarpras/pengajuanBarang/mapel', $data);
-                $this->view('templates/footer');
-            }
-        } else if ($data['user']['hak_akses'] == '') {
-            if (isset($_POST["contentOnly"])) {
-                $this->view('sarpras/pengajuanBarang/form/formmapel', $data);
-            } else {
-                $this->view('templates/header', $data);
-                $this->view('sarpras/pengajuanBarang/form/formmapel', $data);
-                $this->view('templates/footer');
-            }
+            $data['pengajuan_mapel'] = $this->model("$this->model_name", 'pengajuanMapel_models')->getAllExistData();
+            $this->view('templates/header', $data);
+            $this->view('sarpras/pengajuanBarang/mapel', $data);
+            $this->view('templates/footer');
+        } else if ($data['user']['hak_akses'] == '' || $data['user']['hak_akses'] == 'kabeng' || $data['user']['role'] == 'guru') {
+            $this->view('templates/header', $data);
+            $this->view('sarpras/pengajuanBarang/form/formmapel', $data);
+            $this->view('templates/footerwm');
+        } else {
+            header("Location: " . BASEURL);
+            Flasher::setFlash('GAGAL', 'Anda Tidak Mempunyai Akses Untuk Menuju Halaman Tersebut', 'danger');
         }
     }
     public function tambah()

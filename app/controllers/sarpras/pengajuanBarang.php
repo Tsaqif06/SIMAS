@@ -7,37 +7,19 @@ class pengajuanBarang extends Controller
     {
         $data['judul'] = 'Data Pengajuan Barang';
         $data['user'] = $this->user;
-        $akses = ['all', 'sarpras'];
+        $akses = ['all', 'sarpras', 'kabeng'];
         $data['pengajuan_barang'] = $this->model("$this->model_name", 'pengajuanJurusan_models')->getALLDataPengajuanJurusan();
         $data['pengajuan_barang'] = $this->model("$this->model_name", 'pengajuanMapel_models')->getALLDataPengajuanMapel();
         $data['pengajuan_barang'] = $this->model("$this->model_name", 'pengajuanBidang_models')->getALLDataPengajuanBidang();
         $data['pengajuan_barang'] = $this->model("$this->model_name", 'pengajuanWaka_models')->getALLDataPengajuanWaka();
 
-        // if (in_array($data['user']['hak_akses'], $akses)) {
-        //     if (isset($_POST["contentOnly"])) {
-        //         $this->view('sarpras/pengajuanBarang/index', $data);
-        //     } else {
-        //         $this->view('templates/header', $data);
-        //         $this->view('sarpras/pengajuanBarang/index', $data);
-        //         $this->view('templates/footer');
-        //     }
-        // } else if ($data['user']['hak_akses'] == '') {
-        //     if (isset($_POST["contentOnly"])) {
-        //         $this->view('sarpras/pengajuanBarang/form', $data);
-        //     } else {
-        //         $this->view('templates/header', $data);
-        //         $this->view('sarpras/pengajuanBarang/form', $data);
-        //         $this->view('templates/footer');
-        //     }
-        // }
-
-
-        if (isset($_POST["contentOnly"])) {
-            $this->view('sarpras/pengajuanBarang/index', $data);
-        } else {
+        if (in_array($data['user']['hak_akses'], $akses) || $data['user']['role'] == 'guru') {
             $this->view('templates/header', $data);
             $this->view('sarpras/pengajuanBarang/index', $data);
-            $this->view('templates/footer');
+            $this->view('templates/footerwm');
+        } else {
+            header("Location: " . BASEURL);
+            Flasher::setFlash('GAGAL', 'Anda Tidak Mempunyai Akses Untuk Menuju Halaman Tersebut', 'danger');
         }
     }
 

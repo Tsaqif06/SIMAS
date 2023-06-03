@@ -16,10 +16,13 @@ class peminjamanBarang extends Controller
             $this->view('templates/header', $data);
             $this->view('sarpras/peminjamanBarang/index', $data);
             $this->view('templates/footer');
-        } else if ($data['user']['hak_akses'] == '') {
+        } else if ($data['user']['role'] == 'guru' || $data['user']['hak_akses'] == 'kabeng') {
             $this->view('templates/header', $data);
             $this->view('sarpras/peminjamanBarang/form', $data);
-            $this->view('templates/footer');
+            $this->view('templates/footerwm');
+        } else {
+            header("Location: " . BASEURL);
+            Flasher::setFlash('GAGAL', 'Anda Tidak Mempunyai Akses Untuk Menuju Halaman Tersebut', 'danger');
         }
     }
 
