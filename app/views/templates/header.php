@@ -141,9 +141,9 @@
                             src="<?= BASEURL ?>/images/logodoang.png" alt="SIMAS" /></a>
                 </div>
                 <div class="navbar-menu-wrapper d-flex align-items-center justify-content-end">
-                    <!-- <button class="navbar-toggler navbar-toggler align-self-center" type="button" data-toggle="minimize">
+                    <button class="navbar-toggler navbar-toggler align-self-center" type="button" data-toggle="minimize">
                         <span class="icon-menu"></span>
-                    </button> -->
+                    </button>
                     <ul class="navbar-nav navbar-nav-right">
                         <li class="nav-item dropdown" id="notification">
                             <a class="nav-link count-indicator dropdown-toggle" href="#" data-toggle="dropdown">
@@ -154,7 +154,7 @@
                                 aria-labelledby="notificationDropdown">
                                 <p class="mb-0 font-weight-normal float-left dropdown-header">Notifications</p>
                                 <a class="dropdown-item preview-item">
-                                    <div class="preview-thumbnail">
+                                    <!-- <div class="preview-thumbnail">
                                         <div class="preview-icon bg-info">
                                             <i class="ti-email mx-0"></i>
                                         </div>
@@ -164,7 +164,7 @@
                                         <p class="font-weight-light small-text mb-0 text-muted">
                                             2 Surat baru sedang diajukan
                                         </p>
-                                    </div>
+                                    </div> -->
                                 </a>
                             </div>
                         </li>

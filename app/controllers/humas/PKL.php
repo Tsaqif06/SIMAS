@@ -250,7 +250,8 @@ class PKL extends Controller
         $akses = ['all', 'humas', 'kabeng'];
         
         if (in_array($data['user']['hak_akses'], $akses)) {
-            $data['siswa'] = $this->model("$this->model_name", 'PKL_model')->getSiswaPSbyJurusan(end(explode(" ", $data['user']['username'])));
+            $jurusan = explode(" ", $data['user']['username']);
+            $data['siswa'] = $this->model("$this->model_name", 'PKL_model')->getSiswaPSbyJurusan(end($jurusan));
 
             $this->view('templates/humas/header', $data);
             $this->view('humas/pkl/pemberkasan/pklpemberkasanlaporan', $data);
@@ -269,6 +270,9 @@ class PKL extends Controller
             $this->view('templates/humas/header', $data);
             $this->view('humas/pkl/pemberkasan/pklpemberkasan', $data);
             $this->view('templates/humas/footer');
+        } else {
+            header("Location: " . BASEURL);
+            Flasher::setFlash('GAGAL', 'Anda Tidak Mempunyai Akses Untuk Menuju Halaman Tersebut', 'danger');
         }
     }
 

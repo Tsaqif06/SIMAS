@@ -892,6 +892,7 @@ class pkl_model extends Database
         $this->db->bind('id', $id);
         return $this->db->fetch();
     }
+    
     public function getSiswaPemberkasan($id)
     {
         $this->db->query('SELECT * FROM ' . $this->tableps . ' WHERE namasiswa_pemberkasan = :namasiswa_pemberkasan WHERE id = :id');
