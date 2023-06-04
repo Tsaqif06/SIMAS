@@ -1,3 +1,34 @@
+<?php 
+
+$jurusan = "";
+switch ($data['user']['username']) {
+    case 'Kabeng TG':
+        $jurusan = 'TEKNIK GRAFIKA';
+        break;
+    case 'Kabeng TL':
+        $jurusan = 'LOGISTIK';
+        break;
+    case 'Kabeng MEKA':
+        $jurusan = 'MEKATRONIKA';
+        break;
+    case 'Kabeng PH':
+        $jurusan = 'PERHOTELAN';
+        break;
+    case 'Kabeng ANI':
+        $jurusan = 'ANIMASI';
+        break;
+    case 'Kabeng DKV':
+        $jurusan = 'DESAIN KOMUNIKASI VISUAL';
+        break;
+    case 'Kabeng TKJ':
+        $jurusan = 'TEKNIK KOMPUTER DAN JARINGAN';
+        break;
+    case 'Kabeng RPL':
+        $jurusan = 'REKAYASA PERANGKAT LUNAK';
+}
+
+?>
+
 <!-- partial -->
 <!-- <div class="main-panel"> -->
 <div class="content-wrapper">
@@ -7,7 +38,7 @@
                 <div class="col-12 col-xl-8 mb-4 mb-xl-0">
                     <div class="row">
                         <div class="col-lg-12">
-                            <h3 class="font-weight-bold">PEMBERKASAN <?= $data['jurusan'] ?></h3> <!--xxx = jurusan-->
+                            <h3 class="font-weight-bold">PEMBERKASAN <?= $jurusan ?></h3> <!--xxx = jurusan-->
                             <h6 class="font-weight-normal mb-0"> Laman Pemberkasan Kabeng | <span class="text-primary"> SIMAS </span></h6>
                         </div>
                     </div>

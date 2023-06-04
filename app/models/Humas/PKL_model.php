@@ -160,6 +160,11 @@ class pkl_model extends Database
 
     // PENEMPATAN //
 
+    public function cariSiswaPenempatan($nama, $nis)
+    {
+        # code...
+    }
+
     public function getAllPenempatan($kelas)
     {
         $this->db->query("SELECT * FROM {$this->table_penempatan} WHERE kelassiswa = :kelassiswa AND `status` = 1");
@@ -838,14 +843,46 @@ class pkl_model extends Database
 
     // PEMBERKASAN PKL
 
+    public function cariSiswa($nama, $nis) 
+    {
+        $this->db->query("SELECT * FROM masterdata.mastersiswa WHERE `nama_siswa` = :nama_siswa AND `nis` = :nis");
+        $this->db->bind("nama_siswa", $nama);
+        $this->db->bind("nis", $nis);
+
+        return $this->db->fetch();
+    }
+
+    public function cariSiswaPemberkasan($nama, $nis)
+    {
+        $this->db->query(
+            'SELECT * FROM ' . $this->tableps . 
+                ' WHERE 
+            `namasiswa_pemberkasan` = :namasiswa_pemberkasan AND
+            `nis_pemberkasan` = :nis_pemberkasan AND
+            `status` = 1 '
+        );
+        $this->db->bind("namasiswa_pemberkasan", $nama);
+        $this->db->bind("nis_pemberkasan", $nis);
+
+        return $this->db->fetch();
+    }
+
     public function getSiswaPS()
     {
         $this->db->query('SELECT * FROM ' . $this->tableps);
         return $this->db->fetchAll();
     }
+
     public function getExistSiswaPS()
     {
         $this->db->query('SELECT * FROM ' . $this->tableps . ' WHERE `status` = 1');
+        return $this->db->fetchAll();
+    }
+
+    public function getSiswaPSbyJurusan($jurusan)
+    {
+        $this->db->query('SELECT * FROM ' . $this->tableps . ' WHERE `status` = 1 AND `jurusan_pemberkasan` = :jurusan_pemberkasan');
+        $this->db->bind("jurusan_pemberkasan", $jurusan);
         return $this->db->fetchAll();
     }
 
@@ -864,7 +901,7 @@ class pkl_model extends Database
 
     public function uploadFotoPemberkasan($fileName)
     {
-        $targetDir = 'images/humas/pkl/pemberkasan/foto/'; // direktori tempat menyimpan file upload
+        $targetDir = 'assets/pkl/pemberkasan/foto/'; // direktori tempat menyimpan file upload
         $temp = $_FILES['uploadfoto_pemberkasan'];
         
         // cek gambar diupload atau tidak
@@ -879,17 +916,18 @@ class pkl_model extends Database
         }
         
         // validasi ekstensi file
-        $imageFileType = strtolower(end(explode('.', $temp['name'])));
+        $imageFileType = explode('.', $temp['name']);
+        $imageFileType = strtolower(end($imageFileType));
         $validation = ["jpg", "jpeg", "png", "gif"];
         if (!in_array($imageFileType, $validation)) {
             echo "Sorry, only " . implode(", ", $validation) . " files are allowed.";
             exit;
         }
 
-        // simpan file upload ke direktori
         $fileName .= "." . $imageFileType;
         $targetFile = $targetDir . $fileName; // nama file upload
-
+        
+        // simpan file upload ke direktori
         try {
             move_uploaded_file($temp['tmp_name'], $targetFile);
         } catch (IOExceptionInterface $e) {
@@ -901,7 +939,7 @@ class pkl_model extends Database
 
     public function uploadSuratPemberkasan($fileName)
     {
-        $targetDir = 'images/humas/pkl/pemberkasan/surat/'; // direktori tempat menyimpan file upload
+        $targetDir = 'assets/pkl/pemberkasan/surat/'; // direktori tempat menyimpan file upload
         $temp = $_FILES['uploadsurat_pemberkasan'];
        
         // cek gambar diupload atau tidak
@@ -916,17 +954,18 @@ class pkl_model extends Database
         }
         
         // validasi ekstensi file
-        $imageFileType = strtolower(end(explode('.', $temp['name'])));
+        $imageFileType = explode('.', $temp['name']);
+        $imageFileType = strtolower(end($imageFileType));
         $validation = ["jpg", "jpeg", "png", "gif"];
         if (!in_array($imageFileType, $validation)) {
             echo "Sorry, only " . implode(", ", $validation) . " files are allowed.";
             exit;
         }
 
-        // simpan file upload ke direktori
         $fileName .= "." . $imageFileType;
         $targetFile = $targetDir . $fileName; // nama file upload
-
+        
+        // simpan file upload ke direktori
         try {
             move_uploaded_file($temp['tmp_name'], $targetFile);
         } catch (IOExceptionInterface $e) {
@@ -938,7 +977,7 @@ class pkl_model extends Database
 
     public function uploadKartuPelajarPemberkasan($fileName)
     {
-        $targetDir = 'images/humas/pkl/pemberkasan/kartupelajar/'; // direktori tempat menyimpan file upload
+        $targetDir = 'assets/pkl/pemberkasan/kartupelajar/'; // direktori tempat menyimpan file upload
         $temp = $_FILES['uploadkartupelajar_pemberkasan'];
         
         // cek gambar diupload atau tidak
@@ -953,17 +992,18 @@ class pkl_model extends Database
         }
         
         // validasi ekstensi file
-        $imageFileType = strtolower(end(explode('.', $temp['name'])));
+        $imageFileType = explode('.', $temp['name']);
+        $imageFileType = strtolower(end($imageFileType));
         $validation = ["jpg", "jpeg", "png", "gif"];
         if (!in_array($imageFileType, $validation)) {
             echo "Sorry, only " . implode(", ", $validation) . " files are allowed.";
             exit;
         }
 
-        // simpan file upload ke direktori
         $fileName .= "." . $imageFileType;
         $targetFile = $targetDir . $fileName; // nama file upload
-
+        
+        // simpan file upload ke direktori
         try {
             move_uploaded_file($temp['tmp_name'], $targetFile);
         } catch (IOExceptionInterface $e) {
@@ -990,17 +1030,18 @@ class pkl_model extends Database
         }
         
         // validasi ekstensi file
-        $imageFileType = strtolower(end(explode('.', $temp['name'])));
+        $imageFileType = explode('.', $temp['name']);
+        $imageFileType = strtolower(end($imageFileType));
         $validation = ["pdf"];
         if (!in_array($imageFileType, $validation)) {
             echo "Sorry, only " . implode(", ", $validation) . " files are allowed.";
             exit;
         }
 
-        // simpan file upload ke direktori
         $fileName .= "." . $imageFileType;
         $targetFile = $targetDir . $fileName; // nama file upload
-
+        
+        // simpan file upload ke direktori
         try {
             move_uploaded_file($temp['tmp_name'], $targetFile);
         } catch (IOExceptionInterface $e) {
@@ -1012,7 +1053,7 @@ class pkl_model extends Database
 
     public function uploadBuktiLunasNilaiPemberkasan($fileName)
     {
-        $targetDir = 'images/humas/pkl/pemberkasan/buktilunasnilai/'; // direktori tempat menyimpan file upload
+        $targetDir = 'assets/pkl/pemberkasan/buktilunasnilai/'; // direktori tempat menyimpan file upload
         $temp = $_FILES['uploadbuktilunasnilai_pemberkasan'];
         
         // cek gambar diupload atau tidak
@@ -1027,17 +1068,18 @@ class pkl_model extends Database
         }
         
         // validasi ekstensi file
-        $imageFileType = strtolower(end(explode('.', $temp['name'])));
+        $imageFileType = explode('.', $temp['name']);
+        $imageFileType = strtolower(end($imageFileType));
         $validation = ["jpg", "jpeg", "png", "gif"];
         if (!in_array($imageFileType, $validation)) {
             echo "Sorry, only " . implode(", ", $validation) . " files are allowed.";
             exit;
         }
 
-        // simpan file upload ke direktori
         $fileName .= "." . $imageFileType;
         $targetFile = $targetDir . $fileName; // nama file upload
-
+        
+        // simpan file upload ke direktori
         try {
             move_uploaded_file($temp['tmp_name'], $targetFile);
         } catch (IOExceptionInterface $e) {
@@ -1049,7 +1091,7 @@ class pkl_model extends Database
 
     public function uploadBuktiLunasAdministrasiPemberkasan($fileName)
     {
-        $targetDir = 'images/humas/pkl/pemberkasan/buktilunasadm/'; // direktori tempat menyimpan file upload
+        $targetDir = 'assets/pkl/pemberkasan/buktilunasadm/'; // direktori tempat menyimpan file upload
         $temp = $_FILES['uploadbuktilunasadministrasi_pemberkasan'];
 
         // cek gambar diupload atau tidak
@@ -1064,17 +1106,18 @@ class pkl_model extends Database
         }
         
         // validasi ekstensi file
-        $imageFileType = strtolower(end(explode('.', $temp['name'])));
+        $imageFileType = explode('.', $temp['name']);
+        $imageFileType = strtolower(end($imageFileType));
         $validation = ["jpg", "jpeg", "png", "gif"];
         if (!in_array($imageFileType, $validation)) {
             echo "Sorry, only " . implode(", ", $validation) . " files are allowed.";
             exit;
         }
 
-        // simpan file upload ke direktori
         $fileName .= "." . $imageFileType;
         $targetFile = $targetDir . $fileName; // nama file upload
-
+        
+        // simpan file upload ke direktori
         try {
             move_uploaded_file($temp['tmp_name'], $targetFile);
         } catch (IOExceptionInterface $e) {
@@ -1086,7 +1129,7 @@ class pkl_model extends Database
 
     public function uploadBuktiLunasPerpusPemberkasan($fileName)
     {
-        $targetDir = 'images/humas/pkl/pemberkasan/buktilunasperpus/'; // direktori tempat menyimpan file upload
+        $targetDir = 'assets/pkl/pemberkasan/buktilunasperpus/'; // direktori tempat menyimpan file upload
         $temp = $_FILES['uploadbuktilunasperpus_pemberkasan'];
 
         // cek gambar diupload atau tidak
@@ -1101,17 +1144,18 @@ class pkl_model extends Database
         }
         
         // validasi ekstensi file
-        $imageFileType = strtolower(end(explode('.', $temp['name'])));
+        $imageFileType = explode('.', $temp['name']);
+        $imageFileType = strtolower(end($imageFileType));
         $validation = ["jpg", "jpeg", "png", "gif"];
         if (!in_array($imageFileType, $validation)) {
             echo "Sorry, only " . implode(", ", $validation) . " files are allowed.";
             exit;
         }
 
-        // simpan file upload ke direktori
         $fileName .= "." . $imageFileType;
         $targetFile = $targetDir . $fileName; // nama file upload
-
+        
+        // simpan file upload ke direktori
         try {
             move_uploaded_file($temp['tmp_name'], $targetFile);
         } catch (IOExceptionInterface $e) {
@@ -1143,6 +1187,7 @@ class pkl_model extends Database
             :kota1_pemberkasan, 
             :kota2_pemberkasan, 
             :kota3_pemberkasan, 
+            DEFAULT,
             :uploadfoto_pemberkasan, 
             :uploadsurat_pemberkasan, 
             :uploadkartupelajar_pemberkasan, 
@@ -1223,19 +1268,25 @@ class pkl_model extends Database
         return $this->db->rowCount();
     }
 
-
     public function ubahDataPemberkasan($data)
     {
         $this->db->query(
             "UPDATE pemberkasanpkl SET  
                 nisn_pemberkasan = :nisn_pemberkasan, 
                 nis_pemberkasan = :nis_pemberkasan, 
-                namasiswa_pemberkasan = :namasiswa_pemberkasan,
-                tanggallahir_pemberkasan = :tanggallahir_pemberkasan,
-                jurusan_pemberkasan = :jurusan_pemberkasan,
-                jeniskelamin_pemberkasan = :jeniskelamin_pemberkasan,
+                namasiswa_pemberkasan = :namasiswa_pemberkasan, 
+                tanggallahir_pemberkasan = :tanggallahir_pemberkasan, 
+                agama_pemberkasan = :agama_pemberkasan, 
+                kelas_pemberkasan = :kelas_pemberkasan, 
+                jurusan_pemberkasan = :jurusan_pemberkasan, 
+                jeniskelamin_pemberkasan = :jeniskelamin_pemberkasan, 
                 domisili_pemberkasan = :domisili_pemberkasan, 
-                pkldimana_pemberkasan = :pkldimana_pemberkasan, 
+                alamat_pemberkasan = :alamat_pemberkasan, 
+                notelp_pemberkasan = :notelp_pemberkasan, 
+                notelportu_pemberkasan = :notelportu_pemberkasan, 
+                kota1_pemberkasan = :kota1_pemberkasan, 
+                kota2_pemberkasan = :kota2_pemberkasan, 
+                kota3_pemberkasan = :kota3_pemberkasan, 
                 uploadfoto_pemberkasan = :uploadfoto_pemberkasan, 
                 uploadsurat_pemberkasan = :uploadsurat_pemberkasan, 
                 uploadkartupelajar_pemberkasan = :uploadkartupelajar_pemberkasan, 
@@ -1248,47 +1299,19 @@ class pkl_model extends Database
             WHERE id = :id"
         );
 
-        if ($_FILES["uploadfoto_pemberkasan"]["error"] === 4) {
-            $foto = $data['fotoLama'];
-        } else {
-            $foto = $this->uploadFotoPemberkasan($data['kelas_pemberkasan'] . "_" . $this->user . " (foto 3x4)");
-        }
+        $foto = ($_FILES["uploadfoto_pemberkasan"]["error"] === 4) ? $data['fotoLama'] : $this->uploadFotoPemberkasan($data['kelas_pemberkasan'] . "_" . $this->user . " (foto 3x4)");
 
-        if ($_FILES["uploadsurat_pemberkasan"]["error"] === 4) {
-            $surat = $data['suratLama'];
-        } else {
-            $surat = $this->uploadSuratPemberkasan($data['kelas_pemberkasan'] . "_" . $this->user . " (surat pernyataan)");
-        }
-
-        if ($_FILES["uploadkartupelajar_pemberkasan"]["error"] === 4) {
-            $kartu = $data['kartuPelajarLama'];
-        } else {
-            $kartu = $this->uploadKartuPelajarPemberkasan($data['kelas_pemberkasan'] . "_" . $this->user . " (kartu pelajar)");
-        }
-
-        if ($_FILES["uploadebookraport_pemberkasan"]["error"] === 4) {
-            $raport = $data['raportLama'];
-        } else {
-            $raport = $this->uploadRaportPemberkasan($data['kelas_pemberkasan'] . "_" . $this->user . " (e-book raport)");
-        }
-
-        if ($_FILES["uploadbuktilunasnilai_pemberkasan"]["error"] === 4) {
-            $nilai = $data['nilaiLama'];
-        } else {
-            $nilai = $this->uploadBuktiLunasNilaiPemberkasan($data['kelas_pemberkasan'] . "_" . $this->user . " (bukti lunas nilai)");
-        }
-
-        if ($_FILES["uploadbuktilunasadministrasi_pemberkasan"]["error"] === 4) {
-            $administrasi = $data['administrasiLama'];
-        } else {
-            $administrasi = $this->uploadBuktiLunasAdministrasiPemberkasan($data['kelas_pemberkasan'] . "_" . $this->user . " (bukti lunas administrasi)");
-        }
+        $kartu =  ($_FILES["uploadkartupelajar_pemberkasan"]["error"] === 4) ? $data['kartuPelajarLama'] : $kartu = $this->uploadKartuPelajarPemberkasan($data['kelas_pemberkasan'] . "_" . $this->user . " (kartu pelajar)");
         
-        if ($_FILES["uploadbuktilunasperpus_pemberkasan"]["error"] === 4) {
-            $perpus = $data['perpusLama'];
-        } else {
-            $perpus = $this->uploadBuktiLunasPerpusPemberkasan($data['kelas_pemberkasan'] . "_" . $this->user . " (bukti lunas perpus)");
-        }
+        $raport = ($_FILES["uploadebookraport_pemberkasan"]["error"] === 4) ? $data['raportLama'] : $this->uploadRaportPemberkasan($data['kelas_pemberkasan'] . "_" . $this->user . " (e-book raport)");
+        
+        $surat = ($_FILES["uploadsurat_pemberkasan"]["error"] === 4) ? $surat = $data['suratLama'] : $surat = $this->uploadSuratPemberkasan($data['kelas_pemberkasan'] . "_" . $this->user . " (surat pernyataan)");
+
+        $nilai = ($_FILES["uploadbuktilunasnilai_pemberkasan"]["error"] === 4) ? $data['nilaiLama'] : $this->uploadBuktiLunasNilaiPemberkasan($data['kelas_pemberkasan'] . "_" . $this->user . " (bukti lunas nilai)");
+
+        $administrasi = ($_FILES["uploadbuktilunasadministrasi_pemberkasan"]["error"] === 4) ? $data['administrasiLama'] : $this->uploadBuktiLunasAdministrasiPemberkasan($data['kelas_pemberkasan'] . "_" . $this->user . " (bukti lunas administrasi)");
+        
+        $perpus = ($_FILES["uploadbuktilunasperpus_pemberkasan"]["error"] === 4) ? $data['perpusLama'] : $this->uploadBuktiLunasPerpusPemberkasan($data['kelas_pemberkasan'] . "_" . $this->user . " (bukti lunas perpus)");
 
         $this->db->bind('nisn_pemberkasan', $data['nisn_pemberkasan']);
         $this->db->bind('nis_pemberkasan', $data['nis_pemberkasan']);
@@ -1298,7 +1321,7 @@ class pkl_model extends Database
         $this->db->bind('kelas_pemberkasan', $data['kelas_pemberkasan']);
         $this->db->bind('jurusan_pemberkasan', $data['jurusan_pemberkasan']);
         $this->db->bind('jeniskelamin_pemberkasan', $data['jeniskelamin_pemberkasan']);
-        $this->db->bind('domisili_pemberkasann', $data['domisili_pemberkasann']);
+        $this->db->bind('domisili_pemberkasan', $data['domisili_pemberkasan']);
         $this->db->bind('alamat_pemberkasan', $data['alamat_pemberkasan']);
         $this->db->bind('notelp_pemberkasan', $data['notelp_pemberkasan']);
         $this->db->bind('notelportu_pemberkasan', $data['notelportu_pemberkasan']);
