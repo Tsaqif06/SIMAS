@@ -3,6 +3,27 @@
 
 <head>
     <style>
+    .animate-gradient {
+        background: linear-gradient(-45deg, #74efff, #9c27b0);
+        background-size: 400% 400%;
+        animation: gradient-bg 20s ease infinite;
+    }
+
+    @keyframes gradient-bg {
+        0% {
+            background-position: 0% 25%;
+        }
+        25% {
+            background-position: 50% 25%;
+        }
+        50% {
+            background-position: 100% 50%;
+        }
+        100% {
+            background-position: 0% 50%;
+        }
+    }
+
     .button-arounder {
         background: white;
         font-size: 4px;
@@ -109,19 +130,6 @@
                         data-toggle="minimize">
                         <span class="icon-menu"></span>
                     </button>
-                    <ul class="navbar-nav mr-lg-2">
-                        <li class="nav-item nav-search d-none d-lg-block">
-                            <div class="input-group">
-                                <div class="input-group-prepend hover-cursor" id="navbar-search-icon">
-                                    <span class="input-group-text" id="search">
-                                        <i class="icon-search"></i>
-                                    </span>
-                                </div>
-                                <input type="text" class="form-control" id="navbar-search-input"
-                                    placeholder="Search now" aria-label="search" aria-describedby="search">
-                            </div>
-                        </li>
-                    </ul>
                     <ul class="navbar-nav navbar-nav-right">
                         <li class="nav-item dropdown" id="notification">
                             <a class="nav-link count-indicator dropdown-toggle" href="#" data-toggle="dropdown">
@@ -278,11 +286,11 @@
                                         <a class="nav-link" href="<?= BASEURL; ?>/pkl/index">PKL</a>
                                     </li>
                                     <ul style="list-style-type: none;">
-                                        <?php if (($data['user']['role'] == 'admin' && ($data['user']['hak_akses'] == 'all' || $data['user']['hak_akses'] == 'humas')) || $data['user']['role'] == 'guru') : ?>
+                                        <?php if (($data['user']['role'] == 'admin' && ($data['user']['hak_akses'] == 'all' || $data['user']['hak_akses'] == 'humas')) || $data['user']['role'] == 'guru' || $data['user']['role'] == 'kabeng') : ?>
                                         <li><a class="navsubitem text-white" href="<?= BASEURL; ?>/pkl/rekap">Rekap
                                                 PKL</a></li>
                                         <?php endif ?>
-                                        <?php if ($data['user']['role'] == 'admin' && ($data['user']['hak_akses'] == 'all' || $data['user']['hak_akses'] == 'humas') || $data['user']['role'] == 'guru') : ?>
+                                        <?php if (($data['user']['role'] == 'admin' && ($data['user']['hak_akses'] == 'all' || $data['user']['hak_akses'] == 'humas')) || $data['user']['role'] == 'guru' || $data['user']['role'] == 'kabeng') : ?>
                                         <li><a class="navsubitem text-white"
                                                 href="<?= BASEURL; ?>/pkl/pembekalan">Pembekalan PKL</a></li>
                                         <li><a class="navsubitem text-white"
@@ -291,24 +299,24 @@
                                                 Tampung</a></li>
                                         <?php endif ?>
 
-                                        <?php if ($data['user']['role'] != 'guru' && $data['user']['hak_akses'] == 'all' || $data['user']['hak_akses'] == '' || $data['user']['hak_akses'] == 'kabeng' || $data['user']['hak_akses'] == 'humas' || $data['user']['role'] == 'guru') : ?>
+                                        <?php if ($data['user']['hak_akses'] == 'all' || $data['user']['hak_akses'] == '' || $data['user']['role'] == 'kabeng' || $data['user']['hak_akses'] == 'humas' || $data['user']['role'] == 'guru') : ?>
                                         <li><a class="navsubitem text-white"
                                                 href="<?= BASEURL; ?>/pkl/pemberkasan">Pemberkasan</a></li>
                                         <?php endif ?>
 
-                                        <?php if ($data['user']['role'] == 'admin' || $data['user']['hak_akses'] == 'all' || $data['user']['hak_akses'] == 'industri') : ?>
+                                        <?php if ($data['user']['role'] == 'admin' || $data['user']['hak_akses'] == 'all' || $data['user']['hak_akses'] == 'industri' || $data['user']['role'] == 'guru' || $data['user']['role'] == 'kabeng') : ?>
                                         <li><a class="navsubitem text-white" href="<?= BASEURL; ?>/pkl/nilai">Nilai
                                                 PKL</a></li>
                                         <?php endif ?>
                                     </ul>
 
-                                    <?php if (($data['user']['role'] == 'admin' || $data['user']['hak_akses'] == 'all' || $data['user']['hak_akses'] == '' || $data['user']['hak_akses'] == 'humas' || $data['user']['hak_akses'] == 'industri') || $data['user']['role'] == 'siswa' || $data['user']['role'] == 'guru') : ?>
+                                    <?php if (($data['user']['role'] == 'admin' || $data['user']['hak_akses'] == 'all' || $data['user']['hak_akses'] == '' || $data['user']['hak_akses'] == 'humas' || $data['user']['hak_akses'] == 'industri') || $data['user']['role'] == 'siswa' || $data['user']['role'] == 'guru'  || $data['user']['role'] == 'kabeng') : ?>
                                     <li class="nav-item">
                                         <a class="nav-link" href="<?= BASEURL; ?>/bkk/index">BKK</a>
                                     </li>
                                     <?php endif ?>
                                     <ul style="list-style-type: none;">
-                                        <?php if ($data['user']['role'] == 'admin' && ($data['user']['hak_akses'] == 'all' || $data['user']['hak_akses'] == 'humas') || $data['user']['role'] == 'guru') : ?>
+                                        <?php if ($data['user']['role'] == 'admin' && ($data['user']['hak_akses'] == 'all' || $data['user']['hak_akses'] == 'humas') || $data['user']['role'] == 'guru'  || $data['user']['role'] == 'kabeng') : ?>
                                         <li><a class="navsubitem text-white" href="<?= BASEURL ?>/bkk/das">Alumni
                                                 Sukses</a></li>
                                         <li><a class="navsubitem text-white" href="<?= BASEURL; ?>/bkk/mou">MoU</a></li>
@@ -320,12 +328,12 @@
                                         </li>
                                         <?php endif ?>
 
-                                        <?php if ($data['user']['role'] == 'admin' || $data['user']['hak_akses'] == 'all' || $data['user']['hak_akses'] == 'industri' || $data['user']['hak_akses'] == 'humas' || $data['user']['role'] == 'guru') : ?>
+                                        <?php if ($data['user']['role'] == 'admin' || $data['user']['hak_akses'] == 'all' || $data['user']['hak_akses'] == 'industri' || $data['user']['hak_akses'] == 'humas' || $data['user']['role'] == 'guru' || $data['user']['role'] == 'kabeng') : ?>
                                         <li><a class="navsubitem text-white" href="<?= BASEURL; ?>/bkk/loker">Lowongan
                                                 Kerja</a></li>
                                         <?php endif ?>
 
-                                        <?php if ($data['user']['role'] != 'guru' && $data['user']['hak_akses'] == 'all' || $data['user']['hak_akses'] == '' || $data['user']['hak_akses'] == 'humas' || $data['user']['role'] == 'guru') : ?>
+                                        <?php if ($data['user']['hak_akses'] == 'all' || $data['user']['hak_akses'] == '' || $data['user']['hak_akses'] == 'humas' || $data['user']['role'] == 'guru' || $data['user']['role'] == 'kabeng') : ?>
                                         <li><a class="navsubitem text-white"
                                                 href="<?= BASEURL; ?>/bkk/peminatan">Peminatan</a></li>
                                         <li><a class="navsubitem text-white" href="<?= BASEURL; ?>/bkk/spw">SPW</a></li>
@@ -502,7 +510,7 @@
                         </li>
                         <?php endif ?>
 
-                        <?php if ($data['user']['role'] == 'admin' || $data['user']['hak_akses'] == '' || $data['user']['hak_akses'] == 'industri' || $data['user']['hak_akses'] == 'sarpras') : ?>
+                        <?php if ($data['user']['role'] == 'admin' || $data['user']['hak_akses'] == '' || $data['user']['hak_akses'] == 'industri' || $data['user']['hak_akses'] == 'sarpras' || $data['user']['role'] == 'kabeng') : ?>
                         <li class="nav-item">
                             <a class="nav-link" data-toggle="collapse" href="#tables" aria-expanded="false"
                                 aria-controls="tables">
@@ -519,7 +527,7 @@
 
                                     <li class="nav-item"> <a class="nav-link"
                                             href="<?= BASEURL; ?>/peminjamanBarang">Peminjaman Barang</a></li>
-                                    <?php if ($data['user']['role'] == 'guru') : ?>
+                                    <?php if ($data['user']['role'] == 'guru' || $data['user']['role'] == 'kabeng') : ?>
                                     <li class="nav-item"> <a class="nav-link"
                                             href="<?= BASEURL; ?>/pengajuanBarang">Pengajuan Barang</a></li>
                                     <?php endif ?>

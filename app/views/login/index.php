@@ -1,4 +1,5 @@
 <body>
+	<?php Flasher::flash(); ?>
 	    <div class="container-scroller">
 	        <div class="container-fluid page-body-wrapper full-page-wrapper">
 	            <div class="content-wrapper d-flex align-items-center auth px-0">
@@ -22,11 +23,6 @@
 	                                        name="password" placeholder="Sandi" required />
 	                                    <div class="invalid-feedback">Mohon isi sandi anda.</div>
 	                                    <br />
-	                                    <div class="row">
-	                                        <div class="col-lg-6">
-	                                            <?php Flasher::flash(); ?>
-	                                        </div>
-	                                    </div>
 	                                    <label class="form-check-label text-muted">
 	                                        <input type="checkbox" onclick="showPass()" />
 	                                        Lihat Sandi
