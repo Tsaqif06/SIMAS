@@ -170,7 +170,19 @@ class Kehadiran_model
 
         $this->db->execute();
         $count = $this->db->fetch()['COUNT(*)'];
-        return $count;
+
+        $this->db->query("SELECT COUNT(*) FROM `kesiswaan.keterangan__izins` WHERE ID_KEHADIRAN = :nisn AND created_at BETWEEN :startOfDay AND :endOfDay");
+        $this->db->bind('nisn', $nisn);
+        $this->db->bind('startOfDay', $startOfDay);
+        $this->db->bind('endOfDay', $endOfDay);
+
+        $this->db->execute();
+        $count2 = $this->db->fetch()['COUNT(*)'];
+        ($count > 0 && $count2 > 0) ?
+            $result = 1 :
+            $result = 0;
+
+        return $result;
     }
 
 

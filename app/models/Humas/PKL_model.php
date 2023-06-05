@@ -1422,9 +1422,25 @@ class pkl_model extends Database
         $this->db->query("SELECT * FROM `{$this->tabledp}` WHERE `status` = 1");
         return $this->db->fetchAll();
     }
-    public function getExistSiswaDP()
+    // public function getExistSiswaDP()
+    // {
+    //     $this->db->query("SELECT * FROM `{$this->tabledp}` WHERE `status` = 1");
+    //     return $this->db->fetchAll();
+    // }
+    public function getExistSiswaDP($perusahaan = 'all')
     {
-        $this->db->query('SELECT * FROM ' . $this->tabledp . ' WHERE `status` = ' . 1);
+        if ($perusahaan == 'all') {
+            $this->db->query("SELECT * FROM `{$this->tabledp}` WHERE `status` = 1");
+        } else {
+            $this->db->query("SELECT * FROM `{$this->tabledp}` WHERE `namaperusahaan` = :perusahaan AND `status` = 1");
+            $this->db->bind('perusahaan', $perusahaan);
+        }
+        return $this->db->fetchAll();
+    }
+
+    public function getNamaPerusahaan()
+    {
+        $this->db->query("SELECT namaperusahaan FROM `{$this->tabledp}`GROUP BY namaperusahaan");
         return $this->db->fetchAll();
     }
 
