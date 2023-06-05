@@ -15,7 +15,7 @@ class pengajuanMapel extends Controller
             $this->view('templates/header', $data);
             $this->view('sarpras/pengajuanBarang/mapel', $data);
             $this->view('templates/footer');
-        } else if ($data['user']['hak_akses'] == '' || $data['user']['hak_akses'] == 'kabeng' || $data['user']['role'] == 'guru') {
+        } else if ($data['user']['hak_akses'] == '' || $data['user']['role'] == 'kabeng' || $data['user']['role'] == 'guru') {
             $this->view('templates/header', $data);
             $this->view('sarpras/pengajuanBarang/form/formmapel', $data);
             $this->view('templates/footerwm');

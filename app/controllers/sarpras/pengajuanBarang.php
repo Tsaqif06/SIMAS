@@ -8,13 +8,13 @@ class pengajuanBarang extends Controller
     {
         $data['judul'] = 'Data Pengajuan Barang';
         $data['user'] = $this->user;
-        $akses = ['all', 'sarpras', 'kabeng'];
+        $akses = ['all', 'sarpras'];
         $data['pengajuan_barang'] = $this->model("$this->model_name", 'pengajuanJurusan_models')->getALLDataPengajuanJurusan();
         $data['pengajuan_barang'] = $this->model("$this->model_name", 'pengajuanMapel_models')->getALLDataPengajuanMapel();
         $data['pengajuan_barang'] = $this->model("$this->model_name", 'pengajuanBidang_models')->getALLDataPengajuanBidang();
         $data['pengajuan_barang'] = $this->model("$this->model_name", 'pengajuanWaka_models')->getALLDataPengajuanWaka();
 
-        if (in_array($data['user']['hak_akses'], $akses) || $data['user']['role'] == 'guru') {
+        if (in_array($data['user']['hak_akses'], $akses) || $data['user']['role'] == 'guru' || $data['user']['role'] == 'kabeng') {
             $this->view('templates/header', $data);
             $this->view('sarpras/pengajuanBarang/index', $data);
             $this->view('templates/footerwm');

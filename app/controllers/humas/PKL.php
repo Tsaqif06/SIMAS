@@ -262,7 +262,7 @@ class PKL extends Controller
         $data['judul'] = 'Admin - PKL';
 
         $data['user'] = $this->user;
-        $akses = ['all', 'humas', 'kabeng'];
+        $akses = ['all', 'humas'];
         
         if (in_array($data['user']['hak_akses'], $akses)) {
             $jurusan = explode(" ", $data['user']['username']);
