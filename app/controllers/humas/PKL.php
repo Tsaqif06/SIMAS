@@ -22,6 +22,10 @@ class PKL extends Controller
             $this->view('templates/humas/header', $data);
             $this->view('humas/guru/pkl/home/pkl', $data);
             $this->view('templates/humas/footer');
+        } else if ($data['user']['hak_akses'] == '') {
+            $this->view('templates/humas/header', $data);
+            $this->view('humas/guru/pkl/home/pkl', $data);
+            $this->view('templates/humas/footer');
         } else {
             header("Location: " . BASEURL);
             Flasher::setFlash('GAGAL', 'Anda Tidak Mempunyai Akses Untuk Menuju Halaman Tersebut', 'danger');
@@ -44,6 +48,10 @@ class PKL extends Controller
             $this->view('humas/pkl/rekap/home/pklrekapitulasi', $data);
             $this->view('templates/humas/footer');
         } else if ($data['user']['role'] == 'guru') {
+            $this->view('templates/humas/header', $data);
+            $this->view('humas/guru/pkl/rekap/home/pklrekapitulasi', $data);
+            $this->view('templates/humas/footer');
+        } else if ($data['user']['hak_akses'] == '') {
             $this->view('templates/humas/header', $data);
             $this->view('humas/guru/pkl/rekap/home/pklrekapitulasi', $data);
             $this->view('templates/humas/footer');
@@ -77,6 +85,16 @@ class PKL extends Controller
 
             $this->view('templates/humas/footer');
         } else if ($data['user']['role'] == 'guru') {
+            $this->view('templates/humas/header', $data);
+            if (isset($_GET['kelas'])) {
+                $data['kelas'] = str_replace("_", " ", strtoupper($_GET['kelas']));
+                $data['siswa'] = $this->model("$this->model_name", 'pkl_model')->getAllPenempatan($data['kelas']);
+                $this->view('humas/guru/pkl/rekap/penempatan/detail', $data);
+            } else {
+                $this->view('humas/guru/pkl/rekap/penempatan/index', $data);
+            }
+            $this->view('templates/humas/footer');
+        }else if ($data['user']['hak_akses'] == '') {
             $this->view('templates/humas/header', $data);
             if (isset($_GET['kelas'])) {
                 $data['kelas'] = str_replace("_", " ", strtoupper($_GET['kelas']));
@@ -180,6 +198,18 @@ class PKL extends Controller
             }
 
             $this->view('templates/humas/footer');
+        } else if ($data['user']['hak_akses'] == '') {
+            $this->view('templates/humas/header', $data);
+
+            if (isset($_GET['kelas'])) {
+                $data['kelas'] = str_replace("_", " ", strtoupper($_GET['kelas']));
+                $data['siswa'] = $this->model("$this->model_name", 'pkl_model')->getAllNilai($data['kelas']);
+                $this->view('humas/guru/pkl/nilai/detail', $data);
+            } else {
+                $this->view('humas/guru/pkl/nilai/index', $data);
+            }
+
+            $this->view('templates/humas/footer');
         } else {
             header("Location: " . BASEURL);
             Flasher::setFlash('GAGAL', 'Anda Tidak Mempunyai Akses Untuk Menuju Halaman Tersebut', 'danger');
@@ -257,10 +287,13 @@ class PKL extends Controller
             $this->view('templates/humas/header', $data);
             $this->view('humas/guru/pkl/pemberkasan/pklpemberkasanlaporan', $data);
             $this->view('templates/humas/footer');
-        } else {
+        } else if($data['user']['hak_akses'] == '') {
             $this->view('templates/humas/header', $data);
             $this->view('humas/pkl/pemberkasan/form', $data);
             $this->view('templates/humas/footer');
+        } else {
+            header("Location: " . BASEURL);
+            Flasher::setFlash('GAGAL', 'Anda Tidak Mempunyai Akses Untuk Menuju Halaman Tersebut', 'danger');
         }
     }
 
@@ -356,6 +389,10 @@ class PKL extends Controller
             $this->view('templates/humas/header', $data);
             $this->view('humas/guru/pkl/prakerin/pklprakerin', $data);
             $this->view('templates/humas/footer');
+        } else if ($data['user']['hak_akses'] == '') {
+            $this->view('templates/humas/header', $data);
+            $this->view('humas/guru/pkl/prakerin/pklprakerin', $data);
+            $this->view('templates/humas/footer');
         } else {
             header("Location: " . BASEURL);
             Flasher::setFlash('GAGAL', 'Anda Tidak Mempunyai Akses Untuk Menuju Halaman Tersebut', 'danger');
@@ -373,7 +410,11 @@ class PKL extends Controller
             $this->view('templates/humas/footer');
         } else if ($data['user']['role'] == 'guru') {
             $this->view('templates/humas/header', $data);
-            $this->view('humas/guru/bkk/loker/bkklokerlaporan', $data);
+            $this->view('humas/guru/pkl/prakerin/pemberangkatan/pklpemberangkatan', $data);
+            $this->view('templates/humas/footer');
+        } else if ($data['user']['hak_akses'] == '') {
+            $this->view('templates/humas/header', $data);
+            $this->view('humas/guru/pkl/prakerin/pemberangkatan/pklpemberangkatan', $data);
             $this->view('templates/humas/footer');
         } else {
             header("Location: " . BASEURL);
@@ -394,6 +435,10 @@ class PKL extends Controller
             $this->view('templates/humas/header', $data);
             $this->view('humas/guru/pkl/prakerin/penjemputan/pklpenjemputan', $data);
             $this->view('templates/humas/footer');
+        } else if ($data['user']['hak_akses'] == '') {
+            $this->view('templates/humas/header', $data);
+            $this->view('humas/guru/pkl/prakerin/penjemputan/pklpenjemputan', $data);
+            $this->view('templates/humas/footer');
         } else {
             header("Location: " . BASEURL);
             Flasher::setFlash('GAGAL', 'Anda Tidak Mempunyai Akses Untuk Menuju Halaman Tersebut', 'danger');
@@ -405,6 +450,7 @@ class PKL extends Controller
         $data['judul'] = 'Siswa Pegawai';
         $data['user'] = $this->user;
         $data['kompkeahlian'] = $this->model("Master", 'Kompkeahlian_model')->getAllExistData();
+        $data['pg'] = $this->model("$this->model_name", 'pkl_model')->getExistSiswaPegawai();
         $akses = ['all', 'humas'];
         if (in_array($data['user']['hak_akses'], $akses)) {
             $data['pg'] = $this->model("$this->model_name", 'pkl_model')->getExistSiswaPegawai();
@@ -412,6 +458,10 @@ class PKL extends Controller
             $this->view('humas/pkl/rekap/magang/pklpengangkatansiswa', $data);
             $this->view('templates/humas/footer');
         } else if ($data['user']['role'] == 'guru') {
+            $this->view('templates/humas/header', $data);
+            $this->view('humas/guru/pkl/rekap/magang/pklpengangkatansiswa', $data);
+            $this->view('templates/humas/footer');
+        } else if ($data['user']['hak_akses'] == '') {
             $this->view('templates/humas/header', $data);
             $this->view('humas/guru/pkl/rekap/magang/pklpengangkatansiswa', $data);
             $this->view('templates/humas/footer');
@@ -486,6 +536,10 @@ class PKL extends Controller
             $this->view('templates/humas/header', $data);
             $this->view('humas/guru/pkl/rekap/dataindustri/pkldataindustri', $data);
             $this->view('templates/humas/footer');
+        } else if ($data['user']['hak_akses'] == '') {
+            $this->view('templates/humas/header', $data);
+            $this->view('humas/guru/pkl/rekap/dataindustri/pkldataindustri', $data);
+            $this->view('templates/humas/footer');
         } else {
             header("Location: " . BASEURL);
             Flasher::setFlash('GAGAL', 'Anda Tidak Mempunyai Akses Untuk Menuju Halaman Tersebut', 'danger');
@@ -551,6 +605,10 @@ class PKL extends Controller
             $this->view('humas/pkl/prakerin/monitoring/pklmonitoring', $data);
             $this->view('templates/humas/footer');
         } else if ($data['user']['role'] == 'guru') {
+            $this->view('templates/humas/header', $data);
+            $this->view('humas/guru/pkl/prakerin/monitoring/pklmonitoring', $data);
+            $this->view('templates/humas/footer');
+        } else if ($data['user']['hak_akses'] == '') {
             $this->view('templates/humas/header', $data);
             $this->view('humas/guru/pkl/prakerin/monitoring/pklmonitoring', $data);
             $this->view('templates/humas/footer');
@@ -624,6 +682,10 @@ class PKL extends Controller
             $this->view('humas/pkl/pembekalan/pklpembekalan', $data);
             $this->view('templates/humas/footer');
         } else if ($data['user']['role'] == 'guru') {
+            $this->view('templates/humas/header', $data);
+            $this->view('humas/guru/pkl/pembekalan/pklpembekalan', $data);
+            $this->view('templates/humas/footer');
+        } else if ($data['user']['hak_akses'] == '') {
             $this->view('templates/humas/header', $data);
             $this->view('humas/guru/pkl/pembekalan/pklpembekalan', $data);
             $this->view('templates/humas/footer');
@@ -768,6 +830,10 @@ class PKL extends Controller
             $this->view('templates/humas/header', $data);
             $this->view('humas/guru/pkl/rekap/perpanjang/pklperpanjangmasa', $data);
             $this->view('templates/humas/footer');
+        } else if ($data['user']['hak_akses'] == '') {
+            $this->view('templates/humas/header', $data);
+            $this->view('humas/guru/pkl/rekap/perpanjang/pklperpanjangmasa', $data);
+            $this->view('templates/humas/footer');
         } else {
             header("Location: " . BASEURL);
             Flasher::setFlash('GAGAL', 'Anda Tidak Mempunyai Akses Untuk Menuju Halaman Tersebut', 'danger');
@@ -842,6 +908,10 @@ class PKL extends Controller
             $this->view('templates/humas/header', $data);
             $this->view('humas/guru/pkl/rekap/perizinanpkl/pklperizinan', $data);
             $this->view('templates/humas/footer');
+        } else if ($data['user']['hak_akses'] == '') {
+            $this->view('templates/humas/header', $data);
+            $this->view('humas/guru/pkl/rekap/perizinanpkl/pklperizinan', $data);
+            $this->view('templates/humas/footer');
         } else {
             header("Location: " . BASEURL);
             Flasher::setFlash('GAGAL', 'Anda Tidak Mempunyai Akses Untuk Menuju Halaman Tersebut', 'danger');
@@ -910,6 +980,10 @@ class PKL extends Controller
             $this->view('humas/pkl/rekap/siswabermasalah/pklsiswabermasalah', $data);
             $this->view('templates/humas/footer');
         } else if ($data['user']['role'] == 'guru') {
+            $this->view('templates/humas/header', $data);
+            $this->view('humas/guru/pkl/rekap/siswabermasalah/pklsiswabermasalah', $data);
+            $this->view('templates/humas/footer');
+        } else if ($data['user']['hak_akses'] == '') {
             $this->view('templates/humas/header', $data);
             $this->view('humas/guru/pkl/rekap/siswabermasalah/pklsiswabermasalah', $data);
             $this->view('templates/humas/footer');

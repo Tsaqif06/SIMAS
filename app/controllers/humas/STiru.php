@@ -18,9 +18,13 @@ class STiru extends Controller
             $this->view('templates/humas/header', $data);
             $this->view('humas/guru/stiru/studitirulaporan', $data);
             $this->view('templates/humas/footer');
+        } else if ($data['user']['hak_akses'] == ''){
+            $this->view('templates/humas/header', $data);
+            $this->view('humas/guru/stiru/studitirulaporan', $data);
+            $this->view('templates/humas/footer');
         } else {
             $this->view('templates/humas/header', $data);
-            $this->view('humas/stiru/studitiruform', $data);
+            $this->view('humas/guru/stiru/form', $data);
             $this->view('templates/humas/footer');
         }
     }
@@ -38,7 +42,11 @@ class STiru extends Controller
             $this->view('templates/humas/header', $data);
             $this->view('humas/guru/stiru/studitirulaporan', $data);
             $this->view('templates/humas/footer');
-        } else if ($data['user']['hak_akses'] == '') {
+        } else if ($data['user']['hak_akses'] == ''){
+            $this->view('templates/humas/header', $data);
+            $this->view('humas/guru/stiru/studitirulaporan', $data);
+            $this->view('templates/humas/footer');
+        } else {
             header("Location: " . BASEURL);
             Flasher::setFlash('GAGAL', 'Anda Tidak Mempunyai Akses Untuk Menuju Halaman Tersebut', 'danger');
         }
