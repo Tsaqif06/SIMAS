@@ -689,8 +689,14 @@ class PKL extends Controller
         $data['judul'] = 'Data Tampung';
         $data['user'] = $this->user;
         $data['kompkeahlian'] = $this->model("Master", 'Kompkeahlian_model')->getAllExistData();
+        $data['perusahaan'] = $this->model("$this->model_name", 'PKL_model')->getNamaPerusahaan();
         $akses = ['all', 'humas'];
-        $data['pd'] = $this->model("$this->model_name", 'pkl_model')->getExistSiswaDP();
+        if (isset($_GET['perusahaan'])) {
+            $perusahaan = str_replace("_", " ", strtoupper($_GET['perusahaan']));
+            $data['pd'] = $this->model("$this->model_name", 'pkl_model')->getExistSiswaDP($perusahaan);
+        } else {
+            $data['pd'] = $this->model("$this->model_name", 'pkl_model')->getExistSiswaDP();
+        }
         if (in_array($data['user']['hak_akses'], $akses)) {
             $this->view('templates/humas/header', $data);
             $this->view('humas/pkl/dayatampung/pkldayatampung', $data);
