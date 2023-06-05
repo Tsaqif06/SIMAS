@@ -61,7 +61,6 @@ class PKL extends Controller
         $data['judul'] = 'Admin - PKL';
 
         $data['user'] = $this->user;
-
         $akses = ['all', 'humas'];
 
         if (in_array($data['user']['hak_akses'], $akses)) {
@@ -78,6 +77,7 @@ class PKL extends Controller
             $this->view('templates/humas/footer');
         } else if ($data['user']['role'] == 'guru' || $data['user']['hak_akses'] == 'kabeng') {
             $this->view('templates/humas/header', $data);
+
             if (isset($_GET['kelas'])) {
                 $data['kelas'] = str_replace("_", " ", strtoupper($_GET['kelas']));
                 $data['siswa'] = $this->model("$this->model_name", 'pkl_model')->getAllPenempatan($data['kelas']);
@@ -85,6 +85,7 @@ class PKL extends Controller
             } else {
                 $this->view('humas/guru/pkl/rekap/penempatan/index', $data);
             }
+
             $this->view('templates/humas/footer');
         } else {
             header("Location: " . BASEURL);
@@ -110,13 +111,22 @@ class PKL extends Controller
         } else {
             Flasher::setFlash('gagal', 'ditambahkan', 'danger');
         }
-        header("Location: " . BASEURL . "/pkl/penempatan&kelas=" . $_GET['kelas']);
+
+        if (isset($_POST['daripemberkasan'])) {
+            header("Location: " . BASEURL . "/pkl/pemberkasan");
+        } else {
+            header("Location: " . BASEURL . "/pkl/penempatan&kelas=" . $_GET['kelas']);
+        }
         exit;
     }
 
     public function getUbahPenempatan()
     {
-        echo json_encode($this->model("$this->model_name", 'pkl_model')->getPenempatanById($_POST['id']));
+        if (isset($_POST['nama']) && isset($_POST['nis'])) {
+            echo json_encode($this->model("$this->model_name", 'pkl_model')->cariSiswaPenempatan($_POST['nama'], $_POST['nis']));
+        } else {
+            echo json_encode($this->model("$this->model_name", 'pkl_model')->getPenempatanById($_POST['id']));
+        }
     }
 
     public function ubahDataPenempatan()
@@ -126,7 +136,12 @@ class PKL extends Controller
         } else {
             Flasher::setFlash('gagal', 'diubah', 'danger');
         }
-        header("Location: " . BASEURL . "/pkl/penempatan&kelas=" . $_GET['kelas']);
+        
+        if (isset($_POST['daripemberkasan'])) {
+            header("Location: " . BASEURL . "/pkl/pemberkasan");
+        } else {
+            header("Location: " . BASEURL . "/pkl/penempatan&kelas=" . $_GET['kelas']);
+        }
         exit;
     }
 

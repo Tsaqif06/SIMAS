@@ -80,27 +80,39 @@ switch ($data['user']['username']) {
                 <?php $i = 1 ?>
                 <?php foreach ($data['siswa'] as $row) : ?>
                   <td>
-                    <a class="badge badge-info" data-toggle="modal" data-target="#modalpenempatan" style="font-size: 15px;"><i class="mdi mdi-map-marker"></i></a>
+                    <?php if ($row['status_pemberkasan'] == 0) : ?>
+                      <a class="badge bg-secondary text-white" style="font-size: 15px;"><i class="mdi mdi-map-marker"></i></a>
+                    <?php elseif ($row['status_penempatan'] == 0) : ?>
+                      <a class="badge badge-success tampilModalPenempatan" data-toggle="modal" data-target="#modalpenempatan" data-id="<?= $row['id'] ?>" style="font-size: 15px;"><i class="mdi mdi-map-marker"></i></a>
+                    <?php elseif ($row['status_penempatan'] == 1) : ?>
+                      <a class="badge badge-info tampilModalPenempatan edit" data-toggle="modal" data-target="#modalpenempatan" data-id="<?= $row['id'] ?>" style="font-size: 15px;"><i class="mdi mdi-map-marker"></i></a>
+                    <?php endif ?>
                   </td>
                   <td>
-                    <a class="badge badge-warning text-white" style="font-size: 15px;" title="Siswa Siap Ditempatkan!"><i class="ti ti-alert"></i></a>
+                    <?php if ($row['status_pemberkasan'] == 0) : ?>
+                      <a class="badge badge-danger" style="font-size: 15px;" title="Data Siswa Belum Lengkap!"><i class="ti ti-close"></i></a>
+                    <?php elseif ($row['status_penempatan'] == 0) : ?>
+                      <a class="badge badge-warning text-white" style="font-size: 15px;" title="Siswa Siap Ditempatkan!"><i class="ti ti-alert"></i></a>
+                    <?php elseif ($row['status_penempatan'] == 1) : ?>
+                      <a class="badge badge-success" style="font-size: 15px;" title="Siswa Sudah Ditempatkan!"><i class="ti ti-check"></i></a>
+                    <?php endif ?>
                   </td>
                   <td><?= $row['nis_pemberkasan'] ?></td>
                   <td><?= $row['kelas_pemberkasan'] ?></td>
                   <td><?= $row['namasiswa_pemberkasan'] ?></td>
                   <td><?= $row['notelportu_pemberkasan'] ?></td>
                   <td>
-                    <a href="" id="tampilModalDataSiswa" class="badge badge-primary" data-toggle="modal" data-target="#modaldatasiswa" data-id="<?= $row['id'] ?>" style="font-size: 15px;">
+                    <a href="" class="badge badge-primary tampilModalDataSiswa" data-toggle="modal" data-target="#modaldatasiswa" data-id="<?= $row['id'] ?>" style="font-size: 15px;">
                       <i class="ti-file btn-icon-prepend"></i>Lihat Data
                     </a>
                   </td>
                   <td>
-                    <a href="" id="tampilModalDataLampiran" class="badge badge-primary" data-toggle="modal" data-target="#modaldatalampiran" data-id="<?= $row['id'] ?>" style="font-size: 15px;">
+                    <a href="" class="badge badge-primary tampilModalDataLampiran" data-toggle="modal" data-target="#modaldatalampiran" data-id="<?= $row['id'] ?>" style="font-size: 15px;">
                       <i class="ti-file btn-icon-prepend"></i>Lihat Data
                     </a>
                   </td>
                   <td>
-                    <a href="" id="tampilModalDataKota" class="badge badge-primary" data-toggle="modal" data-target="#modaldatakota" data-id="<?= $row['id'] ?>" style="font-size: 15px;">
+                    <a href="" class="badge badge-primary tampilModalDataKota" data-toggle="modal" data-target="#modaldatakota" data-id="<?= $row['id'] ?>" style="font-size: 15px;">
                       <i class="ti-file badge-icon-prepend"></i>Lihat Data
                     </a>
                   </td>
@@ -164,39 +176,46 @@ switch ($data['user']['username']) {
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
-        <div class="row justify-content-md-center">
-          <div class="col-md-12">
-            <div class="modal-body">
-              <h4 class="modal-title" id="exampleModalLabel">Data Pemilihan Kota</h4>
-              <div class="form-group">
-                <input type="text" class="form-control" id="pkldimana_pemberkasan" name="pkldimana_pemberkasan" placeholder="Kota 1">
-              </div>
-              <div class="form-group">
-                <input type="text" class="form-control" id="pkldimana_pemberkasan" name="pkldimana_pemberkasan" placeholder="Kota 2">
-              </div>
-              <div class="form-group">
-                <input type="text" class="form-control" id="pkldimana_pemberkasan" name="pkldimana_pemberkasan" placeholder="Kota 3">
-              </div>
-            </div>
-            <div class="modal-body">
-              <h4 class="modal-title" id="exampleModalLabel">Penempatan Siswa</h4>
-              <form>
+        <form action="<?= BASEURL ?>/pkl/tambahDataPenempatan" method="post">
+          <input type="hidden" name="daripemberkasan" value="1">
+          <input type="hidden" id="id" name="id">
+          <input type="hidden" id="nis" name="nis">
+          <input type="hidden" id="nisn" name="nisn">
+          <input type="hidden" id="namasiswa" name="namasiswa">
+          <input type="hidden" id="kelassiswa" name="kelassiswa">
+          <input type="hidden" id="jurusansiswa" name="jurusansiswa">
+          <div class="row justify-content-md-center">
+            <div class="col-md-12">
+              <div class="modal-body">
+                <h4 class="modal-title" id="exampleModalLabel">Data Pemilihan Kota</h4>
                 <div class="form-group">
-                  <label for="pkldimana">Penempatan Kota</label>
-                  <input type="text" class="form-control" id="pkldimana" name="pkldimana_pemberkasan" placeholder="Kota">
+                  <input type="text" class="form-control kota1_pemberkasan" placeholder="Kota 1" readonly>
                 </div>
                 <div class="form-group">
-                  <label for="indus">Penempatan Industri</label>
-                  <input type="text" class="form-control" id="indus" name="pkldimana_pemberkasan" placeholder="Industri">
+                  <input type="text" class="form-control kota2_pemberkasan" placeholder="Kota 2" readonly>
                 </div>
-              </form>
+                <div class="form-group">
+                  <input type="text" class="form-control kota3_pemberkasan" placeholder="Kota 3" readonly>
+                </div>
+              </div>
+              <div class="modal-body">
+                <h4 class="modal-title" id="exampleModalLabel">Penempatan Siswa</h4>
+                <div class="form-group">
+                  <label for="tempatperusahaan">Penempatan Kota</label>
+                  <input type="text" class="form-control" id="tempatperusahaan" name="tempatperusahaan" placeholder="Kota" required>
+                </div>
+                <div class="form-group">
+                  <label for="namaperusahaan">Penempatan Industri</label>
+                  <input type="text" class="form-control" id="namaperusahaan" name="namaperusahaan" placeholder="Nama Perusahaan" required>
+                </div>
+              </div>
             </div>
           </div>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-outline-secondary btn-fw" data-dismiss="modal">Tutup</button>
-          <button type="submit" class="btn btn-primary mr-2">Simpan Data</button>
-        </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-outline-secondary btn-fw" data-dismiss="modal">Tutup</button>
+            <button type="submit" class="btn btn-primary mr-2">Simpan Data</button>
+          </div>
+        </form>
       </div>
     </div>
   </div>
@@ -433,7 +452,7 @@ switch ($data['user']['username']) {
     $(document).ready(function() {
       $('#tablepemberkasan').DataTable();
       
-      $('#tampilModalDataSiswa').click(function () {
+      $('.tampilModalDataSiswa').click(function () {
         let data_id = $(this).data("id");
 
         $.ajax({
@@ -458,7 +477,7 @@ switch ($data['user']['username']) {
       });
       
 
-      $('#tampilModalDataLampiran').click(function () {
+      $('.tampilModalDataLampiran').click(function () {
         let data_id = $(this).data("id");
 
         $.ajax({
@@ -492,7 +511,7 @@ switch ($data['user']['username']) {
       });
 
 
-      $('#tampilModalDataKota').click(function () {
+      $('.tampilModalDataKota').click(function () {
         let data_id = $(this).data("id");
 
         $.ajax({
@@ -506,6 +525,53 @@ switch ($data['user']['username']) {
             $('#kota3_pemberkasan').val(data.kota3_pemberkasan);
           }
         });
+      });
+
+
+      $('.tampilModalPenempatan').click(function () {
+        let btn = $(this);
+        let data_id = btn.data("id");
+
+        $.ajax({
+          url: `${BASEURL}/pkl/getUbahPemberkasan`,
+					data: { id: data_id },
+					method: "post",
+					dataType: "json",
+					success: function (data) {
+            $('#modalpenempatan form').attr('action', `${BASEURL}/pkl/tambahDataPenempatan`);
+            $('#modalpenempatan button[type="submit"]').html("Simpan Data");
+            $('#id').val(data.id);
+            $('#nis').val(data.nis_pemberkasan);
+            $('#nisn').val(data.nisn_pemberkasan);
+            $('#namasiswa').val(data.namasiswa_pemberkasan);
+            $('#kelassiswa').val(data.kelas_pemberkasan);
+            $('#jurusansiswa').val(data.jurusan_pemberkasan);
+            $('#modalpenempatan .kota1_pemberkasan').val(data.kota1_pemberkasan);
+            $('#modalpenempatan .kota2_pemberkasan').val(data.kota2_pemberkasan);
+            $('#modalpenempatan .kota3_pemberkasan').val(data.kota3_pemberkasan);
+
+            if (btn.hasClass('edit')) {
+              $.ajax({
+                url: `${BASEURL}/pkl/getUbahPenempatan`,
+                data: {
+                  nama: $('#namasiswa').val(),
+                  nis: $('#nis').val()
+                },
+                method: "post",
+                dataType: "json",
+                success: function (data) {
+                  $('#modalpenempatan form').attr('action', `${BASEURL}/pkl/ubahDataPenempatan`);
+                  $('#modalpenempatan button[type="submit"]').html("Ubah Data");
+                  $('#id').val(data.id);
+                  $('#tempatperusahaan').val(data.tempatperusahaan);
+                  $('#namaperusahaan').val(data.namaperusahaan);
+                }
+              });
+            }
+
+          }
+        });
+
       });
     });
   </script>

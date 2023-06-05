@@ -162,7 +162,10 @@ class pkl_model extends Database
 
     public function cariSiswaPenempatan($nama, $nis)
     {
-        # code...
+        $this->db->query("SELECT * FROM {$this->table_penempatan} WHERE `namasiswa` = :namasiswa AND `nis` = :nis AND `status` = 1");
+        $this->db->bind('namasiswa', $nama);
+        $this->db->bind('nis', $nis);
+        return $this->db->fetch();
     }
 
     public function getAllPenempatan($kelas)
@@ -181,17 +184,34 @@ class pkl_model extends Database
 
     public function tambahDataPenempatan($data)
     {
+        if ($data['id']) {
+            $this->db->query(
+                "UPDATE {$this->tableps}
+                    SET
+                    status_penempatan = 1, 
+                    modified_at = CURRENT_TIMESTAMP, 
+                    modified_by = :modified_by 
+                WHERE id = :id"
+            );
+            $this->db->bind('modified_by', $this->user);
+            $this->db->bind('id', $data['id']);
+            $this->db->execute();
+        }
+
         $this->db->query(
             "INSERT INTO {$this->table_penempatan}
                 VALUES 
-            (null, :uuid, :nisn, :namasiswa, :kelassiswa, :namaperusahaan,
+            (null, :uuid, :nisn, :nis, :namasiswa, :kelassiswa, :jurusansiswa, :tempatperusahaan, :namaperusahaan,
             '', CURRENT_TIMESTAMP, :created_by, null, '', null, '', null, '', 0, 0, DEFAULT)"
         );
 
         $this->db->bind('uuid', Uuid::uuid4()->toString());
         $this->db->bind('nisn', $data['nisn']);
+        $this->db->bind('nis', $data['nis']);
         $this->db->bind('namasiswa', $data['namasiswa']);
         $this->db->bind('kelassiswa', $data['kelassiswa']);
+        $this->db->bind('jurusansiswa', $data['jurusansiswa']);
+        $this->db->bind('tempatperusahaan', $data['tempatperusahaan']);
         $this->db->bind('namaperusahaan', $data['namaperusahaan']);
         $this->db->bind('created_by', $this->user);
 
@@ -227,8 +247,11 @@ class pkl_model extends Database
             "UPDATE {$this->table_penempatan}
                 SET 
                 nisn = :nisn, 
+                nis = :nis, 
                 namasiswa = :namasiswa, 
                 kelassiswa = :kelassiswa,
+                jurusansiswa = :jurusansiswa,
+                tempatperusahaan = :tempatperusahaan,
                 namaperusahaan = :namaperusahaan, 
                 modified_at = CURRENT_TIMESTAMP, 
                 modified_by = :modified_by 
@@ -236,8 +259,11 @@ class pkl_model extends Database
         );
 
         $this->db->bind('nisn', $data['nisn']);
+        $this->db->bind('nis', $data['nis']);
         $this->db->bind('namasiswa', $data['namasiswa']);
         $this->db->bind('kelassiswa', $data['kelassiswa']);
+        $this->db->bind('jurusansiswa', $data['jurusansiswa']);
+        $this->db->bind('tempatperusahaan', $data['tempatperusahaan']);
         $this->db->bind('namaperusahaan', $data['namaperusahaan']);
         $this->db->bind('modified_by', $this->user);
 
@@ -251,8 +277,11 @@ class pkl_model extends Database
     {
         $fields = [
             'nisn',
+            'nis',
             'namasiswa',
             'kelassiswa',
+            'jurusansiswa',
+            'tempatperusahaan',
             'namaperusahaan'
         ];
 
@@ -1170,7 +1199,7 @@ class pkl_model extends Database
     {
 
         $this->db->query(
-            "INSERT INTO `pemberkasanpkl`
+            "INSERT INTO {$this->tableps}
                 VALUES 
             (null, :uuid, 
             :nisn_pemberkasan, 
@@ -1189,6 +1218,7 @@ class pkl_model extends Database
             :kota2_pemberkasan, 
             :kota3_pemberkasan, 
             DEFAULT,
+            0,
             :uploadfoto_pemberkasan, 
             :uploadsurat_pemberkasan, 
             :uploadkartupelajar_pemberkasan, 
@@ -1272,7 +1302,7 @@ class pkl_model extends Database
     public function ubahDataPemberkasan($data)
     {
         $this->db->query(
-            "UPDATE pemberkasanpkl SET  
+            "UPDATE {$this->tableps} SET  
                 nisn_pemberkasan = :nisn_pemberkasan, 
                 nis_pemberkasan = :nis_pemberkasan, 
                 namasiswa_pemberkasan = :namasiswa_pemberkasan, 

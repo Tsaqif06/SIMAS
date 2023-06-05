@@ -1,7 +1,7 @@
 <?php
 
 // echo "<pre>";
-// var_dump($data['data_pemberkasan']);
+// var_dump($data['data_penempatan']);
 // echo "</pre>";
 
 ?>
@@ -50,7 +50,7 @@
               <?php endif ?>
             </div>
             <div class="col-md-4">
-              <button type="button" class="btn btn-icon-text btn-light btn-block btn-lg text-primary" data-toggle="modal" data-target="#Modal">
+              <button type="button" class="btn btn-icon-text btn-light btn-block btn-lg text-primary" data-toggle="modal" data-target="#modal">
                 <?php if (!$data['data_pemberkasan']) : ?>
                   <i class="mdi mdi-account-card-details btn-icon-prepend icon-lg"></i>
                   Isi Form Pemberkasan
@@ -76,7 +76,7 @@
   <?php if (!$data['data_penempatan']) : ?>
 
     <!-- Modal kalau mau isi form pemberkasan-->
-    <div class="modal fade" id="Modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal fade" id="modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
       <div class="modal-dialog modal-xl" role="document">
         <div class="modal-content">
           <div class="modal-header">
@@ -93,6 +93,22 @@
               <div class="col-md-6">
                 <div class="modal-body">
                   <h4 class="modal-title">Data Diri</h4>
+
+                  <div class="form-group">
+                    <label for="nis_pemberkasan">NIS</label>
+                    <input type="number" class="form-control" readonly id="nis_pemberkasan" name="nis_pemberkasan" placeholder="NIS" value="<?= $data['siswa']['nis'] ?>" required>
+                  </div>
+
+                  <div class="form-group">
+                    <label for="nisn_pemberkasan">NISN</label>
+                    <input type="number" class="form-control" readonly id="nisn_pemberkasan" name="nisn_pemberkasan" placeholder="NISN" value="<?= $data['siswa']['nisn'] ?>" required>
+                  </div>
+
+                  <div class="form-group">
+                    <label for="namasiswa_pemberkasan">Nama Lengkap</label>
+                    <input type="text" class="form-control" readonly id="namasiswa_pemberkasan" name="namasiswa_pemberkasan" placeholder="Nama Lengkap" value="<?= $data['siswa']['nama_siswa'] ?>" required>
+                  </div>
+
                   <div class="form-group">
                     <label for="kelas_pemberkasan">Kelas</label>
                     <input class="form-control" id="kelas_pemberkasan" name="kelas_pemberkasan" placeholder="Kelas" required>
@@ -111,21 +127,6 @@
                       <option value="MEKA">Mekatronika</option>
                       <option value="PH">Perhotelan</option>
                     </select>
-                  </div>
-
-                  <div class="form-group">
-                    <label for="namasiswa_pemberkasan">Nama Lengkap</label>
-                    <input type="text" class="form-control" readonly id="namasiswa_pemberkasan" name="namasiswa_pemberkasan" placeholder="Nama Lengkap" value="<?= $data['siswa']['nama_siswa'] ?>" required>
-                  </div>
-
-                  <div class="form-group">
-                    <label for="nis_pemberkasan">NIS</label>
-                    <input type="number" class="form-control" readonly id="nis_pemberkasan" name="nis_pemberkasan" placeholder="NIS" value="<?= $data['siswa']['nis'] ?>" required>
-                  </div>
-
-                  <div class="form-group">
-                    <label for="nisn_pemberkasan">NISN</label>
-                    <input type="number" class="form-control" readonly id="nisn_pemberkasan" name="nisn_pemberkasan" placeholder="NISN" value="<?= $data['siswa']['nisn'] ?>" required>
                   </div>
 
                   <div class="form-group">
@@ -352,7 +353,7 @@
   <?php else : ?>
 
     <!--Modal udah dapet tempat pkl ahay-->
-    <div class="modal fade" id="modalpenempatan" tabindex="-1" role="dialog" aria-labelledby="Modal" aria-hidden="true">
+    <div class="modal fade" id="modal" tabindex="-1" role="dialog" aria-labelledby="Modal" aria-hidden="true">
       <div class="modal-dialog" role="document">
         <div class="modal-content">
           <div class="modal-header">
@@ -363,11 +364,11 @@
           </div>
           <div class="modal-body">
             <h4>Anda ditempatkan di Industri : </h4>
-            <h3 class="text-primary">"XXX"</h3>
+            <h3 class="text-primary"><?= $data['data_penempatan']['namaperusahaan'] ?></h3>
           </div>
           <div class="modal-body">
             <h4>Di Kota : </h4>
-            <h3 class="text-primary">"XXX"</h3>
+            <h3 class="text-primary"><?= $data['data_penempatan']['tempatperusahaan'] ?></h3>
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-outline-secondary btn-fw" data-dismiss="modal">Tutup</button>
@@ -405,22 +406,22 @@
   <?php if ($data['data_pemberkasan'] && !$data['data_penempatan']) : ?>
     <script>
       $(document).ready(function() {
-        $('#Modal form').attr('action', '<?= BASEURL ?>/pkl/ubahpemberkasan');
-        $('#Modal #kelas_pemberkasan').val("<?= $data['data_pemberkasan']['kelas_pemberkasan'] ?>");
-        $('#Modal #jurusan_pemberkasan').val("<?= $data['data_pemberkasan']['jurusan_pemberkasan'] ?>");
-        $('#Modal #namasiswa_pemberkasan').val("<?= $data['data_pemberkasan']['namasiswa_pemberkasan'] ?>");
-        $('#Modal #nis_pemberkasan').val("<?= $data['data_pemberkasan']['nis_pemberkasan'] ?>");
-        $('#Modal #nisn_pemberkasan').val("<?= $data['data_pemberkasan']['nisn_pemberkasan'] ?>");
-        $('#Modal #tanggallahir_pemberkasan').val("<?= $data['data_pemberkasan']['tanggallahir_pemberkasan'] ?>");
-        $('#Modal #<?= $data['data_pemberkasan']['jeniskelamin_pemberkasan'] ?>').prop('checked', true);
-        $('#Modal #agama_pemberkasan').val("<?= $data['data_pemberkasan']['agama_pemberkasan'] ?>");
-        $('#Modal #domisili_pemberkasan').val("<?= $data['data_pemberkasan']['domisili_pemberkasan'] ?>");
-        $('#Modal #alamat_pemberkasan').val("<?= $data['data_pemberkasan']['alamat_pemberkasan'] ?>");
-        $('#Modal #notelp_pemberkasan').val("<?= $data['data_pemberkasan']['notelp_pemberkasan'] ?>");
-        $('#Modal #notelportu_pemberkasan').val("<?= $data['data_pemberkasan']['notelportu_pemberkasan'] ?>");
-        $('#Modal #kota1_pemberkasan').val("<?= $data['data_pemberkasan']['kota1_pemberkasan'] ?>");
-        $('#Modal #kota2_pemberkasan').val("<?= $data['data_pemberkasan']['kota2_pemberkasan'] ?>");
-        $('#Modal #kota3_pemberkasan').val("<?= $data['data_pemberkasan']['kota3_pemberkasan'] ?>");
+        $('#modal form').attr('action', '<?= BASEURL ?>/pkl/ubahpemberkasan');
+        $('#modal #kelas_pemberkasan').val("<?= $data['data_pemberkasan']['kelas_pemberkasan'] ?>");
+        $('#modal #jurusan_pemberkasan').val("<?= $data['data_pemberkasan']['jurusan_pemberkasan'] ?>");
+        $('#modal #namasiswa_pemberkasan').val("<?= $data['data_pemberkasan']['namasiswa_pemberkasan'] ?>");
+        $('#modal #nis_pemberkasan').val("<?= $data['data_pemberkasan']['nis_pemberkasan'] ?>");
+        $('#modal #nisn_pemberkasan').val("<?= $data['data_pemberkasan']['nisn_pemberkasan'] ?>");
+        $('#modal #tanggallahir_pemberkasan').val("<?= $data['data_pemberkasan']['tanggallahir_pemberkasan'] ?>");
+        $('#modal #<?= $data['data_pemberkasan']['jeniskelamin_pemberkasan'] ?>').prop('checked', true);
+        $('#modal #agama_pemberkasan').val("<?= $data['data_pemberkasan']['agama_pemberkasan'] ?>");
+        $('#modal #domisili_pemberkasan').val("<?= $data['data_pemberkasan']['domisili_pemberkasan'] ?>");
+        $('#modal #alamat_pemberkasan').val("<?= $data['data_pemberkasan']['alamat_pemberkasan'] ?>");
+        $('#modal #notelp_pemberkasan').val("<?= $data['data_pemberkasan']['notelp_pemberkasan'] ?>");
+        $('#modal #notelportu_pemberkasan').val("<?= $data['data_pemberkasan']['notelportu_pemberkasan'] ?>");
+        $('#modal #kota1_pemberkasan').val("<?= $data['data_pemberkasan']['kota1_pemberkasan'] ?>");
+        $('#modal #kota2_pemberkasan').val("<?= $data['data_pemberkasan']['kota2_pemberkasan'] ?>");
+        $('#modal #kota3_pemberkasan').val("<?= $data['data_pemberkasan']['kota3_pemberkasan'] ?>");
       });
     </script>
   <?php endif ?>
