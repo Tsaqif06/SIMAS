@@ -22,7 +22,7 @@ class Suratpengajuan extends Controller
         } else {
             $this->view('templates/header', $data);
             $this->view('tu/suratpengajuan/index', $data);
-            $this->view('templates/footer');
+            $this->view('templates/footerwm');
         }
     }
 

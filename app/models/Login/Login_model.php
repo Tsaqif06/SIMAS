@@ -172,7 +172,7 @@ class Login_model
                 break;
             default:
                 $this->db->query(
-                    "SELECT * FROM {$this->table}
+                    "SELECT `username`, `password`, `email` FROM {$this->table}
                         WHERE
                     `id` = :id AND
                     `username` = :username"

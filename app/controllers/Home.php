@@ -13,8 +13,11 @@ class Home extends Controller
         $data['jmlKaryawan'] = $this->model('Master', 'Karyawan_model')->getJmlData()['count'];
         $data['struktur_organisasi'] = $this->model('PSDM', 'strukturOrganisasi_model')->getAllExistData();
 
+        // echo '<pre>';
+        // print_r($data['user']); die;
+
         $this->view('templates/header', $data);
         $this->view('home/index', $data);
-        $this->view('templates/footer');
+        $this->view('templates/footerwm');
     }
 }

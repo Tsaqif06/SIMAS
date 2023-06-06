@@ -26,26 +26,27 @@ let notification = {
 };
 
 $(document).ready(function () {
-	setInterval(function () {
-		console.clear();
+	let get_notif = setInterval(function () {
 		$.ajax({
 			url: "http://localhost/SIMAS/public/notification",
 			data: { get_notification : true },
 			method: "post",
 			dataType: "json",
 			success: function (data) {
-				notification.clear();
-
-				data.forEach(notif => {
-					if (notif[0] != 0) {
-						notification.add(notif[1], notif[2], notif[3], notif[4]);
+				if (data !== false) {
+					notification.clear();
+					data.forEach(notif => {
+						if (notif[0] != 0) {
+							notification.add(notif[1], notif[2], notif[3], notif[4]);
+						}
+					});
+					if ($('#notification .dropdown-item').length == 0) {
+						$("#notification .count").addClass("d-none");
+					} else {
+						$("#notification .count").removeClass("d-none");
 					}
-				});
-
-				if ($('#notification .dropdown-item').length == 0) {
-					$("#notification .count").addClass("d-none");
 				} else {
-					$("#notification .count").removeClass("d-none");
+					clearInterval(get_notif);
 				}
 			},
 		});

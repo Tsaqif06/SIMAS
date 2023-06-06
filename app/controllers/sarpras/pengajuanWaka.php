@@ -1,4 +1,5 @@
 <?php
+
 class pengajuanWaka extends Controller
 {
     public $model_name = "Sarpras";
@@ -8,24 +9,19 @@ class pengajuanWaka extends Controller
         $data['judul'] = 'Pengajuan Barang Waka';
         $data['user'] = $this->user;
         $akses = ['all', 'sarpras'];
-        $data['pengajuan_waka'] = $this->model("$this->model_name", 'pengajuanWaka_models')->getAllExistData();
-
+        
         if (in_array($data['user']['hak_akses'], $akses)) {
-            if (isset($_POST["contentOnly"])) {
-                $this->view('sarpras/pengajuanBarang/waka', $data);
-            } else {
-                $this->view('templates/header', $data);
-                $this->view('sarpras/pengajuanBarang/waka', $data);
-                $this->view('templates/footer');
-            }
-        } else if ($data['user']['hak_akses'] == '') {
-            if (isset($_POST["contentOnly"])) {
-                $this->view('sarpras/pengajuanBarang/form/formwaka', $data);
-            } else {
-                $this->view('templates/header', $data);
-                $this->view('sarpras/pengajuanBarang/form/formwaka', $data);
-                $this->view('templates/footer');
-            }
+            $data['pengajuan_waka'] = $this->model("$this->model_name", 'pengajuanWaka_models')->getAllExistData();
+            $this->view('templates/header', $data);
+            $this->view('sarpras/pengajuanBarang/waka', $data);
+            $this->view('templates/footer');
+        } else if ($data['user']['hak_akses'] == '' || $data['user']['role'] == 'kabeng' || $data['user']['role'] == 'guru') {
+            $this->view('templates/header', $data);
+            $this->view('sarpras/pengajuanBarang/form/formwaka', $data);
+            $this->view('templates/footerwm');
+        } else {
+            header("Location: " . BASEURL);
+            Flasher::setFlash('GAGAL', 'Anda Tidak Mempunyai Akses Untuk Menuju Halaman Tersebut', 'danger');
         }
     }
     public function tambah()

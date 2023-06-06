@@ -25,7 +25,7 @@ class Notification extends Controller {
           ]
         ]);
       } else {
-        header("Location: " . BASEURL . "/Notfound");
+        echo json_encode(false);
       }
     } else {
       header("Location: " . BASEURL . "/Notfound");
