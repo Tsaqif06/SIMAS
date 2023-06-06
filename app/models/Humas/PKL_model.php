@@ -10,6 +10,7 @@ use Ramsey\Uuid\Uuid;
 class pkl_model extends Database
 {
     private $table = 'daftarsiswapegawai';
+    private $aspekteknis = 'aspekteknis';
     private $tableind = 'dataindustripkl';
     private $table_penempatan = 'datatempatpkl';
     private $tableMON = 'monitoringpkl';
@@ -33,8 +34,32 @@ class pkl_model extends Database
 
     public function getAllNilai($kelas)
     {
+        // $this->db->query("SELECT * FROM `aspekteknis`
+        //                 JOIN `nilaipkl` ON 
+        //                 `aspekteknis`.`siswa_id` = `nilaipkl`.`id` 
+        //                 WHERE `nilaipkl`.`kelas` = :kelas AND `nilaipkl`.`status` = 1");
         $this->db->query("SELECT * FROM {$this->table_nilai} WHERE kelas = :kelas AND `status` = 1");
         $this->db->bind('kelas', $kelas);
+
+        return $this->db->fetchAll();
+    }
+
+    public function getDataAspekTeknis($jurusan, $kelas)
+    {
+        $this->db->query("SELECT * FROM `aspekteknis`
+                        JOIN `nilaipkl` ON 
+                        `aspekteknis`.`siswa_id` = `nilaipkl`.`id` 
+                        WHERE `nilaipkl`.`kelas` = :kelas AND `nilaipkl`.`status` = 1 AND `aspekteknis`.`jurusan_aspek` = :jurusan");
+        $this->db->bind('kelas', $kelas);
+        $this->db->bind('jurusan', $jurusan);
+
+        return $this->db->fetchAll();
+    }
+
+    public function getNamaAspekTeknis($jurusan)
+    {
+        $this->db->query("SELECT nama_aspek FROM {$this->aspekteknis} WHERE jurusan_aspek = :jurusan GROUP BY nama_aspek");
+        $this->db->bind('jurusan', $jurusan);
 
         return $this->db->fetchAll();
     }
@@ -70,21 +95,64 @@ class pkl_model extends Database
         $this->db->query(
             "INSERT INTO {$this->table_nilai}
                 VALUES 
-            (null, :uuid, :nisn, :namasiswa, :kelas, :jeniskelamin, :namaindustri, :nilaisiswa, DEFAULT, 
+            (null, :uuid, :nis, :namasiswa, :kelas, :jeniskelamin, :namaindustri, :religius, :kejujuran, :disiplin,
+            :kerjasama, :inisiatif, :tanggungjawab, :kebersihan, :kesantunan, :mutupekerjaan, :ratarata, DEFAULT,
             '', CURRENT_TIMESTAMP, :created_by, null, '', null, '', null, '', 0, 0, DEFAULT)"
         );
+
+        $tmp = 0;
+        foreach ($data['teknis'] as $row) {
+            $tmp += $row;
+        }
+        $ratarata = $tmp / $data['length'];
+
         $this->db->bind('uuid', Uuid::uuid4()->toString());
-        $this->db->bind('nisn', $data['nisn']);
+        $this->db->bind('nis', $data['nis']);
         $this->db->bind('namasiswa', $data['namasiswa']);
         $this->db->bind('kelas', $data['kelas']);
         $this->db->bind('jeniskelamin', $data['jeniskelamin']);
         $this->db->bind('namaindustri', $data['namaindustri']);
-        $this->db->bind('nilaisiswa', $data['nilaisiswa']);
+        $this->db->bind('religius', $data['religius']);
+        $this->db->bind('kejujuran', $data['kejujuran']);
+        $this->db->bind('disiplin', $data['disiplin']);
+        $this->db->bind('kerjasama', $data['kerjasama']);
+        $this->db->bind('inisiatif', $data['inisiatif']);
+        $this->db->bind('tanggungjawab', $data['tanggungjawab']);
+        $this->db->bind('kebersihan', $data['kebersihan']);
+        $this->db->bind('kesantunan', $data['kesantunan']);
+        $this->db->bind('mutupekerjaan', $data['mutupekerjaan']);
+        $this->db->bind('ratarata', $ratarata);
         $this->db->bind('created_by', $this->user);
 
         $this->db->execute();
 
         return $this->db->rowCount();
+    }
+
+    public function tambahDataAspek($nilaiAspek, $data)
+    {
+        foreach ($nilaiAspek as $nama_aspek => $nilai) {
+            $this->db->query(
+                "INSERT INTO {$this->aspekteknis}
+                VALUES 
+            (null, :uuid, :siswa_id, :jurusan_aspek, :nama_aspek, :nilai,
+            '', CURRENT_TIMESTAMP, :created_by, null, '', null, '', null, '', 0, 0, DEFAULT)"
+            );
+            $this->db->bind('uuid', Uuid::uuid4()->toString());
+            $this->db->bind('siswa_id', $data['siswa_id']);
+            $this->db->bind('jurusan_aspek', $data['jurusan_aspek']);
+            $this->db->bind('nama_aspek', $nama_aspek);
+            $this->db->bind('nilai', $nilai);
+            $this->db->bind('created_by', $this->user);
+
+            $this->db->execute();
+        }
+
+        return $this->db->rowCount();
+    }
+    public function getLastInsertId()
+    {
+        return $this->db->lastInsertId();
     }
 
     public function ubahDataNilai($data)
@@ -1469,7 +1537,7 @@ class pkl_model extends Database
 
     public function getNamaPerusahaan()
     {
-        $this->db->query("SELECT namaperusahaan FROM `{$this->tabledp}`GROUP BY namaperusahaan");
+        $this->db->query("SELECT namaperusahaan FROM `{$this->tabledp}` GROUP BY namaperusahaan");
         return $this->db->fetchAll();
     }
 

@@ -94,7 +94,7 @@ class PKL extends Controller
                 $this->view('humas/guru/pkl/rekap/penempatan/index', $data);
             }
             $this->view('templates/humas/footer');
-        }else if ($data['user']['hak_akses'] == '') {
+        } else if ($data['user']['hak_akses'] == '') {
             $this->view('templates/humas/header', $data);
             if (isset($_GET['kelas'])) {
                 $data['kelas'] = str_replace("_", " ", strtoupper($_GET['kelas']));
@@ -180,7 +180,13 @@ class PKL extends Controller
             if (isset($_GET['kelas'])) {
                 $data['kelas'] = str_replace("_", " ", strtoupper($_GET['kelas']));
                 $data['siswa'] = $this->model("$this->model_name", 'pkl_model')->getAllNilai($data['kelas']);
+                $jurusan = explode("_", $_GET['kelas'])[1];
+                $data['namaaspek'] = $this->model("$this->model_name", "pkl_model")->getNamaAspekTeknis($jurusan);
+                $data['aspek'] = $this->model("$this->model_name", "pkl_model")->getDataAspekTeknis($jurusan, $data['kelas']);
                 $this->view('humas/pkl/nilai/detail', $data);
+                $this->view("humas/pkl/nilai/teknis/teknis{$jurusan}", $data);
+                $this->view('humas/pkl/nilai/footer', $data);
+                $this->view("humas/pkl/nilai/editaspek/edit{$jurusan}", $data);
             } else {
                 $this->view('humas/pkl/nilai/index', $data);
             }
@@ -192,7 +198,13 @@ class PKL extends Controller
             if (isset($_GET['kelas'])) {
                 $data['kelas'] = str_replace("_", " ", strtoupper($_GET['kelas']));
                 $data['siswa'] = $this->model("$this->model_name", 'pkl_model')->getAllNilai($data['kelas']);
+                $jurusan = explode("_", $_GET['kelas'])[1];
+                $data['namaaspek'] = $this->model("$this->model_name", "pkl_model")->getNamaAspekTeknis($jurusan);
+                $data['aspek'] = $this->model("$this->model_name", "pkl_model")->getDataAspekTeknis($jurusan, $data['kelas']);
                 $this->view('humas/guru/pkl/nilai/detail', $data);
+                $this->view("humas/pkl/nilai/teknis/teknis{$jurusan}", $data);
+                $this->view('humas/pkl/nilai/footer', $data);
+                $this->view("humas/pkl/nilai/editaspek/edit{$jurusan}", $data);
             } else {
                 $this->view('humas/guru/pkl/nilai/index', $data);
             }
@@ -204,7 +216,13 @@ class PKL extends Controller
             if (isset($_GET['kelas'])) {
                 $data['kelas'] = str_replace("_", " ", strtoupper($_GET['kelas']));
                 $data['siswa'] = $this->model("$this->model_name", 'pkl_model')->getAllNilai($data['kelas']);
+                $jurusan = explode("_", $_GET['kelas'])[1];
+                $data['namaaspek'] = $this->model("$this->model_name", "pkl_model")->getNamaAspekTeknis($jurusan);
+                $data['aspek'] = $this->model("$this->model_name", "pkl_model")->getDataAspekTeknis($jurusan, $data['kelas']);
                 $this->view('humas/guru/pkl/nilai/detail', $data);
+                $this->view("humas/pkl/nilai/teknis/teknis{$jurusan}", $data);
+                $this->view('humas/pkl/nilai/footer', $data);
+                $this->view("humas/pkl/nilai/editaspek/edit{$jurusan}", $data);
             } else {
                 $this->view('humas/guru/pkl/nilai/index', $data);
             }
@@ -229,8 +247,28 @@ class PKL extends Controller
 
     public function tambahDataNilai()
     {
-        if ($this->model("$this->model_name", 'pkl_model')->tambahDataNilai($_POST) > 0) {
-            Flasher::setFlash('berhasil', 'ditambahkan', 'success');
+        $data['kelas'] = str_replace("_", " ", strtoupper($_GET['kelas']));
+        $jurusan = explode("_", $_GET['kelas'])[1];
+
+        $data = $_POST;
+        $keys = array_keys($data);
+        $start = array_search('namaindustri', $keys) + 1;
+        $end = array_search('religius', $keys);
+
+        $extractedData = array_slice($data, $start, $end - $start);
+        $data['teknis'] = $extractedData;
+        $data['length'] = count($extractedData);
+
+        $extractedArray = [];
+        array_splice($data, $start, $end - $start, $extractedArray);
+        if ($this->model("$this->model_name", 'pkl_model')->tambahDataNilai($data) > 0) {
+            $notNilai['siswa_id'] = $this->model("$this->model_name", 'pkl_model')->getLastInsertId();
+            $notNilai['jurusan_aspek'] = $jurusan;
+            if ($this->model("$this->model_name", 'pkl_model')->tambahDataAspek($extractedData, $notNilai) > 0) {
+                Flasher::setFlash('berhasil', 'ditambahkan', 'success');
+            } else {
+                Flasher::setFlash('gagal', 'ditambahkan', 'danger');
+            }
         } else {
             Flasher::setFlash('gagal', 'ditambahkan', 'danger');
         }
@@ -287,7 +325,7 @@ class PKL extends Controller
             $this->view('templates/humas/header', $data);
             $this->view('humas/guru/pkl/pemberkasan/pklpemberkasanlaporan', $data);
             $this->view('templates/humas/footer');
-        } else if($data['user']['hak_akses'] == '') {
+        } else if ($data['user']['hak_akses'] == '') {
             $this->view('templates/humas/header', $data);
             $this->view('humas/pkl/pemberkasan/form', $data);
             $this->view('templates/humas/footer');
