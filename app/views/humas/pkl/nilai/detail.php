@@ -21,9 +21,9 @@ foreach ($kelas as $key => $list) {
 ?>
 
 <?php if ($jurusan == '') : ?>
-<script>
-location.replace("http://localhost/SIMAS/public/NotFound");
-</script>
+    <script>
+        location.replace("http://localhost/SIMAS/public/NotFound");
+    </script>
 <?php endif; ?>
 
 <!-- partial -->
@@ -35,21 +35,18 @@ location.replace("http://localhost/SIMAS/public/NotFound");
                 <div class="col-12 col-xl-8 mb-4 mb-xl-0">
                     <h3 class="font-weight-bold">DATA NILAI PKL <?= strtoupper($jurusan) ?></h3>
                     <h6 class="font-weight-normal mb-0"><a class="text-dark" href="<?= BASEURL; ?>/pkl/index"> Laman
-                            PKL</a> | <a class="text-dark" href="<?= BASEURL; ?>/pkl/nilai"> Nilai </a> | <span
-                            class="text-primary"> <?= strtoupper($jurusan) ?> </span></h6>
+                            PKL</a> | <a class="text-dark" href="<?= BASEURL; ?>/pkl/nilai"> Nilai </a> | <span class="text-primary"> <?= strtoupper($jurusan) ?> </span></h6>
                 </div>
 
                 <div class="col-12 col-xl-4">
                     <div class="justify-content-end d-flex">
                         <div class="dropdown flex-md-grow-1 flex-xl-grow-0">
-                            <button class="btn btn-sm btn-light bg-white dropdown-toggle" type="button"
-                                id="dropdownMenuDate2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                            <button class="btn btn-sm btn-light bg-white dropdown-toggle" type="button" id="dropdownMenuDate2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
                                 <?= $data['kelas'] ?>
                             </button>
                             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuDate2">
                                 <?php foreach ($kelas[$jurusan] as $list) : ?>
-                                <a class="dropdown-item"
-                                    href="<?= BASEURL; ?>/pkl/nilai&kelas=<?= str_replace(" ", "_", $list) ?>"><?= $list ?></a>
+                                    <a class="dropdown-item" href="<?= BASEURL; ?>/pkl/nilai&kelas=<?= str_replace(" ", "_", $list) ?>"><?= $list ?></a>
                                 <?php endforeach; ?>
                             </div>
                         </div>
@@ -68,13 +65,13 @@ location.replace("http://localhost/SIMAS/public/NotFound");
     <div class="row">
         <div class="col-md-12 grid-margin stretch-card">
             <div class="template-demo">
-                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalnilai">Tambah
+                <button type="button" class="btn btn-primary" class="tombolTambahDatanilaipkl" data-toggle="modal" data-target="#modalnilai">Tambah
                     Data</button>
             </div>
-            <div class="template-demo">
-                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalubah">Ubah Aspek
+            <!-- <div class="template-demo">
+                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalubahAT">Ubah Aspek
                     Teknis</button>
-            </div>
+            </div> -->
         </div>
     </div>
 
@@ -89,8 +86,7 @@ location.replace("http://localhost/SIMAS/public/NotFound");
                     </button>
                 </div>
                 <div class="modal-body">
-                    <form action="<?= BASEURL ?>/pkl/importDataNilai&kelas=<?= $_GET['kelas'] ?>" method="post"
-                        enctype="multipart/form-data">
+                    <form action="<?= BASEURL ?>/pkl/importDataNilai&kelas=<?= $_GET['kelas'] ?>" method="post" enctype="multipart/form-data">
                         <div class="mb-3">
                             <label for="file">Pilih file Excel (.xlsx)</label>
                             <input type="file" name="file" id="file">
@@ -128,7 +124,7 @@ location.replace("http://localhost/SIMAS/public/NotFound");
                                 <tr>
                                     <!--Aspek Teknis-->
                                     <?php foreach ($data['namaaspek'] as $row) : ?>
-                                    <th><?= $row['nama_aspek'] ?></th>
+                                        <th><?= $row['nama_aspek'] ?></th>
                                     <?php endforeach ?>
                                     <!--Aspek Non Teknis-->
                                     <th>Religius</th>
@@ -145,46 +141,43 @@ location.replace("http://localhost/SIMAS/public/NotFound");
                             <tbody>
                                 <?php $i = 1 ?>
                                 <?php foreach ($data['siswa'] as $nilai) : ?>
-                                <tr>
-                                    <td><?= $i ?></td>
-                                    <td>
-                                        <a href="<?= BASEURL; ?>/PKL/ubahDataNilaiDGA/<?= $nilai['id']; ?>&kelas=<?= $_GET['kelas'] ?>"
-                                            class="tombolUbahData" data-bs-toggle="modal" data-bs-target="#formModal"
-                                            data-id=<?= $nilai['id']; ?>>
-                                            <label class="badge badge-success">
-                                                <i class="mdi mdi-lead-pencil"></i>
-                                            </label>
-                                        </a>
-                                        <a href="<?= BASEURL; ?>/PKL/hapusDataNilai/<?= $nilai['id']; ?>&kelas=<?= $_GET['kelas'] ?>"
-                                            onclick="return confirm('Apakah anda sudah yakin?');">
-                                            <label class="badge badge-danger">
-                                                <i class="mdi mdi-delete"></i>
-                                            </label>
-                                        </a>
-                                    </td>
-                                    <td><?= $nilai['namasiswa'] ?></td>
-                                    <td><?= $nilai['kelas'] ?></td>
-                                    <td><?= $nilai['jeniskelamin'] ?></td>
-                                    <td><?= $nilai['nis'] ?></td>
-                                    <td><?= $nilai['namaindustri'] ?></td>
-                                    <?php foreach ($data['aspek'] as $row) : ?>
-                                    <?php if ($row['siswa_id'] == $nilai['id']) : ?>
-                                    <td><?= $row['nilai'] ?></td>
-                                    <?php endif; ?>
-                                    <?php endforeach ?>
-                                    <td><?= $nilai['religius'] ?></td>
-                                    <td><?= $nilai['kejujuran'] ?></td>
-                                    <td><?= $nilai['disiplin'] ?></td>
-                                    <td><?= $nilai['kerjasama'] ?></td>
-                                    <td><?= $nilai['inisiatif'] ?></td>
-                                    <td><?= $nilai['tanggungjawab'] ?></td>
-                                    <td><?= $nilai['kebersihan'] ?></td>
-                                    <td><?= $nilai['kesantunan'] ?></td>
-                                    <td><?= $nilai['mutupekerjaan'] ?></td>
-                                    <td><?= $nilai['ratarata'] ?></td>
-                                    <td><?= $nilai['keterangan'] ?></td>
-                                </tr>
-                                <?php $i++ ?>
+                                    <tr>
+                                        <td><?= $i ?></td>
+                                        <td>
+                                            <a href="<?= BASEURL; ?>/PKL/ubahDataNilaiDGA/<?= $nilai['id']; ?>&kelas=<?= $_GET['kelas'] ?>" class="tombolUbahDatanilaipkl" data-bs-toggle="modal" data-bs-target="#modalnilai" data-id=<?= $nilai['id']; ?>>
+                                                <label class="badge badge-success" title="Edit Teknis">
+                                                    <i class="mdi mdi-lead-pencil"></i>
+                                                </label>
+                                            </a>
+                                            <a href="<?= BASEURL; ?>/PKL/hapusDataNilai/<?= $nilai['id']; ?>&kelas=<?= $_GET['kelas'] ?>" onclick="return confirm('Apakah anda sudah yakin?');">
+                                                <label class="badge badge-danger">
+                                                    <i class="mdi mdi-delete"></i>
+                                                </label>
+                                            </a>
+                                        </td>
+                                        <td><?= $nilai['namasiswa'] ?></td>
+                                        <td><?= $nilai['kelas'] ?></td>
+                                        <td><?= $nilai['jeniskelamin'] ?></td>
+                                        <td><?= $nilai['nis'] ?></td>
+                                        <td><?= $nilai['namaindustri'] ?></td>
+                                        <?php foreach ($data['aspek'] as $row) : ?>
+                                            <?php if ($row['siswa_id'] == $nilai['id']) : ?>
+                                                <td><?= $row['nilai'] ?></td>
+                                            <?php endif; ?>
+                                        <?php endforeach ?>
+                                        <td><?= $nilai['religius'] ?></td>
+                                        <td><?= $nilai['kejujuran'] ?></td>
+                                        <td><?= $nilai['disiplin'] ?></td>
+                                        <td><?= $nilai['kerjasama'] ?></td>
+                                        <td><?= $nilai['inisiatif'] ?></td>
+                                        <td><?= $nilai['tanggungjawab'] ?></td>
+                                        <td><?= $nilai['kebersihan'] ?></td>
+                                        <td><?= $nilai['kesantunan'] ?></td>
+                                        <td><?= $nilai['mutupekerjaan'] ?></td>
+                                        <td><?= $nilai['ratarata'] ?></td>
+                                        <td><?= $nilai['keterangan'] ?></td>
+                                    </tr>
+                                    <?php $i++ ?>
                                 <?php endforeach; ?>
                             </tbody>
                         </table>
@@ -195,8 +188,7 @@ location.replace("http://localhost/SIMAS/public/NotFound");
     </div>
 </div>
 
-<div class="modal fade" id="modalnilai" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-    aria-hidden="true">
+<div class="modal fade" id="modalnilai" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-xl" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -209,14 +201,14 @@ location.replace("http://localhost/SIMAS/public/NotFound");
                 <div class="row justify-content-md-center">
                     <div class="col-md-6">
                         <div class="modal-body">
+                            <input type="hidden" class="form-control" id="id" name="id">
                             <div class="form-group">
                                 <label for="namasiswa">Nama</label>
                                 <input type="text" class="form-control" id="namasiswa" name="namasiswa" required>
                             </div>
                             <div class="form-group">
                                 <label for="kelas">Kelas</label>
-                                <input type="text" class="form-control" id="kelas" name="kelas"
-                                    value="<?= $data['kelas'] ?>" readonly>
+                                <input type="text" class="form-control" id="kelas" name="kelas" value="<?= $data['kelas'] ?>" readonly>
                             </div>
 
                             <div class="form-group">
@@ -238,59 +230,3 @@ location.replace("http://localhost/SIMAS/public/NotFound");
                                 <input type="text" class="form-control" id="namaindustri" name="namaindustri" required>
                             </div>
                         </div>
-
-                        <!-- <script>
-                        $(function() {
-                            $('.tombolTambahData').on('click', function() {
-                                $('#formModalLabel').html('Tambah Data Struktur Organisasi')
-                                $('#formModal button[type=submit]').html('Tambah Data');
-                                $("#formModal form").attr("action",
-                                    `http://localhost/SIMAS/public/pkl/tambahDataNilai&kelas=<?= $_GET['kelas'] ?>`
-                                );
-
-                                if ($("#formModal").hasClass("edit")) {
-                                    $('#id').val('');
-                                    $('#nisn').val('');
-                                    $('#namasiswa').val('');
-                                    $('#jeniskelamin').val('');
-                                    $('#namaindustri').val('');
-                                    $('#nilaisiswa').val('');
-                                    $('#keterangannilai').val('');
-                                }
-
-                                $("#formModal").removeClass("edit")
-                            });
-
-                            $(".tombolUbahData").click(function() {
-                                $("#formModal").addClass("edit");
-                                $("#formModalLabel").html("Ubah Data Industri");
-                                $("#formModal button[type=submit]").html("Ubah Data");
-                                $("#formModal form").attr("action",
-                                    `http://localhost/SIMAS/public/pkl/ubahDataNilai&kelas=<?= $_GET['kelas'] ?>`
-                                );
-
-                                const id = $(this).data("id");
-                                console.log(id);
-
-                                $.ajax({
-                                    url: `http://localhost/SIMAS/public/pkl/getUbahNilai`,
-                                    data: {
-                                        id: id
-                                    },
-                                    method: "post",
-                                    dataType: "json",
-                                    success: function(data) {
-                                        // console.log(data);
-                                        $('#id').val(data.id);
-                                        $('#nisn').val(data.nisn);
-                                        $('#namasiswa').val(data.namasiswa);
-                                        $('#kelas').val(data.kelas);
-                                        $('#jeniskelamin').val(data.jeniskelamin);
-                                        $('#namaindustri').val(data.namaindustri);
-                                        $('#nilaisiswa').val(data.nilaisiswa);
-                                        $('#keterangannilai').val(data.keterangannilai);
-                                    },
-                                })
-                            })
-                        });
-                        </script> -->

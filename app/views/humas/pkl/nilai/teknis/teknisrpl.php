@@ -14,7 +14,7 @@
     </div>
     <div class="form-group">
         <label for="dekstop">Pemrograman Dekstop</label>
-        <input type="number" class="form-control" id="dekstop" name="desktop" required>
+        <input type="number" class="form-control" id="desktop" name="desktop" required>
     </div>
     <div class="form-group">
         <label for="pbo">Pemrograman Berorientasi Objek</label>

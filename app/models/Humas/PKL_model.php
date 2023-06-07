@@ -71,6 +71,13 @@ class pkl_model extends Database
         return $this->db->fetch();
     }
 
+    public function getTeknisById($id)
+    {
+        $this->db->query("SELECT * FROM {$this->aspekteknis} WHERE siswa_id = :id");
+        $this->db->bind('id', $id);
+        return $this->db->fetchAll();
+    }
+
     public function hapusDataNilai($id)
     {
         $this->db->query(
@@ -83,7 +90,7 @@ class pkl_model extends Database
             WHERE id = :id"
         );
 
-        $this->db->bind('deleted_by', "Super Admin");
+        $this->db->bind('deleted_by', $this->user);
         $this->db->bind("id", $id);
 
         $this->db->execute();
@@ -147,7 +154,6 @@ class pkl_model extends Database
 
             $this->db->execute();
         }
-
         return $this->db->rowCount();
     }
     public function getLastInsertId()
@@ -159,27 +165,66 @@ class pkl_model extends Database
     {
         $this->db->query(
             "UPDATE {$this->table_nilai} SET 
-                nisn = :nisn, 
+                nis = :nis, 
                 namasiswa = :namasiswa, 
                 kelas = :kelas,
                 jeniskelamin = :jeniskelamin,
                 namaindustri = :namaindustri,
-                nilaisiswa = :nilaisiswa,
                 modified_at = CURRENT_TIMESTAMP,
                 modified_by = :modified_by
             WHERE id = :id"
         );
 
-        $this->db->bind('nisn', $data['nisn']);
+        $this->db->bind('nis', $data['nis']);
         $this->db->bind('namasiswa', $data['namasiswa']);
         $this->db->bind('kelas', $data['kelas']);
         $this->db->bind('jeniskelamin', $data['jeniskelamin']);
         $this->db->bind('namaindustri', $data['namaindustri']);
-        $this->db->bind('nilaisiswa', $data['nilaisiswa']);
         $this->db->bind('modified_by', $this->user);
         $this->db->bind('id', $data['id']);
 
         $this->db->execute();
+        return $this->db->rowCount();
+    }
+
+    public function ubahRataRata($data, $id)
+    {
+        $tmp = 0;
+        foreach ($data as $row) {
+            $tmp += $row;
+        }
+        $ratarata = $tmp / count($data);
+        $this->db->query(
+            "UPDATE {$this->table_nilai} SET 
+                ratarata = :ratarata
+            WHERE id = :id"
+        );
+
+        $this->db->bind('ratarata', $ratarata);
+        $this->db->bind('id', $id);
+
+        $this->db->execute();
+        return $this->db->rowCount();
+    }
+
+    public function ubahDataAspek($data)
+    {
+        foreach ($data as $row) {
+            $this->db->query(
+                "UPDATE {$this->aspekteknis} SET 
+                    nilai = :nilai, 
+                    modified_at = CURRENT_TIMESTAMP,
+                    modified_by = :modified_by
+                WHERE siswa_id = :siswa_id AND nama_aspek = :nama_aspek"
+            );
+
+            $this->db->bind('nilai', $row['nilai']);
+            $this->db->bind('nama_aspek', $row['nama_aspek']);
+            $this->db->bind('modified_by', $this->user);
+            $this->db->bind('siswa_id', $row['siswa_id']);
+
+            $this->db->execute();
+        }
         return $this->db->rowCount();
     }
 
@@ -940,7 +985,7 @@ class pkl_model extends Database
 
     // PEMBERKASAN PKL
 
-    public function cariSiswa($nama, $nis) 
+    public function cariSiswa($nama, $nis)
     {
         $this->db->query("SELECT * FROM masterdata.mastersiswa WHERE `nama_siswa` = :nama_siswa AND `nis` = :nis");
         $this->db->bind("nama_siswa", $nama);
@@ -952,7 +997,7 @@ class pkl_model extends Database
     public function cariSiswaPemberkasan($nama, $nis)
     {
         $this->db->query(
-            'SELECT * FROM ' . $this->tableps . 
+            'SELECT * FROM ' . $this->tableps .
                 ' WHERE 
             `namasiswa_pemberkasan` = :namasiswa_pemberkasan AND
             `nis_pemberkasan` = :nis_pemberkasan AND
@@ -989,7 +1034,7 @@ class pkl_model extends Database
         $this->db->bind('id', $id);
         return $this->db->fetch();
     }
-    
+
     public function getSiswaPemberkasan($id)
     {
         $this->db->query('SELECT * FROM ' . $this->tableps . ' WHERE namasiswa_pemberkasan = :namasiswa_pemberkasan WHERE id = :id');
@@ -1001,7 +1046,7 @@ class pkl_model extends Database
     {
         $targetDir = 'assets/pkl/pemberkasan/foto/'; // direktori tempat menyimpan file upload
         $temp = $_FILES['uploadfoto_pemberkasan'];
-        
+
         // cek gambar diupload atau tidak
         if ($temp["error"] === 4) return '';
 
@@ -1012,7 +1057,7 @@ class pkl_model extends Database
                   </script>';
             return false;
         }
-        
+
         // validasi ekstensi file
         $imageFileType = explode('.', $temp['name']);
         $imageFileType = strtolower(end($imageFileType));
@@ -1024,7 +1069,7 @@ class pkl_model extends Database
 
         $fileName .= "." . $imageFileType;
         $targetFile = $targetDir . $fileName; // nama file upload
-        
+
         // simpan file upload ke direktori
         try {
             move_uploaded_file($temp['tmp_name'], $targetFile);
@@ -1039,7 +1084,7 @@ class pkl_model extends Database
     {
         $targetDir = 'assets/pkl/pemberkasan/surat/'; // direktori tempat menyimpan file upload
         $temp = $_FILES['uploadsurat_pemberkasan'];
-       
+
         // cek gambar diupload atau tidak
         if ($temp["error"] === 4) return '';
 
@@ -1050,7 +1095,7 @@ class pkl_model extends Database
                   </script>';
             return false;
         }
-        
+
         // validasi ekstensi file
         $imageFileType = explode('.', $temp['name']);
         $imageFileType = strtolower(end($imageFileType));
@@ -1062,7 +1107,7 @@ class pkl_model extends Database
 
         $fileName .= "." . $imageFileType;
         $targetFile = $targetDir . $fileName; // nama file upload
-        
+
         // simpan file upload ke direktori
         try {
             move_uploaded_file($temp['tmp_name'], $targetFile);
@@ -1077,7 +1122,7 @@ class pkl_model extends Database
     {
         $targetDir = 'assets/pkl/pemberkasan/kartupelajar/'; // direktori tempat menyimpan file upload
         $temp = $_FILES['uploadkartupelajar_pemberkasan'];
-        
+
         // cek gambar diupload atau tidak
         if ($temp["error"] === 4) return '';
 
@@ -1088,7 +1133,7 @@ class pkl_model extends Database
                   </script>';
             return false;
         }
-        
+
         // validasi ekstensi file
         $imageFileType = explode('.', $temp['name']);
         $imageFileType = strtolower(end($imageFileType));
@@ -1100,7 +1145,7 @@ class pkl_model extends Database
 
         $fileName .= "." . $imageFileType;
         $targetFile = $targetDir . $fileName; // nama file upload
-        
+
         // simpan file upload ke direktori
         try {
             move_uploaded_file($temp['tmp_name'], $targetFile);
@@ -1115,7 +1160,7 @@ class pkl_model extends Database
     {
         $targetDir = 'assets/raport/'; // direktori tempat menyimpan file upload
         $temp = $_FILES['uploadebookraport_pemberkasan'];
-        
+
         // cek gambar diupload atau tidak
         if ($temp["error"] === 4) return '';
 
@@ -1126,7 +1171,7 @@ class pkl_model extends Database
                   </script>';
             return false;
         }
-        
+
         // validasi ekstensi file
         $imageFileType = explode('.', $temp['name']);
         $imageFileType = strtolower(end($imageFileType));
@@ -1138,7 +1183,7 @@ class pkl_model extends Database
 
         $fileName .= "." . $imageFileType;
         $targetFile = $targetDir . $fileName; // nama file upload
-        
+
         // simpan file upload ke direktori
         try {
             move_uploaded_file($temp['tmp_name'], $targetFile);
@@ -1153,7 +1198,7 @@ class pkl_model extends Database
     {
         $targetDir = 'assets/pkl/pemberkasan/buktilunasnilai/'; // direktori tempat menyimpan file upload
         $temp = $_FILES['uploadbuktilunasnilai_pemberkasan'];
-        
+
         // cek gambar diupload atau tidak
         if ($temp["error"] === 4) return '';
 
@@ -1164,7 +1209,7 @@ class pkl_model extends Database
                   </script>';
             return false;
         }
-        
+
         // validasi ekstensi file
         $imageFileType = explode('.', $temp['name']);
         $imageFileType = strtolower(end($imageFileType));
@@ -1176,7 +1221,7 @@ class pkl_model extends Database
 
         $fileName .= "." . $imageFileType;
         $targetFile = $targetDir . $fileName; // nama file upload
-        
+
         // simpan file upload ke direktori
         try {
             move_uploaded_file($temp['tmp_name'], $targetFile);
@@ -1202,7 +1247,7 @@ class pkl_model extends Database
                   </script>';
             return false;
         }
-        
+
         // validasi ekstensi file
         $imageFileType = explode('.', $temp['name']);
         $imageFileType = strtolower(end($imageFileType));
@@ -1214,7 +1259,7 @@ class pkl_model extends Database
 
         $fileName .= "." . $imageFileType;
         $targetFile = $targetDir . $fileName; // nama file upload
-        
+
         // simpan file upload ke direktori
         try {
             move_uploaded_file($temp['tmp_name'], $targetFile);
@@ -1240,7 +1285,7 @@ class pkl_model extends Database
                   </script>';
             return false;
         }
-        
+
         // validasi ekstensi file
         $imageFileType = explode('.', $temp['name']);
         $imageFileType = strtolower(end($imageFileType));
@@ -1252,7 +1297,7 @@ class pkl_model extends Database
 
         $fileName .= "." . $imageFileType;
         $targetFile = $targetDir . $fileName; // nama file upload
-        
+
         // simpan file upload ke direktori
         try {
             move_uploaded_file($temp['tmp_name'], $targetFile);
@@ -1401,15 +1446,15 @@ class pkl_model extends Database
         $foto = ($_FILES["uploadfoto_pemberkasan"]["error"] === 4) ? $data['fotoLama'] : $this->uploadFotoPemberkasan($data['kelas_pemberkasan'] . "_" . $this->user . " (foto 3x4)");
 
         $kartu =  ($_FILES["uploadkartupelajar_pemberkasan"]["error"] === 4) ? $data['kartuPelajarLama'] : $kartu = $this->uploadKartuPelajarPemberkasan($data['kelas_pemberkasan'] . "_" . $this->user . " (kartu pelajar)");
-        
+
         $raport = ($_FILES["uploadebookraport_pemberkasan"]["error"] === 4) ? $data['raportLama'] : $this->uploadRaportPemberkasan($data['kelas_pemberkasan'] . "_" . $this->user . " (e-book raport)");
-        
+
         $surat = ($_FILES["uploadsurat_pemberkasan"]["error"] === 4) ? $surat = $data['suratLama'] : $surat = $this->uploadSuratPemberkasan($data['kelas_pemberkasan'] . "_" . $this->user . " (surat pernyataan)");
 
         $nilai = ($_FILES["uploadbuktilunasnilai_pemberkasan"]["error"] === 4) ? $data['nilaiLama'] : $this->uploadBuktiLunasNilaiPemberkasan($data['kelas_pemberkasan'] . "_" . $this->user . " (bukti lunas nilai)");
 
         $administrasi = ($_FILES["uploadbuktilunasadministrasi_pemberkasan"]["error"] === 4) ? $data['administrasiLama'] : $this->uploadBuktiLunasAdministrasiPemberkasan($data['kelas_pemberkasan'] . "_" . $this->user . " (bukti lunas administrasi)");
-        
+
         $perpus = ($_FILES["uploadbuktilunasperpus_pemberkasan"]["error"] === 4) ? $data['perpusLama'] : $this->uploadBuktiLunasPerpusPemberkasan($data['kelas_pemberkasan'] . "_" . $this->user . " (bukti lunas perpus)");
 
         $this->db->bind('nisn_pemberkasan', $data['nisn_pemberkasan']);

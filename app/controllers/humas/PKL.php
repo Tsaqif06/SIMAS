@@ -296,10 +296,45 @@ class PKL extends Controller
         echo json_encode($this->model("$this->model_name", 'pkl_model')->getNilaiById($_POST['id']));
     }
 
+    public function getUbahAspek()
+    {
+        echo json_encode($this->model("$this->model_name", 'pkl_model')->getTeknisById($_POST['id']));
+    }
+
     public function ubahDataNilai()
     {
+        var_dump($_POST);
+        $data = $_POST;
+        $startKey = 'namaindustri';
+        $endKey = 'religius';
+
+        $keys = array_keys($data);
+        $startIndex = array_search($startKey, $keys) + 1;
+        $endIndex = array_search($endKey, $keys);
+
+        $extractedData = array_slice($data, $startIndex, $endIndex - $startIndex);
+        $data['teknis'] = $extractedData;
+
+
+        $nilaiAspek = [];
+        foreach ($extractedData as $key => $value) {
+            $nilaiAspek[] = [
+                'siswa_id' => $_POST['id'],
+                'nama_aspek' => $key,
+                'nilai' => $value,
+            ];
+        }
+
         if ($this->model("$this->model_name", 'pkl_model')->ubahDataNilai($_POST) > 0) {
-            Flasher::setFlash('berhasil', 'diubah', 'success');
+            if ($this->model("$this->model_name", 'pkl_model')->ubahDataAspek($nilaiAspek) > 0) {
+                if ($this->model("$this->model_name", 'pkl_model')->ubahRataRata($extractedData, $_POST['id']) > 0) {
+                    Flasher::setFlash('berhasil', 'diubah', 'success');
+                } else {
+                    Flasher::setFlash('gagal', 'diubah', 'danger');
+                }
+            } else {
+                Flasher::setFlash('gagal', 'diubah', 'danger');
+            }
         } else {
             Flasher::setFlash('gagal', 'diubah', 'danger');
         }
