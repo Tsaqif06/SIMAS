@@ -124,7 +124,7 @@
                       <option value="ANI">Animasi</option>
                       <option value="DKV">Desain Komunikasi Visual</option>
                       <option value="TL">Logistik</option>
-                      <option value="MEKA">Mekatronika</option>
+                      <option value="TM">Mekatronika</option>
                       <option value="PH">Perhotelan</option>
                     </select>
                   </div>
