@@ -1,11 +1,3 @@
-<?php
-
-// echo "<pre>";
-// var_dump($data['data_penempatan']);
-// echo "</pre>";
-
-?>
-
 <!-- partial -->
 <div class="content-wrapper">
   <div class="row">

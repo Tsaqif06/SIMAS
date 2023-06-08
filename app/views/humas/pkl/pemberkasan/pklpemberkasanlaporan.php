@@ -29,10 +29,6 @@ switch ($data['user']['username']) {
 
 ?>
 
-<script>
-  const BASEURL = "<?= BASEURL ?>";
-</script>
-
 <!-- partial -->
 <!-- <div class="main-panel"> -->
 <div class="content-wrapper">
@@ -117,47 +113,6 @@ switch ($data['user']['username']) {
                     </a>
                   </td>
                 <?php endforeach ?>
-                <!-- <tr> Data yang dikirim lengkap, sudah dapat tempat pkl
-                  <td><a class="badge bg-secondary text-white" style="font-size: 15px;"><i class="mdi mdi-map-marker"></i></a></td>
-                  <td><a class="badge badge-success" style="font-size: 15px;"><i class="ti ti-check"></i></a></td>
-                  <td>22767</td>
-                  <td>XI RPL C</td>
-                  <td>Raib Permata</td>
-                  <td>08213769038</td>
-                  <td><a href="#" class="badge badge-primary" data-toggle="modal" data-target="#modaldatasiswa" style="font-size: 15px;"><i class="ti-file btn-icon-prepend"></i>Lihat Data</a></td>
-                  <td><a href="#" class="badge badge-primary" data-toggle="modal" data-target="#modaldatalampiran" style="font-size: 15px;"><i class="ti-file btn-icon-prepend"></i>Lihat Data</a></td>
-                  <td><a href="#" class="badge badge-primary" data-toggle="modal" data-target="#modaldatakota" style="font-size: 15px;"><i class="ti-file badge-icon-prepend"></i>Lihat Data</a></td>
-                </tr>
-                <tr> Data yang dikirim lengkap, belum ditempatkan pkl
-                  <td>
-                    <a class="badge badge-info" data-toggle="modal" data-target="#modalpenempatan" style="font-size: 15px;"><i class="mdi mdi-map-marker"></i></a>
-                  </td>
-                  <td>
-                    <a class="badge badge-warning text-white" style="font-size: 15px;"><i class="ti ti-alert"></i></a>
-                  </td>
-                  <td>22767</td>
-                  <td>XI RPL C</td>
-                  <td>Raib Permata</td>
-                  <td>08213769038</td>
-                  <td><a href="#" class="badge badge-primary" data-toggle="modal" data-target="#modaldatasiswa" style="font-size: 15px;"><i class="ti-file btn-icon-prepend"></i>Lihat Data</a></td>
-                  <td><a href="#" class="badge badge-primary" data-toggle="modal" data-target="#modaldatalampiran" style="font-size: 15px;"><i class="ti-file btn-icon-prepend"></i>Lihat Data</a></td>
-                  <td><a href="#" class="badge badge-primary" data-toggle="modal" data-target="#modaldatakota" style="font-size: 15px;"><i class="ti-file badge-icon-prepend"></i>Lihat Data</a></td>
-                </tr>
-                <tr> Data yang dikirim belum lengkap
-                  <td>
-                    <a class="badge bg-secondary text-white" style="font-size: 15px;"><i class="mdi mdi-map-marker"></i></a>
-                  </td>
-                  <td>
-                    <a class="badge badge-danger" style="font-size: 15px;"><i class="ti ti-close"></i></a>
-                  </td>
-                  <td>22767</td>
-                  <td>XI RPL C</td>
-                  <td>Raib Permata</td>
-                  <td>08213769038</td>
-                  <td><a href="#" class="badge badge-primary" data-toggle="modal" data-target="#modaldatasiswa" style="font-size: 15px;"><i class="ti-file btn-icon-prepend"></i>Lihat Data</a></td>
-                  <td><a href="#" class="badge badge-primary" data-toggle="modal" data-target="#modaldatalampiran" style="font-size: 15px;"><i class="ti-file btn-icon-prepend"></i>Lihat Data</a></td>
-                  <td><a href="#" class="badge badge-primary" data-toggle="modal" data-target="#modaldatakota" style="font-size: 15px;"><i class="ti-file badge-icon-prepend"></i>Lihat Data</a></td>
-                </tr> -->
               </tbody>
             </table>
           </div>
@@ -337,7 +292,7 @@ switch ($data['user']['username']) {
               <div class="form-group">
                 <label>Foto 3 : 4</label>
                 <div class="input-group col-xs-12">
-                  <input type="text" id="uploadfoto_pemberkasan" class="form-control" readonly placeholder="xxx">
+                  <input type="text" id="uploadfoto_pemberkasan" class="form-control" readonly placeholder="Kosong">
                   <span class="input-group-append">
                     <button id="lihat_foto" onclick="" class="btn btn-primary" type="button">Lihat</button>
                   </span>
@@ -347,7 +302,7 @@ switch ($data['user']['username']) {
               <div class="form-group">
                 <label>Foto Kartu Pelajar</label>
                 <div class="input-group col-xs-12">
-                  <input type="text" id="uploadkartupelajar_pemberkasan" class="form-control" readonly placeholder="xxx">
+                  <input type="text" id="uploadkartupelajar_pemberkasan" class="form-control" readonly placeholder="Kosong">
                   <span class="input-group-append">
                     <button id="lihat_kartupelajar" onclick="" class="btn btn-primary" type="button">Lihat</button>
                   </span>
@@ -357,7 +312,7 @@ switch ($data['user']['username']) {
               <div class="form-group">
                 <label>Rapor Digital Semester 1, 2, 3</label>
                 <div class="input-group col-xs-12">
-                  <input type="text" id="uploadebookraport_pemberkasan" class="form-control" readonly placeholder="xxx">
+                  <input type="text" id="uploadebookraport_pemberkasan" class="form-control" readonly placeholder="Kosong">
                   <span class="input-group-append">
                     <button id="lihat_raport" onclick="" class="btn btn-primary" type="button">Lihat</button>
                   </span>
@@ -367,7 +322,7 @@ switch ($data['user']['username']) {
               <div class="form-group">
                 <label>Foto Surat Pernyataan Bermaterai</label>
                 <div class="input-group col-xs-12">
-                  <input type="text" id="uploadsurat_pemberkasan" class="form-control" readonly placeholder="xxx">
+                  <input type="text" id="uploadsurat_pemberkasan" class="form-control" readonly placeholder="Kosong">
                   <span class="input-group-append">
                     <button id="lihat_surat" onclick="" class="btn btn-primary" type="button">Lihat</button>
                   </span>
@@ -377,7 +332,7 @@ switch ($data['user']['username']) {
               <div class="form-group">
                 <label>Bukti Lunas Nilai</label>
                 <div class="input-group col-xs-12">
-                  <input type="text" id="uploadbuktilunasnilai_pemberkasan" class="form-control" readonly placeholder="xxx">
+                  <input type="text" id="uploadbuktilunasnilai_pemberkasan" class="form-control" readonly placeholder="Kosong">
                   <span class="input-group-append">
                     <button id="lihat_buktinilai" onclick="" class="btn btn-primary" type="button">Lihat</button>
                   </span>
@@ -387,7 +342,7 @@ switch ($data['user']['username']) {
               <div class="form-group">
                 <label>Bukti Lunas Administrasi</label>
                 <div class="input-group col-xs-12">
-                  <input type="text" id="uploadbuktilunasadministrasi_pemberkasan" class="form-control" readonly placeholder="xxx">
+                  <input type="text" id="uploadbuktilunasadministrasi_pemberkasan" class="form-control" readonly placeholder="Kosong">
                   <span class="input-group-append">
                     <button id="lihat_buktiadministrasi" onclick="" class="btn btn-primary" type="button">Lihat</button>
                   </span>
@@ -397,7 +352,7 @@ switch ($data['user']['username']) {
               <div class="form-group">
                 <label>Bukti Lunas Perpustakaan</label>
                 <div class="input-group col-xs-12">
-                  <input type="text" id="uploadbuktilunasperpus_pemberkasan" class="form-control" readonly placeholder="xxx">
+                  <input type="text" id="uploadbuktilunasperpus_pemberkasan" class="form-control" readonly placeholder="Kosong">
                   <span class="input-group-append">
                     <button id="lihat_buktiperpus" onclick="" class="btn btn-primary" type="button">Lihat</button>
                   </span>
@@ -449,6 +404,8 @@ switch ($data['user']['username']) {
 
 
   <script>
+    const BASEURL = "<?= BASEURL ?>";
+    
     $(document).ready(function() {
       $('#tablepemberkasan').DataTable();
       
@@ -490,22 +447,52 @@ switch ($data['user']['username']) {
             $('#lihat_foto').attr('onclick', `window.open('${BASEURL}/assets/pkl/pemberkasan/foto/${data.uploadfoto_pemberkasan}', '_blank')`);
 
             $('#uploadkartupelajar_pemberkasan').val(data.uploadkartupelajar_pemberkasan);
-            $('#lihat_kartupelajar').attr('onclick', `window.open('${BASEURL}/assets/pkl/pemberkasan/kartupelajar/${data.uploadkartupelajar_pemberkasan}', '_blank')`);
+            if (data.uploadkartupelajar_pemberkasan == '') {
+              $('#lihat_kartupelajar').attr('disabled', 'false');
+              $('#lihat_kartupelajar').attr('onclick', `window.open('${BASEURL}/assets/pkl/pemberkasan/kartupelajar/${data.uploadkartupelajar_pemberkasan}', '_blank')`);
+            } else {
+              $('#lihat_kartupelajar').attr('disabled', 'true');
+            }
 
             $('#uploadebookraport_pemberkasan').val(data.uploadebookraport_pemberkasan);
-            $('#lihat_raport').attr('onclick', `window.open('${BASEURL}/assets/raport/${data.uploadebookraport_pemberkasan}', '_blank')`);
+            if (data.uploadebookraport_pemberkasan == '') {
+              $('#lihat_raport').attr('disabled', 'false');
+              $('#lihat_raport').attr('onclick', `window.open('${BASEURL}/assets/raport/${data.uploadebookraport_pemberkasan}', '_blank')`);
+            } else {
+              $('#lihat_raport').attr('disabled', 'true');
+            }
 
             $('#uploadsurat_pemberkasan').val(data.uploadsurat_pemberkasan);
-            $('#lihat_surat').attr('onclick', `window.open('${BASEURL}/assets/pkl/pemberkasan/surat/${data.uploadsurat_pemberkasan}', '_blank')`);
+            if (data.uploadsurat_pemberkasan == '') {
+              $('#lihat_surat').attr('disabled', 'false');
+              $('#lihat_surat').attr('onclick', `window.open('${BASEURL}/assets/pkl/pemberkasan/surat/${data.uploadsurat_pemberkasan}', '_blank')`);
+            } else {
+              $('#lihat_surat').attr('disabled', 'true');
+            }
 
             $('#uploadbuktilunasnilai_pemberkasan').val(data.uploadbuktilunasnilai_pemberkasan);
-            $('#lihat_buktinilai').attr('onclick', `window.open('${BASEURL}/assets/pkl/pemberkasan/buktilunasnilai/${data.uploadbuktilunasnilai_pemberkasan}', '_blank')`);
+            if (data.uploadbuktilunasnilai_pemberkasan == '') {
+              $('#lihat_buktinilai').attr('disabled', 'false');
+              $('#lihat_buktinilai').attr('onclick', `window.open('${BASEURL}/assets/pkl/pemberkasan/buktilunasnilai/${data.uploadbuktilunasnilai_pemberkasan}', '_blank')`);
+            } else {
+              $('#lihat_buktinilai').attr('disabled', 'true');
+            }
 
             $('#uploadbuktilunasadministrasi_pemberkasan').val(data.uploadbuktilunasadministrasi_pemberkasan);
-            $('#lihat_buktiadministrasi').attr('onclick', `window.open('${BASEURL}/assets/pkl/pemberkasan/buktilunasadm/${data.uploadbuktilunasadministrasi_pemberkasan}', '_blank')`);
+            if (data.uploadbuktilunasadministrasi_pemberkasan == '') {
+              $('#lihat_buktiadministrasi').attr('disabled', 'false');
+              $('#lihat_buktiadministrasi').attr('onclick', `window.open('${BASEURL}/assets/pkl/pemberkasan/buktilunasadm/${data.uploadbuktilunasadministrasi_pemberkasan}', '_blank')`);
+            } else {
+              $('#lihat_buktiadministrasi').attr('disabled', 'true');
+            }
 
             $('#uploadbuktilunasperpus_pemberkasan').val(data.uploadbuktilunasperpus_pemberkasan);
-            $('#lihat_buktiperpus').attr('onclick', `window.open('${BASEURL}/assets/pkl/pemberkasan/buktilunasperpus/${data.uploadbuktilunasperpus_pemberkasan}', '_blank')`);
+            if (data.uploadbuktilunasperpus_pemberkasan == '') {
+              $('#lihat_buktiperpus').attr('disabled', 'false');
+              $('#lihat_buktiperpus').attr('onclick', `window.open('${BASEURL}/assets/pkl/pemberkasan/buktilunasperpus/${data.uploadbuktilunasperpus_pemberkasan}', '_blank')`);
+            } else {
+              $('#lihat_buktiperpus').attr('disabled', 'true');
+            }
           }
         });
       });
