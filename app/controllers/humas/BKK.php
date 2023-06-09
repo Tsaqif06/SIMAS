@@ -138,15 +138,15 @@ class BKK extends Controller
         $akses = ['all', 'humas'];
         if (in_array($data['user']['hak_akses'], $akses)) {
             $this->view('templates/humas/header', $data);
-            $this->view('humas/bkk/kebekerjaan/bkkmodulsmkn4malang', $data);
+            $this->view('humas/bkk/kebekerjaan/bkkmodullatihansoal', $data);
             $this->view('templates/humas/footer');
         } else if ($data['user']['role'] == 'guru') {
             $this->view('templates/humas/header', $data);
-            $this->view('humas/guru/bkk/kebekerjaan/bkkmodulsmkn4malang', $data);
+            $this->view('humas/guru/bkk/kebekerjaan/bkkmodullatihansoal', $data);
             $this->view('templates/humas/footer');
         } else if ($data['user']['hak_akses'] == '') {
             $this->view('templates/humas/header', $data);
-            $this->view('humas/guru/bkk/kebekerjaan/bkkmodulsmkn4malang', $data);
+            $this->view('humas/guru/bkk/kebekerjaan/bkkmodullatihansoal', $data);
             $this->view('templates/humas/footer');
         } else {
             header("Location: " . BASEURL);

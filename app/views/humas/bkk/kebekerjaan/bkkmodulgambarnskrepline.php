@@ -14,7 +14,7 @@
 
       <div class="row">
           <div class="col-md-12 grid-margin stretch-card">
-          <iframe src="https://drive.google.com/file/u/0/d/1gx_UeCB5tB8qT85goKHJev_J1yNzaMpP/preview?usp=embed_googleplus" style="width: 100%; height: 600px;" frameborder="0"></iframe>
+          <iframe src="http://localhost/SIMAS/public/assets/bkkkebekerjaan/gambardanskrep.pdf?usp=embed_googleplus" style="width: 100%; height: 600px;" frameborder="0"></iframe>
 
           </div>
       </div>
