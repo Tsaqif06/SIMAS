@@ -315,7 +315,7 @@
                         <thead>
                             <tr>
                                 <th>Aksi</th>
-                                <th>Nama Perusahaan</th h>
+                                <th>Nama Perusahaan</th>
                                 <th>Jurusan</th>
                                 <th>Jenis Kelamin</th>
                                 <th>Jumlah</th>
@@ -325,15 +325,11 @@
                         foreach ($data['pd'] as $pd) {
                         ?>
                             <tr>
-
                                 <td>
-                                    <div class="mt-3">
-
-
                                         <a class="badge badge-success tampildataubah6" data-url="<?= BASEURL ?>/PKL/ubahDTAPD/<?= $pd['id']; ?>" data-toggle="modal" data-target="#formmodal" data-id="<?= $pd['id'] ?>"><i class="mdi mdi-pencil"></i></a>
                                         <a href="<?= BASEURL; ?>/pkl/HapusDataPD/<?= $pd['id']; ?>" class="badge badge-danger" onclick="return confirm('Apakah anda sudah yakin?');"><i class="mdi mdi-delete"></i></a>
                                 </td>
-                </div>
+                
                 <td>
                     <?= $pd['namaperusahaan'] ?>
                 </td>

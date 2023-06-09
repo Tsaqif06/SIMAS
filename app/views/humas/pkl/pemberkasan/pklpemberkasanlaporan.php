@@ -355,7 +355,7 @@ switch ($data['user']['username']) {
               </div>
 
               <div class="form-group">
-                <label>Rapor Digital Semester 1, 2, 3</label>
+                <label>Rapor Digital Semester 1, 2, 3 (*pdf)</label>
                 <div class="input-group col-xs-12">
                   <input type="text" id="uploadebookraport_pemberkasan" class="form-control" readonly placeholder="xxx">
                   <span class="input-group-append">
