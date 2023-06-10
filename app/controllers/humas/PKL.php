@@ -217,9 +217,7 @@ class PKL extends Controller
                 $data['namaaspek'] = $this->model("$this->model_name", "pkl_model")->getNamaAspekTeknis($jurusan);
                 $data['aspek'] = $this->model("$this->model_name", "pkl_model")->getDataAspekTeknis($jurusan, $data['kelas']);
                 $this->view('humas/guru/pkl/nilai/detail', $data);
-                $this->view("humas/pkl/nilai/teknis/teknis{$jurusan}", $data);
-                $this->view('humas/pkl/nilai/footer', $data);
-                $this->view("humas/pkl/nilai/editaspek/edit{$jurusan}", $data);
+                $this->view('humas/guru/pkl/nilai/footer', $data);
             } else {
                 $this->view('humas/guru/pkl/nilai/index', $data);
             }
@@ -235,9 +233,7 @@ class PKL extends Controller
                 $data['namaaspek'] = $this->model("$this->model_name", "pkl_model")->getNamaAspekTeknis($jurusan);
                 $data['aspek'] = $this->model("$this->model_name", "pkl_model")->getDataAspekTeknis($jurusan, $data['kelas']);
                 $this->view('humas/guru/pkl/nilai/detail', $data);
-                $this->view("humas/pkl/nilai/teknis/teknis{$jurusan}", $data);
-                $this->view('humas/pkl/nilai/footer', $data);
-                $this->view("humas/pkl/nilai/editaspek/edit{$jurusan}", $data);
+                $this->view('humas/guru/pkl/nilai/footer', $data);
             } else {
                 $this->view('humas/guru/pkl/nilai/index', $data);
             }
