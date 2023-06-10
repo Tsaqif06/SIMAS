@@ -414,6 +414,7 @@ switch ($data['user']['username']) {
 					method: "post",
 					dataType: "json",
 					success: function (data) {
+            console.log(data);
             $(`#kelas_pemberkasan`).val(data.kelas_pemberkasan);
             $(`#jurusan_pemberkasan`).val(data.jurusan_pemberkasan);
             $(`#namasiswa_pemberkasan`).val(data.namasiswa_pemberkasan);
@@ -439,26 +440,53 @@ switch ($data['user']['username']) {
 					method: "post",
 					dataType: "json",
 					success: function (data) {
-            $('#uploadfoto_pemberkasan').val(data.uploadfoto_pemberkasan);
-            $('#lihat_foto').attr('onclick', `window.open('${BASEURL}/assets/pkl/pemberkasan/foto/${data.uploadfoto_pemberkasan}', '_blank')`);
-
             $('#uploadkartupelajar_pemberkasan').val(data.uploadkartupelajar_pemberkasan);
-            $('#lihat_kartupelajar').attr('onclick', `window.open('${BASEURL}/assets/pkl/pemberkasan/kartupelajar/${data.uploadkartupelajar_pemberkasan}', '_blank')`);
+            if (data.uploadkartupelajar_pemberkasan == '') {
+              $('#lihat_kartupelajar').attr('disabled', 'false');
+              $('#lihat_kartupelajar').attr('onclick', `window.open('${BASEURL}/assets/pkl/pemberkasan/kartupelajar/${data.uploadkartupelajar_pemberkasan}', '_blank')`);
+            } else {
+              $('#lihat_kartupelajar').attr('disabled', 'true');
+            }
 
             $('#uploadebookraport_pemberkasan').val(data.uploadebookraport_pemberkasan);
-            $('#lihat_raport').attr('onclick', `window.open('${BASEURL}/assets/raport/${data.uploadebookraport_pemberkasan}', '_blank')`);
+            if (data.uploadebookraport_pemberkasan == '') {
+              $('#lihat_raport').attr('disabled', 'false');
+              $('#lihat_raport').attr('onclick', `window.open('${BASEURL}/assets/raport/${data.uploadebookraport_pemberkasan}', '_blank')`);
+            } else {
+              $('#lihat_raport').attr('disabled', 'true');
+            }
 
             $('#uploadsurat_pemberkasan').val(data.uploadsurat_pemberkasan);
-            $('#lihat_surat').attr('onclick', `window.open('${BASEURL}/assets/pkl/pemberkasan/surat/${data.uploadsurat_pemberkasan}', '_blank')`);
+            if (data.uploadsurat_pemberkasan == '') {
+              $('#lihat_surat').attr('disabled', 'false');
+              $('#lihat_surat').attr('onclick', `window.open('${BASEURL}/assets/pkl/pemberkasan/surat/${data.uploadsurat_pemberkasan}', '_blank')`);
+            } else {
+              $('#lihat_surat').attr('disabled', 'true');
+            }
 
             $('#uploadbuktilunasnilai_pemberkasan').val(data.uploadbuktilunasnilai_pemberkasan);
-            $('#lihat_buktinilai').attr('onclick', `window.open('${BASEURL}/assets/pkl/pemberkasan/buktilunasnilai/${data.uploadbuktilunasnilai_pemberkasan}', '_blank')`);
+            if (data.uploadbuktilunasnilai_pemberkasan == '') {
+              $('#lihat_buktinilai').attr('disabled', 'false');
+              $('#lihat_buktinilai').attr('onclick', `window.open('${BASEURL}/assets/pkl/pemberkasan/buktilunasnilai/${data.uploadbuktilunasnilai_pemberkasan}', '_blank')`);
+            } else {
+              $('#lihat_buktinilai').attr('disabled', 'true');
+            }
 
             $('#uploadbuktilunasadministrasi_pemberkasan').val(data.uploadbuktilunasadministrasi_pemberkasan);
-            $('#lihat_buktiadministrasi').attr('onclick', `window.open('${BASEURL}/assets/pkl/pemberkasan/buktilunasadm/${data.uploadbuktilunasadministrasi_pemberkasan}', '_blank')`);
+            if (data.uploadbuktilunasadministrasi_pemberkasan == '') {
+              $('#lihat_buktiadministrasi').attr('disabled', 'false');
+              $('#lihat_buktiadministrasi').attr('onclick', `window.open('${BASEURL}/assets/pkl/pemberkasan/buktilunasadm/${data.uploadbuktilunasadministrasi_pemberkasan}', '_blank')`);
+            } else {
+              $('#lihat_buktiadministrasi').attr('disabled', 'true');
+            }
 
             $('#uploadbuktilunasperpus_pemberkasan').val(data.uploadbuktilunasperpus_pemberkasan);
-            $('#lihat_buktiperpus').attr('onclick', `window.open('${BASEURL}/assets/pkl/pemberkasan/buktilunasperpus/${data.uploadbuktilunasperpus_pemberkasan}', '_blank')`);
+            if (data.uploadbuktilunasperpus_pemberkasan == '') {
+              $('#lihat_buktiperpus').attr('disabled', 'false');
+              $('#lihat_buktiperpus').attr('onclick', `window.open('${BASEURL}/assets/pkl/pemberkasan/buktilunasperpus/${data.uploadbuktilunasperpus_pemberkasan}', '_blank')`);
+            } else {
+              $('#lihat_buktiperpus').attr('disabled', 'true');
+            }
           }
         });
       });

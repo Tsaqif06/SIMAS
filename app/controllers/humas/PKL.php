@@ -368,11 +368,19 @@ class PKL extends Controller
         $akses = ['all', 'humas'];
 
         if (in_array($data['user']['hak_akses'], $akses)) {
-            $jurusan = explode(" ", $data['user']['username']);
-            $data['siswa'] = $this->model("$this->model_name", 'PKL_model')->getSiswaPSbyJurusan(end($jurusan));
-
+            if ($data['user']['role'] == 'kabeng') {
+                $jurusan = explode(" ", $data['user']['username']);
+                $data['siswa'] = $this->model("$this->model_name", 'PKL_model')->getSiswaPSbyJurusan(end($jurusan));
+            } else {
+                $data['siswa'] = $this->model("$this->model_name", 'PKL_model')->getExistSiswaPS();
+            }
+            
             $this->view('templates/humas/header', $data);
-            $this->view('humas/pkl/pemberkasan/pklpemberkasanlaporan', $data);
+            if ($data['user']['role'] == 'kabeng') {
+                $this->view('humas/pkl/pemberkasan/pklpemberkasanlaporan', $data);
+            } else {
+                $this->view('humas/guru/pkl/pemberkasan/pklpemberkasanlaporan', $data);
+            }
             $this->view('templates/humas/footer');
         } else if ($data['user']['role'] == 'guru') {
             $data['siswa'] = $this->model("$this->model_name", 'PKL_model')->getExistSiswaPS();
