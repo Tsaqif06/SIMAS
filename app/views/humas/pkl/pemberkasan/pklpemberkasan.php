@@ -1,11 +1,3 @@
-<?php
-
-// echo "<pre>";
-// var_dump($data['data_penempatan']);
-// echo "</pre>";
-
-?>
-
 <!-- partial -->
 <div class="content-wrapper">
   <div class="row">
@@ -124,7 +116,7 @@
                       <option value="ANI">Animasi</option>
                       <option value="DKV">Desain Komunikasi Visual</option>
                       <option value="TL">Logistik</option>
-                      <option value="MEKA">Mekatronika</option>
+                      <option value="TM">Mekatronika</option>
                       <option value="PH">Perhotelan</option>
                     </select>
                   </div>

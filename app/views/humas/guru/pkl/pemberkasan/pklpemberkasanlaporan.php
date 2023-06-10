@@ -8,7 +8,7 @@ switch ($data['user']['username']) {
   case 'Kabeng TL':
     $jurusan = 'LOGISTIK';
     break;
-  case 'Kabeng MEKA':
+  case 'Kabeng TM':
     $jurusan = 'MEKATRONIKA';
     break;
   case 'Kabeng PH':
@@ -202,7 +202,7 @@ switch ($data['user']['username']) {
                   <option value="ANI">Animasi</option>
                   <option value="DKV">Desain Komunikasi Visual</option>
                   <option value="TL">Logistik</option>
-                  <option value="MEKA">Mekatronika</option>
+                  <option value="TM">Mekatronika</option>
                   <option value="PH">Perhotelan</option>
                 </select>
               </div>

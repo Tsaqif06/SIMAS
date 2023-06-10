@@ -74,7 +74,7 @@
                   </div>
                   <div class="card-body">
                     <div class="row">
-                      <a href="<?= BASEURL; ?>/pkl/penempatan&kelas=XI_MEKA_A"><button type="button" class="btn btn-inverse-primary btn-fw btn-block">Masuk ke laman
+                      <a href="<?= BASEURL; ?>/pkl/penempatan&kelas=XI_TM_A"><button type="button" class="btn btn-inverse-primary btn-fw btn-block">Masuk ke laman
                           ini</button></a>
                     </div>
                   </div>

@@ -1,13 +1,13 @@
 <?php
 $kelas = [
-    'Teknik Grafika' => ['XI DG A', 'XI DG B', 'XI DG C', 'XI PD A', 'XI PD B', 'XI PD C', 'XI PD D'],
-    'Logistik' => ['XI TL A', 'XI TL B'],
-    'Mekatronika' => ['XI MEKA A', 'XI MEKA B'],
-    'Perhotelan' => ['XI PH A', 'XI PH B'],
-    'Animasi' => ['XI ANI A', 'XI ANI B', 'XI ANI C'],
-    'Desain Komunikasi Visual' => ['XI DKV A', 'XI DKV B', 'XI DKV C'],
-    'Teknik Komputer dan Jaringan' => ['XI TKJ A', 'XI TKJ B'],
-    'Rekayasa Perangkat Lunak' => ['XI RPL A', 'XI RPL B', 'XI RPL C']
+  'Teknik Grafika' => ['XI DG A', 'XI DG B', 'XI DG C', 'XI PD A', 'XI PD B', 'XI PD C', 'XI PD D'],
+  'Logistik' => ['XI TL A', 'XI TL B'],
+  'Mekatronika' => ['XI TM A', 'XI TM B'],
+  'Perhotelan' => ['XI PH A', 'XI PH B'],
+  'Animasi' => ['XI ANI A', 'XI ANI B', 'XI ANI C'],
+  'Desain Komunikasi Visual' => ['XI DKV A', 'XI DKV B', 'XI DKV C'],
+  'Teknik Komputer dan Jaringan' => ['XI TKJ A', 'XI TKJ B'],
+  'Rekayasa Perangkat Lunak' => ['XI RPL A', 'XI RPL B', 'XI RPL C']
 ];
 
 $jurusan = '';
