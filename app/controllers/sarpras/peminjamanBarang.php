@@ -8,7 +8,7 @@ class peminjamanBarang extends Controller
     {
         $data['judul'] = 'Peminjaman Barang';
         $data['user'] = $this->user;
-        $akses = ['all', 'sarpras'];
+        $akses = ['all', 'sarpras', ''];
         $data['peminjaman'] = $this->model("$this->model_name", 'peminjamanBarang_models')->getAllExistData();
         $data['stokBarang'] = $this->model("$this->model_name", 'stokBarang_models')->getAllExistData();
 
