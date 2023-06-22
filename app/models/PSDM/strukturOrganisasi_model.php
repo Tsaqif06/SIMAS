@@ -82,7 +82,7 @@ class strukturOrganisasi_model
 
     public function ubahDataOrganisasi($data)
     {
-        $query = "UPDATE prestasi_guru SET
+        $query = "UPDATE struktur_organisasi SET
                         nama = :nama,
                         jabatan = :jabatan,
                         nip = :nip,

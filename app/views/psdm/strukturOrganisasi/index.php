@@ -47,7 +47,7 @@
   </div>
   <div class="row mb-4">
     <div class="col">
-      <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModalLong">Tambah Data Struktur Organisasi</button>
+      <button type="button" class="btn btn-primary tampilModalTambah" data-bs-toggle="modal" data-bs-target="#exampleModalLong">Tambah Data Struktur Organisasi</button>
       <button type="button" class="btn btn-primary my-3 mx-3 tampilModalImport" data-bs-toggle="modal" data-bs-target="#modalImport">
         Import Data Dari Excel
       </button>
@@ -121,6 +121,7 @@
             <table id="table" class="table table-striped table-bordered">
               <thead>
                 <tr>
+                  <th>No.</th>
                   <th style="width: 30%;">Nama</th>
                   <th style="width: 28%;">Jabatan</th>
                   <th style="width: 15%;">NIP</th>
@@ -128,8 +129,10 @@
                 </tr>
               </thead>
               <tbody>
+                <?php $i = 1 ?>
                 <?php foreach ($data['struktur_organisasi'] as $struktur) : ?>
                   <tr>
+                    <td><?= $i ?></td>
                     <td><?= $struktur['nama'] ?></td>
                     <td><?= $struktur['jabatan'] ?></td>
                     <td><?= $struktur['nip'] ?></td>
@@ -146,6 +149,7 @@
                       </a>
                     </td>
                   </tr>
+                  <?php $i++; ?>
                 <?php endforeach; ?>
               </tbody>
             </table>
@@ -156,45 +160,46 @@
   </div>
 </div>
 </div>
-                </div>
+</div>
+
+<!-- <script src="<?= BASEURL ?>/js/script/form.js"></script> -->
 
 <script>
   $(function() {
     const BASEURL = window.location.href;
-    console.log(BASEURL)
     $('.tombolTambahData').on('click', function() {
       $('formModalLabel').html('Tambah Data Struktur Organisasi')
       $('.modal-footer button[type=submit]').html('Tambah Data');
 
     });
 
-    $("#table").DataTable({
-      drawCallback: function(settings) {
-        $(".tampilModalUbah").click(function() {
-          $("#modal").addClass("edit");
-          $("#modalLabel").html("Ubah Data Sruktur Organisasi");
-          $(".modal-footer button[type=submit]").html("Ubah Data");
-          $(".modal-body form").attr("action", `${BASEURL}/ubah`);
+    // $("#table").DataTable({
+    //   drawCallback: function(settings) {
+    //     $(".tampilModalUbah").click(function() {
+    //       $("#modal").addClass("edit");
+    //       $("#modalLabel").html("Ubah Data Sruktur Organisasi");
+    //       $(".modal-footer button[type=submit]").html("Ubah Data");
+    //       $(".modal-body form").attr("action", `${BASEURL}/ubahData`);
 
-          const id = $(this).data("id");
+    //       const id = $(this).data("id");
 
-          $.ajax({
-            url: `${BASEURL}/getubah`,
-            data: {
-              id: id
-            },
-            method: "post",
-            dataType: "json",
-            success: function(data) {
-              $('#nama').val(data.nama);
-              $('#jabatan').val(data.jabatan);
-              $('#nip').val(data.nip);
-              $('#id').val(data.id);
-              console.log(data);
-            },
-          })
-        })
-      }
-    });
+    //       $.ajax({
+    //         url: `${BASEURL}/getubah`,
+    //         data: {
+    //           id: id
+    //         },
+    //         method: "post",
+    //         dataType: "json",
+    //         success: function(data) {
+    //           $('#nama').val(data.nama);
+    //           $('#jabatan').val(data.jabatan);
+    //           $('#nip').val(data.nip);
+    //           $('#id').val(data.id);
+    //           console.log(data);
+    //         },
+    //       })
+    //     })
+    // }
+    // });
   });
 </script>

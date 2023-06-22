@@ -13,17 +13,18 @@ $(document).ready(function () {
 	});
 
 	// Menghancurkan tabel DataTable yang s1udah ada
-	if ($.fn.DataTable.isDataTable('#table')) {
-		$('#table').DataTable().destroy();
+	if ($.fn.DataTable.isDataTable("#table")) {
+		$("#table").DataTable().destroy();
 	}
 
 	$("#table").DataTable({
-		dom: 'Bfrtip',
-		buttons: [
-			'pageLength', 'copy', 'excel', 'pdf', 'print'
+		dom: "Bfrtip",
+		buttons: ["pageLength", "copy", "excel", "pdf", "print"],
+		lengthChange: true,
+		lengthMenu: [
+			[10, 25, 50, -1],
+			[10, 25, 50, "All"],
 		],
-		'lengthChange': true,
-		'lengthMenu': [[10, 25, 50, -1], [10, 25, 50, 'All']],
 		drawCallback: function (settings) {
 			$(".tampilModalUbah").click(function () {
 				$("#modal").addClass("edit");
@@ -41,7 +42,6 @@ $(document).ready(function () {
 					method: "post",
 					dataType: "json",
 					success: function (data) {
-						console.log(data);
 						$("#fotoSekarang").attr("src", `images/datafoto/${data.foto}`);
 						$("#fotoLama").val(data.foto);
 						for (let key of Object.keys(data)) {

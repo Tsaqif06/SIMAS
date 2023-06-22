@@ -11,13 +11,9 @@ class strukturOrganisasi extends Controller
         $data['struktur_organisasi'] = $this->model("$this->model_name", 'strukturOrganisasi_model')->getAllExistData();
 
         if (in_array($data['user']['hak_akses'], $akses)) {
-            if (isset($_POST["contentOnly"])) {
-                $this->view('psdm/strukturOrganisasi/index', $data);
-            } else {
-                $this->view('templates/header', $data);
-                $this->view('psdm/strukturOrganisasi/index', $data);
-                $this->view('templates/footer');
-            }
+            $this->view('templates/header', $data);
+            $this->view('psdm/strukturOrganisasi/index', $data);
+            $this->view('templates/footerwm');
         } else if ($data['user']['hak_akses'] == '') {
             header("Location: " . BASEURL);
             Flasher::setFlash('GAGAL', 'Anda Tidak Mempunyai Akses Untuk Menuju Halaman Tersebut', 'danger');
@@ -59,12 +55,12 @@ class strukturOrganisasi extends Controller
         }
     }
 
-    public function getubah()
+    public function getUbahData()
     {
         echo json_encode($this->model("$this->model_name", 'strukturOrganisasi_model')->getOrganisasiById($_POST['id']));
     }
 
-    public function ubah()
+    public function ubahData()
     {
         if ($this->model("$this->model_name", 'strukturOrganisasi_model')->ubahDataOrganisasi($_POST) > 0) {
             Flasher::setFlash('berhasil', 'diubah', 'success');
