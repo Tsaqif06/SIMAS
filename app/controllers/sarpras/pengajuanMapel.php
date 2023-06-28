@@ -14,7 +14,7 @@ class pengajuanMapel extends Controller
             $data['pengajuan_mapel'] = $this->model("$this->model_name", 'pengajuanMapel_models')->getAllExistData();
             $this->view('templates/header', $data);
             $this->view('sarpras/pengajuanBarang/mapel', $data);
-            $this->view('templates/footer');
+            $this->view('templates/footerwm');
         } else if ($data['user']['hak_akses'] == '' || $data['user']['role'] == 'kabeng' || $data['user']['role'] == 'guru') {
             $this->view('templates/header', $data);
             $this->view('sarpras/pengajuanBarang/form/formmapel', $data);

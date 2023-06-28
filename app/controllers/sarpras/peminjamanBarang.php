@@ -16,7 +16,7 @@ class peminjamanBarang extends Controller
             $this->model("$this->model_name", 'peminjamanBarang_models')->readReqData();
             $this->view('templates/header', $data);
             $this->view('sarpras/peminjamanBarang/index', $data);
-            $this->view('templates/footer');
+            $this->view('templates/footerwm');
         } else if ($data['user']['role'] == 'guru' || $data['user']['role'] == 'kabeng') {
             $this->view('templates/header', $data);
             $this->view('sarpras/peminjamanBarang/form', $data);
