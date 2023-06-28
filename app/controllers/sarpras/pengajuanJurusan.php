@@ -14,7 +14,7 @@ class pengajuanJurusan extends Controller
             $data['pengajuan_jurusan'] = $this->model("$this->model_name", 'pengajuanJurusan_models')->getAllExistData();
             $this->view('templates/header', $data);
             $this->view('sarpras/pengajuanBarang/jurusan', $data);
-            $this->view('templates/footer');
+            $this->view('templates/footerwm');
         } else if ($data['user']['hak_akses'] == '' || $data['user']['role'] == 'kabeng' || $data['user']['role'] == 'guru') {
             $this->view('templates/header', $data);
             $this->view('sarpras/pengajuanBarang/form/formjurusan', $data);

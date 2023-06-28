@@ -14,7 +14,7 @@ class pengajuanWaka extends Controller
             $data['pengajuan_waka'] = $this->model("$this->model_name", 'pengajuanWaka_models')->getAllExistData();
             $this->view('templates/header', $data);
             $this->view('sarpras/pengajuanBarang/waka', $data);
-            $this->view('templates/footer');
+            $this->view('templates/footerwm');
         } else if ($data['user']['hak_akses'] == '' || $data['user']['role'] == 'kabeng' || $data['user']['role'] == 'guru') {
             $this->view('templates/header', $data);
             $this->view('sarpras/pengajuanBarang/form/formwaka', $data);
