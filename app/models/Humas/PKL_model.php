@@ -205,51 +205,6 @@ class pkl_model extends Database
         return $this->db->rowCount();
     }
 
-
-    // public function ubahDataNilai($data)
-    // {
-    //     $this->db->query(
-    //         "UPDATE {$this->table_nilai} SET 
-    //             nis = :nis, 
-    //             namasiswa = :namasiswa, 
-    //             kelas = :kelas,
-    //             jeniskelamin = :jeniskelamin,
-    //             namaindustri = :namaindustri,
-    //             religius = :religius,
-    //             kejujuran = kejujuran,
-    //             disiplin = :disiplin,
-    //             kerjasama = :kerjasama,
-    //             inisiatif = :inisiatif,
-    //             tanggungjawab  = :tanggungjawab,
-    //             kebersihan = :kebersihan,
-    //             kesantunan = :kesantunan,
-    //             mutupekerjaan = :mutupekerjaan,
-    //             modified_at = CURRENT_TIMESTAMP,
-    //             modified_by = :modified_by
-    //         WHERE id = :id"
-    //     );
-
-    //     $this->db->bind('nis', $data['nis']);
-    //     $this->db->bind('namasiswa', $data['namasiswa']);
-    //     $this->db->bind('kelas', $data['kelas']);
-    //     $this->db->bind('jeniskelamin', $data['jeniskelamin']);
-    //     $this->db->bind('namaindustri', $data['namaindustri']);
-    //     $this->db->bind('religius', $data['religius']);
-    //     $this->db->bind('kejujuran', $data['kejujuran']);
-    //     $this->db->bind('disiplin', $data['disiplin']);
-    //     $this->db->bind('kerjasama', $data['kerjasama']);
-    //     $this->db->bind('inisiatif', $data['inisiatif']);
-    //     $this->db->bind('tanggungjawab', $data['tanggungjawab']);
-    //     $this->db->bind('kebersihan', $data['kebersihan']);
-    //     $this->db->bind('kesantunan', $data['kesantunan']);
-    //     $this->db->bind('mutupekerjaan', $data['mutupekerjaan']);
-    //     $this->db->bind('modified_by', $this->user);
-    //     $this->db->bind('id', $data['id']);
-
-    //     $this->db->execute();
-    //     return $this->db->rowCount();
-    // }
-
     public function ubahRataRata($data, $id)
     {
         $tmp = 0;
