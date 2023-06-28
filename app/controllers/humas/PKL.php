@@ -790,12 +790,12 @@ class PKL extends Controller
     {
         if ($this->model("$this->model_name", 'pkl_model')->TambahDataPB($_POST) > 0) {
             Flasher::setFlash('Berhasil', 'Ditambahkan', 'success');
-            header('Location: ' . BASEURL . '/pkl/pklpembekalan');
+            header('Location: ' . BASEURL . '/pkl/pembekalan');
             exit;
         } else {
 
             Flasher::setFlash('gagal', 'Ditambahkan', 'danger');
-            header('Location: ' . BASEURL . '/pkl/pklpembekalan');
+            header('Location: ' . BASEURL . '/pkl/pembekalan');
             exit;
         }
     }
@@ -805,12 +805,12 @@ class PKL extends Controller
     {
         if ($this->model("$this->model_name", 'pkl_model')->HapusDataPB($id) > 0) {
             Flasher::setFlash('Berhasil', 'Dihapus', 'success');
-            header('Location: ' . BASEURL . '/pkl/pklpembekalan');
+            header('Location: ' . BASEURL . '/pkl/pembekalan');
             exit;
         } else {
 
             Flasher::setFlash('gagal', 'Ditambahkan', 'danger');
-            header('Location: ' . BASEURL . '/pkl/pklpembekalan');
+            header('Location: ' . BASEURL . '/pkl/pembekalan');
             exit;
         }
     }
@@ -825,12 +825,12 @@ class PKL extends Controller
     {
         if ($this->model("$this->model_name", 'pkl_model')->ubahDataPB($_POST) > 0) {
             Flasher::setFlash('Berhasil', 'Diubah', 'success');
-            header('Location: ' . BASEURL . '/pkl/pklpembekalan');
+            header('Location: ' . BASEURL . '/pkl/pembekalan');
             exit;
         } else {
 
             Flasher::setFlash('gagal', 'Diubah', 'danger');
-            header('Location: ' . BASEURL . '/pkl/pklpembekalan');
+            header('Location: ' . BASEURL . '/pkl/pembekalan');
             exit;
         }
     }
