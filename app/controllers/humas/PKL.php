@@ -299,7 +299,6 @@ class PKL extends Controller
 
     public function ubahDataNilai()
     {
-        var_dump($_POST);
         $data = $_POST;
         $startKey = 'namaindustri';
         $endKey = 'religius';
@@ -321,16 +320,8 @@ class PKL extends Controller
             ];
         }
 
-        if ($this->model("$this->model_name", 'pkl_model')->ubahDataNilai($_POST) > 0) {
-            if ($this->model("$this->model_name", 'pkl_model')->ubahDataAspek($nilaiAspek) > 0) {
-                if ($this->model("$this->model_name", 'pkl_model')->ubahRataRata($extractedData, $_POST['id']) > 0) {
-                    Flasher::setFlash('berhasil', 'diubah', 'success');
-                } else {
-                    Flasher::setFlash('gagal', 'diubah', 'danger');
-                }
-            } else {
-                Flasher::setFlash('gagal', 'diubah', 'danger');
-            }
+        if ($this->model("$this->model_name", 'pkl_model')->ubahDataNilai($_POST) > 0 || $this->model("$this->model_name", 'pkl_model')->ubahDataAspek($nilaiAspek) > 0 || $this->model("$this->model_name", 'pkl_model')->ubahRataRata($extractedData, $_POST['id']) > 0) {
+            Flasher::setFlash('berhasil', 'diubah', 'success');
         } else {
             Flasher::setFlash('gagal', 'diubah', 'danger');
         }
@@ -370,7 +361,7 @@ class PKL extends Controller
             } else {
                 $data['siswa'] = $this->model("$this->model_name", 'PKL_model')->getExistSiswaPS();
             }
-            
+
             $this->view('templates/humas/header', $data);
             if ($data['user']['role'] == 'kabeng') {
                 $this->view('humas/pkl/pemberkasan/pklpemberkasanlaporan', $data);

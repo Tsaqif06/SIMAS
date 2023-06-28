@@ -151,7 +151,6 @@
                     method: "post",
                     dataType: "json",
                     success: function(data) {
-                        console.log(data);
                         for (let key of Object.keys(data)) {
                             if (key == "foto") {
                                 continue;
@@ -168,7 +167,6 @@
                     method: "post",
                     dataType: "json",
                     success: function(data) {
-                        console.log(data);
                         const nilaiAspek = data.reduce((acc, item) => {
                             if (!acc[item.nama_aspek]) {
                                 acc[item.nama_aspek] = [];
