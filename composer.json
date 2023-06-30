@@ -1,0 +1,9 @@
+{
+    "require": {
+        "symfony/filesystem": "^6.2",
+        "ramsey/uuid": "^4.7",
+        "phpmailer/phpmailer": "^6.8",
+        "firebase/php-jwt": "^6.4",
+        "phpoffice/phpspreadsheet": "^1.28"
+    }
+}

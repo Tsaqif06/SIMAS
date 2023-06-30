@@ -1,0 +1,250 @@
+/* Loader */
+
+.container-spinner {
+  position: relative;
+  height: 100vh; /* Set the height of the spinner container to 100% of the viewport height */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 99;
+}
+
+.spinner {
+  width: 15.7px;
+  height: 15.7px;
+}
+
+.spinner div {
+  width: 100%;
+  height: 100%;
+  background-color: #474bff;
+  border-radius: 50%;
+  animation: spinner-4t3wzl 1.25s infinite backwards;
+}
+
+.spinner div:nth-child(1) {
+  animation-delay: 0.15s;
+  background-color: rgba(71, 75, 255, 0.9);
+}
+
+.spinner div:nth-child(2) {
+  animation-delay: 0.3s;
+  background-color: rgba(71, 75, 255, 0.8);
+}
+
+.spinner div:nth-child(3) {
+  animation-delay: 0.45s;
+  background-color: rgba(71, 75, 255, 0.7);
+}
+
+.spinner div:nth-child(4) {
+  animation-delay: 0.6s;
+  background-color: rgba(71, 75, 255, 0.6);
+}
+
+.spinner div:nth-child(5) {
+  animation-delay: 0.75s;
+  background-color: rgba(71, 75, 255, 0.5);
+}
+
+@keyframes spinner-4t3wzl {
+  0% {
+    transform: rotate(0deg) translateY(-200%);
+  }
+
+  60%,
+  100% {
+    transform: rotate(360deg) translateY(-200%);
+  }
+}
+
+/* Card Style */
+
+.card.card-tale {
+  background: linear-gradient(150deg, #39ef74, #4600f1 100%) !important;
+  color: #ffffff !important;
+}
+
+.card.card-tale:hover {
+  background: linear-gradient(360deg, #39ef74, #4600f1 100%) !important;
+}
+
+.card.card-dark-blue {
+  background: linear-gradient(150deg, #f731db, #4600f1 100%) !important;
+  color: #ffffff !important;
+}
+
+.card.card-dark-blue:hover {
+  background: linear-gradient(1360deg, #f731db, #4600f1 100%) !important;
+}
+
+.card.card-light-blue {
+  background: linear-gradient(to left, #80ffdb, #5390d9) !important;
+  color: #ffffff !important;
+}
+
+.card.card-light-blue:hover {
+  background: linear-gradient(to right, #80ffdb, #5390d9) !important;
+}
+
+/* Carousel STyle */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.slider {
+  position: relative;
+  background: #d1dff0;
+  width: 1010px;
+  min-height: 500px;
+  margin: 20px;
+  overflow: hidden;
+  border-radius: 10px;
+}
+
+.slider .slide {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  clip-path: circle(0% at 0 50%);
+}
+
+.slider .slide.active {
+  clip-path: circle(150% at 0 50%);
+  transition: 2s;
+}
+
+.slider .slide img {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  right: 12px;
+  object-fit: cover;
+}
+
+.slider .slide .info {
+  position: absolute;
+  color: #000000;
+  background: rgba(255, 249, 249, 0.529);
+  width: 90%;
+  margin-top: 50px;
+  margin-left: 50px;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0 5px 25px rgba(1, 1, 1, 0.25);
+}
+
+.slider .slide .info h2 {
+  font-size: 2em;
+  font-weight: 800;
+}
+
+.slider .slide .info p {
+  font-size: 1em;
+  font-weight: 400;
+}
+
+.navigation {
+  height: 500px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+
+.slider:hover .navigation {
+  opacity: 1;
+}
+
+.prev-btn,
+.next-btn {
+  z-index: 999;
+  font-size: 2em;
+  color: #222;
+  background: rgba(255, 255, 255, 0.8);
+  padding: 10px;
+  cursor: pointer;
+}
+
+.prev-btn {
+  border-top-right-radius: 3px;
+  border-bottom-right-radius: 3px;
+}
+
+.next-btn {
+  border-top-left-radius: 3px;
+  border-bottom-left-radius: 3px;
+}
+
+.navigation-visibility {
+  z-index: 999;
+  display: flex;
+  justify-content: center;
+}
+
+.navigation-visibility .slide-icon {
+  z-index: 999;
+  background: rgba(255, 255, 255, 0.5);
+  width: 20px;
+  height: 10px;
+  transform: translateY(-50px);
+  margin: 0 6px;
+  border-radius: 2px;
+  box-shadow: 0 5px 25px rgb(1 1 1 / 20%);
+}
+
+.navigation-visibility .slide-icon.active {
+  background: #f7faff;
+}
+
+@media (max-width: 900px) {
+  .slider {
+    width: 100%;
+  }
+
+  .slider .slide .info {
+    position: relative;
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+@media (max-width: 500px) {
+  .slider .slide .info h2 {
+    font-size: 1.8em;
+    line-height: 40px;
+  }
+
+  .slider .slide .info p {
+    font-size: 0.9em;
+  }
+}
+
+/* Table Style */
+
+table,
+tr,
+th,
+td {
+  border-collapse: collapse;
+  padding: 20px;
+}
+
+/* Text */
+
+.text-lightpurple {
+  color: #a7c9e8;
+}
+
+.text-pink {
+  color: #f59095;
+}
+
+.text-yellow {
+  color: #ffc100;
+}
