@@ -1,6 +1,6 @@
 
 
-  <div class="content-wrapper">
+<div class="content-wrapper">
     <div class="row">
       <div class="col-md-12 grid-margin">
         <div class="row">
@@ -22,9 +22,37 @@
       <div class="col-md-12 grid-margin">
         <div class="template-demo">
           <button type="button" class="btn btn-primary tomboltambahdata8" data-toggle="modal" data-target="#formmodal">Tambah Data</button>
+           <button type="button" class="btn btn-primary tampilModalImport" data-bs-toggle="modal" data-bs-target="#modalImport">
+            Import Data Dari Excel
+          </button>
         </div>
       </div>
 
+      
+    <div class="modal fade" id="modalImport" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="modalLabel">Import Data</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form action="<?= BASEURL ?>/PKL/importDataiz" method="post" enctype="multipart/form-data">
+                    <div class="mb-3">
+                        <label for="file">Pilih file Excel (.xlsx)</label>
+                        <input type="file" name="file" id="file">
+                    </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary batal" data-bs-dismiss="modal">Batal</button>
+                <button type="submit" class="btn btn-primary">Tambah Data</button>
+            </div>
+            </form>
+        </div>
+    </div>
+</div>
 
 
       <div class="modal fade" id="formmodal" tabindex="-1" role="dialog" aria-labelledby="judulModal" aria-hidden="true">
@@ -68,11 +96,11 @@
                 </div>
                 <div class="form-group">
                   <label for="drtanggal">Dari Tanggal</label>
-                  <input type="Date" class="form-control" id="drtanggal" name="drtanggal">
+                  <input type="text" class="form-control" id="drtanggal" name="drtanggal">
                 </div>
                 <div class="form-group">
                   <label for="hgtanggal">Hingga Tanggal</label>
-                  <input type="Date" class="form-control" id="hgtanggal" name="hgtanggal">
+                  <input type="text" class="form-control" id="hgtanggal" name="hgtanggal">
                 </div>
             </div>
             <div class="modal-footer">

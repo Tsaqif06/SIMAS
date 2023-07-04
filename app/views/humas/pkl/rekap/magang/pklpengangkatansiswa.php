@@ -1,5 +1,5 @@
 
-    <div class="content-wrapper">
+<div class="content-wrapper">
         <div class="row">
             <div class="col-md-12 grid-margin">
                 <div class="row">
@@ -22,7 +22,7 @@
         <div class="row">
             <div class="col-md-12 grid-margin">
                 <div class="template-demo">
-                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#formmodal">Tambah
+                    <button type="button" class="btn btn-primary tambahdatapegawai" data-toggle="modal" data-target="#formmodal">Tambah
                         Data</button>
                     <button type="button" class="btn btn-primary  tampilModalImport" data-toggle="modal"
                         data-target="#modalImport">
@@ -31,6 +31,31 @@
                 </div>
             </div>
             </div>
+            
+            <div class="modal fade" id="modalImport" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="modalLabel">Import Data</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form action="<?= BASEURL ?>/pkl/importDataPPS" method="post" enctype="multipart/form-data">
+                    <div class="mb-3">
+                        <label for="file">Pilih file Excel (.xlsx)</label>
+                        <input type="file" name="file" id="file">
+                    </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary batal" data-bs-dismiss="modal">Batal</button>
+                <button type="submit" class="btn btn-primary">Tambah Data</button>
+            </div>
+            </form>
+        </div>
+    </div>
+</div>
 
 
             <!-- Modal -->
@@ -45,7 +70,7 @@
                             </button>
                         </div>
                         <div class="modal-body">
-                            <form action="<?= BASEURL; ?>/Pkl/tambahdata" method="post">
+                            <form action="<?= BASEURL; ?>/Pkl/tambahdataPPS" method="post">
 
 
 
@@ -123,11 +148,11 @@
 
                                     <td>
                                         
-                                            <a class="badge badge-success tampildataubah"
-                                                data-url="<?= BASEURL ?>/PKL/ubah/<?= $row['id']; ?>"
+                                            <a class="badge badge-success tampilubahPPS "
+                                                data-url="<?= BASEURL ?>/PKL/ubahPPS/<?= $row['id']; ?>"
                                                 data-toggle="modal" data-target="#formmodal"
                                                 data-id="<?= $row['id'] ?>"><i class="mdi mdi-pencil"></i></a>
-                                            <a href="<?= BASEURL; ?>/pkl/hapus/<?= $row['id']; ?>"
+                                            <a href="<?= BASEURL; ?>/PKL/hapusPPS/<?= $row['id']; ?>"
                                                 class="badge badge-danger"
                                                 onclick="return confirm('Apakah anda sudah yakin?');"><i
                                                     class="mdi mdi-delete"></i>
@@ -162,5 +187,46 @@
         </div>
         </div>
 
+        <script>
+             // siswa pegawai
+    $('.tambahdatapegawai').on('click', function() {
+      
+
+      $('#judulModallabel').html('Tambah Data Siswa');
+      $('.modal-footer button[type=submit]').html('Tambah Data');
+      
+  });
+  $('.tampilubahPPS').on('click', function() {
+      
+      $('#judulModallabel').html('Ubah Data Siswa');
+      $('.modal-footer button[type=submit]').html('Ubah Data');
+      $('.modal-body form').attr('action', 'http://localhost/SIMAS/public/PKL/ubahPPS');
+
+
+      const id = $(this).data('id');
+      
+
+
+      $.ajax({
+
+          url: 'http://localhost/SIMAS/public/PKL/getUbahPPS',
+          data: {id : id},
+          method: 'post',
+          dataType: 'json',
+          success: function(data) {
+             $('#nisn').val(data.nisn);
+             $('#namasiswa').val(data.namasiswa);
+             $('#kelas').val(data.kelas);
+             $('#jurusan').val(data.jurusan);
+             $('#namaperusahaan').val(data.namaperusahaan);
+             $('#id').val(data.id);
+
+          }
+      });
+
+  }); 
+
+                
+            </script>
 
 

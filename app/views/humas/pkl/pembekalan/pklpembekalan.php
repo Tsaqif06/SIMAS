@@ -1,5 +1,5 @@
 <!-- <div class="main-panel"> -->
-  <div class="content-wrapper">
+<div class="content-wrapper">
     <div class="row">
       <div class="col-md-12 grid-margin">
         <div class="row">
@@ -12,6 +12,12 @@
       </div>
     </div>
 
+    
+    <div class="row">
+      <div class="col-lg-6">
+        <?php Flasher::flash(); ?>
+      </div>
+    </div>
 
     <div class="col-md-12 grid-margin">
       <div class="template-demo">
@@ -108,11 +114,12 @@
               <thead>
                 <tr>
                   <th>Aksi</th>
-                  <th>Nisn</th>
-                  <th>Nama Siswa</th>
-                  <th>Kelas</th>
-                  <th>Jurusan</th>
-                  <th>Nama Perusahaan</th>
+                  <th>Dilakukan Oleh</th>
+                  <th>Tanggal</th>
+                  <th>Jadwal</th>
+                  <th>Peserta</th>
+                  <th>Tempat</th>
+
                 </tr>
               </thead>
               <?php

@@ -114,6 +114,10 @@ foreach ($kelas as $key => $list) {
                   <input type="number" class="form-control" id="nisn" name="nisn">
                 </div>
                 <div class="form-group">
+                  <label for="nis" class="col-form-label">NIS</label>
+                  <input type="number" class="form-control" id="nis" name="nis">
+                </div>
+                <div class="form-group">
                   <label for="namasiswa" class="col-form-label">Nama</label>
                   <input type="text" class="form-control" id="namasiswa" name="namasiswa">
                 </div>
@@ -121,6 +125,11 @@ foreach ($kelas as $key => $list) {
                   <label for="kelas" class="col-form-label">Kelas</label>
                   <input type="text" value="<?= $data['kelas'] ?>" class="form-control" id="kelassiswa" name="kelassiswa" readonly>
                 </div>
+                <div class="form-group">
+                  <label for="tempatperusahaan" class="col-form-label">Tempat Perusahaan</label>
+                  <input type="text" class="form-control" id="tempatperusahaan" name="tempatperusahaan">
+                </div>
+                
                 <div class="form-group">
                   <label for="namaperusahaan" class="col-form-label">Nama Perusahaan</label>
                   <input type="text" class="form-control" id="namaperusahaan" name="namaperusahaan">
@@ -147,9 +156,11 @@ foreach ($kelas as $key => $list) {
                 <thead>
                   <tr>
                     <th>Aksi</th>
-                    <th>NISN</th>
-                    <th>Nama</th>
-                    <th>Kelas</th>
+                    <th>Nisn</th>
+                    <th>Nis</th>
+                    <th>Nama Siswa</th>
+                    <th>Kelas Siswa</th>
+                    <th>Tempat Perusahaan</th>
                     <th>Nama Perusahaan</th>
                   </tr>
                 </thead>
@@ -169,8 +180,10 @@ foreach ($kelas as $key => $list) {
                         </a>
                       </td>
                       <td><?= $siswa['nisn'] ?></td>
+                      <td><?= $siswa['nis'] ?></td>
                       <td><?= $siswa['namasiswa'] ?></td>
                       <td><?= $siswa['kelassiswa'] ?></td>
+                      <td><?= $siswa['tempatperusahaan'] ?></td>
                       <td><?= $siswa['namaperusahaan'] ?></td>
                     </tr>
                   <?php endforeach; ?>
@@ -207,8 +220,10 @@ foreach ($kelas as $key => $list) {
       if ($("#formModal").hasClass("edit")) {
         $('#id').val('');
         $('#nisn').val('');
+        $('#nis').val('');
         $('#namasiswa').val('');
         $('#kelas').val('');
+        $('#tempatperusahaan').val('');
         $('#namaperusahaan').val('');
       }
 
@@ -233,8 +248,10 @@ foreach ($kelas as $key => $list) {
           // console.log(data);
           $('#id').val(data.id);
           $('#nisn').val(data.nisn);
+          $('#nis').val(data.nis);
           $('#namasiswa').val(data.namasiswa);
           $('#kelas').val(data.kelas);
+          $('#tempatperusahaan').val(data.tempatperusahaan);
           $('#namaperusahaan').val(data.namaperusahaan);
         },
       })
