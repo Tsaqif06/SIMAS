@@ -299,6 +299,7 @@ class PKL extends Controller
 
     public function ubahDataNilai()
     {
+        var_dump($_POST);
         $data = $_POST;
         $startKey = 'namaindustri';
         $endKey = 'religius';
@@ -320,8 +321,16 @@ class PKL extends Controller
             ];
         }
 
-        if ($this->model("$this->model_name", 'pkl_model')->ubahDataNilai($_POST) > 0 || $this->model("$this->model_name", 'pkl_model')->ubahDataAspek($nilaiAspek) > 0 || $this->model("$this->model_name", 'pkl_model')->ubahRataRata($extractedData, $_POST['id']) > 0) {
-            Flasher::setFlash('berhasil', 'diubah', 'success');
+        if ($this->model("$this->model_name", 'pkl_model')->ubahDataNilai($_POST) > 0) {
+            if ($this->model("$this->model_name", 'pkl_model')->ubahDataAspek($nilaiAspek) > 0) {
+                if ($this->model("$this->model_name", 'pkl_model')->ubahRataRata($extractedData, $_POST['id']) > 0) {
+                    Flasher::setFlash('berhasil', 'diubah', 'success');
+                } else {
+                    Flasher::setFlash('gagal', 'diubah', 'danger');
+                }
+            } else {
+                Flasher::setFlash('gagal', 'diubah', 'danger');
+            }
         } else {
             Flasher::setFlash('gagal', 'diubah', 'danger');
         }
@@ -361,7 +370,7 @@ class PKL extends Controller
             } else {
                 $data['siswa'] = $this->model("$this->model_name", 'PKL_model')->getExistSiswaPS();
             }
-
+            
             $this->view('templates/humas/header', $data);
             if ($data['user']['role'] == 'kabeng') {
                 $this->view('humas/pkl/pemberkasan/pklpemberkasanlaporan', $data);
@@ -562,7 +571,7 @@ class PKL extends Controller
         }
     }
 
-    public function tambahdata()
+    public function tambahdataPPS()
     {
         if ($this->model("$this->model_name", 'pkl_model')->TambahDataSiswa($_POST) > 0) {
             Flasher::setFlash('Berhasil ', 'Ditambahkan', 'success');
@@ -577,7 +586,7 @@ class PKL extends Controller
     }
 
 
-    public function hapus($id)
+    public function hapusPPS($id)
     {
         if ($this->model("$this->model_name", 'pkl_model')->HapusDataSiswa($id) > 0) {
             Flasher::setFlash('Berhasil ', 'Dihapus', 'success');
@@ -590,12 +599,12 @@ class PKL extends Controller
         }
     }
 
-    public function getUbah()
+    public function getUbahPPS()
     {
         echo json_encode($this->model("$this->model_name", 'pkl_model')->getDetailSiswa($_POST['id']));
     }
 
-    public function ubah()
+    public function ubahPPS()
     {
         if ($this->model("$this->model_name", 'pkl_model')->ubahDataSiswa($_POST) > 0) {
             Flasher::setFlash('Berhasil ', 'Diubah', 'success');
@@ -619,6 +628,7 @@ class PKL extends Controller
         $data['user'] = $this->user;
         $akses = ['all', 'humas'];
         $data['dta'] = $this->model("$this->model_name", 'pkl_model')->getExistSiswaind();
+        $data['kompkeahlian'] = $this->model("Master", 'Kompkeahlian_model')->getAllExistData();
         if (in_array($data['user']['hak_akses'], $akses)) {
             $this->view('templates/humas/header', $data);
             $this->view('humas/pkl/rekap/dataindustri/pkldataindustri', $data);
@@ -788,6 +798,7 @@ class PKL extends Controller
 
     public function tambahdataPB()
     {
+       
         if ($this->model("$this->model_name", 'pkl_model')->TambahDataPB($_POST) > 0) {
             Flasher::setFlash('Berhasil', 'Ditambahkan', 'success');
             header('Location: ' . BASEURL . '/pkl/pembekalan');
@@ -883,12 +894,12 @@ class PKL extends Controller
     {
         if ($this->model("$this->model_name", 'pkl_model')->HapusDataDP($id) > 0) {
             Flasher::setFlash('Berhasil ', 'Dihapus', 'success');
-            header('Location: ' . BASEURL . '/pkl/dayatampung');
+            header('Location: ' . BASEURL . '/pkl/dtampung');
             exit;
         } else {
 
             Flasher::setFlash('gagal ', 'Ditambahkan', 'danger');
-            header('Location: ' . BASEURL . '/pkl/dayatampung');
+            header('Location: ' . BASEURL . '/pkl/dtampung');
             exit;
         }
     }
@@ -900,18 +911,18 @@ class PKL extends Controller
 
     public function ubahDTAPD()
     {
+        
         if ($this->model("$this->model_name", 'pkl_model')->ubahDataDP($_POST) > 0) {
             Flasher::setFlash('Berhasil ', 'Diubah', 'success');
-            header('Location: ' . BASEURL . '/pkl/dayatampung');
+            header('Location: ' . BASEURL . '/pkl/dtampung');
             exit;
         } else {
 
             Flasher::setFlash('gagal ', 'Diubah', 'danger');
-            header('Location: ' . BASEURL . '/pkl/dayatampung');
+            header('Location: ' . BASEURL . '/pkl/dtampung');
             exit;
         }
     }
-
     public function perpanjang()
     {
 
@@ -1160,7 +1171,7 @@ class PKL extends Controller
     public function importDataind()
     {
         if (!empty($_FILES['file']['name'])) {
-            if ($this->model("$this->model_name", "BKK_model")->importDataind($_POST) > 0) {
+            if ($this->model("$this->model_name", "Pkl_model")->importDataind($_POST) > 0) {
                 Flasher::setFlash('BERHASIL', 'Diimport', 'success');
             } else {
                 Flasher::setFlash('GAGAL', 'Diimport', 'danger');
@@ -1192,7 +1203,7 @@ class PKL extends Controller
     public function importDatamon()
     {
         if (!empty($_FILES['file']['name'])) {
-            if ($this->model("$this->model_name", "BKK_model")->importDatamon($_POST) > 0) {
+            if ($this->model("$this->model_name", "PKL_model")->importDatamon($_POST) > 0) {
                 Flasher::setFlash('BERHASIL', 'Diimport', 'success');
             } else {
                 Flasher::setFlash('GAGAL', 'Diimport', 'danger');
@@ -1207,7 +1218,7 @@ class PKL extends Controller
     public function importDatapb()
     {
         if (!empty($_FILES['file']['name'])) {
-            if ($this->model("$this->model_name", "BKK_model")->importDatapb($_POST) > 0) {
+            if ($this->model("$this->model_name", "PKL_model")->importDatapb($_POST) > 0) {
                 Flasher::setFlash('BERHASIL', 'Diimport', 'success');
             } else {
                 Flasher::setFlash('GAGAL', 'Diimport', 'danger');
@@ -1215,7 +1226,7 @@ class PKL extends Controller
         } else {
             Flasher::setFlash('Error', 'Harap pilih file Excel terlebih dahulu', 'danger');
         }
-        header("Location: " . BASEURL . "/pkl/pklpembekalan");
+        header("Location: " . BASEURL . "/pkl/pembekalan");
         exit;
     }
 
@@ -1251,25 +1262,10 @@ class PKL extends Controller
     }
 
 
-    public function importDataiz()
-    {
-        if (!empty($_FILES['file']['name'])) {
-            if ($this->model("$this->model_name", "BKK_model")->importDataiz($_POST) > 0) {
-                Flasher::setFlash('BERHASIL', 'Diimport', 'success');
-            } else {
-                Flasher::setFlash('GAGAL', 'Diimport', 'danger');
-            }
-        } else {
-            Flasher::setFlash('Error', 'Harap pilih file Excel terlebih dahulu', 'danger');
-        }
-        header("Location: " . BASEURL . "/pkl/perizinan");
-        exit;
-    }
-
     public function importDatabm()
     {
         if (!empty($_FILES['file']['name'])) {
-            if ($this->model("$this->model_name", "BKK_model")->importDatabm($_POST) > 0) {
+            if ($this->model("$this->model_name", "PKL_model")->importDatabm($_POST) > 0) {
                 Flasher::setFlash('BERHASIL', 'Diimport', 'success');
             } else {
                 Flasher::setFlash('GAGAL', 'Diimport', 'danger');
@@ -1280,4 +1276,59 @@ class PKL extends Controller
         header("Location: " . BASEURL . "/pkl/siswabermasalah");
         exit;
     }
+    public function importDataPPJ()
+    {
+        if ($this->model("$this->model_name", "PKL_model")->importDataPPJ($_POST) > 0) {
+            Flasher::setFlash('BERHASIL', 'Diimport', 'success');
+        } else {
+            Flasher::setFlash('GAGAL', 'Diimport', 'danger');
+        }
+        header("Location: " . BASEURL . "/pkl/perpanjang/pklperpanjangmasa");
+        exit;
+    }
+    public function importDatadt()
+    {
+        if (!empty($_FILES['file']['name'])) {
+            if ($this->model("$this->model_name", "PKL_model")->importDatadt($_POST) > 0) {
+                Flasher::setFlash('BERHASIL', 'Diimport', 'success');
+            } else {
+                Flasher::setFlash('GAGAL', 'Diimport', 'danger');
+            }
+        } else {
+            Flasher::setFlash('Error', 'Harap pilih file Excel terlebih dahulu', 'danger');
+        }
+        header("Location: " . BASEURL . "/pkl/dtampung");
+        exit;
+    }
+    public function importDataPPS()
+    {
+        if (!empty($_FILES['file']['name'])) {
+            if ($this->model("$this->model_name", "PKL_model")->importDataPPS($_POST) > 0) {
+                Flasher::setFlash('BERHASIL', 'Diimport', 'success');
+            } else {
+                Flasher::setFlash('GAGAL', 'Diimport', 'danger');
+            }
+        } else {
+            Flasher::setFlash('Error', 'Harap pilih file Excel terlebih dahulu', 'danger');
+        }
+        header("Location: " . BASEURL . "/pkl/pengangkatan");
+        exit;
+    }
+    public function importDataiz()
+    {
+        if (!empty($_FILES['file']['name'])) {
+            if ($this->model("$this->model_name", "PKL_model")->importDataiz($_POST) > 0) {
+                Flasher::setFlash('BERHASIL', 'Diimport', 'success');
+            } else {
+                Flasher::setFlash('GAGAL', 'Diimport', 'danger');
+            }
+        } else {
+            Flasher::setFlash('Error', 'Harap pilih file Excel terlebih dahulu', 'danger');
+        }
+        header("Location: " . BASEURL . "/pkl/perizinan");
+        exit;
+    }
+    
+    
+
 }

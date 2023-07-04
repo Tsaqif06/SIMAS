@@ -1,4 +1,4 @@
-    <div class="content-wrapper">
+<div class="content-wrapper">
         <div class="row">
             <div class="col-md-12 grid-margin">
                 <div class="row">
@@ -47,7 +47,7 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <form class="forms-sample" action="<?= BASEURL; ?>/bkk/tambahdas" method="post"
+                    <form class="forms-sample" action="<?= BASEURL; ?>/bkk/tambahdas/" method="post"
                         enctype="multipart/form-data">
                         <input type="hidden" name="id" id="id">
                         <input type="hidden" name="fotoLama" id="fotoLama">

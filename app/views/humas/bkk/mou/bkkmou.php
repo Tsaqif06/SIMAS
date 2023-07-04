@@ -1,4 +1,4 @@
-    <div class="content-wrapper">
+<div class="content-wrapper">
         <div class="row">
             <div class="col-md-12 grid-margin">
                 <div class="row">
@@ -121,7 +121,7 @@
                         </div>
                         <div class="form-group">
                             <label for="tglmou">Tanggal MoU</label>
-                            <input type="date" class="form-control" id="tglmou" name="tglmou" placeholder="Tanggal MoU">
+                            <input type="text" class="form-control" id="tglmou" name="tglmou" placeholder="Tanggal MoU">
                         </div>
                         <div class="form-group">
                             <label for="no_mou">No. MoU</label>

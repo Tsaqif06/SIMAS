@@ -106,6 +106,11 @@
                     </div>
 
                     <div class="mb-3">
+                        <label for="kegiatan" class="form-label">Kegiatan</label>
+                        <input type="text" class="form-control" id="kegiatan" name="kegiatan" placeholder="Masukkan penyelenggara" autocomplete="off">
+                    </div>
+
+                    <div class="mb-3">
                         <label for="tujuan" class="form-label">Tujuan</label>
                         <input type="text" class="form-control" id="tujuan" name="tujuan" placeholder="Masukkan tujuan" autocomplete="off">
                     </div>

@@ -454,6 +454,7 @@ class BKK extends Controller
 
     public function tambahdas()
     {
+     
         if ($this->model("$this->model_name", 'BKK_model')->tambahDataBKKdas($_POST) > 0) {
             Flasher::setFlash('berhasil ', 'ditambahkan', 'success');
             header('Location: ' . BASEURL . '/bkk/das');

@@ -50,12 +50,12 @@ class Stiru_model
             "UPDATE {$this->table}
                 SET
                 deleted_at = CURRENT_TIMESTAMP,
-                deleted_by = :deleted_by,
+                delete_by = :delete_by,
                 is_deleted = 1, 
-                is_restored = 0 
+                is_restored = 0
               WHERE id = :id"
         );
-        $this->db->bind('deleted_by', $this->user);
+        $this->db->bind('delete_by', $this->user);
         $this->db->bind('id', $id);
 
         $this->db->execute();

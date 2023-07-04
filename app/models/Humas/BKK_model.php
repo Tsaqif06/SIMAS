@@ -288,12 +288,13 @@ class BKK_model
 
         $query = "INSERT INTO alumnisukses 
             VALUES 
-            (null, :uuid, :namalengkap, :jurusan,  :jk, :notelpwa, :namaperusahaansaatini, :jabatansaatini, :uploadfototerbaru, :uploadcvterbaru, '', CURRENT_TIMESTAMP, :created_by, null, '', null, '', null, '',0 ,0, DEFAULT)";
+            (null, :uuid, :namalengkap, :jurusan, :jk, :notelpwa, :namaperusahaansaatini, :jabatansaatini, :uploadfototerbaru, :uploadcvterbaru, '', CURRENT_TIMESTAMP, :created_by, null, '', null, '', null, '',0 ,0, DEFAULT)";
 
-
-        $this->db->bind('uuid', Uuid::uuid4()->toString());
 
         $this->db->query($query);
+        $this->db->bind('uuid', Uuid::uuid4()->toString());
+       
+        
         $foto = $this->uploadFotoDas();
         if (!$foto) {
             return false;
@@ -650,12 +651,16 @@ class BKK_model
         return $this->db->rowCount();
     }
 
-
     public function tambahDataBKKmou($data)
     {
-        $query = "INSERT INTO {$this->tablemou}  
-            VALUES 
-            (null, :uuid, :dudika, :bidangkerjadudika, :tglmou, :no_mou, '', CURRENT_TIMESTAMP, :created_by, null, '', null, '', null, '',0 ,0, DEFAULT)";
+        $query =  "INSERT INTO {$this->tablemou} VALUES (
+                     null,
+                    :uuid,  
+                    :dudika, 
+                    :bidangkerjadudika, 
+                    :tglmou,
+                    :no_mou, '', CURRENT_TIMESTAMP, :created_by, null, '', null, '', null, '',0 ,0, DEFAULT
+             )";
 
         $this->db->query($query);
         $this->db->bind('uuid', Uuid::uuid4()->toString());
@@ -665,6 +670,7 @@ class BKK_model
         $this->db->bind('tglmou', $data['tglmou']);
         $this->db->bind('no_mou', $data['no_mou']);
         $this->db->bind('created_by', $this->user);
+
 
         $this->db->execute();
         return $this->db->rowCount();
@@ -695,13 +701,13 @@ class BKK_model
             "UPDATE {$this->tablepeminatan}
                 SET
                 deleted_at = CURRENT_TIMESTAMP,
-                deleted_by = :deleted_by,
+                delete_by = :delete_by,
                 is_deleted = 1,
                 is_restored = 0
               WHERE id = :id"
         );
 
-        $this->db->bind('deleted_by', $this->user);
+        $this->db->bind('delete_by', $this->user);
         $this->db->bind("id", $id);
 
         $this->db->execute();
@@ -733,37 +739,37 @@ class BKK_model
             "UPDATE {$this->tablespw}
                 SET
                 deleted_at = CURRENT_TIMESTAMP,
-                deleted_by = :deleted_by,
+                delete_by = :delete_by,
                 is_deleted = 1,
                 is_restored = 0
               WHERE id = :id"
         );
 
-        $this->db->bind('deleted_by', $this->user);
+        $this->db->bind('delete_by', $this->user);
         $this->db->bind("id", $id);
 
         $this->db->execute();
         return $this->db->rowCount();
     }
 
-        public function hapusDataBKKworkshop($id)
-        {
-            $this->db->query(
-                "UPDATE {$this->tableworkshop}
-                    SET
-                    deleted_at = CURRENT_TIMESTAMP,
-                    deleted_by = :deleted_by,
-                    is_deleted = 1,
-                    is_restored = 0
-                WHERE id = :id"
-            );
+    public function hapusDataBKKworkshop($id)
+    {
+        $this->db->query(
+            "UPDATE {$this->tableworkshop}
+                SET
+                deleted_at = CURRENT_TIMESTAMP,
+                delete_by = :delete_by,
+                is_deleted = 1,
+                is_restored = 0
+              WHERE id = :id"
+        );
 
-            $this->db->bind('deleted_by', $this->user);
-            $this->db->bind("id", $id);
+        $this->db->bind('delete_by', $this->user);
+        $this->db->bind("id", $id);
 
-            $this->db->execute();
-            return $this->db->rowCount();
-        }
+        $this->db->execute();
+        return $this->db->rowCount();
+    }
 
 
     public function hapusDataBKKloker($id)
@@ -1062,6 +1068,7 @@ class BKK_model
             'notelpwa',
             'namaperusahaansaatini',
             'jabatansaatini'
+            
         ];
 
         // Cek file diupload apa belum

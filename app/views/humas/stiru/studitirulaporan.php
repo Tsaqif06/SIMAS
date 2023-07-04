@@ -1,5 +1,5 @@
       <!-- partial -->
-        <div class="content-wrapper">
+      <div class="content-wrapper">
           <div class="row">
             <div class="col-md-12 grid-margin">
               <div class="row">
@@ -124,7 +124,7 @@
                 </div>
                 <div class="form-group">
                   <label for="tanggal" class="col-form-label">Tanggal</label>
-                  <input type="date" class="form-control" id="tanggal" name="tanggal">
+                  <input type="text" class="form-control" id="tanggal" name="tanggal">
                 </div>
                 <div class="form-group">
                   <label for="tujuan" class="col-form-label">Tujuan</label>

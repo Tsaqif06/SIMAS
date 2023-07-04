@@ -165,41 +165,23 @@ class pkl_model extends Database
     {
         $this->db->query(
             "UPDATE {$this->table_nilai} SET 
-            nis = :nis, 
-            namasiswa = :namasiswa, 
-            kelas = :kelas,
-            jeniskelamin = :jeniskelamin,
-            namaindustri = :namaindustri,
-            religius = :religius,
-            kejujuran = :kejujuran,
-            disiplin = :disiplin,
-            kerjasama = :kerjasama,
-            inisiatif = :inisiatif,
-            tanggungjawab  = :tanggungjawab,
-            kebersihan = :kebersihan,
-            kesantunan = :kesantunan,
-            mutupekerjaan = :mutupekerjaan,
-            modified_at = CURRENT_TIMESTAMP,
-            modified_by = :modified_by
-        WHERE id = :id"
+                nis = :nis, 
+                namasiswa = :namasiswa, 
+                kelas = :kelas,
+                jeniskelamin = :jeniskelamin,
+                namaindustri = :namaindustri,
+                modified_at = CURRENT_TIMESTAMP,
+                modified_by = :modified_by
+            WHERE id = :id"
         );
 
-        $this->db->bind(':nis', $data['nis']);
-        $this->db->bind(':namasiswa', $data['namasiswa']);
-        $this->db->bind(':kelas', $data['kelas']);
-        $this->db->bind(':jeniskelamin', $data['jeniskelamin']);
-        $this->db->bind(':namaindustri', $data['namaindustri']);
-        $this->db->bind(':religius', $data['religius']);
-        $this->db->bind(':kejujuran', $data['kejujuran']);
-        $this->db->bind(':disiplin', $data['disiplin']);
-        $this->db->bind(':kerjasama', $data['kerjasama']);
-        $this->db->bind(':inisiatif', $data['inisiatif']);
-        $this->db->bind(':tanggungjawab', $data['tanggungjawab']);
-        $this->db->bind(':kebersihan', $data['kebersihan']);
-        $this->db->bind(':kesantunan', $data['kesantunan']);
-        $this->db->bind(':mutupekerjaan', $data['mutupekerjaan']);
-        $this->db->bind(':modified_by', $this->user);
-        $this->db->bind(':id', $data['id']);
+        $this->db->bind('nis', $data['nis']);
+        $this->db->bind('namasiswa', $data['namasiswa']);
+        $this->db->bind('kelas', $data['kelas']);
+        $this->db->bind('jeniskelamin', $data['jeniskelamin']);
+        $this->db->bind('namaindustri', $data['namaindustri']);
+        $this->db->bind('modified_by', $this->user);
+        $this->db->bind('id', $data['id']);
 
         $this->db->execute();
         return $this->db->rowCount();
@@ -332,7 +314,7 @@ class pkl_model extends Database
         $this->db->query(
             "INSERT INTO {$this->table_penempatan}
                 VALUES 
-            (null, :uuid, :nisn, :nis, :namasiswa, :kelassiswa, :jurusansiswa, :tempatperusahaan, :namaperusahaan,
+            (null, :uuid, :nisn, :nis, :namasiswa, :kelassiswa, :tempatperusahaan, :namaperusahaan,
             '', CURRENT_TIMESTAMP, :created_by, null, '', null, '', null, '', 0, 0, DEFAULT)"
         );
 
@@ -341,7 +323,6 @@ class pkl_model extends Database
         $this->db->bind('nis', $data['nis']);
         $this->db->bind('namasiswa', $data['namasiswa']);
         $this->db->bind('kelassiswa', $data['kelassiswa']);
-        $this->db->bind('jurusansiswa', $data['jurusansiswa']);
         $this->db->bind('tempatperusahaan', $data['tempatperusahaan']);
         $this->db->bind('namaperusahaan', $data['namaperusahaan']);
         $this->db->bind('created_by', $this->user);
@@ -381,7 +362,6 @@ class pkl_model extends Database
                 nis = :nis, 
                 namasiswa = :namasiswa, 
                 kelassiswa = :kelassiswa,
-                jurusansiswa = :jurusansiswa,
                 tempatperusahaan = :tempatperusahaan,
                 namaperusahaan = :namaperusahaan, 
                 modified_at = CURRENT_TIMESTAMP, 
@@ -393,7 +373,6 @@ class pkl_model extends Database
         $this->db->bind('nis', $data['nis']);
         $this->db->bind('namasiswa', $data['namasiswa']);
         $this->db->bind('kelassiswa', $data['kelassiswa']);
-        $this->db->bind('jurusansiswa', $data['jurusansiswa']);
         $this->db->bind('tempatperusahaan', $data['tempatperusahaan']);
         $this->db->bind('namaperusahaan', $data['namaperusahaan']);
         $this->db->bind('modified_by', $this->user);
@@ -411,7 +390,6 @@ class pkl_model extends Database
             'nis',
             'namasiswa',
             'kelassiswa',
-            'jurusansiswa',
             'tempatperusahaan',
             'namaperusahaan'
         ];
@@ -1586,15 +1564,18 @@ class pkl_model extends Database
         $this->db->query(
             "INSERT INTO `{$this->tabledp}`
                 VALUES 
-            (null, :uuid, :namaperusahaan, :jurusan, :jeniskelamin, :jumlah,
+            (null, :uuid, :namaperusahaan, :jumlahlakilaki, :jumlahperempuan, :kota, :mulaitahun, :sampaitahun, 
             '', CURRENT_TIMESTAMP, :created_by, null, '', null, '', null, '',0 ,0, DEFAULT)"
         );
 
         $this->db->bind('uuid', Uuid::uuid4()->toString());
         $this->db->bind('namaperusahaan', $data['namaperusahaan']);
-        $this->db->bind('jurusan', $data['jurusan']);
-        $this->db->bind('jeniskelamin', $data['jeniskelamin']);
-        $this->db->bind('jumlah', $data['jumlah']);
+        $this->db->bind('jumlahlakilaki', $data['jumlahlakilaki']);
+        $this->db->bind('jumlahperempuan', $data['jumlahperempuan']);
+        $this->db->bind('kota', $data['kota']);
+        $this->db->bind('mulaitahun', $data['mulaitahun']);
+        $this->db->bind('sampaitahun', $data['sampaitahun']);
+
         $this->db->bind('created_by', $this->user);
 
         $this->db->execute();
@@ -1629,18 +1610,22 @@ class pkl_model extends Database
             "UPDATE `{$this->tabledp}`
                 SET 
                 namaperusahaan = :namaperusahaan, 
-                jurusan = :jurusan, 
-                jeniskelamin = :jeniskelamin,
-                jumlah = :jumlah, 
+                jumlahlakilaki = :jumlahlakilaki, 
+                jumlahperempuan = :jumlahperempuan,
+                kota = :kota,
+                mulaitahun = :mulaitahun,
+                sampaitahun = :sampaitahun,
                 modified_at = CURRENT_TIMESTAMP, 
                 modified_by = :modified_by 
             WHERE id = :id"
         );
 
         $this->db->bind('namaperusahaan', $data['namaperusahaan']);
-        $this->db->bind('jurusan', $data['jurusan']);
-        $this->db->bind('jeniskelamin', $data['jeniskelamin']);
-        $this->db->bind('jumlah', $data['jumlah']);
+        $this->db->bind('jumlahlakilaki', $data['jumlahlakilaki']);
+        $this->db->bind('jumlahperempuan', $data['jumlahperempuan']);
+        $this->db->bind('kota', $data['kota']);
+        $this->db->bind('mulaitahun', $data['mulaitahun']);
+        $this->db->bind('sampaitahun', $data['sampaitahun']);
         $this->db->bind('modified_by', $this->user);
 
         $this->db->bind('id', $data['id']);
@@ -1649,7 +1634,6 @@ class pkl_model extends Database
         return $this->db->rowCount();
     }
 
-
     public function caridataDP()
     {
         $keyword = $_POST['keyword'];
@@ -1657,7 +1641,6 @@ class pkl_model extends Database
         $this->db->bind('keyword', "%$keyword%");
         return $this->db->fetchAll();
     }
-
 
     // PERPANJANGAN PKL
 
@@ -2038,7 +2021,7 @@ class pkl_model extends Database
         $fields = [
             'namaperusahaan_monitoringpkl',
             'namaguru_monitoringpkl',
-            'tanggalmonitoringpkl'
+            'tanggal_monitoringpkl'
         ];
 
         // Baca file Excel menggunakan PhpSpreadsheet
@@ -2111,46 +2094,9 @@ class pkl_model extends Database
         return $response;
     }
 
-    public function importDatadp()
-    {
-        $fields = [
-            'namaperusahaan',
-            'jurusan',
-            'jeniskelamin',
-            'jumlah'
-        ];
+ 
 
-        // Baca file Excel menggunakan PhpSpreadsheet
-        $inputFileName = $_FILES['file']['tmp_name'];
-        $spreadsheet = IOFactory::load($inputFileName);
-
-        // Ambil data dari sheet pertama
-        $worksheet = $spreadsheet->getActiveSheet();
-        $highestRow = $worksheet->getHighestRow();
-        $highestColumn = $worksheet->getHighestColumn();
-        $maxColumnIndex = Coordinate::columnIndexFromString($highestColumn);
-
-        // Daftar kolom yang akan diambil dari file Excel dan disimpan ke database
-        $columns = $fields;
-
-        // Looping untuk membaca setiap baris data
-        for ($row = 2; $row <= $highestRow; $row++) {
-            $data = [];
-
-            // Looping untuk membaca setiap kolom data
-            for ($col = 2; $col <= count($columns) + 1; $col++) {
-                $columnLetter = Coordinate::stringFromColumnIndex($col);
-                $cellValue = $worksheet->getCell($columnLetter . $row)->getValue();
-                $data[$columns[$col - 2]] = $cellValue;
-            }
-
-            // Simpan data ke database
-            $response = $this->tambahDataDP($data);
-        }
-        return $response;
-    }
-
-    public function importDatapp()
+    public function importDataPPJ()
     {
         $fields = [
             'ppnama',
@@ -2186,48 +2132,6 @@ class pkl_model extends Database
 
             // Simpan data ke database
             $response = $this->tambahDataPP($data);
-        }
-        return $response;
-    }
-
-    public function importDataiz()
-    {
-        $fields = [
-            'nisn',
-            'nama',
-            'kelas',
-            'namaperusahaan',
-            'halizin',
-            'drtanggal',
-            'hgtanggal'
-        ];
-
-        // Baca file Excel menggunakan PhpSpreadsheet
-        $inputFileName = $_FILES['file']['tmp_name'];
-        $spreadsheet = IOFactory::load($inputFileName);
-
-        // Ambil data dari sheet pertama
-        $worksheet = $spreadsheet->getActiveSheet();
-        $highestRow = $worksheet->getHighestRow();
-        $highestColumn = $worksheet->getHighestColumn();
-        $maxColumnIndex = Coordinate::columnIndexFromString($highestColumn);
-
-        // Daftar kolom yang akan diambil dari file Excel dan disimpan ke database
-        $columns = $fields;
-
-        // Looping untuk membaca setiap baris data
-        for ($row = 2; $row <= $highestRow; $row++) {
-            $data = [];
-
-            // Looping untuk membaca setiap kolom data
-            for ($col = 2; $col <= count($columns) + 1; $col++) {
-                $columnLetter = Coordinate::stringFromColumnIndex($col);
-                $cellValue = $worksheet->getCell($columnLetter . $row)->getValue();
-                $data[$columns[$col - 2]] = $cellValue;
-            }
-
-            // Simpan data ke database
-            $response = $this->tambahDataIZ($data);
         }
         return $response;
     }
@@ -2272,4 +2176,125 @@ class pkl_model extends Database
         }
         return $response;
     }
+    public function importDatadt()
+    {
+        $fields = [
+            'namaperusahaan',
+            'jumlahlakilaki',
+            'jumlahperempuan',
+            'kota',
+            'mulaitahun',
+            'sampaitahun'
+        ];
+
+        // Baca file Excel menggunakan PhpSpreadsheet
+        $inputFileName = $_FILES['file']['tmp_name'];
+        $spreadsheet = IOFactory::load($inputFileName);
+
+        // Ambil data dari sheet pertama
+        $worksheet = $spreadsheet->getActiveSheet();
+        $highestRow = $worksheet->getHighestRow();
+        $highestColumn = $worksheet->getHighestColumn();
+        $maxColumnIndex = Coordinate::columnIndexFromString($highestColumn);
+
+        // Daftar kolom yang akan diambil dari file Excel dan disimpan ke database
+        $columns = $fields;
+
+        // Looping untuk membaca setiap baris data
+        for ($row = 2; $row <= $highestRow; $row++) {
+            $data = [];
+
+            // Looping untuk membaca setiap kolom data
+            for ($col = 2; $col <= count($columns) + 1; $col++) {
+                $columnLetter = Coordinate::stringFromColumnIndex($col);
+                $cellValue = $worksheet->getCell($columnLetter . $row)->getValue();
+                $data[$columns[$col - 2]] = $cellValue;
+            }
+
+            // Simpan data ke database
+            $response = $this->tambahDataDP($data);
+        }
+        return $response;
+    }
+    public function importDataPPS()
+    {
+        $fields = [
+            'nisn',
+            'namasiswa',
+            'kelas',
+            'jurusan',
+            'namaperusahaan'
+        ];
+
+        // Baca file Excel menggunakan PhpSpreadsheet
+        $inputFileName = $_FILES['file']['tmp_name'];
+        $spreadsheet = IOFactory::load($inputFileName);
+
+        // Ambil data dari sheet pertama
+        $worksheet = $spreadsheet->getActiveSheet();
+        $highestRow = $worksheet->getHighestRow();
+        $highestColumn = $worksheet->getHighestColumn();
+        $maxColumnIndex = Coordinate::columnIndexFromString($highestColumn);
+
+        // Daftar kolom yang akan diambil dari file Excel dan disimpan ke database
+        $columns = $fields;
+
+        // Looping untuk membaca setiap baris data
+        for ($row = 2; $row <= $highestRow; $row++) {
+            $data = [];
+
+            // Looping untuk membaca setiap kolom data
+            for ($col = 2; $col <= count($columns) + 1; $col++) {
+                $columnLetter = Coordinate::stringFromColumnIndex($col);
+                $cellValue = $worksheet->getCell($columnLetter . $row)->getValue();
+                $data[$columns[$col - 2]] = $cellValue;
+            }
+
+            // Simpan data ke database
+            $response = $this->tambahDataSiswa($data);
+        }
+        return $response;
+    }
+    public function importDataiz()
+    {
+        $fields = [
+            'nisn',
+            'nama',
+            'kelas',
+            'namaperusahaan',
+            'halizin',
+            'drtanggal',
+            'hgtanggal'
+        ];
+
+        // Baca file Excel menggunakan PhpSpreadsheet
+        $inputFileName = $_FILES['file']['tmp_name'];
+        $spreadsheet = IOFactory::load($inputFileName);
+
+        // Ambil data dari sheet pertama
+        $worksheet = $spreadsheet->getActiveSheet();
+        $highestRow = $worksheet->getHighestRow();
+        $highestColumn = $worksheet->getHighestColumn();
+        $maxColumnIndex = Coordinate::columnIndexFromString($highestColumn);
+
+        // Daftar kolom yang akan diambil dari file Excel dan disimpan ke database
+        $columns = $fields;
+
+        // Looping untuk membaca setiap baris data
+        for ($row = 2; $row <= $highestRow; $row++) {
+            $data = [];
+
+            // Looping untuk membaca setiap kolom data
+            for ($col = 2; $col <= count($columns) + 1; $col++) {
+                $columnLetter = Coordinate::stringFromColumnIndex($col);
+                $cellValue = $worksheet->getCell($columnLetter . $row)->getValue();
+                $data[$columns[$col - 2]] = $cellValue;
+            }
+
+            // Simpan data ke database
+            $response = $this->tambahDataIZ($data);
+        }
+        return $response;
+    }
+    
 }
